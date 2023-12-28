@@ -6,15 +6,15 @@ from avs_dual_staking import dual_staking
 from avs_reward_calculation_logic import avs_rewards
 from avs_revenue import revenue
 from avs_tokenomics import tokenomics
-from avs_tvl_totalstaked import tvl_total_staked, get_tvl_total_staked
+from avs_tvl_totalstaked import get_tvl_total_staked
 from avs_type import type
 
 
 def calculate_rewards():
-        staker_reward, operator_reward = avs_rewards(revenue, tvl_total_staked, get_tvl_total_staked, dual_staking, type, avs_sec_audits)
 
         avs_total_staked = get_tvl_total_staked()  # Now it's defined in your main file's scope
 
+        staker_reward, operator_reward = avs_rewards(revenue, get_tvl_total_staked, dual_staking, type, avs_sec_audits)
 
         if avs_total_staked != 0:
                 staker_reward_percentage = (staker_reward / avs_total_staked) * 100
