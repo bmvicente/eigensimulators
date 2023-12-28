@@ -14,7 +14,7 @@ from avs_reward_result import calculate_rewards
 def st_main():
     st.set_page_config(layout="wide")
 
-    st.image("images/eigen.png")
+    st.image("images/eigenimage.png")
     st.title("AVS Reward Emission Simulator")
 
     with st.expander("Assumptions Made in Building our Simulator"):
