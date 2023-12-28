@@ -1,11 +1,20 @@
-
 import streamlit as st
 
-def main():
+# Importing the functions from other files
+from avs_audits import avs_sec_audits
+from avs_dual_staking import dual_staking
+from avs_reward_calculation_logic import avs_rewards
+from avs_revenue import revenue
+from avs_tokenomics import tokenomics
+from avs_tvl_totalstaked import tvl_total_staked
+from avs_type import type
+from avs_reward_result import calculate_rewards
+
+
+def st_main():
     st.set_page_config(layout="wide")
 
-    st.image("eigenimage.png")
-
+    st.image("images/eigenimage.png")
     st.title("AVS Reward Emission Simulator")
 
     with st.expander("Assumptions Made in Building our Simulator"):
@@ -19,14 +28,33 @@ def main():
             Generally speaking, these three assumptions were made due to the safety they confer AVSs, especially recent ones, and for simplicity's sake in a first version of the Simulator.
                     
             We recommend the AVS Risk Simulator as an important introduction to understanding the AVS Reward Emission Simulator.
-            """)
-        
-col1, col2 = st.columns([1, 1], gap="large")
+        """)
+    
 
-    with col1
-    with col2
+    col1, col2 = st.columns([1, 1], gap="large")
 
+    with col1:
+        revenue()  # Assuming this function renders content directly to the app
+
+        st.write("\n")  # Adding a space or line break
+
+        tvl_total_staked()  # Assuming this function renders content directly to the app
+
+        st.write("\n")  # Adding a space or line break
+
+        dual_staking()
+
+    with col2:
+        type()  # Assuming this function renders content directly to the app
+
+        st.write("\n")  # Adding multiple spaces or line breaks
+
+        avs_sec_audits()  # Assuming this function renders content directly to the app
+
+        st.write("\n")  # Adding multiple spaces or line breaks
+
+        tokenomics()  # Assuming this function renders content directly to the app
 
 
 if __name__ == "__main__":
-    main()
+    st_main()

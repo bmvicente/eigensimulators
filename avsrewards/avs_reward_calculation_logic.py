@@ -1,5 +1,5 @@
 
-# EigenLayer AVS Rewards
+# AVS Rewards
 
 import streamlit as st
 
