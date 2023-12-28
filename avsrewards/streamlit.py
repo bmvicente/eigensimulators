@@ -1,6 +1,5 @@
 import streamlit as st
 
-# Importing the functions from other files
 from avs_audits import avs_sec_audits
 from avs_dual_staking import dual_staking
 from avs_reward_calculation_logic import avs_rewards
@@ -34,27 +33,31 @@ def st_main():
     col1, col2 = st.columns([1, 1], gap="large")
 
     with col1:
-        revenue()  # Assuming this function renders content directly to the app
+        revenue()
 
-        st.write("\n")  # Adding a space or line break
+        st.write("\n")
 
-        tvl_total_staked()  # Assuming this function renders content directly to the app
+        tvl_total_staked()
 
-        st.write("\n")  # Adding a space or line break
+        st.write("\n")
 
         dual_staking()
 
     with col2:
-        type()  # Assuming this function renders content directly to the app
+        type()
 
-        st.write("\n")  # Adding multiple spaces or line breaks
+        st.write("\n")
 
-        avs_sec_audits()  # Assuming this function renders content directly to the app
+        avs_sec_audits()
 
-        st.write("\n")  # Adding multiple spaces or line breaks
+        st.write("\n")
 
-        tokenomics()  # Assuming this function renders content directly to the app
+        tokenomics()
 
+    st.write("\n")
+    st.write("\n")
+
+    calculate_rewards()
 
 if __name__ == "__main__":
     st_main()
