@@ -31,12 +31,14 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
             return -0.015
         else:  # Very low AVS compared to ETH
             return -0.020
-
+        # Higher ratio illustrates the greater weight of the $AVS token in the balance, risk that must be reflected in the reward calc
 
     dual_staking_adjustment = dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage)
 
+
     # AVS type adjustment
-    avs_type_adjustment = 0.02 if avs_type == "Lightweight" else -0.02
+    avs_type_adjustment = 0.02 if avs_type == "Lightweight" else -0.02 # Lightweight assigned a positive value due to its riskiest nature, accounting for greater rewards
+
 
     # Check the ratio of Total Staked to TVL
     def ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
@@ -62,6 +64,7 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
             return 0.03
         else:
              return 0
+        # Higher ratio illustrates a greater total restaked, which contributes to greater security, thus lower rewards
 
     ratio_tvl_totalstaked_adjustment = ratio_tvl_totalstaked(avs_total_staked, avs_tvl)
 
@@ -79,6 +82,8 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
         avs_revenue_adjustment = 0.05
     else:
         avs_revenue_adjustment = 0
+    # Greater revenue assures greater AVS security, therefore a gradual reduction in the reward level as the revenue grows is sensible
+
 
     # Security audit adjustment
     def security_audit_adjustment(number_of_audits):
@@ -98,7 +103,9 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
     # Applying the adjustment
     audit_adjustment = security_audit_adjustment(security_audits)
 
-    # Combine all adjustments
+
+
+    # Reward Percentage Calculation
     reward_percentage = reward_percentage + dual_staking_adjustment + avs_type_adjustment + avs_revenue_adjustment + audit_adjustment + ratio_tvl_totalstaked_adjustment
 
     # Ensure the reward percentage is within reasonable bounds
