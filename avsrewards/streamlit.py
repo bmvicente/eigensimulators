@@ -7,7 +7,7 @@ from avs_revenue import revenue
 from avs_tokenomics import tokenomics
 from avs_tvl_totalstaked import tvl_total_staked
 from avs_type import type
-from avs_reward_result import calculate_rewards
+from avs_reward_result import calculate_rewards, staker_reward, operator_reward
 
 
 def st_main():
@@ -57,7 +57,8 @@ def st_main():
     st.write("\n")
     st.write("\n")
 
-    calculate_rewards()
+    staker_reward()
+    operator_reward()
 
 if __name__ == "__main__":
     st_main()
