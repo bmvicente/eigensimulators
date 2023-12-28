@@ -1,32 +1,6 @@
 
 # EigenLayer AVS Rewards
 
-'''
-Assuming Business Model (Dual Staking Utility -- Veto Dual Staking Method: %xETH : %$AVS) & Restaking Modality (LST Restaking)
-
-1. AVS Type: Lightweight, Hyperscale
-
-2. Dual Staking Balance: %xETH : %$AVS (scale 90%/10% - 10%/90%)
-
-3. Revenue vs Operator Costs (dependent on AVS type as well) (Revenue may be added in as an input parameter that's not included in the calculations as well,
-                                                                measures health of the AVS. Relevant to be calculated in direct proportion to rewards)!!!!!!!!!
-                                                                Operator Costs: Given the AVS type, operators may "demand" higher rewards based on initial cost they're incurring in.
-                                                                Or rather, higher rewards from an AVS will attract more operators, which, in turn, will validate security of the AVS.
-                                                                It's in the best interests of the AVS to adjust rewards, based on AVS type, for operators that are willing to provide their services.)
-    - 20% of the 20% Profit to be distributed as rewards to be determined by risk level of overall system
-
-4. Total Staked vs Security Needs (Business Model, Restaking Modality, AVS Type, CVS & CVL)
-    - A low TS makes the AVS overall more insecure, thus more rewards should be emitted.
-    - Total Restaked > TVL more secure, less rewards
-
-5. TOKENOMICS (to be added in only as input insights into actual simulated parameters, not included in calculations)!!!!!!!!!
-5.1. $AVS Circulating Supply vs Total Supply
-5.2. $AVS Inflation/Deflation Rate
-
--- Remember, in some occasions, rewards usually proportional to risk.
-
-REWARDS OPERATORS > REWARDS STAKERS
-'''
 
 import streamlit as st
 
@@ -174,8 +148,6 @@ def main():
     col1, col2 = st.columns([1, 1], gap="large")
 
     with col1:
-
-
 
 
         ### AVS REVENUE

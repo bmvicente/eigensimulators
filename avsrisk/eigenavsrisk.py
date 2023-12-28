@@ -1,16 +1,5 @@
+
 # EigenLayer AVS Risks
-
-'''
-A. Likelihood
-B. Impact
-
-1. Security Audits
-2. Business Model (DS)
-3. 51% Vulnerability to Operators' attack based on TVL/restaked ETH ratio
-4. AVS Type: Hyperscale, Lightweight
-5. CVS & CVL
-6. Restaking Modalities
-'''
 
 
 import streamlit as st
@@ -70,6 +59,8 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
     normalized_risk_score = round(normalized_risk_score, 2)
 
     return normalized_risk_score
+
+
 
 
 # Streamlit app setup
@@ -266,6 +257,7 @@ def main():
         st.write("  \n")
 
 
+        # AVS Average Operator Reputation
         st.markdown("""
             <style>
             .header-style {
@@ -318,12 +310,8 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-
     # Calculate risk
     risk_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
-
-    # Display the result
-    #st.write("AVS Risk Score: **{:.2f}**".format(risk_score))
 
     # Determine the color and background color based on the risk score
     if risk_score >= 7.5:
