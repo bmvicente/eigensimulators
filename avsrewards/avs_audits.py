@@ -21,7 +21,11 @@ def avs_sec_audits():
 
         st.markdown('<p class="header-style">AVS Number of Security Audits</p>', unsafe_allow_html=True)
 
-        security_audits = st.number_input("", min_value=0, max_value=5, step=1)
+        def get_avs_audits():
+
+                avs_sec_audits = st.number_input("", min_value=0, max_value=5, step=1)
+
+                return avs_sec_audits
 
         with st.expander("Logic"):
                 st.markdown("""

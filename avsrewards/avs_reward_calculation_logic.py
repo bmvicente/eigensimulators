@@ -69,20 +69,26 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
     ratio_tvl_totalstaked_adjustment = ratio_tvl_totalstaked(avs_total_staked, avs_tvl)
 
 
-    # Revenue-based adjustment
-    if avs_revenue > 100000000:  # Greater than $100M
-        avs_revenue_adjustment = 0.01
-    elif avs_revenue > 50000000:  # Greater than $50M
-        avs_revenue_adjustment = 0.02
-    elif avs_revenue > 20000000:  # Greater than $20M
-        avs_revenue_adjustment = 0.03
-    elif avs_revenue > 5000000:   # Greater than $5M
-        avs_revenue_adjustment = 0.04
-    elif avs_revenue > 1000000:   # Greater than $1M
-        avs_revenue_adjustment = 0.05
-    else:
-        avs_revenue_adjustment = 0
-    # Greater revenue assures greater AVS security, therefore a gradual reduction in the reward level as the revenue grows is sensible
+
+    def avs_revenue_calc(avs_revenue):
+
+        # Revenue-based adjustment
+        if avs_revenue > 100000000:  # Greater than $100M
+            avs_revenue_adjustment = 0.01
+        elif avs_revenue > 50000000:  # Greater than $50M
+            avs_revenue_adjustment = 0.02
+        elif avs_revenue > 20000000:  # Greater than $20M
+            avs_revenue_adjustment = 0.03
+        elif avs_revenue > 5000000:   # Greater than $5M
+            avs_revenue_adjustment = 0.04
+        elif avs_revenue > 1000000:   # Greater than $1M
+            avs_revenue_adjustment = 0.05
+        else:
+            avs_revenue_adjustment = 0
+        # Greater revenue assures greater AVS security, therefore a gradual reduction in the reward level as the revenue grows is sensible
+
+    avs_revenue_adjustment = avs_revenue_calc(avs_revenue)
+
 
 
     # Security audit adjustment
