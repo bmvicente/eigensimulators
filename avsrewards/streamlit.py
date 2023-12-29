@@ -1,14 +1,12 @@
 import streamlit as st
 
 from avs_audits import selected_avs_sec_audits
-#from avs_reward_calculation_logic import avs_rewards
 from avs_dual_staking import selected_avs_dual_staking
 from avs_revenue import selected_avs_revenue
 from avs_tokenomics import selected_avs_inf_def_rate, selected_avs_circ_supply, selected_avs_total_supply
 from avs_tvl_totalstaked import selected_avs_tvl, selected_avs_total_staked
 from avs_type import selected_avs_type
 from avs_reward_result import staker_reward, operator_reward
-#from avs_reward_result import calculate_rewards
 
 
 def st_main():
