@@ -22,16 +22,16 @@ def revenue():
 
     st.markdown('<p class="header-style">AVS Revenue ($)</p>', unsafe_allow_html=True)
 
-def get_avs_revenue():
+    def get_avs_revenue():
 
-        avs_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
-            
-        return avs_revenue
+            avs_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
+                
+            return avs_revenue
 
-dist_rewards_10 = round(get_avs_revenue * 0.2 * 0.1)
-dist_rewards_30 = round(get_avs_revenue * 0.2 * 0.3)
-            
-with st.expander("Logic"):
+    dist_rewards_10 = round(get_avs_revenue * 0.2 * 0.1)
+    dist_rewards_30 = round(get_avs_revenue * 0.2 * 0.3)
+                
+    with st.expander("Logic"):
         st.markdown(f"""
                 An **AVS's Revenue**, at any given time, is an adequate indicator to help assess the level of rewards an AVS might be able to emit. From the revenue inputted by the user, we assume a 20% profit for the AVS, and [10-30]% of that profit to be distributable as rewards (specific value of this range dependent on weighting of all the chosen inputs in our Simulator).
 
