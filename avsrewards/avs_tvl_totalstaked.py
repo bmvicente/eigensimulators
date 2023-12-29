@@ -1,10 +1,18 @@
 
 import streamlit as st
 
+
 ### AVS TVL & TOTAL STAKED
 
-def tvl_total_staked():
+def get_avs_tvl():
+    # Function to capture AVS TVL from user input
+    return st.number_input("AVS TVL ($)", min_value=0, max_value=10000000000, value=0, step=1000000)
 
+def get_avs_total_staked():
+    # Function to capture AVS Total Staked from user input
+    return st.number_input("AVS Total Staked ($)", min_value=0, max_value=10000000000, value=0, step=1000000)
+
+def tvl_total_staked():
     st.markdown("""
             <style>
                 .header-style {
@@ -18,27 +26,17 @@ def tvl_total_staked():
                 }
                 </style>
                 """, unsafe_allow_html=True)
-                
-    st.markdown('<p class="header-style">AVS TVL & Total Staked</p>', unsafe_allow_html=True)
 
+    st.markdown('<p class="header-style">AVS TVL & Total Staked</p>', unsafe_allow_html=True)
     st.write("  \n")
 
-    col3, col4 = st.columns([3, 3])
-
-    with col3:
-        avs_tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
-
-    with col4:
-        def get_tvl_total_staked():
-
-            avs_total_staked = st.number_input("**\$AVS Total Staked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
-
-            min_tvl = avs_total_staked // 2
-
-            return avs_total_staked
-
+    # Get AVS TVL and Total Staked using the defined functions
+    avs_tvl = get_avs_tvl()
+    avs_total_staked = get_avs_total_staked()
+    min_tvl = avs_total_staked // 2  # Assuming this is how you want to calculate min_tvl
 
     with st.expander("Logic"):
+        # Your existing logic markdown, updated with dynamic values
         st.markdown(f"""
                 To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) to begin with: an AVS where the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, the system appears secure, as any successful attack would result in at least half of the attacker's stake being slashed. 
 
@@ -51,3 +49,8 @@ def tvl_total_staked():
 
                 The **rewards** herein are set so that the greater the *(AVS Total Staked/2) : AVS TVL* ratio, the safer the AVS is and the less rewards it should emit therefore, and vice-versa.
                     """)
+
+    return avs_tvl, avs_total_staked  # Return the values for use elsewhere if needed
+
+# To use the function in your app:
+selected_avs_tvl, selected_avs_total_staked = tvl_total_staked()  # This will also render the input widgets and explanation

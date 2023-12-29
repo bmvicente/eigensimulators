@@ -4,15 +4,14 @@
 import streamlit as st
 
 
-# Reward Calculation
-def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xeth_percentage, avs_type, security_audits):
+# def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xeth_percentage, avs_type, security_audits):
     
-    reward_percentage = 0.20
+reward_percentage = 0.20
 
-    # Adjusting the base reward based on the AVS token and xETH balance
-    #dual_staking_balance_adjustment = (avs_token_percentage - xeth_percentage) / 100.0
+# Adjusting the base reward based on the AVS token and xETH balance
+#dual_staking_balance_adjustment = (avs_token_percentage - xeth_percentage) / 100.0
 
-    def dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage):
+def dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage):
         ratio = avs_token_percentage / xeth_percentage
 
         if ratio > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
@@ -33,15 +32,25 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
             return -0.020
         # Higher ratio illustrates the greater weight of the $AVS token in the balance, risk that must be reflected in the reward calc
 
-    dual_staking_adjustment = dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage)
+def calculate_dual_staking_adjustment(avs_token_percentage, xeth_percentage):
+    return dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage)
 
 
-    # AVS type adjustment
-    avs_type_adjustment = 0.02 if avs_type == "Lightweight" else -0.02 # Lightweight assigned a positive value due to its riskiest nature, accounting for greater rewards
+
+# AVS type adjustment
+
+def avs_type_adjustment(avs_type):
+    return 0.02 if avs_type == "Lightweight" else -0.02
+
+def calculate_avs_type_adjustment(avs_type):
+    return avs_type_adjustment(avs_type)
 
 
-    # Check the ratio of Total Staked to TVL
-    def ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
+
+
+# Check the ratio of Total Staked to TVL
+
+def ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
         
         if avs_tvl == 0:
             return 0
@@ -66,33 +75,39 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
              return 0
         # Higher ratio illustrates a greater total restaked, which contributes to greater security, thus lower rewards
 
-    ratio_tvl_totalstaked_adjustment = ratio_tvl_totalstaked(avs_total_staked, avs_tvl)
+def calculate_ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
+    return ratio_tvl_totalstaked(avs_total_restaked, avs_tvl)
 
 
 
-    def avs_revenue_calc(avs_revenue):
+# AVS Revenue
+
+def avs_revenue_calc(avs_revenue):
 
         # Revenue-based adjustment
         if avs_revenue > 100000000:  # Greater than $100M
-            avs_revenue_adjustment = 0.01
+            return 0.01
         elif avs_revenue > 50000000:  # Greater than $50M
-            avs_revenue_adjustment = 0.02
+            return 0.02
         elif avs_revenue > 20000000:  # Greater than $20M
-            avs_revenue_adjustment = 0.03
+            return 0.03
         elif avs_revenue > 5000000:   # Greater than $5M
-            avs_revenue_adjustment = 0.04
+            return 0.04
         elif avs_revenue > 1000000:   # Greater than $1M
-            avs_revenue_adjustment = 0.05
+            return 0.05
         else:
-            avs_revenue_adjustment = 0
+            return 0
         # Greater revenue assures greater AVS security, therefore a gradual reduction in the reward level as the revenue grows is sensible
 
-    avs_revenue_adjustment = avs_revenue_calc(avs_revenue)
+def calculate_avs_revenue_calc(avs_revenue):
+    return avs_revenue_calc(avs_revenue)
 
 
 
-    # Security audit adjustment
-    def security_audit_adjustment(number_of_audits):
+
+# Security Audits 
+
+def security_audit_adjustment(number_of_audits):
         if number_of_audits == 5:
             return -0.025  # Lower reward for more audits
         elif number_of_audits == 4:
@@ -106,23 +121,25 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
         else:
             return 0  # Neutral adjustment for moderate number of audits
 
-    # Applying the adjustment
-    audit_adjustment = security_audit_adjustment(security_audits)
+def calculate_security_audit_adjustment(number_of_audits):
+    return security_audit_adjustment(number_of_audits)
 
 
+# Last portion:
 
-    # Reward Percentage Calculation
-    reward_percentage = reward_percentage + dual_staking_adjustment + avs_type_adjustment + avs_revenue_adjustment + audit_adjustment + ratio_tvl_totalstaked_adjustment
+# Reward Percentage Calculation
+#reward_percentage = reward_percentage + dual_staking_adjustment + avs_type_adjustment + calculate_avs_revenue_calc + audit_adjustment + ratio_tvl_totalstaked_adjustment
 
-    # Ensure the reward percentage is within reasonable bounds
-    reward_percentage = max(min(reward_percentage, 0.30), 0.10)
 
-    # Calculate rewards for stakers and operators
-    profit_percentage = 0.20
-    staker_percentage = 0.40
-    operator_percentage = 0.60
+# Ensure the reward percentage is within reasonable bounds
+#reward_percentage = max(min(reward_percentage, 0.30), 0.10)
 
-    staker_reward = avs_revenue * profit_percentage * reward_percentage * staker_percentage
-    operator_reward = avs_revenue * profit_percentage * reward_percentage * operator_percentage
+# Calculate rewards for stakers and operators
+#profit_percentage = 0.20
+#staker_percentage = 0.40
+#operator_percentage = 0.60
 
-    return staker_reward, operator_reward
+#staker_reward = calculate_avs_revenue_calc * profit_percentage * reward_percentage * staker_percentage
+#operator_reward = calculate_avs_revenue_calc * profit_percentage * reward_percentage * operator_percentage
+
+#return staker_reward, operator_reward

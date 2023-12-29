@@ -1,12 +1,12 @@
 import streamlit as st
 
-from avs_audits import avs_sec_audits
-from avs_dual_staking import dual_staking
+from avs_audits import selected_avs_sec_audits
 from avs_reward_calculation_logic import avs_rewards
-from avs_revenue import revenue
-from avs_tokenomics import tokenomics
-from avs_tvl_totalstaked import tvl_total_staked
-from avs_type import type
+from avs_dual_staking import selected_avs_dual_staking
+from avs_revenue import selected_avs_revenue
+from avs_tokenomics import selected_avs_inf_def_rate, selected_avs_circ_supply, selected_avs_total_supply
+from avs_tvl_totalstaked import selected_avs_tvl, selected_avs_total_staked
+from avs_type import selected_avs_type
 from avs_reward_result import calculate_rewards
 
 
@@ -33,26 +33,49 @@ def st_main():
     col1, col2 = st.columns([1, 1], gap="large")
 
     with col1:
-        revenue()
+
+        #AVS Revenue
+        selected_avs_revenue()
+
+        st.write("\n")
+        
+        col3, col4 = st.columns([1, 1], gap="small")
+
+        # AVS TVL & Staked
+        with col3:
+            selected_avs_tvl()
+
+        with col4:
+            selected_avs_total_staked()
+
 
         st.write("\n")
 
-        tvl_total_staked()
-
-        st.write("\n")
-
-        dual_staking()
+        # AVS Dual Staking
+        selected_avs_dual_staking()
 
     with col2:
-        type()
+
+        # AVS Type
+        selected_avs_type()
 
         st.write("\n")
 
-        avs_sec_audits()
+        # AVS Security Audits
+        selected_avs_sec_audits()
 
         st.write("\n")
 
-        tokenomics()
+        # AVS Tokenomics
+        selected_avs_inf_def_rate()
+
+        col5, col6 = st.columns([1, 1], gap="small")
+
+        with col5:
+            selected_avs_circ_supply()
+        
+        with col6:
+            selected_avs_total_supply()
 
     st.write("\n")
     st.write("\n")

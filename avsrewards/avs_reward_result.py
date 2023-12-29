@@ -1,32 +1,59 @@
 
 import streamlit as st
 
-from avs_reward_calculation_logic import avs_rewards, get_ratio_tvl_totalstaked_adjustment, get_avs_revenue_adjustment, get_audit_adjustment, get_dual_staking_adjustment, get_avs_type_adjustment
-from avs_tvl_totalstaked import get_tvl_total_staked
+#from avs_reward_calculation_logic import calculate_dual_staking_adjustment, calculate_avs_type_adjustment, calculate_ratio_tvl_totalstaked, calculate_avs_revenue_calc, calculate_security_audit_adjustment
+from avs_tvl_totalstaked import selected_avs_total_staked
+from avs_revenue import selected_avs_revenue
+from avs_audits import selected_avs_sec_audits
+from avs_dual_staking import selected_avs_dual_staking
+from avs_type import selected_avs_type
 
 
-def calculate_rewards(avs_revenue, total_staked, avs_type, number_of_audits):
-
-        avs_revenue_adjustment = get_avs_revenue_adjustment(avs_revenue)
-        ratio_tvl_totalstaked_adjustment = get_ratio_tvl_totalstaked_adjustment(total_staked)
-        dual_staking_adjustment = get_dual_staking_adjustment(avs_type)
-        avs_type_adjustment = get_avs_type_adjustment(avs_type)
-        audit_adjustment = get_audit_adjustment(number_of_audits)
-        avs_total_staked = get_tvl_total_staked()
-
-        staker_reward, operator_reward = avs_rewards(avs_revenue_adjustment, ratio_tvl_totalstaked_adjustment, dual_staking_adjustment, avs_type_adjustment, audit_adjustment)
+#def calculate_rewards(avs_revenue, total_staked, avs_type, number_of_audits):
+#
+#        avs_revenue_adjustment = calculate_avs_revenue_calc()
+#        ratio_tvl_totalstaked_adjustment = calculate_ratio_tvl_totalstaked()
+#        dual_staking_adjustment = calculate_dual_staking_adjustment()
+#        avs_type_adjustment = calculate_avs_type_adjustment()
+#        audit_adjustment = calculate_security_audit_adjustment()
 
 
-        if avs_total_staked != 0:
-                staker_reward_percentage = (staker_reward / avs_total_staked) * 100
-                operator_reward_percentage = (operator_reward / avs_total_staked) * 100
+profit_percentage = 0.20
+staker_percentage = 0.40
+operator_percentage = 0.60
 
-        else:
+
+def reward_sum(selected_avs_total_staked,selected_avs_revenue,selected_avs_sec_audits,selected_avs_dual_staking,selected_avs_type):
+        return selected_avs_total_staked + selected_avs_revenue + selected_avs_sec_audits + selected_avs_dual_staking + selected_avs_type
+
+reward_result = reward_sum(selected_avs_total_staked,selected_avs_revenue,selected_avs_sec_audits,selected_avs_dual_staking,selected_avs_type)
+
+
+
+def staker_reward(profit_percentage, staker_percentage):
+        return selected_avs_revenue * profit_percentage * staker_percentage
+
+staker_reward_result = staker_reward(profit_percentage, staker_percentage)
+
+
+def operator_reward(profit_percentage, operator_percentage):
+        return selected_avs_revenue * profit_percentage * operator_percentage
+
+operator_reward_result = operator_reward(profit_percentage, operator_percentage)
+
+
+
+
+if selected_avs_total_staked != 0:
+                staker_reward_percentage = (staker_reward / selected_avs_total_staked) * 100
+                operator_reward_percentage = (operator_reward / selected_avs_total_staked) * 100
+
+else:
                 staker_reward_percentage = 0.00
                 operator_reward_percentage = 0.00
 
 
-        st.markdown(
+st.markdown(
                         f"""
                         <div style="
                         border: 2px solid;
@@ -41,7 +68,7 @@ def calculate_rewards(avs_revenue, total_staked, avs_type, number_of_audits):
                         unsafe_allow_html=True
                         )
 
-        st.markdown(
+st.markdown(
                         f"""
                         <div style="
                                 border: 2px solid;

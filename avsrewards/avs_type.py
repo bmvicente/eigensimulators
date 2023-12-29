@@ -1,10 +1,13 @@
 
 import streamlit as st
 
+
 ### AVS TYPE
 
-def type():
+def get_avs_type():
+    return st.selectbox("Choose AVS Type", ["Lightweight", "Hyperscale"])
 
+def avs_type():
     st.markdown("""
         <style>
             .header-style {
@@ -16,14 +19,20 @@ def type():
                 border: none !important;
                 box-shadow: none !important;
             }
-                </style>
-                """, unsafe_allow_html=True)
+        </style>
+        """, unsafe_allow_html=True)
 
     st.markdown('<p class="header-style">AVS Type</p>', unsafe_allow_html=True)
 
-    avs_type = st.selectbox("", ["Lightweight", "Hyperscale"])
+    # Calling get_avs_type as a function to get the actual value
+    avs_type_selected = get_avs_type()
 
     with st.expander("Logic"):
         st.markdown("""
             While it does depend on the needs of an AVS and while a **Lightweight AVS** safeguards it from risks otherwise incurred from a centralized architecture, the **Hyperscale**-type is more robust and secure, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our Simulator, and thus a lower reward level is sensible to assume when selecting this category, relative to the Lightweight AVS type.
                     """)
+
+    return avs_type_selected  # Return the selected AVS type for use elsewhere
+
+# If you need to use this function in your Streamlit app
+selected_avs_type = avs_type()  # This will also render the selection box and explanation
