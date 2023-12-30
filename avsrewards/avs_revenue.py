@@ -50,4 +50,4 @@ def revenue():
     
     return adjustment
 
-selected_avs_revenue_adjustment = revenue()  # This will also render the selection box and explanation
+#selected_avs_revenue_adjustment = revenue()  # This will also render the selection box and explanation
