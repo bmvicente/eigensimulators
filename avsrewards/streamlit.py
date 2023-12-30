@@ -1,6 +1,6 @@
 import streamlit as st
 
-from avs_audits import selected_avs_audits_adjustment
+from avs_audits import revenue
 from avs_dual_staking import selected_avs_dual_staking_adjustment
 from avs_revenue import selected_avs_revenue_adjustment
 from avs_tokenomics import selected_avs_inf_def_rate, selected_avs_circ_supply, selected_avs_total_supply
@@ -34,7 +34,11 @@ def st_main():
     with col1:
 
         #AVS Revenue
-        st.write("Selected AVS Revenue Adjustment: ", selected_avs_revenue_adjustment)
+        revenue()
+
+        st.write("The adjustment based on your input is:", selected_avs_revenue_adjustment)
+
+        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_revenue_adjustment)
 
         st.write("\n")
         
