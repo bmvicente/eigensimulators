@@ -80,8 +80,8 @@ def st_main():
     st.write("\n")
 
 
-staker_reward_result()
-operator_reward_result()
+    st.write("Staker Reward Result: ", staker_reward_result)
+    st.write("Operator Reward Result: ", operator_reward_result)
 
 
 if __name__ == "__main__":
