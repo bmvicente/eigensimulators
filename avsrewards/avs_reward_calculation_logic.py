@@ -82,7 +82,7 @@ def calculate_ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
 
 # AVS Revenue
 
-def avs_revenue_calc(avs_revenue):
+def avs_revenue_adjustment(avs_revenue):
 
         # Revenue-based adjustment
         if avs_revenue > 100000000:  # Greater than $100M
@@ -100,7 +100,7 @@ def avs_revenue_calc(avs_revenue):
         # Greater revenue assures greater AVS security, therefore a gradual reduction in the reward level as the revenue grows is sensible
 
 def calculate_avs_revenue_calc(avs_revenue):
-    return avs_revenue_calc(avs_revenue)
+    return avs_revenue_adjustment(avs_revenue)
 
 
 

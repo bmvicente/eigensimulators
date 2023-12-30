@@ -1,6 +1,6 @@
 
 import streamlit as st
-
+from avs_reward_calculation_logic import avs_revenue_adjustment
 
 ### AVS REVENUE
 
@@ -33,6 +33,8 @@ def revenue():
 
     dist_rewards_10 = round(avs_revenue * 0.2 * 0.1)
     dist_rewards_30 = round(avs_revenue * 0.2 * 0.3)
+
+    adjustment = avs_revenue_adjustment(revenue)
                 
     with st.expander("Logic"):
         st.markdown(f"""
@@ -45,5 +47,7 @@ def revenue():
         Such a reward range is necessary to be calculated to account for the underlying riskiness/security of an AVS and subsequent reward emission values. 
         We find these percentages reasonable, although would highly appreciate feedback from EigenLayer.
         """)
+    
+    return adjustment
 
-selected_avs_revenue = revenue()  # This will also render the selection box and explanation
+selected_avs_revenue_adjustment = revenue()  # This will also render the selection box and explanation

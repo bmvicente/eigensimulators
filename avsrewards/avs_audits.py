@@ -1,5 +1,6 @@
 
 import streamlit as st
+from avs_reward_calculation_logic import security_audit_adjustment
 
 
 ### SECURITY AUDITS 
@@ -27,11 +28,15 @@ def avs_sec_audits():
 
         avs_audits = get_avs_audits()
 
+        adjustment = security_audit_adjustment(avs_audits)
+
 
         with st.expander("Logic"):
                 st.markdown("""
                         Registering the number of security audits performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
                         While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks, and thus rewards an AVS is confident to emit and restakers and operators to opt into it.
                 """)
+        
+        return  adjustment
 
-selected_avs_sec_audits = avs_sec_audits()  # This will also render the selection box and explanation
+selected_avs_audits_adjustment = avs_sec_audits()  # This will also render the selection box and explanation

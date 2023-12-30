@@ -1,12 +1,12 @@
 import streamlit as st
 
-from avs_audits import selected_avs_sec_audits
-from avs_dual_staking import selected_avs_dual_staking
-from avs_revenue import selected_avs_revenue
+from avs_audits import selected_avs_audits_adjustment
+from avs_dual_staking import selected_avs_dual_staking_adjustment
+from avs_revenue import selected_avs_revenue_adjustment
 from avs_tokenomics import selected_avs_inf_def_rate, selected_avs_circ_supply, selected_avs_total_supply
-from avs_tvl_totalstaked import selected_avs_tvl, selected_avs_total_staked
-from avs_type import selected_avs_type
-from avs_reward_result import staker_reward, operator_reward
+from avs_tvl_totalstaked import selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked
+from avs_type import selected_avs_type_adjustment
+from avs_reward_result import staker_reward_result, operator_reward_result
 
 
 def st_main():
@@ -34,7 +34,7 @@ def st_main():
     with col1:
 
         #AVS Revenue
-        selected_avs_revenue()
+        selected_avs_revenue_adjustment()
 
         st.write("\n")
         
@@ -42,7 +42,7 @@ def st_main():
 
         # AVS TVL & Staked
         with col3:
-            selected_avs_tvl()
+            selected_avs_tvl_total_staked_adjustment()
 
         with col4:
             selected_avs_total_staked()
@@ -51,17 +51,17 @@ def st_main():
         st.write("\n")
 
         # AVS Dual Staking
-        selected_avs_dual_staking()
+        selected_avs_dual_staking_adjustment()
 
     with col2:
 
         # AVS Type
-        selected_avs_type()
+        selected_avs_type_adjustment()
 
         st.write("\n")
 
         # AVS Security Audits
-        selected_avs_sec_audits()
+        selected_avs_audits_adjustment()
 
         st.write("\n")
 
@@ -80,8 +80,8 @@ def st_main():
     st.write("\n")
 
 
-staker_reward()
-operator_reward()
+staker_reward_result()
+operator_reward_result()
 
 
 if __name__ == "__main__":

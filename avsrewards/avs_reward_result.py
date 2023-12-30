@@ -2,11 +2,11 @@
 import streamlit as st
 
 #from avs_reward_calculation_logic import calculate_dual_staking_adjustment, calculate_avs_type_adjustment, calculate_ratio_tvl_totalstaked, calculate_avs_revenue_calc, calculate_security_audit_adjustment
-from avs_tvl_totalstaked import selected_avs_total_staked
-from avs_revenue import selected_avs_revenue
-from avs_audits import selected_avs_sec_audits
-from avs_dual_staking import selected_avs_dual_staking
-from avs_type import selected_avs_type
+from avs_tvl_totalstaked import selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked
+from avs_revenue import selected_avs_revenue_adjustment
+from avs_audits import selected_avs_audits_adjustment
+from avs_dual_staking import selected_avs_dual_staking_adjustment
+from avs_type import selected_avs_type_adjustment
 
 
 #def calculate_rewards(avs_revenue, total_staked, avs_type, number_of_audits):
@@ -23,21 +23,21 @@ staker_percentage = 0.40
 operator_percentage = 0.60
 
 
-def reward_sum(selected_avs_total_staked,selected_avs_revenue,selected_avs_sec_audits,selected_avs_dual_staking,selected_avs_type):
-        return selected_avs_total_staked + selected_avs_revenue + selected_avs_sec_audits + selected_avs_dual_staking + selected_avs_type
+def reward_sum(selected_avs_tvl_total_staked_adjustment, selected_avs_revenue_adjustment, selected_avs_audits_adjustment, selected_avs_dual_staking_adjustment, selected_avs_type_adjustment):
+        return selected_avs_tvl_total_staked_adjustment + selected_avs_revenue_adjustment + selected_avs_audits_adjustment + selected_avs_dual_staking_adjustment + selected_avs_type_adjustment
 
-reward_result = reward_sum(selected_avs_total_staked,selected_avs_revenue,selected_avs_sec_audits,selected_avs_dual_staking,selected_avs_type)
+reward_result = reward_sum(selected_avs_tvl_total_staked_adjustment, selected_avs_revenue_adjustment, selected_avs_audits_adjustment,selected_avs_dual_staking_adjustment,selected_avs_type_adjustment)
 
 
 
 def staker_reward(profit_percentage, staker_percentage):
-        return selected_avs_revenue * profit_percentage * staker_percentage
+        return selected_avs_revenue_adjustment * profit_percentage * staker_percentage
 
 staker_reward_result = staker_reward(profit_percentage, staker_percentage)
 
 
 def operator_reward(profit_percentage, operator_percentage):
-        return selected_avs_revenue * profit_percentage * operator_percentage
+        return selected_avs_revenue_adjustment * profit_percentage * operator_percentage
 
 operator_reward_result = operator_reward(profit_percentage, operator_percentage)
 
