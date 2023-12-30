@@ -1,8 +1,8 @@
 import streamlit as st
 
-from avs_audits import revenue
+from avs_audits import selected_avs_audits_adjustment
 from avs_dual_staking import selected_avs_dual_staking_adjustment
-from avs_revenue import selected_avs_revenue_adjustment
+from avs_revenue import revenue
 from avs_tokenomics import selected_avs_inf_def_rate, selected_avs_circ_supply, selected_avs_total_supply
 from avs_tvl_totalstaked import selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked
 from avs_type import selected_avs_type_adjustment
