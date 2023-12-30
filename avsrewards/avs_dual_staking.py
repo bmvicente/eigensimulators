@@ -6,7 +6,7 @@ import streamlit as st
 
 def get_avs_token_percentage():
     # Capture AVS token percentage from user input using Streamlit slider
-    return st.slider("**% $AVS**", min_value=10, max_value=90, value=50)
+    return st.slider("**% $AVS**", min_value=10, max_value=90, value=50, key="avs_token_percentage")
 
 def get_xeth_percentage():
     # Calculate xETH percentage based on AVS token percentage
@@ -30,7 +30,7 @@ def dual_staking():
     with col6:
         xeth_percentage = get_xeth_percentage()
         # Display xETH percentage as a slider (disabled) just for showing the value
-        st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True)
+        st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="xeth_percentage")
 
 
         st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
