@@ -2,8 +2,8 @@
 import streamlit as st
 from avs_reward_calculation_logic import avs_revenue_adjustment
 
-### AVS REVENUE
 
+### AVS REVENUE
 
 import streamlit as st
 
@@ -27,14 +27,14 @@ def revenue():
     st.markdown('<p class="header-style">AVS Revenue ($)</p>', unsafe_allow_html=True)
 
     def get_avs_revenue():
-        return st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
+        return st.number_input("Revenue", min_value=0, max_value=1000000000000, value=0, step=1000000)
 
     avs_revenue = get_avs_revenue()
 
     dist_rewards_10 = round(avs_revenue * 0.2 * 0.1)
     dist_rewards_30 = round(avs_revenue * 0.2 * 0.3)
 
-    adjustment = avs_revenue_adjustment(revenue)
+    adjustment = avs_revenue_adjustment(avs_revenue)
                 
     with st.expander("Logic"):
         st.markdown(f"""
