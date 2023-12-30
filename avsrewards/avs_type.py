@@ -1,5 +1,6 @@
 
 import streamlit as st
+from avs_reward_calculation_logic import avs_type_adjustment
 
 
 ### AVS TYPE
@@ -27,12 +28,15 @@ def avs_type():
     # Calling get_avs_type as a function to get the actual value
     avs_type_selected = get_avs_type()
 
+    adjustment = avs_type_adjustment(avs_type_selected)
+
     with st.expander("Logic"):
         st.markdown("""
             While it does depend on the needs of an AVS and while a **Lightweight AVS** safeguards it from risks otherwise incurred from a centralized architecture, the **Hyperscale**-type is more robust and secure, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our Simulator, and thus a lower reward level is sensible to assume when selecting this category, relative to the Lightweight AVS type.
                     """)
 
-    return avs_type_selected  # Return the selected AVS type for use elsewhere
+    return adjustment
+
 
 # If you need to use this function in your Streamlit app
-selected_avs_type = avs_type()  # This will also render the selection box and explanation
+selected_avs_type_adjustment = avs_type()  # This will also render the selection box and explanation
