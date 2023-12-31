@@ -38,48 +38,28 @@ def st_main():
 
         st.write("\n")
         
-        #col3, col4 = st.columns([1, 1], gap="small")
-
         # AVS TVL & Staked
-        #with col3:
         tvl_total_staked()
-            #st.write("Selected AVS Revenue Adjustment: ", selected_avs_tvl_total_staked_adjustment)
-
-        #with col4:
-        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_total_staked)
-
 
         st.write("\n")
 
         # AVS Dual Staking
         dual_staking()
-        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_dual_staking_adjustment)
 
     with col2:
 
         # AVS Type
         avs_type()
-        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_type_adjustment)
 
         st.write("\n")
 
         # AVS Security Audits
         avs_sec_audits()
-        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_audits_adjustment)
 
         st.write("\n")
 
         # AVS Tokenomics
         tokenomics()
-        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_inf_def_rate)
-
-        #col5, col6 = st.columns([1, 1], gap="small")
-
-        #with col5:
-            #st.write("Selected AVS Revenue Adjustment: ", selected_avs_circ_supply)
-        
-        #with col6:
-            #st.write("Selected AVS Revenue Adjustment: ", selected_avs_total_supply)
 
     st.write("\n")
     st.write("\n")

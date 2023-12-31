@@ -6,7 +6,7 @@ from avs_reward_calculation_logic import avs_type_adjustment
 ### AVS TYPE
 
 def get_avs_type():
-    return st.selectbox("Choose AVS Type", ["Lightweight", "Hyperscale"])
+    return st.selectbox("", ["Lightweight", "Hyperscale"])
 
 def avs_type():
     st.markdown("""
