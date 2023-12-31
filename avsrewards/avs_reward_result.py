@@ -1,21 +1,11 @@
 
 import streamlit as st
 
-#from avs_reward_calculation_logic import calculate_dual_staking_adjustment, calculate_avs_type_adjustment, calculate_ratio_tvl_totalstaked, calculate_avs_revenue_calc, calculate_security_audit_adjustment
 from avs_tvl_totalstaked import selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked
 from avs_revenue import selected_avs_revenue_adjustment
 from avs_audits import selected_avs_audits_adjustment
 from avs_dual_staking import selected_avs_dual_staking_adjustment
 from avs_type import selected_avs_type_adjustment
-
-
-#def calculate_rewards(avs_revenue, total_staked, avs_type, number_of_audits):
-#
-#        avs_revenue_adjustment = calculate_avs_revenue_calc()
-#        ratio_tvl_totalstaked_adjustment = calculate_ratio_tvl_totalstaked()
-#        dual_staking_adjustment = calculate_dual_staking_adjustment()
-#        avs_type_adjustment = calculate_avs_type_adjustment()
-#        audit_adjustment = calculate_security_audit_adjustment()
 
 
 profit_percentage = 0.20

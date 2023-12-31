@@ -1,3 +1,4 @@
+
 import streamlit as st
 
 from avs_audits import avs_sec_audits
@@ -8,6 +9,8 @@ from avs_tvl_totalstaked import tvl_total_staked
 from avs_type import avs_type
 from avs_reward_result import staker_reward_result, operator_reward_result
 
+
+# Streamlit App
 
 def st_main():
     st.set_page_config(layout="wide")
