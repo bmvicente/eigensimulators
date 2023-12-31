@@ -31,9 +31,13 @@ def tvl_total_staked():
     st.markdown('<p class="header-style">AVS TVL & Total Staked</p>', unsafe_allow_html=True)
     st.write("  \n")
 
-    # Get AVS TVL and Total Staked using the defined functions
-    avs_tvl = get_avs_tvl()
-    avs_total_staked = get_avs_total_staked()
+    col3, col4 = st.columns([1, 1], gap="small")
+
+    with col3:
+        avs_tvl = get_avs_tvl()
+
+    with col4:
+        avs_total_staked = get_avs_total_staked()
 
     min_tvl = avs_total_staked // 2  # Assuming this is how you want to calculate min_tvl
 

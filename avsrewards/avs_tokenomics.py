@@ -36,8 +36,14 @@ def tokenomics():
 
     # Get values using the defined functions
     avs_inf_def_rate = get_avs_inf_def_rate()
-    avs_circ_supply = get_avs_circ_supply()
-    avs_total_supply = get_avs_total_supply()
+
+    col5, col6 = st.columns([1, 1], gap="small")
+
+    with col5: 
+        avs_circ_supply = get_avs_circ_supply()
+
+    with col6:
+        avs_total_supply = get_avs_total_supply()
 
     # Displaying Inflation/Deflation Rate
     if avs_inf_def_rate > 0:

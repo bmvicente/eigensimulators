@@ -64,9 +64,13 @@ def st_main():
     st.write("\n")
     st.write("\n")
 
+    col9, col10 = st.columns([1,1], gap="small")
 
-    st.write("Staker Reward Result: ", staker_reward_result)
-    st.write("Operator Reward Result: ", operator_reward_result)
+    with col9:
+        st.write("Staker Reward Result: ", staker_reward_result)
+        
+    with col10:
+        st.write("Operator Reward Result: ", operator_reward_result)
 
 
 if __name__ == "__main__":

@@ -16,12 +16,16 @@ def get_xeth_percentage(avs_token_percentage):
 def dual_staking():
     st.markdown('<p class="header-style">AVS Dual Staking Model</p>', unsafe_allow_html=True)
     st.write("  \n")
-    
-    # Capture the AVS token percentage from the user
-    avs_token_percentage = get_avs_token_percentage()
 
-    # Calculate the xETH percentage based on the AVS token percentage
-    xeth_percentage = get_xeth_percentage(avs_token_percentage)
+    col7, col8 = st.columns([1,1], gap="small")
+    
+    with col7: 
+        # Capture the AVS token percentage from the user
+        avs_token_percentage = get_avs_token_percentage()
+
+    with col8:
+        # Calculate the xETH percentage based on the AVS token percentage
+        xeth_percentage = get_xeth_percentage(avs_token_percentage)
 
     adjustment = dual_staking_balance_adjustment(avs_token_percentage,xeth_percentage)
 
