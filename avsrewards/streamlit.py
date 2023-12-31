@@ -36,8 +36,6 @@ def st_main():
         #AVS Revenue
         revenue()
 
-        st.write("The adjustment based on your input is:", selected_avs_revenue_adjustment)
-
         #st.write("Selected AVS Revenue Adjustment: ", selected_avs_revenue_adjustment)
 
         st.write("\n")
