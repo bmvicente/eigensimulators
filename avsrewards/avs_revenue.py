@@ -27,7 +27,7 @@ def revenue():
     st.markdown('<p class="header-style">AVS Revenue ($)</p>', unsafe_allow_html=True)
 
     def get_avs_revenue():
-        return st.number_input("Revenue", min_value=0, max_value=1000000000000, value=0, step=1000000)
+        return st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
 
     avs_revenue = get_avs_revenue()
 

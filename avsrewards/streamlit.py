@@ -1,11 +1,11 @@
 import streamlit as st
 
-from avs_audits import selected_avs_audits_adjustment
-from avs_dual_staking import selected_avs_dual_staking_adjustment
+from avs_audits import avs_sec_audits
+from avs_dual_staking import dual_staking
 from avs_revenue import revenue
-from avs_tokenomics import selected_avs_inf_def_rate, selected_avs_circ_supply, selected_avs_total_supply
-from avs_tvl_totalstaked import selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked
-from avs_type import selected_avs_type_adjustment
+from avs_tokenomics import tokenomics
+from avs_tvl_totalstaked import tvl_total_staked
+from avs_type import avs_type
 from avs_reward_result import staker_reward_result, operator_reward_result
 
 
@@ -36,47 +36,50 @@ def st_main():
         #AVS Revenue
         revenue()
 
-        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_revenue_adjustment)
-
         st.write("\n")
         
-        col3, col4 = st.columns([1, 1], gap="small")
+        #col3, col4 = st.columns([1, 1], gap="small")
 
         # AVS TVL & Staked
-        with col3:
-            st.write("Selected AVS Revenue Adjustment: ", selected_avs_tvl_total_staked_adjustment)
+        #with col3:
+        tvl_total_staked()
+            #st.write("Selected AVS Revenue Adjustment: ", selected_avs_tvl_total_staked_adjustment)
 
-        with col4:
-            st.write("Selected AVS Revenue Adjustment: ", selected_avs_total_staked)
+        #with col4:
+        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_total_staked)
 
 
         st.write("\n")
 
         # AVS Dual Staking
-        st.write("Selected AVS Revenue Adjustment: ", selected_avs_dual_staking_adjustment)
+        dual_staking()
+        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_dual_staking_adjustment)
 
     with col2:
 
         # AVS Type
-        st.write("Selected AVS Revenue Adjustment: ", selected_avs_type_adjustment)
+        avs_type()
+        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_type_adjustment)
 
         st.write("\n")
 
         # AVS Security Audits
-        st.write("Selected AVS Revenue Adjustment: ", selected_avs_audits_adjustment)
+        avs_sec_audits()
+        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_audits_adjustment)
 
         st.write("\n")
 
         # AVS Tokenomics
-        st.write("Selected AVS Revenue Adjustment: ", selected_avs_inf_def_rate)
+        tokenomics()
+        #st.write("Selected AVS Revenue Adjustment: ", selected_avs_inf_def_rate)
 
-        col5, col6 = st.columns([1, 1], gap="small")
+        #col5, col6 = st.columns([1, 1], gap="small")
 
-        with col5:
-            st.write("Selected AVS Revenue Adjustment: ", selected_avs_circ_supply)
+        #with col5:
+            #st.write("Selected AVS Revenue Adjustment: ", selected_avs_circ_supply)
         
-        with col6:
-            st.write("Selected AVS Revenue Adjustment: ", selected_avs_total_supply)
+        #with col6:
+            #st.write("Selected AVS Revenue Adjustment: ", selected_avs_total_supply)
 
     st.write("\n")
     st.write("\n")
