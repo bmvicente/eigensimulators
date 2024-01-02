@@ -12,7 +12,7 @@ def get_xeth_percentage(avs_token_percentage):
     # Calculate xETH percentage based on AVS token percentage
     return 100 - avs_token_percentage
 
-def dual_staking():
+def avs_dual_staking():
     st.markdown('<p class="header-style">AVS Dual Staking Model</p>', unsafe_allow_html=True)
     st.write("  \n")
 

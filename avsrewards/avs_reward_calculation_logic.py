@@ -2,11 +2,10 @@
 # AVS Rewards
 
 from avs_audits import avs_sec_audits
-from avs_dual_staking import dual_staking
+from avs_dual_staking import avs_dual_staking
 from avs_revenue import revenue
 from avs_tvl_totalstaked import tvl_total_staked
 from avs_type import avs_type
-
 
 
 # Adjusting the base reward based on the AVS token and xETH balance
@@ -33,7 +32,9 @@ def dual_staking(avs_token_percentage, xeth_percentage):
             return -0.020
         # Higher ratio illustrates the greater weight of the $AVS token in the balance, risk that must be reflected in the reward calc
 
-dual_staking_ratio = dual_staking()  
+avs_token_percentage, xeth_percentage = avs_dual_staking()
+
+dual_staking_ratio = dual_staking(avs_token_percentage, xeth_percentage)  
 
 
 
