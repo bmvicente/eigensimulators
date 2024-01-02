@@ -65,14 +65,15 @@ def st_main():
     st.write("\n")
     st.write("\n")
 
-    st.write("Reward Percentage:", reward_percentage, 
-         "AVS Revenue Final:", avs_revenue_final, 
-         "TVL Total Staked Final:", tvl_total_staked_final, 
-         "AVS Audits Final:", avs_audits_final, 
-         "Dual Staking Final:", dual_staking_final, 
-         "AVS Type Final:", avs_type_final)
-    
-    st.write("Reward Percentage Adjustment:", reward_percentage_adj)
+    st.write(f"Reward Percentage: {reward_percentage:.2f}, "
+            f"AVS Revenue Final: {avs_revenue_final:.2f}, "
+            f"TVL Total Staked Final: {tvl_total_staked_final:.2f}, "
+            f"AVS Audits Final: {avs_audits_final:.2f}, "
+            f"Dual Staking Final: {dual_staking_final:.2f}, "
+            f"AVS Type Final: {avs_type_final:.2f}")
+        
+    st.write(f"Reward Percentage Adjustment: {reward_percentage_adj:.2f}")
+
     
     st.write(staker_reward_result_perc)
     st.write(operator_reward_result_perc)
