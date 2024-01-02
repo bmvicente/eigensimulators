@@ -1,4 +1,5 @@
 
+import streamlit as st
 from avs_reward_calculation_logic import tvl_total_staked, tvl_total_staked_final, avs_total_staked, avs_revenue_final, avs_audits_final, dual_staking_final, avs_type_final
 
 
@@ -10,10 +11,21 @@ profit_percentage = 0.20
 staker_percentage = 0.40
 operator_percentage = 0.60
 
+
+st.write("Reward Percentage:", reward_percentage, 
+         "AVS Revenue Final:", avs_revenue_final, 
+         "TVL Total Staked Final:", tvl_total_staked_final, 
+         "AVS Audits Final:", avs_audits_final, 
+         "Dual Staking Final:", dual_staking_final, 
+         "AVS Type Final:", avs_type_final)
+
+
+
 reward_percentage_adj = reward_percentage + avs_revenue_final + tvl_total_staked_final + avs_audits_final + dual_staking_final + avs_type_final
 
 #reward_percentage_adj = max(min(reward_percentage, 0.30), 0.10)
 
+st.write("Reward Percentage Adjustment:", reward_percentage_adj)
 
 
 
@@ -39,6 +51,8 @@ if avs_total_staked != 0:
                 staker_reward_result_perc = (staker_reward_result / avs_total_staked)
 else:
                 staker_reward_result_perc = 0.00
+
+
 
 
 # Operator Reward
