@@ -26,7 +26,7 @@ def avs_sec_audits():
         st.write("\n")
 
         def get_avs_audits():
-                return st.number_input(" ", min_value=0, max_value=1000000000000, value=0, step=1000000)
+                return st.number_input(" ", min_value=0, max_value=5, value=0, step=1)
 
         avs_audits = get_avs_audits()
 

@@ -99,6 +99,8 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
     # Applying the adjustment
     audit_adjustment = security_audit_adjustment(security_audits)
 
+
+
     # Combine all adjustments
     reward_percentage = reward_percentage + dual_staking_adjustment + avs_type_adjustment + avs_revenue_adjustment + audit_adjustment + ratio_tvl_totalstaked_adjustment
 
