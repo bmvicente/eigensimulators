@@ -12,20 +12,10 @@ staker_percentage = 0.40
 operator_percentage = 0.60
 
 
-st.write("Reward Percentage:", reward_percentage, 
-         "AVS Revenue Final:", avs_revenue_final, 
-         "TVL Total Staked Final:", tvl_total_staked_final, 
-         "AVS Audits Final:", avs_audits_final, 
-         "Dual Staking Final:", dual_staking_final, 
-         "AVS Type Final:", avs_type_final)
-
-
 
 reward_percentage_adj = reward_percentage + avs_revenue_final + tvl_total_staked_final + avs_audits_final + dual_staking_final + avs_type_final
 
 #reward_percentage_adj = max(min(reward_percentage, 0.30), 0.10)
-
-st.write("Reward Percentage Adjustment:", reward_percentage_adj)
 
 
 

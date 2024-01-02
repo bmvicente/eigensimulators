@@ -111,7 +111,7 @@ avs_revenue_final = calc_revenue(selected_avs_revenue)  # This will also render 
 
 # Security Audits 
 
-def calc_avs_sec_sudits(number_of_audits):
+def calc_avs_sec_audits(number_of_audits):
         
         if number_of_audits == 5:
             return -0.025  # Lower reward for more audits
@@ -128,4 +128,4 @@ def calc_avs_sec_sudits(number_of_audits):
 
 selected_number_audits = avs_sec_audits()
 
-avs_audits_final = calc_avs_sec_sudits(selected_number_audits)
+avs_audits_final = calc_avs_sec_audits(selected_number_audits)
