@@ -53,12 +53,12 @@ avs_type_final = calc_avs_type(selected_avs_type)
 
 # Check the ratio of Total Staked to TVL
 
-def calc_tvl_total_staked(avs_total_restaked, avs_tvl):
+def calc_tvl_total_staked(avs_total_staked, avs_tvl):
         
         if avs_tvl == 0:
             return 0
         
-        ratio = (avs_total_restaked / 2) / avs_tvl
+        ratio = (avs_total_staked / 2) / avs_tvl
 
         if ratio > 2:
             return -0.03
@@ -78,9 +78,9 @@ def calc_tvl_total_staked(avs_total_restaked, avs_tvl):
              return 0
         # Higher ratio illustrates a greater total restaked, which contributes to greater security, thus lower rewards
 
-selected_avs_tvl, selected_avs_total_staked = tvl_total_staked()
+avs_total_staked, avs_tvl = tvl_total_staked()
 
-tvl_total_staked_final = calc_tvl_total_staked(selected_avs_tvl, selected_avs_total_staked)
+tvl_total_staked_final = calc_tvl_total_staked(avs_total_staked, avs_tvl)
 
 
 

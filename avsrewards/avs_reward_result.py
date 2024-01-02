@@ -1,6 +1,7 @@
 
-from avs_reward_calculation_logic import tvl_total_staked_final, selected_avs_total_staked, avs_revenue_final, avs_audits_final, dual_staking_final, avs_type_final
+from avs_reward_calculation_logic import tvl_total_staked, tvl_total_staked_final, avs_total_staked, avs_revenue_final, avs_audits_final, dual_staking_final, avs_type_final
 
+avs_total_staked, avs_tvl = tvl_total_staked()
 
 reward_percentage = 0.20  # Base reward percentage
 
@@ -43,8 +44,8 @@ operator_reward_result = operator_reward(reward_portion_result, operator_percent
 
 
 if selected_avs_total_staked != 0:
-                staker_reward_result_perc = (staker_reward_result / selected_avs_total_staked) * 100
-                operator_reward_result_perc = (operator_reward_result / selected_avs_total_staked) * 100
+                staker_reward_result_perc = (staker_reward_result / avs_total_staked) * 100
+                operator_reward_result_perc = (operator_reward_result / avs_total_staked) * 100
 
 else:
                 staker_reward_result_perc = 0.00
