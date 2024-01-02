@@ -3,7 +3,7 @@
 
 from avs_audits import avs_sec_audits
 from avs_dual_staking import dual_staking
-from avs_revenue import avs_revenue
+from avs_revenue import avs_revenue_main
 from avs_tvl_totalstaked import tvl_total_staked
 from avs_type import avs_type
 
@@ -103,7 +103,7 @@ def calc_revenue(avs_revenue_nm):
             return 0
         # Greater revenue assures greater AVS security, therefore a gradual reduction in the reward level as the revenue grows is sensible
 
-selected_avs_revenue = avs_revenue()
+selected_avs_revenue = avs_revenue_main()
 
 avs_revenue_final = calc_revenue(selected_avs_revenue)  # This will also render the selection box and explanation
 

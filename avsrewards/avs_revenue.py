@@ -4,7 +4,7 @@ import streamlit as st
 
 ### AVS REVENUE
 
-def avs_revenue():
+def avs_revenue_main():
 
     st.markdown("""
     <style>
