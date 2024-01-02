@@ -26,11 +26,13 @@ def dual_staking():
     with col8:
         # Calculate the xETH percentage based on the AVS token percentage
         xeth_percentage = get_xeth_percentage(avs_token_percentage)
+        
+        st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="xeth_percentage")
+
 
     adjustment = dual_staking_balance_adjustment(avs_token_percentage,xeth_percentage)
 
     # Display the xETH percentage using a disabled slider for display purposes
-    st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="xeth_percentage")
 
     st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
