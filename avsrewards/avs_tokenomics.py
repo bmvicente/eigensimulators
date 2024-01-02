@@ -45,6 +45,7 @@ def tokenomics():
     else:
         st.write("&#8226; **$AVS Inflation/Deflation Rate**: 0%")
 
+    st.write("\n")
 
     col5, col6 = st.columns([1, 1], gap="small")
 

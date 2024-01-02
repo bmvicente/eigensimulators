@@ -45,6 +45,7 @@ def st_main():
         tvl_total_staked()
 
         st.write("\n")
+        st.write("\n")
 
         # AVS Dual Staking
         dual_staking()
@@ -69,11 +70,55 @@ def st_main():
 
     col9, col10 = st.columns([1,1], gap="small")
 
+
     with col9:
-        st.write("Staker Reward Result: ", staker_reward_result)
+        #st.write("Staker Reward Result: ", staker_reward_result)
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 5px;
+                padding: 10px;
+                text-align: center;
+                margin: 10px 0;
+                background-color: white;">
+                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{staker_reward_result:.2f}%</span></h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
         
     with col10:
-        st.write("Operator Reward Result: ", operator_reward_result)
+        #st.write("Operator Reward Result: ", operator_reward_result)
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 5px;
+                padding: 10px;
+                text-align: center;
+                margin: 10px 0;
+                background-color: white;">
+                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{operator_reward_result:.2f}%</span></h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
+
+
+    st.write("  \n")
+    st.write("  \n")
+
+    st.write("""
+                The AVS Reward Emission percentage from the AVS Revenue input range fell in the XX% value.
+
+                Operator Reward is naturally being given greater weight than the Staker Reward due to their more important role.
+
+                The \$AVS’s Tokenomics (while not included in the reward calculation) suggest a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future.             
+            """)
 
 
 if __name__ == "__main__":
