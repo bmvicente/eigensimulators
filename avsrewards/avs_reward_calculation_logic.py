@@ -123,23 +123,3 @@ def security_audit_adjustment(number_of_audits):
 
 def calculate_security_audit_adjustment(number_of_audits):
     return security_audit_adjustment(number_of_audits)
-
-
-# Last portion:
-
-# Reward Percentage Calculation
-#reward_percentage = reward_percentage + dual_staking_adjustment + avs_type_adjustment + calculate_avs_revenue_calc + audit_adjustment + ratio_tvl_totalstaked_adjustment
-
-
-# Ensure the reward percentage is within reasonable bounds
-#reward_percentage = max(min(reward_percentage, 0.30), 0.10)
-
-# Calculate rewards for stakers and operators
-#profit_percentage = 0.20
-#staker_percentage = 0.40
-#operator_percentage = 0.60
-
-#staker_reward = calculate_avs_revenue_calc * profit_percentage * reward_percentage * staker_percentage
-#operator_reward = calculate_avs_revenue_calc * profit_percentage * reward_percentage * operator_percentage
-
-#return staker_reward, operator_reward
