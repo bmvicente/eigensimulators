@@ -1,11 +1,7 @@
 
 import streamlit as st
 
-from avs_tvl_totalstaked import selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked
-from avs_revenue import selected_avs_revenue_adjustment
-from avs_audits import selected_avs_audits_adjustment
-from avs_dual_staking import selected_avs_dual_staking_adjustment
-from avs_type import selected_avs_type_adjustment
+from avs_reward_calculation_logic import selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked, selected_avs_revenue_adjustment, selected_avs_audits_adjustment, selected_avs_dual_staking_adjustment, selected_avs_type_adjustment
 
 
 reward_percentage = 0.20  # Base reward percentage

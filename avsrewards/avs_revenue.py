@@ -1,6 +1,5 @@
 
 import streamlit as st
-from avs_reward_calculation_logic import avs_revenue_adjustment
 
 
 ### AVS REVENUE
@@ -33,9 +32,8 @@ def revenue():
 
     dist_rewards_10 = round(avs_revenue * 0.2 * 0.1)
     dist_rewards_30 = round(avs_revenue * 0.2 * 0.3)
-
-    adjustment = avs_revenue_adjustment(avs_revenue)
                 
+    
     with st.expander("Logic"):
         st.markdown(f"""
         An **AVS's Revenue**, at any given time, is an adequate indicator to help assess the level of rewards an AVS might be able to emit. From the revenue inputted by the user, we assume a 20% profit for the AVS, and [10-30]% of that profit to be distributable as rewards (specific value of this range dependent on weighting of all the chosen inputs in our Simulator).
@@ -48,6 +46,5 @@ def revenue():
         We find these percentages reasonable, although would highly appreciate feedback from EigenLayer.
         """)
     
-    return adjustment
+    return avs_revenue
 
-selected_avs_revenue_adjustment = revenue()  # This will also render the selection box and explanation

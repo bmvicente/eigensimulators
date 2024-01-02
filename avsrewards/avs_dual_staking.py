@@ -1,6 +1,5 @@
 
 import streamlit as st
-from avs_reward_calculation_logic import dual_staking_balance_adjustment
 
 
 ### DUAL STAKING MODEL
@@ -30,8 +29,6 @@ def dual_staking():
         st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="xeth_percentage")
 
 
-    adjustment = dual_staking_balance_adjustment(avs_token_percentage,xeth_percentage)
-
     # Display the xETH percentage using a disabled slider for display purposes
 
     st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
@@ -49,6 +46,5 @@ def dual_staking():
                         A greater \$xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a % \$AVS > % xETH pool balance makes sense to be a higher-reward event.
                 """)
     
-    return adjustment
+    return avs_token_percentage, xeth_percentage
 
-selected_avs_dual_staking_adjustment = dual_staking()  # This will also render the selection box and explanation

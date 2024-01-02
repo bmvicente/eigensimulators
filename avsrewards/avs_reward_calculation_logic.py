@@ -47,7 +47,6 @@ selected_avs_type_adjustment = avs_type()
 
 
 
-
 # Check the ratio of Total Staked to TVL
 
 def tvl_total_staked(avs_total_restaked, avs_tvl):

@@ -1,6 +1,5 @@
 
 import streamlit as st
-from avs_reward_calculation_logic import ratio_tvl_totalstaked
 
 
 ### AVS TVL & TOTAL STAKED
@@ -41,7 +40,6 @@ def tvl_total_staked():
 
     min_tvl = avs_total_staked // 2  # Assuming this is how you want to calculate min_tvl
 
-    adjustment = ratio_tvl_totalstaked(avs_tvl, avs_total_staked)
 
     with st.expander("Logic"):
         # Your existing logic markdown, updated with dynamic values
@@ -58,7 +56,6 @@ def tvl_total_staked():
                 The **rewards** herein are set so that the greater the *(AVS Total Staked/2) : AVS TVL* ratio, the safer the AVS is and the less rewards it should emit therefore, and vice-versa.
                     """)
 
-    return adjustment, avs_total_staked   # Return the values for use elsewhere if needed
+    return avs_tvl, avs_total_staked   # Return the values for use elsewhere if needed
 
 # To use the function in your app:
-selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked = tvl_total_staked()
