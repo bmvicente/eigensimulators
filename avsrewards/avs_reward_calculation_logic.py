@@ -34,7 +34,7 @@ def calc_dual_staking(avs_token_percentage, xeth_percentage):
 
 selected_avs_token_percentage, selected_xeth_percentage = dual_staking()
 
-dual_staking_ratio = calc_dual_staking(selected_avs_token_percentage, selected_xeth_percentage)  
+dual_staking_final = calc_dual_staking(selected_avs_token_percentage, selected_xeth_percentage)  
 
 
 
@@ -46,7 +46,7 @@ def calc_avs_type(avs_type):
 selected_avs_type = avs_type()
 
 # Use the selected_avs_type as an argument to calculate the reward adjustment
-avs_type_adjustment = calc_avs_type(selected_avs_type)
+avs_type_final = calc_avs_type(selected_avs_type)
 
 
 
@@ -105,7 +105,7 @@ def calc_revenue(avs_revenue):
 
 selected_avs_revenue = revenue()
 
-avs_revenue = calc_revenue(selected_avs_revenue)  # This will also render the selection box and explanation
+avs_revenue_final = calc_revenue(selected_avs_revenue)  # This will also render the selection box and explanation
 
 
 
@@ -128,4 +128,4 @@ def calc_avs_sec_sudits(number_of_audits):
 
 selected_number_audits = avs_sec_audits()
 
-avs_audits = calc_avs_sec_sudits(selected_number_audits)
+avs_audits_final = calc_avs_sec_sudits(selected_number_audits)

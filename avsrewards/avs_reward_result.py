@@ -9,7 +9,6 @@ staker_percentage = 0.40
 operator_percentage = 0.60
 
 reward_percentage_adj = reward_percentage + avs_revenue_final + tvl_total_staked_final + avs_audits_final + dual_staking_final + avs_type_final
-print(reward_percentage_adj)
 
 #reward_percentage_adj = max(min(reward_percentage, 0.30), 0.10)
 
