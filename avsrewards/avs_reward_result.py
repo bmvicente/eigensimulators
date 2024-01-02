@@ -43,7 +43,7 @@ operator_reward_result = operator_reward(reward_portion_result, operator_percent
 
 
 
-if selected_avs_total_staked != 0:
+if avs_total_staked != 0:
                 staker_reward_result_perc = (staker_reward_result / avs_total_staked) * 100
                 operator_reward_result_perc = (operator_reward_result / avs_total_staked) * 100
 
