@@ -57,5 +57,3 @@ def tvl_total_staked():
                     """)
 
     return avs_tvl, avs_total_staked   # Return the values for use elsewhere if needed
-
-# To use the function in your app:

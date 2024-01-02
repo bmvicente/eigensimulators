@@ -43,7 +43,7 @@ dual_staking_ratio = dual_staking(avs_token_percentage, xeth_percentage)
 def avs_type(avs_type):
     return 0.02 if avs_type == "Lightweight" else -0.02
 
-selected_avs_type_adjustment = avs_type() 
+avs_type_selected = avs_type() 
 
 
 
@@ -75,7 +75,7 @@ def tvl_total_staked(avs_total_restaked, avs_tvl):
              return 0
         # Higher ratio illustrates a greater total restaked, which contributes to greater security, thus lower rewards
 
-selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked = tvl_total_staked()
+avs_tvl, avs_total_staked = tvl_total_staked()
 
 
 
@@ -98,7 +98,7 @@ def revenue(avs_revenue):
             return 0
         # Greater revenue assures greater AVS security, therefore a gradual reduction in the reward level as the revenue grows is sensible
 
-selected_avs_revenue_adjustment = revenue()  # This will also render the selection box and explanation
+avs_revenue = revenue()  # This will also render the selection box and explanation
 
 
 
@@ -118,5 +118,4 @@ def avs_sec_sudits(number_of_audits):
         else:
             return 0  # Neutral adjustment for moderate number of audits
 
-selected_avs_audits_adjustment = avs_sec_audits()
-
+avs_audits = avs_sec_audits()

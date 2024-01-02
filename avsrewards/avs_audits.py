@@ -37,5 +37,3 @@ def avs_sec_audits():
                 """)
         
         return  avs_audits
-
-#selected_avs_audits_adjustment = avs_sec_audits()  # This will also render the selection box and explanation

@@ -36,5 +36,3 @@ def avs_type():
     return avs_type_selected
 
 
-# If you need to use this function in your Streamlit app
-selected_avs_type_adjustment = avs_type()  # This will also render the selection box and explanation
