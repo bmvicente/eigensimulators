@@ -28,22 +28,19 @@ reward_portion_result = reward_portion(reward_percentage_adj, profit_percentage,
 
 # Staker Reward
 
-#def staker_reward(reward_portion_result, staker_percentage):
-#        return reward_portion_result * staker_percentage
+def staker_reward(reward_portion_result, staker_percentage):
+        return reward_portion_result * staker_percentage
 
-#staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
-staker_reward_result = reward_portion_result * staker_percentage
+staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
 
 
 
 # Operator Reward
 
-#def operator_reward(reward_portion_result, operator_percentage):
-#        return reward_portion_result * operator_percentage
+def operator_reward(reward_portion_result, operator_percentage):
+        return reward_portion_result * operator_percentage
 
-operator_reward_result = reward_portion_result * operator_percentage
-
-#operator_reward(reward_portion_result, operator_percentage)
+operator_reward_result = operator_reward(reward_portion_result, operator_percentage)
 
 
 
