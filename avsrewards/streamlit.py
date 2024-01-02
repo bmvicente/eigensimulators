@@ -3,7 +3,7 @@ import streamlit as st
 
 from avs_reward_calculation_logic import avs_sec_audits, dual_staking, revenue, tvl_total_staked, avs_type
 from avs_tokenomics import tokenomics
-from avs_reward_result import staker_reward_result_perc, operator_reward_result_perc
+from avs_reward_result import staker_reward_result_perc,operator_reward_result_perc,reward_percentage,avs_revenue_final,tvl_total_staked_final,avs_audits_final,dual_staking_final,avs_type_final,reward_percentage_adj
 
 
 # Streamlit App
@@ -65,7 +65,14 @@ def st_main():
     st.write("\n")
     st.write("\n")
 
-
+    st.write("Reward Percentage:", reward_percentage, 
+         "AVS Revenue Final:", avs_revenue_final, 
+         "TVL Total Staked Final:", tvl_total_staked_final, 
+         "AVS Audits Final:", avs_audits_final, 
+         "Dual Staking Final:", dual_staking_final, 
+         "AVS Type Final:", avs_type_final)
+    
+    st.write("Reward Percentage Adjustment:", reward_percentage_adj)
     
     st.write(staker_reward_result_perc)
     st.write(operator_reward_result_perc)
