@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-from avs_reward_calculation_logic import avs_sec_audits, dual_staking, revenue, tvl_total_staked, avs_type
+from avs_reward_calculation_logic import avs_sec_audits, dual_staking, avs_revenue, tvl_total_staked, avs_type
 from avs_tokenomics import tokenomics
 from avs_reward_result import staker_reward_result_perc,operator_reward_result_perc,reward_percentage,avs_revenue_final,tvl_total_staked_final,avs_audits_final,dual_staking_final,avs_type_final,reward_percentage_adj
 
@@ -33,9 +33,7 @@ def st_main():
     with col1:
 
         #AVS Revenue
-        revenue()
-        st.write(revenue)
-
+        avs_revenue()
 
         st.write("\n")
         
