@@ -37,6 +37,15 @@ def tokenomics():
     # Get values using the defined functions
     avs_inf_def_rate = get_avs_inf_def_rate()
 
+    # Displaying Inflation/Deflation Rate
+    if avs_inf_def_rate > 0:
+        st.write(f"&#8226; **$AVS Inflation Rate**: {avs_inf_def_rate}%")
+    elif avs_inf_def_rate < 0:
+        st.write(f"&#8226; **$AVS Deflation Rate**: {(avs_inf_def_rate)}%")
+    else:
+        st.write("&#8226; **$AVS Inflation/Deflation Rate**: 0%")
+
+
     col5, col6 = st.columns([1, 1], gap="small")
 
     with col5: 
@@ -45,13 +54,6 @@ def tokenomics():
     with col6:
         avs_total_supply = get_avs_total_supply()
 
-    # Displaying Inflation/Deflation Rate
-    if avs_inf_def_rate > 0:
-        st.write(f"&#8226; **$AVS Inflation Rate**: {avs_inf_def_rate}%")
-    elif avs_inf_def_rate < 0:
-        st.write(f"&#8226; **$AVS Deflation Rate**: {(avs_inf_def_rate)}%")
-    else:
-        st.write("&#8226; **$AVS Inflation/Deflation Rate**: 0%")
 
     st.write("  \n")
 
