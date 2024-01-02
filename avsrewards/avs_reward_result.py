@@ -14,38 +14,42 @@ profit_percentage = 0.20
 staker_percentage = 0.40
 operator_percentage = 0.60
 
+reward_percentage_adj = reward_percentage + selected_avs_tvl_total_staked_adjustment + selected_avs_audits_adjustment + selected_avs_dual_staking_adjustment + selected_avs_type_adjustment)
 
-#reward_percentage_adj = reward_percentage + selected_avs_dual_staking_adjustment + selected_avs_type_adjustment + selected_avs_revenue_adjustment + selected_avs_audits_adjustment + selected_avs_tvl_total_staked_adjustment
-
-reward_percentage = max(min(reward_percentage, 0.30), 0.10)
-
-
-def reward_sum(reward_percentage, profit_percentage, selected_avs_revenue_adjustment, selected_avs_tvl_total_staked_adjustment, selected_avs_audits_adjustment, selected_avs_dual_staking_adjustment, selected_avs_type_adjustment):
-        #return reward_percentage_adj + profit_percentage + selected_avs_tvl_total_staked_adjustment + selected_avs_revenue_adjustment + selected_avs_audits_adjustment + selected_avs_dual_staking_adjustment + selected_avs_type_adjustment
-        return selected_avs_revenue_adjustment * profit_percentage * (reward_percentage + selected_avs_tvl_total_staked_adjustment + selected_avs_audits_adjustment + selected_avs_dual_staking_adjustment + selected_avs_type_adjustment)
-
-reward_result = reward_sum(reward_percentage, profit_percentage, selected_avs_tvl_total_staked_adjustment, selected_avs_revenue_adjustment, selected_avs_audits_adjustment,selected_avs_dual_staking_adjustment,selected_avs_type_adjustment)
+#reward_percentage_adj = max(min(reward_percentage, 0.30), 0.10)
 
 
+# Reward Value Sum
 
-def staker_reward(reward_result, staker_percentage):
-        return reward_result * staker_percentage
+def reward_portion(reward_percentage_adj, profit_percentage, selected_avs_revenue_adjustment):
+        return selected_avs_revenue_adjustment * profit_percentage * reward_percentage_adj
 
-staker_reward_result = staker_reward(reward_result, staker_percentage)
+reward_portion_result = reward_portion(reward_percentage_adj, profit_percentage, selected_avs_revenue_adjustment)
 
 
-def operator_reward(reward_result, operator_percentage):
-        return reward_result * operator_percentage
+# Staker Reward
 
-operator_reward_result = operator_reward(reward_result, operator_percentage)
+def staker_reward(reward_portion_result, staker_percentage):
+        return reward_portion_result * staker_percentage
+
+staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
 
 
 
+# Operator Reward
 
-#if selected_avs_total_staked != 0:
-#                staker_reward_result = (staker_reward / selected_avs_total_staked) * 100
-#                operator_reward_result = (operator_reward / selected_avs_total_staked) * 100
+def operator_reward(reward_portion_result, operator_percentage):
+        return reward_portion_result * operator_percentage
 
-#else:
-#                staker_reward_result = 0.00
-#                operator_reward_result = 0.00
+operator_reward_result = operator_reward(reward_portion_result, operator_percentage)
+
+
+
+
+if selected_avs_total_staked != 0:
+                staker_reward_result = (staker_reward / selected_avs_total_staked) * 100
+                operator_reward_result = (operator_reward / selected_avs_total_staked) * 100
+
+else:
+                staker_reward_result = 0.00
+                operator_reward_result = 0.00
