@@ -35,6 +35,10 @@ def staker_reward(reward_portion_result, staker_percentage):
 staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
 
 
+if avs_total_staked != 0:
+                staker_reward_result_perc = (staker_reward_result / avs_total_staked)
+else:
+                staker_reward_result_perc = 0.00
 
 
 # Operator Reward
@@ -45,12 +49,8 @@ def operator_reward(reward_portion_result, operator_percentage):
 operator_reward_result = operator_reward(reward_portion_result, operator_percentage)
 
 
-
-
 if avs_total_staked != 0:
-                staker_reward_result_perc = (staker_reward_result / avs_total_staked)
                 operator_reward_result_perc = (operator_reward_result / avs_total_staked)
 
 else:
-                staker_reward_result_perc = 0.00
                 operator_reward_result_perc = 0.00
