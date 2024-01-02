@@ -32,8 +32,8 @@ def dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage):
             return -0.020
         # Higher ratio illustrates the greater weight of the $AVS token in the balance, risk that must be reflected in the reward calc
 
-def calculate_dual_staking_adjustment(avs_token_percentage, xeth_percentage):
-    return dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage)
+#def calculate_dual_staking_adjustment(avs_token_percentage, xeth_percentage):
+#    return dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage)
 
 
 
@@ -42,8 +42,8 @@ def calculate_dual_staking_adjustment(avs_token_percentage, xeth_percentage):
 def avs_type_adjustment(avs_type):
     return 0.02 if avs_type == "Lightweight" else -0.02
 
-def calculate_avs_type_adjustment(avs_type):
-    return avs_type_adjustment(avs_type)
+#def calculate_avs_type_adjustment(avs_type):
+#    return avs_type_adjustment(avs_type)
 
 
 
@@ -75,8 +75,8 @@ def ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
              return 0
         # Higher ratio illustrates a greater total restaked, which contributes to greater security, thus lower rewards
 
-def calculate_ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
-    return ratio_tvl_totalstaked(avs_total_restaked, avs_tvl)
+#def calculate_ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
+#    return ratio_tvl_totalstaked(avs_total_restaked, avs_tvl)
 
 
 
@@ -99,8 +99,8 @@ def avs_revenue_adjustment(avs_revenue):
             return 0
         # Greater revenue assures greater AVS security, therefore a gradual reduction in the reward level as the revenue grows is sensible
 
-def calculate_avs_revenue_calc(avs_revenue):
-    return avs_revenue_adjustment(avs_revenue)
+#def calculate_avs_revenue_calc(avs_revenue):
+#    return avs_revenue_adjustment(avs_revenue)
 
 
 
@@ -121,5 +121,5 @@ def security_audit_adjustment(number_of_audits):
         else:
             return 0  # Neutral adjustment for moderate number of audits
 
-def calculate_security_audit_adjustment(number_of_audits):
-    return security_audit_adjustment(number_of_audits)
+#def calculate_security_audit_adjustment(number_of_audits):
+#    return security_audit_adjustment(number_of_audits)
