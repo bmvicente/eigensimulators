@@ -10,7 +10,7 @@ def get_avs_inf_def_rate():
 
 def get_avs_circ_supply():
     # Function to capture AVS Circulating Supply from user input
-    return st.number_input("**$AVS Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply")
+    return st.number_input("**$AVS Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply cannot exceed Total Supply")
 
 def get_avs_total_supply():
     # Function to capture AVS Total Supply from user input

@@ -67,6 +67,8 @@ def st_main():
 
     st.write("\n")
     st.write("\n")
+    st.write("\n")
+
 
     col9, col10 = st.columns([1,1], gap="small")
 
@@ -83,7 +85,7 @@ def st_main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{staker_reward_result:.2f}%</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{staker_reward_result:.8f}%</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
@@ -101,7 +103,7 @@ def st_main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{operator_reward_result:.2f}%</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{operator_reward_result:.8f}%</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
