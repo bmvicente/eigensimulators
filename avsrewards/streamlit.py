@@ -2,6 +2,11 @@
 import streamlit as st
 
 from avs_reward_calculation_logic import avs_sec_audits, dual_staking, revenue, tvl_total_staked, avs_type
+#from avs_audits import avs_sec_audits
+#from avs_dual_staking import dual_staking
+#from avs_revenue import revenue
+#from avs_tvl_totalstaked import tvl_total_staked
+#from avs_type import avs_type
 from avs_tokenomics import tokenomics
 from avs_reward_result import staker_reward_result_perc, operator_reward_result_perc
 
