@@ -36,6 +36,8 @@ def dual_staking():
 
     st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
+    st.write("\n")
+
     with st.expander("Logic"):
                 st.markdown("""
                         Following and based on the restaking modality (**LST Restaking**), business model (**Dual Staking Utility**), and dual staking method (**Veto Dual Staking**) assumptions made for our Simulator, we found it useful to set an $AVS/xETH balance scale to assess risks and potential rewards.
