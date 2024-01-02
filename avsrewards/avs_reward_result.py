@@ -1,7 +1,5 @@
 
-import streamlit as st
-
-from avs_reward_calculation_logic import tvl_total_staked_final, selected_avs_total_staked, avs_revenue, avs_audits, dual_staking_ratio, avs_type_adjustment
+from avs_reward_calculation_logic import tvl_total_staked_final, selected_avs_total_staked, avs_revenue_final, avs_audits_final, dual_staking_final, avs_type_final
 
 
 reward_percentage = 0.20  # Base reward percentage
@@ -10,7 +8,8 @@ profit_percentage = 0.20
 staker_percentage = 0.40
 operator_percentage = 0.60
 
-reward_percentage_adj = reward_percentage + tvl_total_staked_final + avs_audits + dual_staking_ratio + avs_type_adjustment
+reward_percentage_adj = reward_percentage + avs_revenue_final + tvl_total_staked_final + avs_audits_final + dual_staking_final + avs_type_final
+print(reward_percentage_adj)
 
 #reward_percentage_adj = max(min(reward_percentage, 0.30), 0.10)
 
@@ -18,10 +17,10 @@ reward_percentage_adj = reward_percentage + tvl_total_staked_final + avs_audits 
 
 # Reward Value Sum
 
-def reward_portion(reward_percentage_adj, profit_percentage, selected_avs_revenue_adjustment):
-        return selected_avs_revenue_adjustment * profit_percentage * reward_percentage_adj
+def reward_portion(reward_percentage_adj, profit_percentage, avs_revenue_final):
+        return avs_revenue_final * profit_percentage * reward_percentage_adj
 
-reward_portion_result = reward_portion(reward_percentage_adj, profit_percentage, avs_revenue)
+reward_portion_result = reward_portion(reward_percentage_adj, profit_percentage, avs_revenue_final)
 
 
 
