@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-from avs_reward_calculation_logic import selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked, selected_avs_revenue_adjustment, selected_avs_audits_adjustment, selected_avs_dual_staking_adjustment, selected_avs_type_adjustment
+from avs_reward_calculation_logic import selected_avs_tvl_total_staked_adjustment, selected_avs_total_staked, selected_avs_revenue_adjustment, selected_avs_audits_adjustment, dual_staking_ratio, selected_avs_type_adjustment
 
 
 reward_percentage = 0.20  # Base reward percentage
@@ -10,7 +10,7 @@ profit_percentage = 0.20
 staker_percentage = 0.40
 operator_percentage = 0.60
 
-reward_percentage_adj = reward_percentage + selected_avs_tvl_total_staked_adjustment + selected_avs_audits_adjustment + selected_avs_dual_staking_adjustment + selected_avs_type_adjustment
+reward_percentage_adj = reward_percentage + selected_avs_tvl_total_staked_adjustment + selected_avs_audits_adjustment + dual_staking_ratio + selected_avs_type_adjustment
 
 #reward_percentage_adj = max(min(reward_percentage, 0.30), 0.10)
 

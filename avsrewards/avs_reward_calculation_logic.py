@@ -13,27 +13,27 @@ from avs_type import avs_type
 #dual_staking_balance_adjustment = (avs_token_percentage - xeth_percentage) / 100.0
 
 def dual_staking(avs_token_percentage, xeth_percentage):
-        ratio = avs_token_percentage / xeth_percentage
+        dual_staking_ratio = avs_token_percentage / xeth_percentage
 
-        if ratio > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+        if dual_staking_ratio > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
             return 0.020
-        elif ratio > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+        elif dual_staking_ratio > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
             return 0.015
-        elif ratio > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+        elif dual_staking_ratio > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
             return 0.010
-        elif ratio > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+        elif dual_staking_ratio > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
             return 0.005
-        elif ratio == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+        elif dual_staking_ratio == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
             return 0  # Neutral adjustment for balanced scenario
-        elif ratio > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+        elif dual_staking_ratio > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
             return -0.010
-        elif ratio > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+        elif dual_staking_ratio > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
             return -0.015
         else:  # Very low AVS compared to ETH
             return -0.020
         # Higher ratio illustrates the greater weight of the $AVS token in the balance, risk that must be reflected in the reward calc
 
-selected_avs_dual_staking_adjustment = dual_staking()  
+dual_staking_ratio = dual_staking()  
 
 
 
