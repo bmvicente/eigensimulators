@@ -4,7 +4,7 @@ import streamlit as st
 from avs_reward_calculation_logic import avs_sec_audits, dual_staking, tvl_total_staked, avs_type
 from avs_revenue import avs_revenue_main
 from avs_tokenomics import tokenomics
-from avs_reward_result import staker_reward_result_perc,operator_reward_result_perc,reward_percentage,avs_revenue_final,tvl_total_staked_final,avs_audits_final,dual_staking_final,avs_type_final,reward_percentage_adj
+from avs_reward_result import staker_reward_result_perc,operator_reward_result_perc,reward_percentage,tvl_total_staked_final,avs_audits_final,dual_staking_final,avs_type_final,reward_percentage_adj
 
 
 # Streamlit App
