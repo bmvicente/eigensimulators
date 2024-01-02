@@ -2,11 +2,6 @@
 import streamlit as st
 
 from avs_reward_calculation_logic import avs_sec_audits, dual_staking, revenue, tvl_total_staked, avs_type
-#from avs_audits import avs_sec_audits
-#from avs_dual_staking import dual_staking
-#from avs_revenue import revenue
-#from avs_tvl_totalstaked import tvl_total_staked
-#from avs_type import avs_type
 from avs_tokenomics import tokenomics
 from avs_reward_result import staker_reward_result_perc, operator_reward_result_perc
 
@@ -104,7 +99,7 @@ def st_main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{operator_reward_result_perc:.8f}%</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1.5em;">Operator Reward: <span style="font-size: 1.2em;">{operator_reward_result_perc:.8f}%</span></h2>
             </div>
             """, 
             unsafe_allow_html=True

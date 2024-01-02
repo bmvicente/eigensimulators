@@ -1,6 +1,7 @@
 
 from avs_reward_calculation_logic import tvl_total_staked, tvl_total_staked_final, avs_total_staked, avs_revenue_final, avs_audits_final, dual_staking_final, avs_type_final
 
+
 avs_total_staked, avs_tvl = tvl_total_staked()
 
 reward_percentage = 0.20  # Base reward percentage
@@ -20,7 +21,7 @@ reward_percentage_adj = reward_percentage + avs_revenue_final + tvl_total_staked
 def reward_portion(reward_percentage_adj, profit_percentage, avs_revenue_final):
         return avs_revenue_final * profit_percentage * reward_percentage_adj
 
-reward_portion_result = reward_portion(reward_percentage_adj, profit_percentage, avs_revenue_final)
+reward_portion_result = reward_portion()
 
 
 
@@ -29,7 +30,8 @@ reward_portion_result = reward_portion(reward_percentage_adj, profit_percentage,
 def staker_reward(reward_portion_result, staker_percentage):
         return reward_portion_result * staker_percentage
 
-staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
+staker_reward_result = staker_reward()
+
 
 
 
@@ -38,7 +40,7 @@ staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
 def operator_reward(reward_portion_result, operator_percentage):
         return reward_portion_result * operator_percentage
 
-operator_reward_result = operator_reward(reward_portion_result, operator_percentage)
+operator_reward_result = operator_reward()
 
 
 
