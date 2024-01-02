@@ -16,6 +16,7 @@ reward_percentage_adj = reward_percentage + avs_revenue_final + tvl_total_staked
 
 
 
+
 # Reward Value Sum
 
 def reward_portion(reward_percentage_adj, profit_percentage, avs_revenue_final):
@@ -32,6 +33,7 @@ def staker_reward(reward_portion_result, staker_percentage):
         return reward_portion_result * staker_percentage
 
 staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
+
 
 
 
