@@ -3,7 +3,7 @@
 
 from avs_audits import avs_sec_audits
 from avs_dual_staking import dual_staking
-from streamlit import avs_revenue_main
+from avs_revenue import avs_revenue_main
 from avs_tvl_totalstaked import tvl_total_staked
 from avs_type import avs_type_function
 
