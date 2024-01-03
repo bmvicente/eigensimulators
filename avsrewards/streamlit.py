@@ -95,10 +95,6 @@ def st_main():
 
     with col9:
 
-        st.write("AVS Total Staked: ", avs_total_staked)
-        st.write("Reward Portion Result: ", reward_portion_result)
-        st.write("Staker Percentage: ", staker_percentage)
-
         reward_percentage = 0.20  # Base reward percentage
         profit_percentage = 0.20
         staker_percentage = 0.40

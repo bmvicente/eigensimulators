@@ -8,10 +8,8 @@ from avs_tvl_totalstaked import tvl_total_staked
 from avs_type import avs_type_function
 
 
-# Adjusting the base reward based on the AVS token and xETH balance
-#dual_staking_balance_adjustment = (avs_token_percentage - xeth_percentage) / 100.0
 
-def all_avs_rewards_calc(dual_staking_final, avs_type_final, tvl_total_staked_final, avs_revenue_final, avs_audits_final):
+def all_avs_rewards_calc():
 
     def calc_dual_staking(avs_token_percentage, xeth_percentage):
             dual_staking_ratio = avs_token_percentage / xeth_percentage
@@ -132,6 +130,22 @@ def all_avs_rewards_calc(dual_staking_final, avs_type_final, tvl_total_staked_fi
 
     avs_audits_final = calc_avs_sec_audits(selected_number_audits)
 
-    return dual_staking_final, avs_type_final, tvl_total_staked_final, avs_revenue_final, avs_audits_final
 
-all_avs_rewards = all_avs_rewards_calc()
+    # Return the calculated values
+    return {
+        "dual_staking_final": dual_staking_final,
+        "avs_type_final": avs_type_final,
+        "tvl_total_staked_final": tvl_total_staked_final,
+        "avs_revenue_final": avs_revenue_final,
+        "avs_audits_final": avs_audits_final,
+    }
+
+# Now call the function and store its results
+all_avs_rewards_results = all_avs_rewards_calc()
+
+dual_staking_final = all_avs_rewards_results["dual_staking_final"]
+avs_type_final = all_avs_rewards_results["avs_type_final"]
+tvl_total_staked_final = all_avs_rewards_results["tvl_total_staked_final"]
+avs_revenue_final = all_avs_rewards_results["avs_revenue_final"]
+avs_audits_final = all_avs_rewards_results["avs_audits_final"]
+
