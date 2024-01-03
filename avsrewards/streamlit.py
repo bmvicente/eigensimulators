@@ -113,7 +113,6 @@ def st_main():
 
 
 
-
         # Staker Reward
 
         def staker_reward(reward_portion_result, staker_percentage):
