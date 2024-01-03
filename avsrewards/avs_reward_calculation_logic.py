@@ -144,9 +144,9 @@ def all_avs_rewards_calc(dual_staking_final,avs_type_final,tvl_total_staked_fina
 #all_avs_rewards_results = all_avs_rewards_calc(dual_staking_final,avs_type_final,tvl_total_staked_final,avs_revenue_final,avs_audits_final):
 
 
-dual_staking_final = all_avs_rewards_calc["dual_staking_final"]
-avs_type_final = all_avs_rewards_calc["avs_type_final"]
-tvl_total_staked_final = all_avs_rewards_calc["tvl_total_staked_final"]
-avs_revenue_final = all_avs_rewards_calc["avs_revenue_final"]
-avs_audits_final = all_avs_rewards_calc["avs_audits_final"]
+#dual_staking_final = all_avs_rewards_calc["dual_staking_final"]
+#avs_type_final = all_avs_rewards_calc["avs_type_final"]
+#tvl_total_staked_final = all_avs_rewards_calc["tvl_total_staked_final"]
+#avs_revenue_final = all_avs_rewards_calc["avs_revenue_final"]
+#avs_audits_final = all_avs_rewards_calc["avs_audits_final"]
 
