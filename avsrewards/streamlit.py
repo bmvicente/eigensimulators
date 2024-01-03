@@ -122,14 +122,14 @@ def st_main():
         staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
 
 
-        def calculate_staker_reward_perc(avs_total_staked, reward_portion_result, staker_percentage):
+        def calculate_staker_reward_perc(staker_reward_result, avs_total_staked):
             if avs_total_staked != 0:
-                return (reward_portion_result * staker_percentage) / avs_total_staked
+                return staker_reward_result / avs_total_staked
             else:
                 return 0.00
 
 
-        staker_reward_result_perc = calculate_staker_reward_perc(avs_total_staked, reward_portion_result, staker_percentage)
+        staker_reward_result_perc = calculate_staker_reward_perc(staker_reward_result, avs_total_staked)
 
         st.markdown(
             f"""
@@ -162,13 +162,13 @@ def st_main():
         operator_reward_result = operator_reward(reward_portion_result, operator_percentage)
 
 
-        def calculate_operator_reward_perc(avs_total_staked, reward_portion_result, operator_percentage):
+        def calculate_operator_reward_perc(avs_total_staked, operator_reward_result):
             if avs_total_staked != 0:
-                return (reward_portion_result * operator_percentage) / avs_total_staked
+                return operator_reward_result / avs_total_staked
             else:
                 return 0.00
         
-        operator_reward_result_perc = calculate_operator_reward_perc(avs_total_staked, reward_portion_result, operator_percentage)
+        operator_reward_result_perc = calculate_operator_reward_perc(avs_total_staked, operator_reward_result)
 
         st.markdown(
             f"""
@@ -185,10 +185,11 @@ def st_main():
             unsafe_allow_html=True
         )
 
+
     # After capturing and calculating each significant value, print it out
-    st.write("AVS Total Staked: ", avs_total_staked)
-    st.write("Operator Reward Result Percent: ", operator_reward_result_perc)
-    st.write("Staker Reward Result Percent: ", staker_reward_result_perc)
+    #st.write("AVS Total Staked: ", avs_total_staked)
+    #st.write("Operator Reward Result Percent: ", operator_reward_result_perc)
+    #st.write("Staker Reward Result Percent: ", staker_reward_result_perc)
 
 
     st.write("  \n")
