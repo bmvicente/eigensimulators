@@ -43,8 +43,8 @@ def st_main():
 
         latest_revenue = avs_revenue_main()
         st.write(latest_revenue)
-        st.write(selected_avs_revenue)
-        st.write(avs_revenue_final)
+        #st.write(selected_avs_revenue)
+        #st.write(avs_revenue_final)
 
         st.write("\n")
         
