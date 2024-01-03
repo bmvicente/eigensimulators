@@ -41,10 +41,8 @@ def st_main():
         #AVS Revenue
         avs_revenue_main() # Confirmed: it is capturing the value inputted by the user
 
-        latest_revenue = avs_revenue_main()
-        st.write(latest_revenue)
-        #st.write(selected_avs_revenue)
-        #st.write(avs_revenue_final)
+        st.write(selected_avs_revenue)
+        st.write(avs_revenue_final)
 
         st.write("\n")
         
