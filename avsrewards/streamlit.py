@@ -38,15 +38,8 @@ def st_main():
 
     with col1:
 
-        earlier_revenue = avs_revenue_main()
-        st.write("The latest AVS revenue input is:", earlier_revenue)
-
         #AVS Revenue
-        avs_revenue_main()
-
-        latest_revenue = avs_revenue_main()
-        st.write("The latest AVS revenue input is:", latest_revenue)
-
+        avs_revenue_main() # Confirmed: it is capturing the value inputted by the user
 
         st.write("\n")
         
