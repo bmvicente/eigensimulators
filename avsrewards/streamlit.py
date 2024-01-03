@@ -86,6 +86,10 @@ def st_main():
 
     # Assuming you already have the necessary values like avs_total_staked, staker_percentage, etc.
 
+        st.write("AVS Total Staked: ", avs_total_staked)
+        st.write("Reward Portion Result: ", reward_portion_result)
+        st.write("Staker Percentage: ", staker_percentage)
+
         staker_reward_result_perc = calculate_staker_reward_perc(avs_total_staked, reward_portion_result, staker_percentage)
 
         st.markdown(
@@ -104,7 +108,8 @@ def st_main():
         )
         
     with col10:
-        #st.write("Operator Reward Result: ", operator_reward_result)
+        
+        st.write("Operator Percentage: ", operator_percentage)
 
         operator_reward_result_perc = calculate_operator_reward_perc(avs_total_staked, reward_portion_result, operator_percentage)
 
