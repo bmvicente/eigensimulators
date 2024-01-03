@@ -134,4 +134,4 @@ def all_avs_rewards_calc(dual_staking_final, avs_type_final, tvl_total_staked_fi
 
     return dual_staking_final, avs_type_final, tvl_total_staked_final, avs_revenue_final, avs_audits_final
 
-#all_avs_rewards = all_avs_rewards_calc()
+all_avs_rewards = all_avs_rewards_calc()

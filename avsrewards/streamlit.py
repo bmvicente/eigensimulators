@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-from avs_reward_calculation_logic import all_avs_rewards_calc, tvl_total_staked_final, avs_revenue_final, avs_audits_final, dual_staking_final, avs_type_final
+from avs_reward_calculation_logic import all_avs_rewards_calc
 from avs_revenue import avs_revenue_main
 from avs_dual_staking import dual_staking
 from avs_audits import avs_sec_audits
@@ -35,6 +35,10 @@ def st_main():
     col1, col2 = st.columns([1, 1], gap="large")
     
     avs_total_staked = tvl_total_staked()
+
+
+
+
 
 
     with col1:
@@ -81,12 +85,15 @@ def st_main():
     st.write("\n")
 
 
+
+
+
+
+
     col9, col10 = st.columns([1,1], gap="small")
 
 
     with col9:
-
-    # Assuming you already have the necessary values like avs_total_staked, staker_percentage, etc.
 
         st.write("AVS Total Staked: ", avs_total_staked)
         st.write("Reward Portion Result: ", reward_portion_result)
