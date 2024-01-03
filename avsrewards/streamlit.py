@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-from avs_reward_calculation_logic import all_avs_rewards_calc
+from avs_reward_calculation_logic import calc_revenue,calc_tvl_total_staked,calc_avs_type,calc_dual_staking,calc_avs_sec_audits
 from avs_revenue import avs_revenue_main
 from avs_dual_staking import dual_staking
 from avs_audits import avs_sec_audits
@@ -45,13 +45,13 @@ def st_main():
 
         #AVS Revenue
         selected_avs_revenue = avs_revenue_main()  # Confirmed: it is capturing the value inputted by the user
-        avs_revenue_final = all_avs_rewards_calc(selected_avs_revenue)
+        avs_revenue_final = calc_revenue(selected_avs_revenue)
 
         st.write("\n")
         
         # AVS TVL & Staked
         selected_avs_total_staked, selected_avs_tvl = tvl_total_staked()
-        tvl_total_staked_final = all_avs_rewards_calc(selected_avs_total_staked, selected_avs_tvl)
+        tvl_total_staked_final = calc_tvl_total_staked(selected_avs_total_staked, selected_avs_tvl)
 
 
         st.write("\n")
@@ -59,20 +59,20 @@ def st_main():
 
         # AVS Dual Staking
         selected_avs_token_percentage, selected_xeth_percentage = dual_staking()
-        dual_staking_final = all_avs_rewards_calc(selected_avs_token_percentage, selected_xeth_percentage)  
+        dual_staking_final = calc_dual_staking(selected_avs_token_percentage, selected_xeth_percentage)  
 
 
     with col2:
 
         # AVS Type
         selected_avs_type = avs_type_function()
-        avs_type_final = all_avs_rewards_calc(selected_avs_type)
+        avs_type_final = calc_avs_type(selected_avs_type)
 
         st.write("\n")
 
         # AVS Security Audits
         selected_number_audits = avs_sec_audits()
-        avs_audits_final = all_avs_rewards_calc(selected_number_audits)
+        avs_audits_final = calc_avs_sec_audits(selected_number_audits)
 
         st.write("\n")
 
