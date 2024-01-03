@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-from avs_reward_calculation_logic import calc_revenue
+from avs_reward_calculation_logic import calc_revenue, calc_tvl_total_staked, calc_dual_staking, calc_avs_type, calc_avs_sec_audits
 from avs_revenue import avs_revenue_main
 from avs_dual_staking import dual_staking
 from avs_audits import avs_sec_audits
@@ -9,7 +9,7 @@ from avs_type import avs_type_function
 from avs_tvl_totalstaked import tvl_total_staked
 from avs_tokenomics import tokenomics
 
-from avs_reward_result import staker_reward_result_perc,operator_reward_result_perc,reward_percentage,tvl_total_staked_final,avs_audits_final,dual_staking_final,avs_type_final,reward_percentage_adj
+from avs_reward_result import staker_reward_result_perc,operator_reward_result_perc,reward_percentage,reward_percentage_adj
 
 
 # Streamlit App
@@ -39,39 +39,41 @@ def st_main():
     with col1:
 
         #AVS Revenue
-        #avs_revenue_main() # Confirmed: it is capturing the value inputted by the user
-
-        selected_avs_revenue = avs_revenue_main()  # Capture input
+        selected_avs_revenue = avs_revenue_main()  # Confirmed: it is capturing the value inputted by the user
         avs_revenue_final = calc_revenue(selected_avs_revenue)
-
-        st.write(selected_avs_revenue)
-        st.write(avs_revenue_final)
 
         st.write("\n")
         
         # AVS TVL & Staked
-        tvl_total_staked()
+        selected_avs_total_staked, selected_avs_tvl = tvl_total_staked()
+        tvl_total_staked_final = calc_tvl_total_staked(selected_avs_total_staked, selected_avs_tvl)
+
 
         st.write("\n")
         st.write("\n")
 
         # AVS Dual Staking
-        dual_staking()
+        selected_avs_token_percentage, selected_xeth_percentage = dual_staking()
+        dual_staking_final = calc_dual_staking(selected_avs_token_percentage, selected_xeth_percentage)  
+
 
     with col2:
 
         # AVS Type
-        avs_type_function()
+        selected_avs_type = avs_type_function()
+        avs_type_final = calc_avs_type(selected_avs_type)
 
         st.write("\n")
 
         # AVS Security Audits
-        avs_sec_audits()
+        selected_number_audits = avs_sec_audits()
+        avs_audits_final = calc_avs_sec_audits(selected_number_audits)
 
         st.write("\n")
 
         # AVS Tokenomics
         tokenomics()
+
 
     st.write("\n")
     st.write("\n")
@@ -94,7 +96,6 @@ def st_main():
 
 
     with col9:
-        #st.write("Staker Reward Result: ", staker_reward_result)
 
         st.markdown(
             f"""
