@@ -44,8 +44,8 @@ def st_main():
         selected_avs_revenue = avs_revenue_main()  # Capture input
         avs_revenue_final = calc_revenue(selected_avs_revenue)
 
-        #st.write(selected_avs_revenue)
-        #st.write(avs_revenue_final)
+        st.write(selected_avs_revenue)
+        st.write(avs_revenue_final)
 
         st.write("\n")
         
