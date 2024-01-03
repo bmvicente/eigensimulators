@@ -38,8 +38,15 @@ def st_main():
 
     with col1:
 
+        earlier_revenue = avs_revenue_main()
+        st.write("The latest AVS revenue input is:", earlier_revenue)
+
         #AVS Revenue
         avs_revenue_main()
+
+        latest_revenue = avs_revenue_main()
+        st.write("The latest AVS revenue input is:", latest_revenue)
+
 
         st.write("\n")
         
@@ -72,7 +79,6 @@ def st_main():
     st.write("\n")
 
     st.write("Reward Percentage:", reward_percentage, 
-         "AVS Revenue Final:", avs_revenue_main, 
          "TVL Total Staked Final:", tvl_total_staked_final, 
          "AVS Audits Final:", avs_audits_final, 
          "Dual Staking Final:", dual_staking_final, 
