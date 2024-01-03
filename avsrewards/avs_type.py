@@ -7,7 +7,7 @@ import streamlit as st
 def get_avs_type():
     return st.selectbox("", ["Lightweight", "Hyperscale"])
 
-def avs_type():
+def avs_type_function():
     st.markdown("""
         <style>
             .header-style {
