@@ -93,6 +93,10 @@ def st_main():
     col9, col10 = st.columns([1,1], gap="small")
 
 
+    selected_avs_revenue = avs_revenue_main()
+    avs_revenue_final = calc_revenue(selected_avs_revenue)
+
+
     with col9:
 
         reward_percentage = 0.20  # Base reward percentage
@@ -118,17 +122,18 @@ def st_main():
         def staker_reward(reward_portion_result, staker_percentage):
                 return reward_portion_result * staker_percentage
 
-        staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
+        def calculate_staker_reward_perc(reward_portion_result, staker_percentage, avs_total_staked):
+            # Directly calculate the staker_reward_result inside this function
+            staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
 
-
-        def calculate_staker_reward_perc(staker_reward_result, avs_total_staked):
             if avs_total_staked != 0:
-                return staker_reward_result / avs_total_staked
+                return staker_reward_result / avs_total_staked  # Calculate the percentage
             else:
-                return 0.00
+                return 0.00  # Avoid division by zero
 
 
-        staker_reward_result_perc = calculate_staker_reward_perc(staker_reward_result, avs_total_staked)
+        staker_reward_result_perc = calculate_staker_reward_perc(reward_portion_result,staker_percentage,avs_total_staked)
+
 
         st.markdown(
             f"""
@@ -149,7 +154,6 @@ def st_main():
 
 
 
-
     with col10:
         
 
@@ -158,16 +162,17 @@ def st_main():
         def operator_reward(reward_portion_result, operator_percentage):
                 return reward_portion_result * operator_percentage
 
-        operator_reward_result = operator_reward(reward_portion_result, operator_percentage)
 
+        def calculate_operator_reward_perc(reward_portion_result, operator_percentage, avs_total_staked):
+            operator_reward_result = operator_reward(reward_portion_result, operator_percentage)
 
-        def calculate_operator_reward_perc(avs_total_staked, operator_reward_result):
             if avs_total_staked != 0:
                 return operator_reward_result / avs_total_staked
             else:
                 return 0.00
         
-        operator_reward_result_perc = calculate_operator_reward_perc(avs_total_staked, operator_reward_result)
+        operator_reward_result_perc = calculate_operator_reward_perc(reward_portion_result, operator_percentage, avs_total_staked)
+
 
         st.markdown(
             f"""
