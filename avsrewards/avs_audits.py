@@ -24,7 +24,7 @@ def avs_sec_audits():
 
         st.write("\n")
 
-        avs_audits = st.number_input("", min_value=0, max_value=5, value=0, step=1)
+        avs_audits = st.number_input("AVS Audits", min_value=0, max_value=5, value=0, step=1)
 
 
         with st.expander("Logic"):

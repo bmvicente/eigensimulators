@@ -5,7 +5,7 @@ import streamlit as st
 ### AVS TYPE
 
 def get_avs_type():
-    return st.selectbox(".", ["Lightweight", "Hyperscale"])
+    return st.selectbox("AVS Type", ["Lightweight", "Hyperscale"])
 
 def avs_type_function():
     st.markdown("""

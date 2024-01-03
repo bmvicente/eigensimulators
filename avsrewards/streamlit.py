@@ -44,8 +44,8 @@ def st_main():
     with col1:
 
         #AVS Revenue
-        selected_avs_revenue = avs_revenue_main()  # Confirmed: it is capturing the value inputted by the user
-        avs_revenue_final = calc_revenue(selected_avs_revenue)
+        selected_avs_revenue_main = avs_revenue_main()  # Confirmed: it is capturing the value inputted by the user
+        avs_revenue_final = calc_revenue(selected_avs_revenue_main)
 
         st.write("\n")
         
@@ -58,8 +58,8 @@ def st_main():
         st.write("\n")
 
         # AVS Dual Staking
-        selected_avs_token_percentage, selected_xeth_percentage = dual_staking()
-        dual_staking_final = calc_dual_staking(selected_avs_token_percentage, selected_xeth_percentage)  
+        selected_avs_token_percentage_n, selected_xeth_percentage_n = dual_staking()
+        dual_staking_final = calc_dual_staking(selected_avs_token_percentage_n, selected_xeth_percentage_n)  
 
 
     with col2:
