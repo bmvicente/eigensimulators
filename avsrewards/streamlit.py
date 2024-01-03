@@ -8,7 +8,6 @@ from avs_audits import avs_sec_audits
 from avs_type import avs_type_function
 from avs_tvl_totalstaked import tvl_total_staked
 from avs_tokenomics import tokenomics
-
 from avs_reward_result import calculate_staker_reward_perc,calculate_operator_reward_perc,avs_total_staked,reward_portion_result,staker_percentage,operator_percentage
 
 
@@ -80,7 +79,6 @@ def st_main():
     st.write("\n")
 
 
-
     col9, col10 = st.columns([1,1], gap="small")
 
 
@@ -125,6 +123,10 @@ def st_main():
             unsafe_allow_html=True
         )
 
+    # After capturing and calculating each significant value, print it out
+    st.write("AVS Total Staked: ", avs_total_staked)
+    st.write("Operator Reward Result Percent: ", operator_reward_result_perc)
+    st.write("Staker Reward Result Percent: ", staker_reward_result_perc)
 
 
     st.write("  \n")
