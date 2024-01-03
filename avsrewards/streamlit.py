@@ -79,10 +79,6 @@ def st_main():
     st.write("\n")
     st.write("\n")
 
-    
-    st.write(staker_reward_result_perc)
-    st.write(operator_reward_result_perc)
-
 
 
     col9, col10 = st.columns([1,1], gap="small")
