@@ -6,10 +6,10 @@ from avs_revenue import avs_revenue_main
 from avs_dual_staking import dual_staking
 from avs_audits import avs_sec_audits
 from avs_type import avs_type_function
-from avs_tvl_totalstaked import tvl_total_staked
+from avs_tvl_totalstaked import tvl_total_staked, avs_total_staked
 from avs_tokenomics import tokenomics
 
-from avs_reward_result import staker_reward_result_perc,operator_reward_result_perc,reward_percentage,reward_percentage_adj
+from avs_reward_result import calculate_staker_reward_perc,calculate_operator_reward_perc,reward_portion_result,staker_percentage,operator_percentage
 
 
 # Streamlit App
@@ -79,13 +79,6 @@ def st_main():
     st.write("\n")
     st.write("\n")
 
-    st.write("Reward Percentage:", reward_percentage, 
-         "TVL Total Staked Final:", tvl_total_staked_final, 
-         "AVS Audits Final:", avs_audits_final, 
-         "Dual Staking Final:", dual_staking_final, 
-         "AVS Type Final:", avs_type_final)
-    
-    st.write("Reward Percentage Adjustment:", reward_percentage_adj)
     
     st.write(staker_reward_result_perc)
     st.write(operator_reward_result_perc)
@@ -96,6 +89,10 @@ def st_main():
 
 
     with col9:
+
+    # Assuming you already have the necessary values like avs_total_staked, staker_percentage, etc.
+
+        staker_reward_result_perc = calculate_staker_reward_perc(avs_total_staked, reward_portion_result, staker_percentage)
 
         st.markdown(
             f"""
@@ -114,6 +111,8 @@ def st_main():
         
     with col10:
         #st.write("Operator Reward Result: ", operator_reward_result)
+
+        operator_reward_result_perc = calculate_operator_reward_perc(avs_total_staked, reward_portion_result, operator_percentage)
 
         st.markdown(
             f"""
