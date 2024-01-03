@@ -6,9 +6,8 @@ from avs_revenue import avs_revenue_main
 from avs_dual_staking import dual_staking
 from avs_audits import avs_sec_audits
 from avs_type import avs_type_function
-from avs_tvl_totalstaked import tvl_total_staked
+from avs_tvl_totalstaked import tvl_total_staked, avs_total_staked
 from avs_tokenomics import tokenomics
-from avs_reward_result import calculate_staker_reward_perc,calculate_operator_reward_perc,reward_percentage_adj,avs_total_staked,reward_portion_result,staker_percentage,operator_percentage
 
 
 # Streamlit App
@@ -87,9 +86,42 @@ def st_main():
     # Assuming you already have the necessary values like avs_total_staked, staker_percentage, etc.
 
         st.write("AVS Total Staked: ", avs_total_staked)
-        st.write("AVS Total Staked: ", reward_percentage_adj)
         st.write("Reward Portion Result: ", reward_portion_result)
         st.write("Staker Percentage: ", staker_percentage)
+
+        reward_percentage = 0.20  # Base reward percentage
+        profit_percentage = 0.20
+        staker_percentage = 0.40
+        operator_percentage = 0.60
+
+        reward_percentage_adj = reward_percentage + avs_revenue_final + tvl_total_staked_final + avs_audits_final + dual_staking_final + avs_type_final
+
+        #reward_percentage_adj = max(min(reward_percentage, 0.30), 0.10)
+
+
+        # Reward Value Sum
+        def reward_portion(reward_percentage_adj, profit_percentage, avs_revenue_final):
+                return avs_revenue_final * profit_percentage * reward_percentage_adj
+
+        reward_portion_result = reward_portion(reward_percentage_adj, profit_percentage, avs_revenue_final)
+
+
+
+
+        # Staker Reward
+
+        def staker_reward(reward_portion_result, staker_percentage):
+                return reward_portion_result * staker_percentage
+
+        staker_reward_result = staker_reward(reward_portion_result, staker_percentage)
+
+
+        def calculate_staker_reward_perc(avs_total_staked, reward_portion_result, staker_percentage):
+            if avs_total_staked != 0:
+                return (reward_portion_result * staker_percentage) / avs_total_staked
+            else:
+                return 0.00
+
 
         staker_reward_result_perc = calculate_staker_reward_perc(avs_total_staked, reward_portion_result, staker_percentage)
 
@@ -102,7 +134,7 @@ def st_main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{calculate_staker_reward_perc:.12f}%</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{staker_reward_result_perc:.12f}%</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
@@ -110,8 +142,21 @@ def st_main():
         
     with col10:
         
-        st.write("Operator Percentage: ", operator_percentage)
 
+        # Operator Reward
+
+        def operator_reward(reward_portion_result, operator_percentage):
+                return reward_portion_result * operator_percentage
+
+        operator_reward_result = operator_reward(reward_portion_result, operator_percentage)
+
+
+        def calculate_operator_reward_perc(avs_total_staked, reward_portion_result, operator_percentage):
+            if avs_total_staked != 0:
+                return (reward_portion_result * operator_percentage) / avs_total_staked
+            else:
+                return 0.00
+        
         operator_reward_result_perc = calculate_operator_reward_perc(avs_total_staked, reward_portion_result, operator_percentage)
 
         st.markdown(
@@ -123,7 +168,7 @@ def st_main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.5em;">Operator Reward: <span style="font-size: 1.2em;">{calculate_operator_reward_perc:.12f}%</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1.5em;">Operator Reward: <span style="font-size: 1.2em;">{operator_reward_result_perc:.12f}%</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
