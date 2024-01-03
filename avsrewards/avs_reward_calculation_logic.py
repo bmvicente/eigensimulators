@@ -5,7 +5,7 @@ from avs_audits import avs_sec_audits
 from avs_dual_staking import dual_staking
 from avs_revenue import avs_revenue_main
 from avs_tvl_totalstaked import tvl_total_staked
-from avs_type import avs_type
+from avs_type import avs_type_function
 
 
 # Adjusting the base reward based on the AVS token and xETH balance
@@ -43,7 +43,7 @@ dual_staking_final = calc_dual_staking(selected_avs_token_percentage, selected_x
 def calc_avs_type(avs_type):
     return 0.02 if avs_type == "Lightweight" else -0.02
 
-selected_avs_type = avs_type()
+selected_avs_type = avs_type_function()
 
 # Use the selected_avs_type as an argument to calculate the reward adjustment
 avs_type_final = calc_avs_type(selected_avs_type)
