@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-#from avs_reward_calculation_logic import avs_sec_audits, dual_staking, tvl_total_staked, avs_type
+from avs_reward_calculation_logic import selected_avs_revenue, avs_revenue_final
 from avs_revenue import avs_revenue_main
 from avs_dual_staking import dual_staking
 from avs_audits import avs_sec_audits
@@ -40,6 +40,9 @@ def st_main():
 
         #AVS Revenue
         avs_revenue_main() # Confirmed: it is capturing the value inputted by the user
+
+        st.write(selected_avs_revenue)
+        st.write(avs_revenue_final)
 
         st.write("\n")
         
