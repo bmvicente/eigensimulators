@@ -6,10 +6,10 @@ from avs_revenue import avs_revenue_main
 from avs_dual_staking import dual_staking
 from avs_audits import avs_sec_audits
 from avs_type import avs_type_function
-from avs_tvl_totalstaked import tvl_total_staked, avs_total_staked
+from avs_tvl_totalstaked import tvl_total_staked
 from avs_tokenomics import tokenomics
 
-from avs_reward_result import calculate_staker_reward_perc,calculate_operator_reward_perc,reward_portion_result,staker_percentage,operator_percentage
+from avs_reward_result import calculate_staker_reward_perc,calculate_operator_reward_perc,avs_total_staked,reward_portion_result,staker_percentage,operator_percentage
 
 
 # Streamlit App
