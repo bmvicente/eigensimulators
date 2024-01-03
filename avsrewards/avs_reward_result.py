@@ -1,7 +1,7 @@
 
 
 import streamlit as st
-from avs_reward_calculation_logic import tvl_total_staked, tvl_total_staked_final, avs_total_staked, avs_revenue_final, avs_audits_final, dual_staking_final, avs_type_final
+from avs_reward_calculation_logic import tvl_total_staked_final, avs_revenue_final, avs_audits_final, dual_staking_final, avs_type_final
 
 
 
