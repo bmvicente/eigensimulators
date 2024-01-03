@@ -185,11 +185,6 @@ def st_main():
         )
 
 
-    # After capturing and calculating each significant value, print it out
-    #st.write("AVS Total Staked: ", avs_total_staked)
-    #st.write("Operator Reward Result Percent: ", operator_reward_result_perc)
-    #st.write("Staker Reward Result Percent: ", staker_reward_result_perc)
-
 
     st.write("  \n")
     st.write("  \n")

@@ -10,7 +10,7 @@ def get_avs_tvl():
 
 def get_avs_total_staked():
     # Function to capture AVS Total Staked from user input
-    return st.number_input("AVS Total Staked ($)", min_value=0, max_value=10000000000, value=0, step=1000000)
+    return st.number_input("AVS Total Staked ($)", min_value=0, max_value=1000000000, value=0, step=1000000)
 
 def tvl_total_staked():
     st.markdown("""
