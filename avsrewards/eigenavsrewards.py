@@ -102,18 +102,18 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
 
 
     # Combine all adjustments
-    reward_percentage = reward_percentage + dual_staking_adjustment + avs_type_adjustment + avs_revenue_adjustment + audit_adjustment + ratio_tvl_totalstaked_adjustment
+    reward_percentage_sum = reward_percentage + dual_staking_adjustment + avs_type_adjustment + avs_revenue_adjustment + audit_adjustment + ratio_tvl_totalstaked_adjustment
 
     # Ensure the reward percentage is within reasonable bounds
-    reward_percentage = max(min(reward_percentage, 0.30), 0.10)
+    reward_percentage_adj = max(min(reward_percentage_sum, 0.30), 0.10)
 
     # Calculate rewards for stakers and operators
     profit_percentage = 0.20
     staker_percentage = 0.40
     operator_percentage = 0.60
 
-    staker_reward = avs_revenue * profit_percentage * reward_percentage * staker_percentage
-    operator_reward = avs_revenue * profit_percentage * reward_percentage * operator_percentage
+    staker_reward = avs_revenue * profit_percentage * reward_percentage_adj * staker_percentage
+    operator_reward = avs_revenue * profit_percentage * reward_percentage_adj * operator_percentage
 
     return staker_reward, operator_reward
 
@@ -503,7 +503,7 @@ def main():
     st.write("  \n")
 
     st.write("""
-                The AVS Reward Emission percentage from the AVS Revenue input range fell in the **{reward_percentage:.2%}** value.
+                The AVS Reward Emission percentage from the AVS Revenue input range fell in the **{reward_percentage_adj}** value.
 
                 Operator Reward is naturally being given greater weight than the Staker Reward due to their more important role.
 
