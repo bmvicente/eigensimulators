@@ -504,16 +504,23 @@ def main():
         
     st.write("  \n")
     st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
     
-    st.image("images/tokensight.png")
+    st.image("images/tokensight.png", width=200, use_column_width='auto')
+
     
+    image_url = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
     link = 'https://twitter.com/tokensightxyz'
-
-    image_path = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
-
-    markdown = f"[![Alt Text]({image_path})]({link})"
-
+    markdown = f"""
+    <a href="{link}" target="_blank">
+        <img src="{image_url}" alt="Alt Text" style="display:block; margin-left: auto; margin-right: auto; width: 50%;">
+    </a>
+    """    
     st.markdown(markdown, unsafe_allow_html=True)
 
 if __name__ == "__main__":
