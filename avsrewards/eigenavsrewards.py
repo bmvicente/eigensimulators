@@ -127,7 +127,7 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
 def main():
     st.set_page_config(layout="wide")
 
-    st.image("eigenimage.png")
+    st.image("images/eigenimage.png")
 
     st.title("AVS Reward Emission Simulator")
 
