@@ -359,7 +359,7 @@ def main():
              
             We arrive at the final AVS Risk Score through a 0 to 10 normalization of the product of all the calculated risks per input.
              
-            For a deeper dive, please visit the ([source code])(https://github.com/bmvicente/eigensimulators/blob/master/avsrisk/eigenavsrisk.py).
+            For a deeper dive, please visit the [source code](https://github.com/bmvicente/eigensimulators/blob/master/avsrisk/eigenavsrisk.py).
             """)
 
 
