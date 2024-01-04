@@ -326,14 +326,13 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-              In designing modules for maximal security and minimal centralization risk, EigenLayer suggests two approaches: **Hyperscale** and **Lightweight AVS** [(Section 3.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper). 
-                        
-            **Hyperscale AVS** involves distributing the computational workload across many nodes, allowing for high overall throughput and reducing incentives for centralized validation. This horizontal scaling minimizes validation costs and amortization gains for any central operator. 
-                
-            On the other hand, the **Lightweight** approach focuses on tasks that are redundantly performed by all operators but are inexpensive and require minimal computing infrastructure. By combining these hyperscale and lightweight approaches, EigenLayer aims to maximize yield while enabling even home validators on Ethereum to benefit economically, thus minimizing centralization pressures on Ethereum staking. This strategy ensures maximum security by leveraging the full potential of restaked ETH on EigenLayer and addressing operational and computational resource concerns.            
-                        
-            While it does depend on the needs of an AVS and while a Lightweight AVS safeguards it from risks otherwise incurred from a centralized architecture, the Hyperscaletype is more robust and secure, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our simulator, and thus a lower reward level is sensible to assume when selecting this category, relative to the Lightweight AVS type.                    
-            
+                In designing modules for maximal security and minimal centralization risk, EigenLayer suggests two approaches: **Hyperscale and Lightweight AVS** [(Section 3.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper).
+
+                **Hyperscale AVS** involves distributing the computational workload across many nodes, allowing for high overall throughput and reducing incentives for centralized validation. This horizontal scaling minimizes validation costs and amortization gains for any central operator. 
+
+                On the other hand, the **Lightweight** approach focuses on tasks that are redundantly performed by all operators but are inexpensive and require minimal computing infrastructure.
+
+                While it does depend on the needs of an AVS, the Hyperscale-type is more robust and secure due to its decentralized nature, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our simulator, and thus a lower reward level is sensible to assume when selecting this category.               
                         """)
             
 
