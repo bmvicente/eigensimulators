@@ -519,7 +519,7 @@ def main():
         st.write("")
 
     with col12:
-        st.image("images/tokensight.png", width=400)
+        st.image("images/tokensight.png", width=300)
 
     with col13:
         st.write("")
@@ -529,7 +529,7 @@ def main():
     link = 'https://twitter.com/tokensightxyz'
     markdown = f"""
     <a href="{link}" target="_blank">
-        <img src="{image_url}" alt="Alt Text" style="display:block; margin-left: auto; margin-right: auto; width: 5%;">
+        <img src="{image_url}" alt="Alt Text" style="display:block; margin-left: auto; margin-right: auto; width: 2%;">
     </a>
     """    
     st.markdown(markdown, unsafe_allow_html=True)
