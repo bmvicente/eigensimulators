@@ -353,7 +353,7 @@ def main():
     st.write("  \n")
 
     st.write("""
-            The AVS Risk Score ranges from 0 to 10, where 0 indicates the lowest level of risk and 10 represents the highest possible risk.
+            The **AVS Risk Score** ranges from 0 to 10, where 0 indicates the lowest level of risk and 10 represents the highest possible risk.
             
             The Risk Score is based on the risk level of each input category as well as their weighting, which is composed of their likelihood and impact. For example, the Likelihood of a X rik was considered higher than of the Y, and the Impact of X higher than Y. Both these variants were weighted per inpuit parameter. 
              
