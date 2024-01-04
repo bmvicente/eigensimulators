@@ -240,7 +240,7 @@ def main():
 
                     The **TVL/Total Restaked** logic is structured accordingly to desincentivize colluding operators to perform an attack: the greater the CfC (Cost from Corruption) is compared to the PfC (Profit from Corruption), the more secure the AVS is, and vice-versa.
 
-                    Based on the values inputted, the **Minimum TVL** to keep the AVS secure should be **\${min_tvl:,}** and the **Sufficiently-High TVL** value to assure a comfortable security level for the AVS should be at least **\${avs_total_staked:,}**. Current TVL equals **\${avs_tvl:,}**. 
+                    Based on the values inputted, the **Minimum TVL** to keep the AVS secure should be **\${min_tvl:,}** and the **Sufficiently-High TVL** value to assure a comfortable security level for the AVS should be at least **\${avs_total_staked:,}** (double the Minimum). Current TVL equals **\${avs_tvl:,}**. 
                     If the TVL increases compared to the Total Staked, the risk gets reduced and the rewards too, therefore.
 
                     Understanding what the minimum and the sufficiently high TVL numbers should be is not useful for operator-collusion cases only, but also for increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/) — in a Dual Staking Model and Veto Dual Staking context such as ours — which are useful to maintain the health of the AVS dual token pool (or AVS TVL, in other words).
