@@ -511,7 +511,7 @@ def main():
     st.write("  \n")
 
     
-    st.image("images/tokensight.png", width=100)
+    st.image("images/tokensight.png", width=250)
     
     image_url = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
     link = 'https://twitter.com/tokensightxyz'
