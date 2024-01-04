@@ -351,6 +351,8 @@ def main():
     )
 
     st.write("  \n")
+    st.write("  \n")
+
 
     st.write("""
             The **AVS Risk Score** ranges from 0 to 10, where 0 indicates the lowest level of risk and 10 represents the highest possible risk.
