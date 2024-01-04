@@ -17,12 +17,13 @@ def avs_avg_operator_reputation():
 
         st.markdown('<p class="header-style">AVS Average Operators\' Reputation</p>', unsafe_allow_html=True)
 
-        avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 
+        selected_avs_avg_op_rep = st.selectbox("Select the average reputation of operators", ["Unknown", "Established", "Renowned"])
+
+        avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
         avs_avg_operator_reputation_weight = 1 * 1      # Likelihood 1, Impact 1
 
-        avs_avg_operator_reputation_score = avs_avg_operator_reputation_risk[avs_avg_operator_reputation]
-
+        avs_avg_operator_reputation_score = avs_avg_operator_reputation_risk[selected_avs_avg_op_rep]
         operator_rep_risk_score = avs_avg_operator_reputation_score * avs_avg_operator_reputation_weight
 
 

@@ -5,6 +5,7 @@ import streamlit as st
 ### AVS TYPE
 
 def avs_type():
+    
     st.markdown("""
         <style>
             .header-style {
@@ -22,11 +23,11 @@ def avs_type():
     st.markdown('<p class="header-style">AVS Type</p>', unsafe_allow_html=True)
 
     avs_type_risk = {"Lightweight": 10, "Hyperscale": 1}
-    avs_type_weight = 1 * 2     # Likelihood 2, Impact 2
+    avs_type_weight = 1 * 2     # Likelihood 1, Impact 2
 
-    user_selection = st.selectbox("Select the average reputation of operators", ["Unknown", "Established", "Renowned"])
+    selected_avs_type = st.selectbox("Select the AVS type", ["Lightweight", "Hyperscale"])
 
-    avs_type_score = avs_type_risk[user_selection]
+    avs_type_score = avs_type_risk[selected_avs_type]
     avs_type_risk_score = avs_type_score * avs_type_weight
 
     with st.expander("Logic"):
