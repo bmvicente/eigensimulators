@@ -345,6 +345,41 @@ def main():
     st.write("The AVS Risk Score ranges from 0 to 10, where 0 indicates the lowest level of risk and 10 represents the highest possible risk. The risk score of this AVS tells us...")
 
 
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    
+
+    col11, col12, col13 = st.columns([2,1,2])
+
+    with col11:
+        st.write("")
+
+    with col12:
+        st.image("images/tokensight.png", width=320)
+
+    with col13:
+        st.write("")
+    
+    
+    image_url = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
+    link = 'https://twitter.com/tokensightxyz'
+    markdown = f"""
+    <a href="{link}" target="_blank">
+        <img src="{image_url}" alt="Alt Text" style="display:block; margin-left: auto; margin-right: auto; width: 4%;">
+    </a>
+    """    
+    st.markdown(markdown, unsafe_allow_html=True)
+
 if __name__ == "__main__":
     main()
 
