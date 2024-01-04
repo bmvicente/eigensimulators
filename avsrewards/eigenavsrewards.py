@@ -502,7 +502,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    reward_percentage_adj = avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xeth_percentage, avs_type, security_audits)
+    staker_reward, operator_reward, reward_percentage_adj = avs_rewards(staker_reward, operator_reward, reward_percentage_adj)
 
     st.write(f"""
                 The AVS Reward Emission percentage from the AVS Revenue input range fell in the **{reward_percentage_adj:.2%}** value.
