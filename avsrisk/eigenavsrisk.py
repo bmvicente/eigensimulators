@@ -115,13 +115,13 @@ def main():
             # The expander without a visible outline
         with st.expander("Logic"):
                 st.markdown("""
-                    To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) to begin with: an AVS where the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, the system appears secure, as any successful attack would result in at least half of the attacker's stake being slashed.
+                    To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) to begin with: an AVS where the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, appears to be secure, as any successful attack would result in at least half of the attacker's stake being slashed. If the Total Staked increases compared to the TVL, the risk gets reduced.
 
-                    The **TVL/Total Restaked** logic is structured accordingly to desincentivize colluding operators to perform an attack: the greater the CfC (Cost from Corruption) is compared to the PfC (Profit from Corruption), the more secure the AVS is, and vice-versa. If the TVL increases compared to the Total Staked, the risk gets reduced.
+                    The **TVL/Total Restaked** logic is structured accordingly to desincentivize colluding operators to perform an attack: the greater the CfC (Cost from Corruption) is compared to the PfC (Profit from Corruption), the more secure the AVS is, and vice-versa. 
 
                     The **risk logic** herein is set so that the greater the *(AVS Total Staked/2) : AVS TVL* ratio, the safer the AVS is, and vice-versa. If *AVS Total Staked* and *AVS TVL* are both under $100K, we consider it the maximum risk scenario.
 
-                    Understanding what a reduced risk level should be is not useful for operator-collusion cases only, but also for increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/) — in a Dual Staking Model and Veto Dual Staking context, for example, which are useful to maintain the health of the AVS dual token pool (or AVS TVL, in other words).               
+                    Understanding what a reduced risk level should be is not useful for operator-collusion cases only, but also for increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/), i.e. in a Dual Staking Model and Veto Dual Staking context, for example, which are useful to maintain the health of the AVS dual token pool (or AVS TVL, in other words).               
                             """)
 
         ###################        
@@ -153,9 +153,9 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) by risk, **"Pay in the Native Token of the AVS" which is the most risky**, as the entire fee structure is dependent on the AVS's native token, \$AVS, tying closely to its market performance and the AVS's ongoing profitability. Then there’s "Dual Staking Utility," with a high risk too because it depends on both ETH restakers and $AVS stakers, which introduces complexities in security and token value dynamics. The "Tokenize the Fee" model comes with moderate risk involving payments in a neutral denomination (like ETH) and distributing a portion of fees to holders of the AVS's token, thus partly dependent on the AVS token's value. Finally, **"Pure Wallet" represents the lowest risk**, relying on straightforward service fees paid in a neutral denomination. 
+                Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) by risk: **Pay in the Native Token of the AVS** is the most risky, as the entire fee structure is dependent on the AVS's native token (\$AVS), tying closely to its market performance and the AVS's ongoing profitability. Then there’s **Dual Staking Utility**, with a high risk too because it depends on both ETH restakers and $AVS stakers, which introduces complexities in security and token value dynamics. The **Tokenize the Fee** model comes with moderate risk involving payments in a neutral denomination (like ETH) and distributing a portion of fees to holders of the AVS's token, thus partly dependent on the AVS token's value. Finally, **Pure Wallet** represents the lowest risk, relying on straightforward service fees paid in a neutral denomination, like ETH.
 
-                The risk of each model is influenced by its reliance on the AVS's native token and the complexities of its fee and security structures.
+                Thus, the risk of each model is influenced by its reliance on the AVS's native token and the complexities of its fee and security structures.
             """)
         
         ###################
@@ -187,7 +187,7 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                Registering the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure. While this input is purely quantitaive in terms of the number of audits performed, quantity strongly correlates to quality, in this particular case.
+                Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure. While this input is purely quantitaive in terms of the number of audits performed, audit quantity strongly correlates to code quality, in this particular case.
             """)
 
     with col2:
@@ -221,7 +221,9 @@ def main():
 
                 **Hyperscale AVS** involves distributing the computational workload across many nodes, allowing for high overall throughput and reducing incentives for centralized validation. This horizontal scaling minimizes validation costs and amortization gains for any central operator. 
 
-                On the other hand, the **Lightweight** approach focuses on tasks that are redundantly performed by all operators but are inexpensive and require minimal computing infrastructure. By combining these hyperscale and lightweight approaches, EigenLayer aims to maximize yield while enabling even home validators on Ethereum to benefit economically, thus minimizing centralization pressures on Ethereum staking. This strategy ensures maximum security by leveraging the full potential of restaked ETH on EigenLayer and addressing operational and computational resource concerns.                    
+                On the other hand, the **Lightweight** approach focuses on tasks that are redundantly performed by all operators but are inexpensive and require minimal computing infrastructure. By combining these hyperscale and lightweight approaches, EigenLayer aims to maximize yield while enabling even home validators on Ethereum to benefit economically, thus minimizing centralization pressures on Ethereum staking. This strategy ensures maximum security by leveraging the full potential of restaked ETH on EigenLayer and addressing operational and computational resource concerns.
+
+                While it does depend on the needs of an AVS and while a Lightweight AVS safeguards it from risks otherwise incurred from a centralized architecture, the Hyperscaletype is more robust and secure, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our simulator, and thus a lower reward level is sensible to assume when selecting this category, relative to the Lightweight AVS type.                    
                         """)
 
         ###################
@@ -253,11 +255,11 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                EigenLayer introduces various restaking modalities for yield stacking on its platform, enhancing the ability for stakers to earn additional yield by securing new AVSs [(Section 2.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper). 
+                EigenLayer introduces a few **Restaking Modalities** for yield stacking on its platform, enhancing the ability for stakers to earn additional yield by securing new AVSs [(Section 2.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper). 
 
-                These include **Native Restaking**, where validators restake staked ETH directly to EigenLayer; **LST restaking**, involving staking of ETH already restaked via protocols like Lido or Rocket Pool; **ETH LP Restaking**, where validators stake LP tokens of pairs including ETH; and **LST LP Restaking**, involving staking LP tokens of pairs with liquid staking ETH tokens. 
+                By order of increasing risk: **Native Restaking**, where validators restake staked ETH directly to EigenLayer; **LST Restaking**, involving staking of ETH already restaked via protocols like Lido or Rocket Pool; **ETH LP Restaking**, where validators stake LP tokens of pairs including ETH; and **LST LP Restaking**, involving staking LP tokens of pairs with liquid staking ETH tokens. 
                         
-                These pathways integrate with different blockchain layers, such as the core protocol, AVS, and DeFi, offering routes like L1 → EigenLayer, DeFi → EigenLayer, and L1 → DeFi → EL yield stacking. Each pathway involves distinct risks and is subject to the module developers' governance choices, who manage risks and may set preferential reward weightings based on the type of staked token, aligning with their focus areas, such as decentralization or security. This approach allows for a flexible and diversified yield generation strategy within the EigenLayer ecosystem.            
+                These pathways integrate with different blockchain layers, such as the core protocol, AVS, and DeFi, offering routes like L1 → EigenLayer, DeFi → EigenLayer, and L1 → DeFi → EL yield stacking.         
                         """)
 
         ###################
