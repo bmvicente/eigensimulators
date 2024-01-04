@@ -93,7 +93,7 @@ def main():
                 """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS TVL & Total Restaked</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS TVL & Total Staked</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
@@ -106,7 +106,7 @@ def main():
 
         with col4:
                 # Manual input for Total Restaked on AVS
-                total_restaked = st.number_input("**Total Restaked on AVS ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
+                total_restaked = st.number_input("**AVS Total Staked - \$AVS & xETH ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
 
         # Convert input strings to float for calculation
         tvl = float(tvl) if tvl else 0
