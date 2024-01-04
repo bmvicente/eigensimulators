@@ -115,8 +115,12 @@ def main():
             # The expander without a visible outline
         with st.expander("Logic"):
                 st.markdown("""
-                    CVS (Cost to Violate Safety) and CVL (Cost to Violate Liveliness) based and 51% operator attack dependant...
-                """)
+                    In the context of operator collusion and AVS TVL & Total Staked, EigenLayer notes that the ideal scenario of all operators restaking into all AVSs maximizes the cost of corruption, tying it to the total stake in EigenLayer [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper).
+
+                    However, realistically, with only a subset of operators committing to a specific AVS, vulnerabilities may arise from potential collusion among operators. For instance, an AVS secured by $8M of restaked ETH and containing $2M of total locked value appears secure under a 50% quorum requirement. Yet, if these operators are also involved in multiple other AVSs with similar stakes, the total incentive for corruption could outweigh the cost, creating a cryptoeconomic imbalance.
+
+                    While Ethereum is unlikely to hard fork for compensations related to specific AVS attacks, especially if a minor fraction of ETH stakers are involved, solutions lie in restricting the potential for corruption (PfC) for each AVS or increasing the cost of corruption (CoC). This might involve design-specific limitations, like transaction bounds for oracles or value flow restrictions for bridges within the slashing period. EigenLayer suggests enhancing security through a cryptoeconomic dashboard that monitors operator behaviors, identifying potential collusion risks. AVSs might then incentivize participation from EigenLayer operators engaged in fewer AVSs, fostering what is described as "elastic security." The detailed cryptoeconomic risk analysis in Section B further elaborates on these strategies and mechanisms.                
+                            """)
 
         ###################        
         st.write("  \n")
@@ -147,11 +151,9 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                EigenLayer offers four different types of business models for AVSs: 
-                - Pure Wallet
-                - Fee Tokenization
-                - AVS Native Token
-                - Dual Staking Model (ETH & $AVS).
+                Ordering the business models from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) by risk, "Pay in the Native Token of the AVS," which is the most risky as the entire fee structure is dependent on the AVS's native token, $AVS, tying closely to its market performance and the AVS's ongoing profitability. Then there’s "Dual Staking Utility," with a high risk too because it depends on both ETH restakers and $AVS stakers, which introduces complexities in security and token value dynamics. The "Tokenize the Fee" model comes with moderate risk involving payments in a neutral denomination (like ETH) and distributing a portion of fees to holders of the AVS's token, thus partly dependent on the AVS token's value. Finally, the "Pure Wallet" represents the lowest risk, relying on straightforward service fees paid in a neutral denomination. 
+
+                The risk of each model is influenced by its reliance on the AVS's native token and the complexities of its fee and security structures.
             """)
         
         ###################
@@ -213,11 +215,11 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                In designing modules for maximal security and minimal centralization risk, EigenLayer suggests two approaches: **Hyperscale** and **Lightweight AVS** [(Section 3.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper). 
-                        
-                **Hyperscale AVS** involves distributing the computational workload across many nodes, allowing for high overall throughput and reducing incentives for centralized validation. This horizontal scaling minimizes validation costs and amortization gains for any central operator. 
-                
-                On the other hand, the **Lightweight** approach focuses on tasks that are redundantly performed by all operators but are inexpensive and require minimal computing infrastructure. By combining these hyperscale and lightweight approaches, EigenLayer aims to maximize yield while enabling even home validators on Ethereum to benefit economically, thus minimizing centralization pressures on Ethereum staking. This strategy ensures maximum security by leveraging the full potential of restaked ETH on EigenLayer and addressing operational and computational resource concerns.                        
+                In designing modules for maximal security and minimal centralization risk, EigenLayer suggests two approaches: Hyperscale and Lightweight AVS [(Section 3.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper).
+
+                Hyperscale AVS involves distributing the computational workload across many nodes, allowing for high overall throughput and reducing incentives for centralized validation. This horizontal scaling minimizes validation costs and amortization gains for any central operator. 
+
+                On the other hand, the Lightweight approach focuses on tasks that are redundantly performed by all operators but are inexpensive and require minimal computing infrastructure. By combining these hyperscale and lightweight approaches, EigenLayer aims to maximize yield while enabling even home validators on Ethereum to benefit economically, thus minimizing centralization pressures on Ethereum staking. This strategy ensures maximum security by leveraging the full potential of restaked ETH on EigenLayer and addressing operational and computational resource concerns.                    
                         """)
 
         ###################
@@ -249,8 +251,10 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                EigenLayer offers four different types of restaking modalities for AVSs: LST LP Restaking, ETH LP Restaking, LST Restaking, and Native Restaking. 
-            """)
+                EigenLayer introduces various restaking modalities for yield stacking on its platform, enhancing the ability for stakers to earn additional yield by securing new AVSs [(Section 2.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper). 
+
+                These include native restaking, where validators restake staked ETH directly to EigenLayer; LST restaking, involving staking of ETH already restaked via protocols like Lido or Rocket Pool; ETH LP restaking, where validators stake LP tokens of pairs including ETH; and LST LP restaking, involving staking LP tokens of pairs with liquid staking ETH tokens. These pathways integrate with different blockchain layers, such as the core protocol, AVS, and DeFi, offering routes like L1 → EigenLayer, DeFi → EigenLayer, and L1 → DeFi → EL yield stacking. Each pathway involves distinct risks and is subject to the module developers' governance choices, who manage risks and may set preferential reward weightings based on the type of staked token, aligning with their focus areas, such as decentralization or security. This approach allows for a flexible and diversified yield generation strategy within the EigenLayer ecosystem.            
+                        """)
 
         ###################
         st.write("  \n")
@@ -277,7 +281,7 @@ def main():
         # The expander with more information (optional)
         with st.expander("Logic"):
             st.markdown("""
-                Although being a qualitative metric, the Average Operator Reputation opted into the AVS for validating its chosen modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial for assessing overall operator-related risk, including potential malicious collusions.
+                Although being a qualitative metric, the Average Operator Reputation opted into the AVS for validating its chosen modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial for assessing overall operator-related risk, including potential malicious collusions.                        
                         """)
         
 
@@ -342,7 +346,10 @@ def main():
 
     st.write("  \n")
 
-    st.write("The AVS Risk Score ranges from 0 to 10, where 0 indicates the lowest level of risk and 10 represents the highest possible risk. The risk score of this AVS tells us...")
+    st.write("""
+             The AVS Risk Score ranges from 0 to 10, where 0 indicates the lowest level of risk and 10 represents the highest possible risk.
+            The Risk Score is based on the risk level of each input category as well as their weighting, which is based on their likelihood and impact.
+            """)
 
 
     st.write("  \n")
