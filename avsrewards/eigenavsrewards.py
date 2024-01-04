@@ -506,19 +506,19 @@ def main():
     st.write("  \n")
 
     
-    col11, col12 = st.columns([1, 1], gap="small")
+    #col11, col12 = st.columns([1, 1], gap="small")
 
-    with col11:
-        st.image("images/tokensight.png")
+    #with col11:
+    st.image("images/tokensight.png")
     
-    with col12:
-        link = 'https://twitter.com/tokensightxyz'
+    #with col12:
+    link = 'https://twitter.com/tokensightxyz'
 
-        image_path = 'images/x.png'
+    image_path = 'images/x.png'
 
-        markdown = f"[![Alt Text]({image_path})]({link})"
+    markdown = f"[![Alt Text]({image_path})]({link})"
 
-        st.markdown(markdown, unsafe_allow_html=True)
+    st.markdown(markdown, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
