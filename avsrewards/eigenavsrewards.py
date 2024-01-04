@@ -503,7 +503,7 @@ def main():
     st.write("  \n")
 
     st.write("""
-                The AVS Reward Emission percentage from the AVS Revenue input range fell in the XX% value.
+                The AVS Reward Emission percentage from the AVS Revenue input range fell in the **{reward_percentage:.2%}** value.
 
                 Operator Reward is naturally being given greater weight than the Staker Reward due to their more important role.
 
