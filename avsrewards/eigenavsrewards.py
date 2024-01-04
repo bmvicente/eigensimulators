@@ -511,7 +511,19 @@ def main():
     st.write("  \n")
 
     
-    st.image("images/tokensight.png", width=250)
+    #st.image("images/tokensight.png", width=400)
+
+    col11, col12, col13 = st.beta_columns([1,6,1])
+
+    with col11:
+        st.write("")
+
+    with col12:
+        st.image("images/tokensight.png", width=400)
+
+    with col13:
+        st.write("")
+    
     
     image_url = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
     link = 'https://twitter.com/tokensightxyz'
