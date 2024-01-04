@@ -513,7 +513,7 @@ def main():
     
     #st.image("images/tokensight.png", width=400)
 
-    col11, col12, col13 = st.beta_columns([1,6,1])
+    col11, col12, col13 = st.beta_columns([1,1,1])
 
     with col11:
         st.write("")
