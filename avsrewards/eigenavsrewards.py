@@ -519,8 +519,6 @@ def main():
         markdown = f"[![Alt Text]({image_path})]({link})"
 
         st.markdown(markdown, unsafe_allow_html=True)
-        st.image("images/x.png")
-
 
 if __name__ == "__main__":
     main()
