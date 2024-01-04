@@ -506,15 +506,11 @@ def main():
     st.write("  \n")
 
     
-    #col11, col12 = st.columns([1, 1], gap="small")
-
-    #with col11:
     st.image("images/tokensight.png")
     
-    #with col12:
     link = 'https://twitter.com/tokensightxyz'
 
-    image_path = 'images/x.png'
+    image_path = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
 
     markdown = f"[![Alt Text]({image_path})]({link})"
 
