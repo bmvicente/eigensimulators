@@ -356,6 +356,8 @@ def main():
         # Displaying the custom styled header
         st.markdown('<p class="header-style">AVS Number of Security Audits</p>', unsafe_allow_html=True)
 
+        st.write("  \n")
+
         # Dropdown menu
         security_audits = st.number_input("", min_value=0, max_value=5, step=1)
 
