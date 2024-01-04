@@ -497,8 +497,29 @@ def main():
 
                 Operator Reward is naturally being given greater weight than the Staker Reward due to their more important role.
 
-                The \$AVS’s Tokenomics (while not included in the reward calculation) suggest a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future.             
+                The \$AVS’s Tokenomics (while not included in the reward calculation) suggest a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. 
+                An important factor that should determine the $AVS minting rate is that of rewarding operators for their capital costs.            
             """)
+    
+        
+    st.write("  \n")
+    st.write("  \n")
+
+    
+    col11, col12 = st.columns([1, 1], gap="small")
+
+    with col11:
+        st.image("images/tokensight.png")
+    
+    with col12:
+        link = 'https://twitter.com/tokensightxyz'
+
+        image_path = 'images/x.png'
+
+        markdown = f"[![Alt Text]({image_path})]({link})"
+
+        st.markdown(markdown, unsafe_allow_html=True)
+        st.image("images/x.png")
 
 
 if __name__ == "__main__":
