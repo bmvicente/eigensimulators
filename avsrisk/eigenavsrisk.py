@@ -381,7 +381,7 @@ def main():
         st.write("")
 
     with col12:
-        st.image("images/tokensight.png", width=300)
+        st.image("images/tokensight.png", width=250)
 
     with col13:
         st.write("")
