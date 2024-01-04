@@ -427,8 +427,6 @@ def main():
                     Nevertheless, including **\$AVS Inflation/Deflation Rate**, **Circulating** and **Total Token Supplies** can provide an enlightened assessment of what potential future rewards could look like.
                     Understanding this rate helps gauge how quickly new tokens are entering circulation, which can impact the token's value and hence the value of rewards. The Circulating vs Total Supply ratio provides a snapshot of how much of the total supply is active in the market, influencing supply-demand dynamics too.
                     
-                    An important factor that should determine the $AVS minting rate is that of rewarding operators for their capital costs.            
-
                     For \$AVS tokenomics to be considered a valuable metric in this context, one must assume token demand remains constant through time.
                 """)
 
