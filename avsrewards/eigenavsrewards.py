@@ -141,9 +141,9 @@ def main():
 
                 **LST Restaking** was chosen as the Restaking Modality because the Dual Staking model requires a staked ETH of some kind, and also because it was simpler and more intuitive, compared to other modalities. [Learn more](https://docs.eigenlayer.xyz/overview/readme/whitepaper)
 
-                Generally speaking, these three assumptions were made due to the safety they confer AVSs, especially recent ones, and for simplicity's sake in a first version of the Simulator.
+                Generally speaking, these three assumptions were made due to the safety they confer AVSs, especially new-born ones, and for simplicity's sake in a first version of the Simulator.
                     
-                We recommend the AVS Risk Simulator as an important introduction to understanding the AVS Reward Emission Simulator.
+                We recommend checking out the AVS Risk Simulator as an important introduction to understanding the AVS Reward Emission Simulator.
             """)
     
     st.write("  \n")
