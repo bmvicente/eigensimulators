@@ -505,9 +505,7 @@ def main():
     staker_reward, operator_reward, reward_percentage_adj = avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xeth_percentage, avs_type, security_audits)
 
     st.write(f"""
-                The AVS Reward Emission percentage from the AVS Revenue input range fell in the **{reward_percentage_adj:.2%}** value.
-
-                Operator Reward is naturally being given greater weight than the Staker Reward due to their more important role.
+                The **AVS Reward Emission** percentages are being distributed to $AVS Stakers and Operators. **Operator Reward** is naturally being given greater weight than the Staker Reward due to their paramount role in validating modules crucial to the well-function of an AVS.
 
                 The \$AVS’s Tokenomics (while not included in the reward calculation) suggest a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. 
                 An important factor that should determine the $AVS minting rate is that of rewarding operators for their capital costs.
