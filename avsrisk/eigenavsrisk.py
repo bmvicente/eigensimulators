@@ -293,7 +293,7 @@ def main():
         # The expander with more information (optional)
         with st.expander("Logic"):
             st.markdown("""
-                Although being a purely qualitative metric, the **Average Reputation of Operators** that are opted into an AVS for validating its chosen modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial for assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
+                Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
                         """)
         
 
