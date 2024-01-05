@@ -516,7 +516,7 @@ def main():
 
                 It's important to bear in mind that this Simulator was built from an AVS perspective alone. 
              
-                For a deeper and technical dive, please visit the [source code](https://github.com/bmvicente/eigensimulators/blob/master/avsrewards/eigenavsrewards.py).
+                For a deeper dive, please visit the [source code](https://github.com/bmvicente/eigensimulators/blob/master/avsrewards/eigenavsrewards.py).
             """)
     
         
