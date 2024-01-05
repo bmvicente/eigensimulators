@@ -249,7 +249,7 @@ def main():
 
                     Accordingly, the main goal is to maintain the *CfC (Cost from Corruption)* ***above*** *the PfC (Profit from Corruption)* to desincentivize colluding, malicious operators to perform an attack.
 
-                    In a Dual Staking Model and Veto Dual Staking context, such as ours, increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/), calculated as* ⅔ \$AVS + ⅔ xETH *and* ⅓ \$AVS *respectively, is important to maintain the health of the AVS dual token pool (or AVS TVL, in other words).
+                    In a Dual Staking Model and Veto Dual Staking context, such as ours, increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/), calculated as *⅔ \$AVS + ⅔ xETH* and *⅓ \$AVS* respectively, is important to maintain the health of the AVS dual token pool (or AVS TVL, in other words).
                 """)
 
 
