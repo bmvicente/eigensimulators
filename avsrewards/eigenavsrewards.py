@@ -247,7 +247,7 @@ def main():
                     - The **Current TVL** equals **\${avs_tvl:,}**. 
                     - The **Current Total Staked (\$AVS & xETH)** equals **\${avs_total_staked:,}**;
                     - The **Minimum TVL** to keep the AVS secure should be **\${min_tvl:,}**; 
-                    - The **Sufficiently-High TVL** value to assure a comfortable security level for the AVS should be at least **\${avs_total_staked:,}** (double the Minimum).
+                    - The **Sufficiently-High TVL** value to assure a comfortable security level for the AVS should be at least **\${avs_total_staked:,}** (We consider this value double the Minimum as an adequate approximation, although other risk factors should be accounted for as well).
                     
                     If the TVL increases compared to the Total Staked, the risk gets reduced and the rewards too, therefore.
 
