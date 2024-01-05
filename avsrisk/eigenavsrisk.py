@@ -106,7 +106,7 @@ def main():
 
         with col4:
                 # Manual input for Total Restaked on AVS
-                total_restaked = st.number_input("**AVS Total Staked - \$AVS & xETH ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
+                total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
 
         # Convert input strings to float for calculation
         tvl = float(tvl) if tvl else 0
@@ -115,7 +115,7 @@ def main():
             # The expander without a visible outline
         with st.expander("Logic"):
                 st.markdown("""
-                    To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) to begin with: an AVS where the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, appears to be secure, as any successful attack would result in at least half of the attacker's stake being slashed. If the Total Staked increases compared to the TVL, the risk gets reduced.
+                    To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) to begin with: an AVS appears to be most secure when the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, as any successful attack would result in at least half of the attacker's stake being slashed. If the Total Staked increases from there compared to the TVL, the risk gets reduced further.
 
                     The **TVL/Total Restaked** logic is structured accordingly to desincentivize colluding operators to perform an attack: the greater the CfC (Cost from Corruption) is compared to the PfC (Profit from Corruption), the more secure the AVS is, and vice-versa. 
 
@@ -357,7 +357,7 @@ def main():
     st.write("""
             The **AVS Risk Score** ranges from 0 to 10, where 0 indicates the lowest level of risk and 10 represents the highest possible risk.
             
-            The Risk Score is based on the risk level of each input category as well as their weighting, which is composed of their likelihood and impact. For example, the Likelihood of a X rik was considered higher than of the Y, and the Impact of X higher than Y. Both these variants were weighted per inpuit parameter. 
+            The Risk Score is based on the risk level of each input category as well as their weighting, which is composed of their likelihood and impact. For example, the Likelihood of a X risk was considered higher than of the Y, and the Impact of X higher than Y. Both these variants were weighted per inpuit parameter. 
              
             We arrive at the final AVS Risk Score through a 0 to 10 normalization of the product of all the calculated risks per input.
              
