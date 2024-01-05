@@ -9,7 +9,7 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
     # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
 
     security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 0}
-    business_model_risk = {"Pure Wallet": 10, "Fee Tokenization": 7, "AVS Native Token": 4, "Dual Staking (ETH & $AVS)": 1}
+    business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
     avs_type_risk = {"Lightweight": 10, "Hyperscale": 1}
     restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
     avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
@@ -148,7 +148,7 @@ def main():
         st.markdown('<p class="header-style">AVS Business Model</p>', unsafe_allow_html=True)
 
         # Dropdown menu
-        business_model = st.selectbox("", ["Pure Wallet", "Fee Tokenization", "AVS Native Token", "Dual Staking (ETH & $AVS)"])
+        business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"])
 
         # The expander without a visible outline
         with st.expander("Logic"):
