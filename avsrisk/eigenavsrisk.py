@@ -257,10 +257,10 @@ def main():
             st.markdown("""
                 Setting aside Liquid Staking and Superfluid Staking for now, EigenLayer introduces a few **Restaking Modalities** for yield stacking on its platform [(Section 2.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper). 
 
-                - ***Native Restaking***, where validators restake staked ETH directly to EigenLayer. This is the simplest and most direct form of restaking, offering the **lowest risk profile**; 
-                - ***LST Restaking***, involving staking of ETH already restaked via protocols like Lido or Rocket Pool. Adds a layer of complexity and dependence on third-party staking services, presenting moderate risk;
+                - ***LST LP Restaking***, involving staking LP tokens of pairs with liquid staking ETH tokens. High complexity and exposure to DeFi market risks pose **potentially large risks**;
                 - ***ETH LP Restaking***, where validators stake LP tokens including ETH which tie rewards to DeFi market performance, introducing considerable risk due to market volatility;
-                - ***LST LP Restaking***, involving staking LP tokens of pairs with liquid staking ETH tokens. High complexity and exposure to DeFi market risks pose **potentially large risks**.
+                - ***LST Restaking***, involving staking of ETH already restaked via protocols like Lido or Rocket Pool. Adds a layer of complexity and dependence on third-party staking services, presenting moderate risk;
+                - ***Native Restaking***, where validators restake staked ETH directly to EigenLayer. This is the simplest and most direct form of restaking, offering the **lowest risk profile**.
                         """)
 
         ###################
