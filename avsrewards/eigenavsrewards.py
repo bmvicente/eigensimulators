@@ -374,8 +374,8 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                Registering the number of security audits performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
-                While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks, and thus rewards an AVS is confident to emit and restakers and operators to opt into it.
+                Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
+                While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and thus the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
             """)
 
 
