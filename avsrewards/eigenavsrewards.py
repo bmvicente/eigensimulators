@@ -470,7 +470,7 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.5em;">Staker Reward: <span style="font-size: 1.2em;">{staker_reward_percentage:.2f}%</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1.5em;">$AVS Staker / xETH Restaker Reward: <span style="font-size: 1.2em;">{staker_reward_percentage:.2f}%</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
