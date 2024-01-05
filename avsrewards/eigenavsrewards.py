@@ -238,22 +238,18 @@ def main():
             # The expander without a visible outline
         with st.expander("Logic"):
                 st.markdown(f"""
-                    To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) to begin with: an AVS where the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, the system appears secure, as any successful attack would result in at least half of the attacker's stake being slashed. 
+                    The **TVL/Total Restaked** reward logic herein is set so that the greater the *(AVS Total Staked/2) : AVS TVL* ratio, the safer the AVS is and the less rewards it should emit therefore, and vice-versa.
 
-                    The **TVL/Total Restaked** logic is structured accordingly to desincentivize colluding operators to perform an attack: the greater the CfC (Cost from Corruption) is compared to the PfC (Profit from Corruption), the more secure the AVS is, and vice-versa.
+                    To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) to begin with: an AVS where the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, the system appears secure, as any successful attack would result in at least half of the attacker's stake being slashed. If *AVS Total Restaked* increases from there compared to the *AVS TVL*, the risk/reward gets reduced even further.
 
                     Based on the values inputted:
-                    
-                    - The **Current TVL** equals **\${avs_tvl:,}**. 
+
+                    - The **Current TVL** equals **\${avs_tvl:,}**.
                     - The **Current Total Staked (\$AVS & xETH)** equals **\${avs_total_staked:,}**;
-                    - The **Minimum TVL** to keep the AVS secure should be **\${min_tvl:,}**; 
-                    - The **Sufficiently-High TVL** value to assure a comfortable security level for the AVS should be at least **\${avs_total_staked:,}** (we consider this value to be double the Minimum TVL as an adequate approximation for now, although other risk factors should be accounted for as well).
-                    
-                    If the TVL increases compared to the Total Staked, the risk gets reduced and the rewards too, therefore.
 
-                    Understanding what the minimum and the sufficiently high TVL numbers should be is not useful for operator-collusion cases only, but also for increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/) — in a Dual Staking Model and Veto Dual Staking context such as ours — which are useful to maintain the health of the AVS dual token pool (or AVS TVL, in other words).
+                    Accordingly, the main goal is to maintain the CfC (Cost from Corruption) above the PfC (Profit from Corruption) to desincentivize colluding operators to perform an attack.
 
-                    The **rewards** herein are set so that the greater the *(AVS Total Staked/2) : AVS TVL* ratio, the safer the AVS is and the less rewards it should emit therefore, and vice-versa.
+                    In a Dual Staking Model and Veto Dual Staking context such as ours increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/), calculated as ⅔ $AVS + ⅔ xETH and ⅓ $AVS, respectively, is important to maintain the health of the AVS dual token pool (or AVS TVL, in other words).
                 """)
 
 
@@ -300,7 +296,7 @@ def main():
 
                 **\$AVS** is the AVS native token. **xETH** is any ETH-backed LST, such as stETH, rETH or cbETH.
 
-                **Dual Staking**, by allowing the staking of a more stable and widely-used token like an ETH-LST alongside the network's native token, simplifies the bootstrapping process and provides baseline economic security, thereby mitigating these challenges.
+                **Dual Staking**, by allowing the staking of a more stable and widely-used token like an ETH-LST alongside the AVS's native token, simplifies the bootstrapping process and provides baseline economic security, thereby mitigating these challenges.
 
                 A greater \$xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a *% \$AVS* **>** *% xETH* pool balance makes sense to be a higher-reward event.
             """)
