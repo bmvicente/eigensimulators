@@ -187,7 +187,7 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure. While this input is purely quantitaive in terms of the number of audits performed, audit quantity strongly correlates to code quality, in this particular case.
+                Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure. While this input is purely quantitative in terms of the number of audits performed, audit quantity strongly correlates to code quality, in this particular case.
             """)
 
     with col2:
