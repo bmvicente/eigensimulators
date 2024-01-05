@@ -298,7 +298,7 @@ def main():
             st.markdown("""
                 Following and based on the restaking modality (**LST Restaking**), business model (**Dual Staking Utility**), and dual staking method (**Veto Dual Staking**) assumptions made for our Simulator, we found it useful to set an $AVS/xETH balance scale to assess risks and potential rewards.
 
-                \$AVS is the AVS native token. xETH is any ETH-backed LST, such as stETH, rETH or cbETH.
+                **\$AVS** is the AVS native token. **xETH** is any ETH-backed LST, such as stETH, rETH or cbETH.
 
                 Dual staking, by allowing the staking of a more stable and widely-used token like an ETH-LST alongside the network's native token, simplifies the bootstrapping process and provides baseline economic security, thereby mitigating these challenges.
 
