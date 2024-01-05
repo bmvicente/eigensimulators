@@ -502,8 +502,6 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    staker_reward, operator_reward, reward_percentage_adj = avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xeth_percentage, avs_type, security_audits)
-
     st.write(f"""
                 The **AVS Reward Emission** percentages are being distributed to $AVS Stakers and Operators. **Operator Reward** is naturally being given greater weight than the Staker Reward due to their paramount role in validating modules crucial to the well-function of an AVS.
 
