@@ -255,7 +255,7 @@ def main():
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                EigenLayer introduces a few **Restaking Modalities** for yield stacking on its platform, enhancing the ability for stakers to earn additional yield by securing new AVSs [(Section 2.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper). 
+                Setting aside Liquid Staking and Superfluid Staking for now, EigenLayer introduces a few **Restaking Modalities** for yield stacking on its platform [(Section 2.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper). 
 
                 By order of increasing risk: ***Native Restaking***, where validators restake staked ETH directly to EigenLayer; ***LST Restaking***, involving staking of ETH already restaked via protocols like Lido or Rocket Pool; ***ETH LP Restaking***, where validators stake LP tokens of pairs including ETH; and ***LST LP Restaking***, involving staking LP tokens of pairs with liquid staking ETH tokens. 
                         
