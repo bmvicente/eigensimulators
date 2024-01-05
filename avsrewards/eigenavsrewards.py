@@ -294,7 +294,7 @@ def main():
 
                 Dual staking, by allowing the staking of a more stable and widely-used token like an ETH-LST alongside the network's native token, simplifies the bootstrapping process and provides baseline economic security, thereby mitigating these challenges.
 
-                A greater \$xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a % \$AVS > % xETH pool balance makes sense to be a higher-reward event.
+                A greater \$xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a *% \$AVS* **>** *% xETH* pool balance makes sense to be a higher-reward event.
             """)
             
 
@@ -431,7 +431,7 @@ def main():
                     **\$AVS Tokenomics** do not influence the reward calculation herein, since they might influence rewards only in an indirect way. 
                     
                     Nevertheless, including **\$AVS Inflation/Deflation Rate**, **Circulating** and **Total Token Supplies** can provide an enlightened assessment of what potential future rewards could look like.
-                    Understanding this rate helps gauge how quickly new tokens are entering circulation, which can impact the token's value and hence the value of rewards. The Circulating vs Total Supply ratio provides a snapshot of how much of the total supply is active in the market, influencing supply-demand dynamics too.
+                    Understanding this rate helps gauge how quickly new tokens are entering circulation, which can impact the token's value and hence the value of rewards. The *Circulating vs Total Supply* ratio provides a snapshot of how much of the total supply is active in the market, influencing supply-demand dynamics too.
                     
                     For \$AVS tokenomics to be considered a valuable metric in this context, one must assume token demand remains constant through time.
                 """)
@@ -503,7 +503,7 @@ def main():
     st.write("  \n")
 
     st.write(f"""
-                The **AVS Reward Emission** percentages are being distributed to $AVS Stakers and Operators. **Operator Reward** is naturally being given greater weight than the Staker Reward due to their paramount role in validating modules crucial to the well-function of an AVS.
+                The **AVS Reward Emission** percentages are being distributed to $AVS Stakers and Operators. ***Operator Reward*** is naturally being given greater weight than the ***Staker Reward*** due to their paramount role in validating modules crucial to the well-function of an AVS.
 
                 The \$AVS’s Tokenomics (while not included in the reward calculation) suggest a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. 
                 An important factor that should determine the $AVS minting rate is that of rewarding operators for their capital costs.
