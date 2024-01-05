@@ -131,6 +131,8 @@ def main():
 
     st.title("AVS Reward Emission Simulator")
 
+    st.write("   \n")
+
     with st.expander("Assumptions Made in Building our Simulator"):
         st.markdown("""
                 A couple of assumptions were made in our Simulator to simplify and more easily illustrate the potential reward emission of an AVS in a Dual Staking and LST Restaking context:
