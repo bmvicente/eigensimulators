@@ -375,6 +375,7 @@ def main():
         with st.expander("Logic"):
             st.markdown("""
                 Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
+                
                 While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and thus the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
             """)
 
