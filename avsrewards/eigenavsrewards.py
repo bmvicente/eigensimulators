@@ -492,7 +492,7 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.5em;">Operator Reward: <span style="font-size: 1.2em;">{operator_reward_percentage:.2f}%</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1.5em;">AVS Operator Reward: <span style="font-size: 1.2em;">{operator_reward_percentage:.2f}%</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
@@ -503,7 +503,7 @@ def main():
     st.write("  \n")
 
     st.write(f"""
-                The **AVS Reward Emission** percentages are being distributed to $AVS Stakers and Operators. ***Operator Reward*** is naturally being given greater weight than the ***Staker Reward*** due to their paramount role in validating modules crucial to the well-function of an AVS.
+                The **AVS Reward Emission** percentages are being distributed to $AVS Stakers, xETH Restakers and AVS Operators. ***Operator Reward*** is naturally being given greater weight than the ***Staker Reward*** due to their paramount role in validating modules crucial to the well-function of an AVS.
 
                 The \$AVS’s Tokenomics (while not included in the reward calculation) suggest a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. 
                 An important factor that should determine the $AVS minting rate is that of rewarding operators for their capital costs.
