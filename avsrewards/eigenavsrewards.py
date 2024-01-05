@@ -507,7 +507,7 @@ def main():
     st.write("  \n")
 
     st.write(f"""
-                The **AVS Reward Emission** simulator percentage-results suggest how much should be distributed among $AVS Stakers, xETH Restakers and AVS Operators, given the risk and economic security profile of the AVS. To build on the *Assumptions* explanation on top, this calculation is based on the correlated reward-to-risk sensitivity per variable input -- the *Logic* below each input parameter helps understand the rationale.
+                The **AVS Reward Emission** simulator percentage-results suggest how much should be distributed among $AVS Stakers, xETH Restakers and AVS Operators, given the risk and economic security profile of the AVS. To build on the *Assumptions* explanation on top, this calculation is based on the correlated reward-to-risk sensitivity per variable input -- the *Logic* below each input parameter helps understand the underlying rationale.
                 
                 ***Operator Reward*** is naturally being given greater weight than the ***Staker Reward*** due to their paramount role in validating modules crucial to the well-function of an AVS.
 
