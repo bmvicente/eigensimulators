@@ -8,7 +8,7 @@ import streamlit as st
 def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation):
     # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
 
-    security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 0}
+    security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
     business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
     avs_type_risk = {"Lightweight": 10, "Hyperscale": 1}
     restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
@@ -366,7 +366,7 @@ def main():
             The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the **Likelihood** and **Impact** of that risk to the AVS. 
             For example, the Likelihood of a Security Audit posing a risk and its Impact on the integrity of the AVS are both greater than the Likelihood and Impact to an AVS of, say, its *Average Operator Reputation* and the *AVS Type* chosen. The Simulator takes these nuances into account.
              
-            We arrive at the final AVS Risk Score through a 0 to 10 normalization of the product of all the calculated risks per input.
+            We arrive at the final AVS Risk Score through a 0 to 10 normalization of the sum of all the calculated risks per input.
              
             For a deeper dive, please visit the [source code](https://github.com/bmvicente/eigensimulators/blob/master/avsrisk/eigenavsrisk.py).
             """)
@@ -411,6 +411,7 @@ def main():
     </a>
     """    
     st.markdown(markdown, unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()
