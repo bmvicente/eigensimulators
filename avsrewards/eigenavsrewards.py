@@ -135,7 +135,7 @@ def main():
 
     with st.expander("Assumptions Made in Building our Simulator"):
         st.markdown("""
-                A couple of assumptions were made in our Simulator to simplify and more easily illustrate the potential reward emission of an AVS in a Dual Staking and LST Restaking context:
+                A couple of assumptions were made in our Simulator to simplify and more easily illustrate the potential reward emission of an AVS in a ***Dual Staking*** and ***LST Restaking*** context:
 
                 **Dual Staking** was chosen as the business model, preferred over other models, due to the utility and security they confer to an AVS, and **Veto Dual Staking**, as the Dual Staking method, preferred over other methods, due to the low implementation cost and reliability in terms of liveness. [Learn more](https://www.blog.eigenlayer.xyz/dual-staking/)
 
