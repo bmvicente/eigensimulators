@@ -115,7 +115,7 @@ def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xe
     staker_reward = avs_revenue * profit_percentage * reward_percentage_adj * staker_percentage
     operator_reward = avs_revenue * profit_percentage * reward_percentage_adj * operator_percentage
 
-    return staker_reward, operator_reward, reward_percentage_adj
+    return staker_reward, operator_reward
 
 
 #####################################################
