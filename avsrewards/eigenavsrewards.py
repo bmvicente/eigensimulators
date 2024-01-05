@@ -509,7 +509,7 @@ def main():
     st.write(f"""
                 The **AVS Reward Emission** simulator percentage-results suggest how much should be distributed among $AVS Stakers, xETH Restakers and AVS Operators, given the risk and economic security profile of the AVS. To build on the *Assumptions* explanation on top, this calculation is based on the correlated reward-to-risk sensitivity per variable input -- the *Logic* below each input parameter helps understand the underlying rationale.
                 
-                ***Operator Reward*** is naturally being given greater weight than the ***Staker Reward*** due to their paramount role in validating modules crucial to the well-function of an AVS. We've assigned 60% of the distributable rewards to Operators and 40% to Stakers and Restakers.
+                ***Operator Reward*** is naturally being given greater weight than the ***Staker Reward*** due to their paramount role in validating modules crucial to the well-function of an AVS. We've assigned 60% of distributable rewards to Operators and 40% to Stakers and Restakers.
 
                 The \$AVS’s Tokenomics (while not included in the reward calculation) were deemed useful to include since they provide a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. 
                 An important factor that should help AVS developers determine the $AVS minting rate is that of rewarding operators for their capital costs.
