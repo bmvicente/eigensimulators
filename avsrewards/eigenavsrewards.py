@@ -230,7 +230,7 @@ def main():
                 avs_tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
 
         with col4:
-                # Manual input for Total Restaked on AVS
+                # Manual input for Total Staked on AVS
                 avs_total_staked = st.number_input("**AVS Total Staked - \$AVS & xETH ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
 
                 min_tvl = avs_total_staked // 2
@@ -238,9 +238,9 @@ def main():
             # The expander without a visible outline
         with st.expander("Logic"):
                 st.markdown(f"""
-                    The **TVL/Total Restaked** reward logic herein is set so that the greater the *(AVS Total Staked/2) : AVS TVL* ratio, the safer the AVS is and the less rewards it should emit therefore, and vice-versa.
+                    The **TVL/Total Staked** reward logic herein is set so that the greater the *(AVS Total Staked/2) : AVS TVL* ratio, the safer the AVS is and the less rewards it should emit therefore, and vice-versa.
 
-                    To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) to begin with: an AVS where the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, the system appears secure, as any successful attack would result in at least half of the attacker's stake being slashed. If *AVS Total Restaked* increases from there compared to the *AVS TVL*, the risk/reward gets reduced even further.
+                    To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/readme/whitepaper) to begin with: an AVS where the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, the system appears secure, as any successful attack would result in at least half of the attacker's stake being slashed. If *AVS Total Staked* increases from there compared to the *AVS TVL*, the risk/reward gets reduced even further.
 
                     Based on the values inputted:
 
