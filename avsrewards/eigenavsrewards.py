@@ -462,7 +462,7 @@ def main():
     with col1:
         # Calculate the percentage and handle division by zero
         if avs_total_staked != 0:
-            staker_reward_percentage = (staker_reward / avs_total_staked) * 100
+            staker_reward_percentage = (staker_reward / avs_revenue) * 100
         else:
             staker_reward_percentage = 0.00
 
@@ -484,7 +484,7 @@ def main():
     with col2:
         # Calculate the percentage and handle division by zero
         if avs_total_staked != 0:
-            operator_reward_percentage = (operator_reward / avs_total_staked) * 100
+            operator_reward_percentage = (operator_reward / avs_revenue) * 100
         else:
             operator_reward_percentage = 0.00
 
