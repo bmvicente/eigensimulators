@@ -57,6 +57,15 @@ def prediction_market_app():
 
     st.title("EigenDA: Presidential Election Prediction Market")
 
+    with st.expander("How this Simulator Works"):
+        st.markdown("""
+            Odds in a traditional prediction market are influenced only by bettors' preferences for a particular event. 
+                    In the case of an AVS as a source of truth for a given prediction market, the reliability and data processing capabilities of AVS' oracles also affect those odds.
+                    Truth here is by reached based on the level of the associated risks and the economic security of that AVS, adding a layer of complexity to the odds calculation.
+
+            This model was heavily inspired by David Hoffman's tweet: https://twitter.com/TrustlessState/status/1746114818845667736.
+                        """)
+        
     st.write("\n")
     st.write("\n")
 

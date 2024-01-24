@@ -1,57 +1,117 @@
 
-# EigenLayer AVS Risks
+# Staking Risks
 
 import streamlit as st
 
-# Function to calculate AVS risk
-def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation):
-    # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
 
-    security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
-    business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
-    avs_type_risk = {"Lightweight": 7, "Hyperscale": 3}
-    restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
-    avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+# Dictionaries for scoring
+security_audits_values = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
+avg_operator_reputation_values = {"Unknown": 10, "Established": 5, "Renowned": 1}
 
-    security_audits_weight = 4 * 4                  # Likelihood 4, Impact 4
-    business_model_weight = 2 * 3                   # Likelihood 2, Impact 3
-    avs_type_weight = 1 * 2                         # Likelihood 2, Impact 2
-    restaking_mods_weight = 2 * 3                   # Likelihood 2, Impact 3
-    operator_attack_weight = 3 * 5                  # Likelihood 3, Impact 5
-    avs_avg_operator_reputation_weight = 1 * 1      # Likelihood 1, Impact 1
-    #CVS and CVL based and 51% operator attack dependant
+# Function definitions
+def avg_validator_uptime(uptime):
+    if uptime == "Good Uptime (Greater than 98%)":
+        return 1
+    elif uptime == "Average Uptime (97% to 98%)":
+        return 5
+    else:
+        return 10
 
-    # Get risk scores from the input values
-    security_audit_score = security_audits_risk[security_audits]
-    business_model_score = business_model_risk[business_model]
-    avs_type_score = avs_type_risk[avs_type]
-    restaking_mod_score = restaking_mods_risk[restaking_mods]
-    avs_avg_operator_reputation_score = avs_avg_operator_reputation_risk[avs_avg_operator_reputation]
+def total_steth(steth):
+    if steth > 20000000:
+        return 1
+    elif steth > 15000000:
+        return 3
+    elif steth > 9000000:
+        return 5
+    elif steth > 5000000:
+        return 7
+    elif steth > 2000000:
+        return 9
+    else:
+        return 10
 
-    # Now use operator_attack_risk in your total risk score calculation
+def number_validators(validators):
+    if validators > 200000:
+        return 1
+    elif validators > 150000:
+        return 3
+    elif validators > 100000:
+        return 5
+    elif validators > 50000:
+        return 7
+    elif validators > 20000:
+        return 9
+    else:
+        return 10
+
+
+# Centralization Risks
+def market_share_central_risk(market_share_risk):
+    if market_share_risk == "More than 50%":
+        return 10
+    elif market_share_risk == "Between 30% and 40%":
+        return 8
+    elif market_share_risk == "Between 20% and 30%":
+        return 6
+    elif market_share_risk == "Between 10% and 20%":
+        return 4
+    elif market_share_risk == "Less than than 10%":
+        return 2
+    
+def barrier_entry_central_risk(barrier_entry_risk):
+    if barrier_entry_risk == "High Barrier - 16 ETH Deposit":
+        return 7
+    elif barrier_entry_risk == "Low Barrier - 8 ETH Deposit":
+        return 3
+    
+
+# Weight factors
+security_audits_weight = 4 * 4 
+avg_validator_uptime_weight = 2 * 3
+total_steth_weight = 1 * 2
+number_validators_weight = 2 * 3
+market_share_central_risk_weight = 3 * 5
+barrier_entry_central_risk_weight = 1 * 2
+avg_operator_reputation_score_weight = 2 * 2
+
+# Risk score calculation function
+def weighted_risk_scores(security_audits, uptime, steth, validators, market_share_risk, barrier_entry_risk, avg_operator_reputation):
+
+    security_audit_score = security_audits_values.get(security_audits, 0)
+    avg_validator_uptime_score = avg_validator_uptime(uptime)
+    total_steth_score = total_steth(steth)
+    number_validators_score = number_validators(validators)
+    market_share_central_risk_score = market_share_central_risk(market_share_risk)
+    barrier_entry_central_risk_score = barrier_entry_central_risk(barrier_entry_risk)
+    avg_operator_reputation_score = avg_operator_reputation_values.get(avg_operator_reputation, 0)
+
+    # Calculate the total risk score
     total_risk_score = (security_audit_score * security_audits_weight +
-                        business_model_score * business_model_weight +
-                        avs_type_score * avs_type_weight +
-                        operator_attack_risk * operator_attack_weight +  # Use the calculated risk score directly
-                        restaking_mod_score * restaking_mods_weight +
-                        avs_avg_operator_reputation_score * avs_avg_operator_reputation_weight
-                        )
+                        avg_validator_uptime_score * avg_validator_uptime_weight +
+                        total_steth_score * total_steth_weight +
+                        number_validators_score * number_validators_weight +
+                        market_share_central_risk_score * market_share_central_risk_weight +
+                        barrier_entry_central_risk_score * barrier_entry_central_risk_weight +
+                        avg_operator_reputation_score * avg_operator_reputation_score_weight)
 
     max_security_audit_score = 10  # Assuming worst case for security audit is 0 audits
-    max_business_model_score = 10   # Assuming worst case for business model is "Pure Wallet"
-    max_avs_type_score = 10         # Assuming worst case for AVS type is "Hyperscale"
-    max_restaking_mod_score = 10    # Assuming worst case for restaking modality is "LST LP Restaking"
-    max_operator_attack_score = 10  # Assuming worst case for operator attack risk
-    max_avs_avg_operator_reputation_score = 10  # Assuming worst case for operator attack risk
+    max_avg_validator_uptime_score = 10   # Assuming worst case for business model is "Pure Wallet"
+    max_total_steth_score = 10         # Assuming worst case for AVS type is "Hyperscale"
+    max_number_validators_score = 10    # Assuming worst case for restaking modality is "LST LP Restaking"
+    max_market_share_central_risk_score = 10  # Assuming worst case for operator attack risk
+    max_barrier_entry_central_risk_score = 10  # Assuming worst case for operator attack risk
+    max_avg_operator_reputation_score = 10  # Assuming worst case for operator attack risk
 
     # Calculate the maximum possible risk score
     max_possible_risk_score = (
         max_security_audit_score * security_audits_weight +
-        max_business_model_score * business_model_weight +
-        max_avs_type_score * avs_type_weight +
-        max_operator_attack_score * operator_attack_weight +
-        max_restaking_mod_score * restaking_mods_weight +
-        max_avs_avg_operator_reputation_score * avs_avg_operator_reputation_weight)
+        max_avg_validator_uptime_score * avg_validator_uptime_weight +
+        max_total_steth_score * total_steth_weight +
+        max_number_validators_score * number_validators_weight +
+        max_market_share_central_risk_score * market_share_central_risk_weight +
+        max_barrier_entry_central_risk_score * barrier_entry_central_risk_weight +
+        max_avg_operator_reputation_score * avg_operator_reputation_score_weight)
 
     # Normalize the risk score
     normalized_risk_score = (total_risk_score / max_possible_risk_score) * 10
@@ -61,14 +121,15 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
 
 
 
-
 # Streamlit app setup
 def main():
     st.set_page_config(layout="wide")
 
-    st.image("images/eigenimage.png")
+    #st.image("images/eigenimage.png")
 
-    st.title("AVS Risk Simulator")
+    st.title("Staking Risk Simulator")
+    st.title("Lido (stETH): Protocol Perspective")
+
     
     st.write("  \n")
 
@@ -92,24 +153,11 @@ def main():
                 """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS TVL & Total Restaked</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Total stETH (in units)</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
-            # Creating two columns for input
-        col3, col4 = st.columns([3, 3])
-
-        with col3:
-                # Manual input for AVS TVL
-                tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
-
-        with col4:
-                # Manual input for Total Restaked on AVS
-                total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
-
-        # Convert input strings to float for calculation
-        tvl = float(tvl) if tvl else 0
-        total_restaked = float(total_restaked) if total_restaked else 0
+        total_steth_input = st.number_input(" ", min_value=0, max_value=10000000000, value=0, step=1000000)
 
             # The expander without a visible outline
         with st.expander("Logic"):
@@ -144,10 +192,12 @@ def main():
             """, unsafe_allow_html=True)
 
         # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS Business Model</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Number of stETH Validators</p>', unsafe_allow_html=True)
 
         # Dropdown menu
-        business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"])
+        number_validators_input = st.number_input("  ", min_value=0, max_value=10000000000, value=0, step=1000000)
+
+        # https://beaconcha.in/pools 100K
 
         # The expander without a visible outline
         with st.expander("Logic"):
@@ -183,10 +233,13 @@ def main():
             """, unsafe_allow_html=True)
 
         # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS Number of Security Audits</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Average Validator Uptime</p>', unsafe_allow_html=True)
+
+        # https://www.coinbase.com/cloud/discover/insights-analysis/when-less-is-more
 
         # Dropdown menu
-        security_audits = st.number_input("", min_value=0, max_value=5, step=1)
+        avg_validator_uptime_input = st.selectbox("   ", ["Good Uptime (> 98%)", "Average Uptime (97% to 98%)", "Poor Uptime (< 97%)"])
+
 
         # The expander without a visible outline
         with st.expander("Logic"):
@@ -213,14 +266,18 @@ def main():
             """, unsafe_allow_html=True)
 
         # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS Type</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Centralization Risk</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
-        # Dropdown menu
-        avs_type = st.selectbox("", ["Lightweight", "Hyperscale"])
+        col3, col4 = st.columns([3, 3])
 
-        # The expander without a visible outline
+        with col3:
+                market_share_central_risk_input = st.selectbox("**As a Function of Protocol Market Share**", ["More than 50%", "Between 30% and 40%", "Between 20% and 30%", "Between 10% and 20%", "Less than than 10%"])
+
+        with col4:
+                barrier_entry_central_risk_input = st.selectbox("**As a Function of Validator Barrier to Entry**", ["High Barrier - 16 ETH Deposit", "Low Barrier - 8 ETH Deposit"])
+
         with st.expander("Logic"):
             st.markdown("""
                 In designing modules for maximal security and minimal centralization risk, EigenLayer suggests two approaches: **Hyperscale and Lightweight AVS** [(Section 3.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper).
@@ -231,13 +288,15 @@ def main():
 
                 While it does depend on the needs of an AVS, the Hyperscale-type is more robust and secure due to its decentralized nature, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our simulator.                    
                         """)
+            
+
 
         ###################
         st.write("  \n")
         st.write("  \n")
 
 
-        # AVS Restaking Modality
+        # Number of Security Audits
         st.markdown("""
             <style>
             .header-style {
@@ -253,21 +312,19 @@ def main():
             """, unsafe_allow_html=True)
 
         # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS Restaking Modality</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Number of Security Audits Performed</p>', unsafe_allow_html=True)
 
         # Dropdown menu
-        restaking_mods = st.selectbox("", ["LST LP Restaking", "ETH LP Restaking", "LST Restaking", "Native Restaking"])
+        security_audits_input = st.number_input("    ", min_value=0, max_value=5, step=1)
 
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
-                Setting aside Liquid Staking and Superfluid Staking for now, EigenLayer introduces a few **Restaking Modalities** for yield stacking on its platform [(Section 2.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper). 
-
-                - ***LST LP Restaking***, involving staking LP tokens of pairs with liquid staking ETH tokens. High complexity and exposure to DeFi market risks pose **potentially large risks**;
-                - ***ETH LP Restaking***, where validators stake LP tokens including ETH which tie rewards to DeFi market performance, introducing considerable risk due to market volatility;
-                - ***LST Restaking***, involving staking of ETH already restaked via protocols like Lido or Rocket Pool. Adds a layer of complexity and dependence on third-party staking services, presenting moderate risk;
-                - ***Native Restaking***, where validators restake staked ETH directly to EigenLayer. This is the simplest and most direct form of restaking, offering the **lowest risk profile**.
+                Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
+                
+                While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
                         """)
+            
 
         ###################
         st.write("  \n")
@@ -286,50 +343,30 @@ def main():
             """, unsafe_allow_html=True)
 
         # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS Average Operators\' Reputation</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Average Operators\' Reputation</p>', unsafe_allow_html=True)
 
         # Select slider for average operator reputation
-        avs_avg_operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
+        avg_operator_reputation_input = st.selectbox("     ", ["Unknown", "Established", "Renowned"])
 
         # The expander with more information (optional)
         with st.expander("Logic"):
             st.markdown("""
                 Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
                         """)
-        
-
-#########################################
-#########################################
-#########################################
-
-
-    def calculate_operator_attack_risk(total_restaked, tvl):
-        # High risk if either TVL or total restaked is below $50,000
-        if tvl < 100000 or total_restaked < 100000:
-            return 10
-        
-        default_minimum_risk = 9
-
-        ratio = (total_restaked / 2) / tvl
-
-        if ratio > 1.5:
-            return 1  # Significantly greater than TVL, lowest risk
-        elif ratio > 1:
-            return 3  # Greater than TVL, moderate risk
-        elif ratio > 0.5:
-            return 5  # Less than TVL but not by a wide margin, increased risk
-        else:
-            return 7
-
+            
     
-    operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
+    risk_score = weighted_risk_scores(security_audits_input, avg_validator_uptime_input, total_steth_input, number_validators_input, market_share_central_risk_input, barrier_entry_central_risk_input, avg_operator_reputation_input)
+
+        
+
+#########################################
+#########################################
+#########################################
+
 
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-
-    # Calculate risk
-    risk_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
 
     # Determine the color and background color based on the risk score
     if risk_score >= 7.5:
@@ -341,6 +378,7 @@ def main():
     else:
         color = "black"  # Black color for medium risk
         background_color = "#ffffff"  # White background
+
 
     st.markdown(
     f"""
@@ -396,16 +434,16 @@ def main():
 
 
 
-    col11, col12, col13 = st.columns([2,1,2])
+    #col11, col12, col13 = st.columns([2,1,2])
 
-    with col11:
-        st.write("")
+    #with col11:
+    #    st.write("")
 
-    with col12:
-        st.image("images/tokensight.png", width=250)
+    #with col12:
+    #    st.image("images/tokensight.png", width=250)
 
-    with col13:
-        st.write("")
+    #with col13:
+    #    st.write("")
     
     
     image_url = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
