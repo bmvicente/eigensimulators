@@ -63,6 +63,8 @@ def prediction_market_app():
             
             In the case of an **AVS as a source of truth** for a prediction market, the reliability and data processing capabilities of AVS' oracles also affect those odds.
                     Truth in this context is achieved based on the level of the associated risks and the economic security of that AVS, adding a layer of complexity to the odds calculation. 
+
+            Potential returns distribution were also taken into account for every involved party: Winning bettors, EigenDA, Rio Network (LRT issuer), Rollup service, tokensight, Operators, and Restakers.
                             
             *P.S.*: The idea to build this simulator came from David Hoffman's [tweet](https://twitter.com/TrustlessState/status/1746114818845667736).
                         """)
