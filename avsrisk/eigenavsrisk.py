@@ -385,6 +385,23 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+
+    st.write("-----------------------")
+
+    st.write("\n")
+
+    st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
+
+
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
