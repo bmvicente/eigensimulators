@@ -87,7 +87,6 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
-    st.write("\n")
 
     op_stake_on_avs = total_restaked * (perc_stake_avs * 0.01)
 
