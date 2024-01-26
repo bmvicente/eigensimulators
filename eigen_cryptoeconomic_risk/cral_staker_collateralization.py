@@ -328,6 +328,11 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
     col11, col12, col13 = st.columns([2,1,2])
 
