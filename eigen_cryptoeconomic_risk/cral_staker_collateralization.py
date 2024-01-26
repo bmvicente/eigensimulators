@@ -106,8 +106,8 @@ def main():
                 text-align: center;
                 margin: 5px 0;
                 background-color: lightgrey;">
-                <h2 style="color: black; margin:0; font-size: 1.2em;">
-                    <span style="font-weight: bold;">si</span> | Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
+                <h2 style="color: black; margin:0; font-size: 1.1em;">
+                    <span style="font-weight: bold;">si</span>  |  Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -169,19 +169,21 @@ def main():
             stake_required_to_corrupt_avs = profit_from_corruption
 
             st.markdown(
-                    f"""
-                    <div style="
-                        border: 1px solid;
-                        border-radius: 2px;
-                        padding: 5px;
-                        text-align: center;
-                        margin: 5px 0;
-                        background-color: green;">
-                        <h2 style="color: black; margin:0; font-size: 1.1em;<p>α<sub>j</sub></p>">Stake Required to Corrupt AVS (alphaj): <span style="font-size: 1.2em;">{stake_required_to_corrupt_avs:,.0f}</span></h2>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
-                )
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 10px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: green;">
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">
+                        <span style="font-weight: bold;">α<sub>j</sub></span> | Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${stake_required_to_corrupt_avs:,.0f}</span>
+                    </h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
 
 
     st.write("\n")
