@@ -231,7 +231,9 @@ def main():
     col8,col9 = st.columns(2)
 
     with col8:
-        st.image("images/collat_formula.png")
+        desired_width = 400
+        st.image("images/collat_formula.png", width=desired_width)
+
 
     with col9:
         fraction_html = f"""
