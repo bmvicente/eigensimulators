@@ -229,10 +229,10 @@ def main():
 
     col8,col9 = st.columns(2)
 
-    with col9:
+    with col8:
         st.image("images/collat_formula.png")
 
-    with col8:
+    with col9:
         fraction_html = f"""
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">Staker Collateralization Level:</span><br><br>
