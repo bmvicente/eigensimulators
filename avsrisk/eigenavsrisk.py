@@ -54,7 +54,7 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
         max_avs_avg_operator_reputation_score * avs_avg_operator_reputation_weight)
 
     # Normalize the risk score
-    normalized_risk_score = (total_risk_score / max_possible_risk_score) * 10
+    normalized_risk_score = (total_risk_score / max_possible_risk_score) * 100
     normalized_risk_score = round(normalized_risk_score, 2)
 
     return normalized_risk_score
@@ -562,7 +562,7 @@ def main():
         text-align: center;
         margin: 10px 0;
         background-color: {background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.5em;">Normalized AVS Risk Score: <span style="font-size: 1.7em; color: {color};">{risk_score:.2f}</span></h2>
+        <h2 style="color: black; margin:0; font-size: 1.5em;">Normalized AVS Risk Score: <span style="font-size: 1.7em; color: {color};">{risk_score:.0f}</span></h2>
     </div>
     """, 
     unsafe_allow_html=True
