@@ -102,14 +102,22 @@ def main():
         with col3:
                 # Manual input for AVS TVL
                 tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
+                st.write(f"&#8226; AVS TVL: ${tvl:,.0f}")
+
+                tvl_total_restaked_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5,help="1 == Unlikely | 10 == Very Likely")
 
         with col4:
                 # Manual input for Total Restaked on AVS
                 total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
+                st.write(f"&#8226; AVS TVL: ${total_restaked:,.0f}")
+
+                tvl_total_restaked_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5, help="1 == Unimpactful | 10 == Very Impactful")
 
         # Convert input strings to float for calculation
         tvl = float(tvl) if tvl else 0
         total_restaked = float(total_restaked) if total_restaked else 0
+
+
 
             # The expander without a visible outline
         with st.expander("Logic"):
@@ -374,7 +382,6 @@ def main():
             """)
 
 
-    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
