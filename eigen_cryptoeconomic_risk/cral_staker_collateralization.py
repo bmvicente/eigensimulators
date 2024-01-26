@@ -281,6 +281,7 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
 
     st.write(f"""
             **Suggestions on How to Fix *Undercollateralization*:**
