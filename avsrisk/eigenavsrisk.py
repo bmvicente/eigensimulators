@@ -562,7 +562,7 @@ def main():
         text-align: center;
         margin: 10px 0;
         background-color: {background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.8em;">Normalized AVS Risk Score: <span style="font-size: 2em; color: {color};">{risk_score:.2f}</span></h2>
+        <h2 style="color: black; margin:0; font-size: 1.5em;">Normalized AVS Risk Score: <span style="font-size: 1.7em; color: {color};">{risk_score:.2f}</span></h2>
     </div>
     """, 
     unsafe_allow_html=True
