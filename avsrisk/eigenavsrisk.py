@@ -74,7 +74,6 @@ def main():
         st.markdown(f"""Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
                     This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security. 
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
-                    
                     We begin by assuming that the 3 AVS in this Simulator have an equal Total Restaked Amount distributed between them, therefore 33%.
                         """)
     
@@ -144,8 +143,11 @@ def main():
 
         # The expander without a visible outline
         with st.expander("Logic"):
-                st.markdown("""
+                st.markdown("""                        
                     The **TVL/Total Restaked** risk logic herein is set so that the greater the *(AVS Total Restaked/2) : AVS TVL* ratio, the safer the AVS is, and vice-versa.
+                            
+                    Based on the values inputted, the Minimum TVL to keep the AVS secure should be \\\\${min_tvl:,} and the Sufficiently-High TVL value to assure a comfortable security level for the AVS should be at least \\\\${avs_total_staked:,}. Current TVL equals \\\\${avs_tvl:,}.
+                    If the TVL increases compared to the Total Staked, the risk gets reduced and the rewards too, therefore.
                     
                     To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) to begin with: an AVS appears to be most secure when the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, as any successful attack would result in at least half of the attacker's stake being slashed. If *AVS Total Restaked* increases from there compared to the *AVS TVL*, the risk gets reduced even further. If both variables are under $100K, we consider it the maximum risk scenario.
 
@@ -485,7 +487,7 @@ def main():
 
     final_result = result1 + result2 + result3 + result4 + result5 + result6
     
-    st.markdown(f"<div style='text-align: center; font-size: 22px; font-weight: bold;'>Non-Normalized AVS Risk Score</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized AVS Risk Score</div>", unsafe_allow_html=True)
     final_result_html = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1}</span> 
