@@ -69,7 +69,6 @@ def main():
     st.image("images/eigenimage.png")
 
     st.title("AVS Risk Simulator")
-    st.write("  \n")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
@@ -79,6 +78,7 @@ def main():
                     We begin by assuming that the 3 AVS in this Simulator have an equal Total Restaked Amount distributed between them, therefore 33%.
                         """)
     
+    st.write("  \n")
     st.write("  \n")
 
     # Creating two major columns
