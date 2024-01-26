@@ -127,7 +127,7 @@ def main():
                         padding: 5px;
                         text-align: center;
                         margin: 5px 0;">
-                        <h2 style="color: black; margin:0; font-size: 1.1em;">Cost of Corruption (CoC): <span style="font-size: 1.2em;">${cost_of_corruption:,.0f}</span></h2>
+                        <h2 style="color: black; margin:0; font-size: 1.1em;">Cost of Corruption: <span style="font-size: 1.2em;">${cost_of_corruption:,.0f}</span></h2>
                     </div>
                     """, 
                     unsafe_allow_html=True
