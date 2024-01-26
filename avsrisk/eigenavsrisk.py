@@ -481,8 +481,6 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
 
 
     final_result = result1 + result2 + result3 + result4 + result5 + result6
