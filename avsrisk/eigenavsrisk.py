@@ -485,22 +485,22 @@ def main():
 
     final_result = result1 + result2 + result3 + result4 + result5 + result6
     
-    st.markdown(f"<div style='text-align: center; font-size: 24px; font-weight: bold;'>Non-Normalized AVS Risk Score</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align: center; font-size: 22px; font-weight: bold;'>Non-Normalized AVS Risk Score</div>", unsafe_allow_html=True)
     final_result_html = f"""
             <div style="text-align: center;">
-                <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result1}</span> 
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> + </span>
-                <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result2}</span>
-                <span style="font-size: 24px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2}</span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result3}</span>
-                <span style="font-size: 24px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result4}</span>
-                <span style="font-size: 24px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result5}</span>
-                <span style="font-size: 24px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result6}</span>
-                <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 28px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
+                <span style="font-size: 22px; font-weight: bold;"> = </span>
+                <span style="font-size: 25px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
             </div>
         """
 
@@ -562,7 +562,7 @@ def main():
         text-align: center;
         margin: 10px 0;
         background-color: {background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.5em;">Normalized AVS Risk Score: <span style="font-size: 1.2em; color: {color};">{risk_score:.2f}</span></h2>
+        <h2 style="color: black; margin:0; font-size: 1.8em;">Normalized AVS Risk Score: <span style="font-size: 2em; color: {color};">{risk_score:.2f}</span></h2>
     </div>
     """, 
     unsafe_allow_html=True
