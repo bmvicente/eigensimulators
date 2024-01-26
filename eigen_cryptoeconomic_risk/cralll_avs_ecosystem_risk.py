@@ -128,8 +128,6 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
 
     col50, col51, col52 = st.columns([4,2,4])
 
