@@ -227,7 +227,7 @@ def main():
         collat_status = "The Staker Collateralization equals $0."
         result_color = "black"
 
-    col8,col9 = st.columns(2):
+    col8,col9 = st.columns(2)
 
     with col8:
         fraction_html = f"""

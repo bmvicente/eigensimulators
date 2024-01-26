@@ -134,7 +134,7 @@ def main():
     potential_total_slashing3 = calculate_slashing(st.session_state.total_restaked, st.session_state.risk_score3)
     
 
-    #st.image("images/eigenimage.png")
+    st.image("images/eigenimage.png")
 
     st.title("Cryptoeconomic Risk Analysis II")
     st.subheader("**Staker Potential Slashing Event Simulator**")
