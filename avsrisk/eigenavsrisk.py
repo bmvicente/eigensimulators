@@ -126,7 +126,9 @@ def main():
                 st.write(f"&#8226; AVS Total Restaked: ${total_restaked:,.0f}")
                 st.write("\n")
                 st.write("\n")
-
+                st.write("\n")
+                st.write("\n")
+                
                 tvl_total_restaked_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5, 
                                                       help="1 == Unimpactful | 10 == Very Impactful")
 
