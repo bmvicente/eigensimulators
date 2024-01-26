@@ -474,7 +474,13 @@ def main():
 
         st.markdown(avs_avg_operator_reputation_calc, unsafe_allow_html=True)
         
-        # Assuming result1, result2, ..., result6 are defined elsewhere in your code
+
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+
     final_result = result1 + result2 + result3 + result4 + result5 + result6
 
     final_result_html = f"""
@@ -497,6 +503,8 @@ def main():
 
     st.markdown(final_result_html, unsafe_allow_html=True)
 
+    st.write("  \n")
+    st.write("  \n")
 
 #########################################
 #########################################
