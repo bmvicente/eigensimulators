@@ -115,20 +115,20 @@ def main():
 
                 st.write("\n")
 
-                st.write("**WEIGHT**")
+                st.write("**PARAMETER WEIGHTING**", help="Accounts for Likelihood of the parameter imposing a risk and the Impact that risk would have in the ecosystem.")
+
                 tvl_total_restaked_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5,
-                                                          help="1 == Unlikely | 10 == Very Likely for Likelihood of the parameter imposing a ")
+                                                          help="1 == Unlikely | 10 == Very Likely")
 
         with col4:
                 # Manual input for Total Restaked on AVS
                 total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
                 st.write(f"&#8226; AVS Total Restaked: ${total_restaked:,.0f}")
+                st.write("\n")
+                st.write("\n")
 
                 tvl_total_restaked_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5, 
-                                                      help=f"""
-                                                      Accounts for the Impact the risk would have to the AVS.
-                                                      
-                                                      1 == Unimpactful | 10 == Very Impactful""")
+                                                      help="1 == Unimpactful | 10 == Very Impactful")
 
         # Convert input strings to float for calculation
         tvl = float(tvl) if tvl else 0
