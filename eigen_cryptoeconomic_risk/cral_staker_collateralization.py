@@ -107,7 +107,7 @@ def main():
                 margin: 5px 0;
                 background-color: lightgrey;">
                 <h2 style="color: black; margin:0; font-size: 1.2em;">
-                    Operator Stake: <p><b>si</b></p><span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
+                    <span style="font-weight: bold;">si</span> | Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
                 </h2>
             </div>
             """, 
