@@ -12,12 +12,11 @@ def main():
     
     st.write("  \n")
     st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
     st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
     
-    st.write("  \n")
-    st.write("  \n")
-
     st.write(f"""Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
              This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security. 
              A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
@@ -123,7 +122,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    
+
     col50, col51, col52 = st.columns([2,1,2])
 
     with col50:
