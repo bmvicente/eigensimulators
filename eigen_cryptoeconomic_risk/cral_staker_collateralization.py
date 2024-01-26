@@ -100,9 +100,9 @@ def main():
         st.markdown(
             f"""
             <div style="
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                padding: 10px;
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
                 text-align: center;
                 margin: 5px 0;
                 background-color: lightgrey;">
@@ -160,11 +160,13 @@ def main():
                     text-align: center;
                     margin: 5px 0;
                     background-color: lightblue;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">Fraction of AVS Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">{op_stake_on_avs:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">
+                        <span style="font-weight: bold; font-size: 1.2em;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span> &nbsp; | Fraction of AVS Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">{op_stake_on_avs:,.0f}</span></h2>
+                    </h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
-                )
+            )
 
             stake_required_to_corrupt_avs = profit_from_corruption
 
@@ -172,8 +174,8 @@ def main():
                 f"""
                 <div style="
                     border: 1px solid;
-                    border-radius: 10px;
-                    padding: 10px;
+                    border-radius: 2px;
+                    padding: 5px;
                     text-align: center;
                     margin: 5px 0;
                     background-color: green;">
