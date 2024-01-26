@@ -543,10 +543,10 @@ def main():
     risk_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
 
     # Determine the color and background color based on the risk score
-    if risk_score >= 7.5:
+    if risk_score >= 75:
         color = "#d32f2f"  # Red color for high risk
         background_color = "#fde0dc"  # Light red background
-    elif risk_score <= 2.5:
+    elif risk_score <= 25:
         color = "#388e3c"  # Green color for low risk
         background_color = "#ebf5eb"  # Light green background
     else:
