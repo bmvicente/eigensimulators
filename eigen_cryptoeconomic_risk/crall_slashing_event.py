@@ -987,26 +987,32 @@ def main():
     st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
 
 
-    #col11, col12, col13 = st.columns([2,1,2])
+    col30, col31, col32 = st.columns([2,1,2])
 
-    #with col11:
-    #    st.write("")
+    with col30:
+        st.write("")
 
-    #with col12:
-    #    #st.image("images/tokensight.png", width=250)
+    with col31:
+        st.image("images/tokensight.png", width=250)
 
-    #with col13:
-    #    st.write("")
+    with col32:
+        st.write("")
     
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
     
-    #image_url = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
-    #link = 'https://twitter.com/tokensightxyz'
-    #markdown = f"""
-    #<a href="{link}" target="_blank">
-    #    <img src="{image_url}" alt="Alt Text" style="display:block; margin-left: auto; margin-right: auto; width: 4%;">
-    #</a>
-    #"""    
-    #st.markdown(markdown, unsafe_allow_html=True)
+    image_url = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
+    link = 'https://twitter.com/tokensightxyz'
+    markdown = f"""
+    <a href="{link}" target="_blank">
+        <img src="{image_url}" alt="Alt Text" style="display:block; margin-left: auto; margin-right: auto; width: 4%;">
+    </a>
+    """    
+    st.markdown(markdown, unsafe_allow_html=True)
+
 
 
 if __name__ == "__main__":
