@@ -615,7 +615,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown(f"""
-                    &#8226; AVS 1 TVL: {formatted_tvl1}""")
+                    """)
             
         
         st.write("\n")
@@ -754,7 +754,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown(f"""
-                    &#8226; AVS 2 TVL: {formatted_tvl2}""")
+                   """)
 
         st.write("\n")
         st.write(f"""&#8226; **"Byzantine Slashing Tolerance" Test**: AVS 2 Max "Allowed" Slashes vs Max Potential Operator Slashes""")
@@ -890,7 +890,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown(f"""
-                    &#8226; AVS 3 TVL: {formatted_tvl3}""")
+                    """)
             
 
         st.write("\n")
