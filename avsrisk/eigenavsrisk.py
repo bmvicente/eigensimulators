@@ -173,6 +173,7 @@ def main():
         ###################        
         st.write("  \n")
         st.write("  \n")
+        st.write("  \n")
 
 
         # AVS Business Model
@@ -222,6 +223,7 @@ def main():
             """)
         
         ###################
+        st.write("  \n")
         st.write("  \n")
         st.write("  \n")
 
@@ -314,6 +316,7 @@ def main():
         ###################
         st.write("  \n")
         st.write("  \n")
+        st.write("  \n")
 
 
         # AVS Restaking Modality
@@ -359,6 +362,7 @@ def main():
                         """)
 
         ###################
+        st.write("  \n")
         st.write("  \n")
         st.write("  \n")
 
