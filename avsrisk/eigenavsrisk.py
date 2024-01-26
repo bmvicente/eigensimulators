@@ -141,6 +141,17 @@ def main():
         tvl = float(tvl) if tvl else 0
         total_restaked = float(total_restaked) if total_restaked else 0
 
+        st.markdown=("""
+            <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: grey; border-radius: 10px; padding: 5px; margin: 2px;">x</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">y</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">z</span>
+                <span style="font-size: 24px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; color: {result_color}; border-radius: 10px; padding: 5px; margin: 2px;">Result</span>
+            </div>
+        """)
 
 
             # The expander without a visible outline
