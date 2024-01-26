@@ -144,7 +144,7 @@ def main():
                         margin: 5px 0;
                         background-color: lightgreen;">
                         <h2 style="color: black; margin:0; font-size: 1.1em;">
-                                <span style="font-weight: bold; font-size: 1.2em;">p<sub style="font-size: 0.8em;">j/sub></span> &nbsp; | &nbsp; Profit from Corruption: <span style="font-size: 1.2em;">${profit_from_corruption:,.0f}</span></h2>
+                                <span style="font-weight: bold; font-size: 1.2em;">p<sub style="font-size: 0.8em;">j</span> &nbsp; | &nbsp; Profit from Corruption: <span style="font-size: 1.2em;">${profit_from_corruption:,.0f}</span></h2>
                         </h2>
                     </div>
                     """, 
