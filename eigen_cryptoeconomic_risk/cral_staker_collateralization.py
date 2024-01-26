@@ -235,6 +235,10 @@ def main():
         collat_status = "The Staker Collateralization equals $0."
         result_color = "black"
 
+    st.write("  \n")
+    st.write("  \n")
+
+
     col8,col9 = st.columns(2)
 
     with col8:
