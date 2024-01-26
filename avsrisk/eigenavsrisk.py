@@ -489,19 +489,19 @@ def main():
     st.write("  \n")
     final_result_html = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1}</span> 
+                <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result1}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2}</span>
+                <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result2}</span>
                 <span style="font-size: 24px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result3}</span>
+                <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result3}</span>
                 <span style="font-size: 24px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result4}</span>
+                <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result4}</span>
                 <span style="font-size: 24px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5}</span>
+                <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result5}</span>
                 <span style="font-size: 24px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result6}</span>
+                <span style="font-size: 24px; font-weight: bold; padding: 5px; margin: 2px;">{result6}</span>
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
+                <span style="font-size: 28px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
             </div>
         """
 
