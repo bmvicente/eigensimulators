@@ -107,7 +107,7 @@ def main():
                 margin: 5px 0;
                 background-color: lightgrey;">
                 <h2 style="color: black; margin:0; font-size: 1.1em;">
-                    <span style="font-weight: bold; font-size: 1.2em;">s<sub style="font-size: 0.8em;">i</sub></span> &nbsp; |  Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
+                    <span style="font-weight: bold; font-size: 1.2em;">s<sub style="font-size: 0.8em;">i</sub></span> &nbsp; | &nbsp; Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -127,7 +127,7 @@ def main():
                         padding: 5px;
                         text-align: center;
                         margin: 5px 0;">
-                        <h2 style="color: black; margin:0; font-size: 1.1em;">Cost of Corruption (CoC): <span style="font-size: 1.2em;">{cost_of_corruption:,.0f}</span></h2>
+                        <h2 style="color: black; margin:0; font-size: 1.1em;">Cost of Corruption (CoC): <span style="font-size: 1.2em;">${cost_of_corruption:,.0f}</span></h2>
                     </div>
                     """, 
                     unsafe_allow_html=True
@@ -143,7 +143,9 @@ def main():
                         text-align: center;
                         margin: 5px 0;
                         background-color: lightgreen;">
-                        <h2 style="color: black; margin:0; font-size: 1.1em;">Profit from Corruption (pj): <span style="font-size: 1.2em;">{profit_from_corruption:,.0f}</span></h2>
+                        <h2 style="color: black; margin:0; font-size: 1.1em;">Profit from Corruption (pj): <span style="font-size: 1.2em;">${profit_from_corruption:,.0f}</span>
+                                <span style="font-weight: bold; font-size: 1.2em;">p<sub style="font-size: 0.8em;">j/sub></span> &nbsp; | &nbsp; Fraction of AVS Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">${op_stake_on_avs:,.0f}</span></h2>
+                        </h2>
                     </div>
                     """, 
                     unsafe_allow_html=True
@@ -161,7 +163,7 @@ def main():
                     margin: 5px 0;
                     background-color: lightblue;">
                     <h2 style="color: black; margin:0; font-size: 1.1em;">
-                        <span style="font-weight: bold; font-size: 1.2em;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span> &nbsp; | Fraction of AVS Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">{op_stake_on_avs:,.0f}</span></h2>
+                        <span style="font-weight: bold; font-size: 1.2em;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span> &nbsp; | &nbsp; Fraction of AVS Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">${op_stake_on_avs:,.0f}</span></h2>
                     </h2>
                 </div>
                 """, 
@@ -180,7 +182,7 @@ def main():
                     margin: 5px 0;
                     background-color: green;">
                     <h2 style="color: black; margin:0; font-size: 1.1em;">
-                        <span style="font-weight: bold; font-size: 1.2em;">α<sub style="font-size: 0.8em;">j</sub></span> &nbsp; |  Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${stake_required_to_corrupt_avs:,.0f}</span>
+                        <span style="font-weight: bold; font-size: 1.2em;">α<sub style="font-size: 0.8em;">j</sub></span> &nbsp; | &nbsp; Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${stake_required_to_corrupt_avs:,.0f}</span>
                     </h2>
                 </div>
                 """, 
