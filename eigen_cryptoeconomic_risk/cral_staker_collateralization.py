@@ -106,6 +106,8 @@ def main():
                 text-align: center;
                 margin: 5px 0;
                 background-color: lightgrey;">
+                <p><b>si</b> - Represents the stake of the i-th validator</p>
+                <p>α<sub>i</sub> - Represents the risk adjusted return for the i-th validator</p>
                 <h2 style="color: black; margin:0; font-size: 1.2em;">
                     Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
                 </h2>
@@ -233,7 +235,7 @@ def main():
 
     with col8:
         desired_width = 650
-        desired_width1 = 825
+        desired_width1 = 800
         st.image("images/collat_formula1.png", width=desired_width)
         st.image("images/collat_formula.png", width=desired_width1)
         st.write("\n")
