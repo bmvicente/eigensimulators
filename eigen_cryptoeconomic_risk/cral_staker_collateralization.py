@@ -187,6 +187,7 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
 
 
     # Initialize calculation_result at the start
@@ -255,6 +256,7 @@ def main():
         st.markdown(fraction_html, unsafe_allow_html=True)
 
 
+    st.write("\n")
     st.write("\n")
     st.write("\n")
 
