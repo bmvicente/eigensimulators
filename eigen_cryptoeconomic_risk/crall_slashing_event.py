@@ -219,10 +219,11 @@ def main():
             # Format the operator_stake value as currency with a dollar sign and commas
             formatted_operator_stake = "${:,.0f}".format(operator_stake)
 
+            st.write(f"""&#8226; Operator Stake: {formatted_operator_stake}""")
 
             with st.expander("Logic"):
                 st.markdown(f"""
-                    &#8226; Operator Stake: {formatted_operator_stake}""")
+                    """)
 
         with col36:
 
@@ -555,10 +556,12 @@ def main():
 
         st.session_state.total_restaked = create_total_restaked_input()
         formatted_value = "${:,.0f}".format(st.session_state.total_restaked)
+        
+        st.write(f"""&#8226; Total Restaked: {formatted_value}""")
 
         with st.expander("Logic"):
             st.markdown(f"""
-                &#8226; Total Restaked: {formatted_value}""")
+                """)
             
         st.write("\n")
         st.write("\n")
@@ -587,6 +590,7 @@ def main():
                                               help=f"""TVL was included to establish the CoC vs PfC threshold and calculate the "allowed" slashes to maintain AVS security.""")
 
                 formatted_tvl1 = "${:,.0f}".format(tvl1)
+                st.write(f"""&#8226; AVS TVL: {formatted_tvl1}""")
 
 
         max_eth_loss_allowed1 = total_restaked - 2*tvl1
@@ -726,6 +730,7 @@ def main():
                 tvl2 = st.number_input("**AVS TVL** ", min_value=0, max_value=10000000000000, value=0, step=10000000)
 
                 formatted_tvl2 = "${:,.0f}".format(tvl2)
+                st.write(f"""&#8226; AVS TVL: {formatted_tvl2}""")
 
         max_eth_loss_allowed2 = total_restaked - 2*tvl2
         int_eth_loss_allowed2 = total_restaked - 3*tvl2
@@ -824,7 +829,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
-        
+
 
 
 
@@ -862,6 +867,7 @@ def main():
         with col14:
                 tvl3 = st.number_input("**AVS TVL**", min_value=0, max_value=1000000000000, value=0, step=10000000)
                 formatted_tvl3 = "${:,.0f}".format(tvl3)
+                st.write(f"""&#8226; AVS TVL: {formatted_tvl3}""")
 
         max_eth_loss_allowed3 = total_restaked - 2*tvl3
         int_eth_loss_allowed3 = total_restaked - 3*tvl3
