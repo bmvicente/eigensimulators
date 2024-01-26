@@ -563,26 +563,13 @@ def main():
 
 
 
+
+
         #############################################
         ################### AVS 1 ###################
         #############################################
         
 
-        st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                .stExpander {
-                    border: none !important;
-                    box-shadow: none !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
-            # Displaying the custom styled header
         st.markdown('<p class="header-style">AVS 1</p>', unsafe_allow_html=True)
 
         st.write("  \n")
