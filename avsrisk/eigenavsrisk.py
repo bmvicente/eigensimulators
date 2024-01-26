@@ -316,12 +316,8 @@ def main():
             </style>
             """, unsafe_allow_html=True)
 
-        # Displaying the custom styled header
         st.markdown('<p class="header-style">AVS Type</p>', unsafe_allow_html=True)
 
-        st.write("  \n")
-
-        # Dropdown menu
         avs_type = st.selectbox("", ["Lightweight", "Hyperscale"])
         
         st.write("  \n")
@@ -334,7 +330,6 @@ def main():
         with col35:
             avs_type_impact = st.slider("**Impact**   ", min_value=1, max_value=10, value=5)
 
-        # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
                 In designing modules for maximal security and minimal centralization risk, EigenLayer suggests two approaches: **Hyperscale and Lightweight AVS** [(Section 3.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper).
@@ -381,10 +376,8 @@ def main():
             </style>
             """, unsafe_allow_html=True)
 
-        # Displaying the custom styled header
         st.markdown('<p class="header-style">AVS Restaking Modality</p>', unsafe_allow_html=True)
 
-        # Dropdown menu
         restaking_mods = st.selectbox("", ["LST LP Restaking", "ETH LP Restaking", "LST Restaking", "Native Restaking"])
 
         st.write("  \n")
@@ -397,7 +390,6 @@ def main():
         with col37:
             restaking_mods_impact = st.slider("**Impact**    ", min_value=1, max_value=10, value=5)
 
-        # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
                 Setting aside Liquid Staking and Superfluid Staking for now, EigenLayer introduces a few **Restaking Modalities** for yield stacking on its platform [(Section 2.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper). 
@@ -439,10 +431,8 @@ def main():
             </style>
             """, unsafe_allow_html=True)
 
-        # Displaying the custom styled header
         st.markdown('<p class="header-style">AVS Average Operators\' Reputation</p>', unsafe_allow_html=True)
 
-        # Select slider for average operator reputation
         avs_avg_operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
 
         st.write("  \n")
@@ -455,7 +445,6 @@ def main():
         with col39:
             avs_avg_operator_reputation_impact = st.slider("**Impact**     ", min_value=1, max_value=10, value=5)
 
-        # The expander with more information (optional)
         with st.expander("Logic"):
             st.markdown("""
                 Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
