@@ -120,17 +120,21 @@ def main():
         
         st.write("  \n")
 
-        st.write(
-            "**PARAMETER WEIGHTING** <span title='Accounts for Likelihood of the parameter imposing a risk and the Impact that risk would have in the ecosystem.'>[?]</span>",
-            unsafe_allow_html=True)
+        st.write("**PARAMETER WEIGHTING**")
         
         col20,col21 = st.columns([3, 3])
         with col20:
             tvl_total_restaked_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5,
-                                                          help="1 == Unlikely | 10 == Very Likely")
+                                                          help=f"""
+                                                          Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
+
+                                                          1 == Unlikely | 10 == Very Likely""")
         with col21:
             tvl_total_restaked_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5, 
-                                                      help="1 == Unimpactful | 10 == Very Impactful")
+                                                      help=f"""
+                                                      Assesses the impact that risk would have on the security of the AVS.
+
+                                                      1 == Unimpactful | 10 == Very Impactful""")
 
 
         # Convert input strings to float for calculation
