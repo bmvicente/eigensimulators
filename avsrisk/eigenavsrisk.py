@@ -118,8 +118,12 @@ def main():
                 total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
                 st.write(f"&#8226; AVS Total Restaked: ${total_restaked:,.0f}")
         
-        st.write("**PARAMETER WEIGHTING**", help="Accounts for Likelihood of the parameter imposing a risk and the Impact that risk would have in the ecosystem.")
+        st.write("  \n")
 
+        st.write(
+            "**PARAMETER WEIGHTING** <span title='Accounts for Likelihood of the parameter imposing a risk and the Impact that risk would have in the ecosystem.'>[?]</span>",
+            unsafe_allow_html=True)
+        
         col20,col21 = st.columns([3, 3])
         with col20:
             tvl_total_restaked_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5,
