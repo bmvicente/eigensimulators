@@ -158,17 +158,17 @@ def main():
         result = tvl_total_restaked_likelihood * tvl_total_restaked_impact
 
         # Display the result with formatting
-        this_html = f"""
+        tvl_total_restaked_calc = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: grey; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_likelihood}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lighblue; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_impact}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
             </div>
         """
 
-        st.markdown(this_html, unsafe_allow_html=True)
+        st.markdown(tvl_total_restaked_calc, unsafe_allow_html=True)
 
 
         ###################        
@@ -222,6 +222,19 @@ def main():
 
                 Thus, the risk of each model is influenced by its reliance on the AVS's native token and the complexities of its fee and security structures.
             """)
+
+            # Display the result with formatting
+        business_model_calc = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: lighblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                <span style="font-size: 24px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+            </div>
+        """
+
+        st.markdown(business_model_calc, unsafe_allow_html=True)
         
         ###################
         st.write("  \n")
@@ -267,6 +280,19 @@ def main():
                 
                 While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
                         """)
+            
+        security_audits_calc = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: lighblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_likelihood}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
+                <span style="font-size: 24px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+            </div>
+        """
+
+        st.markdown(security_audits_calc, unsafe_allow_html=True)
+
 
     with col2:
         # AVS Type
@@ -313,6 +339,18 @@ def main():
 
                 While it does depend on the needs of an AVS, the Hyperscale-type is more robust and secure due to its decentralized nature, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our simulator.                    
                         """)
+        
+        avs_type_calc = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: lighblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_likelihood}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_impact}</span> 
+                <span style="font-size: 24px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+            </div>
+        """
+
+        st.markdown(avs_type_calc, unsafe_allow_html=True)
 
 
         st.write("  \n")
@@ -361,8 +399,20 @@ def main():
                 - ***LST Restaking***, involving staking of ETH already restaked via protocols like Lido or Rocket Pool. Adds a layer of complexity and dependence on third-party staking services, presenting moderate risk;
                 - ***Native Restaking***, where validators restake staked ETH directly to EigenLayer. This is the simplest and most direct form of restaking, offering the **lowest risk profile**.
                         """)
+            
+        restaking_mod_calc = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: lighblue; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_likelihood}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_impact}</span> 
+                <span style="font-size: 24px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+            </div>
+            """
 
-        ###################
+        st.markdown(restaking_mod_calc, unsafe_allow_html=True)
+
+
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
@@ -400,6 +450,18 @@ def main():
             st.markdown("""
                 Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
                         """)
+            
+        avs_avg_operator_reputation_calc = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: lighblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
+                <span style="font-size: 24px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+            </div>
+            """
+
+        st.markdown(avs_avg_operator_reputation_calc, unsafe_allow_html=True)
         
 
 #########################################
