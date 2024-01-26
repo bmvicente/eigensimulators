@@ -181,8 +181,13 @@ def main():
         # Dropdown menu
         business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"])
 
-        business_model_likelihood = st.slider("**Likelihood** ", min_value=1, max_value=10, value=5)
-        business_model_impact = st.slider("**Impact** ", min_value=1, max_value=10, value=5)
+        col30,col31 = st.columns(2)
+
+        with col30:
+            business_model_likelihood = st.slider("**Likelihood** ", min_value=1, max_value=10, value=5)
+        
+        with col31:
+            business_model_impact = st.slider("**Impact** ", min_value=1, max_value=10, value=5)
 
         # The expander without a visible outline
         with st.expander("Logic"):
@@ -223,8 +228,11 @@ def main():
         # Dropdown menu
         security_audits = st.number_input("", min_value=0, max_value=5, step=1)
 
-        security_audits_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=5)
-        security_audits_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=5)
+        col32,col33 = st.columns(2)
+        with col32:
+            security_audits_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=5)
+        with col33:
+            security_audits_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=5)
 
         # The expander without a visible outline
         with st.expander("Logic"):
@@ -257,8 +265,12 @@ def main():
 
         # Dropdown menu
         avs_type = st.selectbox("", ["Lightweight", "Hyperscale"])
-        avs_type_likelihood = st.slider("**Likelihood**   ", min_value=1, max_value=10, value=5)
-        avs_type_impact = st.slider("**Impact**   ", min_value=1, max_value=10, value=5)
+
+        col34,col35 = st.columns(2)
+        with col34:
+            avs_type_likelihood = st.slider("**Likelihood**   ", min_value=1, max_value=10, value=5)
+        with col35:
+            avs_type_impact = st.slider("**Impact**   ", min_value=1, max_value=10, value=5)
 
         # The expander without a visible outline
         with st.expander("Logic"):
@@ -298,8 +310,11 @@ def main():
         # Dropdown menu
         restaking_mods = st.selectbox("", ["LST LP Restaking", "ETH LP Restaking", "LST Restaking", "Native Restaking"])
 
-        restaking_mods_likelihood = st.slider("**Likelihood**    ", min_value=1, max_value=10, value=5)
-        restaking_mods_impact = st.slider("**Impact**    ", min_value=1, max_value=10, value=5)
+        col36,col37 = st.columns(2)
+        with col36:
+            restaking_mods_likelihood = st.slider("**Likelihood**    ", min_value=1, max_value=10, value=5)
+        with col37:
+            restaking_mods_impact = st.slider("**Impact**    ", min_value=1, max_value=10, value=5)
 
         # The expander without a visible outline
         with st.expander("Logic"):
@@ -333,8 +348,12 @@ def main():
 
         # Select slider for average operator reputation
         avs_avg_operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
-        avs_avg_operator_reputation_likelihood = st.slider("**Likelihood**     ", min_value=1, max_value=10, value=5)
-        avs_avg_operator_reputation_impact = st.slider("**Impact**     ", min_value=1, max_value=10, value=5)
+
+        col38,col39 = st.columns(2)
+        with col38:
+            avs_avg_operator_reputation_likelihood = st.slider("**Likelihood**     ", min_value=1, max_value=10, value=5)
+        with col39:
+            avs_avg_operator_reputation_impact = st.slider("**Impact**     ", min_value=1, max_value=10, value=5)
 
         # The expander with more information (optional)
         with st.expander("Logic"):
