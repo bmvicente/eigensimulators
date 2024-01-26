@@ -113,14 +113,22 @@ def main():
                 tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
                 st.write(f"&#8226; AVS TVL: ${tvl:,.0f}")
 
-                tvl_total_restaked_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5,help="1 == Unlikely | 10 == Very Likely")
+                st.write("\n")
+
+                st.write("**WEIGHT**")
+                tvl_total_restaked_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5,
+                                                          help="1 == Unlikely | 10 == Very Likely for Likelihood of the parameter imposing a ")
 
         with col4:
                 # Manual input for Total Restaked on AVS
                 total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
-                st.write(f"&#8226; AVS TVL: ${total_restaked:,.0f}")
+                st.write(f"&#8226; AVS Total Restaked: ${total_restaked:,.0f}")
 
-                tvl_total_restaked_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5, help="1 == Unimpactful | 10 == Very Impactful")
+                tvl_total_restaked_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5, 
+                                                      help=f"""
+                                                      Accounts for the Impact the risk would have to the AVS.
+                                                      
+                                                      1 == Unimpactful | 10 == Very Impactful""")
 
         # Convert input strings to float for calculation
         tvl = float(tvl) if tvl else 0
@@ -166,6 +174,9 @@ def main():
         # Dropdown menu
         business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"])
 
+        business_model_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5)
+        business_model_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5)
+
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
@@ -205,6 +216,9 @@ def main():
         # Dropdown menu
         security_audits = st.number_input("", min_value=0, max_value=5, step=1)
 
+        security_audits_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5)
+        security_audits_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5)
+
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
@@ -236,6 +250,8 @@ def main():
 
         # Dropdown menu
         avs_type = st.selectbox("", ["Lightweight", "Hyperscale"])
+        avs_type_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5)
+        avs_type_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5)
 
         # The expander without a visible outline
         with st.expander("Logic"):
@@ -275,6 +291,9 @@ def main():
         # Dropdown menu
         restaking_mods = st.selectbox("", ["LST LP Restaking", "ETH LP Restaking", "LST Restaking", "Native Restaking"])
 
+        restaking_mods_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5)
+        restaking_mods_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5)
+
         # The expander without a visible outline
         with st.expander("Logic"):
             st.markdown("""
@@ -307,6 +326,8 @@ def main():
 
         # Select slider for average operator reputation
         avs_avg_operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
+        avs_avg_operator_reputation_likelihood = st.slider("**Likelihood**", min_value=1, max_value=10, value=5)
+        avs_avg_operator_reputation_impact = st.slider("**Impact**", min_value=1, max_value=10, value=5)
 
         # The expander with more information (optional)
         with st.expander("Logic"):
