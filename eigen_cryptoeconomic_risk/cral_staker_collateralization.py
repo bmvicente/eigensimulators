@@ -235,6 +235,9 @@ def main():
         desired_width1 = 850
         st.image("images/collat_formula1.png", width=desired_width)
         st.image("images/collat_formula.png", width=desired_width1)
+        st.write("\n")
+        st.write("**Note**: detailed explanation of variables and formula rationale can be found at Appendix B.1 of EigenLayer's whitepaper.")
+
 
 
     with col9:
