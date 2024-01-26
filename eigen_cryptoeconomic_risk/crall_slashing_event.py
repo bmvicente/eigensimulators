@@ -241,6 +241,7 @@ def main():
 
         st.write("\n")
         st.write("\n")
+        st.write("\n")
 
         st.markdown("""
             <style>
@@ -563,6 +564,7 @@ def main():
             st.markdown(f"""
                 """)
             
+        st.write("\n")
         st.write("\n")
         st.write("\n")
         st.write("\n")
