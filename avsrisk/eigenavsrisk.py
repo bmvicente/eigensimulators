@@ -141,15 +141,19 @@ def main():
         tvl = float(tvl) if tvl else 0
         total_restaked = float(total_restaked) if total_restaked else 0
 
-        st.markdown=("""
+        # Perform the multiplication and calculate the result
+        result = tvl_total_restaked_likelihood * tvl_total_restaked_impact
+
+        # Display the result with formatting
+        st.markdown(f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: grey; border-radius: 10px; padding: 5px; margin: 2px;">x</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: grey; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">y</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">z</span>
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; color: {result_color}; border-radius: 10px; padding: 5px; margin: 2px;">Result</span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
             </div>
         """)
 
