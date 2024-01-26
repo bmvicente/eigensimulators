@@ -24,7 +24,8 @@ def main():
     
     st.write("  \n")
     st.write("  \n")
-
+    st.write("  \n")
+    
     st.markdown('<p class="header-style"><strong>AVS ECOSYSTEM RISK</strong></p>', unsafe_allow_html=True)
 
     st.write(f"""
@@ -129,9 +130,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    
+
     col50, col51, col52 = st.columns([4,2,4])
 
     with col50:
