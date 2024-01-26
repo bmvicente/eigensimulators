@@ -975,6 +975,7 @@ def main():
     st.write("\n")
 
     st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked Into Multiple AVSs</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Include Slashing Risks Based on AVS Nature</p><span style="font-weight: normal; display: inline;"> (data availability, keeper networks, oracles, bridges, etc.)</span>', unsafe_allow_html=True)
 
