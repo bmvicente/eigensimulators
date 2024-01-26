@@ -176,6 +176,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+        st.write("  \n")
 
 
         # AVS Business Model
@@ -240,6 +241,7 @@ def main():
         
 
 
+        st.write("  \n")
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
@@ -359,6 +361,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+        st.write("  \n")
 
 
         # AVS Restaking Modality
@@ -415,6 +418,7 @@ def main():
         st.markdown(restaking_mod_calc, unsafe_allow_html=True)
 
 
+        st.write("  \n")
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
