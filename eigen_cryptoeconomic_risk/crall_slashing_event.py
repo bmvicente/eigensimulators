@@ -568,6 +568,27 @@ def main():
         #############################################
 
         st.markdown("""
+            <style>
+            .grey-background {
+                background-color: lightgrey;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            .header-style {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 0px;
+            }
+            .stExpander {
+                border: none !important;
+                box-shadow: none !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
+        st.markdown('<div class="grey-background">', unsafe_allow_html=True)
+
+        st.markdown("""
                 <style>
                 .header-style {
                     font-size: 18px;
@@ -692,7 +713,8 @@ def main():
             st.markdown("""
                 """)
             
-        
+        st.markdown('</div>', unsafe_allow_html=True)
+
         st.write("  \n")
         st.write("  \n")
 
