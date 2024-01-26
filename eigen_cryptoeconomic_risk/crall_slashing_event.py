@@ -588,6 +588,21 @@ def main():
 
         st.markdown('<div class="grey-background">', unsafe_allow_html=True)
 
+
+        st.markdown("""
+            <style>
+            .header-style {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 0px;
+            }
+            .stExpander {
+                border: none !important;
+                box-shadow: none !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
         st.markdown("""
                 <style>
                 .header-style {
