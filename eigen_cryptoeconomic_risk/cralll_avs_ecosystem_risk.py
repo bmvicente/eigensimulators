@@ -115,14 +115,22 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    
     col50, col51, col52 = st.columns([2,1,2])
 
     with col50:
         st.write("")
 
     with col51:
-        st.image("images/tokensight.png", width=250)
+        st.image("images/tokensight.png", width=270)
 
     with col52:
         st.write("")

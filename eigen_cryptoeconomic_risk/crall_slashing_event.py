@@ -993,11 +993,19 @@ def main():
         st.write("")
 
     with col31:
-        st.image("images/tokensight.png", width=250)
+        st.image("images/tokensight.png", width=270)
 
     with col32:
         st.write("")
     
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
