@@ -155,7 +155,7 @@ def main():
                             """)
 
         # Perform the multiplication and calculate the result
-        result = tvl_total_restaked_likelihood * tvl_total_restaked_impact
+        result1 = tvl_total_restaked_likelihood * tvl_total_restaked_impact
 
         # Display the result with formatting
         tvl_total_restaked_calc = f"""
@@ -164,7 +164,7 @@ def main():
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
             </div>
         """
 
@@ -223,20 +223,22 @@ def main():
                 Thus, the risk of each model is influenced by its reliance on the AVS's native token and the complexities of its fee and security structures.
             """)
 
-            # Display the result with formatting
+        result2 = business_model_likelihood * business_model_impact
+
         business_model_calc = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
             </div>
         """
 
         st.markdown(business_model_calc, unsafe_allow_html=True)
         
-        ###################
+
+
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
@@ -281,13 +283,16 @@ def main():
                 While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
                         """)
             
+
+        result3 = security_audits_likelihood * security_audits_impact
+
         security_audits_calc = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result3}</span>
             </div>
         """
 
@@ -340,13 +345,15 @@ def main():
                 While it does depend on the needs of an AVS, the Hyperscale-type is more robust and secure due to its decentralized nature, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our simulator.                    
                         """)
         
+        result4 = avs_type_likelihood * avs_type_impact
+
         avs_type_calc = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result4}</span>
             </div>
         """
 
@@ -400,13 +407,15 @@ def main():
                 - ***Native Restaking***, where validators restake staked ETH directly to EigenLayer. This is the simplest and most direct form of restaking, offering the **lowest risk profile**.
                         """)
             
+        result5 = restaking_mods_likelihood * restaking_mods_impact
+
         restaking_mod_calc = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5}</span>
             </div>
             """
 
@@ -450,14 +459,16 @@ def main():
             st.markdown("""
                 Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
                         """)
-            
+
+        result6 = avs_avg_operator_reputation_likelihood * avs_avg_operator_reputation_impact
+
         avs_avg_operator_reputation_calc = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result}</span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
             </div>
             """
 
