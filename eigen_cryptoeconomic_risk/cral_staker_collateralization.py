@@ -273,6 +273,7 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
 
     # Format the calculation result with a dollar sign, commas, and no decimals
     formatted_calculation_result = f"${abs(calculation_result):,.0f}"
