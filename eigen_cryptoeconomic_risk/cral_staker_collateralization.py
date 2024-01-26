@@ -98,19 +98,21 @@ def main():
     with col3:
 
         st.markdown(
-                    f"""
-                    <div style="
-                        border: 1px solid;
-                        border-radius: 2px;
-                        padding: 5px;
-                        text-align: center;
-                        margin: 5px 0;
-                        background-color: grey;">
-                        <h2 style="color: black; margin:0; font-size: 1.1em;">Operator Stake: <span style="font-size: 1.2em;">{operator_stake:,.0f}</span></h2>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
-                    )
+            f"""
+            <div style="
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 10px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: lightgrey;">
+                <h2 style="color: black; margin:0; font-size: 1.2em;">
+                    Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
         
         cost_of_corruption = total_restaked - 2 * tvl
         profit_from_corruption = 2 * tvl - total_restaked
@@ -231,7 +233,7 @@ def main():
 
     with col8:
         desired_width = 650
-        desired_width1 = 850
+        desired_width1 = 825
         st.image("images/collat_formula1.png", width=desired_width)
         st.image("images/collat_formula.png", width=desired_width1)
         st.write("\n")
