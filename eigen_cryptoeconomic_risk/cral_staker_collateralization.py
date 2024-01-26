@@ -230,7 +230,7 @@ def main():
     col8,col9 = st.columns(2)
 
     with col9:
-        st.write("images/collat_formula.png")
+        st.image("images/collat_formula.png")
 
     with col8:
         fraction_html = f"""
