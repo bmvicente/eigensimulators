@@ -231,8 +231,8 @@ def main():
     col8,col9 = st.columns(2)
 
     with col8:
-        desired_width = 400
-        desired_width1 = 600
+        desired_width = 600
+        desired_width1 = 850
         st.image("images/collat_formula1.png", width=desired_width)
         st.image("images/collat_formula.png", width=desired_width1)
 
