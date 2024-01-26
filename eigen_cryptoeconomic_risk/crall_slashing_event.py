@@ -560,6 +560,7 @@ def main():
                 &#8226; Total Restaked: {formatted_value}""")
             
         st.write("\n")
+        st.write("\n")
 
 
 
