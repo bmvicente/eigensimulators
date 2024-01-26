@@ -117,7 +117,7 @@ def main():
         cost_of_corruption = total_restaked - 2 * tvl
         profit_from_corruption = 2 * tvl - total_restaked
 
-        col6,col7 = st.columns[(2,3)]
+        col6, col7 = st.columns((2, 3))
         with col6:
             st.markdown(
                     f"""
