@@ -21,7 +21,7 @@ def calculate_operator_attack_risk(total_restaked, tvl):
 
 def main():
     st.set_page_config(layout="wide")
-    #st.image("images/eigenimage.png")
+    st.image("images/eigenimage.png")
 
     st.title("Cryptoeconomic Risk Analysis I")
     st.subheader("**Staker Collateralization Level Simulator**")
@@ -227,27 +227,32 @@ def main():
         collat_status = "The Staker Collateralization equals $0."
         result_color = "black"
 
+    col8,col9 = st.columns(2):
 
-    fraction_html = f"""
-        <div style="text-align: center;">
-            <span style="font-size: 20px; font-weight: bold;">Staker Collateralization Level:</span><br><br>
-            <span style="font-size: 24px; font-weight: bold; background-color:grey; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span> 
-            <span style="font-size: 28px; font-weight: bold;">-</span>
-            <span style="font-size: 24px; font-weight: bold; background-color:lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_op_stake_on_avs}</span> 
-            <span style="font-size: 28px; font-weight: bold;">*</span>
-            <div style="display: inline-block; vertical-align: middle;">
-                <div style="font-size: 24px; font-weight: bold; text-align: center;">
-                    <span style="background-color:green; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_profit_from_corruption}</span><br>
-                    <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span style="background-color:lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_stake_required_to_corrupt_avs}</span>
+    with col8:
+        fraction_html = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 20px; font-weight: bold;">Staker Collateralization Level:</span><br><br>
+                <span style="font-size: 24px; font-weight: bold; background-color:grey; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span> 
+                <span style="font-size: 28px; font-weight: bold;">-</span>
+                <span style="font-size: 24px; font-weight: bold; background-color:lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_op_stake_on_avs}</span> 
+                <span style="font-size: 28px; font-weight: bold;">*</span>
+                <div style="display: inline-block; vertical-align: middle;">
+                    <div style="font-size: 24px; font-weight: bold; text-align: center;">
+                        <span style="background-color:green; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_profit_from_corruption}</span><br>
+                        <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
+                        <span style="background-color:lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_stake_required_to_corrupt_avs}</span>
+                    </div>
                 </div>
+                <span style="font-size: 24px; font-weight: bold;"> = </span>
+                <span style="font-size: 24px; font-weight: bold; color: {result_color}; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_calculation_result}</span>
             </div>
-            <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 24px; font-weight: bold; color: {result_color}; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_calculation_result}</span>
-        </div>
-    """
+        """
 
-    st.markdown(fraction_html, unsafe_allow_html=True)
+        st.markdown(fraction_html, unsafe_allow_html=True)
+
+    with col9:
+        st.write("images/collat_formula.jpeg")
 
 
     st.write("\n")
