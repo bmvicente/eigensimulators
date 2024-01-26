@@ -168,6 +168,7 @@ def main():
             </div>
         """
 
+        st.markdown(this_html, unsafe_allow_html=True)
 
 
         ###################        
@@ -313,7 +314,7 @@ def main():
                 While it does depend on the needs of an AVS, the Hyperscale-type is more robust and secure due to its decentralized nature, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our simulator.                    
                         """)
 
-        ###################
+
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
