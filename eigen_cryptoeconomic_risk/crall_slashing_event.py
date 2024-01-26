@@ -985,6 +985,8 @@ def main():
     st.write("\n")
 
     st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked Into Multiple AVSs</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;">&#8226; Include Slashing Risks Based on AVS Nature: data availability, keeper networks, oracles, bridges, etc.</p>', unsafe_allow_html=True)
 
 
     col30, col31, col32 = st.columns([2,1,2])
