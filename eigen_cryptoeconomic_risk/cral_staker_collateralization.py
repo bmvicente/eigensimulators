@@ -334,7 +334,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    col11, col12, col13 = st.columns([2,1,2])
+    col11, col12, col13 = st.columns([4,2,4])
 
     with col11:
         st.write("")

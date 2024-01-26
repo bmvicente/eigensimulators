@@ -989,7 +989,21 @@ def main():
     st.markdown('<p style="font-weight: bold;">&#8226; Include Slashing Risks Based on AVS Nature: data availability, keeper networks, oracles, bridges, etc.</p>', unsafe_allow_html=True)
 
 
-    col30, col31, col32 = st.columns([2,1,2])
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+
+    col30, col31, col32 = st.columns([4,2,4])
 
     with col30:
         st.write("")
@@ -1000,19 +1014,6 @@ def main():
     with col32:
         st.write("")
     
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
     
     image_url = 'https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg'
     link = 'https://twitter.com/tokensightxyz'
