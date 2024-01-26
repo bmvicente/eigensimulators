@@ -466,7 +466,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
             </div>
