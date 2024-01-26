@@ -1,6 +1,4 @@
 
-# EigenLayer AVS Compounded Risks
-
 import pandas as pd
 import streamlit as st
 
@@ -138,12 +136,18 @@ def main():
 
     #st.image("images/eigenimage.png")
 
-    st.title("Cryptoeconomic Risk Analysis II: Operator/Restaker Potential Slashing Event Simulator")
+    st.title("Cryptoeconomic Risk Analysis II")
+    st.subheader("**Staker Potential Slashing Event Simulator**")
     
     st.write("  \n")
 
     with st.expander("How this Simulator Works"):
-        st.markdown("""We begin by assuming that the 3 AVS in this Simulator have an equal Total Restaked Amount distributed between them, therefore 33%.
+        st.markdown("""
+                    Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
+                    This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security.
+                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
+                    
+                    We begin by assuming that the 3 AVS in this Simulator have an equal Total Restaked Amount distributed between them, therefore 33%.
                         """)
     
     st.write("**Note**: Except where otherwise specified, all values displayed are in USD.")
@@ -646,7 +650,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Intermediate Slash "Allowed" to Maintain Relaxed Security: <span style="font-size: 1.1em;">{int_eth_loss_allowed1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Intermediate Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_eth_loss_allowed1:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -785,7 +789,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Intermediate Slash "Allowed" to Maintain Relaxed Security: <span style="font-size: 1.1em;">{int_eth_loss_allowed2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Intermediate Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_eth_loss_allowed2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -921,7 +925,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Intermediate Slash "Allowed" to Maintain Relaxed Security: <span style="font-size: 1.1em;">{int_eth_loss_allowed3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Intermediate Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_eth_loss_allowed3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -974,111 +978,13 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    
-    st.markdown('<p class="header-style">AVS ECOSYSTEM RISK</p>', unsafe_allow_html=True)
     st.write("  \n")
 
-    st.write(f"""
-             Let us take the scenario of the Max Slash event:
+    st.write("-----------------------")
 
-             - Actual Total Loss? What does this mean really?
-             - Probability of all 3 AVSs failing? p(AVS1) * p(AVS2) * p(AVS3)
-             - How to visualize compounded risks that may exist. How AVS1 could affect 2 and 3? Visual Tool? Detail scenarios (in writing too)
-                """)
-    
+    st.write("\n")
 
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-
-
-    col40, col41 = st.columns(2)
-
-    with col40:
-        st.markdown('<p class="header-style">AVSs RISK PROFILES BEFORE & AFTER MAX SLASH EVENT</p>', unsafe_allow_html=True)
-        st.write("  \n")
-        average_risk_score = (st.session_state.risk_score1 + st.session_state.risk_score2 + st.session_state.risk_score3) / 3
-
-        st.write(f"""
-                    **Risk Scores *Before* Max Slash Event**
-                    - AVS 1 Risk Score: {st.session_state.risk_score1} 
-                    - AVS 2 Risk Score: {st.session_state.risk_score2} 
-                    - AVS 3 Risk Score: {st.session_state.risk_score3} 
-                    - Average AVSs Risk Score: ***{average_risk_score:.2f}***
-
-                    **Risk Scores *After* Max Slash Event**
-                    - AVS 1 Risk Score: ...
-                    - AVS 2 Risk Score: ...
-                    - AVS 3 Risk Score: ...
-                    - Average AVSs Risk Score: ***...***
-                    """)
-        
-    with col41:
-            st.markdown('<p class="header-style">ECOSYSTEM SHARPE RATIOS</p>', unsafe_allow_html=True)
-            st.markdown('<p class="header-style">Three Risk-Adjusted Reward Scenarios: Operator to AVS, Restaker to Operator, Restaker to AVS</p>', unsafe_allow_html=True)
-            st.write("  \n")
-            st.write(f"""
-                    - **Operator/AVS Sharpe Ratio**: ...
-                    - **Restaker/Operator Sharpe Ratio**: ...
-                    - **Restaker/AVS Sharpe Ratio**: ...
-                    """)
-
-
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-
-
-
-
-    st.markdown('<p class="header-style">GAME THEORY MATRIX</p>', unsafe_allow_html=True)
-    st.markdown('<p class="header-style">Operator Decision-Making on AVS Restaking Allocation Based on Slashing Likelihood</p>', unsafe_allow_html=True)
-    st.write("*NS: Non-Slashing Event | S: Slashing Event*")
-
-    st.write("  \n")
-
-
-    # Create the DataFrame from the data
-    data = {
-        'Strategies': ["1", "2", "3", "4", "5", "6", "7", "8"],
-        'AVS 1': ["NS", "NS", "NS", "NS", "S", "S", "S", "S"],
-        'AVS 2': ["NS", "NS", "S", "S", "NS", "NS", "S", "S"],
-        'AVS 3': ["NS", "S", "NS", "S", "NS", "S", "NS", "S"],
-        'Pay-Off': ["...", "...", "...", "...", "...", "...", "...", "..."]
-    }
-
-    df = pd.DataFrame(data)
-    st.table(df)
-
-    st.markdown("2<sup>3</sup> = 8 possible scenarios that can affect the Operator with a pool of 3 AVSs to validate.", unsafe_allow_html=True)
-
-
-    st.write("  \n")
-
-    with st.expander("Logic"):
-            st.markdown("""Add in cooperative, non-zero-sum, etc game...
-                """)
-    
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-
-
-
+    st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
 
 
     #col11, col12, col13 = st.columns([2,1,2])
