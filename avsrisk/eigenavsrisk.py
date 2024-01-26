@@ -181,6 +181,10 @@ def main():
         # Dropdown menu
         business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"])
 
+        st.write("  \n")
+
+        st.write("**PARAMETER WEIGHTING**")
+
         col30,col31 = st.columns(2)
 
         with col30:
@@ -228,6 +232,10 @@ def main():
         # Dropdown menu
         security_audits = st.number_input("", min_value=0, max_value=5, step=1)
 
+        st.write("  \n")
+
+        st.write("**PARAMETER WEIGHTING**")
+
         col32,col33 = st.columns(2)
         with col32:
             security_audits_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=5)
@@ -265,6 +273,10 @@ def main():
 
         # Dropdown menu
         avs_type = st.selectbox("", ["Lightweight", "Hyperscale"])
+        
+        st.write("  \n")
+
+        st.write("**PARAMETER WEIGHTING**")
 
         col34,col35 = st.columns(2)
         with col34:
@@ -310,6 +322,10 @@ def main():
         # Dropdown menu
         restaking_mods = st.selectbox("", ["LST LP Restaking", "ETH LP Restaking", "LST Restaking", "Native Restaking"])
 
+        st.write("  \n")
+
+        st.write("**PARAMETER WEIGHTING**")
+
         col36,col37 = st.columns(2)
         with col36:
             restaking_mods_likelihood = st.slider("**Likelihood**    ", min_value=1, max_value=10, value=5)
@@ -348,6 +364,10 @@ def main():
 
         # Select slider for average operator reputation
         avs_avg_operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
+
+        st.write("  \n")
+
+        st.write("**PARAMETER WEIGHTING**")
 
         col38,col39 = st.columns(2)
         with col38:
