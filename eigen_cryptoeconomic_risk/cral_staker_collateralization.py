@@ -232,6 +232,7 @@ def main():
 
     with col8:
         desired_width = 800
+        st.image("images/collat_formula1.png", width=desired_width)
         st.image("images/collat_formula.png", width=desired_width)
 
 
