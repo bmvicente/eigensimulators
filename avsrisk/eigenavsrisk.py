@@ -483,11 +483,10 @@ def main():
 
     final_result = result1 + result2 + result3 + result4 + result5 + result6
     
-    st.markdown(f"<div style='text-align: center; font-size: 24px; font-weight: bold;'>Non-Normalized AVS Risk Score.</div>", unsafe_allow_html=True)
-
+    st.markdown(f"<div style='text-align: center; font-size: 24px; font-weight: bold;'>Non-Normalized AVS Risk Score</div>", unsafe_allow_html=True)
+    st.write("  \n")
     final_result_html = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2}</span>
@@ -534,7 +533,6 @@ def main():
     
     operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
 
-    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
 
