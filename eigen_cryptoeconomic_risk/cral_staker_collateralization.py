@@ -107,7 +107,7 @@ def main():
                 margin: 5px 0;
                 background-color: lightgrey;">
                 <h2 style="color: black; margin:0; font-size: 1.1em;">
-                    <span style="font-weight: bold;">si</span>  |  Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
+                    <span style="font-weight: bold; font-size: 1.4em;">s<sub style="font-size: 1em;">j</sub></span>  |  Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -177,8 +177,8 @@ def main():
                     text-align: center;
                     margin: 5px 0;
                     background-color: green;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">
-                        <span style="font-weight: bold;">α<sub>j</sub></span> | Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${stake_required_to_corrupt_avs:,.0f}</span>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">
+                        <span style="font-weight: bold; font-size: 1.4em;">α<sub style="font-size: 1em;">j</sub></span>  |  Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${stake_required_to_corrupt_avs:,.0f}</span>
                     </h2>
                 </div>
                 """, 
