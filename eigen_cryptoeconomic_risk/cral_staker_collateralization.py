@@ -247,9 +247,9 @@ def main():
                 <span style="font-size: 28px; font-weight: bold;">*</span>
                 <div style="display: inline-block; vertical-align: middle;">
                     <div style="font-size: 24px; font-weight: bold; text-align: center;">
-                        <span style="background-color:green; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_profit_from_corruption}</span><br>
+                        <span style="background-color:lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_profit_from_corruption}</span><br>
                         <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                        <span style="background-color:lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_stake_required_to_corrupt_avs}</span>
+                        <span style="background-color:green; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_stake_required_to_corrupt_avs}</span>
                     </div>
                 </div>
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
