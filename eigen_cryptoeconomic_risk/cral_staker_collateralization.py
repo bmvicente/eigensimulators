@@ -106,10 +106,8 @@ def main():
                 text-align: center;
                 margin: 5px 0;
                 background-color: lightgrey;">
-                <p><b>si</b> - Represents the stake of the i-th validator</p>
-                <p>α<sub>i</sub> - Represents the risk adjusted return for the i-th validator</p>
                 <h2 style="color: black; margin:0; font-size: 1.2em;">
-                    Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
+                    Operator Stake: <p><b>si</b></p><span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -179,7 +177,7 @@ def main():
                         text-align: center;
                         margin: 5px 0;
                         background-color: green;">
-                        <h2 style="color: black; margin:0; font-size: 1.1em;">Stake Required to Corrupt AVS (alphaj): <span style="font-size: 1.2em;">{stake_required_to_corrupt_avs:,.0f}</span></h2>
+                        <h2 style="color: black; margin:0; font-size: 1.1em;<p>α<sub>j</sub></p>">Stake Required to Corrupt AVS (alphaj): <span style="font-size: 1.2em;">{stake_required_to_corrupt_avs:,.0f}</span></h2>
                     </div>
                     """, 
                     unsafe_allow_html=True
