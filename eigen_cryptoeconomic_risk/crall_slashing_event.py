@@ -389,7 +389,7 @@ def main():
                     <h2 style="color: black; margin: 0; font-size: 1.2em;">
                         <div style="display: block;">
                             <span style="font-size: 1.3em;">&Theta;</span> &nbsp; = &nbsp;
-                            <span style="font-size: 1.3em;">&Sigma;</span> &nbsp;
+                            <span style="font-size: 1.4em;">&Sigma;</span> &nbsp;
                             <span style="font-size: 1.3em;">&Omega;<sub style="font-size: 0.9em;">j</sub></span> &nbsp;
                             <span style="display: inline-block; vertical-align: middle; font-size: 1.3em;">
                                 <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.9em;">ij</sub></span>
@@ -447,6 +447,11 @@ def main():
             )
 
         with col31:
+            
+            st.write("\n")
+            st.write("\n")
+            st.write("\n")
+            st.write("\n")
 
             st.markdown(
                 f"""
