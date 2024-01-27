@@ -87,7 +87,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    op_stake_on_avs = total_restaked * (perc_stake_avs * 0.01)
+    op_stake_on_avs = total_restaked * (perc_stake_avs * 0.01) # OK
 
 
     col3, col4 = st.columns(2)
@@ -113,27 +113,10 @@ def main():
             unsafe_allow_html=True
         )
         
-        cost_of_corruption = total_restaked - 2 * tvl
         profit_from_corruption = 2 * tvl - total_restaked
 
-        col6, col7 = st.columns((2, 3))
-        with col6:
-            st.markdown(
-                    f"""
-                    <div style="
-                        border: 1px solid;
-                        border-radius: 2px;
-                        padding: 5px;
-                        text-align: center;
-                        margin: 5px 0;">
-                        <h2 style="color: black; margin:0; font-size: 1.1em;">Cost of Corruption: <span style="font-size: 1.2em;">${cost_of_corruption:,.0f}</span></h2>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
-                    )
-            
-        with col7:
-            st.markdown(
+
+        st.markdown(
                     f"""
                     <div style="
                         border: 1px solid;
@@ -169,7 +152,7 @@ def main():
                 unsafe_allow_html=True
             )
 
-            stake_required_to_corrupt_avs = profit_from_corruption
+            stake_required_to_corrupt_avs = total_restaked / 2
 
             st.markdown(
                 f"""
