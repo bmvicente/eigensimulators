@@ -1090,13 +1090,20 @@ def main():
             background-color: white;">
             <h2 style="color: black; margin: 0; font-size: 2em;">
                 <div style="display: block;">
-                    <span style="font-weight: bold; font-size: 2em;">&beta; = &Sigma;&alpha; - &theta;</span>
+                    <span style="font-weight: bold; font-size: 2em;">
+                        &beta;<sub style="font-size: 0.8em;">iAVS1</sub> = 
+                        &Sigma;
+                        &alpha;<sub style="font-size: 0.8em;">jAVS2</sub> - 
+                        &theta;<sub style="font-size: 0.8em;">kAVS3</sub>
+                    </span>
                 </div>
             </h2>
         </div>
         """, 
         unsafe_allow_html=True
     )
+
+
 
 
 
