@@ -154,23 +154,23 @@ def main():
 
             stake_required_to_corrupt_avs = total_restaked / 2
 
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: green;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">
-                        <span style="font-weight: bold; font-size: 1.2em;">α<sub style="font-size: 0.8em;">j</sub></span> &nbsp; | &nbsp; Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${stake_required_to_corrupt_avs:,.0f}</span>
-                        <span style="font-weight: bold; font-size: 10em;"(AVS Total Restaked * % Staked on AVS)<span style="font-size: 1.2em;"</span>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: green;">
+                <h2 style="color: black; margin:0; font-size: 1.1em;">
+                    <span style="font-weight: bold; font-size: 1.2em;">α<sub style="font-size: 0.8em;">j</sub></span> &nbsp; | &nbsp; Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${stake_required_to_corrupt_avs:,.0f}</span>
+                    <span style="font-weight: bold; font-size: 1.2em;">(AVS Total Restaked * % Staked on AVS)</span>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
 
     st.write("\n")
