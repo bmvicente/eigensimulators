@@ -113,7 +113,7 @@ def main():
             unsafe_allow_html=True
         )
         
-        profit_from_corruption = 2 * tvl - total_restaked
+        profit_from_corruption = max(2 * tvl - total_restaked, 0)
 
 
         st.markdown(
