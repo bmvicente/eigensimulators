@@ -1084,15 +1084,13 @@ def main():
     st.markdown(
         f"""
         <div style="
-            border: 1px solid;
-            border-radius: 2px;
             padding: 5px;
             text-align: center;
             margin: 5px 0;
             background-color: white;">
-            <h2 style="color: black; margin: 0; font-size: 1.1em;">
+            <h2 style="color: black; margin: 0; font-size: 2em;">
                 <div style="display: block;">
-                    <span style="font-weight: bold; font-size: 1em;">&beta; = &sigma;&alpha; - &theta;</span>
+                    <span style="font-weight: bold; font-size: 2em;">&beta; = &Sigma;&alpha; - &theta;</span>
                 </div>
             </h2>
         </div>
