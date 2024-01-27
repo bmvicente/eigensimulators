@@ -87,7 +87,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    op_stake_on_avs = total_restaked * (perc_stake_avs * 0.01) # OK
+    op_stake_on_avs = operator_stake * (perc_stake_avs * 0.01) # OK
 
 
     col3, col4 = st.columns(2)
@@ -164,7 +164,7 @@ def main():
                         </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
-                            <span style="font-size: 0.9m;">(AVS Total Restaked * % Staked on AVS)</span>
+                            <span style="font-size: 0.9m;">(AVS Total Restaked * % Operator Stake on AVS)</span>
                         </div>
                     </h2>
                 </div>
