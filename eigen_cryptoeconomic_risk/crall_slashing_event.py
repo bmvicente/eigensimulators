@@ -663,7 +663,7 @@ def main():
         st.write("\n")
         st.write(f"""&#8226; **"Byzantine Slashing Tolerance" Test**: AVS 1 Max "Allowed" Slashes vs Max Potential Operator Slashes""")
             
-        col6, col7 = st.columns([10, 7])
+        col6, col7 = st.columns([10, 6])
 
         with col6: 
 
@@ -681,6 +681,7 @@ def main():
                             <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span>
                         </div>
                         <div style="display: block;">
+                            <br> <!-- Extra space -->
                         </div>
                         <div style="display: block;">
                             Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1em;">${max_slash_allowed1:,.0f}</span>
@@ -723,7 +724,8 @@ def main():
                                 <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">iAVS1</sub></span>
                                 <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
                             </span>
-                        </span> &nbsp; | &nbsp;
+                        </span>
+                        <br><br>
                         Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs1:,.0f}</span>
                     </h2>
                 </div>
