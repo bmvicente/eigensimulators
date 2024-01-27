@@ -111,6 +111,7 @@ def main():
                         </div>
                             <span style="font-weight: bold; font-size: 1.2em;">s<sub style="font-size: 0.8em;">i</sub></span> &nbsp; | &nbsp; Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
                         </div>
+                        </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
