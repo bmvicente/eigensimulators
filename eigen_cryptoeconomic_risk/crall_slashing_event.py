@@ -388,11 +388,11 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1.2em;">&Theta;</span> &nbsp; = &nbsp;
-                            <span style="font-weight: bold; font-size: 1.2em;">&Sigma;</span>
-                            <span style="font-weight: bold; font-size: 1.2em;">&Omega;<sub style="font-size: 0.8em;">k</sub></span> &nbsp;
+                            <span style="font-size: 1.2em;">&Theta;</span> &nbsp; = &nbsp;
+                            <span style="font-size: 1.2em;">&Sigma;</span> &nbsp;
+                            <span style="font-size: 1.2em;">&Omega;<sub style="font-size: 0.8em;">j</sub></span> &nbsp;
                             <span style="display: inline-block; vertical-align: middle; font-size: 1.2em;">
-                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">n</sub></span>
+                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span>
                                 <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
                             </span>
                         </div>
