@@ -713,9 +713,9 @@ def main():
                     margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1em;">
                         <span style="font-weight: bold; font-size: 1.2em;">
-                            &Omega;<sub style="font-size: 0.8em;">j</sub> &nbsp;
+                            &Omega;<sub style="font-size: 0.8em;">AVS1</sub> &nbsp;
                             <span style="display: inline-block; vertical-align: middle;">
-                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span>
+                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">iAVS1</sub></span>
                                 <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
                             </span>
                         </span> &nbsp; | &nbsp;
