@@ -83,17 +83,17 @@ def create_risk_score_input(risk_score_key, label):
     risk_score = st.number_input(
         label,
         min_value=0,
-        max_value=10,
+        max_value=100,
         value=st.session_state[risk_score_key],
-        step=1
+        step=10
     )
 
     return risk_score
 
 
 def calculate_slashing(total_restaked, risk_score):
-    risk_factor = 0 if risk_score == 10 else (risk_score + 1) * 10
-    slashing_amount = (total_restaked / 3) * (risk_factor / 100)
+    risk_factor = 0 if risk_score == 10 else risk_score
+    slashing_amount = (total_restaked / 3) * (risk_factor / 10)
     return slashing_amount
 
 
