@@ -745,7 +745,7 @@ def main():
                             </span>
                         </span>
                         <br><br>
-                        Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs1:,.0f}</span>
+                        <span style="font-size: 1.2em;">Max Potential Operator Slash:</span> <span style="font-size: 1.1em;">${op_max_loss_avs1:,.0f}</span>
                     </h2>
                 </div>
                 """, 
