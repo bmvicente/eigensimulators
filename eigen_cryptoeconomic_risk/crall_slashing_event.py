@@ -595,7 +595,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;">
-                <h2 style="color: black; margin:0; font-size: 1em;">Potential Slashing Exposure to an Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">{potential_total_slashing1:,.0f}</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1em;">Potential Max Slash Exposure to an Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">{potential_total_slashing1:,.0f}</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
@@ -734,7 +734,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;">
-                <h2 style="color: black; margin:0; font-size: 1em;">Potential Slashing Exposure to an Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">{potential_total_slashing2:,.0f}</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1em;">Potential Max Slash Exposure to an Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">{potential_total_slashing2:,.0f}</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
@@ -870,7 +870,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;">
-                <h2 style="color: black; margin:0; font-size: 1em;">Potential Slashing Exposure to an Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">{potential_total_slashing3:,.0f}</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1em;">Potential Max Slash Exposure to an Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">{potential_total_slashing3:,.0f}</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
