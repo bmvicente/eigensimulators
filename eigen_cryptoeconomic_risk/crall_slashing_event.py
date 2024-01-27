@@ -1065,9 +1065,18 @@ def main():
             st.markdown("""
                 """)
 
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
-
-
+    st.markdown(
+        """
+        <div style="text-align: center;">
+            Your centered sentence goes here.
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 #########################################
 #########################################
