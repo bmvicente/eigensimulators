@@ -167,6 +167,7 @@ def main():
                         <div style="display: block;">
                             <span style="font-weight: bold; font-size: 1.2em;">α<sub style="font-size: 0.8em;">j</sub></span> &nbsp; | &nbsp; Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${stake_required_to_corrupt_avs:,.0f}</span>
                         </div>
+                        <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
                             <span font-size: 1em;">(AVS Total Restaked * % Staked on AVS)</span>
                         </div>
