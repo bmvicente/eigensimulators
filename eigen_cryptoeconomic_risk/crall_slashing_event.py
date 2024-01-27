@@ -627,7 +627,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-weight: bold; font-size: 1.1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span></h2>
                 </div>
                 """,
                 unsafe_allow_html=True
