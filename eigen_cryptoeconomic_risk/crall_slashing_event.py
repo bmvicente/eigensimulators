@@ -715,8 +715,8 @@ def main():
                         <span style="font-size: 1.2em;">&Omega;<sub style="font-size: 0.8em;">j</sub></span> &nbsp;
                         <span style="display: inline-block; vertical-align: middle; font-size: 1.2em;">
                             <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span>
-                            <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span> &nbsp; | &nbsp;
-                        </span>
+                            <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
+                        </span> &nbsp; | &nbsp;
                         Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs1:,.0f}</span>
                     </h2>
                 </div>
