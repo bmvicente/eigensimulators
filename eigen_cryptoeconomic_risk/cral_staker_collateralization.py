@@ -146,7 +146,9 @@ def main():
                     background-color: lightblue;">
                     <h2 style="color: black; margin:0; font-size: 1.1em;">
                         <span style="font-weight: bold; font-size: 1.2em;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span> &nbsp; | &nbsp; Fraction of AVS Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">${op_stake_on_avs:,.0f}</span></h2>
+                        </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
+                        <div style="display: block;">
                         <span font-size: 0.8em;">(AVS Total Restaked * % Staked on AVS)</span>
                     </h2>
                 </div>
