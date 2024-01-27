@@ -512,7 +512,7 @@ def main():
                     text-align: center;
                     margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">j</sub></span> &nbsp; | &nbsp;
+                        <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">ij</sub></span> &nbsp; | &nbsp;
                         Total Max Potential Slash Across AVSs: <span style="font-size: 1.1em;">${op_max_loss_avss:,.0f}</span>
                     </h2>
                 </div>
