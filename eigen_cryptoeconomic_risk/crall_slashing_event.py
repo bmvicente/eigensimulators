@@ -1073,8 +1073,8 @@ def main():
 
     st.markdown(
         """
-        <div style="text-align: center; font-size: 20px; font-weight: bold;">
-            BYZANTINE *SLASHING* TOLERANCE TEST
+        <div style="text-align: center; font-size: 24px; font-weight: bold;">
+            BYZANTINE <i>SLASHING</i> TOLERANCE TEST
         </div>
         """,
         unsafe_allow_html=True
