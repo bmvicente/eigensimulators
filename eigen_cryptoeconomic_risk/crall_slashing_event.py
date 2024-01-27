@@ -210,7 +210,7 @@ def main():
 
 
         # Use the custom styled headers in your markdown
-        st.markdown('<p class="header-style">Operator Amount Staked</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Operator Amount Staked (Si)</p>', unsafe_allow_html=True)
 
         if isinstance(st.session_state.operator_stake, tuple):
                 operator_stake = st.number_input("", min_value=0, max_value=1000000000000, value=int(st.session_state.operator_stake[0]), step=10000000)
