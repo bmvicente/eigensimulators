@@ -1080,7 +1080,6 @@ def main():
         unsafe_allow_html=True
     )
 
-    import streamlit as st
 
     st.markdown(
         f"""
