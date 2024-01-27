@@ -148,6 +148,8 @@ def main():
 
     with st.expander("How this Simulator Works"):
         st.markdown("""
+                    We assume that the 3 AVSs are equally secured by the Total Amount Restaked, therefore each has 33% distribution.
+
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
                     This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security.
                      A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
@@ -209,7 +211,6 @@ def main():
         st.write("\n")
 
 
-        # Use the custom styled headers in your markdown
         st.markdown('<p class="header-style">Operator Amount Staked (Si)</p>', unsafe_allow_html=True)
 
         if isinstance(st.session_state.operator_stake, tuple):
@@ -626,9 +627,9 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span></h2>
                 </div>
-                """, 
+                """,
                 unsafe_allow_html=True
                 )
             
@@ -661,6 +662,29 @@ def main():
                 """, 
                 unsafe_allow_html=True
                 )
+            
+            st.markdown(
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: green;">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-weight: bold; font-size: 1.2em;">&Sigma;<sub style="font-size: 1em;">j</sub></span> &nbsp; | &nbsp; Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${op_max_loss_avs1:,.0f}</span>
+                        </div>
+                        <div style="height: 10px;"></div> <!-- Empty div for spacing -->
+                        <div style="display: block;">
+                            <span style="font-size: 0.9em;">(AVS Total Restaked / 2)</span>
+                        </div>
+                    </h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
 
 
             st.markdown(
@@ -673,7 +697,7 @@ def main():
                     margin: 5px 0;">
                     <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">{op_int_loss_avs1:,.0f}</span></h2>
                 </div>
-                """, 
+                """,
                 unsafe_allow_html=True
                 )
     
@@ -685,7 +709,6 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
-
 
 
 
@@ -770,7 +793,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1.em;">{max_eth_loss_allowed2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -912,7 +935,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
