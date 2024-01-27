@@ -165,6 +165,7 @@ def main():
                     background-color: green;">
                     <h2 style="color: black; margin:0; font-size: 1.1em;">
                         <span style="font-weight: bold; font-size: 1.2em;">α<sub style="font-size: 0.8em;">j</sub></span> &nbsp; | &nbsp; Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${stake_required_to_corrupt_avs:,.0f}</span>
+                        <span style="font-weight: bold; font-size: 10em;"(AVS Total Restaked * % Staked on AVS)<span style="font-size: 1.2em;"</span>
                     </h2>
                 </div>
                 """, 
