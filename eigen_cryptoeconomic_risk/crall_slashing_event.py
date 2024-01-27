@@ -630,7 +630,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1.1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span>
                         </div>
                     </h2>
                 </div>
