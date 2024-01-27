@@ -712,10 +712,10 @@ def main():
                     text-align: center;
                     margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1em;">
-                        <span style="font-size: 1.3em;">&Omega;<sub style="font-size: 0.9em;">j</sub></span> &nbsp;
-                        <span style="display: inline-block; vertical-align: middle; font-size: 1.3em;">
-                            <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.9em;">ij</sub></span>
-                            <span style="display: block;">s<sub style="font-size: 0.9em;">i</sub></span>
+                        <span style="font-size: 1.2em;">&Omega;<sub style="font-size: 0.8em;">j</sub></span> &nbsp;
+                        <span style="display: inline-block; vertical-align: middle; font-size: 1.2em;">
+                            <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span>
+                            <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span> &nbsp; | &nbsp;
                         </span>
                         Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs1:,.0f}</span>
                     </h2>
