@@ -741,7 +741,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 1em;">AVS2</sub></span> &nbsp; | &nbsp; Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.8em;">AVS2</sub></span> &nbsp; | &nbsp; Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -883,7 +883,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 1em;">AVS3</sub></span> &nbsp; | &nbsp; Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.8em;">AVS3</sub></span> &nbsp; | &nbsp; Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
                         </div>
                     </h2>
                 </div>
