@@ -1092,7 +1092,7 @@ def main():
                 <div style="display: block;">
                     <span style="font-weight: bold; font-size: 1.5em;">
                         &beta;<sub style="font-size: 0.8em;">ij</sub> = 
-                        <span style="font-size: 1.2em;">&Sigma;</span>
+                        <span style="font-size: 1.3em;">&Sigma;</span>
                         &alpha;<sub style="font-size: 0.8em;">ij</sub> - 
                         &theta;<sub style="font-size: 0.8em;">ij</sub>
                     </span>
