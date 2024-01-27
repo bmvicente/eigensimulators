@@ -1088,13 +1088,13 @@ def main():
             text-align: center;
             margin: 5px 0;
             background-color: white;">
-            <h2 style="color: black; margin: 0; font-size: 2em;">
+            <h2 style="color: black; margin: 0; font-size: 1.6em;">
                 <div style="display: block;">
-                    <span style="font-weight: bold; font-size: 2em;">
-                        &beta;<sub style="font-size: 0.8em;">iAVS1</sub> = 
+                    <span style="font-weight: bold; font-size: 1.6em;">
+                        &beta;<sub style="font-size: 0.8em;">ij</sub> = 
                         &Sigma;
-                        &alpha;<sub style="font-size: 0.8em;">jAVS2</sub> - 
-                        &theta;<sub style="font-size: 0.8em;">kAVS3</sub>
+                        &alpha;<sub style="font-size: 0.8em;">ij</sub> - 
+                        &theta;<sub style="font-size: 0.8em;">ij</sub>
                     </span>
                 </div>
             </h2>
