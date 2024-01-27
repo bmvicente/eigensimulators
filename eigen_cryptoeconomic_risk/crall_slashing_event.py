@@ -373,8 +373,6 @@ def main():
         
         st.markdown('<p class="header-style">Operator Potential Slashes Across AVSs</p>', unsafe_allow_html=True)
 
-        st.write("\n")
-
         col30, col31 = st.columns([7, 8])
 
         with col30:
