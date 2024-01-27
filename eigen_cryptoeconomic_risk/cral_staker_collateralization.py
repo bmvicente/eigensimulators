@@ -120,8 +120,9 @@ def main():
                 unsafe_allow_html=True
             )
 
-        
-        profit_from_corruption = max(2 * tvl - total_restaked, 0)
+        stake_required_to_corrupt_avs = total_restaked / 2
+
+        profit_from_corruption = max(2 * tvl - total_restaked, 0) - stake_required_to_corrupt_avs
 
         
         st.markdown(
@@ -172,8 +173,6 @@ def main():
                 unsafe_allow_html=True
             )
 
-
-            stake_required_to_corrupt_avs = total_restaked / 2
 
             st.markdown(
                 f"""
