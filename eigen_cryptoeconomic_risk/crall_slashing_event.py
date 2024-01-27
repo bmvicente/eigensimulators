@@ -310,7 +310,13 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS1</sub></span> | Own Amount Staked on <i>AVS 1</i>: <span style="font-size: 1.1em;">${stake_avs_1:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS1</sub></span>
+                        </div>
+                        <div style="display: block;">
+                            <br> <!-- Extra space -->
+                        </div>
+                        <div style="display: block;">
+                            Own Amount Staked on <i>AVS 1</i>: <span style="font-size: 1.1em;">${stake_avs_1:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -684,7 +690,7 @@ def main():
                             <br> <!-- Extra space -->
                         </div>
                         <div style="display: block;">
-                            <span style="font-size: 0.9em;">Max Slash "Allowed" To Still Maintain Security:</span> <span style="font-size: 1em;">${max_slash_allowed1:,.0f}</span>
+                            <span style="font-size: 1em;">Max Slash "Allowed" To Still Maintain Security:</span> <span style="font-size: 1.1em;">${max_slash_allowed1:,.0f}</span>
                         </div>
                     </h2>
                 </div>
