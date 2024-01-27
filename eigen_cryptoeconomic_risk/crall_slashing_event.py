@@ -378,8 +378,7 @@ def main():
         col30, col31 = st.columns([7, 8])
 
         with col30:
-            
-            result = 1
+
             st.markdown(
                 f"""
                 <div style="
@@ -392,14 +391,17 @@ def main():
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
                             <span style="font-weight: bold; font-size: 1.2em;">&Omega;<sub style="font-size: 0.8em;">k</sub></span> &nbsp; * &nbsp;
-                            <span style="font-weight: bold; font-size: 1.2em;">(&gamma;<sub style="font-size: 0.8em;">n</sub> &nbsp; / &nbsp;
-                            <span style="font-weight: bold; font-size: 1.2em;">s<sub style="font-size: 0.8em;">i</sub></span>) &nbsp; | &nbsp; Result: <span style="font-size: 1.2em;">{result:,.0f}</span>
+                            <span style="display: inline-block; vertical-align: middle; font-size: 1.2em;">
+                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">n</sub></span>
+                                <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
+                            </span>
                         </div>
                     </h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
             )
+
 
 
             st.markdown(
