@@ -310,7 +310,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS1</sub></span> | Own Amount Staked on <i>AVS 1</i>: <span style="font-size: 1.1em;">{stake_avs_1:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS1</sub></span> | Own Amount Staked on <i>AVS 1</i>: <span style="font-size: 1.1em;">${stake_avs_1:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -331,7 +331,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS2</sub></span> | Own Amount Staked on <i>AVS 1</i>: <span style="font-size: 1.1em;">{stake_avs_2:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS2</sub></span> | Own Amount Staked on <i>AVS 1</i>: <span style="font-size: 1.1em;">${stake_avs_2:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -351,7 +351,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS3</sub></span> | Own Amount Staked on <i>AVS 1</i>: <span style="font-size: 1.1em;">{stake_avs_3:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS3</sub></span> | Own Amount Staked on <i>AVS 1</i>: <span style="font-size: 1.1em;">${stake_avs_3:,.0f}</span>
                         </div>
                     </h2>
                 </div>
