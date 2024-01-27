@@ -388,7 +388,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Slash on <i>AVS 1</i>: <span style="font-size: 1.1em;">{op_max_loss_avs1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Slash on <i>AVS 1</i>: <span style="font-size: 1.1em;">${op_max_loss_avs1:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -402,7 +402,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Slash on <i>AVS 2</i>: <span style="font-size: 1.1em;">{op_max_loss_avs2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Slash on <i>AVS 2</i>: <span style="font-size: 1.1em;">${op_max_loss_avs2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -416,7 +416,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Slash on <i>AVS 3</i>: <span style="font-size: 1.1em;">{op_max_loss_avs3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Slash on <i>AVS 3</i>: <span style="font-size: 1.1em;">${op_max_loss_avs3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -432,7 +432,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Slash on <i>AVS 1</i>: <span style="font-size: 1.1em;">{op_int_loss_avs1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Slash on <i>AVS 1</i>: <span style="font-size: 1.1em;">${op_int_loss_avs1:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -446,7 +446,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Slash on <i>AVS 2</i>: <span style="font-size: 1.1em;">{op_int_loss_avs2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Slash on <i>AVS 2</i>: <span style="font-size: 1.1em;">${op_int_loss_avs2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -460,7 +460,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Slash on <i>AVS 3</i>: <span style="font-size: 1.1em;">{op_int_loss_avs3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Slash on <i>AVS 3</i>: <span style="font-size: 1.1em;">${op_int_loss_avs3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -479,7 +479,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">Total Max Potential Slash Across AVSs: {op_max_loss_avss:,.0f}</h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">Total Max Potential Slash Across AVSs: ${op_max_loss_avss:,.0f}</h2>
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -494,7 +494,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">Total Int Potential Slash Across AVSs: {op_int_loss_avss:,.0f}</h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">Total Int Potential Slash Across AVSs: ${op_int_loss_avss:,.0f}</h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -645,7 +645,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">${max_slash_allowed1:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -662,7 +662,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_slash_allowed1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">${int_slash_allowed1:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -678,7 +678,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Operator Slash: <span style="font-size: 1.1em;">{op_max_loss_avs1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs1:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -693,7 +693,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">{op_int_loss_avs1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">${op_int_loss_avs1:,.0f}</span></h2>
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -794,7 +794,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed2:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">${max_slash_allowed2:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -810,7 +810,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_slash_allowed2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">${int_slash_allowed2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -826,7 +826,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Operator Slash: <span style="font-size: 1.1em;">{op_max_loss_avs2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -840,7 +840,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">{op_int_loss_avs2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">${op_int_loss_avs2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -941,7 +941,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed3:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">${max_slash_allowed3:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -957,7 +957,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_slash_allowed3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">${int_slash_allowed3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -973,7 +973,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Operator Slash: <span style="font-size: 1.1em;">{op_max_loss_avs3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -987,7 +987,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">{op_int_loss_avs3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">${op_int_loss_avs3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
