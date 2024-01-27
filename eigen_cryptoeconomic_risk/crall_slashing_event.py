@@ -627,7 +627,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span></h2>
                 </div>
                 """,
                 unsafe_allow_html=True
@@ -662,29 +662,6 @@ def main():
                 """, 
                 unsafe_allow_html=True
                 )
-            
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: green;">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1.2em;">&Sigma;<sub style="font-size: 1em;">j</sub></span> &nbsp; | &nbsp; Stake Required to Corrupt AVS: <span style="font-size: 1.2em;">${op_max_loss_avs1:,.0f}</span>
-                        </div>
-                        <div style="height: 10px;"></div> <!-- Empty div for spacing -->
-                        <div style="display: block;">
-                            <span style="font-size: 0.9em;">(AVS Total Restaked / 2)</span>
-                        </div>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
 
 
             st.markdown(
@@ -793,7 +770,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -935,7 +912,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -1011,6 +988,7 @@ def main():
     st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Performance Reputation</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;">&#8226; Operator Collateralization Risk Level</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked Into Multiple AVSs</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Entrenchment Level Risk of a Set of Operators on Multiple AVSs Simultaneously</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Slashing Risks Based on AVS Nature</p><span style="font-weight: normal; display: inline;"> (data availability, keeper networks, oracles, bridges, etc.)</span>', unsafe_allow_html=True)
