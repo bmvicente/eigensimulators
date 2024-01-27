@@ -621,7 +621,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -635,7 +635,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_eth_loss_allowed1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_slash_allowed1:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
