@@ -630,7 +630,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1.1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed1:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -733,8 +733,8 @@ def main():
                 formatted_tvl2 = "${:,.0f}".format(tvl2)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl2}""")
 
-        max_eth_loss_allowed2 = total_restaked - 2*tvl2
-        int_eth_loss_allowed2 = total_restaked - 3*tvl2
+        max_slash_allowed2 = total_restaked - 2*tvl2
+        int_slash_allowed2 = total_restaked - 3*tvl2
         
         st.markdown(
                 f"""
@@ -775,12 +775,17 @@ def main():
                     border-radius: 2px;
                     padding: 5px;
                     text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed2:,.0f}</span></h2>
+                    margin: 5px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed2:,.0f}</span>
+                        </div>
+                    </h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
-                )
+            )
             
             st.markdown(
                 f"""
@@ -790,7 +795,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_eth_loss_allowed2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_slash_allowed2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -875,8 +880,8 @@ def main():
                 formatted_tvl3 = "${:,.0f}".format(tvl3)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl3}""")
 
-        max_eth_loss_allowed3 = total_restaked - 2*tvl3
-        int_eth_loss_allowed3 = total_restaked - 3*tvl3
+        max_slash_allowed3 = total_restaked - 2*tvl3
+        int_slash_allowed3 = total_restaked - 3*tvl3
 
         st.markdown(
                 f"""
@@ -917,12 +922,17 @@ def main():
                     border-radius: 2px;
                     padding: 5px;
                     text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_eth_loss_allowed3:,.0f}</span></h2>
+                    margin: 5px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">{max_slash_allowed3:,.0f}</span>
+                        </div>
+                    </h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
-                )
+            )
             
             st.markdown(
                 f"""
@@ -932,7 +942,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_eth_loss_allowed3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">{int_slash_allowed3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
