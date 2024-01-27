@@ -92,9 +92,14 @@ def create_risk_score_input(risk_score_key, label):
 
 
 def calculate_slashing(total_restaked, risk_score):
-    risk_factor = 0 if risk_score == 10 else (risk_score + 1) * 10
+    if risk_score == 10:
+        risk_factor = (9 + 1) * 10  # This will give the same value as when risk_score is 9
+    else:
+        risk_factor = (risk_score + 1) * 10
+
     slashing_amount = (total_restaked / 3) * (risk_factor / 100)
     return slashing_amount
+
 
 
 
