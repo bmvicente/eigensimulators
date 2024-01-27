@@ -583,8 +583,8 @@ def main():
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl1}""")
 
 
-        max_eth_loss_allowed1 = total_restaked - 2*tvl1
-        int_eth_loss_allowed1 = total_restaked - 3*tvl1
+        max_slash_allowed1 = total_restaked - 2 * tvl1
+        int_slash_allowed1 = max_slash_allowed1 * 2/3
 
 
         st.markdown(
