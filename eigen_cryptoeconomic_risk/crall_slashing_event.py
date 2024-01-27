@@ -1071,12 +1071,13 @@ def main():
 
     st.markdown(
         """
-        <div style="text-align: center;">
-            Your centered sentence goes here.
+        <div style="text-align: center; font-size: 20px; font-weight: bold;">
+            BYZANTINE *SLASHING* TOLERANCE TEST
         </div>
         """,
         unsafe_allow_html=True
     )
+
 
 #########################################
 #########################################
