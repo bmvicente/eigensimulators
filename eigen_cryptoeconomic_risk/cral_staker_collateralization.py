@@ -139,7 +139,7 @@ def main():
                         </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
-                            <span style="font-size: 0.8m;">(2 * TVL - AVS Total Restaked)</span>
+                            <span style="font-size: 0.8m;">(2 * TVL - AVS Total Restaked) - α<sub style="font-size: 1em;">j</sub></span></span>
                         </div>
                     </h2>
                 </div>
