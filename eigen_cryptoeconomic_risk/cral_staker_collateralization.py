@@ -97,41 +97,52 @@ def main():
     with col3:
 
         st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: grey;">
-                <h2 style="color: black; margin:0; font-size: 1.1em;">
-                    <span style="font-weight: bold; font-size: 1.2em;">s<sub style="font-size: 0.8em;">i</sub></span> &nbsp; | &nbsp; Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: grey;">
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-weight: bold; font-size: 1.2em;">s<sub style="font-size: 0.8em;">i</sub></span> &nbsp; | &nbsp; Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
+                        </div>
+                        <div style="height: 10px;"></div> <!-- Empty div for spacing -->
+                        <div style="display: block;">
+                        </div>
+                    </h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
         
         profit_from_corruption = max(2 * tvl - total_restaked, 0)
 
-
+        
         st.markdown(
-                    f"""
-                    <div style="
-                        border: 1px solid;
-                        border-radius: 2px;
-                        padding: 5px;
-                        text-align: center;
-                        margin: 5px 0;
-                        background-color: lightgreen;">
-                        <h2 style="color: black; margin:0; font-size: 1.1em;">
-                                <span style="font-weight: bold; font-size: 1.2em;">p<sub style="font-size: 0.8em;">j</span> &nbsp; | &nbsp; Profit from Corruption: <span style="font-size: 1.2em;">${profit_from_corruption:,.0f}</span></h2>
-                        </h2>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
-                    )
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: lightgreen;">
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-weight: bold; font-size: 1.2em;">p<sub style="font-size: 0.8em;">j</span> &nbsp; | &nbsp; Profit from Corruption: <span style="font-size: 1.2em;">${profit_from_corruption:,.0f}</span></h2>
+                        </div>
+                        <div style="height: 10px;"></div> <!-- Empty div for spacing -->
+                        <div style="display: block;">
+                            <span style="font-size: 0.9m;">(2 * TVL - AVS Total Restaked)</span>
+                        </div>
+                    </h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
             
     with col4:
             
