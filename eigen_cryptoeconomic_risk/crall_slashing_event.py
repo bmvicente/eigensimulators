@@ -674,12 +674,17 @@ def main():
                     border-radius: 2px;
                     padding: 5px;
                     text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">${max_slash_allowed1:,.0f}</span>
-                        </div>
+                    margin: 5px 0;">
+                    <h2 style="color: black; margin: 0; font-size: 1em;">
+                        <span style="font-weight: bold; font-size: 1.2em;">
+                            &Omega;<sub style="font-size: 0.8em;">AVS1</sub> &nbsp;
+                            <span style="display: inline-block; vertical-align: middle;">
+                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">iAVS1</sub></span>
+                                <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
+                            </span>
+                        </span>
+                        <br><br>
+                        Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs1:,.0f}</span>
                     </h2>
                 </div>
                 """, 
