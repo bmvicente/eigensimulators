@@ -51,7 +51,7 @@ def main():
             value=0,
             step=int(1e8)
         )
-        st.write(f"&#8226; AVL Total Restaked: ${total_restaked:,.0f}")
+        st.write(f"&#8226; AVS Total Restaked: ${total_restaked:,.0f}")
 
         st.write("\n")
 
