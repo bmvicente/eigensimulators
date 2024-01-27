@@ -204,40 +204,23 @@ def main():
         st.write("\n")
 
 
-        col35, col36 = st.columns(2)
+        # Use the custom styled headers in your markdown
+        st.markdown('<p class="header-style">Operator Amount Staked</p>', unsafe_allow_html=True)
 
-        with col35:
+        if isinstance(st.session_state.operator_stake, tuple):
+                operator_stake = st.number_input("", min_value=0, max_value=1000000000000, value=int(st.session_state.operator_stake[0]), step=10000000)
+        else:
+                operator_stake = st.number_input("", min_value=0, max_value=1000000000000, value=int(st.session_state.operator_stake), step=10000000)
 
-            # Use the custom styled headers in your markdown
-            st.markdown('<p class="header-style">Operator Amount Staked</p>', unsafe_allow_html=True)
+        # Format the operator_stake value as currency with a dollar sign and commas
+        formatted_operator_stake = "${:,.0f}".format(operator_stake)
 
-            if isinstance(st.session_state.operator_stake, tuple):
-                    operator_stake = st.number_input("", min_value=0, max_value=1000000000000, value=int(st.session_state.operator_stake[0]), step=10000000)
-            else:
-                    operator_stake = st.number_input("", min_value=0, max_value=1000000000000, value=int(st.session_state.operator_stake), step=10000000)
+        st.write(f"""&#8226; Operator Stake: {formatted_operator_stake}""")
 
-            # Format the operator_stake value as currency with a dollar sign and commas
-            formatted_operator_stake = "${:,.0f}".format(operator_stake)
-
-            st.write(f"""&#8226; Operator Stake: {formatted_operator_stake}""")
-
-            with st.expander("Logic"):
-                st.markdown(f"""
+        with st.expander("Logic"):
+            st.markdown(f"""
                     """)
 
-        with col36:
-
-            # Displaying the custom styled header
-            st.markdown('<p class="header-style">Operator Reputation [Soon]</p>', unsafe_allow_html=True)
-
-            # Select slider for average operator reputation
-            operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
-
-            # The expander with more information (optional)
-            with st.expander("Logic"):
-                st.markdown("""
-                    Not accounted for in the calculations, as of now.
-                            """)
 
         st.write("\n")
         st.write("\n")
@@ -983,11 +966,24 @@ def main():
     st.write("\n")
 
     st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;">&#8226; Operator Performance Reputation</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked Into Multiple AVSs</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Entrenchment Level Risk of a Set of Operators on Multiple AVSs Simultaneously</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Slashing Risks Based on AVS Nature</p><span style="font-weight: normal; display: inline;"> (data availability, keeper networks, oracles, bridges, etc.)</span>', unsafe_allow_html=True)
 
+
+            # Displaying the custom styled header
+            #st.markdown('<p class="header-style">Operator Reputation [Soon]</p>', unsafe_allow_html=True)
+
+            # Select slider for average operator reputation
+            #operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
+
+            # The expander with more information (optional)
+            #with st.expander("Logic"):
+            #    st.markdown("""
+            #        Not accounted for in the calculations, as of now.
+            #                """)
 
     st.write("  \n")
     st.write("  \n")
