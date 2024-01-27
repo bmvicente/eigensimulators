@@ -113,7 +113,7 @@ def main():
                         </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
-                        </div>
+                        <div style="display: block;">
                         </div>
                     </h2>
                 </div>
