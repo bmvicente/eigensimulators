@@ -684,7 +684,7 @@ def main():
                             <br> <!-- Extra space -->
                         </div>
                         <div style="display: block;">
-                            <span style="font-size: 1em;">Max Slash "Allowed" To Still Maintain Security:</span> <span style="font-size: 1.1em;">${max_slash_allowed1:,.0f}</span>
+                            <span style="font-size: 0.9em;">Max Slash "Allowed" To Still Maintain Security:</span> <span style="font-size: 1em;">${max_slash_allowed1:,.0f}</span>
                         </div>
                     </h2>
                 </div>
