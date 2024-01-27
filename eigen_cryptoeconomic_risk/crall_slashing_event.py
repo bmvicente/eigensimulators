@@ -378,6 +378,28 @@ def main():
         col30, col31 = st.columns([7, 8])
 
         with col30:
+            
+            result = 1
+            st.markdown(
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-weight: bold; font-size: 1.2em;">&Omega;<sub style="font-size: 0.8em;">k</sub></span> &nbsp; * &nbsp;
+                            <span style="font-weight: bold; font-size: 1.2em;">(&gamma;<sub style="font-size: 0.8em;">n</sub> &nbsp; / &nbsp;
+                            <span style="font-weight: bold; font-size: 1.2em;">s<sub style="font-size: 0.8em;">i</sub></span>) &nbsp; | &nbsp; Result: <span style="font-size: 1.2em;">{result:,.0f}</span>
+                        </div>
+                    </h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
 
 
             st.markdown(
