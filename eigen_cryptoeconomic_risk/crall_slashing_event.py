@@ -1073,12 +1073,22 @@ def main():
 
     st.markdown(
         """
-        <div style="text-align: center; font-size: 24px; font-weight: bold;">
+        <div style="text-align: center; font-size: 22px; font-weight: bold;">
             BYZANTINE <i>SLASHING</i> TOLERANCE TEST
         </div>
         """,
         unsafe_allow_html=True
     )
+
+    st.markdown(
+        """
+        <div style="text-align: center; font-size: 20px;">
+            &beta; = &sigma;&alpha; - &theta;
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
 
 
 #########################################
