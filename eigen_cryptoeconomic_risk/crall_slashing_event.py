@@ -1125,12 +1125,12 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;">
-                <h2 style="color: black; margin:0; font-size: 1em;">
+                <h2 style="color: black; margin:0; font-size: 1.2em;">
                     AVS 1
-                </h2>
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
                     <span style="font-weight: bold;">${max_slash_allowed1:,.0f}</span> - <span style="font-weight: bold;">${op_max_loss_avs1:,.0f}</span> = <span style="font-weight: bold;">${bst_avs1:,.0f}</span>
                 </div>
+                </h2>
             </div>
             """, unsafe_allow_html=True
         )
@@ -1146,7 +1146,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;">
-                <h2 style="color: black; margin:0; font-size: 1em;">
+                <h2 style="color: black; margin:0; font-size: 1.2em;">
                     AVS 2
                 </h2>
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
@@ -1166,7 +1166,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;">
-                <h2 style="color: black; margin:0; font-size: 1em;">
+                <h2 style="color: black; margin:0; font-size: 1.2em;">
                     AVS 3
                 </h2>
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
