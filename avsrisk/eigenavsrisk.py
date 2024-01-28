@@ -22,13 +22,13 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
     #CVS and CVL based and 51% operator attack dependant
 
     security_audit_score = security_audits_risk[security_audits]
-    business_model_score = business_model_risk[business_model]
+    st.session_state.business_model_score = business_model_risk[business_model]
     avs_type_score = avs_type_risk[avs_type]
     restaking_mod_score = restaking_mods_risk[restaking_mods]
     avs_avg_operator_reputation_score = avs_avg_operator_reputation_risk[avs_avg_operator_reputation]
 
     total_risk_score = (security_audit_score * security_audits_weight +
-                        business_model_score * business_model_weight +
+                        st.session_state.business_model_score * business_model_weight +
                         avs_type_score * avs_type_weight +
                         operator_attack_risk * operator_attack_weight +  # Use the calculated risk score directly
                         restaking_mod_score * restaking_mods_weight +
@@ -55,7 +55,7 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
     normalized_risk_score = (total_risk_score / max_possible_risk_score) * 100
     normalized_risk_score = round(normalized_risk_score, 2)
 
-    return normalized_risk_score, security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score
+    return normalized_risk_score, security_audit_score, st.session_state.business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score
 
 
 
