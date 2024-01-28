@@ -13,14 +13,14 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
     restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
     avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 
-    security_audit_score = security_audits_risk[security_audits]
-    business_model_score = business_model_risk[business_model]
-    avs_type_score = avs_type_risk[avs_type]
-    restaking_mod_score = restaking_mods_risk[restaking_mods]
-    avs_avg_operator_reputation_score = avs_avg_operator_reputation_risk[avs_avg_operator_reputation]
+    st.session_state.security_audit_score = security_audits_risk[security_audits]
+    st.session_state.business_model_score = business_model_risk[business_model]
+    st.session_state.avs_type_score = avs_type_risk[avs_type]
+    st.session_state.restaking_mod_score = restaking_mods_risk[restaking_mods]
+    st.session_state.avs_avg_operator_reputation_score = avs_avg_operator_reputation_risk[avs_avg_operator_reputation]
 
 
-    return security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score
+    return st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score
 
 
 
@@ -522,7 +522,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     
-    risk_score, security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
+    st.session_state.risk_score, st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
 
 
     # Determine the color and background color based on the risk score
