@@ -1135,7 +1135,7 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
-                <h2 style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                <h2 style="color: black; margin:0; font-size: 1.5em; font-weight: bold;">
                     AVS 3
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
                     ${max_slash_allowed1:,.0f} - ${op_max_loss_avs1:,.0f} = <span style="font-size: 1.2em; color: {color};">${bst_avs1:,.0f}</span>
@@ -1167,7 +1167,7 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
-                <h2 style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                <h2 style="color: black; margin:0; font-size: 1.5em; font-weight: bold;">
                     AVS 3
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
                     ${max_slash_allowed2:,.0f} - ${op_max_loss_avs2:,.0f} = <span style="font-size: 1.2em; color: {color};">${bst_avs2:,.0f}</span>
@@ -1199,7 +1199,7 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
-                <h2 style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                <h2 style="color: black; margin:0; font-size: 1.5em; font-weight: bold;">
                     AVS 3
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
                     ${max_slash_allowed3:,.0f} - ${op_max_loss_avs3:,.0f} = <span style="font-size: 1.2em; color: {color};">${bst_avs3:,.0f}</span>
