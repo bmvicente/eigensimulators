@@ -1127,23 +1127,24 @@ def main():
             background_color = "#ffffff"  # White background
 
         st.markdown(
-            f"""
-            <div style="
-                border: 2px solid {color};
-                border-radius: 5px;
-                padding: 10px;
-                text-align: center;
-                margin: 10px 0;
-                background-color: {background_color};">
-                <h2 style="color: black; margin:0; font-size: 1.5em; font-weight: bold;">
-                    AVS 3
-                <div style="color: black; font-size: 1em; margin-top: 10px;">
-                    ${max_slash_allowed1:,.0f} - ${op_max_loss_avs1:,.0f} = <span style="font-size: 1.2em; color: {color};">${bst_avs1:,.0f}</span>
+                f"""
+                <div style="
+                    border: 2px solid {color};
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: {background_color};">
+                    <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                        AVS 1
+                    </div>
+                    <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
+                        ${max_slash_allowed1:,.0f} - ${op_max_loss_avs1:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
+                    </div>
                 </div>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+                """, 
+                unsafe_allow_html=True
+            )
          
     with col51:
         bst_avs2 = max_slash_allowed2 - op_max_loss_avs2
@@ -1159,23 +1160,24 @@ def main():
             background_color = "#ffffff"  # White background
 
         st.markdown(
-            f"""
-            <div style="
-                border: 2px solid {color};
-                border-radius: 5px;
-                padding: 10px;
-                text-align: center;
-                margin: 10px 0;
-                background-color: {background_color};">
-                <h2 style="color: black; margin:0; font-size: 1.5em; font-weight: bold;">
-                    AVS 3
-                <div style="color: black; font-size: 1em; margin-top: 10px;">
-                    ${max_slash_allowed2:,.0f} - ${op_max_loss_avs2:,.0f} = <span style="font-size: 1.2em; color: {color};">${bst_avs2:,.0f}</span>
+                f"""
+                <div style="
+                    border: 2px solid {color};
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: {background_color};">
+                    <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                        AVS 2
+                    </div>
+                    <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
+                        ${max_slash_allowed2:,.0f} - ${op_max_loss_avs2:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs2:,.0f}</span>
+                    </div>
                 </div>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+                """, 
+                unsafe_allow_html=True
+            )
 
     with col52:
         bst_avs3 = max_slash_allowed3 - op_max_loss_avs3
