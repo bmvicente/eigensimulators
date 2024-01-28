@@ -120,12 +120,12 @@ def main():
         col3, col4 = st.columns([3, 3])
 
         with col3:
-                tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
-                st.write(f"&#8226; AVS TVL: ${tvl:,.0f}")
-
-        with col4:
                 total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
                 st.write(f"&#8226; AVS Total Restaked: ${total_restaked:,.0f}")
+
+        with col4:
+                tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
+                st.write(f"&#8226; AVS TVL: ${tvl:,.0f}")
         
         st.write("  \n")
 
