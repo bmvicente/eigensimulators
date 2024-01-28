@@ -77,8 +77,6 @@ def main():
     
     st.write("  \n")
     
-    risk_score, security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
-
 
     def calculate_operator_attack_risk(total_restaked, tvl):
         if tvl < 100000 or total_restaked < 100000:
@@ -546,6 +544,8 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+    
+    risk_score, security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
 
 
     # Determine the color and background color based on the risk score
