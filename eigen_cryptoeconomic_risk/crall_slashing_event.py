@@ -1116,44 +1116,67 @@ def main():
     with col50:
         bst_avs1 = max_slash_allowed1 - op_max_loss_avs1
 
+        if bst_avs1 < 0:
+            color = "#d32f2f"  # Red color for negative value
+            background_color = "#fde0dc"  # Light red background
+        elif bst_avs1 > 0:
+            color = "#388e3c"  # Green color for positive value
+            background_color = "#ebf5eb"  # Light green background
+        else:
+            color = "black"  # Black color for zero
+            background_color = "#ffffff"  # White background
+
         st.markdown(
             f"""
             <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
+                border: 2px solid {color};
+                border-radius: 5px;
+                padding: 10px;
                 text-align: center;
-                margin: 5px 0;">
-                <h2 style="color: black; margin:0; font-size: 1.2em;">
-                    AVS 1
+                margin: 10px 0;
+                background-color: {background_color};">
+                <h2 style="color: black; margin:0; font-size: 1.5em; font-weight: bold;">
+                    AVS 3
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
-                    <span style="font-weight: bold;">${max_slash_allowed1:,.0f}</span> - <span style="font-weight: bold;">${op_max_loss_avs1:,.0f}</span> = <span style="font-weight: bold;">${bst_avs1:,.0f}</span>
+                    ${max_slash_allowed1:,.0f} - ${op_max_loss_avs1:,.0f} = <span style="font-size: 1.2em; color: {color};">${bst_avs1:,.0f}</span>
                 </div>
-                </h2>
             </div>
-            """, unsafe_allow_html=True
+            """, 
+            unsafe_allow_html=True
         )
          
     with col51:
         bst_avs2 = max_slash_allowed2 - op_max_loss_avs2
 
+        if bst_avs2 < 0:
+            color = "#d32f2f"  # Red color for negative value
+            background_color = "#fde0dc"  # Light red background
+        elif bst_avs2 > 0:
+            color = "#388e3c"  # Green color for positive value
+            background_color = "#ebf5eb"  # Light green background
+        else:
+            color = "black"  # Black color for zero
+            background_color = "#ffffff"  # White background
+
         st.markdown(
             f"""
             <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
+                border: 2px solid {color};
+                border-radius: 5px;
+                padding: 10px;
                 text-align: center;
-                margin: 5px 0;">
-                <h2 style="font-weight: bold; color: black; margin:0; font-size: 1.5em;">
-                    AVS 2
+                margin: 10px 0;
+                background-color: {background_color};">
+                <h2 style="color: black; margin:0; font-size: 1.5em; font-weight: bold;">
+                    AVS 3
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
-                    <span style=">${max_slash_allowed2:,.0f}</span> - <span style=">${op_max_loss_avs2:,.0f}</span> = <span style="font-weight: bold;">${bst_avs2:,.0f}</span>
+                    ${max_slash_allowed2:,.0f} - ${op_max_loss_avs2:,.0f} = <span style="font-size: 1.2em; color: {color};">${bst_avs2:,.0f}</span>
                 </div>
-                </h2>
             </div>
-            """, unsafe_allow_html=True
+            """, 
+            unsafe_allow_html=True
         )
+
     with col52:
         bst_avs3 = max_slash_allowed3 - op_max_loss_avs3
 
