@@ -113,7 +113,7 @@ def main():
                 """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS TVL & Total Restaked</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS Total Restaked & TVL</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
