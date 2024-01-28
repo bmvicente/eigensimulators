@@ -522,7 +522,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     
-    risk_scores = avs_risk(security_audits, business_model, avs_type, restaking_mods, avs_avg_operator_reputation, operator_attack_risk)
+    risk_scores = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
     (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, 
      st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score) = risk_scores
 
