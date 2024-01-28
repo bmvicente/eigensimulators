@@ -92,7 +92,9 @@ def main():
             return 7  # Less than TVL but not by a wide margin, increased risk
         else:
             return 9
-        
+    
+    if 'business_model_score' not in st.session_state:
+        st.session_state.business_model_score = 0
 
     # Creating two major columns
     col1, col2 = st.columns([1, 1], gap="large")
