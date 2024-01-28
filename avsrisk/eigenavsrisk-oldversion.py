@@ -385,7 +385,7 @@ def main():
                 For example, the Likelihood of a Security Audit posing a risk and its Impact on the integrity of the AVS are both greater than the Likelihood and Impact to an AVS of, say, its <em>Average Operator Reputation</em> and the <em>AVS Type</em> chosen. The Simulator takes these nuances into account.            
                 </div>
                 <br>
-                
+
                 <div class="big-font">
                 <em>It's important to bear in mind that this Simulator was built from an AVS perspective alone.</em>
                 </div>
@@ -393,8 +393,8 @@ def main():
 
 
 
-
-
+    st.write("  \n")
+    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
