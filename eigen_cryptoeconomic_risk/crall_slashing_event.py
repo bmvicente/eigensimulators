@@ -1127,27 +1127,24 @@ def main():
             background_color = "#ffffff"  # White background
 
         st.markdown(
-            f"""
-            <div style="
-                border: 2px solid {color};
-                border-radius: 5px;
-                padding: 10px;
-                text-align: center;
-                margin: 10px auto;  /* Centers the div */
-                background-color: {background_color};
-                width: 110%;  /* Adjust the width as needed */
-                max-width: 800px;  /* Optional: sets a maximum width */
-                ">
-                <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
-                    AVS 1
+                f"""
+                <div style="
+                    border: 2px solid {color};
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: {background_color};">
+                    <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                        AVS 1
+                    </div>
+                    <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
+                        ${max_slash_allowed1:,.0f} - ${op_max_loss_avs1:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
+                    </div>
                 </div>
-                <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
-                    ${max_slash_allowed1:,.0f} - ${op_max_loss_avs1:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
-                </div>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+                """, 
+                unsafe_allow_html=True
+            )
          
     with col51:
         bst_avs2 = max_slash_allowed2 - op_max_loss_avs2
