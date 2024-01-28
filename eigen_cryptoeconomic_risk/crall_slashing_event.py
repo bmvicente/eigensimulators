@@ -1109,7 +1109,6 @@ def main():
 
     st.write("\n")
     st.write("\n")
-    st.write("\n")
 
 
     col50,col51,col52 = st.columns(3)
@@ -1158,20 +1157,28 @@ def main():
     with col52:
         bst_avs3 = max_slash_allowed3 - op_max_loss_avs3
 
+        if bst_avs3 < 0:
+            bg_color = "brightred"
+        elif bst_avs3 > 0:
+            bg_color = "lightgreen"
+        else:
+            bg_color = "white"
+
         st.markdown(
             f"""
             <div style="
-                border: 1px solid;
+                border: 2px solid;  /* thicker border */
                 border-radius: 2px;
                 padding: 5px;
                 text-align: center;
-                margin: 5px 0;">
+                margin: 5px 0;
+                background-color: {bg_color};">
                 <h2 style="color: black; margin:0; font-size: 1.5em;">
                     AVS 3
-                <div style="color: black; font-size: 1em; margin-top: 10px;">
-                    <span style="font-weight: bold;">${max_slash_allowed3:,.0f}</span> - <span style="font-weight: bold;">${op_max_loss_avs3:,.0f}</span> = <span style="font-weight: bold;">${bst_avs3:,.0f}</span>
-                </div>
                 </h2>
+                <div style="color: black; font-size: 1em; margin-top: 10px;">
+                    {max_slash_allowed3:,.0f} - {op_max_loss_avs3:,.0f} = <span style="font-weight: bold; font-size: 1.2em;">{bst_avs3:,.0f}</span>
+                </div>
             </div>
             """, unsafe_allow_html=True
         )
