@@ -1129,7 +1129,7 @@ def main():
                     AVS 1
                 </h2>
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
-                    <span style="font-weight: bold;">{max_slash_allowed1:,.0f}</span> - <span style="font-weight: bold;">{op_max_loss_avs1:,.0f}</span> = <span style="font-weight: bold;">{bst_avs1:,.0f}</span>
+                    <span style="font-weight: bold;">${max_slash_allowed1:,.0f}</span> - <span style="font-weight: bold;">${op_max_loss_avs1:,.0f}</span> = <span style="font-weight: bold;">${bst_avs1:,.0f}</span>
                 </div>
             </div>
             """, unsafe_allow_html=True
@@ -1150,7 +1150,7 @@ def main():
                     AVS 2
                 </h2>
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
-                    <span style="font-weight: bold;">{max_slash_allowed2:,.0f}</span> - <span style="font-weight: bold;">{op_max_loss_avs2:,.0f}</span> = <span style="font-weight: bold;">{bst_avs2:,.0f}</span>
+                    <span style="font-weight: bold;">${max_slash_allowed2:,.0f}</span> - <span style="font-weight: bold;">${op_max_loss_avs2:,.0f}</span> = <span style="font-weight: bold;">${bst_avs2:,.0f}</span>
                 </div>
             </div>
             """, unsafe_allow_html=True
@@ -1170,7 +1170,7 @@ def main():
                     AVS 3
                 </h2>
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
-                    <span style="font-weight: bold;">{max_slash_allowed3:,.0f}</span> - <span style="font-weight: bold;">{op_max_loss_avs3:,.0f}</span> = <span style="font-weight: bold;">{bst_avs3:,.0f}</span>
+                    <span style="font-weight: bold;">${max_slash_allowed3:,.0f}</span> - <span style="font-weight: bold;">${op_max_loss_avs3:,.0f}</span> = <span style="font-weight: bold;">${bst_avs3:,.0f}</span>
                 </div>
             </div>
             """, unsafe_allow_html=True
