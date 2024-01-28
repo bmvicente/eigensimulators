@@ -514,13 +514,9 @@ def main():
 
                 The \$AVS’s Tokenomics (while not included in the reward calculation) were deemed useful to include since they provide a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. 
                 An important factor that should help AVS developers determine the $AVS minting rate is that of rewarding operators for their capital costs.
-
-                * * *
              
-                It's important to bear in mind that this Simulator was built from an AVS perspective *alone*. 
-             
-                For a deeper dive, please visit the [source code](https://github.com/bmvicente/eigensimulators/blob/master/avsrewards/eigenavsrewards.py).
-            """)
+                *It's important to bear in mind that this Simulator was built from an AVS perspective alone*. 
+                         """)
     
         
     st.write("  \n")
