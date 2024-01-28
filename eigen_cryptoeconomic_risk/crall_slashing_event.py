@@ -1199,11 +1199,11 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
-                <div style="color: black; margin:0; font-size: 1.5em; font-weight: bold;">
+                <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
                     AVS 3
                 </div>
-                <div style="color: black; font-size: 1.2em; margin-top: 5px; font-weight: bold;">
-                    ${max_slash_allowed3:,.0f} - ${op_max_loss_avs3:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs3:,.0f}</span>
+                <div style="color: black; font-size: 1.3em; margin-top: 5px; font-weight: bold;">
+                    ${max_slash_allowed3:,.0f} - ${op_max_loss_avs3:,.0f} = <span style="font-size: 1.4em; color: {color};">${bst_avs3:,.0f}</span>
                 </div>
             </div>
             """, 
