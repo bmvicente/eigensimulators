@@ -119,9 +119,6 @@ def main():
         with st.expander("Logic"):
                 st.markdown("""                        
                     The **TVL/Total Restaked** risk logic herein is set so that the greater the *(AVS Total Restaked/2) : AVS TVL* ratio, the safer the AVS is, and vice-versa.
-                            
-                    Based on the values inputted, the Minimum TVL to keep the AVS secure should be \\\\${min_tvl:,} and the Sufficiently-High TVL value to assure a comfortable security level for the AVS should be at least \\\\${avs_total_staked:,}. Current TVL equals \\\\${avs_tvl:,}.
-                    If the TVL increases compared to the Total Staked, the risk gets reduced and the rewards too, therefore.
                     
                     To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) to begin with: an AVS appears to be most secure when the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, as any successful attack would result in at least half of the attacker's stake being slashed. If *AVS Total Restaked* increases from there compared to the *AVS TVL*, the risk gets reduced even further. If both variables are under $100K, we consider it the maximum risk scenario.
 
