@@ -182,10 +182,10 @@ def main():
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
                 <div style="text-align: center; margin-top: 10px;">
-            <span style="font-size: 18px;">(Parameter Risk based on Input * Likelihood * Impact = Weighted overall risk for parameter)</span>
+            <span style="font-size: 14px; font-weight: bold;">(Parameter Risk based on Input * Likelihood * Impact = Weighted Overall Risk for Parameter)</span>
         </div>
         """
-        
+
         st.markdown(tvl_total_restaked_calc, unsafe_allow_html=True)
 
 
