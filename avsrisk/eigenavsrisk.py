@@ -68,7 +68,8 @@ def main():
         st.session_state.restaking_mod_score = 0
     if 'avs_avg_operator_reputation_score' not in st.session_state:
         st.session_state.avs_avg_operator_reputation_score = 0
-
+    if 'risk_score' not in st.session_state:
+            st.session_state.risk_score = 0
 
 
     col1, col2 = st.columns([1, 1], gap="large")
