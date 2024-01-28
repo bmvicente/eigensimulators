@@ -486,6 +486,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+    st.write("  \n")
 
     def normalize_score(original_score, min_original=8, max_original=5700):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
@@ -493,7 +494,7 @@ def main():
 
     final_result = result1 + result2 + result3 + result4 + result5 + result6
     normalized_risk_score = normalize_score(final_result)
-    
+
     st.session_state.risk_score = normalized_risk_score
 
     st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized AVS Risk Score</div>", unsafe_allow_html=True)
