@@ -174,7 +174,6 @@ def main():
         # Display the result with formatting
         tvl_total_restaked_calc = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold;">Operator Attack Risk:</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{operator_attack_risk}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_likelihood}</span> 
