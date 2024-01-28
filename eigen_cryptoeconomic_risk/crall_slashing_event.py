@@ -1105,7 +1105,7 @@ def main():
     st.write("\n")
 
     st.write(f"""
-             The Byzantine *Slashing* Tolerance test helps identify the ecosystem element(s) that are in a compromisable state due to a previous-executed Operator slashing event.
+             The Byzantine *Slashing* Tolerance test helps identify the ecosystem elements that are in a compromisable state due to a previous-executed Operator slashing event.
              
              We say that an element has failed the BST test if B < 0, and passed if B > 0.
             
