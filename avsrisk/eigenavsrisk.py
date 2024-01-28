@@ -244,8 +244,10 @@ def main():
 
         result2 = business_model_likelihood * business_model_impact
 
-        business_model_calc = f"""
+        business_model_calc = f"""business_model
             <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{business_model}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
