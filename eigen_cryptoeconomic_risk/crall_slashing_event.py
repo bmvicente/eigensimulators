@@ -1070,7 +1070,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    
+
 
     ###################
     ####### BST #######
@@ -1140,7 +1140,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: {background_color};">
-                    <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                    <div style="color: black; margin:0; font-size: 1.6em; font-weight: bold;">
                         AVS 1
                     </div>
                     <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
@@ -1176,7 +1176,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: {background_color};">
-                    <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                    <div style="color: black; margin:0; font-size: 1.6em; font-weight: bold;">
                         AVS 2
                     </div>
                     <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
@@ -1212,7 +1212,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: {background_color};">
-                    <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                    <div style="color: black; margin:0; font-size: 1.6em; font-weight: bold;">
                         AVS 3
                     </div>
                     <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
