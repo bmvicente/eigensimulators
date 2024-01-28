@@ -66,7 +66,7 @@ def main():
 
     st.image("images/eigenimage.png")
 
-    st.title("AVS Risk Simulator")
+    st.title("AVS Risk Simulator II")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
@@ -246,11 +246,11 @@ def main():
                 Thus, the risk of each model is influenced by its reliance on the AVS's native token and the complexities of its fee and security structures.
             """)
 
-        result2 = business_model_score * business_model_likelihood * business_model_impact
+        result2 = st.session_state.business_model_score * business_model_likelihood * business_model_impact
 
         business_model_calc = f"""business_model
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_score}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -545,7 +545,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     
-    risk_score, security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
+    risk_score, security_audit_score, st.session_state.business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
 
 
     # Determine the color and background color based on the risk score
