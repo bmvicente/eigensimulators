@@ -1203,7 +1203,7 @@ def main():
                     AVS 3
                 </div>
                 <div style="color: black; font-size: 1.3em; margin-top: 5px; font-weight: bold;">
-                    ${max_slash_allowed3:,.0f} - ${op_max_loss_avs3:,.0f} = <span style="font-size: 1.4em; color: {color};">${bst_avs3:,.0f}</span>
+                    ${max_slash_allowed3:,.0f} - ${op_max_loss_avs3:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs3:,.0f}</span>
                 </div>
             </div>
             """, 
