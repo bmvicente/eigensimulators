@@ -643,7 +643,7 @@ def main():
 
         with col4:
                 tvl1 = st.number_input("**AVS TVL**", min_value=0, max_value=1000000000000, value=0, step=10000000,
-                                              help=f"""TVL was included to establish the CoC vs PfC threshold and calculate the "allowed" slashes to maintain AVS security.""")
+                                              help=f"""TVL was included to establish the CoC vs PfC threshold and calculate the "allowed" slashing amount to still maintain AVS security.""")
 
                 formatted_tvl1 = "${:,.0f}".format(tvl1)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl1}""")
