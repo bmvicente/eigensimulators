@@ -1158,29 +1158,33 @@ def main():
         bst_avs3 = max_slash_allowed3 - op_max_loss_avs3
 
         if bst_avs3 < 0:
-            bg_color = "brightred"
+            color = "#d32f2f"  # Red color for negative value
+            background_color = "#fde0dc"  # Light red background
         elif bst_avs3 > 0:
-            bg_color = "lightgreen"
+            color = "#388e3c"  # Green color for positive value
+            background_color = "#ebf5eb"  # Light green background
         else:
-            bg_color = "white"
+            color = "black"  # Black color for zero
+            background_color = "#ffffff"  # White background
 
         st.markdown(
             f"""
             <div style="
-                border: 2px solid;  /* thicker border */
-                border-radius: 2px;
-                padding: 5px;
+                border: 2px solid {color};
+                border-radius: 5px;
+                padding: 10px;
                 text-align: center;
-                margin: 5px 0;
-                background-color: {bg_color};">
-                <h2 style="color: black; margin:0; font-size: 1.5em;">
+                margin: 10px 0;
+                background-color: {background_color};">
+                <h2 style="color: black; margin:0; font-size: 1.4em;">
                     AVS 3
                 </h2>
                 <div style="color: black; font-size: 1em; margin-top: 10px;">
-                    {max_slash_allowed3:,.0f} - {op_max_loss_avs3:,.0f} = <span style="font-weight: bold; font-size: 1.2em;">{bst_avs3:,.0f}</span>
+                    {max_slash_allowed3:,.0f} - {op_max_loss_avs3:,.0f} = <span style="font-size: 1.5em; color: {color};">{bst_avs3:,.0f}</span>
                 </div>
             </div>
-            """, unsafe_allow_html=True
+            """, 
+            unsafe_allow_html=True
         )
 
     st.write("\n")
