@@ -129,6 +129,7 @@ def main():
         total_restaked = float(total_restaked) if total_restaked else 0
 
         operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
+        st.session_state.operator_attack_risk = operator_attack_risk
 
 
         # The expander without a visible outline
@@ -524,6 +525,9 @@ def main():
     
 
     risk_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score, st.session_state.operator_attack_risk) = risk_score
+    
+    risk_score = avs_risk(security_audits, business_model, avs_type, st.session_state.operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
     (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score, st.session_state.operator_attack_risk) = risk_score
 
 
