@@ -1069,6 +1069,12 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+
+    ###################
+    ####### BST #######
+    ###################
+
+
     st.markdown(
         """
         <div style="text-align: center; font-size: 22px; font-weight: bold;">
@@ -1100,6 +1106,39 @@ def main():
         """, 
         unsafe_allow_html=True
     )
+
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+
+
+    col50,col51,col52 = st.columns(3)
+
+    with col50:
+        bst_avs1 = max_slash_allowed1 - op_max_loss_avs1
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;">
+                <h2 style="color: black; margin:0; font-size: 1em;">
+                    AVS 1
+                </h2>
+                <div style="color: black; font-size: 1em; margin-top: 10px;">
+                    <span style="font-weight: bold;">{max_slash_allowed1:,.0f}</span> - <span style="font-weight: bold;">{op_max_loss_avs1:,.0f}</span> = <span style="font-weight: bold;">{bst_avs1:,.0f}</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True
+        )
+         
+    with col51:
+        
+    with col52:
+
 
     st.write("\n")
     st.write("\n")
