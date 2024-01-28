@@ -55,7 +55,7 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
     normalized_risk_score = (total_risk_score / max_possible_risk_score) * 100
     normalized_risk_score = round(normalized_risk_score, 2)
 
-    return normalized_risk_score
+    return normalized_risk_score, security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score
 
 
 
@@ -76,6 +76,9 @@ def main():
                         """)
     
     st.write("  \n")
+
+    security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, restaking_mods, avs_avg_operator_reputation)
+
 
     def calculate_operator_attack_risk(total_restaked, tvl):
         if tvl < 100000 or total_restaked < 100000:
@@ -169,7 +172,7 @@ def main():
                             """)
 
         # Perform the multiplication and calculate the result
-        result1 = tvl_total_restaked_likelihood * tvl_total_restaked_impact
+        result1 = operator_attack_risk * tvl_total_restaked_likelihood * tvl_total_restaked_impact
 
         # Display the result with formatting
         tvl_total_restaked_calc = f"""
@@ -242,11 +245,11 @@ def main():
                 Thus, the risk of each model is influenced by its reliance on the AVS's native token and the complexities of its fee and security structures.
             """)
 
-        result2 = business_model_likelihood * business_model_impact
+        result2 = business_model_score * business_model_likelihood * business_model_impact
 
         business_model_calc = f"""business_model
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{business_model}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_score}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
