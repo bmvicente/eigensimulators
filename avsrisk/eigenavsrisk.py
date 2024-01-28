@@ -76,8 +76,8 @@ def main():
                         """)
     
     st.write("  \n")
-
-    risk_score, security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score)
+    
+    risk_score, security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
 
 
     def calculate_operator_attack_risk(total_restaked, tvl):
@@ -312,10 +312,12 @@ def main():
                         """)
             
 
-        result3 = security_audits_likelihood * security_audits_impact
+        result3 = security_audit_score * security_audits_likelihood * security_audits_impact
 
         security_audits_calc = f"""
             <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{security_audit_score}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
@@ -328,6 +330,7 @@ def main():
 
 
     with col2:
+
         # AVS Type
         st.markdown("""
             <style>
@@ -368,10 +371,12 @@ def main():
                 While it does depend on the needs of an AVS, the Hyperscale-type is more robust and secure due to its decentralized nature, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our simulator.                    
                         """)
         
-        result4 = avs_type_likelihood * avs_type_impact
+        result4 = avs_type_score * avs_type_likelihood * avs_type_impact
 
         avs_type_calc = f"""
             <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_score}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_impact}</span> 
@@ -428,10 +433,12 @@ def main():
                 - ***Native Restaking***, where validators restake staked ETH directly to EigenLayer. This is the simplest and most direct form of restaking, offering the **lowest risk profile**.
                         """)
             
-        result5 = restaking_mods_likelihood * restaking_mods_impact
+        result5 = restaking_mod_score * restaking_mods_likelihood * restaking_mods_impact
 
         restaking_mod_calc = f"""
             <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mod_score}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_impact}</span> 
@@ -479,10 +486,12 @@ def main():
                 Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
                         """)
 
-        result6 = avs_avg_operator_reputation_likelihood * avs_avg_operator_reputation_impact
+        result6 = avs_avg_operator_reputation_score * avs_avg_operator_reputation_likelihood * avs_avg_operator_reputation_impact
 
         avs_avg_operator_reputation_calc = f"""
             <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_score}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
