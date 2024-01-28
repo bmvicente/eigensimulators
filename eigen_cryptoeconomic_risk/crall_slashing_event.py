@@ -1186,8 +1186,8 @@ def main():
             color = "#d32f2f"  # Red color for negative value
             background_color = "#fde0dc"  # Light red background
         elif 0 < bst_avs3 <= 20000000:  # Condition for values between 0 and 20 million
-            color = "#ffa726"  # Orange color
-            background_color = "#ffe0b2"  # Light orange background
+            color = "#FB8C00"  # Orange color
+            background_color = "#ffa726"  # Light orange background
         elif bst_avs3 > 20000000:
             color = "#388e3c"  # Green color for positive value
             background_color = "#ebf5eb"  # Light green background
