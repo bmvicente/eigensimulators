@@ -7,11 +7,11 @@ import streamlit as st
 def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation):
     # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
 
-    security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
-    business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
-    avs_type_risk = {"Lightweight": 7, "Hyperscale": 3}
-    restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
-    avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+    security_audits_risk = {0: 100, 1: 80, 2: 60, 3: 40, 4: 20, 5: 10}
+    business_model_risk = {"Pay in the Native Token of the AVS": 100, "Dual Staking Utility": 70, "Tokenize the Fee": 40, "Pure Wallet": 10}
+    avs_type_risk = {"Lightweight": 70, "Hyperscale": 30}
+    restaking_mods_risk = {"LST LP Restaking": 100, "ETH LP Restaking": 70, "LST Restaking": 40, "Native Restaking": 10}
+    avs_avg_operator_reputation_risk = {"Unknown": 100, "Established": 50, "Renowned": 10}
 
     security_audit_score = security_audits_risk[security_audits]
     business_model_score = business_model_risk[business_model]
@@ -147,12 +147,12 @@ def main():
                             """)
 
         # Perform the multiplication and calculate the result
-        result1 = operator_attack_risk * tvl_total_restaked_likelihood * tvl_total_restaked_impact
+        result1 = st.session_state.operator_attack_risk * tvl_total_restaked_likelihood * tvl_total_restaked_impact
 
         # Display the result with formatting
         tvl_total_restaked_calc = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{operator_attack_risk}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_attack_risk}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -522,8 +522,10 @@ def main():
     st.write("  \n")
     st.write("  \n")
     
+
     risk_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
-    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score) = risk_score
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score, st.session_state.operator_attack_risk) = risk_score
+
 
     # Determine the color and background color based on the risk score
     if st.session_state.risk_score >= 75:
