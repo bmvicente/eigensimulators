@@ -197,6 +197,9 @@ def main():
         st.write("  \n")
 
 
+
+
+
         # AVS Business Model
         st.markdown("""
             <style>
@@ -534,9 +537,9 @@ def main():
     st.write("  \n")
 
     # Calculate risk
-    risk_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
-    
-    security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, restaking_mods, avs_avg_operator_reputation)
+    risk_score, security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
+
+    #security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score = avs_risk(security_audits, business_model, avs_type, restaking_mods, avs_avg_operator_reputation)
 
     # Determine the color and background color based on the risk score
     if risk_score >= 75:
