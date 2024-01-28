@@ -1103,6 +1103,9 @@ def main():
         unsafe_allow_html=True
     )
 
+    st.write("\n")
+    st.write("\n")
+
     st.write(f"""We say that the ecosystem failed the BST test if B < 0, and passed if B > 0.
          """)
 
