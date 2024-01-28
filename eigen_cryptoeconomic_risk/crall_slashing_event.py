@@ -1135,7 +1135,7 @@ def main():
                 text-align: center;
                 margin: 10px auto;  /* Centers the div */
                 background-color: {background_color};
-                width: 90%;  /* Adjust the width as needed */
+                width: 110%;  /* Adjust the width as needed */
                 max-width: 600px;  /* Optional: sets a maximum width */
                 ">
                 <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
