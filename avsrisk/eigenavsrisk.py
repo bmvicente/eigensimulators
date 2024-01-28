@@ -37,12 +37,12 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
                         avs_avg_operator_reputation_score * avs_avg_operator_reputation_weight
                         )
 
-    max_security_audit_score = 10  # Assuming worst case for security audit is 0 audits
-    max_business_model_score = 10   # Assuming worst case for business model is "Pure Wallet"
-    max_avs_type_score = 10         # Assuming worst case for AVS type is "Hyperscale"
-    max_restaking_mod_score = 10    # Assuming worst case for restaking modality is "LST LP Restaking"
-    max_operator_attack_score = 10  # Assuming worst case for operator attack risk
-    max_avs_avg_operator_reputation_score = 10  # Assuming worst case for operator attack risk
+    max_security_audit_score = 100  # Assuming worst case for security audit is 0 audits
+    max_business_model_score = 100   # Assuming worst case for business model is "Pure Wallet"
+    max_avs_type_score = 100         # Assuming worst case for AVS type is "Hyperscale"
+    max_restaking_mod_score = 100    # Assuming worst case for restaking modality is "LST LP Restaking"
+    max_operator_attack_score = 100  # Assuming worst case for operator attack risk
+    max_avs_avg_operator_reputation_score = 100  # Assuming worst case for operator attack risk
 
     # Calculate the maximum possible risk score
     max_possible_risk_score = (
@@ -103,16 +103,13 @@ def main():
 
         st.write("  \n")
 
-            # Creating two columns for input
         col3, col4 = st.columns([3, 3])
 
         with col3:
-                # Manual input for AVS TVL
                 tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
                 st.write(f"&#8226; AVS TVL: ${tvl:,.0f}")
 
         with col4:
-                # Manual input for Total Restaked on AVS
                 total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
                 st.write(f"&#8226; AVS Total Restaked: ${total_restaked:,.0f}")
         
@@ -160,7 +157,9 @@ def main():
 
         # Display the result with formatting
         tvl_total_restaked_calc = f"""
-            <div style="text-align: center;">
+            <div style="text-align: center;"> operator_attack_risk
+                <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{operator_attack_risk}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_impact}</span> 
@@ -509,12 +508,9 @@ def main():
 
 
     def calculate_operator_attack_risk(total_restaked, tvl):
-        # High risk if either TVL or total restaked is below $50,000
         if tvl < 100000 or total_restaked < 100000:
             return 10
         
-        default_minimum_risk = 9
-
         ratio = (total_restaked / 2) / tvl
 
         if ratio > 1.5:
@@ -522,9 +518,9 @@ def main():
         elif ratio > 1:
             return 3  # Greater than TVL, moderate risk
         elif ratio > 0.5:
-            return 5  # Less than TVL but not by a wide margin, increased risk
+            return 7  # Less than TVL but not by a wide margin, increased risk
         else:
-            return 7
+            return 9
 
     
     operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
