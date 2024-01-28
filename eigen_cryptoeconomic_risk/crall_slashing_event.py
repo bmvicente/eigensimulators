@@ -1261,7 +1261,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold; font-size: 1em;">NEXT...</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Performance Reputation</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Collateralization Risk Level</p>', unsafe_allow_html=True)
