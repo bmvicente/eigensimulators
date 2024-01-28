@@ -1191,24 +1191,24 @@ def main():
             background_color = "#ffffff"  # White background
 
         st.markdown(
-            f"""
-            <div style="
-                border: 2px solid {color};
-                border-radius: 5px;
-                padding: 10px;
-                text-align: center;
-                margin: 10px 0;
-                background-color: {background_color};">
-                <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
-                    AVS 3
+                f"""
+                <div style="
+                    border: 2px solid {color};
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: {background_color};">
+                    <div style="color: black; margin:0; font-size: 1.7em; font-weight: bold;">
+                        AVS 3
+                    </div>
+                    <div style="color: black; font-size: 1.3em; margin-top: 2px; font-weight: bold;">
+                        ${max_slash_allowed3:,.0f} - ${op_max_loss_avs3:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs3:,.0f}</span>
+                    </div>
                 </div>
-                <div style="color: black; font-size: 1.3em; margin-top: 2px; font-weight: bold;">
-                    ${max_slash_allowed3:,.0f} - ${op_max_loss_avs3:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs3:,.0f}</span>
-                </div>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+                """, 
+                unsafe_allow_html=True
+            )
 
     st.write("\n")
     st.write("\n")
