@@ -1136,9 +1136,45 @@ def main():
         )
          
     with col51:
-        
-    with col52:
+        bst_avs2 = max_slash_allowed2 - op_max_loss_avs2
 
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;">
+                <h2 style="color: black; margin:0; font-size: 1em;">
+                    AVS 2
+                </h2>
+                <div style="color: black; font-size: 1em; margin-top: 10px;">
+                    <span style="font-weight: bold;">{max_slash_allowed2:,.0f}</span> - <span style="font-weight: bold;">{op_max_loss_avs2:,.0f}</span> = <span style="font-weight: bold;">{bst_avs2:,.0f}</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True
+        )
+    with col52:
+        bst_avs3 = max_slash_allowed3 - op_max_loss_avs3
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;">
+                <h2 style="color: black; margin:0; font-size: 1em;">
+                    AVS 3
+                </h2>
+                <div style="color: black; font-size: 1em; margin-top: 10px;">
+                    <span style="font-weight: bold;">{max_slash_allowed3:,.0f}</span> - <span style="font-weight: bold;">{op_max_loss_avs3:,.0f}</span> = <span style="font-weight: bold;">{bst_avs3:,.0f}</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True
+        )
 
     st.write("\n")
     st.write("\n")
