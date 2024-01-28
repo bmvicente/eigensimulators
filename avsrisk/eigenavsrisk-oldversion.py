@@ -64,7 +64,7 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
 def main():
     st.set_page_config(layout="wide")
 
-    #st.image("images/eigenimage.png")
+    st.image("images/eigenimage.png")
 
     st.title("AVS Risk Simulator")
 
