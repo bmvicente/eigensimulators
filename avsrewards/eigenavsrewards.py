@@ -450,7 +450,8 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-
+    st.write("  \n")
+    st.write("  \n")
 
 
     # Call the function and get the rewards
@@ -507,16 +508,34 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    st.write(f"""
-                The **AVS Reward Emission** simulator percentage-results suggest how much should be distributed among $AVS Stakers, xETH Restakers and AVS Operators, given the risk and economic security profile of the AVS. To build on the *Assumptions* explanation on top, this calculation is based on the correlated reward-to-risk sensitivity per variable input -- the *Logic* below each input parameter helps understand the underlying rationale.
-                
-                ***Operator Reward*** is naturally being given greater weight than the ***Staker Reward*** due to their paramount role in validating modules crucial to the well-function of an AVS. We've assigned 60% of distributable rewards to Operators and 40% to Stakers and Restakers.
+    st.markdown("""
+                <style>
+                .big-font {
+                    font-size: 18px;  /* Adjust font size as needed */
+                }
+                </style>
 
-                The \$AVS’s Tokenomics (while not included in the reward calculation) were deemed useful to include since they provide a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. 
-                An important factor that should help AVS developers determine the $AVS minting rate is that of rewarding operators for their capital costs.
-             
-                *It's important to bear in mind that this Simulator was built from an AVS perspective alone*. 
-                         """)
+                <div class="big-font">
+                The <strong>AVS Reward Emission</strong> simulator percentage-results suggest how much should be distributed among <strong>$AVS Stakers</strong>, <strong>xETH Restakers</strong> and <strong>AVS Operators</strong>, given the risk and economic security profile of the AVS. To build on the <em>Assumptions</em> explanation on top, this calculation is based on the correlated reward-to-risk sensitivity per variable input -- the <em>Logic</em> below each input parameter helps understand the underlying rationale.
+                </div>
+                <br>
+
+                <div class="big-font">
+                <strong><em>Operator Reward</em></strong> is naturally being given greater weight than the <strong><em>Staker Reward</em></strong> due to their paramount role in validating modules crucial to the well-function of an AVS. We've assigned 60% of distributable rewards to Operators and 40% to Stakers and Restakers.
+                </div>
+                <br>
+
+                <div class="big-font">
+                The <strong>$AVS’s Tokenomics</strong> (while not included in the reward calculation) were deemed useful to include since they provide a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. 
+                An important factor that should help AVS developers determine the <strong>$AVS minting rate</strong> is that of rewarding operators for their capital costs.
+                </div>
+                <br>
+
+                <div class="big-font">
+                <em>It's important to bear in mind that this Simulator was built from an AVS perspective alone.</em> 
+                </div>
+                """, unsafe_allow_html=True)
+
     
         
     st.write("  \n")
