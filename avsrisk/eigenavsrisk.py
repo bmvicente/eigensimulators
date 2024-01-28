@@ -79,6 +79,21 @@ def main():
     
     st.write("  \n")
 
+    def calculate_operator_attack_risk(total_restaked, tvl):
+        if tvl < 100000 or total_restaked < 100000:
+            return 10
+        
+        ratio = (total_restaked / 2) / tvl
+
+        if ratio > 1.5:
+            return 1  # Significantly greater than TVL, lowest risk
+        elif ratio > 1:
+            return 3  # Greater than TVL, moderate risk
+        elif ratio > 0.5:
+            return 7  # Less than TVL but not by a wide margin, increased risk
+        else:
+            return 9
+
     # Creating two major columns
     col1, col2 = st.columns([1, 1], gap="large")
 
@@ -507,21 +522,6 @@ def main():
 #########################################
 #########################################
 
-
-    def calculate_operator_attack_risk(total_restaked, tvl):
-        if tvl < 100000 or total_restaked < 100000:
-            return 10
-        
-        ratio = (total_restaked / 2) / tvl
-
-        if ratio > 1.5:
-            return 1  # Significantly greater than TVL, lowest risk
-        elif ratio > 1:
-            return 3  # Greater than TVL, moderate risk
-        elif ratio > 0.5:
-            return 7  # Less than TVL but not by a wide margin, increased risk
-        else:
-            return 9
 
     
     operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
