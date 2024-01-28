@@ -15,7 +15,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold; font-size: 1.2em;">NEXT...</p>', unsafe_allow_html=True)
     
     st.write(f"""Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
              This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security. 
@@ -31,9 +31,13 @@ def main():
     st.write(f"""
              Let us take the scenario of the Max Slash event:
 
-             - Actual Total Loss? What does this mean really?
+             - Actual Total Loss?
              - Probability of all 3 AVSs failing? p(AVS1) * p(AVS2) * p(AVS3)
              - How to visualize compounded risks that may exist. How AVS1 could affect 2 and 3? Visual Tool? Detail scenarios (in writing too)
+             
+             Dependencies between AVSs
+             - Diversity of the AVSs nature, systemic risk, same modules being used
+             - Percentage of Overlaping Operators Between the AVSs
                 """)
 
     st.write("  \n")

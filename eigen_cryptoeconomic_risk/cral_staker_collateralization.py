@@ -325,7 +325,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown('<p style="font-weight: bold;">NEXT...</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold; font-size: 1.2em;">NEXT...</p>', unsafe_allow_html=True)
 
     st.markdown('<p style="font-weight: bold;">&#8226; Single Operator Restaked in Multiple AVSs</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked in Multiple AVSs</p>', unsafe_allow_html=True)
