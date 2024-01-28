@@ -21,14 +21,12 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
     avs_avg_operator_reputation_weight = 1 * 1      # Likelihood 1, Impact 1
     #CVS and CVL based and 51% operator attack dependant
 
-    # Get risk scores from the input values
     security_audit_score = security_audits_risk[security_audits]
     business_model_score = business_model_risk[business_model]
     avs_type_score = avs_type_risk[avs_type]
     restaking_mod_score = restaking_mods_risk[restaking_mods]
     avs_avg_operator_reputation_score = avs_avg_operator_reputation_risk[avs_avg_operator_reputation]
 
-    # Now use operator_attack_risk in your total risk score calculation
     total_risk_score = (security_audit_score * security_audits_weight +
                         business_model_score * business_model_weight +
                         avs_type_score * avs_type_weight +
@@ -93,6 +91,7 @@ def main():
             return 7  # Less than TVL but not by a wide margin, increased risk
         else:
             return 9
+        
 
     # Creating two major columns
     col1, col2 = st.columns([1, 1], gap="large")
@@ -150,6 +149,8 @@ def main():
         # Convert input strings to float for calculation
         tvl = float(tvl) if tvl else 0
         total_restaked = float(total_restaked) if total_restaked else 0
+
+        operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
 
 
         # The expander without a visible outline
@@ -522,9 +523,6 @@ def main():
 #########################################
 #########################################
 
-
-    
-    operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
 
     st.write("  \n")
     st.write("  \n")
