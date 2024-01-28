@@ -9,7 +9,7 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
 
     security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
     business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
-    avs_type_risk = {"Lightweight": 70, "Hyperscale": 30}
+    avs_type_risk = {"Lightweight": 7, "Hyperscale": 3}
     restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
     avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 
