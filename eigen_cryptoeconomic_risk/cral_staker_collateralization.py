@@ -315,7 +315,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    st.write("""
+    st.write(f"""
         An Operator may be voluntarily or involuntarily undercollateralized. They may have positioned themselves that way to extract Profit from tasks they're validating or other ecosystem dependencies may have put them in that position and their collateralization status has a non-malicious intent.
 
         **Suggestions on How to Fix *Undercollateralization*:**
