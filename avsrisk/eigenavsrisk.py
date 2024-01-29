@@ -37,7 +37,8 @@ def main():
     #                """)
     
     st.write("  \n")
-    
+    st.write("  \n")
+
 
     def calculate_operator_attack_risk(total_restaked, tvl):
         if tvl < 100000 or total_restaked < 100000:
@@ -337,6 +338,7 @@ def main():
             """, unsafe_allow_html=True)
 
         st.markdown('<p class="header-style">AVS Type</p>', unsafe_allow_html=True)
+        st.write("  \n")
 
         avs_type = st.selectbox("", ["Lightweight", "Hyperscale"])
         
