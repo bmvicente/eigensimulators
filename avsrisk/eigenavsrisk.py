@@ -42,7 +42,6 @@ def main():
     
     st.write("  \n")
     st.write("  \n")
-    st.write("  \n")
 
 
     def calculate_operator_attack_risk(total_restaked, tvl):
