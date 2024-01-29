@@ -654,6 +654,20 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
+                ```python
+                def calculate_slashing(total_restaked, risk_score):
+                if risk_score == 10:
+                    risk_factor = (9 + 1) * 10
+                else:
+                    risk_factor = (risk_score + 1) * 10
+
+                slashing_amount = (total_restaked / 3) * (risk_factor / 100)
+                return slashing_amount
+                        
+                potential_total_slashing1 = calculate_slashing(total_restaked, risk_score1)
+
+                ```python
+                max_slash_allowed1 = (total_restaked - 2 * tvl1)
                 """)
             
         st.write("  \n")
@@ -792,6 +806,8 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
+                ```python
+                max_slash_allowed2 = (total_restaked - 2 * tvl2)
                 """)
         
         
@@ -929,6 +945,8 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
+                ```python
+                max_slash_allowed3 = (total_restaked - 2 * tvl3)
                 """)
 
     st.write("  \n")
