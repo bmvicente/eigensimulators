@@ -150,7 +150,7 @@ def main():
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: lightorange; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_impact}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
                 <div style="text-align: center; margin-top: 10px;">
@@ -221,11 +221,11 @@ def main():
 
         business_model_calc = f"""business_model
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
             </div>
@@ -285,11 +285,11 @@ def main():
 
         security_audits_calc = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_likelihood}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result3}</span>
             </div>
@@ -344,11 +344,11 @@ def main():
 
         avs_type_calc = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_type_score}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_type_score}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_likelihood}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_impact}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_type_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result4}</span>
             </div>
@@ -406,11 +406,11 @@ def main():
 
         restaking_mod_calc = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.restaking_mod_score}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.restaking_mod_score}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_likelihood}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_impact}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5}</span>
             </div>
@@ -459,11 +459,11 @@ def main():
 
         avs_avg_operator_reputation_calc = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: #90EE90; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_avg_operator_reputation_score}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_avg_operator_reputation_score}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
             </div>
