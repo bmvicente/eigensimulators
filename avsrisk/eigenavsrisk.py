@@ -3,7 +3,7 @@
 
 import streamlit as st
 
-# Function to calculate AVS risk
+
 def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation):
     # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
 
@@ -25,7 +25,6 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
 
 
 
-# Streamlit app setup
 def main():
     st.set_page_config(layout="wide")
 
@@ -49,11 +48,11 @@ def main():
         if ratio > 1.5:
             return 1  # Significantly greater than TVL, lowest risk
         elif ratio > 1:
-            return 3  # Greater than TVL, moderate risk
+            return 3  # Greater than TVL, low risk
         elif ratio > 0.5:
-            return 7  # Less than TVL but not by a wide margin, increased risk
+            return 7  # Less than TVL, increased risk
         else:
-            return 9
+            return 9 # < 0.5 Greatest risk
     
     if 'security_audit_score' not in st.session_state:
         st.session_state.security_audit_score = 0
@@ -87,7 +86,6 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            # Displaying the custom styled header
         st.markdown('<p class="header-style">AVS Total Restaked & TVL</p>', unsafe_allow_html=True)
 
         st.write("  \n")
@@ -121,14 +119,12 @@ def main():
                                                       1 == Unimpactful | 10 == Very Impactful""")
 
 
-        # Convert input strings to float for calculation
         tvl = float(tvl) if tvl else 0
         total_restaked = float(total_restaked) if total_restaked else 0
 
         operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
         st.session_state.operator_attack_risk = operator_attack_risk
 
-        # The expander without a visible outline
         with st.expander("Logic"):
                 st.markdown("""                        
                     The **TVL/Total Restaked** risk logic herein is set so that the greater the *(AVS Total Restaked/2) : AVS TVL* ratio, the safer the AVS is, and vice-versa.
@@ -137,13 +133,28 @@ def main():
 
                     Accordingly, the main goal is to maintain the *CfC (Cost from Corruption)* ***above*** *the PfC (Profit from Corruption)* to desincentivize colluding, malicious operators to perform an attack. Appropriate bridges and oracles could be built to restrict the transaction flow within the period of slashing or to have bonds on the transacted value to maximize CfC/minimize PfC.
 
-                    Understanding what a reduced risk level should be is not useful for operator-collusion cases only, but also for increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/), i.e. in a Dual Staking Model and Veto Dual Staking context, for example, which are useful to maintain the health of the AVS dual token pool (or AVS TVL, in other words).               
+                    Understanding what a reduced risk level should be is not useful for operator-collusion cases only, but also for increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/), i.e. in a Dual Staking Model and Veto Dual Staking context, for example, which are useful to maintain the health of the AVS dual token pool (or AVS TVL, in other words).
+                    
+                    ```python
+                    def calculate_operator_attack_risk(total_restaked, tvl):
+                        if tvl < 100000 or total_restaked < 100000:
+                        return 10
+        
+                        ratio = (total_restaked / 2) / tvl
+
+                        if ratio > 1.5:
+                            return 1  # Significantly greater than TVL, lowest risk
+                        elif ratio > 1:
+                            return 3  # Greater than TVL, low risk
+                        elif ratio > 0.5:
+                            return 7  # Less than TVL, increased risk
+                        else:
+                            return 9 # < 0.5 Greatest risk
+                        ```
                             """)
 
-        # Perform the multiplication and calculate the result
         result1 = st.session_state.operator_attack_risk * tvl_total_restaked_likelihood * tvl_total_restaked_impact
 
-        # Display the result with formatting
         tvl_total_restaked_calc = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_attack_risk}</span> 
@@ -215,7 +226,11 @@ def main():
                 - ***Pure Wallet*** represents the lowest risk, relying on straightforward service fees paid in a neutral denomination, like ETH.
 
                 Thus, the risk of each model is influenced by its reliance on the AVS's native token and the complexities of its fee and security structures.
-            """)
+                
+                ```python
+                business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
+                ```
+                    """)
 
         result2 = st.session_state.business_model_score * business_model_likelihood * business_model_impact
 
@@ -239,6 +254,8 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+
+
 
 
         # Number of Security Audits
@@ -278,6 +295,10 @@ def main():
                 Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
                 
                 While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
+                
+                ```python
+                security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the least
+                ```
                         """)
             
 
@@ -296,6 +317,7 @@ def main():
         """
 
         st.markdown(security_audits_calc, unsafe_allow_html=True)
+
 
 
     with col2:
@@ -338,6 +360,10 @@ def main():
                 On the other hand, the **Lightweight** approach focuses on tasks that are redundantly performed by all operators but are inexpensive and require minimal computing infrastructure.
 
                 While it does depend on the needs of an AVS, the Hyperscale-type is more robust and secure due to its decentralized nature, particularly for new-born AVSs. Therefore, it was categorized as the safest AVS type in our simulator.                    
+                
+                ```python
+                avs_type_risk = {"Lightweight": 7, "Hyperscale": 3}
+                ```
                         """)
         
         result4 = st.session_state.avs_type_score * avs_type_likelihood * avs_type_impact
@@ -400,6 +426,10 @@ def main():
                 - ***ETH LP Restaking***, where validators stake LP tokens including ETH which tie rewards to DeFi market performance, introducing considerable risk due to market volatility;
                 - ***LST Restaking***, involving staking of ETH already restaked via protocols like Lido or Rocket Pool. Adds a layer of complexity and dependence on third-party staking services, presenting moderate risk;
                 - ***Native Restaking***, where validators restake staked ETH directly to EigenLayer. This is the simplest and most direct form of restaking, offering the **lowest risk profile**.
+                
+                ```python
+                restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
+                ```
                         """)
             
         result5 = st.session_state.restaking_mod_score * restaking_mods_likelihood * restaking_mods_impact
@@ -453,7 +483,15 @@ def main():
         with st.expander("Logic"):
             st.markdown("""
                 Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
+                
+                ```python
+                avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+                ```
                         """)
+
+
+
+
 
         result6 = st.session_state.avs_avg_operator_reputation_score * avs_avg_operator_reputation_likelihood * avs_avg_operator_reputation_impact
 
