@@ -17,7 +17,7 @@ def avs_compounded_risk(operator_stake, perc_stake_avs_1, perc_stake_avs_2, perc
 
     op_max_loss_avss = calculate_op_max_loss_avss(op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3)
 
-    return(op_max_loss_avss, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3
+    return(op_max_loss_avss, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3,
             operator_stake, stake_avs_1, stake_avs_2, stake_avs_3)
 
 
