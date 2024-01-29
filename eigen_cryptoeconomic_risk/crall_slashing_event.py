@@ -1227,15 +1227,13 @@ def main():
 
 
     st.markdown(f"""
-    <div style="font-size: 1.1em;"> <!-- Adjust the font size as needed -->
-        The Byzantine <i>Slashing</i> Tolerance test helps identify the ecosystem elements that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
-        <br>
-        <br>
-        We say that an element has failed the BST test if B < 0, and passed if B > 0.
-        <br>
-        <br>
-        Green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for one of the elements to fail, and the red background represents a danger signal in that the AVS is in a very compromisable position, ripe for an attack.
-    </div>
+        <div style="font-size: 1.1em;"> <!-- Adjust the font size as needed -->
+            The Byzantine <i>Slashing</i> Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
+            We say that an element has failed the BST test if **β < 0**, and passed if **β > 0**.
+            <br>
+            <br>
+            In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
+        </div>
     """, unsafe_allow_html=True)
 
 
@@ -1272,18 +1270,6 @@ def main():
     st.markdown('<p style="font-weight: bold;">&#8226; Entrenchment Risk Level of a Set of Operators on Multiple AVSs Simultaneously</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Slashing Risks Based on AVS Nature</p><span style="font-weight: normal; display: inline;"> (data availability, keeper networks, oracles, bridges, etc.)</span>', unsafe_allow_html=True)
 
-
-            # Displaying the custom styled header
-            #st.markdown('<p class="header-style">Operator Reputation [Soon]</p>', unsafe_allow_html=True)
-
-            # Select slider for average operator reputation
-            #operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
-
-            # The expander with more information (optional)
-            #with st.expander("Logic"):
-            #    st.markdown("""
-            #        Not accounted for in the calculations, as of now.
-            #                """)
 
     st.write("  \n")
     st.write("  \n")
