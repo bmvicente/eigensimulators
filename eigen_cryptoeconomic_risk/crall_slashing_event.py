@@ -367,13 +367,12 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                    **γij**
-                    ```python
-                    op_max_loss_avs1 = potential_total_slashing1 * perc_stake_avs_1
-                    op_max_loss_avs2 = potential_total_slashing2 * perc_stake_avs_2
-                    op_max_loss_avs3 = potential_total_slashing3 * perc_stake_avs_3
-                    ```
-                """)
+                        ```python
+                        stake_avs_1 = operator_stake * perc_stake_avs_1
+                        stake_avs_2 = operator_stake * perc_stake_avs_2
+                        stake_avs_3 = operator_stake * perc_stake_avs_3
+                        ```
+                    """)
 
 
         st.write("\n")
@@ -473,6 +472,12 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+                    **Θij**
+                    ```python
+                    op_max_loss_avs1 = potential_total_slashing1 * perc_stake_avs_1
+                    op_max_loss_avs2 = potential_total_slashing2 * perc_stake_avs_2
+                    op_max_loss_avs3 = potential_total_slashing3 * perc_stake_avs_3
+                    ```
                 """)
         
         st.write("\n")
