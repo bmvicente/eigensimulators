@@ -24,7 +24,7 @@ def main():
     st.image("images/eigenimage.png")
 
     st.title("Cryptoeconomic Risk Analysis I")
-    st.subheader("**Staker Collateralization Level Simulator**")
+    st.subheader("**Operator Collateralization Level Simulator**")
 
     st.write("\n") 
 
