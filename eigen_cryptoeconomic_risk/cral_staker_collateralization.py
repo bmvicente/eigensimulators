@@ -29,10 +29,18 @@ def main():
     st.write("\n") 
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
-        st.markdown(f"""Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
+        st.markdown(f"""
+                    The collateralization status of an Operator is crucial to assess since it affects every agent in the ecosystem:
+                        1. Restakers, in knowing if it is an Operator they should delegate stake to.
+                        2. Operators themselves, in the case they arrive to an uncollateralized state involuntarily.
+                        3. AVS, in spotting undercollateralized Operators, that may be actively searching to extract Profit from the AVS value locked or involuntary Operators that should be warned to correct course and increase their stake to an overcollateralized status.
+
+                    This simulator was built based on the theory on Appendix B1 of EigenLayer's whitepaper, particularly.
+
+                    Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
                     This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security. 
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
-                    We begin by assuming that the 3 AVS in this Simulator have an equal Total Restaked Amount distributed between them, therefore 33%.
+
                         """)
     
     st.write("\n") 
@@ -80,7 +88,7 @@ def main():
         st.write("\n")
 
         with st.expander("Logic"):
-                st.write("CoC > PfC in order to maintain security. Get more from whitepaper.")
+                st.write("")
 
 
     st.write("\n")

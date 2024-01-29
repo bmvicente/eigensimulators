@@ -146,15 +146,13 @@ def main():
     
     st.write("  \n")
 
-    with st.expander("How this Simulator Works"):
+    with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
-                    We assume that the 3 AVSs are equally secured by the Total Amount Restaked, therefore each has 33% distribution.
-
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
                     This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security.
-                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
+                    A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
                     
-                    We begin by assuming that the 3 AVS in this Simulator have an equal Total Restaked Amount distributed between them, therefore 33%.
+                    We begin by assuming that the 3 AVSs are equally secured by the Total Amount Restaked, therefore each has 33% "distribution".
                         """)
         
 
@@ -1268,6 +1266,7 @@ def main():
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Collateralization Risk Level</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked Into Multiple AVSs</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;">&#8226; Stakesure&#39;s Parameters (Insurance & Reserves)</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Entrenchment Level Risk of a Set of Operators on Multiple AVSs Simultaneously</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Slashing Risks Based on AVS Nature</p><span style="font-weight: normal; display: inline;"> (data availability, keeper networks, oracles, bridges, etc.)</span>', unsafe_allow_html=True)
 
