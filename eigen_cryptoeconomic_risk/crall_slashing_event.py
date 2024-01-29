@@ -590,6 +590,8 @@ def main():
 
         
         st.write("\n")
+        st.write("\n")
+
         st.write(f"""&#8226; **"Byzantine Slashing Tolerance" Test**: AVS 1 Max "Allowed" Slashes vs Max Potential Operator Slashes""")
             
         col6, col7 = st.columns([10, 9])
