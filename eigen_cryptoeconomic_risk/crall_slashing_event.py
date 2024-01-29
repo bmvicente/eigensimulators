@@ -412,7 +412,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Slash on <i>AVS 1</i>: <span style="font-size: 1.1em;">${op_max_loss_avs1:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">Max Potential Slash on <i>AVS 1</i>: <span style="font-size: 1.2em;">${op_max_loss_avs1:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -426,7 +426,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Slash on <i>AVS 2</i>: <span style="font-size: 1.1em;">${op_max_loss_avs2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">Max Potential Slash on <i>AVS 2</i>: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -440,7 +440,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Slash on <i>AVS 3</i>: <span style="font-size: 1.1em;">${op_max_loss_avs3:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">Max Potential Slash on <i>AVS 3</i>: <span style="font-size: 1.2em;">${op_max_loss_avs3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
