@@ -152,7 +152,7 @@ def main():
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: #FFCC00; border-radius: 10px; padding: 5px; margin: 2px;">{tvl_total_restaked_impact}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; background-color: #7FCAE5; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
                 <div style="text-align: center; margin-top: 10px;">
             <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Likelihood * Impact = Weighted Overall Risk for Parameter)</span>
         </div>
