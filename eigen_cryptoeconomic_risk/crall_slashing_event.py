@@ -647,7 +647,7 @@ def main():
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl1}""")
 
 
-        max_slash_allowed1 = total_restaked - 2 * tvl1
+        max_slash_allowed1 = max(0, total_restaked - 2 * tvl1)
         int_slash_allowed1 = max_slash_allowed1 * 2/3
 
 
@@ -812,7 +812,7 @@ def main():
                 formatted_tvl2 = "${:,.0f}".format(tvl2)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl2}""")
 
-        max_slash_allowed2 = total_restaked - 2*tvl2
+        max_slash_allowed2 = max(0, total_restaked - 2 * tvl2)
         int_slash_allowed2 = total_restaked - 3*tvl2
         
         st.markdown(
@@ -959,7 +959,7 @@ def main():
                 formatted_tvl3 = "${:,.0f}".format(tvl3)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl3}""")
 
-        max_slash_allowed3 = total_restaked - 2*tvl3
+        max_slash_allowed3 = max(0, total_restaked - 2 * tvl3)
         int_slash_allowed3 = total_restaked - 3*tvl3
 
         st.markdown(
