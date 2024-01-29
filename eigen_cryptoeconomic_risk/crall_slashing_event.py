@@ -654,6 +654,7 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
+                ΩAVS1
                 ```python
                 def calculate_slashing(total_restaked, risk_score):
                 if risk_score == 10:
@@ -665,7 +666,9 @@ def main():
                 return slashing_amount
                         
                 potential_total_slashing1 = calculate_slashing(total_restaked, risk_score1)
-
+                ```
+                
+                αAVS1
                 ```python
                 max_slash_allowed1 = (total_restaked - 2 * tvl1)
                 """)
