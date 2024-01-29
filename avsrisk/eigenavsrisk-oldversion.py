@@ -73,7 +73,8 @@ def main():
     #                    """)
     
     st.write("  \n")
-        
+    st.write("  \n")
+ 
 
     # Creating two major columns
     col1, col2 = st.columns([1, 1], gap="large")
