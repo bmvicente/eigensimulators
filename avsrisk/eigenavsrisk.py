@@ -33,7 +33,7 @@ def main():
     st.title("AVS Risk Simulator II")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
-        st.markdown(f"""
+        st.markdown(f"""This Simulator takes six of the main parameters of an AVS to simulate their Risk Score. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
                     """)
     
     st.write("  \n")
@@ -525,7 +525,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    
+
     def normalize_score(original_score, min_original=8, max_original=5700):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
