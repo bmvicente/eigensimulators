@@ -315,7 +315,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    st.write(f"""
+    st.markdown(f"""
         An Operator may be voluntarily or involuntarily undercollateralized. They may have positioned themselves that way to extract Profit from tasks they're validating or other ecosystem dependencies may have put them in that position and their collateralization status has a non-malicious intent.
 
         **Suggestions on How to Fix *Undercollateralization*:**
@@ -339,7 +339,6 @@ def main():
 
     st.markdown('<p style="font-weight: bold;">&#8226; Single Operator Restaked in Multiple AVSs</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked in Multiple AVSs</p>', unsafe_allow_html=True)
-
     st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Continuous Relaxation</p><span style="font-weight: normal; display: inline;"> (A more flexible method to ensure Stakers tasks\' security, considering the varying risk profiles and preferences of Stakers)</span>', unsafe_allow_html=True)
 
     st.write("  \n")
