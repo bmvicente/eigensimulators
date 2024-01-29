@@ -429,7 +429,6 @@ def main():
                 
                 ```python
                 restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
-                ```
                         """)
             
         result5 = st.session_state.restaking_mod_score * restaking_mods_likelihood * restaking_mods_impact
