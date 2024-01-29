@@ -318,6 +318,7 @@ def main():
     st.write(f"""
             An Operator may be voluntarily or involuntarily undercollateralized. They may have position themselves that way to extract Profit from tasks they're validating or other ecosystem dependencies may have put them in that position and their collateralization status has a non-malicious intent.
             <br>
+            <br>
             **Suggestions on How to Fix *Undercollateralization*:**
 
             1. The Undercollateralized Staker can increase their amount of stake;
