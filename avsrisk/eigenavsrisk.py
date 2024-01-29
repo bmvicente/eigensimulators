@@ -234,7 +234,7 @@ def main():
 
         result2 = st.session_state.business_model_score * business_model_likelihood * business_model_impact
 
-        business_model_calc = f"""business_model
+        business_model_calc = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
