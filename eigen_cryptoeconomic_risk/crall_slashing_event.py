@@ -706,24 +706,26 @@ def main():
         max_slash_allowed2 = max(0, total_restaked - 2 * tvl2)
         
         st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.8em;">AVS2</sub></span> &nbsp; | &nbsp; Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
-                        </div>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
-
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: white;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.9em;">AVS2</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
         with st.expander("Logic"):
                 st.markdown(f"""
@@ -748,7 +750,14 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">${max_slash_allowed2:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1.3em;">3</span> &nbsp; | 
+                            &nbsp; <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span>
+                        </div>
+                        <div style="display: block;">
+                            <br> <!-- Extra space -->
+                        </div>
+                        <div style="display: block;">
+                            Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">${max_slash_allowed2:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -758,7 +767,7 @@ def main():
             
         
         with col12: 
-
+            
             st.markdown(
                 f"""
                 <div style="
@@ -767,11 +776,21 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs2:,.0f}</span></h2>
+                    <h2 style="color: black; margin: 0; font-size: 1em;">
+                        <span style="font-weight: bold; font-size: 1.2em;">
+                            &Omega;<sub style="font-size: 0.8em;">AVS2</sub> &nbsp;
+                            <span style="display: inline-block; vertical-align: middle;">
+                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">iAVS2</sub></span>
+                                <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
+                            </span>
+                        </span>
+                        <br><br>
+                        <span style="font-size: 1.1em;">Max Potential Operator Slash:</span> <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span>
+                    </h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
-                )
+            )
 
     
         with st.expander("Logic"):
@@ -824,25 +843,28 @@ def main():
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl3}""")
 
         max_slash_allowed3 = max(0, total_restaked - 2 * tvl3)
-
+        
         st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.8em;">AVS3</sub></span> &nbsp; | &nbsp; Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
-                        </div>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: white;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.9em;">AVS3</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
         with st.expander("Logic"):
                 st.markdown(f"""
@@ -868,7 +890,14 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span> &nbsp; | &nbsp; Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">${max_slash_allowed3:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1.3em;">3</span> &nbsp; | 
+                            &nbsp; <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span>
+                        </div>
+                        <div style="display: block;">
+                            <br> <!-- Extra space -->
+                        </div>
+                        <div style="display: block;">
+                            Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">${max_slash_allowed3:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -878,7 +907,7 @@ def main():
 
         
         with col17:
-
+            
             st.markdown(
                 f"""
                 <div style="
@@ -887,11 +916,21 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs3:,.0f}</span></h2>
+                    <h2 style="color: black; margin: 0; font-size: 1em;">
+                        <span style="font-weight: bold; font-size: 1.2em;">
+                            &Omega;<sub style="font-size: 0.8em;">AVS3</sub> &nbsp;
+                            <span style="display: inline-block; vertical-align: middle;">
+                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">iAVS3</sub></span>
+                                <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
+                            </span>
+                        </span>
+                        <br><br>
+                        <span style="font-size: 1.1em;">Max Potential Operator Slash:</span> <span style="font-size: 1.2em;">${op_max_loss_avs3:,.0f}</span>
+                    </h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
-                )
+            )
     
         with st.expander("Logic"):
             st.markdown("""
