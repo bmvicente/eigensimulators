@@ -727,6 +727,8 @@ def main():
 
 
         st.write("\n")
+        st.write("\n")
+
         st.write(f"""&#8226; **"Byzantine Slashing Tolerance" Test**: AVS 2 Max "Allowed" Slashes vs Max Potential Operator Slashes""")
 
 
@@ -863,6 +865,8 @@ def main():
             
 
         st.write("\n")
+        st.write("\n")
+
         st.write(f"""&#8226; **"Byzantine Slashing Tolerance" Test**: AVS 3 Max "Allowed" Slashes vs Max Potential Operator Slashes""")
 
 
