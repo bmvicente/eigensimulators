@@ -140,7 +140,7 @@ def main():
 
     st.image("images/eigenimage.png")
 
-    st.title("Cryptoeconomic Risk Analysis II")
+    st.title("Cryptoeconomic Risk Analysis III")
     st.subheader("**AVS <> Operator Potential Slashing Event Simulator**")
     
     st.write("  \n")

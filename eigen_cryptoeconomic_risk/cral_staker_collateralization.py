@@ -23,7 +23,7 @@ def main():
     st.set_page_config(layout="wide")
     st.image("images/eigenimage.png")
 
-    st.title("Cryptoeconomic Risk Analysis I")
+    st.title("Cryptoeconomic Risk Analysis II")
     st.subheader("**Operator Collateralization Level Simulator**")
 
     st.write("\n") 
