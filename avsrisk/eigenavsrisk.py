@@ -30,7 +30,8 @@ def main():
 
     st.image("images/eigenimage.png")
 
-    st.title("AVS Risk Simulator II")
+    st.title("Cryptoeconomic Risk Analysis I")
+    st.subheader("**AVS Underlying Risk Simulator II**")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""The Simulator takes six of the parameters that can compose an AVS to simulate their Risk Score. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
