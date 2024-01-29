@@ -392,6 +392,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+        st.write("  \n")
 
         # AVS Restaking Modality
         st.markdown("""
