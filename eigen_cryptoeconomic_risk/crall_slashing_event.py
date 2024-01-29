@@ -654,23 +654,27 @@ def main():
 
 
         st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.9em;">AVS1</sub></span> &nbsp; | &nbsp; Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
-                        </div>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: white;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-weight: bold; font-size: 1.4em;">1</span> &nbsp; | 
+                        &nbsp; <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.9em;">AVS1</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
         with st.expander("Logic"):
                 st.markdown(f"""
