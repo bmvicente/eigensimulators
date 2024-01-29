@@ -367,7 +367,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                    γij
+                    **γij**
                     ```python
                     op_max_loss_avs1 = potential_total_slashing1 * perc_stake_avs_1
                     op_max_loss_avs2 = potential_total_slashing2 * perc_stake_avs_2
