@@ -40,6 +40,7 @@ def main():
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
                     This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security. 
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
+
                         """)
     
     st.write("\n") 
@@ -314,16 +315,15 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    st.markdown('<p style="font-size: 1.2em;">An Operator may be voluntarily or involuntarily undercollateralized. They may have positioned themselves that way to extract Profit from tasks they\'re validating or other ecosystem dependencies may have put them in that position and their collateralization status has a non-malicious intent.</p>', unsafe_allow_html=True)
+    st.write("""
+        An Operator may be voluntarily or involuntarily undercollateralized. They may have positioned themselves that way to extract Profit from tasks they're validating or other ecosystem dependencies may have put them in that position and their collateralization status has a non-malicious intent.
 
-    st.write("\n")
-
-    st.markdown(f"""
         **Suggestions on How to Fix *Undercollateralization*:**
 
         1. The Undercollateralized Staker can increase their amount of stake;
         2. The Undercollateralized Staker can deregister or be deregistered from some set of modules;
-        3. Other Stakers can adjust their own registrations.""")
+        3. Other Stakers can adjust their own registrations.
+    """)
             
     st.write("\n")
     st.write("\n")
