@@ -153,7 +153,7 @@ def main():
                     This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security.
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
                     
-                    We begin by assuming that the 3 AVSs are equally secured by the Total Amount Restaked, therefore each has 33% "distribution".
+                    We begin by assuming that the 3 AVS herein are equally secured by the Total Amount Restaked, therefore each has 33% "distribution".
                         """)
         
 
