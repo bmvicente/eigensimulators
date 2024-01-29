@@ -34,7 +34,7 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""The Simulator takes six of the parameters that can compose an AVS to simulate their Risk Score. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
-                    The most significant parameter is the first, since it poses the greatest weight on an AVS being exposed to corruption or being exposed to economic security.
+                    The most significant parameter is the first, since it poses the greatest weight on an AVS being exposed to corruption or being economically secured.
                     """)
     
     st.write("  \n")
