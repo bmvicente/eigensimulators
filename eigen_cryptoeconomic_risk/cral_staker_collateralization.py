@@ -62,8 +62,6 @@ def main():
         tvl = st.number_input("AVS TVL ($)", min_value=0, max_value=1000000000, value=0, step=int(1e8))
         st.write(f"&#8226; AVS TVL: ${tvl:,.0f}")
 
-        with st.expander("Logic"):
-                st.write("CoC > PfC in order to maintain security. Get more from whitepaper.")
 
     with col2:
 
@@ -83,8 +81,6 @@ def main():
         
         st.write("\n")
 
-        with st.expander("Logic"):
-                st.write("")
 
 
     st.write("\n")
