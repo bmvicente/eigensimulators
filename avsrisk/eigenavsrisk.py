@@ -128,8 +128,6 @@ def main():
         operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
         st.session_state.operator_attack_risk = operator_attack_risk
 
-        min_tvl = 
-
         # The expander without a visible outline
         with st.expander("Logic"):
                 st.markdown("""                        
