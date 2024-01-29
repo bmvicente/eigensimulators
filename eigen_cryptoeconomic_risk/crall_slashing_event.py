@@ -403,7 +403,8 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.2em;">
                         <div style="display: block;">
-                            <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">ij</sub></span> &nbsp; = &nbsp;
+                            <span style="font-weight: bold; font-size: 1.3em;">2</span> &nbsp; | 
+                            &nbsp; <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">ij</sub></span> &nbsp; = &nbsp;
                             <span style="font-size: 1.7em;">&Sigma;</span> &nbsp;
                             <span style="font-size: 1.3em;">&Omega;<sub style="font-size: 0.9em;">j</sub></span> &nbsp;
                             <span style="display: inline-block; vertical-align: middle; font-size: 1.3em;">
@@ -699,13 +700,14 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span>
+                            <span style="font-weight: bold; font-size: 1.3em;">3</span> &nbsp; | 
+                            &nbsp; <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span>
                         </div>
                         <div style="display: block;">
                             <br> <!-- Extra space -->
                         </div>
                         <div style="display: block;">
-                            <span style="font-size: 1em;">Max Slash "Allowed" To Still Maintain Security:</span> <span style="font-size: 1.1em;">${max_slash_allowed1:,.0f}</span>
+                            Max Slash "Allowed" To Still Maintain Security: <span style="font-size: 1.1em;">${max_slash_allowed1:,.0f}</span>
                         </div>
                     </h2>
                 </div>
