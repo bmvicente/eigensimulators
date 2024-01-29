@@ -32,9 +32,9 @@ def main():
 
     st.title("AVS Risk Simulator II")
 
-    with st.expander("How this Simulator Works & Basic Assumptions"):
-        st.markdown(f"""
-                    """)
+    #with st.expander("How this Simulator Works & Basic Assumptions"):
+    #    st.markdown(f"""
+    #                """)
     
     st.write("  \n")
     
