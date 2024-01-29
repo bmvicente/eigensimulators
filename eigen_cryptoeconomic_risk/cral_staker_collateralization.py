@@ -320,7 +320,7 @@ def main():
 
         <br>
                 
-        **Suggestions on How to Fix *Undercollateralization*:**
+        **Suggestions on how to fix *Undercollateralization*:**
 
         1. The Undercollateralized Staker can increase their amount of stake;
         2. The Undercollateralized Staker can deregister or be deregistered from some set of modules;
