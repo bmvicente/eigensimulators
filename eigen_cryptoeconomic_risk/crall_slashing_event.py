@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 
-def avs_compounded_risk(operator_stake, perc_stake_avs_1, perc_stake_avs_2, perc_stake_avs_3, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3, op_int_loss_avs1, op_int_loss_avs2, op_int_loss_avs3):
+def avs_compounded_risk(operator_stake, perc_stake_avs_1, perc_stake_avs_2, perc_stake_avs_3, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3):
 
     stake_avs_1 = operator_stake * (perc_stake_avs_1 * 0.01)
     stake_avs_2 = operator_stake * (perc_stake_avs_2 * 0.01)
@@ -16,9 +16,8 @@ def avs_compounded_risk(operator_stake, perc_stake_avs_1, perc_stake_avs_2, perc
         return (op_int_loss_avs1 + op_int_loss_avs2 + op_int_loss_avs3) * 2/3
 
     op_max_loss_avss = calculate_op_max_loss_avss(op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3)
-    op_int_loss_avss = calculate_op_int_loss_avss(op_int_loss_avs1, op_int_loss_avs2, op_int_loss_avs3)
 
-    return(op_max_loss_avss, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3,op_int_loss_avss, op_int_loss_avs1, op_int_loss_avs2, op_int_loss_avs3,
+    return(op_max_loss_avss, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3
             operator_stake, stake_avs_1, stake_avs_2, stake_avs_3)
 
 
@@ -257,20 +256,12 @@ def main():
         op_max_loss_avs2 = potential_total_slashing2 * perc_stake_avs_2 * 0.01
         op_max_loss_avs3 = potential_total_slashing3 * perc_stake_avs_3 * 0.01
 
-        op_int_loss_avs1 = potential_total_slashing1 * perc_stake_avs_1 * 2/3 * 0.01
-        op_int_loss_avs2 = potential_total_slashing2 * perc_stake_avs_2 * 2/3 * 0.01
-        op_int_loss_avs3 = potential_total_slashing3 * perc_stake_avs_3 * 2/3 * 0.01
-
 
         (
             op_max_loss_avss, 
             op_max_loss_avs1, 
             op_max_loss_avs2, 
             op_max_loss_avs3, 
-            op_int_loss_avss, 
-            op_int_loss_avs1, 
-            op_int_loss_avs2, 
-            op_int_loss_avs3, 
             operator_stake, 
             stake_avs_1, 
             stake_avs_2, 
@@ -282,10 +273,7 @@ def main():
             perc_stake_avs_3,
             op_max_loss_avs1,
             op_max_loss_avs2,
-            op_max_loss_avs3,
-            op_int_loss_avs1,
-            op_int_loss_avs2,
-            op_int_loss_avs3
+            op_max_loss_avs3
         )
 
 
@@ -390,11 +378,7 @@ def main():
         
         st.markdown('<p class="header-style">Operator Potential Slashes Across AVSs</p>', unsafe_allow_html=True)
 
-        col30, col31 = st.columns([7, 8])
-
-        with col30:
-
-            st.markdown(
+        st.markdown(
                 f"""
                 <div style="
                     padding: 5px;
@@ -420,7 +404,7 @@ def main():
 
 
 
-            st.markdown(
+        st.markdown(
                 f"""
                 <div style="
                     border: 1px solid;
@@ -434,7 +418,7 @@ def main():
                 unsafe_allow_html=True
             )
             
-            st.markdown(
+        st.markdown(
                 f"""
                 <div style="
                     border: 1px solid;
@@ -448,7 +432,7 @@ def main():
                 unsafe_allow_html=True
             )
         
-            st.markdown(
+        st.markdown(
                 f"""
                 <div style="
                     border: 1px solid;
@@ -462,64 +446,8 @@ def main():
                 unsafe_allow_html=True
             )
 
-        with col31:
-            
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Slash on <i>AVS 1</i>: <span style="font-size: 1.1em;">${op_int_loss_avs1:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
-            
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Slash on <i>AVS 2</i>: <span style="font-size: 1.1em;">${op_int_loss_avs2:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
-            
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Slash on <i>AVS 3</i>: <span style="font-size: 1.1em;">${op_int_loss_avs3:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
 
-
-        col21, col22 = st.columns([7, 8])
-
-
-        with col21:
-            st.markdown(
+        st.markdown(
                 f"""
                 <div style="
                     border: 2px solid;
@@ -533,21 +461,6 @@ def main():
                     </h2>
                 </div>
                 """,
-                unsafe_allow_html=True
-            )
-
-        with col22:
-            st.markdown(
-                f"""
-                <div style="
-                    border: 2px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">Total Int Potential Slash Across AVSs: ${op_int_loss_avss:,.0f}</h2>
-                </div>
-                """, 
                 unsafe_allow_html=True
             )
 
@@ -651,8 +564,6 @@ def main():
 
 
         max_slash_allowed1 = max(0, total_restaked - 2 * tvl1)
-        int_slash_allowed1 = max_slash_allowed1 * 2/3
-
 
         st.markdown(
             f"""
@@ -715,20 +626,6 @@ def main():
                 unsafe_allow_html=True
             )
 
-            
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">${int_slash_allowed1:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-                )
         
         with col7:
 
@@ -756,20 +653,6 @@ def main():
                 unsafe_allow_html=True
             )
 
-
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">${op_int_loss_avs1:,.0f}</span></h2>
-                </div>
-                """,
-                unsafe_allow_html=True
-                )
     
         with st.expander("Logic"):
             st.markdown("""
@@ -821,7 +704,6 @@ def main():
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl2}""")
 
         max_slash_allowed2 = max(0, total_restaked - 2 * tvl2)
-        int_slash_allowed2 = total_restaked - 3*tvl2
         
         st.markdown(
                 f"""
@@ -874,19 +756,6 @@ def main():
                 unsafe_allow_html=True
             )
             
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">${int_slash_allowed2:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-                )
         
         with col12: 
 
@@ -904,19 +773,6 @@ def main():
                 unsafe_allow_html=True
                 )
 
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">${op_int_loss_avs2:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-                )
     
         with st.expander("Logic"):
             st.markdown("""
@@ -968,7 +824,6 @@ def main():
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl3}""")
 
         max_slash_allowed3 = max(0, total_restaked - 2 * tvl3)
-        int_slash_allowed3 = total_restaked - 3*tvl3
 
         st.markdown(
                 f"""
@@ -1020,20 +875,7 @@ def main():
                 """, 
                 unsafe_allow_html=True
             )
-            
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Slash "Allowed" to Maintain Robust Security: <span style="font-size: 1.1em;">${int_slash_allowed3:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-                )
+
         
         with col17:
 
@@ -1046,20 +888,6 @@ def main():
                     text-align: center;
                     margin: 5px 0;">
                     <h2 style="color: black; margin:0; font-size: 1em;">Max Potential Operator Slash: <span style="font-size: 1.1em;">${op_max_loss_avs3:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-                )
-
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">Int Potential Operator Slash: <span style="font-size: 1.1em;">${op_int_loss_avs3:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
