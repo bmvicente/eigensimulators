@@ -32,7 +32,7 @@ def main():
 
     st.title("Cryptoeconomic Risk Analysis I")
     st.subheader("**AVS Underlying Risk Simulator II**")
-    
+
     st.write("  \n")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
@@ -40,6 +40,7 @@ def main():
                     The most significant parameter is the first, since it poses the greatest weight on an AVS being exposed to corruption or being economically secured.
                     """)
     
+    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
 
