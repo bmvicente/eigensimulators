@@ -403,7 +403,7 @@ def main():
                     background-color: white;">
                     <h2 style="color: black; margin: 0; font-size: 1.2em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1.3em;">2</span> &nbsp; | 
+                            <span style="font-weight: bold; font-size: 1.3em; border: 2px solid; border-radius: 50%; padding: 0 5px;">2</span> &nbsp; | 
                             &nbsp; <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">ij</sub></span> &nbsp; = &nbsp;
                             <span style="font-size: 1.7em;">&Sigma;</span> &nbsp;
                             <span style="font-size: 1.3em;">&Omega;<sub style="font-size: 0.9em;">j</sub></span> &nbsp;
