@@ -523,7 +523,9 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-
+    st.write("  \n")
+    st.write("  \n")
+    
     def normalize_score(original_score, min_original=8, max_original=5700):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
