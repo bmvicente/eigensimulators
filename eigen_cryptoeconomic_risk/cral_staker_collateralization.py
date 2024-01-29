@@ -315,7 +315,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    st.write(f"""
+    st.markdown = f"""
         An Operator may be voluntarily or involuntarily undercollateralized. They may have position themselves that way to extract Profit from tasks they're validating or other ecosystem dependencies may have put them in that position and their collateralization status has a non-malicious intent.
 
         <br>
@@ -325,7 +325,7 @@ def main():
         1. The Undercollateralized Staker can increase their amount of stake;
         2. The Undercollateralized Staker can deregister or be deregistered from some set of modules;
         3. Other Stakers can adjust their own registrations.
-    """)
+    """
             
     st.write("\n")
     st.write("\n")
