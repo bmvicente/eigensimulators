@@ -31,9 +31,10 @@ def main():
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""
                     The collateralization status of an Operator is crucial to assess since it affects every agent in the ecosystem:
-                        1. Restakers, in knowing if it is an Operator they should delegate stake to.
-                        2. Operators themselves, in the case they arrive to an uncollateralized state involuntarily.
-                        3. AVS, in spotting undercollateralized Operators, that may be actively searching to extract Profit from the AVS value locked or involuntary Operators that should be warned to correct course and increase their stake to an overcollateralized status.
+
+                    - Restakers, in knowing if it is an Operator they should delegate stake to.
+                    - Operators themselves, in the case they arrive to an uncollateralized state involuntarily.
+                    - AVS, in spotting undercollateralized Operators, that may be actively searching to extract Profit from the AVS value locked or involuntary Operators that should be warned to correct course and increase their stake to an overcollateralized status.
 
                     This simulator was built based on the theory on Appendix B1 of EigenLayer's whitepaper, particularly.
 
