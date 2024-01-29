@@ -32,9 +32,9 @@ def main():
 
     st.title("AVS Risk Simulator II")
 
-    #with st.expander("How this Simulator Works & Basic Assumptions"):
-    #    st.markdown(f"""
-    #                """)
+    with st.expander("How this Simulator Works & Basic Assumptions"):
+        st.markdown(f"""
+                    """)
     
     st.write("  \n")
     st.write("  \n")
@@ -388,7 +388,10 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
-
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
         # AVS Restaking Modality
         st.markdown("""
