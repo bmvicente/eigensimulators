@@ -664,7 +664,7 @@ def main():
                 background-color: white;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
-                        <span style="font-weight: bold; font-size: 1.4em;">1</span> &nbsp; | 
+                        <span style="font-weight: bold; font-size: 1.3em;">1</span> &nbsp; | 
                         &nbsp; <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.9em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
