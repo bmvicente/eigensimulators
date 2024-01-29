@@ -30,18 +30,13 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""
-                    The collateralization status of an Operator is crucial to assess since it affects every agent in the ecosystem:
+                    The collateralization status of an Operator is crucial to assess, since it affects every agent in the ecosystem:
 
                     - Restakers, in knowing if it is an Operator they should delegate stake to.
                     - Operators themselves, in the case they arrive to an uncollateralized state involuntarily.
                     - AVS, in spotting undercollateralized Operators, that may be actively searching to extract Profit from the AVS value locked or involuntary Operators that should be warned to correct course and increase their stake to an overcollateralized status.
 
-                    This simulator was built based on the theory on Appendix B1 of EigenLayer's whitepaper, particularly.
-
-                    Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
-                    This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security. 
-                    A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
-
+                    The Simulator was built based on the theory on Appendix B1 of EigenLayer's whitepaper, particularly.
                         """, unsafe_allow_html=True)
     
     st.write("\n") 
