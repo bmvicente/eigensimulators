@@ -128,14 +128,12 @@ def main():
         operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
         st.session_state.operator_attack_risk = operator_attack_risk
 
+        min_tvl = 
 
         # The expander without a visible outline
         with st.expander("Logic"):
                 st.markdown("""                        
                     The **TVL/Total Restaked** risk logic herein is set so that the greater the *(AVS Total Restaked/2) : AVS TVL* ratio, the safer the AVS is, and vice-versa.
-                            
-                    Based on the values inputted, the Minimum TVL to keep the AVS secure should be \\\\${min_tvl:,} and the Sufficiently-High TVL value to assure a comfortable security level for the AVS should be at least \\\\${avs_total_staked:,}. Current TVL equals \\\\${avs_tvl:,}.
-                    If the TVL increases compared to the Total Staked, the risk gets reduced and the rewards too, therefore.
                     
                     To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) to begin with: an AVS appears to be most secure when the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, as any successful attack would result in at least half of the attacker's stake being slashed. If *AVS Total Restaked* increases from there compared to the *AVS TVL*, the risk gets reduced even further. If both variables are under $100K, we consider it the maximum risk scenario.
 
@@ -604,6 +602,7 @@ def main():
 
     st.markdown('<p style="font-weight: bold; font-size: 1.2em;">NEXT...</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;">&#8226; Proposed Minimum AVS TVL and TVL caps</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Risks Based on AVS Nature</p><span style="font-weight: normal; display: inline;"> (data availability, keeper networks, oracles, bridges, etc.)</span>', unsafe_allow_html=True)
 
 
