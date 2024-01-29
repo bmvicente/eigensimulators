@@ -809,6 +809,21 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
+                **ΩAVS2**
+                ```python
+                def calculate_slashing(total_restaked, risk_score):
+                if risk_score == 10:
+                    risk_factor = (9 + 1) * 10
+                else:
+                    risk_factor = (risk_score + 1) * 10
+                
+                slashing_amount = (total_restaked / 3) * (risk_factor / 100)
+                return slashing_amount
+                ```
+                ```python
+                potential_total_slashing2 = calculate_slashing(total_restaked, risk_score2)
+                ```
+                **αAVS2**
                 ```python
                 max_slash_allowed2 = (total_restaked - 2 * tvl2)
                 """)
@@ -948,6 +963,21 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
+                **ΩAVS3**
+                ```python
+                def calculate_slashing(total_restaked, risk_score):
+                if risk_score == 10:
+                    risk_factor = (9 + 1) * 10
+                else:
+                    risk_factor = (risk_score + 1) * 10
+                
+                slashing_amount = (total_restaked / 3) * (risk_factor / 100)
+                return slashing_amount
+                ```
+                ```python
+                potential_total_slashing3 = calculate_slashing(total_restaked, risk_score3)
+                ```
+                **αAVS3**
                 ```python
                 max_slash_allowed3 = (total_restaked - 2 * tvl3)
                 """)
