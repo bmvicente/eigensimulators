@@ -323,7 +323,7 @@ def main():
         1. The Undercollateralized Staker can increase their amount of stake;
         2. The Undercollateralized Staker can deregister or be deregistered from some set of modules;
         3. Other Stakers can adjust their own registrations.
-    """, unsafe_allow_html = True)
+        """, unsafe_allow_html = True)
             
     st.write("\n")
     st.write("\n")
