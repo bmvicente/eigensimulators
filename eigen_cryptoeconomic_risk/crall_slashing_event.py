@@ -588,10 +588,6 @@ def main():
             unsafe_allow_html=True
         )
 
-        with st.expander("Logic"):
-                st.markdown(f"""
-                    """)
-            
         
         st.write("\n")
         st.write(f"""&#8226; **"Byzantine Slashing Tolerance" Test**: AVS 1 Max "Allowed" Slashes vs Max Potential Operator Slashes""")
@@ -727,9 +723,6 @@ def main():
             unsafe_allow_html=True
         )
 
-        with st.expander("Logic"):
-                st.markdown(f"""
-                   """)
 
         st.write("\n")
         st.write(f"""&#8226; **"Byzantine Slashing Tolerance" Test**: AVS 2 Max "Allowed" Slashes vs Max Potential Operator Slashes""")
@@ -865,10 +858,6 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-
-        with st.expander("Logic"):
-                st.markdown(f"""
-                    """)
             
 
         st.write("\n")
@@ -943,6 +932,9 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+
+
+
 
 
     ###################
