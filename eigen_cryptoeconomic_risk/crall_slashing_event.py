@@ -1265,8 +1265,8 @@ def main():
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Performance Reputation</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Collateralization Risk Level</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;">&#8226; Stakesure&#39;s Parameters <span style="font-weight: normal;">(Insurance & Reserves)</span></p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked Into Multiple AVSs</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-weight: bold;">&#8226; Stakesure&#39;s Parameters (Insurance & Reserves)</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Entrenchment Level Risk of a Set of Operators on Multiple AVSs Simultaneously</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Slashing Risks Based on AVS Nature</p><span style="font-weight: normal; display: inline;"> (data availability, keeper networks, oracles, bridges, etc.)</span>', unsafe_allow_html=True)
 
