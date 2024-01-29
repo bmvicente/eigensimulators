@@ -33,7 +33,9 @@ def main():
     st.title("AVS Risk Simulator II")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
-        st.markdown(f"""This Simulator takes six of the main parameters of an AVS to simulate their Risk Score. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
+        st.markdown(f"""This Simulator takes six of the parameters that can compose an AVS to simulate their Risk Score. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
+                    
+                    The most significant parameter is the first, since it assesses an AVS' exposure to being corrupted or to being economically secured.
                     """)
     
     st.write("  \n")
@@ -87,7 +89,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">AVS Total Restaked & TVL</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS Cost of Corruption <> Profit from Corruption</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
