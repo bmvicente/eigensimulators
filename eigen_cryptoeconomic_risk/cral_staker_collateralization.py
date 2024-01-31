@@ -165,7 +165,7 @@ def main():
                         </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
-                            <span style="font-size: 0.9m;">(AVS Total Restaked * % Operator Stake on AVS)</span>
+                            <span style="font-size: 0.9m;">(AVS Total Restaked * % Operator Stake on AVS <i>A</i>)</span>
                         </div>
                     </h2>
                 </div>
