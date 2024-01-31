@@ -60,7 +60,7 @@ def main():
         st.write("\n")
 
         tvl = st.number_input("AVS *A* TVL ($)", min_value=0, max_value=1000000000, value=0, step=int(1e8))
-        st.write(f"&#8226; AVS TVL: ${tvl:,.0f}")
+        st.write(f"&#8226; AVS *A* TVL: ${tvl:,.0f}")
 
 
     with col2:
