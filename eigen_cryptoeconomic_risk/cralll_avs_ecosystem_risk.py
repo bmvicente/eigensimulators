@@ -43,7 +43,6 @@ def main():
 
     with col40:
          st.markdown('<p class="header-style"><strong>AVSs RISK PROFILES BEFORE & AFTER MAX SLASH EVENT</strong></p>', unsafe_allow_html=True)
-    #     average_risk_score = (st.session_state.risk_score1 + st.session_state.risk_score2 + st.session_state.risk_score3) / 3
 
          st.write(f"""
                      **Risk Scores *Before* Max Slash Event**

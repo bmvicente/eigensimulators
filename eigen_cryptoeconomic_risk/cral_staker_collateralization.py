@@ -47,37 +47,37 @@ def main():
 
     with col1:
 
-        st.markdown('<p style="font-weight: bold;">AVS Total Restaked & AVS TVL</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-weight: bold;">AVS</p>', unsafe_allow_html=True)
         total_restaked = st.number_input(
-            "AVS Total Restaked ($)", 
+            "Total Restaked on AVSs($)", 
             min_value=0,
             max_value=int(1e10),
             value=0,
             step=int(1e8)
         )
-        st.write(f"&#8226; AVS Total Restaked: ${total_restaked:,.0f}")
+        st.write(f"&#8226; Total Restaked: ${total_restaked:,.0f}")
 
         st.write("\n")
 
-        tvl = st.number_input("AVS TVL ($)", min_value=0, max_value=1000000000, value=0, step=int(1e8))
+        tvl = st.number_input("AVS *A* TVL ($)", min_value=0, max_value=1000000000, value=0, step=int(1e8))
         st.write(f"&#8226; AVS TVL: ${tvl:,.0f}")
 
 
     with col2:
 
-        st.markdown('<p style="font-weight: bold;">Operator Amount Restaked</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-weight: bold;">Operator</p>', unsafe_allow_html=True)
         operator_stake = st.number_input(
-            "Operator Stake ($)",
+            "Operator Total Stake ($)",
             min_value=0,
             max_value=int(1e10),
             value=0,
             step=int(1e8),
         )
-        st.write(f"&#8226; Operator Stake: ${operator_stake:,.0f}")
+        st.write(f"&#8226; Operator Total Stake: ${operator_stake:,.0f}")
 
         st.write("\n")
 
-        perc_stake_avs = st.slider("% Staked on AVS", 0, 100, 10, help="The percentage of the operator's stake that is allocated to the AVS")
+        perc_stake_avs = st.slider("% Staked on AVS *A*", 0, 100, 10, help="The percentage of the operator's stake that is allocated to the AVS *A*")
         
         st.write("\n")
 
@@ -122,7 +122,7 @@ def main():
 
         stake_required_to_corrupt_avs = total_restaked / 2
 
-        profit_from_corruption = max(2 * tvl - total_restaked, 0) - stake_required_to_corrupt_avs
+        profit_from_corruption = max(tvl, 0) - stake_required_to_corrupt_avs
 
         
         st.markdown(
@@ -140,7 +140,7 @@ def main():
                         </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
-                            <span style="font-size: 0.8m;">(2 * TVL - AVS Total Restaked) - α<sub style="font-size: 1em;">j</sub></span></span>
+                            <span style="font-size: 0.8m;">TVL - α<sub style="font-size: 1em;">j</sub></span></span>
                         </div>
                     </h2>
                 </div>
