@@ -108,7 +108,7 @@ def main():
                     <h2 style="color: black; margin:0; font-size: 1.1em;">
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1.2em;">s<sub style="font-size: 0.8em;">i</sub></span> &nbsp; | &nbsp; Operator Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1.2em;">s<sub style="font-size: 0.8em;">i</sub></span> &nbsp; | &nbsp; Operator Total Stake: <span style="font-size: 1.2em;">${operator_stake:,.0f}</span>
                         </div>
                         <div style="display: block;">
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
