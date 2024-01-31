@@ -122,7 +122,7 @@ def main():
 
         stake_required_to_corrupt_avs = total_restaked / 2
 
-        profit_from_corruption = max(tvl, 0) - stake_required_to_corrupt_avs
+        profit_from_corruption = max(tvl - stake_required_to_corrupt_avs, 0)
 
         
         st.markdown(
