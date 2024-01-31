@@ -189,7 +189,7 @@ def main():
                         </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
-                            <span style="font-size: 0.9em;">(AVS Total Restaked / 2)</span>
+                            <span style="font-size: 0.9em;">(Total Restaked on AVSs / 2)</span>
                         </div>
                     </h2>
                 </div>
