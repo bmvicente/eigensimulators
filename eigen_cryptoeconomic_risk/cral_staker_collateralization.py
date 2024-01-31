@@ -241,7 +241,7 @@ def main():
         collat_status = "Undercollateralized"
         result_color = "red"
     else:
-        collat_status = "The Staker Collateralization equals $0."
+        collat_status = "The Operator Collateralization equals $0."
         result_color = "black"
 
     st.write("  \n")
@@ -262,7 +262,7 @@ def main():
     with col9:
         fraction_html = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">Staker Collateralization Level:</span><br><br>
+                <span style="font-size: 20px; font-weight: bold;">Operator Collateralization Level:</span><br><br>
                 <span style="font-size: 24px; font-weight: bold; background-color:grey; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span> 
                 <span style="font-size: 28px; font-weight: bold;">-</span>
                 <span style="font-size: 24px; font-weight: bold; background-color:lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_op_stake_on_avs}</span> 
@@ -294,9 +294,9 @@ def main():
     if calculation_result == 0:
         st.markdown(f"<div style='text-align: center; font-size: 18px;'><span style='color: {result_color};'>{collat_status}</span></div>", unsafe_allow_html=True)
     elif calculation_result < 0:
-        st.markdown(f"<div style='text-align: center; font-size: 18px;'>The Staker is <strong>{collat_status}</strong> by <span style='color: {result_color};'><strong>{formatted_calculation_result}</strong></span>, therefore <em>has met</em> the sufficient conditions for Cryptoeconomic Security.</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='text-align: center; font-size: 18px;'>The Operator is <strong>{collat_status}</strong> by <span style='color: {result_color};'><strong>{formatted_calculation_result}</strong></span>, therefore <em>has met</em> the sufficient conditions for Cryptoeconomic Security.</div>", unsafe_allow_html=True)
     else:
-        st.markdown(f"<div style='text-align: center; font-size: 18px;'>The Staker is <strong>{collat_status}</strong> by <span style='color: {result_color};'><strong>{formatted_calculation_result}</strong></span>, therefore <em>has not met</em> the sufficient conditions for Cryptoeconomic Security.</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='text-align: center; font-size: 18px;'>The Operator is <strong>{collat_status}</strong> by <span style='color: {result_color};'><strong>{formatted_calculation_result}</strong></span>, therefore <em>has not met</em> the sufficient conditions for Cryptoeconomic Security.</div>", unsafe_allow_html=True)
 
 
     st.write("\n")
@@ -314,9 +314,9 @@ def main():
                 
         **Suggestions on how to fix *Undercollateralization*:**
 
-        1. The Undercollateralized Staker can increase their amount of stake;
-        2. The Undercollateralized Staker can deregister or be deregistered from some set of modules;
-        3. Other Stakers can adjust their own registrations.
+        1. The Undercollateralized Operator can increase their amount of stake;
+        2. The Undercollateralized Operator can deregister or be deregistered from some set of modules;
+        3. Other Operators can adjust their own registrations.
         """, unsafe_allow_html = True)
             
     st.write("\n")
@@ -333,7 +333,7 @@ def main():
 
     st.markdown('<p style="font-weight: bold;">&#8226; Single Operator Restaked in Multiple AVSs</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked in Multiple AVSs</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Continuous Relaxation</p><span style="font-weight: normal; display: inline;"> (A more flexible method to ensure Stakers tasks\' security, considering the varying risk profiles and preferences of Stakers)</span>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold; display: inline;">&#8226; Continuous Relaxation</p><span style="font-weight: normal; display: inline;"> (A more flexible method to ensure Operators tasks\' security, considering the varying risk profiles and preferences of Operators)</span>', unsafe_allow_html=True)
 
     st.write("  \n")
     st.write("  \n")
