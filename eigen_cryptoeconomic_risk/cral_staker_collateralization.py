@@ -136,7 +136,7 @@ def main():
                     background-color: lightgreen;">
                     <h2 style="color: black; margin:0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1.2em;">p<sub style="font-size: 0.8em;">j</span> &nbsp; | &nbsp; Profit from Corruption: <span style="font-size: 1.2em;">${profit_from_corruption:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1.2em;">p<sub style="font-size: 0.8em;">j</span> &nbsp; | &nbsp; Profit from Corrupting AVS <i>A</i>: <span style="font-size: 1.2em;">${profit_from_corruption:,.0f}</span>
                         </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
