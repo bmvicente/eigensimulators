@@ -49,7 +49,7 @@ def main():
 
         st.markdown('<p style="font-weight: bold;">AVS</p>', unsafe_allow_html=True)
         total_restaked = st.number_input(
-            "Total Restaked on AVSs($)", 
+            "Total Restaked on AVSs ($)", 
             min_value=0,
             max_value=int(1e10),
             value=0,
