@@ -2,12 +2,13 @@
 import pandas as pd
 import streamlit as st
 
-hide_github_icon = """
-{
-  visibility: hidden;
-}
+hide_footer_style = """
+<style>
+.css-1d391kg {visibility: hidden;}
+</style>
 """
-st.markdown(hide_github_icon, unsafe_allow_html=True)
+st.markdown(hide_footer_style, unsafe_allow_html=True)
+
 
 def avs_compounded_risk(operator_stake, perc_stake_avs_1, perc_stake_avs_2, perc_stake_avs_3, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3):
 
