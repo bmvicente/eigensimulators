@@ -2,6 +2,11 @@
 import pandas as pd
 import streamlit as st
 
+hide_github_icon = """
+.css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
 
 def avs_compounded_risk(operator_stake, perc_stake_avs_1, perc_stake_avs_2, perc_stake_avs_3, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3):
 
@@ -103,13 +108,6 @@ def calculate_slashing(total_restaked, risk_score):
 
 
 def main():
-
-    hide_github_icon = """
-    #GithubIcon {
-    visibility: hidden;
-    }
-    """
-    st.markdown(hide_github_icon, unsafe_allow_html=True)
 
     st.set_page_config(layout="wide")
 
