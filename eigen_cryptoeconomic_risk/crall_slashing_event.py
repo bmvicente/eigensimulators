@@ -2,13 +2,6 @@
 import pandas as pd
 import streamlit as st
 
-hide_footer_style = """
-<style>
-.css-1d391kg {visibility: hidden;}
-</style>
-"""
-st.markdown(hide_footer_style, unsafe_allow_html=True)
-
 
 def avs_compounded_risk(operator_stake, perc_stake_avs_1, perc_stake_avs_2, perc_stake_avs_3, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3):
 
@@ -110,6 +103,14 @@ def calculate_slashing(total_restaked, risk_score):
 
 
 def main():
+
+    hide_github_icon = """
+    #GithubIcon {
+    visibility: hidden;
+    }
+    """
+    st.markdown(hide_github_icon, unsafe_allow_html=True)
+
     st.set_page_config(layout="wide")
 
     if 'perc_stake_avs_1' not in st.session_state:
