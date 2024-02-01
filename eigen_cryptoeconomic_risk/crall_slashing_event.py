@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 hide_github_icon = """
-#GithubIcon {
+{
   visibility: hidden;
 }
 """
