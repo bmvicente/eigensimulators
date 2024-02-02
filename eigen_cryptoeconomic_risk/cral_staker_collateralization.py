@@ -209,7 +209,7 @@ def main():
     formatted_profit_from_corruption = f"{profit_from_corruption:,.0f}"
     formatted_stake_required_to_corrupt_avs = f"{stake_required_to_corrupt_avs:,.0f}"
     formatted_operator_stake = f"{operator_stake:,.0f}"
-    formatted_op_stake_on_avs = f"{op_fraction_vs_total_restaked:,.0f}"
+    formatted_op_fraction_vs_total_restaked = f"{op_fraction_vs_total_restaked:,.4f}"
     formatted_calculation_result = f"{calculation_result:,.0f}"
 
 
@@ -245,7 +245,7 @@ def main():
                 <span style="font-size: 20px; font-weight: bold;">Operator Collateralization Level:</span><br><br>
                 <span style="font-size: 24px; font-weight: bold; background-color:grey; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span> 
                 <span style="font-size: 28px; font-weight: bold;">-</span>
-                <span style="font-size: 24px; font-weight: bold; background-color:lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_op_stake_on_avs}</span> 
+                <span style="font-size: 24px; font-weight: bold; background-color:lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_op_fraction_vs_total_restaked}</span> 
                 <span style="font-size: 28px; font-weight: bold;">*</span>
                 <div style="display: inline-block; vertical-align: middle;">
                     <div style="font-size: 24px; font-weight: bold; text-align: center;">
