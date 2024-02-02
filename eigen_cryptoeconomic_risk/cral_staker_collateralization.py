@@ -82,8 +82,11 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    op_fraction_vs_total_restaked = operator_stake / total_restaked
-
+    try:
+        op_fraction_vs_total_restaked = operator_stake / total_restaked if total_restaked > 0 else 0
+    except ZeroDivisionError:
+        op_fraction_vs_total_restaked = 0  # This should catch any ZeroDivisionError
+        print("Caught ZeroDivisionError")
 
     col3, col4 = st.columns(2)
 
@@ -200,13 +203,6 @@ def main():
 
     # Inside your main function, after retrieving total_restaked and tvl values
     calculation_result = calculate_operator_attack_risk(total_restaked, tvl)
-
-
-    try:
-        op_fraction_vs_total_restaked = operator_stake / total_restaked if total_restaked > 0 else 0
-    except ZeroDivisionError:
-        op_fraction_vs_total_restaked = 0  # This should catch any ZeroDivisionError
-        print("Caught ZeroDivisionError")
 
 
 
