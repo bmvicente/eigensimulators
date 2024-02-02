@@ -77,22 +77,15 @@ def main():
 
         st.write("\n")
 
-        perc_stake_avs = st.slider("% Staked on AVS *A*", 0, 100, 10, help="The percentage of the operator's stake that is allocated to the AVS *A*")
-        
-        st.write("\n")
-
-
     st.write("\n")
     st.write("\n")
     st.write("\n")
     st.write("\n")
 
-    op_stake_on_avs = operator_stake * (perc_stake_avs * 0.01) # OK
+    op_fraction_vs_total_restaked = operator_stake / total_restaked
 
 
     col3, col4 = st.columns(2)
-
-        # Add in image of formula, meaning of variables, and section of whitepaper
 
     with col3:
 
@@ -161,11 +154,11 @@ def main():
                     background-color: lightblue;">
                     <h2 style="color: black; margin:0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1.2em;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span> &nbsp; | &nbsp; Fraction of AVS <i>A</i> Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">${op_stake_on_avs:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1.2em;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span> &nbsp; | &nbsp; Fraction of AVS <i>A</i> Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">${op_fraction_vs_total_restaked:,.0f}</span>
                         </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
-                            <span style="font-size: 0.9m;">(Total Restaked on AVSs * % Operator Stake on AVS <i>A</i>)</span>
+                            <span style="font-size: 0.9m;">(Operator Total Stake / Total Restaked)</span>
                         </div>
                     </h2>
                 </div>
@@ -209,11 +202,6 @@ def main():
     # Initialize calculation_result at the start
     calculation_result = 0
 
-    # Check if stake_required_to_corrupt_avs is zero to avoid ZeroDivisionError
-    if stake_required_to_corrupt_avs != 0:
-        fraction_result = profit_from_corruption / stake_required_to_corrupt_avs
-        calculation_result = operator_stake - op_stake_on_avs * fraction_result
-
     # Now, you can format calculation_result without error
     formatted_calculation_result = f"{calculation_result:,.0f}"
 
@@ -221,13 +209,13 @@ def main():
     formatted_profit_from_corruption = f"{profit_from_corruption:,.0f}"
     formatted_stake_required_to_corrupt_avs = f"{stake_required_to_corrupt_avs:,.0f}"
     formatted_operator_stake = f"{operator_stake:,.0f}"
-    formatted_op_stake_on_avs = f"{op_stake_on_avs:,.0f}"
+    formatted_op_stake_on_avs = f"{op_fraction_vs_total_restaked:,.0f}"
     formatted_calculation_result = f"{calculation_result:,.0f}"
 
     # Check if stake_required_to_corrupt_avs is zero to avoid ZeroDivisionError
     if stake_required_to_corrupt_avs != 0:
         fraction_result = profit_from_corruption / stake_required_to_corrupt_avs
-        calculation_result = operator_stake - op_stake_on_avs * fraction_result
+        calculation_result = operator_stake - op_fraction_vs_total_restaked * fraction_result
     else:
         fraction_result = 0  # Set fraction_result to 0 if dividing by zero
         calculation_result = 0  # Set calculation_result to 0 in this case
