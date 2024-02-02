@@ -154,7 +154,7 @@ def main():
                     background-color: lightblue;">
                     <h2 style="color: black; margin:0; font-size: 1.1em;">
                         <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1.2em;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span> &nbsp; | &nbsp; Fraction of Total Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">${op_fraction_vs_total_restaked:,.0f}</span>
+                            <span style="font-weight: bold; font-size: 1.2em;">&gamma;<sub style="font-size: 0.8em;">ij</sub></span> &nbsp; | &nbsp; Fraction of Total Restaked Amount the Operator is Securing: <span style="font-size: 1.2em;">{op_fraction_vs_total_restaked * 100:,.2f}%</span>
                         </div>
                         <div style="height: 10px;"></div> <!-- Empty div for spacing -->
                         <div style="display: block;">
@@ -211,14 +211,6 @@ def main():
     formatted_operator_stake = f"{operator_stake:,.0f}"
     formatted_op_stake_on_avs = f"{op_fraction_vs_total_restaked:,.0f}"
     formatted_calculation_result = f"{calculation_result:,.0f}"
-
-    # Check if stake_required_to_corrupt_avs is zero to avoid ZeroDivisionError
-    if stake_required_to_corrupt_avs != 0:
-        fraction_result = profit_from_corruption / stake_required_to_corrupt_avs
-        calculation_result = operator_stake - op_fraction_vs_total_restaked * fraction_result
-    else:
-        fraction_result = 0  # Set fraction_result to 0 if dividing by zero
-        calculation_result = 0  # Set calculation_result to 0 in this case
 
 
     # Determine collateralization status and result color based on the value of calculation_result
