@@ -200,6 +200,12 @@ def main():
 
     # Inside your main function, after retrieving total_restaked and tvl values
     calculation_result = calculate_operator_attack_risk(total_restaked, tvl)
+    
+    # Inside your main function, before calculating op_fraction_vs_total_restaked
+    if total_restaked > 0:
+        op_fraction_vs_total_restaked = operator_stake / total_restaked
+    else:
+        op_fraction_vs_total_restaked = 0  # or some other appropriate default value or error handling
 
 
     # Continue with your HTML formatting and Streamlit markdown as before
