@@ -59,7 +59,7 @@ def main():
 
         st.write("\n")
 
-        tvl = st.number_input("AVS *A* TVL ($)", min_value=0, max_value=1000000000, value=0, step=int(1e8))
+        tvl = st.number_input("AVS *A* TVL ($)", min_value=0, max_value=100000000000, value=0, step=int(1e8))
         st.write(f"&#8226; AVS *A* TVL: ${tvl:,.0f}")
 
 
@@ -197,13 +197,10 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    
+    # Inside your main function, after retrieving total_restaked and tvl values
+    calculation_result = calculate_operator_attack_risk(total_restaked, tvl)
 
-
-    # Initialize calculation_result at the start
-    calculation_result = 0
-
-    # Now, you can format calculation_result without error
-    formatted_calculation_result = f"{calculation_result:,.0f}"
 
     # Continue with your HTML formatting and Streamlit markdown as before
     formatted_profit_from_corruption = f"{profit_from_corruption:,.0f}"
