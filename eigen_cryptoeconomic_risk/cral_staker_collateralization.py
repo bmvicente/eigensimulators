@@ -197,7 +197,7 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
-    
+
     # Inside your main function, after retrieving total_restaked and tvl values
     calculation_result = calculate_operator_attack_risk(total_restaked, tvl)
 
@@ -207,7 +207,7 @@ def main():
     formatted_stake_required_to_corrupt_avs = f"{stake_required_to_corrupt_avs:,.0f}"
     formatted_operator_stake = f"{operator_stake:,.0f}"
     formatted_op_fraction_vs_total_restaked = f"{op_fraction_vs_total_restaked:,.4f}"
-    formatted_calculation_result = f"{calculation_result:,.0f}"
+    formatted_calculation_result = f"{calculation_result:,.2f}"
 
 
     # Determine collateralization status and result color based on the value of calculation_result
