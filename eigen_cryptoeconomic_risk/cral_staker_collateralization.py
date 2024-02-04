@@ -217,7 +217,12 @@ def main():
     formatted_stake_required_to_corrupt_avs = f"{stake_required_to_corrupt_avs:,.0f}"
     formatted_operator_stake = f"{operator_stake:,.0f}"
     formatted_op_fraction_vs_total_restaked = f"{op_fraction_vs_total_restaked:,.4f}"
-    formatted_result = f"{operator_collateralization_level:,.2f}"
+    if operator_collateralization_level is not None:
+        formatted_result = f"{operator_collateralization_level:,.2f}"
+    else:
+        # Handle the case where operator_collateralization_level is None or not a number
+        # For example, set formatted_result to a placeholder string or display a warning
+        formatted_result = "N/A"  # Or any other placeholder indicating the calculation could not be performed
 
 
     # Determine collateralization status and result color based on the value of calculation_result
