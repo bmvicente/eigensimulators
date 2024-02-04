@@ -3,21 +3,21 @@
 import streamlit as st
 
 
-def calculate_operator_attack_risk(total_restaked, tvl):
-
-        if tvl < 100000 or total_restaked < 100000:
-            return 10
-        
-        ratio = (total_restaked / 2) / tvl
-
-        if ratio > 1.5:
-            return 1  # Significantly greater than TVL, lowest risk
-        elif ratio > 1:
-            return 3  # Greater than TVL, moderate risk
-        elif ratio > 0.5:
-            return 5  # Less than TVL but not by a wide margin, increased risk
-        else:
-            return 7
+#def calculate_operator_attack_risk(total_restaked, tvl):
+#
+#        if tvl < 100000 or total_restaked < 100000:
+#            return 10
+#        
+#        ratio = (total_restaked / 2) / tvl
+#
+#        if ratio > 1.5:
+#            return 1  # Significantly greater than TVL, lowest risk
+#        elif ratio > 1:
+#            return 3  # Greater than TVL, moderate risk
+#        elif ratio > 0.5:
+#            return 5  # Less than TVL but not by a wide margin, increased risk
+#        else:
+#            return 7
 
 def main():
     st.set_page_config(layout="wide")
@@ -202,8 +202,9 @@ def main():
     st.write("\n")
 
     # Inside your main function, after retrieving total_restaked and tvl values
-    calculation_result = calculate_operator_attack_risk(total_restaked, tvl)
+    #calculation_result = calculate_operator_attack_risk(total_restaked, tvl)
 
+    operator_collateralization_level = operator_stake - (op_fraction_vs_total_restaked * (profit_from_corruption / stake_required_to_corrupt_avs))
 
 
     # Continue with your HTML formatting and Streamlit markdown as before
@@ -211,14 +212,14 @@ def main():
     formatted_stake_required_to_corrupt_avs = f"{stake_required_to_corrupt_avs:,.0f}"
     formatted_operator_stake = f"{operator_stake:,.0f}"
     formatted_op_fraction_vs_total_restaked = f"{op_fraction_vs_total_restaked:,.4f}"
-    formatted_calculation_result = f"{calculation_result:,.2f}"
+    formatted_result = f"{operator_collateralization_level:,.2f}"
 
 
     # Determine collateralization status and result color based on the value of calculation_result
-    if calculation_result < 0:
+    if formatted_result < 0:
         collat_status = "Overcollateralized"
         result_color = "green"
-    elif calculation_result > 0:
+    elif formatted_result > 0:
         collat_status = "Undercollateralized"
         result_color = "red"
     else:
@@ -256,7 +257,7 @@ def main():
                     </div>
                 </div>
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 24px; font-weight: bold; color: {result_color}; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_calculation_result}</span>
+                <span style="font-size: 24px; font-weight: bold; color: {result_color}; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_result}</span>
             </div>
         """
 
@@ -270,14 +271,14 @@ def main():
     st.write("\n")
 
     # Format the calculation result with a dollar sign, commas, and no decimals
-    formatted_calculation_result = f"${abs(calculation_result):,.0f}"
+    formatted_result = f"${abs(operator_collateralization_level):,.0f}"
 
-    if calculation_result == 0:
+    if operator_collateralization_level == 0:
         st.markdown(f"<div style='text-align: center; font-size: 18px;'><span style='color: {result_color};'>{collat_status}</span></div>", unsafe_allow_html=True)
-    elif calculation_result < 0:
-        st.markdown(f"<div style='text-align: center; font-size: 18px;'>The Operator is <strong>{collat_status}</strong> by <span style='color: {result_color};'><strong>{formatted_calculation_result}</strong></span>, therefore <em>has met</em> the sufficient conditions for Cryptoeconomic Security.</div>", unsafe_allow_html=True)
+    elif operator_collateralization_level < 0:
+        st.markdown(f"<div style='text-align: center; font-size: 18px;'>The Operator is <strong>{collat_status}</strong> by <span style='color: {result_color};'><strong>{formatted_result}</strong></span>, therefore <em>has met</em> the sufficient conditions for Cryptoeconomic Security.</div>", unsafe_allow_html=True)
     else:
-        st.markdown(f"<div style='text-align: center; font-size: 18px;'>The Operator is <strong>{collat_status}</strong> by <span style='color: {result_color};'><strong>{formatted_calculation_result}</strong></span>, therefore <em>has not met</em> the sufficient conditions for Cryptoeconomic Security.</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='text-align: center; font-size: 18px;'>The Operator is <strong>{collat_status}</strong> by <span style='color: {result_color};'><strong>{formatted_result}</strong></span>, therefore <em>has not met</em> the sufficient conditions for Cryptoeconomic Security.</div>", unsafe_allow_html=True)
 
 
     st.write("\n")
