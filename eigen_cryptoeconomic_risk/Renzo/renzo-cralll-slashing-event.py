@@ -88,7 +88,8 @@ def main():
     potential_total_slashing3 = calculate_slashing(st.session_state.total_restaked, st.session_state.risk_score3)
     
 
-    st.image("images/renzo1.png")
+    # Reduce the image size by specifying the width in pixels
+    st.image("images/renzo1.png", width=250)
 
     st.title("Cryptoeconomic Risk Analysis III")
     st.subheader("**AVS <> Operator Potential Slashing Event Simulator**")
