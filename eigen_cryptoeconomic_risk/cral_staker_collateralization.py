@@ -207,9 +207,9 @@ def main():
     if stake_required_to_corrupt_avs > 0:
         operator_collateralization_level = operator_stake - (op_fraction_vs_total_restaked * (profit_from_corruption / stake_required_to_corrupt_avs))
     else:
-        # Handle the case where stake_required_to_corrupt_avs is zero
-        # For example, set operator_collateralization_level to None or a default value
-        operator_collateralization_level = None  # or some default value, depending on your application's needs
+        # Set operator_collateralization_level to a default numeric value to avoid TypeError when comparing
+        operator_collateralization_level = 0  # or some other default value that makes sense for your application
+
 
 
     # Continue with your HTML formatting and Streamlit markdown as before
@@ -226,15 +226,23 @@ def main():
 
 
     # Determine collateralization status and result color based on the value of calculation_result
-    if operator_collateralization_level < 0:
-        collat_status = "Overcollateralized"
-        result_color = "green"
-    elif operator_collateralization_level > 0:
-        collat_status = "Undercollateralized"
-        result_color = "red"
+    # Ensure operator_collateralization_level is not None before comparing
+    if operator_collateralization_level is not None:
+        if operator_collateralization_level < 0:
+            collat_status = "Overcollateralized"
+            result_color = "green"
+        elif operator_collateralization_level > 0:
+            collat_status = "Undercollateralized"
+            result_color = "red"
+        else:
+            collat_status = "The Operator Collateralization equals $0."
+            result_color = "black"
     else:
-        collat_status = "The Operator Collateralization equals $0."
-        result_color = "black"
+        # Handle the case where operator_collateralization_level couldn't be calculated
+        collat_status = "Calculation not possible"
+        result_color = "grey"
+        # You may want to set formatted_result to "N/A" or similar here
+
 
     st.write("  \n")
     st.write("  \n")
