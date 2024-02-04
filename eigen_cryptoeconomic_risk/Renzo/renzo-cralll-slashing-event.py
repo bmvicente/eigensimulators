@@ -3,22 +3,16 @@ import pandas as pd
 import streamlit as st
 
 
-def avs_compounded_risk(operator_stake, perc_stake_avs_1, perc_stake_avs_2, perc_stake_avs_3, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3):
+def avs_compounded_risk(operator_stake, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3):
 
-    stake_avs_1 = operator_stake * (perc_stake_avs_1 * 0.01)
-    stake_avs_2 = operator_stake * (perc_stake_avs_2 * 0.01)
-    stake_avs_3 = operator_stake * (perc_stake_avs_3 * 0.01)
 
     def calculate_op_max_loss_avss(op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3):
         return op_max_loss_avs1 + op_max_loss_avs2 + op_max_loss_avs3
 
-    def calculate_op_int_loss_avss(op_int_loss_avs1, op_int_loss_avs2, op_int_loss_avs3):
-        return (op_int_loss_avs1 + op_int_loss_avs2 + op_int_loss_avs3) * 2/3
-
     op_max_loss_avss = calculate_op_max_loss_avss(op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3)
 
     return(op_max_loss_avss, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3,
-            operator_stake, stake_avs_1, stake_avs_2, stake_avs_3)
+            operator_stake)
 
 
 
@@ -68,13 +62,6 @@ def main():
 
     st.set_page_config(layout="wide")
 
-    if 'perc_stake_avs_1' not in st.session_state:
-        st.session_state.perc_stake_avs_1 = 0  # or any default value
-    if 'perc_stake_avs_2' not in st.session_state:
-        st.session_state.perc_stake_avs_2 = 0  # or any default value
-    if 'perc_stake_avs_3' not in st.session_state:
-        st.session_state.perc_stake_avs_3 = 0  # or any default value
-
 
     if 'operator_stake' not in st.session_state:
         st.session_state.operator_stake = 0
@@ -101,7 +88,7 @@ def main():
     potential_total_slashing3 = calculate_slashing(st.session_state.total_restaked, st.session_state.risk_score3)
     
 
-    #st.image("images/renzo1.png")
+    #st.image("images/eigenimage.png")
 
     st.title("Cryptoeconomic Risk Analysis III")
     st.subheader("**AVS <> Operator Potential Slashing Event Simulator**")
@@ -161,7 +148,7 @@ def main():
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #007bff;"> <!-- Blue background color -->
+                background-color: #28a745;"> <!-- Green background color -->
                 <h2 class='large-header-style' style="color: white; margin:0;">OPERATOR</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
@@ -207,12 +194,19 @@ def main():
             """, unsafe_allow_html=True)
 
         # Displaying the custom styled header
-        st.markdown('<p class="header-style">Operator % Staked Across AVSs</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Fraction of Total Stake Operator is Securing</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
 
-        op_max_loss_avs = potential_total_slashing1 + potential_total_slashing2 + potential_total_slashing3
+        if total_restaked > 0:
+            fraction_op_securing = operator_stake / total_restaked
+        else:
+            fraction_op_securing = 0  # Set to 0 or another appropriate default value
+
+        op_max_loss_avs1 = potential_total_slashing1 * fraction_op_securing
+        op_max_loss_avs2 = potential_total_slashing2 * fraction_op_securing
+        op_max_loss_avs3 = potential_total_slashing3 * fraction_op_securing
 
 
         (
@@ -220,112 +214,44 @@ def main():
             op_max_loss_avs1, 
             op_max_loss_avs2, 
             op_max_loss_avs3, 
-            operator_stake, 
-            stake_avs_1, 
-            stake_avs_2, 
-            stake_avs_3
+            operator_stake
         ) = avs_compounded_risk(
             operator_stake,
-            op_max_loss_avs
+            op_max_loss_avs1,
+            op_max_loss_avs2,
+            op_max_loss_avs3
         )
 
 
 
         st.session_state.operator_stake = operator_stake
 
-
-
-        col18, col19, col20 = st.columns([3, 3, 3])
-
-        with col18:
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS1</sub></span>
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: white;">
+                <h2 style="color: black; margin: 0;">
+                    <span style="font-size: 0.7em;"> <!-- Increase font size for gamma -->
+                        γ<sub style="font-size: 0.8em;">ij</sub> = <!-- Increase font size for subscript -->
+                        <div style="display: inline-block; vertical-align: middle;">
+                            <span style="border-bottom: 1px solid; display: block;">
+                                <span style="font-size: 0.9em;">s<sub style="font-size: 0.8em;">i</sub></span> <!-- Increase font size for s and its subscript -->
+                            </span>
+                            <span style="font-size: 0.9em;">T</span> <!-- Increase font size for T -->
                         </div>
-                        <div style="display: block;">
-                            <br> <!-- Extra space -->
-                        </div>
-                        <div style="display: block;">
-                            Own Amount Staked on <i>AVS 1</i>: <span style="font-size: 1.1em;">${stake_avs_1:,.0f}</span>
-                        </div>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+                        = <span style="font-size: 0.9em;">{fraction_op_securing * 100:,.2f}%</span> <!-- Increase font size for the result -->
+                    </span>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
-
-        with col19:
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS2</sub></span>
-                        </div>
-                        <div style="display: block;">
-                            <br> <!-- Extra space -->
-                        </div>
-                        <div style="display: block;">
-                            Own Amount Staked on <i>AVS 2</i>: <span style="font-size: 1.1em;">${stake_avs_2:,.0f}</span>
-                        </div>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
-
-
-        with col20:
-            st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1em;">γ<sub style="font-size: 0.9em;">i AVS3</sub></span>
-                        </div>
-                        <div style="display: block;">
-                            <br> <!-- Extra space -->
-                        </div>
-                        <div style="display: block;">
-                            Own Amount Staked on <i>AVS 3</i>: <span style="font-size: 1.1em;">${stake_avs_3:,.0f}</span>
-                        </div>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
-
-
-        with st.expander("Logic"):
-            st.markdown("""
-                        ```python
-                        stake_avs_1 = operator_stake * perc_stake_avs_1
-                        stake_avs_2 = operator_stake * perc_stake_avs_2
-                        stake_avs_3 = operator_stake * perc_stake_avs_3
-                        ```
-                    """)
 
 
         st.write("\n")
@@ -337,28 +263,26 @@ def main():
         st.markdown('<p class="header-style">Operator Potential Slashes Across AVSs</p>', unsafe_allow_html=True)
 
         st.markdown(
-                f"""
-                <div style="
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                        <div style="display: block;">
-                            <span style="font-weight: bold; font-size: 1.3em;">2</span> &nbsp; | 
-                            &nbsp; <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">ij</sub></span> &nbsp; = &nbsp;
-                            <span style="font-size: 1.7em;">&Sigma;</span> &nbsp;
-                            <span style="font-size: 1.3em;">&Omega;<sub style="font-size: 0.9em;">j</sub></span> &nbsp;
-                            <span style="display: inline-block; vertical-align: middle; font-size: 1.3em;">
-                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.9em;">ij</sub></span>
-                                <span style="display: block;">s<sub style="font-size: 0.9em;">i</sub></span>
-                            </span>
-                        </div>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+            f"""
+            <div style="
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: white;">
+                <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                    <div style="display: block;">
+                        <span style="font-weight: bold; font-size: 1.3em;">2</span> &nbsp; | 
+                        &nbsp; <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">ij</sub></span> &nbsp; = &nbsp;
+                        <span style="font-size: 1.7em;">&Sigma;</span> &nbsp;
+                        <span style="font-size: 1.3em;">&Omega;<sub style="font-size: 0.9em;">j</sub></span> &nbsp;
+                        <span style="font-size: 1.3em;">&gamma;<sub style="font-size: 0.9em;">ij</sub></span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
 
 
 
@@ -475,7 +399,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #007bff;"> <!-- Blue background color -->
+                background-color: #28a745;"> <!-- Green background color -->
                 <h2 class='large-header-style' style="color: white; margin:0;">AVSs</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
@@ -485,7 +409,7 @@ def main():
         st.write("\n")
 
         # Use the custom styled headers in your markdown
-        st.markdown('<p class="header-style">Total Amount Restaked Across AVSs 1, 2 & 3</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Total Amount Restaked Across AVSs 1, 2 & 3 (T)</p>', unsafe_allow_html=True)
 
         st.session_state.total_restaked = create_total_restaked_input()
         formatted_value = "${:,.0f}".format(st.session_state.total_restaked)
@@ -541,7 +465,7 @@ def main():
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
                         <span style="font-weight: bold; font-size: 1.3em;">1</span> &nbsp; | 
-                        &nbsp; <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.9em;">AVS1</sub></span>
+                        &nbsp; <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
                         Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
@@ -574,7 +498,7 @@ def main():
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
                             <span style="font-weight: bold; font-size: 1.3em;">3</span> &nbsp; | 
-                            &nbsp; <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS1</sub></span>
+                            &nbsp; <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1</sub></span>
                         </div>
                         <div style="display: block;">
                             <br> <!-- Extra space -->
@@ -600,12 +524,8 @@ def main():
                     text-align: center;
                     margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1em;">
-                        <span style="font-weight: bold; font-size: 1.2em;">
-                            &Omega;<sub style="font-size: 0.8em;">AVS1</sub> &nbsp;
-                            <span style="display: inline-block; vertical-align: middle;">
-                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">iAVS1</sub></span>
-                                <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
-                            </span>
+                        <span style="font-size: 1.3em;">
+                            &Theta;<sub style="font-size: 0.8em;">i AVS1</sub>
                         </span>
                         <br><br>
                         <span style="font-size: 1.1em;">Max Potential Operator Slash:</span> <span style="font-size: 1.2em;">${op_max_loss_avs1:,.0f}</span>
@@ -695,7 +615,8 @@ def main():
                 background-color: white;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
-                        <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.9em;">AVS2</sub></span>
+                        <span style="font-weight: bold; font-size: 1.3em;">1</span> &nbsp; | 
+                        &nbsp; <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
                         Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
@@ -729,7 +650,7 @@ def main():
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
                             <span style="font-weight: bold; font-size: 1.3em;">3</span> &nbsp; | 
-                            &nbsp; <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS2</sub></span>
+                            &nbsp; <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS2</sub></span>
                         </div>
                         <div style="display: block;">
                             <br> <!-- Extra space -->
@@ -755,12 +676,8 @@ def main():
                     text-align: center;
                     margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1em;">
-                        <span style="font-weight: bold; font-size: 1.2em;">
-                            &Omega;<sub style="font-size: 0.8em;">AVS2</sub> &nbsp;
-                            <span style="display: inline-block; vertical-align: middle;">
-                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">iAVS2</sub></span>
-                                <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
-                            </span>
+                        <span style="font-size: 1.3em;">
+                            &Theta;<sub style="font-size: 0.8em;">i AVS2</sub>
                         </span>
                         <br><br>
                         <span style="font-size: 1.1em;">Max Potential Operator Slash:</span> <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span>
@@ -850,7 +767,8 @@ def main():
                 background-color: white;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
-                        <span style="font-weight: bold; font-size: 1em;">Ω<sub style="font-size: 0.9em;">AVS3</sub></span>
+                        <span style="font-weight: bold; font-size: 1.3em;">1</span> &nbsp; | 
+                        &nbsp; <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
                         Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
@@ -884,7 +802,7 @@ def main():
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <div style="display: block;">
                             <span style="font-weight: bold; font-size: 1.3em;">3</span> &nbsp; | 
-                            &nbsp; <span style="font-weight: bold; font-size: 1em;">α<sub style="font-size: 0.9em;">AVS3</sub></span>
+                            &nbsp; <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS3</sub></span>
                         </div>
                         <div style="display: block;">
                             <br> <!-- Extra space -->
@@ -910,12 +828,8 @@ def main():
                     text-align: center;
                     margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1em;">
-                        <span style="font-weight: bold; font-size: 1.2em;">
-                            &Omega;<sub style="font-size: 0.8em;">AVS3</sub> &nbsp;
-                            <span style="display: inline-block; vertical-align: middle;">
-                                <span style="border-bottom: 1px solid; display: block;">&gamma;<sub style="font-size: 0.8em;">iAVS3</sub></span>
-                                <span style="display: block;">s<sub style="font-size: 0.8em;">i</sub></span>
-                            </span>
+                        <span style="font-size: 1.3em;">
+                            &Theta;<sub style="font-size: 0.8em;">i AVS3</sub>
                         </span>
                         <br><br>
                         <span style="font-size: 1.1em;">Max Potential Operator Slash:</span> <span style="font-size: 1.2em;">${op_max_loss_avs3:,.0f}</span>
