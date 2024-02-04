@@ -204,7 +204,12 @@ def main():
     # Inside your main function, after retrieving total_restaked and tvl values
     #calculation_result = calculate_operator_attack_risk(total_restaked, tvl)
 
-    operator_collateralization_level = operator_stake - (op_fraction_vs_total_restaked * (profit_from_corruption / stake_required_to_corrupt_avs))
+    if stake_required_to_corrupt_avs > 0:
+        operator_collateralization_level = operator_stake - (op_fraction_vs_total_restaked * (profit_from_corruption / stake_required_to_corrupt_avs))
+    else:
+        # Handle the case where stake_required_to_corrupt_avs is zero
+        # For example, set operator_collateralization_level to None or a default value
+        operator_collateralization_level = None  # or some default value, depending on your application's needs
 
 
     # Continue with your HTML formatting and Streamlit markdown as before
