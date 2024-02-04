@@ -216,10 +216,10 @@ def main():
 
 
     # Determine collateralization status and result color based on the value of calculation_result
-    if formatted_result < 0:
+    if operator_collateralization_level < 0:
         collat_status = "Overcollateralized"
         result_color = "green"
-    elif formatted_result > 0:
+    elif operator_collateralization_level > 0:
         collat_status = "Undercollateralized"
         result_color = "red"
     else:
