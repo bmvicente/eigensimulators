@@ -88,8 +88,7 @@ def main():
     potential_total_slashing3 = calculate_slashing(st.session_state.total_restaked, st.session_state.risk_score3)
     
 
-    # Reduce the image size by specifying the width in pixels
-    st.image("images/renzo1.png", width=350)
+    st.image("images/renzo2.png", width=350)
     st.write("  \n")
 
     st.title("Cryptoeconomic Risk Analysis III")
