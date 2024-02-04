@@ -89,7 +89,7 @@ def main():
     
 
     # Reduce the image size by specifying the width in pixels
-    st.image("images/renzo1.png", width=250)
+    st.image("images/renzo1.png", width=350)
 
     st.title("Cryptoeconomic Risk Analysis III")
     st.subheader("**AVS <> Operator Potential Slashing Event Simulator**")
