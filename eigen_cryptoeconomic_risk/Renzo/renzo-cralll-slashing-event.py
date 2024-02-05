@@ -536,7 +536,24 @@ def main():
                 unsafe_allow_html=True
             )
 
-    
+        st.write("/n")
+        st.write("/n")
+
+        st.markdown(
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;">
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">StakeSure: Insurance Reserve Secured by AVS: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+
         with st.expander("Logic"):
             st.markdown("""
                 **ΩAVS1**
