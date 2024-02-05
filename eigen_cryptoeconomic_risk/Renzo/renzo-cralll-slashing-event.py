@@ -547,7 +547,7 @@ def main():
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">StakeSure: Insurance Reserve Secured by AVS: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.1em;">StakeSure: Minimum Insurance Reserve AVS Should Have Secured: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
