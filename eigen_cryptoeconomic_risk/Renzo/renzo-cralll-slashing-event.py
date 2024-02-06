@@ -5,7 +5,6 @@ import streamlit as st
 
 def avs_compounded_risk(operator_stake, op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3):
 
-
     def calculate_op_max_loss_avss(op_max_loss_avs1, op_max_loss_avs2, op_max_loss_avs3):
         return op_max_loss_avs1 + op_max_loss_avs2 + op_max_loss_avs3
 
@@ -18,7 +17,7 @@ def avs_compounded_risk(operator_stake, op_max_loss_avs1, op_max_loss_avs2, op_m
 
 def create_total_restaked_input():
     if 'total_restaked' not in st.session_state:
-        st.session_state.total_restaked = 0  # Default value
+        st.session_state.total_restaked = 0
 
     total_restaked = st.number_input(
         "",
@@ -33,7 +32,7 @@ def create_total_restaked_input():
 
 def create_risk_score_input(risk_score_key, label):
     if risk_score_key not in st.session_state:
-        st.session_state[risk_score_key] = 0  # Default value
+        st.session_state[risk_score_key] = 0
 
     risk_score = st.number_input(
         label,
@@ -536,8 +535,7 @@ def main():
                 unsafe_allow_html=True
             )
 
-        st.write("/n")
-        st.write("/n")
+        st.write("\n")
 
         st.markdown(
                 f"""

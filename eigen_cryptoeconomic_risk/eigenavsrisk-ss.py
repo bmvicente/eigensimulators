@@ -1,8 +1,5 @@
 
-# EigenLayer AVS Risks
-
 import streamlit as st
-
 
 def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation):
     # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
@@ -21,7 +18,6 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
 
 
     return security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score, operator_attack_risk
-
 
 
 
