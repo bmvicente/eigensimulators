@@ -540,12 +540,12 @@ def main():
         st.markdown(
                 f"""
                 <div style="
-                    border: 1px solid;
+                    border: 2px solid;
                     border-radius: 2px;
                     padding: 5px;
                     text-align: center;
                     margin: 5px 0;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">StakeSure: Minimum Insurance Reserve AVS Should Have Secured: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">StakeSure: Minimum Insurance Reserve AVS Should Have Secured: <span style="font-size: 1.3em;">${op_max_loss_avs2:,.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
