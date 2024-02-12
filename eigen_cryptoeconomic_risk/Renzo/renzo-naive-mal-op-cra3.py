@@ -474,7 +474,7 @@ def main():
                 formatted_tvl1 = "${:,.0f}".format(tvl1)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl1}""")
 
-        st.selectbox("**AVS Category**", ["On the Same Category as the Other 2 AVSs", "On a Different Category"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as being validated by the same modules.")
+        st.selectbox("**AVS Category**", ["On the Same Category as the Other 2 AVSs", "On a Different Category"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.")
 
         st.markdown(
             f"""
