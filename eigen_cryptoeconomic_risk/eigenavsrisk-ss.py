@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation):
+def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation, mev_extraction, liveness_deg, censorship, validator_collusion):
     # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
 
     security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
@@ -9,15 +9,25 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
     avs_type_risk = {"Lightweight": 7, "Hyperscale": 3}
     restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
     avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+    mev_extraction_risk = {"High": 10, "Medium": 5, "Low": 2}
+    liveness_deg_risk = {"High": 10, "Medium": 5, "Low": 2}
+    censorship_risk = {"High": 10, "Medium": 5, "Low": 2}
+    validator_collusion_risk = {"High": 10, "Medium": 5, "Low": 2}
+
+
 
     security_audit_score = security_audits_risk[security_audits]
     business_model_score = business_model_risk[business_model]
     avs_type_score = avs_type_risk[avs_type]
     restaking_mod_score = restaking_mods_risk[restaking_mods]
     avs_avg_operator_reputation_score = avs_avg_operator_reputation_risk[avs_avg_operator_reputation]
+    mev_extraction_score = mev_extraction_risk[mev_extraction]
+    liveness_deg_score = liveness_deg_risk[liveness_deg]
+    censorship_score = censorship_risk[censorship]
+    validator_collusion_score = validator_collusion_risk[validator_collusion]
 
 
-    return security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score, operator_attack_risk
+    return security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score, operator_attack_risk, mev_extraction_score, liveness_deg_score, censorship_score, validator_collusion_score
 
 
 
@@ -44,6 +54,8 @@ def main():
     def calculate_operator_attack_risk(total_restaked, tvl):
         if tvl < 100000 or total_restaked < 100000:
             return 10
+        elif total_restaked >= 10000000000:
+            return 1
         
         ratio = (total_restaked / 2) / tvl
 
@@ -66,6 +78,14 @@ def main():
         st.session_state.restaking_mod_score = 0
     if 'avs_avg_operator_reputation_score' not in st.session_state:
         st.session_state.avs_avg_operator_reputation_score = 0
+    if 'mev_extraction_score' not in st.session_state:
+        st.session_state.mev_extraction_score = 0
+    if 'liveness_deg_score' not in st.session_state:
+        st.session_state.liveness_deg_score = 0
+    if 'censorship_score' not in st.session_state:
+        st.session_state.censorship_score = 0
+    if 'validator_collusion_score' not in st.session_state:
+        st.session_state.validator_collusion_score = 0
     if 'risk_score' not in st.session_state:
             st.session_state.risk_score = 0
 
@@ -626,15 +646,15 @@ def main():
 
         st.markdown('<p class="header-style">MEV Extraction Risk</p>', unsafe_allow_html=True)
 
-        avs_avg_operator_reputation = st.selectbox(" ", ["High", "Medium", "Low"])
+        mev_extraction = st.selectbox(" ", ["High", "Medium", "Low"])
 
         st.write("  \n")
 
         col18,col19 = st.columns(2)
         with col18:
-            avs_avg_operator_reputation_likelihood = st.slider("**Likelihood**      ", min_value=1, max_value=10, value=3)
+            mev_extraction_likelihood = st.slider("**Likelihood**      ", min_value=1, max_value=10, value=3)
         with col19:
-            avs_avg_operator_reputation_impact = st.slider("**Impact**      ", min_value=1, max_value=10, value=6)
+            mev_extraction_impact = st.slider("**Impact**      ", min_value=1, max_value=10, value=6)
 
         with st.expander("Logic"):
                 st.markdown("""
@@ -645,21 +665,21 @@ def main():
                     ```
                             """)
                 
-        result6 = st.session_state.avs_avg_operator_reputation_score * avs_avg_operator_reputation_likelihood * avs_avg_operator_reputation_impact
+        result6 = st.session_state.mev_extraction_score * mev_extraction_likelihood * mev_extraction_impact
 
-        avs_avg_operator_reputation_calc = f"""
+        mev_extraction_calc = f"""
                 <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_avg_operator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.mev_extraction_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{mev_extraction_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{mev_extraction_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
                 </div>
                 """
 
-        st.markdown(avs_avg_operator_reputation_calc, unsafe_allow_html=True)
+        st.markdown(mev_extraction_calc, unsafe_allow_html=True)
 
 
         st.write("  \n")
@@ -667,6 +687,9 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+
+
+
 
 
         # Liveness Degradation Risk
@@ -682,15 +705,15 @@ def main():
 
         st.markdown('<p class="header-style">Liveness Degradation Risk</p>', unsafe_allow_html=True)
 
-        avs_avg_operator_reputation = st.selectbox("   ", ["High", "Medium", "Low"])
+        liveness_deg = st.selectbox("   ", ["High", "Medium", "Low"])
 
         st.write("  \n")
 
         col38,col39 = st.columns(2)
         with col38:
-            avs_avg_operator_reputation_likelihood = st.slider("**Likelihood**        ", min_value=1, max_value=10, value=3)
+            liveness_deg_likelihood = st.slider("**Likelihood**        ", min_value=1, max_value=10, value=3)
         with col39:
-            avs_avg_operator_reputation_impact = st.slider("**Impact**        ", min_value=1, max_value=10, value=9)
+            liveness_deg_impact = st.slider("**Impact**        ", min_value=1, max_value=10, value=9)
 
         with st.expander("Logic"):
                 st.markdown("""
@@ -703,21 +726,21 @@ def main():
                     ```
                             """)
                 
-        result6 = st.session_state.avs_avg_operator_reputation_score * avs_avg_operator_reputation_likelihood * avs_avg_operator_reputation_impact
+        result6 = st.session_state.liveness_deg_score * liveness_deg_likelihood * liveness_deg_impact
 
-        avs_avg_operator_reputation_calc = f"""
+        liveness_deg_calc = f"""
                 <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_avg_operator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.liveness_deg_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{liveness_deg_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{liveness_deg_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
                 </div>
                 """
 
-        st.markdown(avs_avg_operator_reputation_calc, unsafe_allow_html=True)
+        st.markdown(liveness_deg_calc, unsafe_allow_html=True)
 
 
 
@@ -726,6 +749,8 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+
+
 
 
 
@@ -742,15 +767,15 @@ def main():
 
         st.markdown('<p class="header-style">Transaction Censorship Risk</p>', unsafe_allow_html=True)
 
-        avs_avg_operator_reputation = st.selectbox("  ", ["High", "Medium", "Low"])
+        censorship = st.selectbox("  ", ["High", "Medium", "Low"])
 
         st.write("  \n")
 
         col14,col15 = st.columns(2)
         with col14:
-            avs_avg_operator_reputation_likelihood = st.slider("**Likelihood**       ", min_value=1, max_value=10, value=3)
+            censorship_likelihood = st.slider("**Likelihood**       ", min_value=1, max_value=10, value=3)
         with col15:
-            avs_avg_operator_reputation_impact = st.slider("**Impact**       ", min_value=1, max_value=10, value=6)
+            censorship_impact = st.slider("**Impact**       ", min_value=1, max_value=10, value=6)
 
         with st.expander("Logic"):
                 st.markdown("""
@@ -761,21 +786,21 @@ def main():
                     ```
                             """)
                 
-        result6 = st.session_state.avs_avg_operator_reputation_score * avs_avg_operator_reputation_likelihood * avs_avg_operator_reputation_impact
+        result6 = st.session_state.censorship_score * censorship_likelihood * censorship_impact
 
-        avs_avg_operator_reputation_calc = f"""
+        censorship_calc = f"""
                 <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_avg_operator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.censorship_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{censorship_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{censorship_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
                 </div>
                 """
 
-        st.markdown(avs_avg_operator_reputation_calc, unsafe_allow_html=True)
+        st.markdown(censorship_calc, unsafe_allow_html=True)
 
 
 
@@ -784,6 +809,8 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+
+
 
 
 
@@ -800,15 +827,15 @@ def main():
 
         st.markdown('<p class="header-style">Validator Collusion Risk</p>', unsafe_allow_html=True)
 
-        avs_avg_operator_reputation = st.selectbox("    ", ["High", "Medium", "Low"])
+        validator_collusion = st.selectbox("    ", ["High", "Medium", "Low"])
 
         st.write("  \n")
 
         col42,col43 = st.columns(2)
         with col42:
-            avs_avg_operator_reputation_likelihood = st.slider("**Likelihood**         ", min_value=1, max_value=10, value=2)
+            validator_collusion_likelihood = st.slider("**Likelihood**         ", min_value=1, max_value=10, value=2)
         with col43:
-            avs_avg_operator_reputation_impact = st.slider("**Impact**         ", min_value=1, max_value=10, value=6)
+            validator_collusion_impact = st.slider("**Impact**         ", min_value=1, max_value=10, value=6)
 
         with st.expander("Logic"):
                 st.markdown("""
@@ -819,21 +846,21 @@ def main():
                     ```
                             """)
                 
-        result6 = st.session_state.avs_avg_operator_reputation_score * avs_avg_operator_reputation_likelihood * avs_avg_operator_reputation_impact
+        result6 = st.session_state.validator_collusion_score * validator_collusion_likelihood * validator_collusion_impact
 
-        avs_avg_operator_reputation_calc = f"""
+        validator_collusion_calc = f"""
                 <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_avg_operator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_collusion_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{validator_collusion_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{validator_collusion_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
                 </div>
                 """
 
-        st.markdown(avs_avg_operator_reputation_calc, unsafe_allow_html=True)
+        st.markdown(validator_collusion_calc, unsafe_allow_html=True)
 
 
         st.write("  \n")
@@ -861,6 +888,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+
 
     def normalize_score(original_score, min_original=8, max_original=5700):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
