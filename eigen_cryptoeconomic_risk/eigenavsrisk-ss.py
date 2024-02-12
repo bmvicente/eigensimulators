@@ -373,8 +373,9 @@ def main():
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
-                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact = Weighted Overall Risk for Parameter)</span>
-                </div>
+                    <div style="text-align: center; margin-top: 10px;">
+                <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact = Weighted Overall Risk for Parameter)</span>
+            </div>
             """
 
         st.markdown(business_model_calc, unsafe_allow_html=True)
