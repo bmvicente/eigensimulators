@@ -135,7 +135,7 @@ def main():
 
     pre_slash_max_slash_allowed = max(0, st.session_state.pre_slash_coc - st.session_state.pre_slash_pfc)
 
-    actual_stake_loss = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_post_slash_coc)
+    actual_stake_loss = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
 
     col20,col21 = st.columns(2, gap="medium")
 
