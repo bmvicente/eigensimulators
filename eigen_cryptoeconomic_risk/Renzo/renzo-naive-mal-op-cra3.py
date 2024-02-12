@@ -55,7 +55,8 @@ def main():
 
     st.set_page_config(layout="wide")
 
-
+    st.image("images/renzo1.png")
+    
     if 'operator_stake' not in st.session_state:
         st.session_state.operator_stake = 0
 
