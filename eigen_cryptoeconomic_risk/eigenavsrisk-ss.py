@@ -417,6 +417,7 @@ def main():
 
             st.markdown(restaking_mod_calc, unsafe_allow_html=True)
 
+
         with col34:
 
             # AVS Type
