@@ -143,7 +143,7 @@ def main():
                 text-align: center;
                 margin: 5px 0;
                 background-color: #CC8E00;"> <!-- Green background color -->
-                <h2 class='large-header-style' style="color: white; margin:0;">SHARED-SEQUENCER-GENERIC METRICS</h2> <!-- Larger font for AVSs -->
+                <h2 class='large-header-style' style="color: white; margin:0;">SHARED-SEQUENCER GENERIC METRICS</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
             unsafe_allow_html=True
