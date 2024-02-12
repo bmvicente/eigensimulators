@@ -208,20 +208,17 @@ def main():
 
     service_categories_evaluation_result = evaluate_service_categories(st.session_state.avs1_category, st.session_state.avs2_category, st.session_state.avs3_category)
 
-
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
 
     risk_evaluation_result1 = evaluate_risks(st.session_state.risk_score1) 
     risk_evaluation_result2 = evaluate_risks(st.session_state.risk_score2)
     risk_evaluation_result3 = evaluate_risks(st.session_state.risk_score3)
 
-    # Mapping risk categorization to numeric values, assuming 'low'=1, 'medium'=2, 'high'=3 for multiplication
-    risk_numeric = {'low': 1, 'medium': 2, 'high': 3}
 
     # Calculate final results for each service
-    final_result_service_1 = risk_numeric[risk_evaluation_result1] * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_2 = risk_numeric[risk_evaluation_result2] * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_3 = risk_numeric[risk_evaluation_result3] * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_1 = risk_evaluation_result1 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_2 = risk_evaluation_result2 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_3 = risk_evaluation_result3 * service_categories_evaluation_result * conditions_evaluation_result
 
 
 
