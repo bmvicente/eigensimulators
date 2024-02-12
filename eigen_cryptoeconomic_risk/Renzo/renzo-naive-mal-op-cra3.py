@@ -187,8 +187,9 @@ def main():
 
 
 
-    def evaluate_service_categories(category1, category2, category3):
-        categories = [category1, category2, category3]
+    def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
+
+        categories = [avs1_category, avs2_category, avs3_category]
         unique_categories = len(set(categories))
 
         if unique_categories == 1:
@@ -203,11 +204,39 @@ def main():
         else:
             return "Undefined combination"  # This case shouldn't happen with valid input
 
+    service_categories_evaluation_result = evaluate_service_categories(st.session_state.avs1_category, st.session_state.avs2_category, st.session_state.avs3_category)
 
 
+    conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
+
+    risk_evaluation_result1 = categorize_risk(st.session_state.risk_score1) 
+    risk_evaluation_result2 = categorize_risk(st.session_state.risk_score2)
+    risk_evaluation_result3 = categorize_risk(st.session_state.risk_score3)
+
+    # Mapping risk categorization to numeric values, assuming 'low'=1, 'medium'=2, 'high'=3 for multiplication
+    risk_numeric = {'low': 1, 'medium': 2, 'high': 3}
+
+    # Calculate final results for each service
+    final_result_service_1 = risk_numeric[risk_evaluation_result1] * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_2 = risk_numeric[risk_evaluation_result2] * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_3 = risk_numeric[risk_evaluation_result3] * service_categories_evaluation_result * conditions_evaluation_result
 
 
+    # Creating the markdown string
+    final_result_service_1_calc = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_numeric[risk_evaluation_result1]}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result}</span> 
+            <span style="font-size: 24px; font-weight: bold;"> = </span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result_service_1}</span>
+        </div>
+        """
 
+    # Displaying the markdown in Streamlit
+    st.markdown(final_result_service_1_calc, unsafe_allow_html=True)
 
     col20,col21 = st.columns(2, gap="medium")
 
@@ -497,8 +526,6 @@ def main():
 
 
 
-
-
     #############################################
     ################### AVSs ####################
     #############################################
@@ -551,7 +578,7 @@ def main():
 
         st.write("  \n")
 
-        st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.")
+        st.session_state.avs1_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.")
         
         st.write("  \n")
 
