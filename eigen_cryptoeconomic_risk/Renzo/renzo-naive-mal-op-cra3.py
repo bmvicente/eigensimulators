@@ -184,8 +184,6 @@ def main():
             return 1.25
         elif low_risk == 3:
             return 1.1
-        else:
-            return "Undefined combination"
 
 
 
@@ -213,8 +211,7 @@ def main():
         elif unique_categories == 3:
             # All categories are different
             return 1.5
-        else:
-            return "Undefined combination"  # This case shouldn't happen with valid input
+        
 
     service_categories_evaluation_result = evaluate_service_categories(st.session_state.avs1_category, st.session_state.avs2_category, st.session_state.avs3_category)
 
