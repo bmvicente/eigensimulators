@@ -24,7 +24,7 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
 def main():
     st.set_page_config(layout="wide")
 
-    st.image("eigenlayer/images/espresso.png")
+    st.image("images/espresso.png")
 
     st.title("Cryptoeconomic Risk Analysis I")
     st.subheader("**Shared Sequencer AVS: Espresso Underlying Risk Simulator**")
