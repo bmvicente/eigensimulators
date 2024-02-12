@@ -149,16 +149,18 @@ def main():
 
 ##########################################
 
-    def categorize_risk(risk_score):
-        if risk_score < 33:
-            return 'low'
-        elif 33 <= risk_score <= 66:
-            return 'medium'
-        else:
-            return 'high'
-
 
     def evaluate_risks(riskscore1, riskscore2, riskscore3):
+
+        def categorize_risk(risk_score):
+            if risk_score < 33:
+                return 'low'
+            elif 33 <= risk_score <= 66:
+                return 'medium'
+            else:
+                return 'high'
+        
+
         categories = [categorize_risk(score) for score in [riskscore1, riskscore2, riskscore3]]
         high_risk = categories.count('high')
         medium_risk = categories.count('medium')
@@ -217,26 +219,15 @@ def main():
     service_categories_evaluation_result = evaluate_service_categories(st.session_state.avs1_category, st.session_state.avs2_category, st.session_state.avs3_category)
 
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
-    
-    risk_numeric = {
-        'low': 1,
-        'medium': 2,
-        'high': 3
-    }
 
-    risk_category1 = categorize_risk(st.session_state.risk_score1)
-    risk_category2 = categorize_risk(st.session_state.risk_score2)
-    risk_category3 = categorize_risk(st.session_state.risk_score3)
-
-    # Convert these categories to their numeric equivalents
-    risk_evaluation_result1 = risk_numeric[risk_category1]
-    risk_evaluation_result2 = risk_numeric[risk_category2]
-    risk_evaluation_result3 = risk_numeric[risk_category3]
+    risk_category1 = evaluate_risks(st.session_state.risk_score1)
+    risk_category2 = evaluate_risks(st.session_state.risk_score2)
+    risk_category3 = evaluate_risks(st.session_state.risk_score3)
 
     # Proceed with your calculations
-    final_result_service_1 = risk_evaluation_result1 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_2 = risk_evaluation_result2 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_3 = risk_evaluation_result3 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_1 = risk_category1 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_2 = risk_category2 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_3 = risk_category3 * service_categories_evaluation_result * conditions_evaluation_result
 
 
 
