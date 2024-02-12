@@ -474,14 +474,13 @@ def main():
                 
                 st.write("  \n")
                 st.write("  \n")
-                st.write("  \n")
 
                 st.markdown(
                     f"""
                     <div style="
                         border: 1px solid;
                         border-radius: 2px;
-                        padding: 5px;
+                        padding: 6px;
                         text-align: center;
                         margin: 5px 0;
                         background-color: white;">
