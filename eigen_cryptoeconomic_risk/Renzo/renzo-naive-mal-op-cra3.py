@@ -130,11 +130,11 @@ def main():
     if 'post_slash_total_restaked' not in st.session_state:
         st.session_state.post_slash_total_restaked = 0
     
-    if 'st.session_state.avs1_category' not in st.session_state:
+    if 'avs1_category' not in st.session_state:
         st.session_state.avs1_category = 0    
-    if 'st.session_state.avs2_category' not in st.session_state:
+    if 'avs2_category' not in st.session_state:
         st.session_state.avs2_category = 0    
-    if 'st.session_state.avs3_category' not in st.session_state:
+    if 'avs3_category' not in st.session_state:
         st.session_state.avs3_category = 0
         
     
