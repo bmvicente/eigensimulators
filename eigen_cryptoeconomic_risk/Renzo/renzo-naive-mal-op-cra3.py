@@ -285,10 +285,11 @@ def main():
                                 padding: 5px;
                                 text-align: center;
                                 margin: 5px 0;
-                                background-color: white;">
+                                background-color: brightred;">
                                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                                     <div style="display: block;">
-                                        Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Condition of: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                                        <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
+                                        Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Condition of: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
                                     </div>
                                 </h2>
                             </div>
