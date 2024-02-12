@@ -489,7 +489,7 @@ def main():
                             <div style="display: block;">
                                 <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
                             </div>
-                            <div style="display: block; margin-top: 5px;">
+                            <div style="display: block; margin-top: 20px;"> <!-- Increased margin-top for more space -->
                                 Max Total Stake Loss "Allowed" AVS1: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
                             </div>
                         </h2>
@@ -518,7 +518,7 @@ def main():
                             <div style="display: block;">
                                 <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">iAVS1 t+1</sub></span>
                             </div>
-                            <div style="display: block; margin-top: 5px;">
+                            <div style="display: block; margin-top: 20px;"> <!-- Increased margin-top for more space -->
                                 Actual Stake Loss AVS1: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
                             </div>
                         </h2>
@@ -541,7 +541,7 @@ def main():
                     <div style="display: block;">
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
-                    <div style="display: block; margin-top: 5px;">
+                    <div style="display: block; margin-top: 20px;">
                         Total Potential Stake Loss from Operator Attack based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
                     </div>
                 </h2>
