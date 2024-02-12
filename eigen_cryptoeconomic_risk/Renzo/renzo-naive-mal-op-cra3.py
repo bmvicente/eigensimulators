@@ -222,6 +222,7 @@ def main():
     final_result_service_3 = risk_numeric[risk_evaluation_result3] * service_categories_evaluation_result * conditions_evaluation_result
 
 
+
     # Creating the markdown string
     final_result_service_1_calc = f"""
         <div style="text-align: center;">
@@ -235,8 +236,46 @@ def main():
         </div>
         """
 
-    # Displaying the markdown in Streamlit
     st.markdown(final_result_service_1_calc, unsafe_allow_html=True)
+    
+
+    # Creating the markdown string
+    final_result_service_2_calc = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_numeric[risk_evaluation_result2]}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result}</span> 
+            <span style="font-size: 24px; font-weight: bold;"> = </span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result_service_2}</span>
+        </div>
+        """
+
+    # Displaying the markdown in Streamlit
+    st.markdown(final_result_service_2_calc, unsafe_allow_html=True)
+
+
+
+    # Creating the markdown string
+    final_result_service_3_calc = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_numeric[risk_evaluation_result3]}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result}</span> 
+            <span style="font-size: 24px; font-weight: bold;"> = </span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result_service_3}</span>
+        </div>
+        """
+
+    # Displaying the markdown in Streamlit
+    st.markdown(final_result_service_3_calc, unsafe_allow_html=True)
+
+
+
+
 
     col20,col21 = st.columns(2, gap="medium")
 
