@@ -200,6 +200,8 @@ def main():
             return 2
         elif unique_categories == 3:
             return 1.5
+        else:
+            return 0  # Ensure a numeric return
 
     risk_numeric = {
         'low_risk': 1,
@@ -214,6 +216,10 @@ def main():
     risk_evaluation_result1 = risk_numeric[categorize_risk(st.session_state.risk_score1)]
     risk_evaluation_result2 = risk_numeric[categorize_risk(st.session_state.risk_score2)]
     risk_evaluation_result3 = risk_numeric[categorize_risk(st.session_state.risk_score3)]
+    
+    print(f"Risk Evaluation Result 1: {risk_evaluation_result1}, Type: {type(risk_evaluation_result1)}")
+    print(f"Service Categories Evaluation Result: {service_categories_evaluation_result}, Type: {type(service_categories_evaluation_result)}")
+    print(f"Conditions Evaluation Result: {conditions_evaluation_result}, Type: {type(conditions_evaluation_result)}")
 
     # Proceed with your calculations
     final_result_service_1 = risk_evaluation_result1 * service_categories_evaluation_result * conditions_evaluation_result
