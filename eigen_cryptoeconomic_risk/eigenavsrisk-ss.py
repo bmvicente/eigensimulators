@@ -945,7 +945,7 @@ def main():
     
     
     risk_score = avs_risk(security_audits, business_model, avs_type, st.session_state.operator_attack_risk, restaking_mods, avs_avg_operator_reputation, mev_extraction, liveness_deg, censorship, validator_collusion)
-    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score, st.session_state.operator_attack_risk, st.session_state.mev_extraction, st.session_state.liveness_deg, st.session_state.censorship, st.session_state.validator_collusion) = risk_score
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score, st.session_state.operator_attack_risk, st.session_state.mev_extraction_score, st.session_state.liveness_deg_score, st.session_state.censorship_score, st.session_state.validator_collusion_score) = risk_score
 
 
     # Determine the color and background color based on the risk score
