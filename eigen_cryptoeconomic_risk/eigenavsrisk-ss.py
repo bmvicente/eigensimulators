@@ -919,7 +919,7 @@ def main():
     st.write("  \n")
 
 
-    def normalize_score(original_score, min_original=8, max_original=5700):
+    def normalize_score(original_score, min_original=8, max_original=17700):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
 
@@ -970,8 +970,8 @@ def main():
     st.write("  \n")
     
     
-    risk_score = avs_risk(security_audits, business_model, avs_type, st.session_state.operator_attack_risk, restaking_mods, avs_avg_operator_reputation, mev_extraction, liveness_deg, censorship, validator_collusion)
-    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score, st.session_state.operator_attack_risk, st.session_state.mev_extraction_score, st.session_state.liveness_deg_score, st.session_state.censorship_score, st.session_state.validator_collusion_score) = risk_score
+    risk_score = avs_risk(security_audits, business_model, st.session_state.dual_staking_balance, avs_type, st.session_state.operator_attack_risk, restaking_mods, avs_avg_operator_reputation, mev_extraction, liveness_deg, censorship, validator_collusion)
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score, st.session_state.operator_attack_risk, st.session_state.mev_extraction_score, st.session_state.liveness_deg_score, st.session_state.censorship_score, st.session_state.validator_collusion_score) = risk_score
 
 
     # Determine the color and background color based on the risk score
