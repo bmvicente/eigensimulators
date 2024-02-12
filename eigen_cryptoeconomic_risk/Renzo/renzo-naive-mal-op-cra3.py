@@ -138,6 +138,7 @@ def main():
     actual_stake_loss = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
 
 
+##################
 
     def categorize_risk(risk_score):
         if risk_score < 33:
@@ -201,6 +202,10 @@ def main():
             return 1.5
         else:
             return "Undefined combination"  # This case shouldn't happen with valid input
+
+
+
+
 
 
 
@@ -285,7 +290,7 @@ def main():
                                 padding: 5px;
                                 text-align: center;
                                 margin: 5px 0;
-                                background-color: red;">
+                                background-color: #ff6666;">
                                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                                     <div style="display: block;">
                                         <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
