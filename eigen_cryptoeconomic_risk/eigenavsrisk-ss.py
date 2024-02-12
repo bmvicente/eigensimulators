@@ -919,7 +919,7 @@ def main():
     st.write("  \n")
 
 
-    def normalize_score(original_score, min_original=8, max_original=17700):
+    def normalize_score(original_score, min_original=17, max_original=17700):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
 
