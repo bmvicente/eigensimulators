@@ -462,9 +462,13 @@ def main():
         st.write("  \n")
 
         st.selectbox("**AVS Category**", ["On the Same Category as the Other 2 AVSs", "On a Different Category"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.")
+        
+        st.write("  \n")
 
-        # Dropdown menu
         col3, col4 = st.columns([3, 3])
+
+        st.write("  \n")
+        st.write("  \n")
 
         with col3:
                 st.session_state.risk_score1 = create_risk_score_input('risk_score1', "**AVS Risk Score**")
@@ -472,7 +476,7 @@ def main():
                 st.markdown(
                     f"""
                     <div style="
-                        border: 2px solid;
+                        border: 1px solid;
                         border-radius: 2px;
                         padding: 5px;
                         text-align: center;
@@ -499,7 +503,7 @@ def main():
                 st.markdown(
                     f"""
                     <div style="
-                        border: 2px solid;
+                        border: 1px solid;
                         border-radius: 2px;
                         padding: 5px;
                         text-align: center;
@@ -516,7 +520,7 @@ def main():
                     unsafe_allow_html=True
                 )
         
-        st.write("/n")
+        st.write("\n")
 
         st.markdown(
             f"""
