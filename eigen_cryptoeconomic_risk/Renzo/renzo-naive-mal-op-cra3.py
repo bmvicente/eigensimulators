@@ -715,6 +715,10 @@ def main():
             """, unsafe_allow_html=True)
 
         st.markdown('<p class="header-style">AVS 2</p>', unsafe_allow_html=True)
+        
+        st.write("  \n")
+
+        st.session_state.avs2_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"])
 
         st.write("  \n")
 
@@ -723,11 +727,58 @@ def main():
         with col8:
                 st.session_state.risk_score2 = create_risk_score_input('risk_score2', "**AVS Risk Score** ")
 
+                st.write("  \n")
+                st.write("  \n")
+
+                st.markdown(
+                    f"""
+                    <div style="
+                        border: 1px solid;
+                        border-radius: 2px;
+                        padding: 10px;
+                        text-align: center;
+                        margin: 5px 0;
+                        background-color: white;">
+                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                            <div style="display: block;">
+                                <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS2 t</sub></span>
+                            </div>
+                            <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
+                                Max Total Stake Loss "Allowed" AVS2: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                            </div>
+                        </h2>
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
+                )
+
         with col9:
                 tvl2 = st.number_input("**AVS TVL** ", min_value=0, max_value=10000000000000, value=st.session_state.tvl2, step=10000000)
 
                 formatted_tvl2 = "${:,.0f}".format(tvl2)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl2}""")
+        
+                st.markdown(
+                    f"""
+                    <div style="
+                        border: 1px solid;
+                        border-radius: 2px;
+                        padding: 5px;
+                        text-align: center;
+                        margin: 5px 0;
+                        background-color: white;">
+                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                            <div style="display: block;">
+                                <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">iAVS2 t+1</sub></span>
+                            </div>
+                            <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
+                                Actual Stake Loss AVS2: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
+                            </div>
+                        </h2>
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
+                )
         
         st.markdown(
             f"""
@@ -804,6 +855,10 @@ def main():
             """, unsafe_allow_html=True)
 
         st.markdown('<p class="header-style">AVS 3</p>', unsafe_allow_html=True)
+        
+        st.write("  \n")
+
+        st.session_state.avs3_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"])
 
         st.write("  \n")
 
@@ -811,11 +866,58 @@ def main():
 
         with col13:
                 st.session_state.risk_score3 = create_risk_score_input('risk_score3', "**AVS Risk Score**  ")
+                
+                st.write("  \n")
+                st.write("  \n")
+
+                st.markdown(
+                    f"""
+                    <div style="
+                        border: 1px solid;
+                        border-radius: 2px;
+                        padding: 10px;
+                        text-align: center;
+                        margin: 5px 0;
+                        background-color: white;">
+                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                            <div style="display: block;">
+                                <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS3 t</sub></span>
+                            </div>
+                            <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
+                                Max Total Stake Loss "Allowed" AVS3: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                            </div>
+                        </h2>
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
+                )
 
         with col14:
                 tvl3 = st.number_input("**AVS TVL**", min_value=0, max_value=1000000000000, value=st.session_state.tvl3, step=10000000)
                 formatted_tvl3 = "${:,.0f}".format(tvl3)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl3}""")
+
+                st.markdown(
+                    f"""
+                    <div style="
+                        border: 1px solid;
+                        border-radius: 2px;
+                        padding: 5px;
+                        text-align: center;
+                        margin: 5px 0;
+                        background-color: white;">
+                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                            <div style="display: block;">
+                                <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">iAVS3 t+1</sub></span>
+                            </div>
+                            <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
+                                Actual Stake Loss AVS3: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
+                            </div>
+                        </h2>
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
+                )
         
         st.markdown(
             f"""
