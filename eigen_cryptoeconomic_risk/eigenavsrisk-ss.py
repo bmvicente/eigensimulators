@@ -362,8 +362,10 @@ def main():
 
         result2 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
 
+        
         business_model_calc = f"""
-                <div style="text-align: center;">
+            <div style="text-align: center;">
+                <div>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
@@ -373,10 +375,11 @@ def main():
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
-                    <div style="text-align: center; margin-top: 10px;">
-                <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact = Weighted Overall Risk for Parameter)</span>
-            </div>
-            """
+                </div>
+                <div style="margin-top: 10px;">
+                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact = Weighted Overall Risk for Parameter)</span>
+                </div>
+            </div>"""
 
         st.markdown(business_model_calc, unsafe_allow_html=True)
 
