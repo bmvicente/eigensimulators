@@ -199,7 +199,7 @@ def main():
         st.markdown(
                     f"""
                     <div style="
-                        border: 1px solid;
+                        border: 2px solid;
                         border-radius: 2px;
                         padding: 5px;
                         text-align: center;
@@ -283,7 +283,7 @@ def main():
         st.markdown(
                     f"""
                     <div style="
-                        border: 1px solid;
+                        border: 2px solid;
                         border-radius: 2px;
                         padding: 5px;
                         text-align: center;
