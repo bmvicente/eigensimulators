@@ -149,22 +149,19 @@ def main():
 
 ##########################################
 
+    def categorize_risk(risk_score):
+        if risk_score < 33:
+            return 'low_risk'
+        elif 33 <= risk_score <= 66:
+            return 'medium_risk'
+        else:
+            return 'high_risk'
 
     def evaluate_risks(riskscore1, riskscore2, riskscore3):
-
-        def categorize_risk(risk_score):
-            if risk_score < 33:
-                return 'low_risk'
-            elif 33 <= risk_score <= 66:
-                return 'medium_risk'
-            else:
-                return 'high_risk'
-        
-
         categories = [categorize_risk(score) for score in [riskscore1, riskscore2, riskscore3]]
-        high_risk = categories.count('high')
-        medium_risk = categories.count('medium')
-        low_risk = categories.count('low')
+        high_risk = categories.count('high_risk')
+        medium_risk = categories.count('medium_risk')
+        low_risk = categories.count('low_risk')
 
         if high_risk == 3:
             return 3
@@ -185,53 +182,51 @@ def main():
         elif low_risk == 3:
             return 1.1
 
-
-
     def evaluate_conditions(pre_slash_coc, post_slash_coc):
-            if pre_slash_coc < 0:
-                return 3
-            elif pre_slash_coc > 0 and post_slash_coc < 0:
-                return 2
-            elif pre_slash_coc > 0 and post_slash_coc > 0:
-                return 0.5
-
-
+        if pre_slash_coc < 0:
+            return 3
+        elif pre_slash_coc > 0 and post_slash_coc < 0:
+            return 2
+        elif pre_slash_coc > 0 and post_slash_coc > 0:
+            return 0.5
 
     def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
-
         categories = [avs1_category, avs2_category, avs3_category]
         unique_categories = len(set(categories))
 
         if unique_categories == 1:
-            # All three categories are the same
             return 3
         elif unique_categories == 2:
-            # Two categories are the same, and one is different
             return 2
         elif unique_categories == 3:
-            # All categories are different
             return 1.5
-        
+
+    risk_numeric = {
+        'low_risk': 1,
+        'medium_risk': 2,
+        'high_risk': 3
+    }
 
     service_categories_evaluation_result = evaluate_service_categories(st.session_state.avs1_category, st.session_state.avs2_category, st.session_state.avs3_category)
-
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
 
-    risk_category1 = evaluate_risks(st.session_state.risk_score1)
-    risk_category2 = evaluate_risks(st.session_state.risk_score2)
-    risk_category3 = evaluate_risks(st.session_state.risk_score3)
+    # Convert risk categories to their numeric equivalents
+    risk_evaluation_result1 = risk_numeric[categorize_risk(st.session_state.risk_score1)]
+    risk_evaluation_result2 = risk_numeric[categorize_risk(st.session_state.risk_score2)]
+    risk_evaluation_result3 = risk_numeric[categorize_risk(st.session_state.risk_score3)]
 
     # Proceed with your calculations
-    final_result_service_1 = risk_category1 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_2 = risk_category2 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_3 = risk_category3 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_1 = risk_evaluation_result1 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_2 = risk_evaluation_result2 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_3 = risk_evaluation_result3 * service_categories_evaluation_result * conditions_evaluation_result
+
 
 
 
     # Creating the markdown string
     final_result_service_1_calc = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_category1}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation_result1}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -247,7 +242,7 @@ def main():
     # Creating the markdown string
     final_result_service_2_calc = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_category2}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation_result2}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -265,7 +260,7 @@ def main():
     # Creating the markdown string
     final_result_service_3_calc = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_category3}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation_result3}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
