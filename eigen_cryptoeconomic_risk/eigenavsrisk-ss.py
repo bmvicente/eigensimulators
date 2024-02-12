@@ -915,13 +915,13 @@ def main():
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result6}</span>
-                <span style="font-size: 22px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result7}</span>
-                <span style="font-size: 22px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result8}</span>
-                <span style="font-size: 22px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9}</span>
-                <span style="font-size: 22px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result10}</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
                 <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
