@@ -461,11 +461,33 @@ def main():
 
         st.write("  \n")
 
+        st.selectbox("**AVS Category**", ["On the Same Category as the Other 2 AVSs", "On a Different Category"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.")
+
         # Dropdown menu
         col3, col4 = st.columns([3, 3])
 
         with col3:
                 st.session_state.risk_score1 = create_risk_score_input('risk_score1', "**AVS Risk Score**")
+                
+                st.markdown(
+                    f"""
+                    <div style="
+                        border: 2px solid;
+                        border-radius: 2px;
+                        padding: 5px;
+                        text-align: center;
+                        margin: 5px 0;
+                        background-color: white;">
+                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                            <div style="display: block;">
+                                <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span> &nbsp; | &nbsp;
+                                Max Total Stake Loss "Allowed" AVS1: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                            </div>
+                        </h2>
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
+                )
 
         with col4:
                 tvl1 = st.number_input("**AVS TVL**", min_value=0, max_value=1000000000000, value=st.session_state.tvl1, step=10000000,
@@ -474,7 +496,27 @@ def main():
                 formatted_tvl1 = "${:,.0f}".format(tvl1)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl1}""")
 
-        st.selectbox("**AVS Category**", ["On the Same Category as the Other 2 AVSs", "On a Different Category"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.")
+                st.markdown(
+                    f"""
+                    <div style="
+                        border: 2px solid;
+                        border-radius: 2px;
+                        padding: 5px;
+                        text-align: center;
+                        margin: 5px 0;
+                        background-color: white;">
+                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                            <div style="display: block;">
+                                <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">iAVS1 t+1</sub></span> &nbsp; | &nbsp;
+                                Actual Stake Loss AVS1: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
+                            </div>
+                        </h2>
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
+                )
+        
+        st.write("/n")
 
         st.markdown(
             f"""
