@@ -474,7 +474,7 @@ def main():
                 formatted_tvl1 = "${:,.0f}".format(tvl1)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl1}""")
 
-        st.selectbox("AVS Category", ["On the Same Category as the Other 2 AVSs", "On a Different Category"])
+        st.selectbox("**AVS Category**", ["On the Same Category as the Other 2 AVSs", "On a Different Category"])
 
         st.markdown(
             f"""
