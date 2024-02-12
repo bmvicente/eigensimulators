@@ -39,6 +39,7 @@ def main():
     st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for a Shared-Sequencer AVS.")
 
     st.write("  \n")
+    st.write("  \n")
 
     def calculate_operator_attack_risk(total_restaked, tvl):
         if tvl < 100000 or total_restaked < 100000:
