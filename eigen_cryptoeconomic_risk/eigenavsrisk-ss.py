@@ -633,6 +633,8 @@ def main():
 
         st.write("\n")
 
+
+
         # MEV Extraction Risk
         st.markdown("""
                 <style>
@@ -665,7 +667,7 @@ def main():
                     ```
                             """)
                 
-        result6 = st.session_state.mev_extraction_score * mev_extraction_likelihood * mev_extraction_impact
+        result7 = st.session_state.mev_extraction_score * mev_extraction_likelihood * mev_extraction_impact
 
         mev_extraction_calc = f"""
                 <div style="text-align: center;">
@@ -675,7 +677,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{mev_extraction_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result7}</span>
                 </div>
                 """
 
@@ -726,7 +728,7 @@ def main():
                     ```
                             """)
                 
-        result6 = st.session_state.liveness_deg_score * liveness_deg_likelihood * liveness_deg_impact
+        result8 = st.session_state.liveness_deg_score * liveness_deg_likelihood * liveness_deg_impact
 
         liveness_deg_calc = f"""
                 <div style="text-align: center;">
@@ -736,7 +738,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{liveness_deg_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result8}</span>
                 </div>
                 """
 
@@ -786,7 +788,7 @@ def main():
                     ```
                             """)
                 
-        result6 = st.session_state.censorship_score * censorship_likelihood * censorship_impact
+        result9 = st.session_state.censorship_score * censorship_likelihood * censorship_impact
 
         censorship_calc = f"""
                 <div style="text-align: center;">
@@ -796,7 +798,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{censorship_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9}</span>
                 </div>
                 """
 
@@ -846,7 +848,7 @@ def main():
                     ```
                             """)
                 
-        result6 = st.session_state.validator_collusion_score * validator_collusion_likelihood * validator_collusion_impact
+        result10 = st.session_state.validator_collusion_score * validator_collusion_likelihood * validator_collusion_impact
 
         validator_collusion_calc = f"""
                 <div style="text-align: center;">
@@ -856,7 +858,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{validator_collusion_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result10}</span>
                 </div>
                 """
 
@@ -894,7 +896,7 @@ def main():
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
 
-    final_result = result1 + result2 + result3 + result4 + result5 + result6
+    final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10
     normalized_risk_score = normalize_score(final_result)
 
     st.session_state.risk_score = normalized_risk_score
@@ -913,6 +915,14 @@ def main():
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result6}</span>
+                <span style="font-size: 22px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result7}</span>
+                <span style="font-size: 22px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result8}</span>
+                <span style="font-size: 22px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9}</span>
+                <span style="font-size: 22px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result10}</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
                 <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
             </div>
