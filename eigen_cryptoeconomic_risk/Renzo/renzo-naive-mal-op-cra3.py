@@ -138,7 +138,8 @@ def main():
     actual_stake_loss = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
 
 
-##################
+
+##########################################
 
     def categorize_risk(risk_score):
         if risk_score < 33:
@@ -275,13 +276,17 @@ def main():
 
 
 
-
-
     col20,col21 = st.columns(2, gap="medium")
 
 
 
+
+
+
+    ###############################
     ########## PRE-SLASH ##########
+    ###############################
+
     with col20:
         st.markdown('<p class="header-style" style="font-size: 20px;">PRE-SLASH (t)</p>', unsafe_allow_html=True)
 
@@ -374,7 +379,13 @@ def main():
 
 
 
+
+
+
+    ################################
     ########## POST-SLASH ##########
+    ###############################
+
     with col21:
         st.markdown('<p class="header-style" style="font-size: 20px;">POST-SLASH (t+1)</p>', unsafe_allow_html=True)
 
@@ -474,6 +485,9 @@ def main():
 
 
 
+
+
+
     ##########################################
     ################ OPERATOR ################
     ##########################################
@@ -558,6 +572,7 @@ def main():
         
         st.write("\n")
         st.write("\n")
+
 
 
 
