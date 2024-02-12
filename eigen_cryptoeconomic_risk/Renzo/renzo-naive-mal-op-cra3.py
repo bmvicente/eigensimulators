@@ -133,8 +133,7 @@ def main():
 
     st.session_state.pre_slash_coc = st.session_state.pre_slash_total_restaked / 3
 
-    pre_slash_max_slash_allowed_calc = max(0, st.session_state.pre_slash_coc - st.session_state.pre_slash_pfc)
-    pre_slash_max_slash_allowed = pre_slash_max_slash_allowed_calc * 3
+    pre_slash_max_slash_allowed = max(0, st.session_state.pre_slash_coc - st.session_state.pre_slash_pfc)
 
     actual_stake_loss = max(0, st.session_state.pre_slash_total_restaked - st.session_state.post_slash_total_restaked)
 
