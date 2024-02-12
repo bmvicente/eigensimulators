@@ -468,7 +468,6 @@ def main():
         col3, col4 = st.columns([3, 3])
 
         st.write("  \n")
-        st.write("  \n")
 
         with col3:
                 st.session_state.risk_score1 = create_risk_score_input('risk_score1', "**AVS Risk Score**")
@@ -487,7 +486,9 @@ def main():
                         background-color: white;">
                         <h2 style="color: black; margin: 0; font-size: 1.1em;">
                             <div style="display: block;">
-                                <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span> &nbsp; | &nbsp;
+                                <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
+                            </div>
+                            <div style="display: block; margin-top: 5px;">
                                 Max Total Stake Loss "Allowed" AVS1: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
                             </div>
                         </h2>
@@ -514,7 +515,9 @@ def main():
                         background-color: white;">
                         <h2 style="color: black; margin: 0; font-size: 1.1em;">
                             <div style="display: block;">
-                                <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">iAVS1 t+1</sub></span> &nbsp; | &nbsp;
+                                <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">iAVS1 t+1</sub></span>
+                            </div>
+                            <div style="display: block; margin-top: 5px;">
                                 Actual Stake Loss AVS1: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
                             </div>
                         </h2>
@@ -522,6 +525,7 @@ def main():
                     """, 
                     unsafe_allow_html=True
                 )
+
         
         st.markdown(
             f"""
