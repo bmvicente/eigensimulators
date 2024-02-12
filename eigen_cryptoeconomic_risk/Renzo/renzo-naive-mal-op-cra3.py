@@ -542,7 +542,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 10px;">
-                        Total Potential Stake Loss from Operator Attack based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
+                        AVS1 Total Potential Stake Loss from Operator Attack based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
                     </div>
                 </h2>
             </div>
