@@ -154,11 +154,11 @@ def main():
 
         def categorize_risk(risk_score):
             if risk_score < 33:
-                return 'low'
+                return 'low_risk'
             elif 33 <= risk_score <= 66:
-                return 'medium'
+                return 'medium_risk'
             else:
-                return 'high'
+                return 'high_risk'
         
 
         categories = [categorize_risk(score) for score in [riskscore1, riskscore2, riskscore3]]
