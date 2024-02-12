@@ -149,6 +149,7 @@ def main():
         else:
             return 'high'
 
+
     def evaluate_risks(riskscore1, riskscore2, riskscore3):
         categories = [categorize_risk(score) for score in [riskscore1, riskscore2, riskscore3]]
         high_risk = categories.count('high')
@@ -210,9 +211,9 @@ def main():
 
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
 
-    risk_evaluation_result1 = categorize_risk(st.session_state.risk_score1) 
-    risk_evaluation_result2 = categorize_risk(st.session_state.risk_score2)
-    risk_evaluation_result3 = categorize_risk(st.session_state.risk_score3)
+    risk_evaluation_result1 = evaluate_risks(st.session_state.risk_score1) 
+    risk_evaluation_result2 = evaluate_risks(st.session_state.risk_score2)
+    risk_evaluation_result3 = evaluate_risks(st.session_state.risk_score3)
 
     # Mapping risk categorization to numeric values, assuming 'low'=1, 'medium'=2, 'high'=3 for multiplication
     risk_numeric = {'low': 1, 'medium': 2, 'high': 3}
