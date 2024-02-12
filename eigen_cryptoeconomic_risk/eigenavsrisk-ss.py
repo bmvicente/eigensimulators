@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation, mev_extraction, liveness_deg, censorship, validator_collusion):
+def avs_risk(security_audits, business_model, dual_staking_balance, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation, mev_extraction, liveness_deg, censorship, validator_collusion):
     # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
 
     security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
@@ -27,7 +27,7 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
     validator_collusion_score = validator_collusion_risk[validator_collusion]
 
 
-    return security_audit_score, business_model_score, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score, operator_attack_risk, mev_extraction_score, liveness_deg_score, censorship_score, validator_collusion_score
+    return security_audit_score, business_model_score, dual_staking_balance, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score, operator_attack_risk, mev_extraction_score, liveness_deg_score, censorship_score, validator_collusion_score
 
 
 
@@ -68,6 +68,27 @@ def main():
         else:
             return 9 # < 0.5 Greatest risk
     
+
+    def dual_staking_balance_calc(avs_token_percentage, xeth_percentage):
+        ratio = avs_token_percentage / xeth_percentage
+
+        if ratio > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+            return 9
+        elif ratio > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+            return 8
+        elif ratio > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+            return 7
+        elif ratio > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+            return 6
+        elif ratio == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+            return 5 # Neutral adjustment for balanced scenario
+        elif ratio > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+            return 4
+        elif ratio > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+            return 3
+        else:  # Very low AVS compared to ETH
+            return 2
+
     if 'security_audit_score' not in st.session_state:
         st.session_state.security_audit_score = 0
     if 'business_model_score' not in st.session_state:
@@ -307,6 +328,9 @@ def main():
         with col45:
             business_model_impact = st.slider("**Impact** ", min_value=1, max_value=10, value=7)
 
+        dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
+        st.session_state.dual_staking_balance = dual_staking_balance
+
         with st.expander("Logic"):
                 st.markdown("""
                     Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) by risk: 
@@ -336,11 +360,13 @@ def main():
                         """)
 
 
-        result2 = st.session_state.business_model_score * business_model_likelihood * business_model_impact
+        result2 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
 
         business_model_calc = f"""
                 <div style="text-align: center;">
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
