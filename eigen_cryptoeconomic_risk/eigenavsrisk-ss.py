@@ -24,7 +24,7 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
 def main():
     st.set_page_config(layout="wide")
 
-    st.image("images/espresso1.png", width=250)
+    st.image("images/espresso1.png", width=450)
 
     st.title("Cryptoeconomic Risk Analysis I")
     st.subheader("**Shared Sequencer AVS: Espresso Underlying Risk Simulator**")
@@ -100,7 +100,7 @@ def main():
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #CC8E00;>
+                background-color: #CC8E00;
                 <h2 class='large-header-style' style="color: white; margin:0;">SHARED-SEQUENCER-GENERIC METRICS</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
@@ -603,7 +603,7 @@ def main():
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #CC8E00;>
+                background-color: #CC8E00;
                 <h2 class='large-header-style' style="color: white; margin:0;">ESPRESSO-SPECIFIC METRICS</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
