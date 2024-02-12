@@ -209,6 +209,11 @@ def main():
         'high_risk': 3
     }
 
+    print(f"Risk Evaluation Result 1: {risk_evaluation_result1}, Type: {type(risk_evaluation_result1)}")
+    print(f"Service Categories Evaluation Result: {service_categories_evaluation_result}, Type: {type(service_categories_evaluation_result)}")
+    print(f"Conditions Evaluation Result: {conditions_evaluation_result}, Type: {type(conditions_evaluation_result)}")
+
+
     service_categories_evaluation_result = evaluate_service_categories(st.session_state.avs1_category, st.session_state.avs2_category, st.session_state.avs3_category)
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
 
@@ -216,10 +221,6 @@ def main():
     risk_evaluation_result1 = risk_numeric[categorize_risk(st.session_state.risk_score1)]
     risk_evaluation_result2 = risk_numeric[categorize_risk(st.session_state.risk_score2)]
     risk_evaluation_result3 = risk_numeric[categorize_risk(st.session_state.risk_score3)]
-    
-    print(f"Risk Evaluation Result 1: {risk_evaluation_result1}, Type: {type(risk_evaluation_result1)}")
-    print(f"Service Categories Evaluation Result: {service_categories_evaluation_result}, Type: {type(service_categories_evaluation_result)}")
-    print(f"Conditions Evaluation Result: {conditions_evaluation_result}, Type: {type(conditions_evaluation_result)}")
 
     # Proceed with your calculations
     final_result_service_1 = risk_evaluation_result1 * service_categories_evaluation_result * conditions_evaluation_result
