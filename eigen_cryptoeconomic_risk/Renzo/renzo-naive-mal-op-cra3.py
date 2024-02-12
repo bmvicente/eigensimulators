@@ -473,6 +473,9 @@ def main():
         with col3:
                 st.session_state.risk_score1 = create_risk_score_input('risk_score1', "**AVS Risk Score**")
                 
+                st.write("  \n")
+                st.write("  \n")
+
                 st.markdown(
                     f"""
                     <div style="
@@ -520,8 +523,6 @@ def main():
                     unsafe_allow_html=True
                 )
         
-        st.write("\n")
-
         st.markdown(
             f"""
             <div style="
