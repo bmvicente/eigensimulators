@@ -133,13 +133,78 @@ def main():
 
     st.session_state.pre_slash_coc = st.session_state.pre_slash_total_restaked / 3
 
-    pre_slash_max_slash_allowed = max(0, st.session_state.pre_slash_coc - st.session_state.pre_slash_pfc)
+    pre_slash_max_slash_allowed = st.session_state.pre_slash_coc - st.session_state.pre_slash_pfc
 
     actual_stake_loss = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
 
+
+
+    def categorize_risk(risk_score):
+        if risk_score < 33:
+            return 'low'
+        elif 33 <= risk_score <= 66:
+            return 'medium'
+        else:
+            return 'high'
+
+    def evaluate_risks(riskscore1, riskscore2, riskscore3):
+        categories = [categorize_risk(score) for score in [riskscore1, riskscore2, riskscore3]]
+        high_risk = categories.count('high')
+        medium_risk = categories.count('medium')
+        low_risk = categories.count('low')
+
+        if high_risk == 3:
+            return 3
+        elif high_risk == 2 and low_risk == 1:
+            return 2.75
+        elif high_risk == 1 and medium_risk == 1 and low_risk == 1:
+            return 2.5
+        elif high_risk == 2 and medium_risk == 1:
+            return 2.25
+        elif high_risk == 1 and low_risk == 2:
+            return 2
+        elif medium_risk == 3:
+            return 1.75
+        elif medium_risk == 2 and low_risk == 1:
+            return 1.5
+        elif medium_risk == 1 and low_risk == 2:
+            return 1.25
+        elif low_risk == 3:
+            return 1.1
+        else:
+            return "Undefined combination"
+
+
+
+    def evaluate_conditions(pre_slash_coc, post_slash_coc):
+            if pre_slash_coc < 0:
+                return 3
+            elif pre_slash_coc > 0 and post_slash_coc < 0:
+                return 2
+            elif pre_slash_coc > 0 and post_slash_coc > 0:
+                return 0.5
+
+
+
+    def evaluate_service_categories(category1, category2, category3):
+        categories = [category1, category2, category3]
+        unique_categories = len(set(categories))
+
+        if unique_categories == 1:
+            # All three categories are the same
+            return 3
+        elif unique_categories == 2:
+            # Two categories are the same, and one is different
+            return 2
+        elif unique_categories == 3:
+            # All categories are different
+            return 1.5
+        else:
+            return "Undefined combination"  # This case shouldn't happen with valid input
+
+
+
     col20,col21 = st.columns(2, gap="medium")
-
-
 
 
 
@@ -195,25 +260,44 @@ def main():
                 unsafe_allow_html=True
             )
 
-        st.markdown(
-                    f"""
-                    <div style="
-                        border: 2px solid;
-                        border-radius: 2px;
-                        padding: 5px;
-                        text-align: center;
-                        margin: 5px 0;
-                        background-color: white;">
-                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                            <div style="display: block;">
-                                <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
-                                Max Total Stake Loss "Allowed" To Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+        if pre_slash_max_slash_allowed >= 0:
+            display_text = f"""
+                            <div style="
+                                border: 2px solid;
+                                border-radius: 2px;
+                                padding: 5px;
+                                text-align: center;
+                                margin: 5px 0;
+                                background-color: white;">
+                                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                                    <div style="display: block;">
+                                        <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
+                                        Max Total Stake Loss "Allowed" To Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                                    </div>
+                                </h2>
                             </div>
-                        </h2>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
-                )
+                            """
+        else:
+            display_text = f"""
+                            <div style="
+                                border: 2px solid;
+                                border-radius: 2px;
+                                padding: 5px;
+                                text-align: center;
+                                margin: 5px 0;
+                                background-color: white;">
+                                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                                    <div style="display: block;">
+                                        Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Condition of: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                                    </div>
+                                </h2>
+                            </div>
+                            """
+
+        st.markdown(display_text, unsafe_allow_html=True)
+
+        
+
 
 
     ########## POST-SLASH ##########
@@ -461,7 +545,7 @@ def main():
 
         st.write("  \n")
 
-        st.selectbox("**AVS Category**", ["On the Same Category as the Other 2 AVSs", "On a Different Category"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.")
+        st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.")
         
         st.write("  \n")
 
