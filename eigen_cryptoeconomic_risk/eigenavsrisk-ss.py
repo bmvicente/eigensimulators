@@ -377,7 +377,7 @@ def main():
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
                 </div>
                 <div style="margin-top: 10px;">
-                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact = Weighted Overall Risk for Parameter)</span>
+                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
                 </div>
             </div>"""
 
