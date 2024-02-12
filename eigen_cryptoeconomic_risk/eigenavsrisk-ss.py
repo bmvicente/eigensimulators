@@ -1017,12 +1017,8 @@ def main():
                 }
                 </style>
                 <div class="big-font">
-                The <strong>AVS Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the AVS. 
+                The <strong>Espresso Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the AVS. 
                 </div>
-                <br>
-
-                <div class="big-font">
-                <em>It's important to bear in mind that this Simulator was built from an AVS perspective alone.</em>
                 </div>
                 """, unsafe_allow_html=True)
 
