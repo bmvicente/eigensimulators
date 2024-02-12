@@ -237,7 +237,7 @@ def main():
         """
 
     st.markdown(final_result_service_1_calc, unsafe_allow_html=True)
-    
+
 
     # Creating the markdown string
     final_result_service_2_calc = f"""
@@ -617,7 +617,7 @@ def main():
 
         st.write("  \n")
 
-        st.session_state.avs1_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.")
+        st.session_state.avs1_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avs1_category")
         
         st.write("  \n")
 
@@ -757,7 +757,7 @@ def main():
         
         st.write("  \n")
 
-        st.session_state.avs2_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"])
+        st.session_state.avs2_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs2_category")
 
         st.write("  \n")
 
@@ -897,7 +897,7 @@ def main():
         
         st.write("  \n")
 
-        st.session_state.avs3_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"])
+        st.session_state.avs3_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs3_category")
 
         st.write("  \n")
 
