@@ -467,8 +467,6 @@ def main():
 
         col3, col4 = st.columns([3, 3])
 
-        st.write("  \n")
-
         with col3:
                 st.session_state.risk_score1 = create_risk_score_input('risk_score1', "**AVS Risk Score**")
                 
