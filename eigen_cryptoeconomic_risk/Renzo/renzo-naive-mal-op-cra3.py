@@ -1153,163 +1153,104 @@ def main():
 
 
 
+    col50, col51, col52 = st.columns(3)
 
+    def create_insurance_status_selectbox(column, options, key):
+        selected_status = column.selectbox("Insurance Status", options, key=key)
+        return selected_status
 
-
-    col50,col51,col52 = st.columns(3)
-    
-    with col50:
-
-        insurance_options1 = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-
-        def create_insurance_status_selectbox(column1, key1):
-            selected_status1 = column1.selectbox("Insurance Status", insurance_options1, key=key1)
-            return selected_status1
-        
-        avs1_insurance_status = create_insurance_status_selectbox(col50, "avs1_insurance_status_key")
-        background_color1 = "#90EE90" if avs1_insurance_status == insurance_options1[0] else "#FFFF00" if avs1_insurance_status == insurance_options1[1] else "#ff6666"
-
-        st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color1};">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    <div style="display: block;">
-                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
-                    </div>
-                    <div style="display: block; margin-top: 5px;">
-                        AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
+    def display_insurance_status_selectbox(avs_insurance_status, options, key):
+        selected_status = st.selectbox(
+            "**Insurance Status**", 
+            options, 
+            index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
+            key=key
         )
+        return selected_status
 
-        # First, define a function to display the insurance status selectbox and return its value
-        def display_insurance_status_selectbox(avs_insurance_status1, key1):
-            selected_status1 = st.selectbox(
-                "**Insurance Status**", 
-                insurance_options1, 
-                index=insurance_options1.index(avs_insurance_status1) if avs_insurance_status1 in insurance_options1 else 0,
-                key= avs1_insurance_status
-            )
-            return selected_status1
+    insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
 
+    avs1_insurance_status = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status_key")
+    background_color1 = "#90EE90" if avs1_insurance_status == insurance_options[0] else "#FFFF00" if avs1_insurance_status == insurance_options[1] else "#ff6666"
+    st.markdown(
+        f"""
+        <div style="
+            border: 1px solid;
+            border-radius: 2px;
+            padding: 5px;
+            text-align: center;
+            margin: 5px 0;
+            background-color: {background_color1};">
+            <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                <div style="display: block;">
+                    <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
+                </div>
+                <div style="display: block; margin-top: 5px;">
+                    AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
+                </div>
+            </h2>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+    avs1_insurance_status = display_insurance_status_selectbox(avs1_insurance_status, insurance_options, "avs1_insurance_status")
 
-        # Then, display the dropdown after the markdown
-        avs1_insurance_status = display_insurance_status_selectbox(avs1_insurance_status, "avs1_insurance_status")
+    # Repeat similar blocks for avs2 and avs3 with appropriate keys
 
-
-
-
-    with col51:
-
-        # Define your options once
-        insurance_options2 = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-
-        def create_insurance_status_selectbox(column2, key2):
-            selected_status2 = column2.selectbox("Insurance Status ", insurance_options2, key=key2)
-            return selected_status2
-        
-        avs2_insurance_status = create_insurance_status_selectbox(col51, "avs2_insurance_status_key")
-        background_color2 = "#90EE90" if avs2_insurance_status == insurance_options2[0] else "#FFFF00" if avs2_insurance_status == insurance_options2[1] else "#ff6666"
-
-        st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color2};">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    <div style="display: block;">
-                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
-                    </div>
-                    <div style="display: block; margin-top: 5px;">
-                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
-
-        # First, define a function to display the insurance status selectbox and return its value
-        def display_insurance_status_selectbox(avs_insurance_status2, key2):
-            # Display the selectbox and get the selected value
-            selected_status2 = st.selectbox(
-                "**Insurance Status** ", 
-                insurance_options2, 
-                index=insurance_options2.index(avs_insurance_status2) if avs_insurance_status2 in insurance_options2 else 0,
-                key= avs2_insurance_status
-            )
-            return selected_status2
-        
-        # Then, display the dropdown after the markdown
-        avs2_insurance_status = display_insurance_status_selectbox(avs2_insurance_status, "avs2_insurance_status")
+    avs2_insurance_status = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status_key")
+    background_color2 = "#90EE90" if avs2_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
+    st.markdown(
+        f"""
+        <div style="
+            border: 1px solid;
+            border-radius: 2px;
+            padding: 5px;
+            text-align: center;
+            margin: 5px 0;
+            background-color: {background_color2};">
+            <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                <div style="display: block;">
+                    <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
+                </div>
+                <div style="display: block; margin-top: 5px;">
+                    AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
+                </div>
+            </h2>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+    avs2_insurance_status = display_insurance_status_selectbox(avs2_insurance_status, insurance_options, "avs2_insurance_status")
 
 
+    # Similarly for avs3
+    avs3_insurance_status = create_insurance_status_selectbox(col51, insurance_options, "avs3_insurance_status_key")
+    background_color3 = "#90EE90" if avs3_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
+    st.markdown(
+        f"""
+        <div style="
+            border: 1px solid;
+            border-radius: 2px;
+            padding: 5px;
+            text-align: center;
+            margin: 5px 0;
+            background-color: {background_color3};">
+            <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                <div style="display: block;">
+                    <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
+                </div>
+                <div style="display: block; margin-top: 5px;">
+                    AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
+                </div>
+            </h2>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+    avs3_insurance_status = display_insurance_status_selectbox(avs3_insurance_status, insurance_options, "avs3_insurance_status")
 
 
 
-    with col52:
-
-        # Define your options once
-        insurance_options3 = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-
-        def create_insurance_status_selectbox(column3, key3):
-            selected_status3 = column3.selectbox("Insurance Status  ", insurance_options3, key=key3)
-            return selected_status3
-        
-
-        avs3_insurance_status = create_insurance_status_selectbox(col52, "avs3_insurance_status_key")
-        background_color3 = "#90EE90" if avs3_insurance_status == insurance_options3[0] else "#FFFF00" if avs3_insurance_status == insurance_options3[1] else "#ff6666"
-
-        st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color3};">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    <div style="display: block;">
-                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
-                    </div>
-                    <div style="display: block; margin-top: 5px;">
-                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
-
-
-        # First, define a function to display the insurance status selectbox and return its value
-        def display_insurance_status_selectbox(avs_insurance_status3, key3):
-            # Display the selectbox and get the selected value
-            selected_status3 = st.selectbox(
-                "**Insurance Status**  ", 
-                insurance_options3, 
-                index=insurance_options3.index(avs_insurance_status3) if avs_insurance_status3 in insurance_options3 else 0,
-                key= avs3_insurance_status
-            )
-            return selected_status3
-
-
-        # Then, display the dropdown after the markdown
-        avs3_insurance_status = display_insurance_status_selectbox(avs3_insurance_status, "avs3_insurance_status")
 
 
 
