@@ -1145,6 +1145,7 @@ def main():
     )
 
 
+    st.write("  \n")
 
 
     if 'insurance_statuses' not in st.session_state:
