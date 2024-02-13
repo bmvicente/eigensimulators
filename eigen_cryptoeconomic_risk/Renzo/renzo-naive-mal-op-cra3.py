@@ -359,13 +359,6 @@ def main():
 
 
 
-
-
-
-
-
-
-
     def categorize_risk(risk_score):
         if risk_score < 33:
             return 'low_risk'
