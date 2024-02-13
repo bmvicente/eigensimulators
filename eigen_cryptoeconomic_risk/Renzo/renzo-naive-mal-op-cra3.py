@@ -1147,6 +1147,14 @@ def main():
 
     st.write("  \n")
 
+    if 'avs1_insurance_status' not in st.session_state:
+        st.session_state.avs1_insurance_status == "Bought Appropriate Amount of Insurance"
+    if 'avs2_insurance_status' not in st.session_state:
+        st.session_state.avs2_insurance_status == "Bought Appropriate Amount of Insurance"
+    if 'avs3_insurance_status' not in st.session_state:
+        st.session_state.avs3_insurance_status == "Bought Appropriate Amount of Insurance"
+
+
     col50,col51,col52 = st.columns(3)
     with col50:
 
