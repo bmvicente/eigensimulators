@@ -1212,7 +1212,7 @@ def main():
     with col51:
         
         avs2_insurance_status = create_insurance_status_selectbox(col51, "avs2_insurance_status")
-        background_color2 = "#90EE90" if avs2_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1]
+        background_color2 = "#90EE90" if avs2_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
 
         st.markdown(
             f"""
