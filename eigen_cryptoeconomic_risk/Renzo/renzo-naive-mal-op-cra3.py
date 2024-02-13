@@ -699,6 +699,7 @@ def main():
         st.markdown(final_result_service_1_calc, unsafe_allow_html=True)
 
         st.write("\n")
+        st.write("\n")
 
 
         with st.expander("Logic"):
