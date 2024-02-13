@@ -81,7 +81,7 @@ def main():
     st.write("  \n")
 
     st.title("Cryptoeconomic Risk Analysis III")
-    st.subheader("**Operator → AVS Potential Slashing Event Simulator:** *Naïve Approach* & *Malicious Operator*")
+    st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *Naïve Approach*")
     
     st.write("  \n")
 
@@ -1097,6 +1097,10 @@ def main():
 
     st.session_state.pre_slash_pfc = tvl1 + tvl2 + tvl3
 
+
+
+
+    st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *StakeSure Approach*")
 
 
     ###################
