@@ -420,9 +420,9 @@ def main():
             return 0  # Ensure a numeric return
 
 
-    evaluate_avs1_category = st.session_state.avs1_category_key
-    evaluate_avs2_category = st.session_state.avs2_category_key
-    evaluate_avs3_category = st.session_state.avs3_category_key
+    evaluate_avs1_category = st.session_state.avs1_category
+    evaluate_avs2_category = st.session_state.avs2_category
+    evaluate_avs3_category = st.session_state.avs3_category
 
     service_categories_evaluation_result = evaluate_service_categories(evaluate_avs1_category, evaluate_avs2_category, evaluate_avs3_category)
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
