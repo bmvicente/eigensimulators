@@ -1313,6 +1313,13 @@ def main():
                     <b>Cryptoeconomic Security Level:</b> {security_level}
                 </div>
                 """
+    
+    security_level = evaluate_cryptoeconomic_security(
+        st.session_state.insurance_statuses['avs1_insurance_status'],
+        st.session_state.insurance_statuses['avs2_insurance_status'],
+        st.session_state.insurance_statuses['avs3_insurance_status']
+    )
+
 
     # Use the function where needed, making sure to pass in the actual 'stake_losses_coverage' and 'security_level'
     message = generate_message_based_on_color(stake_losses_coverage, security_level)
