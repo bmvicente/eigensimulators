@@ -1135,7 +1135,7 @@ def main():
             background-color: {background_color};">
             <h2 style="color: black; margin: 0; font-size: 1.4em;">
                 <div style="display: block; margin-top: 5px;">
-                    StakeSure - Insurance Available Reserve: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
+                    <i>StakeSure</i> - Insurance Available Reserve: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
                     <br><span style="font-size: 16px; font-weight: bold;">{message}</span>
                 </div>
             </h2>
