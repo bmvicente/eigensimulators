@@ -81,7 +81,7 @@ def main():
     st.write("  \n")
 
     st.title("Cryptoeconomic Risk Analysis III")
-    st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *Naïve Approach*")
+    st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *Naïve & StakeSure Approaches*")
     
     st.write("  \n")
 
@@ -1114,31 +1114,48 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+    total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
+
     stakesure_insurance_reserve = st.session_state.post_slash_total_restaked / 2
 
-    st.markdown(
-                f"""
-                <div style="
-                    border: 1px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.4em;">
-                        <div style="display: block; margin-top: 5px;">
-                            StakeSure - Insurance Available Reserve: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
-                        </div>
-                    </h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+    stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
     
+
+    background_color = "#90EE90" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
+    message = "Enough to Cover Stake Losses" if stake_losses_coverage >= 0 else "Not Enough to Cover Stake Losses"
+
+    st.markdown(
+        f"""
+        <div style="
+            border: 1px solid;
+            border-radius: 2px;
+            padding: 5px;
+            text-align: center;
+            margin: 5px 0;
+            background-color: {background_color};">
+            <h2 style="color: black; margin: 0; font-size: 1.4em;">
+                <div style="display: block; margin-top: 5px;">
+                    StakeSure - Insurance Available Reserve: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
+                    <br><span style="font-size: 16px; font-weight: bold;">{message}</span>
+                </div>
+            </h2>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
+
     st.write("  \n")
 
     col50,col51,col52 = st.columns(3)
     with col50:
+
+        if st.session_state.avs1_insurance_status == "Bought Appropriate Amount of Insurance":
+            background_color = "#90EE90"  # Green
+        elif st.session_state.avs1_insurance_status == "Bought Inappropriate Amount of Insurance":
+            background_color = "#FFFF00"  # Yellow
+        else:  # "Didn't Buy Insurance"
+            background_color = "#ff6666"  # Red
 
         st.markdown(
             f"""
@@ -1148,7 +1165,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: white;">
+                background-color: {background_color};">
                 <h2 style="color: black; margin: 0; font-size: 1.2em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
@@ -1162,12 +1179,21 @@ def main():
             unsafe_allow_html=True
         )
 
-        st.write("  \n")
-
-        st.selectbox("**AVS1 Insurance Status**", ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"])
+        st.session_state.avs1_insurance_status = st.selectbox(
+            "**AVS1 Insurance Status**",
+            ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"],
+            key="avs1_insurance_status"  # Ensure this key is unique if using multiple selectboxes
+        )
 
 
     with col51:
+
+        if st.session_state.avs2_insurance_status == "Bought Appropriate Amount of Insurance":
+            background_color = "#90EE90"  # Green
+        elif st.session_state.avs2_insurance_status == "Bought Inappropriate Amount of Insurance":
+            background_color = "#FFFF00"  # Yellow
+        else:  # "Didn't Buy Insurance"
+            background_color = "#ff6666"  # Red
 
         st.markdown(
             f"""
@@ -1177,13 +1203,13 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: white;">
+                background-color: {background_color};">
                 <h2 style="color: black; margin: 0; font-size: 1.2em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
+                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1191,12 +1217,21 @@ def main():
             unsafe_allow_html=True
         )
 
-        st.write("  \n")
-
-        st.selectbox("**AVS2 Insurance Status**", ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"])
+        st.session_state.avs1_insurance_status = st.selectbox(
+            "**AVS2 Insurance Status**",
+            ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"],
+            key="avs2_insurance_status"  # Ensure this key is unique if using multiple selectboxes
+        )
 
 
     with col52:
+
+        if st.session_state.avs3_insurance_status == "Bought Appropriate Amount of Insurance":
+            background_color = "#90EE90"  # Green
+        elif st.session_state.avs3_insurance_status == "Bought Inappropriate Amount of Insurance":
+            background_color = "#FFFF00"  # Yellow
+        else:  # "Didn't Buy Insurance"
+            background_color = "#ff6666"  # Red
 
         st.markdown(
             f"""
@@ -1206,23 +1241,25 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: white;">
+                background-color: {background_color};">
                 <h2 style="color: black; margin: 0; font-size: 1.2em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
+                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
                     </div>
                 </h2>
             </div>
             """, 
             unsafe_allow_html=True
-        )  
+        )
 
-        st.write("  \n")
-
-        st.selectbox("**AVS3 Insurance Status**", ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"])
+        st.session_state.avs1_insurance_status = st.selectbox(
+            "**AVS3 Insurance Status**",
+            ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"],
+            key="avs3_insurance_status"  # Ensure this key is unique if using multiple selectboxes
+        )
 
 
 
