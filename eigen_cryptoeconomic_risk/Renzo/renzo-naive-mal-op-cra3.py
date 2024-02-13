@@ -131,11 +131,11 @@ def main():
         st.session_state.post_slash_total_restaked = 0
     
     if 'avs1_category' not in st.session_state:
-        st.session_state.avs1_category = 0    
+        st.session_state.avs1_category = "Data Availability Layer"  
     if 'avs2_category' not in st.session_state:
-        st.session_state.avs2_category = 0    
+        st.session_state.avs2_category = "Data Availability Layer"  
     if 'avs3_category' not in st.session_state:
-        st.session_state.avs3_category = 0
+        st.session_state.avs3_category = "Data Availability Layer"
         
     
 
