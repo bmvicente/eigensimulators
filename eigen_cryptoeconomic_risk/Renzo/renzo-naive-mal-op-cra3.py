@@ -406,10 +406,12 @@ def main():
 
     # Assuming actual_stake_loss, pre_slash_coc, and post_slash_coc are defined
     # Assuming st.session_state has avs1_category, avs2_category, avs3_category, risk_score1, risk_score2, risk_score3 defined
+    def individual_risk_evaluation(risk_score):
+        category = categorize_risk(risk_score)
+        return risk_numeric[category]
 
     def individual_risk_evaluation(risk_score):
         category = categorize_risk(risk_score)
-        numeric_evaluation = risk_numeric[category]
         high_risk = category.count('high_risk')
         medium_risk = category.count('medium_risk')
         low_risk = category.count('low_risk')
