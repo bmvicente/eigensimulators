@@ -228,24 +228,36 @@ def main():
                 unsafe_allow_html=True
             )
 
+
+
+        # Determine the background color and text based on the condition
+        if pre_slash_max_slash_allowed >= 0:
+            background_color = "#90EE90"  # light green for positive allowed loss
+            max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security"
+        else:
+            background_color = "#ff9999"  # red for a negative allowed loss, indicating an insecure condition
+            max_slash_allowed_text = "Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+
+        # Markdown for Max Total Stake Loss "Allowed"
         display_text = f"""
-                <div style="
-                    border: 2px solid;
-                    border-radius: 2px;
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: {max_slash_color};">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        <div style="display: block;">
-                            <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
-                            Max Total Stake Loss "Allowed" To Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                        <div style="
+                            border: 2px solid;
+                            border-radius: 2px;
+                            padding: 5px;
+                            text-align: center;
+                            margin: 5px 0;
+                            background-color: {background_color};">
+                            <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                                <div style="display: block;">
+                                    <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
+                                    {max_slash_allowed_text}: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
+                                </div>
+                            </h2>
                         </div>
-                    </h2>
-                </div>
-                """
+                        """
 
         st.markdown(display_text, unsafe_allow_html=True)
+
 
         # ff6666
 
