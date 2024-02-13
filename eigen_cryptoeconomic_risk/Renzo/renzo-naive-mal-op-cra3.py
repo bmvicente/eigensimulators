@@ -360,6 +360,12 @@ def main():
 
 
 
+
+
+
+
+
+
     def categorize_risk(risk_score):
         if risk_score < 33:
             return 'low_risk'
@@ -368,12 +374,45 @@ def main():
         else:
             return 'high_risk'
 
-    def evaluate_risks(risk_category1, risk_category2, risk_category3):
+    # Adjusted Risk Numeric Mapping
+    risk_numeric = {
+        'low_risk': 1,
+        'medium_risk': 2,
+        'high_risk': 3
+    }
 
-        categories = [risk_category1, risk_category2, risk_category3]
-        high_risk = categories.count('high_risk')
-        medium_risk = categories.count('medium_risk')
-        low_risk = categories.count('low_risk')
+    def evaluate_conditions(pre_slash_coc, post_slash_coc):
+        if pre_slash_coc < 0:
+            return 3
+        elif pre_slash_coc > 0 and post_slash_coc < 0:
+            return 2
+        elif pre_slash_coc > 0 and post_slash_coc > 0:
+            return 0.5
+        else:
+            return 0
+
+    def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
+        categories = [avs1_category, avs2_category, avs3_category]
+        unique_categories = len(set(categories))
+
+        if unique_categories == 1:
+            return 3
+        elif unique_categories == 2:
+            return 2
+        elif unique_categories == 3:
+            return 1.5
+        else:
+            return 0
+
+    # Assuming actual_stake_loss, pre_slash_coc, and post_slash_coc are defined
+    # Assuming st.session_state has avs1_category, avs2_category, avs3_category, risk_score1, risk_score2, risk_score3 defined
+
+    def individual_risk_evaluation(risk_score):
+        category = categorize_risk(risk_score)
+        numeric_evaluation = risk_numeric[category]
+        high_risk = category.count('high_risk')
+        medium_risk = category.count('medium_risk')
+        low_risk = category.count('low_risk')
 
         if high_risk == 3:
             return 3
@@ -394,47 +433,30 @@ def main():
         elif low_risk == 3:
             return 1.10
         else:
-             return 0
+             return 0       
+        
 
-    def evaluate_conditions(pre_slash_coc, post_slash_coc):
-        if pre_slash_coc < 0:
-            return 3
-        elif pre_slash_coc > 0 and post_slash_coc < 0:
-            return 2
-        elif pre_slash_coc > 0 and post_slash_coc > 0:
-            return 0.50
-        else:
-             return 0
+    # Calculate service categories and conditions evaluation results
+    service_categories_evaluation_result = evaluate_service_categories(
+        st.session_state.avs1_category,
+        st.session_state.avs2_category,
+        st.session_state.avs3_category
+    )
+    conditions_evaluation_result = evaluate_conditions(
+        st.session_state.pre_slash_coc,
+        st.session_state.post_slash_coc
+    )
 
-    def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
-        categories = [avs1_category, avs2_category, avs3_category]
-        unique_categories = len(set(categories))
+    # Individual risk evaluations for each service
+    risk_evaluation1 = individual_risk_evaluation(st.session_state.risk_score1)
+    risk_evaluation2 = individual_risk_evaluation(st.session_state.risk_score2)
+    risk_evaluation3 = individual_risk_evaluation(st.session_state.risk_score3)
 
-        if unique_categories == 1:
-            return 3
-        elif unique_categories == 2:
-            return 2
-        elif unique_categories == 3:
-            return 1.50
-        else:
-            return 0  # Ensure a numeric return
+    # Final results calculations for each service incorporating nuances
+    final_result_service_1 = actual_stake_loss * risk_evaluation1 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_2 = actual_stake_loss * risk_evaluation2 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_3 = actual_stake_loss * risk_evaluation3 * service_categories_evaluation_result * conditions_evaluation_result
 
-
-    evaluate_avs1_category = st.session_state.avs1_category
-    evaluate_avs2_category = st.session_state.avs2_category
-    evaluate_avs3_category = st.session_state.avs3_category
-
-    service_categories_evaluation_result = evaluate_service_categories(evaluate_avs1_category, evaluate_avs2_category, evaluate_avs3_category)
-    conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
-
-    risk_category1 = categorize_risk(st.session_state.risk_score1)
-    risk_category2 = categorize_risk(st.session_state.risk_score2)
-    risk_category3 = categorize_risk(st.session_state.risk_score3)
-
-    risk_evaluation = evaluate_risks(risk_category1, risk_category2, risk_category3)
-
-
-    final_result_service_1 = actual_stake_loss * risk_evaluation * service_categories_evaluation_result * conditions_evaluation_result
 
 
 
