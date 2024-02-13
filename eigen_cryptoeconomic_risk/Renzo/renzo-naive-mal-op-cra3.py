@@ -152,7 +152,23 @@ def main():
 
     col20,col21 = st.columns(2, gap="medium")
 
+    # For Actual Stake Loss
+    if pre_slash_max_slash_allowed >= 0:
+        if actual_stake_loss < pre_slash_max_slash_allowed:
+            actual_stake_loss_color = "#90EE90"  # light green
+        else:
+            actual_stake_loss_color = "#FFC0CB"  # pink
+    else:
+        if actual_stake_loss > pre_slash_max_slash_allowed:
+            actual_stake_loss_color = "#ff6666"  # red
+        else:
+            actual_stake_loss_color = "#FFC0CB"  # pink
 
+    # For Max Total Stake Loss "Allowed"
+    if pre_slash_max_slash_allowed >= 0:
+        max_slash_color = "#90EE90"  # light green
+    else:
+        max_slash_color = "#ff6666"  # red
 
 
 
@@ -212,40 +228,22 @@ def main():
                 unsafe_allow_html=True
             )
 
-        if pre_slash_max_slash_allowed >= 0:
-            display_text = f"""
-                            <div style="
-                                border: 2px solid;
-                                border-radius: 2px;
-                                padding: 5px;
-                                text-align: center;
-                                margin: 5px 0;
-                                background-color: white;">
-                                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                                    <div style="display: block;">
-                                        <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
-                                        Max Total Stake Loss "Allowed" To Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
-                                    </div>
-                                </h2>
-                            </div>
-                            """
-        else:
-            display_text = f"""
-                            <div style="
-                                border: 2px solid;
-                                border-radius: 2px;
-                                padding: 5px;
-                                text-align: center;
-                                margin: 5px 0;
-                                background-color: #ff9999;">
-                                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                                    <div style="display: block;">
-                                        <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
-                                        Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
-                                    </div>
-                                </h2>
-                            </div>
-                            """
+        display_text = f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: {max_slash_color};">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
+                            Max Total Stake Loss "Allowed" To Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                        </div>
+                    </h2>
+                </div>
+                """
 
         st.markdown(display_text, unsafe_allow_html=True)
 
@@ -323,7 +321,7 @@ def main():
             )
 
         # Determine the background color based on the condition
-        background_color = "#ff6666" if actual_stake_loss > abs(pre_slash_max_slash_allowed) else "#FFC0CB"  # pink for less, red for more
+        #background_color = "#ff6666" if actual_stake_loss > abs(pre_slash_max_slash_allowed) else "#FFC0CB"  # pink for less, red for more
 
         st.markdown(
             f"""
@@ -333,7 +331,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: {background_color};">
+                background-color: {actual_stake_loss_color};">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
