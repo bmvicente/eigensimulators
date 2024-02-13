@@ -414,30 +414,19 @@ def main():
         else:
             return 0  # Ensure a numeric return
 
-    risk_numeric = {
-        'low_risk': 1,
-        'medium_risk': 2,
-        'high_risk': 3
-    }
-
 
     service_categories_evaluation_result = evaluate_service_categories(st.session_state.avs1_category, st.session_state.avs2_category, st.session_state.avs3_category)
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
 
-    risk_category1 = categorize_risk(st.session_state.risk_score1)
-    risk_category2 = categorize_risk(st.session_state.risk_score2)
-    risk_category3 = categorize_risk(st.session_state.risk_score3)
-    print(risk_category1)
+    #risk_category1 = categorize_risk(st.session_state.risk_score1)
+    #risk_category2 = categorize_risk(st.session_state.risk_score2)
+    #risk_category3 = categorize_risk(st.session_state.risk_score3)
 
-    risk_evaluation1 = evaluate_risks(risk_category1, risk_category2, risk_category3)
-    risk_evaluation2 = evaluate_risks(risk_category1, risk_category2, risk_category3)
-    risk_evaluation3 = evaluate_risks(risk_category1, risk_category2, risk_category3)
+    # Assuming each service has one risk score; adjust if your design is different
+    final_result_service_1 = evaluate_risks(st.session_state.risk_score1_service1, st.session_state.risk_score2_service1, st.session_state.risk_score3_service1) * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_2 = evaluate_risks(st.session_state.risk_score1_service2, st.session_state.risk_score2_service2, st.session_state.risk_score3_service2) * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_3 = evaluate_risks(st.session_state.risk_score1_service3, st.session_state.risk_score2_service3, st.session_state.risk_score3_service3) * service_categories_evaluation_result * conditions_evaluation_result
 
-
-    # Now, use these composite risk scores in your final calculations
-    final_result_service_1 = risk_evaluation1 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_2 = risk_evaluation2 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_3 = risk_evaluation3 * service_categories_evaluation_result * conditions_evaluation_result
 
 
 
