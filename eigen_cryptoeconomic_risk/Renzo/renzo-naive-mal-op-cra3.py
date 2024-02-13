@@ -1146,8 +1146,6 @@ def main():
 
 
     st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
 
 
     if 'insurance_statuses' not in st.session_state:
@@ -1160,7 +1158,7 @@ def main():
     col50, col51, col52 = st.columns(3)
 
     def create_insurance_status_selectbox(column, options, key):
-        selected_status = column.selectbox("**Insurance Status**", options, key=key)
+        selected_status = column.selectbox("Insurance Status", options, key=key)
         return selected_status
 
     def display_insurance_status_selectbox(avs_insurance_status, options, key):
@@ -1197,7 +1195,11 @@ def main():
             """, 
             unsafe_allow_html=True
         )
+        
+        st.write("  \n")
+
         avs1_insurance_status_temp = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status")
+
 
     with col51:
         background_color2 = "#90EE90" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1] else "#ff6666"
@@ -1222,7 +1224,11 @@ def main():
             """, 
             unsafe_allow_html=True
         )
+        
+        st.write("  \n")
+
         avs2_insurance_status_temp = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status")
+
 
     with col52:
         background_color3 = "#90EE90" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1] else "#ff6666"
@@ -1247,6 +1253,9 @@ def main():
             """, 
             unsafe_allow_html=True
         )
+
+        st.write("  \n")
+
         avs3_insurance_status_temp = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status")
 
     # Update session state dictionary
