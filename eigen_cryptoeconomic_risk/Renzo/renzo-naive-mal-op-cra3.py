@@ -1148,21 +1148,14 @@ def main():
     st.write("  \n")
 
 
+
+
     if 'insurance_statuses' not in st.session_state:
         st.session_state.insurance_statuses = {
             'avs1_insurance_status': None,
             'avs2_insurance_status': None,
             'avs3_insurance_status': None
         }
-    
-    if 'selected_insurance_statuses' not in st.session_state:
-        # Initialize 'selected_insurance_statuses' with default or initial values
-        st.session_state.selected_insurance_statuses = {
-            'avs1_insurance_status': "Bought Appropriate Amount of Insurance",  # Adjust as needed
-            'avs2_insurance_status': "Bought Appropriate Amount of Insurance",  # Adjust as needed
-            'avs3_insurance_status': "Bought Appropriate Amount of Insurance",  # Adjust as needed
-        }
-
 
     col50, col51, col52 = st.columns(3)
 
@@ -1341,10 +1334,10 @@ def main():
 
     st.write("\n")
 
-    if st.button('Update Insurance Statuses'):
-        # Update the actual values in session_state based on the selections made
-        for key in st.session_state.selected_insurance_statuses:
-            st.session_state.insurance_statuses[key] = st.session_state.selected_insurance_statuses[key]
+    # Button to perform the update
+    if st.button('**Update Insurance Statuses**'):
+        update_insurance_statuses()
+
 
 
     ###################
