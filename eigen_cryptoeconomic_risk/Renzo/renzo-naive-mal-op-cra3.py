@@ -640,21 +640,24 @@ def main():
                 def get_display_text(pre_slash_max_slash_allowed):
                     max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
                     return f"""
-                            <div style="
-                                border: 2px solid;
-                                border-radius: 2px;
-                                padding: 5px;
-                                text-align: center;
-                                margin: 5px 0;
-                                background-color: white;">
-                                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                                    <div style="display: block;">
-                                        <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
-                                        {max_slash_allowed_text}: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
-                                    </div>
-                                </h2>
-                            </div>
-                            """
+                        <div style="
+                            border: 2px solid;
+                            border-radius: 2px;
+                            padding: 5px;
+                            text-align: center;
+                            margin: 5px 0;
+                            background-color: white;">
+                            <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                                <div style="display: block; margin-bottom: 10px;">
+                                    <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
+                                </div>
+                                <div style="display: block;">
+                                    {max_slash_allowed_text}: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
+                                </div>
+                            </h2>
+                        </div>
+                        """
+
 
                 display_text = get_display_text(pre_slash_max_slash_allowed)
                 st.markdown(display_text, unsafe_allow_html=True)
