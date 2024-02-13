@@ -75,11 +75,6 @@ def main():
 
 
     pre_slash_total_restaked = st.session_state.pre_slash_total_restaked
-
-
-    potential_total_slashing1 = calculate_slashing(st.session_state.pre_slash_total_restaked, st.session_state.risk_score1)
-    potential_total_slashing2 = calculate_slashing(st.session_state.pre_slash_total_restaked, st.session_state.risk_score2)
-    potential_total_slashing3 = calculate_slashing(st.session_state.pre_slash_total_restaked, st.session_state.risk_score3)
     
 
     #st.image("images/renzo1.png", width=400)
@@ -273,7 +268,8 @@ def main():
     with col21:
         st.markdown('<p class="header-style" style="font-size: 20px;">POST-SLASH (t+1)</p>', unsafe_allow_html=True)
 
-        st.session_state.post_slash_total_restaked = pre_slash_total_restaked - st.session_state.op_stake_slashable
+        st.session_state.post_slash_total_restaked = max(0, pre_slash_total_restaked - st.session_state.op_stake_slashable)
+        
         st.session_state.post_slash_coc = st.session_state.post_slash_total_restaked / 3
 
         st.write("\n")
