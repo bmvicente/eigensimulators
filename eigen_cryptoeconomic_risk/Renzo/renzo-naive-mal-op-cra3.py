@@ -1276,6 +1276,8 @@ def main():
         st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
         # Here, you could also recalculate anything that depends on these statuses
 
+    st.write("\n")
+    
     # Button to perform the update
     if st.button('**Update Insurance Statuses**'):
         update_insurance_statuses()
