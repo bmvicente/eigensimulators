@@ -1276,9 +1276,13 @@ def main():
         st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
         # Here, you could also recalculate anything that depends on these statuses
 
-    # Button to perform the update
-    if st.button('**Update Insurance Statuses**'):
-        update_insurance_statuses()
+
+    # Use a container to span the full width
+    with st.container():
+        # Create a full-width button
+        if st.button('Update Insurance Statuses', key='full_width_button'):
+            update_insurance_statuses()
+
 
     st.write("  \n")
     st.write("  \n")
