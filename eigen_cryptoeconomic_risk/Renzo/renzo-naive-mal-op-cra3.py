@@ -1149,6 +1149,8 @@ def main():
 
 
 
+
+
     # Initialize session state if not already initialized
     if 'avs1_insurance_status' not in st.session_state:
         st.session_state.avs1_insurance_status = None
@@ -1175,8 +1177,7 @@ def main():
     insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
 
     with col50: 
-        avs1_insurance_status = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status_key")
-        background_color1 = "#90EE90" if avs1_insurance_status == insurance_options[0] else "#FFFF00" if avs1_insurance_status == insurance_options[1] else "#ff6666"
+        background_color1 = "#90EE90" if st.session_state.avs1_insurance_status == insurance_options[0] else "#FFFF00" if st.session_state.avs1_insurance_status == insurance_options[1] else "#ff6666"
         st.markdown(
             f"""
             <div style="
@@ -1198,11 +1199,9 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-        st.session_state.avs1_insurance_status = avs1_insurance_status
 
     with col51:
-        avs2_insurance_status = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status_key")
-        background_color2 = "#90EE90" if avs2_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
+        background_color2 = "#90EE90" if st.session_state.avs2_insurance_status == insurance_options[0] else "#FFFF00" if st.session_state.avs2_insurance_status == insurance_options[1] else "#ff6666"
         st.markdown(
             f"""
             <div style="
@@ -1224,11 +1223,9 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-        st.session_state.avs2_insurance_status = avs2_insurance_status
 
     with col52:
-        avs3_insurance_status = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status_key")
-        background_color3 = "#90EE90" if avs3_insurance_status == insurance_options[0] else "#FFFF00" if avs3_insurance_status == insurance_options[1] else "#ff6666"
+        background_color3 = "#90EE90" if st.session_state.avs3_insurance_status == insurance_options[0] else "#FFFF00" if st.session_state.avs3_insurance_status == insurance_options[1] else "#ff6666"
         st.markdown(
             f"""
             <div style="
@@ -1250,8 +1247,15 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-        st.session_state.avs3_insurance_status = avs3_insurance_status
 
+    with col50: 
+        st.session_state.avs1_insurance_status = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status")
+
+    with col51:
+        st.session_state.avs2_insurance_status = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status")
+
+    with col52:
+        st.session_state.avs3_insurance_status = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status")
 
 
 
