@@ -380,7 +380,7 @@ def main():
         elif high_risk == 2 and low_risk == 1:
             return 2.75
         elif high_risk == 1 and medium_risk == 1 and low_risk == 1:
-            return 2.5
+            return 2.50
         elif high_risk == 2 and medium_risk == 1:
             return 2.25
         elif high_risk == 1 and low_risk == 2:
@@ -388,11 +388,13 @@ def main():
         elif medium_risk == 3:
             return 1.75
         elif medium_risk == 2 and low_risk == 1:
-            return 1.5
+            return 1.50
         elif medium_risk == 1 and low_risk == 2:
             return 1.25
         elif low_risk == 3:
-            return 1.1
+            return 1.10
+        else:
+             return 0
 
     def evaluate_conditions(pre_slash_coc, post_slash_coc):
         if pre_slash_coc < 0:
@@ -400,7 +402,9 @@ def main():
         elif pre_slash_coc > 0 and post_slash_coc < 0:
             return 2
         elif pre_slash_coc > 0 and post_slash_coc > 0:
-            return 0.5
+            return 0.50
+        else:
+             return 0
 
     def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
         categories = [avs1_category, avs2_category, avs3_category]
@@ -411,7 +415,7 @@ def main():
         elif unique_categories == 2:
             return 2
         elif unique_categories == 3:
-            return 1.5
+            return 1.50
         else:
             return 0  # Ensure a numeric return
 
