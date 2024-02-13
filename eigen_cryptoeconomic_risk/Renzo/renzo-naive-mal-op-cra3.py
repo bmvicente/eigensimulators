@@ -1159,18 +1159,27 @@ def main():
     avs2_insurance_status = insurance_status_selectbox("avs2_insurance_status")
     avs3_insurance_status = insurance_status_selectbox("avs3_insurance_status")
 
+        # First, define a function to display the insurance status selectbox and return its value
+    def display_insurance_status_selectbox(avs_insurance_status, key):
+            options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+            # Display the selectbox and get the selected value
+            selected_status = st.selectbox(
+                "**Insurance Status**", 
+                options, 
+                index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
+                key=key
+            )
+            return selected_status
+
+
 
 
     col50,col51,col52 = st.columns(3)
     with col50:
 
-        if avs1_insurance_status == "Bought Appropriate Amount of Insurance":
-            background_color1 = "#90EE90"  # Green
-        elif avs1_insurance_status == "Bought Inappropriate Amount of Insurance":
-            background_color1 = "#FFFF00"  # Yellow
-        else:  # "Didn't Buy Insurance"
-            background_color1 = "#ff6666"  # Red
-
+        # Assuming avs3_insurance_status is already determined somewhere in your app
+        # First, display the markdown with conditional formatting
+        background_color1 = "#90EE90" if avs1_insurance_status == "Bought Appropriate Amount of Insurance" else "#FFFF00" if avs1_insurance_status == "Bought Inappropriate Amount of Insurance" else "#ff6666"
         st.markdown(
             f"""
             <div style="
@@ -1193,16 +1202,16 @@ def main():
             unsafe_allow_html=True
         )
 
+        # Then, display the dropdown after the markdown
+        avs1_insurance_status = display_insurance_status_selectbox(avs1_insurance_status, "avs1_insurance_status")
+
+
+
 
     with col51:
 
-        if avs2_insurance_status == "Bought Appropriate Amount of Insurance":
-            background_color2 = "#90EE90"  # Green
-        elif avs2_insurance_status == "Bought Inappropriate Amount of Insurance":
-            background_color2 = "#FFFF00"  # Yellow
-        else:  # "Didn't Buy Insurance"
-            background_color2 = "#ff6666"  # Red
-
+        # First, display the markdown with conditional formatting
+        background_color2 = "#90EE90" if avs2_insurance_status == "Bought Appropriate Amount of Insurance" else "#FFFF00" if avs2_insurance_status == "Bought Inappropriate Amount of Insurance" else "#ff6666"
         st.markdown(
             f"""
             <div style="
@@ -1225,16 +1234,15 @@ def main():
             unsafe_allow_html=True
         )
 
+        # Then, display the dropdown after the markdown
+        avs2_insurance_status = display_insurance_status_selectbox(avs2_insurance_status, "avs2_insurance_status")
+
+
 
     with col52:
 
-        if avs3_insurance_status == "Bought Appropriate Amount of Insurance":
-            background_color3 = "#90EE90"  # Green
-        elif avs3_insurance_status == "Bought Inappropriate Amount of Insurance":
-            background_color3 = "#FFFF00"  # Yellow
-        else:  # "Didn't Buy Insurance"
-            background_color3 = "#ff6666"  # Red
-
+        # First, display the markdown with conditional formatting
+        background_color3 = "#90EE90" if avs3_insurance_status == "Bought Appropriate Amount of Insurance" else "#FFFF00" if avs3_insurance_status == "Bought Inappropriate Amount of Insurance" else "#ff6666"
         st.markdown(
             f"""
             <div style="
@@ -1256,6 +1264,10 @@ def main():
             """, 
             unsafe_allow_html=True
         )
+
+        # Then, display the dropdown after the markdown
+        avs3_insurance_status = display_insurance_status_selectbox(avs3_insurance_status, "avs3_insurance_status")
+
 
 
 
