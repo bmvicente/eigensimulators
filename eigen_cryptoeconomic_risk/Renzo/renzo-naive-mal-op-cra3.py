@@ -269,7 +269,7 @@ def main():
         st.markdown('<p class="header-style" style="font-size: 20px;">POST-SLASH (t+1)</p>', unsafe_allow_html=True)
 
         st.session_state.post_slash_total_restaked = max(0, pre_slash_total_restaked - st.session_state.op_stake_slashable)
-        
+
         st.session_state.post_slash_coc = st.session_state.post_slash_total_restaked / 3
 
         st.write("\n")
@@ -864,7 +864,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Stake Loss from Operator Attack based on Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
+                        Potential Max Stake Loss from Operator Attack based on Risk Profile: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -876,6 +876,8 @@ def main():
 
         final_result_service_2_calc = f"""
         <div style="text-align: center;">
+            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation2}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
@@ -1019,7 +1021,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Stake Loss from Operator Attack based on Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
+                        Potential Max Stake Loss from Operator Attack based on Risk Profile: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1031,6 +1033,8 @@ def main():
 
         final_result_service_3_calc = f"""
             <div style="text-align: center;">
+                <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation3}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
