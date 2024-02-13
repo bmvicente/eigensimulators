@@ -1151,11 +1151,11 @@ def main():
     with col50:
 
         if st.session_state.avs1_insurance_status == "Bought Appropriate Amount of Insurance":
-            background_color = "#90EE90"  # Green
+            background_color1 = "#90EE90"  # Green
         elif st.session_state.avs1_insurance_status == "Bought Inappropriate Amount of Insurance":
-            background_color = "#FFFF00"  # Yellow
+            background_color1 = "#FFFF00"  # Yellow
         else:  # "Didn't Buy Insurance"
-            background_color = "#ff6666"  # Red
+            background_color1 = "#ff6666"  # Red
 
         st.markdown(
             f"""
@@ -1165,7 +1165,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: {background_color};">
+                background-color: {background_color1};">
                 <h2 style="color: black; margin: 0; font-size: 1.2em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
@@ -1189,11 +1189,11 @@ def main():
     with col51:
 
         if st.session_state.avs2_insurance_status == "Bought Appropriate Amount of Insurance":
-            background_color = "#90EE90"  # Green
+            background_color2 = "#90EE90"  # Green
         elif st.session_state.avs2_insurance_status == "Bought Inappropriate Amount of Insurance":
-            background_color = "#FFFF00"  # Yellow
+            background_color2 = "#FFFF00"  # Yellow
         else:  # "Didn't Buy Insurance"
-            background_color = "#ff6666"  # Red
+            background_color2 = "#ff6666"  # Red
 
         st.markdown(
             f"""
@@ -1203,7 +1203,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: {background_color};">
+                background-color: {background_color2};">
                 <h2 style="color: black; margin: 0; font-size: 1.2em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
@@ -1227,11 +1227,11 @@ def main():
     with col52:
 
         if st.session_state.avs3_insurance_status == "Bought Appropriate Amount of Insurance":
-            background_color = "#90EE90"  # Green
+            background_color3 = "#90EE90"  # Green
         elif st.session_state.avs3_insurance_status == "Bought Inappropriate Amount of Insurance":
-            background_color = "#FFFF00"  # Yellow
+            background_color3 = "#FFFF00"  # Yellow
         else:  # "Didn't Buy Insurance"
-            background_color = "#ff6666"  # Red
+            background_color3 = "#ff6666"  # Red
 
         st.markdown(
             f"""
@@ -1241,7 +1241,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: {background_color};">
+                background-color: {background_color3};">
                 <h2 style="color: black; margin: 0; font-size: 1.2em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
