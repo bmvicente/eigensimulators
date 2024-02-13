@@ -1334,10 +1334,10 @@ def main():
 
     st.write("\n")
 
-    # Button to perform the update
-    if st.button('**Update Insurance Statuses**'):
-        update_insurance_statuses()
-
+    if st.button('Update Insurance Statuses'):
+        # Update the actual values in session_state based on the selections made
+        for key in st.session_state.selected_insurance_statuses:
+            st.session_state.insurance_statuses[key] = st.session_state.selected_insurance_statuses[key]
 
 
     ###################
