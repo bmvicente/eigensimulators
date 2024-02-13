@@ -1290,6 +1290,8 @@ def main():
             security_level = "Medium Cryptoeconomic Security"
         elif high_security_count == 1 and low_security_count == 2:
             security_level = "Weak Cryptoeconomic Security"
+        elif high_security_count == 1 and medium_security_count == 1 and low_security_count == 1:
+            security_level = "Weak Cryptoeconomic Security"
         elif medium_security_count == 3:
             security_level = "Medium Cryptoeconomic Security"
         elif medium_security_count == 2 and low_security_count == 1:
