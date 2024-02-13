@@ -1171,7 +1171,6 @@ def main():
     insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
 
     with col50: 
-        avs1_insurance_status = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status_key")
         background_color1 = "#90EE90" if avs1_insurance_status == insurance_options[0] else "#FFFF00" if avs1_insurance_status == insurance_options[1] else "#ff6666"
         st.markdown(
             f"""
@@ -1197,7 +1196,6 @@ def main():
         avs1_insurance_status = display_insurance_status_selectbox(avs1_insurance_status, insurance_options, "avs1_insurance_status")
 
     with col51:
-        avs2_insurance_status = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status_key")
         background_color2 = "#90EE90" if avs2_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
         st.markdown(
             f"""
@@ -1223,7 +1221,6 @@ def main():
         avs2_insurance_status = display_insurance_status_selectbox(avs2_insurance_status, insurance_options, "avs2_insurance_status")
 
     with col52:
-        avs3_insurance_status = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status_key")
         background_color3 = "#90EE90" if avs3_insurance_status == insurance_options[0] else "#FFFF00" if avs3_insurance_status == insurance_options[1] else "#ff6666"
         st.markdown(
             f"""
