@@ -1158,8 +1158,13 @@ def main():
     col50, col51, col52 = st.columns(3)
 
     def create_insurance_status_selectbox(column, options, key):
-        selected_status = column.selectbox("Insurance Status", options, key=key)
+        # Use markdown to create a bold label
+        column.markdown(f"**Insurance Status**", unsafe_allow_html=True)
+        
+        # Now create the selectbox without a label since we've already created it with markdown
+        selected_status = column.selectbox("", options, key=key)
         return selected_status
+
 
     def display_insurance_status_selectbox(avs_insurance_status, options, key):
         selected_status = st.selectbox(
