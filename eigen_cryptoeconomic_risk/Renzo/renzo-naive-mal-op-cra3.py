@@ -1156,10 +1156,8 @@ def main():
 
     col50,col51,col52 = st.columns(3)
 
-    def display_insurance_status_selectbox(avs_insurance_status, key):
-        options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-        selected_status = st.selectbox("**Insurance Status**", options, index=options.index(avs_insurance_status) if avs_insurance_status in options else 0, key=key)
-        return selected_status
+    options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+
     
     with col50:
         
@@ -1190,13 +1188,11 @@ def main():
 
         # First, define a function to display the insurance status selectbox and return its value
         def display_insurance_status_selectbox(avs_insurance_status, key1):
-            options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-            # Display the selectbox and get the selected value
             selected_status = st.selectbox(
                 "**Insurance Status**", 
                 options, 
                 index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
-                key=key1
+                key= avs1_insurance_status
             )
             return selected_status
 
@@ -1237,13 +1233,12 @@ def main():
         )
         # First, define a function to display the insurance status selectbox and return its value
         def display_insurance_status_selectbox(avs_insurance_status, key2):
-            options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
             # Display the selectbox and get the selected value
             selected_status = st.selectbox(
                 "**Insurance Status**", 
                 options, 
                 index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
-                key=key2
+                key= avs2_insurance_status
             )
             return selected_status
         
@@ -1285,13 +1280,12 @@ def main():
 
         # First, define a function to display the insurance status selectbox and return its value
         def display_insurance_status_selectbox(avs_insurance_status, key3):
-            options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
             # Display the selectbox and get the selected value
             selected_status = st.selectbox(
                 "**Insurance Status**", 
                 options, 
                 index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
-                key=key3
+                key= avs3_insurance_status
             )
             return selected_status
 
