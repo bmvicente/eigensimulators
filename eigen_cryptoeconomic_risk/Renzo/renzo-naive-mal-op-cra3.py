@@ -1266,35 +1266,51 @@ def main():
 
 
 
-
     def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
+        high = "Bought Appropriate Amount of Insurance"
+        medium = "Bought Inappropriate Amount of Insurance"
+        low = "Didn't Buy Insurance"
+
         coverage_status = [avs1_coverage_status, avs2_coverage_status, avs3_coverage_status]
-        high_security_count = coverage_status.count(coverage_status)
-        medium_security_count = coverage_status.count(coverage_status)
-        low_security_count = coverage_status.count(coverage_status)
+        high_security_count = coverage_status.count(high)
+        medium_security_count = coverage_status.count(medium)
+        low_security_count = coverage_status.count(low)
 
+        # Determine the overall cryptoeconomic security level
         if high_security_count == 3:
-            return "Strong Cryptoeconomic Security"
-        elif high_security_count == 2 and low_security_count == 1:
-            return "Strong Cryptoeconomic Security"
-        elif high_security_count == 1 and medium_security_count == 1 and low_security_count == 1:
-            return "Strong Cryptoeconomic Security"
+            security_level = "Strong Cryptoeconomic Security"
         elif high_security_count == 2 and medium_security_count == 1:
-            return "Strong Cryptoeconomic Security"
+            security_level = "Medium Cryptoeconomic Security"
+        elif high_security_count == 2 and low_security_count == 1:
+            security_level = "Medium Cryptoeconomic Security"
+        elif high_security_count == 1 and medium_security_count == 2:
+            security_level = "Medium Cryptoeconomic Security"
         elif high_security_count == 1 and low_security_count == 2:
-            return "Strong Cryptoeconomic Security"
+            security_level = "Weak Cryptoeconomic Security"
         elif medium_security_count == 3:
-            return "Strong Cryptoeconomic Security"
+            security_level = "Medium Cryptoeconomic Security"
         elif medium_security_count == 2 and low_security_count == 1:
-            return "Strong Cryptoeconomic Security"
+            security_level = "Weak Cryptoeconomic Security"
         elif medium_security_count == 1 and low_security_count == 2:
-            return "Strong Cryptoeconomic Security"
+            security_level = "Weak Cryptoeconomic Security"
         elif low_security_count == 3:
-            return "Weak Cryptoeconomic Security"
+            security_level = "Very Weak Cryptoeconomic Security"
         else:
-            return "Strong Cryptoeconomic Security"
+            security_level = "Undefined Cryptoeconomic Security"
 
+        return f"**Cryptoeconomic Security Level:** {security_level}"
 
+        
+    # Assuming avs1_insurance_status, avs2_insurance_status, and avs3_insurance_status are defined somewhere in your code
+    cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
+        st.session_state.insurance_statuses['avs1_insurance_status'],
+        st.session_state.insurance_statuses['avs2_insurance_status'],
+        st.session_state.insurance_statuses['avs3_insurance_status']
+    )
+
+    st.markdown(cryptoeconomic_security_level, unsafe_allow_html=True)
+
+    st.write("Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operators.")
 
 
 
