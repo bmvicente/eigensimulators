@@ -1148,6 +1148,8 @@ def main():
     st.write("  \n")
 
 
+
+
     if 'insurance_statuses' not in st.session_state:
         st.session_state.insurance_statuses = {
             'avs1_insurance_status': None,
@@ -1300,30 +1302,13 @@ def main():
             security_level = "Very Weak Cryptoeconomic Security"
         else:
             security_level = "Undefined Cryptoeconomic Security"
-        return security_level
-    
-    security_level = evaluate_cryptoeconomic_security("Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance")
 
-    def generate_message_based_on_color(stake_losses_coverage, security_level):
-        if stake_losses_coverage < 0:
-            return "Hey baby"
-        else:
-            return f"""
-                <div style="font-size: 20px;"> <!-- Adjust the font size as needed -->
-                    <b>Cryptoeconomic Security Level:</b> {security_level}
-                </div>
-                """
-    
-    security_level = evaluate_cryptoeconomic_security(
-        st.session_state.insurance_statuses['avs1_insurance_status'],
-        st.session_state.insurance_statuses['avs2_insurance_status'],
-        st.session_state.insurance_statuses['avs3_insurance_status']
-    )
-
-
-    # Use the function where needed, making sure to pass in the actual 'stake_losses_coverage' and 'security_level'
-    message = generate_message_based_on_color(stake_losses_coverage, security_level)
-
+        return f"""
+        <div style="font-size: 20px;"> <!-- Adjust the font size as needed -->
+            <b>Cryptoeconomic Security Level:</b> {security_level}
+        </div>
+        """
+        
     # Assuming avs1_insurance_status, avs2_insurance_status, and avs3_insurance_status are defined somewhere in your code
     cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
         st.session_state.insurance_statuses['avs1_insurance_status'],
