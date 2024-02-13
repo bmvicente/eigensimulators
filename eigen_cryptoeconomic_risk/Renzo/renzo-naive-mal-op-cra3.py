@@ -1147,6 +1147,22 @@ def main():
 
     st.write("  \n")
 
+    
+    def update_insurance_statuses():
+        # Example logic to update the insurance status
+        # You would replace this with your actual logic
+        # For demonstration, I'm just toggling the status
+        new_status = "Bought Appropriate Amount of Insurance"
+        st.session_state.insurance_statuses['avs1_insurance_status'] = new_status
+        st.session_state.insurance_statuses['avs2_insurance_status'] = new_status
+        st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
+        # Here, you could also recalculate anything that depends on these statuses
+
+    # Button to perform the update
+    if st.button('Update Insurance Statuses'):
+        update_insurance_statuses()
+
+
 
     if 'insurance_statuses' not in st.session_state:
         st.session_state.insurance_statuses = {
@@ -1317,7 +1333,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown('<p style="">&#8226; Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operators.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="">&#8226; Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operator(s).</p>', unsafe_allow_html=True)
 
 
 
