@@ -1148,195 +1148,231 @@ def main():
     st.write("  \n")
 
 
-
-
-    if 'insurance_statuses' not in st.session_state:
-        st.session_state.insurance_statuses = {
-            'avs1_insurance_status': None,
-            'avs2_insurance_status': None,
-            'avs3_insurance_status': None
-        }
-
-    col50, col51, col52 = st.columns(3)
-
-    def create_insurance_status_selectbox(column, options, key):
-        selected_status = column.selectbox("Insurance Status", options, key=key)
-        return selected_status
-
-    def display_insurance_status_selectbox(avs_insurance_status, options, key):
-        selected_status = st.selectbox(
-            "**Insurance Status**", 
-            options, 
-            index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
-            key=key
-        )
-        return selected_status
-
-    insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-
-    with col50: 
-        background_color1 = "#90EE90" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1] else "#ff6666"
-        st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color1};">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    <div style="display: block;">
-                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
-                    </div>
-                    <div style="display: block; margin-top: 5px;">
-                        AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+    # Define a function to evaluate and update the display based on current selections
+    def update_display_based_on_insurance():
+        # Calculate total stake losses and insurance reserve as before
+        total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
+        stakesure_insurance_reserve = st.session_state.post_slash_total_restaked / 2
+        stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
         
-        st.write("  \n")
-
-        avs1_insurance_status_temp = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status")
-
-
-    with col51:
-        background_color2 = "#90EE90" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1] else "#ff6666"
-        st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color2};">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    <div style="display: block;">
-                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
-                    </div>
-                    <div style="display: block; margin-top: 5px;">
-                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
-        
-        st.write("  \n")
-
-        avs2_insurance_status_temp = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status")
-
-
-    with col52:
-        background_color3 = "#90EE90" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1] else "#ff6666"
-        st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color3};">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    <div style="display: block;">
-                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
-                    </div>
-                    <div style="display: block; margin-top: 5px;">
-                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
-
-        st.write("  \n")
-
-        avs3_insurance_status_temp = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status")
-
-    # Update session state dictionary
-    st.session_state.insurance_statuses['avs1_insurance_status'] = avs1_insurance_status_temp
-    st.session_state.insurance_statuses['avs2_insurance_status'] = avs2_insurance_status_temp
-    st.session_state.insurance_statuses['avs3_insurance_status'] = avs3_insurance_status_temp
-
-    st.write("  \n")
-    st.write("  \n")
-
-
-    def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
-        high = "Bought Appropriate Amount of Insurance"
-        medium = "Bought Inappropriate Amount of Insurance"
-        low = "Didn't Buy Insurance"
-
-        coverage_status = [avs1_coverage_status, avs2_coverage_status, avs3_coverage_status]
-        high_security_count = coverage_status.count(high)
-        medium_security_count = coverage_status.count(medium)
-        low_security_count = coverage_status.count(low)
-
-        # Determine the overall cryptoeconomic security level
-        if high_security_count == 3:
-            security_level = "Strong Cryptoeconomic Security"
-        elif high_security_count == 2 and medium_security_count == 1:
-            security_level = "Medium Cryptoeconomic Security"
-        elif high_security_count == 2 and low_security_count == 1:
-            security_level = "Medium Cryptoeconomic Security"
-        elif high_security_count == 1 and medium_security_count == 2:
-            security_level = "Medium Cryptoeconomic Security"
-        elif high_security_count == 1 and low_security_count == 2:
-            security_level = "Weak Cryptoeconomic Security"
-        elif high_security_count == 1 and medium_security_count == 1 and low_security_count == 1:
-            security_level = "Weak Cryptoeconomic Security"
-        elif medium_security_count == 3:
-            security_level = "Medium Cryptoeconomic Security"
-        elif medium_security_count == 2 and low_security_count == 1:
-            security_level = "Weak Cryptoeconomic Security"
-        elif medium_security_count == 1 and low_security_count == 2:
-            security_level = "Weak Cryptoeconomic Security"
-        elif low_security_count == 3:
-            security_level = "Very Weak Cryptoeconomic Security"
+        # Check if the insurance coverage is sufficient
+        if stake_losses_coverage < 0:
+            # Set global flag to indicate the system has been compromised
+            st.session_state.system_compromised = True
         else:
-            security_level = "Undefined Cryptoeconomic Security"
-
-        return f"""
-        <div style="font-size: 20px;"> <!-- Adjust the font size as needed -->
-            <b>Cryptoeconomic Security Level:</b> {security_level}
-        </div>
-        """
+            st.session_state.system_compromised = False
         
-    # Assuming avs1_insurance_status, avs2_insurance_status, and avs3_insurance_status are defined somewhere in your code
-    cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
-        st.session_state.insurance_statuses['avs1_insurance_status'],
-        st.session_state.insurance_statuses['avs2_insurance_status'],
-        st.session_state.insurance_statuses['avs3_insurance_status']
-    )
+        # Update the insurance statuses based on the current selection
+        for key in ['avs1_insurance_status', 'avs2_insurance_status', 'avs3_insurance_status']:
+            st.session_state.insurance_statuses[key] = st.session_state[key]
 
-    st.markdown(cryptoeconomic_security_level, unsafe_allow_html=True)
+    # Initialize a flag in session_state to track if the system has been compromised
+    if 'system_compromised' not in st.session_state:
+        st.session_state.system_compromised = False
 
-    st.write("\n")
+    # Button to perform the update and check conditions
+    if st.button('Update Insurance Statuses'):
+        update_display_based_on_insurance()
 
-    st.markdown('<p style="">&#8226; Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operator(s).</p>', unsafe_allow_html=True)
+    # After button press logic
+    if st.session_state.system_compromised:
+        # System has been compromised, update the UI accordingly
+        st.markdown("""
+            <div style="background-color: #ff6666; padding: 10px; border-radius: 5px;">
+                <h2 style="color: white; text-align: center;">The system has been compromised due to lack of cryptoeconomic security</h2>
+            </div>
+            """, unsafe_allow_html=True)
+    else:
+       
 
-    def update_insurance_statuses():
-        # Example logic to update the insurance status
-        # You would replace this with your actual logic
-        # For demonstration, I'm just toggling the status
-        new_status = "Bought Appropriate Amount of Insurance"
-        st.session_state.insurance_statuses['avs1_insurance_status'] = new_status
-        st.session_state.insurance_statuses['avs2_insurance_status'] = new_status
-        st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
-        # Here, you could also recalculate anything that depends on these statuses
 
-    st.write("\n")
+        if 'insurance_statuses' not in st.session_state:
+            st.session_state.insurance_statuses = {
+                'avs1_insurance_status': None,
+                'avs2_insurance_status': None,
+                'avs3_insurance_status': None
+            }
 
-    # Button to perform the update
-    if st.button('**Update Insurance Statuses**'):
-        update_insurance_statuses()
+        col50, col51, col52 = st.columns(3)
+
+        def create_insurance_status_selectbox(column, options, key):
+            selected_status = column.selectbox("Insurance Status", options, key=key)
+            return selected_status
+
+        def display_insurance_status_selectbox(avs_insurance_status, options, key):
+            selected_status = st.selectbox(
+                "**Insurance Status**", 
+                options, 
+                index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
+                key=key
+            )
+            return selected_status
+
+        insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+
+        with col50: 
+            background_color1 = "#90EE90" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1] else "#ff6666"
+            st.markdown(
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: {background_color1};">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
+                        </div>
+                        <div style="display: block; margin-top: 5px;">
+                            AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
+                        </div>
+                    </h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+            
+            st.write("  \n")
+
+            avs1_insurance_status_temp = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status")
+
+
+        with col51:
+            background_color2 = "#90EE90" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1] else "#ff6666"
+            st.markdown(
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: {background_color2};">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
+                        </div>
+                        <div style="display: block; margin-top: 5px;">
+                            AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
+                        </div>
+                    </h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+            
+            st.write("  \n")
+
+            avs2_insurance_status_temp = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status")
+
+
+        with col52:
+            background_color3 = "#90EE90" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1] else "#ff6666"
+            st.markdown(
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: {background_color3};">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
+                        </div>
+                        <div style="display: block; margin-top: 5px;">
+                            AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
+                        </div>
+                    </h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+            st.write("  \n")
+
+            avs3_insurance_status_temp = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status")
+
+        # Update session state dictionary
+        st.session_state.insurance_statuses['avs1_insurance_status'] = avs1_insurance_status_temp
+        st.session_state.insurance_statuses['avs2_insurance_status'] = avs2_insurance_status_temp
+        st.session_state.insurance_statuses['avs3_insurance_status'] = avs3_insurance_status_temp
+
+        st.write("  \n")
+        st.write("  \n")
+
+
+        def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
+            high = "Bought Appropriate Amount of Insurance"
+            medium = "Bought Inappropriate Amount of Insurance"
+            low = "Didn't Buy Insurance"
+
+            coverage_status = [avs1_coverage_status, avs2_coverage_status, avs3_coverage_status]
+            high_security_count = coverage_status.count(high)
+            medium_security_count = coverage_status.count(medium)
+            low_security_count = coverage_status.count(low)
+
+            # Determine the overall cryptoeconomic security level
+            if high_security_count == 3:
+                security_level = "Strong Cryptoeconomic Security"
+            elif high_security_count == 2 and medium_security_count == 1:
+                security_level = "Medium Cryptoeconomic Security"
+            elif high_security_count == 2 and low_security_count == 1:
+                security_level = "Medium Cryptoeconomic Security"
+            elif high_security_count == 1 and medium_security_count == 2:
+                security_level = "Medium Cryptoeconomic Security"
+            elif high_security_count == 1 and low_security_count == 2:
+                security_level = "Weak Cryptoeconomic Security"
+            elif high_security_count == 1 and medium_security_count == 1 and low_security_count == 1:
+                security_level = "Weak Cryptoeconomic Security"
+            elif medium_security_count == 3:
+                security_level = "Medium Cryptoeconomic Security"
+            elif medium_security_count == 2 and low_security_count == 1:
+                security_level = "Weak Cryptoeconomic Security"
+            elif medium_security_count == 1 and low_security_count == 2:
+                security_level = "Weak Cryptoeconomic Security"
+            elif low_security_count == 3:
+                security_level = "Very Weak Cryptoeconomic Security"
+            else:
+                security_level = "Undefined Cryptoeconomic Security"
+
+            return f"""
+            <div style="font-size: 20px;"> <!-- Adjust the font size as needed -->
+                <b>Cryptoeconomic Security Level:</b> {security_level}
+            </div>
+            """
+            
+        # Assuming avs1_insurance_status, avs2_insurance_status, and avs3_insurance_status are defined somewhere in your code
+        cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
+            st.session_state.insurance_statuses['avs1_insurance_status'],
+            st.session_state.insurance_statuses['avs2_insurance_status'],
+            st.session_state.insurance_statuses['avs3_insurance_status']
+        )
+
+        st.markdown(cryptoeconomic_security_level, unsafe_allow_html=True)
+
+        st.write("\n")
+
+        st.markdown('<p style="">&#8226; Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operator(s).</p>', unsafe_allow_html=True)
+
+        def update_insurance_statuses():
+            # Example logic to update the insurance status
+            # You would replace this with your actual logic
+            # For demonstration, I'm just toggling the status
+            new_status = "Bought Appropriate Amount of Insurance"
+            st.session_state.insurance_statuses['avs1_insurance_status'] = new_status
+            st.session_state.insurance_statuses['avs2_insurance_status'] = new_status
+            st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
+            # Here, you could also recalculate anything that depends on these statuses
+
+        st.write("\n")
+
+        # Button to perform the update
+        if st.button('**Update Insurance Statuses**'):
+            update_insurance_statuses()
 
 
 
