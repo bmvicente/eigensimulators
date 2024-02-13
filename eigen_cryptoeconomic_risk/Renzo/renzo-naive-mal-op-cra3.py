@@ -1148,15 +1148,15 @@ def main():
     st.write("  \n")
 
 
+
+    col50,col51,col52 = st.columns(3)
+    
     def insurance_status_selectbox(key, label="**Insurance Status**"):
         options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
         default_index = options.index("Bought Appropriate Amount of Insurance")  # Default to the first option if not already set
         # Display the selectbox and return the selected value
         return st.selectbox(label, options, index=default_index, key=key)
-
-
-
-    col50,col51,col52 = st.columns(3)
+    
     with col50:
         
         avs1_insurance_status = insurance_status_selectbox("avs1_insurance_status")
