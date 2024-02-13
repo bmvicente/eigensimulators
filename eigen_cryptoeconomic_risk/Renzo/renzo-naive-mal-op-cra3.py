@@ -1154,17 +1154,13 @@ def main():
         # Display the selectbox and return the selected value
         return st.selectbox(label, options, index=default_index, key=key)
 
-    # Use the function to display selectboxes and get their values
-    avs1_insurance_status = insurance_status_selectbox("avs1_insurance_status")
-    avs2_insurance_status = insurance_status_selectbox("avs2_insurance_status")
-    avs3_insurance_status = insurance_status_selectbox("avs3_insurance_status")
-
-
 
 
 
     col50,col51,col52 = st.columns(3)
     with col50:
+        
+        avs1_insurance_status = insurance_status_selectbox("avs1_insurance_status")
 
         # First, define a function to display the insurance status selectbox and return its value
         def display_insurance_status_selectbox(avs_insurance_status, key):
@@ -1210,6 +1206,8 @@ def main():
 
 
     with col51:
+        
+        avs2_insurance_status = insurance_status_selectbox("avs2_insurance_status")
 
         # First, define a function to display the insurance status selectbox and return its value
         def display_insurance_status_selectbox(avs_insurance_status, key):
@@ -1253,8 +1251,11 @@ def main():
 
 
 
+
+
     with col52:
 
+        avs3_insurance_status = insurance_status_selectbox("avs3_insurance_status")
 
         # First, define a function to display the insurance status selectbox and return its value
         def display_insurance_status_selectbox(avs_insurance_status, key):
