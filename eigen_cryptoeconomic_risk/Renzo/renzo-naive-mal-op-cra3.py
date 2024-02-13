@@ -675,6 +675,7 @@ def main():
             unsafe_allow_html=True
         )
         
+        st.write("\n")
 
         final_result_service_1_calc = f"""
         <div style="text-align: center;">
@@ -828,6 +829,7 @@ def main():
             unsafe_allow_html=True
         )
 
+        st.write("\n")
 
         final_result_service_2_calc = f"""
         <div style="text-align: center;">
@@ -982,6 +984,7 @@ def main():
             unsafe_allow_html=True
         )
 
+        st.write("\n")
 
         final_result_service_3_calc = f"""
             <div style="text-align: center;">
