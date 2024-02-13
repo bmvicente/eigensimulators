@@ -1156,11 +1156,17 @@ def main():
 
 
 
-    def insurance_status_selectbox(key, label="**Insurance Status**"):
-        options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-        default_index = options.index("Bought Appropriate Amount of Insurance")  # Default to the first option if not already set
-        # Display the selectbox and return the selected value
-        return st.selectbox(label, options, key=key)
+    # Define your options once
+    options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+
+    # Define a function to create a selectbox and return its selected value
+    def insurance_status_selectbox(column, insurance_key):
+        selected_status = column.selectbox(
+            "**Insurance Status**", 
+            options, 
+            key=insurance_key  # Ensure this key is unique for each selectbox
+        )
+        return selected_status
 
 
     col50,col51,col52 = st.columns(3)
