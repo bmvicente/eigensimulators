@@ -1300,8 +1300,11 @@ def main():
         else:
             security_level = "Undefined Cryptoeconomic Security"
 
-        return f"**Cryptoeconomic Security Level:** {security_level}"
-
+        return f"""
+        <div style="font-size: 20px;"> <!-- Adjust the font size as needed -->
+            <b>Cryptoeconomic Security Level:</b> {security_level}
+        </div>
+        """
         
     # Assuming avs1_insurance_status, avs2_insurance_status, and avs3_insurance_status are defined somewhere in your code
     cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
