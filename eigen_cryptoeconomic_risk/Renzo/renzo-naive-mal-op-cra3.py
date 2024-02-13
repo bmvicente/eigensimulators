@@ -690,7 +690,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${final_result_service_1:,.2f}</span>
+            <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${final_result_service_1:,.2f}</span>
             <div style="text-align: center; margin-top: 10px;">
             <span style="font-size: 16px; font-weight: bold;">(Actual Stake Loss * Risk Score * Category * CoC <> PfC Threshold = AVS1 Total Compounded Stake Loss)</span>
         </div>
