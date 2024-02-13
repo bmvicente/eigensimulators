@@ -1264,6 +1264,8 @@ def main():
     st.session_state.insurance_statuses['avs3_insurance_status'] = avs3_insurance_status_temp
 
 
+    st.write("  \n")
+    st.write("  \n")
 
 
     def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
