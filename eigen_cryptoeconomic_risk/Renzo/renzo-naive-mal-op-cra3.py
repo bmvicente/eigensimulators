@@ -434,7 +434,7 @@ def main():
     risk_evaluation = evaluate_risks(risk_category1, risk_category2, risk_category3)
 
 
-    final_result_service_1 = risk_evaluation * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_1 = actual_stake_loss * risk_evaluation * service_categories_evaluation_result * conditions_evaluation_result
 
 
 
