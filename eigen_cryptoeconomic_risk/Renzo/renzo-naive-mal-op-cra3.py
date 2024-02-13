@@ -1317,7 +1317,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown('<p style=">&#8226; Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operators.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="">&#8226; Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operators.</p>', unsafe_allow_html=True)
 
 
 
