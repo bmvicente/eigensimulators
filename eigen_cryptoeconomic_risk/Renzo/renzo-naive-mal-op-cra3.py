@@ -322,25 +322,29 @@ def main():
                 unsafe_allow_html=True
             )
 
+        # Determine the background color based on the condition
+        background_color = "#ff9999" if actual_stake_loss > pre_slash_max_slash_allowed else "#FFC0CB"  # pink for less, red for more
+
         st.markdown(
-                    f"""
-                    <div style="
-                        border: 2px solid;
-                        border-radius: 2px;
-                        padding: 5px;
-                        text-align: center;
-                        margin: 5px 0;
-                        background-color: white;">
-                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                            <div style="display: block;">
-                                <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
-                                Actual Stake Loss: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
-                            </div>
-                        </h2>
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: {background_color};">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
+                        Actual Stake Loss: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
                     </div>
-                    """, 
-                    unsafe_allow_html=True
-                )
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
             
     st.write("\n")
 
