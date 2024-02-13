@@ -411,9 +411,9 @@ def main():
             return 'high_risk'
         
     risk_numeric = {
-        'low_risk': 1,
-        'medium_risk': 2,
-        'high_risk': 3}
+        'low_risk': 1.00,
+        'medium_risk': 1.05,
+        'high_risk': 1.10}
 
     def individual_risk_evaluation(risk_score):
         category = categorize_risk(risk_score)
@@ -426,23 +426,23 @@ def main():
         low_risk_count = categories.count('low_risk')
 
         if high_risk_count == 3:
-            adjustment = 1.50
+            adjustment = 0.50
         elif high_risk_count == 2 and medium_risk_count == 1:
-            adjustment = 1.375
+            adjustment = 0.375
         elif high_risk_count == 2 and low_risk_count == 1:
-            adjustment = 1.30
+            adjustment = 0.30
         elif high_risk_count == 1 and medium_risk_count == 1 and low_risk_count == 1:
-            adjustment = 1.225
+            adjustment = 0.225
         elif medium_risk_count == 3:
-            adjustment = 1.20
+            adjustment = 0.20
         elif medium_risk_count == 2 and low_risk_count == 1:
-            adjustment = 1.15
+            adjustment = 0.15
         elif high_risk_count == 1 and low_risk_count == 2:
-            adjustment = 1.12
+            adjustment = 0.12
         elif medium_risk_count == 1 and low_risk_count == 2:
-            adjustment = 1.10
+            adjustment = 0.10
         elif low_risk_count == 3:
-            adjustment = 1.05
+            adjustment = 0.05
         else:
             adjustment = 0
 
