@@ -1039,6 +1039,7 @@ def main():
     st.markdown('<p style="font-weight: bold; font-size: 1.2em;">NEXT...</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Proposed Minimum AVS TVL and TVL caps</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold; display: inline;"><s>&#8226; Risks Based on AVS Nature</s></p><span style="font-weight: normal; display: inline;"><s> (data availability, keeper networks, oracles, bridges, etc.)</s></span>', unsafe_allow_html=True)
 
     st.write("  \n")
     st.write("  \n")
