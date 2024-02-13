@@ -1175,7 +1175,7 @@ def main():
     insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
 
     with col50: 
-        background_color1 = "#90EE90" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1] else "#FFB6C1"
+        background_color1 = "#90EE90" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1] else "#ff6666"
         st.markdown(
             f"""
             <div style="
@@ -1277,7 +1277,7 @@ def main():
         # Here, you could also recalculate anything that depends on these statuses
 
     st.write("\n")
-    
+
     # Button to perform the update
     if st.button('**Update Insurance Statuses**'):
         update_insurance_statuses()
