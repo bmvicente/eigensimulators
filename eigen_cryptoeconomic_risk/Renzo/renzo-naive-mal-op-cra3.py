@@ -249,7 +249,7 @@ def main():
 
         st.markdown(display_text, unsafe_allow_html=True)
 
-        
+        # ff6666
 
 
 
@@ -679,6 +679,8 @@ def main():
 
         final_result_service_1_calc = f"""
         <div style="text-align: center;">
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{actual_stake_loss}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
