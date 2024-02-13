@@ -1160,16 +1160,16 @@ def main():
     insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
 
     def create_insurance_status_selectbox(column, key):
-        return column.selectbox("Insurance Status", insurance_options, key=key)
-
+        selected_status = column.selectbox("Insurance Status", insurance_options, key=key)
+        return selected_status
 
     col50,col51,col52 = st.columns(3)
     
     with col50:
-        
-        avs1_insurance_status = create_insurance_status_selectbox(col50, "avs1_insurance_status")
+
+        avs1_insurance_status = create_insurance_status_selectbox(col50, "avs1_insurance_status_key")
         background_color1 = "#90EE90" if avs1_insurance_status == insurance_options[0] else "#FFFF00" if avs1_insurance_status == insurance_options[1] else "#ff6666"
-        
+
         st.markdown(
             f"""
             <div style="
@@ -1211,7 +1211,7 @@ def main():
 
     with col51:
         
-        avs2_insurance_status = create_insurance_status_selectbox(col51, "avs2_insurance_status")
+        avs2_insurance_status = create_insurance_status_selectbox(col51, "avs2_insurance_status_key")
         background_color2 = "#90EE90" if avs2_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
 
         st.markdown(
@@ -1254,8 +1254,8 @@ def main():
 
 
     with col52:
-
-        avs3_insurance_status = create_insurance_status_selectbox(col52, "avs3_insurance_status")
+        
+        avs3_insurance_status = create_insurance_status_selectbox(col52, "avs3_insurance_status_key")
         background_color3 = "#90EE90" if avs3_insurance_status == insurance_options[0] else "#FFFF00" if avs3_insurance_status == insurance_options[1] else "#ff6666"
 
         st.markdown(
