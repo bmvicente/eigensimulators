@@ -792,7 +792,7 @@ def main():
         
         st.write("  \n")
 
-        st.session_state.avs2_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs2_category")
+        st.session_state.avs2_category = st.selectbox("**AVS Category** ", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs2_category")
 
         st.write("  \n")
 
@@ -932,7 +932,7 @@ def main():
         
         st.write("  \n")
 
-        st.session_state.avs3_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs3_category")
+        st.session_state.avs3_category = st.selectbox("**AVS Category**  ", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs3_category")
 
         st.write("  \n")
 
