@@ -1196,8 +1196,8 @@ def main():
         def display_insurance_status_selectbox(avs_insurance_status, key1):
             selected_status = st.selectbox(
                 "**Insurance Status**", 
-                options, 
-                index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
+                insurance_options, 
+                index=insurance_options.index(avs_insurance_status) if avs_insurance_status in insurance_options else 0,
                 key= avs1_insurance_status
             )
             return selected_status
@@ -1240,8 +1240,8 @@ def main():
             # Display the selectbox and get the selected value
             selected_status = st.selectbox(
                 "**Insurance Status** ", 
-                options, 
-                index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
+                insurance_options, 
+                index=insurance_options.index(avs_insurance_status) if avs_insurance_status in insurance_options else 0,
                 key= avs2_insurance_status
             )
             return selected_status
@@ -1286,8 +1286,8 @@ def main():
             # Display the selectbox and get the selected value
             selected_status = st.selectbox(
                 "**Insurance Status**  ", 
-                options, 
-                index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
+                insurance_options, 
+                index=insurance_options.index(avs_insurance_status) if avs_insurance_status in insurance_options else 0,
                 key= avs3_insurance_status
             )
             return selected_status
