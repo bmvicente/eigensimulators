@@ -1147,20 +1147,26 @@ def main():
 
     st.write("  \n")
 
-    if 'avs1_insurance_status' not in st.session_state:
-        st.session_state.avs1_insurance_status = "Bought Appropriate Amount of Insurance"
-    if 'avs2_insurance_status' not in st.session_state:
-        st.session_state.avs2_insurance_status = "Bought Appropriate Amount of Insurance"
-    if 'avs3_insurance_status' not in st.session_state:
-        st.session_state.avs3_insurance_status = "Bought Appropriate Amount of Insurance"
+
+    def insurance_status_selectbox(key, label="**Insurance Status**"):
+        options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+        default_index = options.index("Bought Appropriate Amount of Insurance")  # Default to the first option if not already set
+        # Display the selectbox and return the selected value
+        return st.selectbox(label, options, index=default_index, key=key)
+
+    # Use the function to display selectboxes and get their values
+    avs1_insurance_status = insurance_status_selectbox("avs1_insurance_status")
+    avs2_insurance_status = insurance_status_selectbox("avs2_insurance_status")
+    avs3_insurance_status = insurance_status_selectbox("avs3_insurance_status")
+
 
 
     col50,col51,col52 = st.columns(3)
     with col50:
 
-        if st.session_state.avs1_insurance_status == "Bought Appropriate Amount of Insurance":
+        if avs1_insurance_status == "Bought Appropriate Amount of Insurance":
             background_color1 = "#90EE90"  # Green
-        elif st.session_state.avs1_insurance_status == "Bought Inappropriate Amount of Insurance":
+        elif avs1_insurance_status == "Bought Inappropriate Amount of Insurance":
             background_color1 = "#FFFF00"  # Yellow
         else:  # "Didn't Buy Insurance"
             background_color1 = "#ff6666"  # Red
@@ -1187,18 +1193,12 @@ def main():
             unsafe_allow_html=True
         )
 
-        st.session_state.avs1_insurance_status = st.selectbox(
-            "**AVS1 Insurance Status**",
-            ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"],
-            key="avs1_insurance_status"  # Ensure this key is unique if using multiple selectboxes
-        )
-
 
     with col51:
 
-        if st.session_state.avs2_insurance_status == "Bought Appropriate Amount of Insurance":
+        if avs2_insurance_status == "Bought Appropriate Amount of Insurance":
             background_color2 = "#90EE90"  # Green
-        elif st.session_state.avs2_insurance_status == "Bought Inappropriate Amount of Insurance":
+        elif avs2_insurance_status == "Bought Inappropriate Amount of Insurance":
             background_color2 = "#FFFF00"  # Yellow
         else:  # "Didn't Buy Insurance"
             background_color2 = "#ff6666"  # Red
@@ -1225,18 +1225,12 @@ def main():
             unsafe_allow_html=True
         )
 
-        st.session_state.avs2_insurance_status = st.selectbox(
-            "**AVS2 Insurance Status**",
-            ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"],
-            key="avs2_insurance_status"  # Ensure this key is unique if using multiple selectboxes
-        )
-
 
     with col52:
 
-        if st.session_state.avs3_insurance_status == "Bought Appropriate Amount of Insurance":
+        if avs3_insurance_status == "Bought Appropriate Amount of Insurance":
             background_color3 = "#90EE90"  # Green
-        elif st.session_state.avs3_insurance_status == "Bought Inappropriate Amount of Insurance":
+        elif avs3_insurance_status == "Bought Inappropriate Amount of Insurance":
             background_color3 = "#FFFF00"  # Yellow
         else:  # "Didn't Buy Insurance"
             background_color3 = "#ff6666"  # Red
@@ -1261,12 +1255,6 @@ def main():
             </div>
             """, 
             unsafe_allow_html=True
-        )
-
-        st.session_state.avs3_insurance_status = st.selectbox(
-            "**AVS3 Insurance Status**",
-            ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"],
-            key="avs3_insurance_status"  # Ensure this key is unique if using multiple selectboxes
         )
 
 
