@@ -1183,7 +1183,7 @@ def main():
                 text-align: center;
                 margin: 5px 0;
                 background-color: {background_color1};">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
                     </div>
@@ -1212,7 +1212,7 @@ def main():
                 text-align: center;
                 margin: 5px 0;
                 background-color: {background_color2};">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
                     </div>
@@ -1241,7 +1241,7 @@ def main():
                 text-align: center;
                 margin: 5px 0;
                 background-color: {background_color3};">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
                     </div>
