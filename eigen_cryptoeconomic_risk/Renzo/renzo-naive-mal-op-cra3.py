@@ -559,7 +559,7 @@ def main():
         st.write("\n")
 
         with st.expander("Logic"):
-            st.markdown("""
+            st.markdown("""Default slash for a malicious Operator attack is 100% of the Operator's stake.
                         """)
         
         st.write("\n")
