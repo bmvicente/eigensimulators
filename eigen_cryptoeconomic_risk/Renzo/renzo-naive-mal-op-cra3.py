@@ -1196,7 +1196,7 @@ def main():
         )
 
         # First, define a function to display the insurance status selectbox and return its value
-        def display_insurance_status_selectbox(avs_insurance_status, key1):
+        def display_insurance_status_selectbox(avs_insurance_status):
             selected_status = st.selectbox(
                 "**Insurance Status**", 
                 options, 
@@ -1214,7 +1214,7 @@ def main():
 
     with col51:
         
-        avs2_insurance_status = insurance_status_selectbox("avs2_insurance_stat1us")
+        avs2_insurance_status = insurance_status_selectbox("avs2_insurance_status")
 
 
         # First, display the markdown with conditional formatting
@@ -1241,7 +1241,7 @@ def main():
             unsafe_allow_html=True
         )
         # First, define a function to display the insurance status selectbox and return its value
-        def display_insurance_status_selectbox(avs_insurance_status, key2):
+        def display_insurance_status_selectbox(avs_insurance_status):
             # Display the selectbox and get the selected value
             selected_status = st.selectbox(
                 "**Insurance Status** ", 
@@ -1288,7 +1288,7 @@ def main():
 
 
         # First, define a function to display the insurance status selectbox and return its value
-        def display_insurance_status_selectbox(avs_insurance_status, key3):
+        def display_insurance_status_selectbox(avs_insurance_status):
             # Display the selectbox and get the selected value
             selected_status = st.selectbox(
                 "**Insurance Status**  ", 
