@@ -689,7 +689,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${final_result_service_1:,.2f}</span>
             <div style="text-align: center; margin-top: 10px;">
-            <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Likelihood * Impact = Weighted Overall Risk for Parameter)</span>
+            <span style="font-size: 16px; font-weight: bold;">(Actual Stake Loss * Risk Score * Category * CoC <> PfC Threshold = AVS1 Total Compounded Stake Loss)</span>
         </div>
         """
 
