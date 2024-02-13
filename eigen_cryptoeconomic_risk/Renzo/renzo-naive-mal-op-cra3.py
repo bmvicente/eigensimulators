@@ -679,7 +679,7 @@ def main():
                     <div style="
                         border: 1px solid;
                         border-radius: 2px;
-                        padding: 15px;
+                        padding: 13px;
                         text-align: center;
                         margin: 5px 0;
                         background-color: white;">
