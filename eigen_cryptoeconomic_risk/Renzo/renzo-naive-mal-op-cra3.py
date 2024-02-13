@@ -1122,7 +1122,7 @@ def main():
     
 
     background_color = "#90EE90" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
-    message = "Enough to Cover Stake Losses" if stake_losses_coverage >= 0 else "Not Enough to Cover Stake Losses"
+    message = "(Enough to Cover Stake Losses)" if stake_losses_coverage >= 0 else "(Not Enough to Cover Stake Losses)"
 
     st.markdown(
         f"""
