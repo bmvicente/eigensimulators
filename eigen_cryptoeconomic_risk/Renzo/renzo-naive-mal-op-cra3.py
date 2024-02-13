@@ -805,6 +805,7 @@ def main():
 
                 st.write("  \n")
                 st.write("  \n")
+                st.write("  \n")
 
                 def get_display_text(pre_slash_max_slash_allowed):
                     max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
@@ -964,6 +965,7 @@ def main():
         with col13:
                 st.session_state.risk_score3 = create_risk_score_input('risk_score3', "**AVS Risk Score**  ")
                 
+                st.write("  \n")
                 st.write("  \n")
                 st.write("  \n")
 
