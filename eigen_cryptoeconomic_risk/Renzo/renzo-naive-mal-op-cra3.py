@@ -1209,7 +1209,7 @@ def main():
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
+                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1247,7 +1247,7 @@ def main():
                         <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
+                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
                     </div>
                 </h2>
             </div>
