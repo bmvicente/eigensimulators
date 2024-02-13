@@ -1102,10 +1102,38 @@ def main():
 
 
 
+
+
+    #############################
+    ######### STAKESURE #########
+    #############################
+
+
     st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *StakeSure Approach*")
 
     st.write("  \n")
     st.write("  \n")
+
+    stakesure_insurance_reserve = st.session_state.post_slash_total_restaked / 2
+
+    st.markdown(
+                f"""
+                <div style="
+                    border: 1px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                        <div style="display: block; margin-top: 5px;">
+                            StakeSure -- Insurance Available Reserve: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
+                        </div>
+                    </h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
 
     col50,col51,col52 = st.columns(3)
     with col50:
@@ -1130,7 +1158,9 @@ def main():
             </div>
             """, 
             unsafe_allow_html=True
-        )  
+        )
+
+        st.selectbox("AVS1 Insurance Status", ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"])
 
     with col51:
 
@@ -1155,6 +1185,9 @@ def main():
             """, 
             unsafe_allow_html=True
         )       
+
+        st.selectbox("AVS2 Insurance Status", ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"])
+
 
     with col52:
 
@@ -1181,6 +1214,7 @@ def main():
         )  
 
 
+        st.selectbox("AVS3 Insurance Status", ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"])
 
 
 
