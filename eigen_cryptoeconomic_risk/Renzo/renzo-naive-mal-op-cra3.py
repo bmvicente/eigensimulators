@@ -1164,9 +1164,6 @@ def main():
 
 
     col50,col51,col52 = st.columns(3)
-
-    options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-
     
     with col50:
         
