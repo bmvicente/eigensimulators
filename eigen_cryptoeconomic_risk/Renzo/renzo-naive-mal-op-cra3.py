@@ -420,9 +420,9 @@ def main():
             return 0  # Ensure a numeric return
 
 
-    evaluate_avs1_category = st.session_state.avs1_category
-    evaluate_avs2_category = st.session_state.avs2_category
-    evaluate_avs3_category = st.session_state.avs3_category
+    evaluate_avs1_category = st.session_state.avs1_category_key
+    evaluate_avs2_category = st.session_state.avs2_category_key
+    evaluate_avs3_category = st.session_state.avs3_category_key
 
     service_categories_evaluation_result = evaluate_service_categories(evaluate_avs1_category, evaluate_avs2_category, evaluate_avs3_category)
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
@@ -655,7 +655,7 @@ def main():
 
         st.write("  \n")
 
-        st.session_state.avs1_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avs1_category")
+        st.session_state.avs1_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avs1_category_key")
         
         st.write("  \n")
 
@@ -795,7 +795,7 @@ def main():
         
         st.write("  \n")
 
-        st.session_state.avs2_category = st.selectbox("**AVS Category** ", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs2_category")
+        st.session_state.avs2_category = st.selectbox("**AVS Category** ", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs2_category_key")
 
         st.write("  \n")
 
@@ -935,7 +935,7 @@ def main():
         
         st.write("  \n")
 
-        st.session_state.avs3_category = st.selectbox("**AVS Category**  ", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs3_category")
+        st.session_state.avs3_category = st.selectbox("**AVS Category**  ", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs3_category_key")
 
         st.write("  \n")
 
