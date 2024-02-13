@@ -1301,6 +1301,8 @@ def main():
         else:
             security_level = "Undefined Cryptoeconomic Security"
         return security_level
+    
+    security_level = evaluate_cryptoeconomic_security("Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance")
 
     def generate_message_based_on_color(stake_losses_coverage, security_level):
         if stake_losses_coverage < 0:
@@ -1313,7 +1315,7 @@ def main():
                 """
 
     # Use the function where needed, making sure to pass in the actual 'stake_losses_coverage' and 'security_level'
-    message = generate_message_based_on_color(stake_losses_coverage)
+    message = generate_message_based_on_color(stake_losses_coverage, security_level)
 
     # Assuming avs1_insurance_status, avs2_insurance_status, and avs3_insurance_status are defined somewhere in your code
     cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
