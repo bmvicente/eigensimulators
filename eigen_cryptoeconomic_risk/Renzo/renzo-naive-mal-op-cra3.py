@@ -1121,13 +1121,13 @@ def main():
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
     
 
-    background_color = "#90EE90" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
+    background_color = "3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
     message = "(Enough to Cover Stake Losses)" if stake_losses_coverage >= 0 else "(Not Enough to Cover Stake Losses)"
 
     st.markdown(
         f"""
         <div style="
-            border: 1px solid;
+            border: 2px solid;
             border-radius: 2px;
             padding: 5px;
             text-align: center;
@@ -1135,7 +1135,7 @@ def main():
             background-color: {background_color};">
             <h2 style="color: black; margin: 0; font-size: 1.4em;">
                 <div style="display: block; margin-top: 5px;">
-                    <i>StakeSure</i> - Insurance Available Reserve: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
+                    <i>StakeSure</i> - Available Insurance Reserve (Tt+1 / 2): <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
                     <br><span style="font-size: 18px; font-weight: bold;">{message}</span>
                 </div>
             </h2>
@@ -1173,7 +1173,7 @@ def main():
     insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
 
     with col50: 
-        background_color1 = "#90EE90" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1] else "#ff6666"
+        background_color1 = "#90EE90" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1] else "#FFB6C1"
         st.markdown(
             f"""
             <div style="
