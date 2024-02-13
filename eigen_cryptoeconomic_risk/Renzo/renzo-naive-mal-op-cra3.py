@@ -1315,6 +1315,8 @@ def main():
 
     st.markdown(cryptoeconomic_security_level, unsafe_allow_html=True)
 
+    st.write("\n")
+    
     st.write("Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operators.")
 
 
