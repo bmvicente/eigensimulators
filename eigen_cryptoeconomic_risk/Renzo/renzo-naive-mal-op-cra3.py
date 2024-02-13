@@ -670,7 +670,7 @@ def main():
                                     <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
                                 </div>
                                 <div style="display: block; margin-top: 10px;">
-                                    AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                                    AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
                                 </div>
                             </h2>
                         </div>
