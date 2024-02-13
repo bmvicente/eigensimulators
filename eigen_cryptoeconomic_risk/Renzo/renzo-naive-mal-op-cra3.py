@@ -1148,8 +1148,13 @@ def main():
     st.write("  \n")
 
 
-
-
+    # Initialize session state
+    if 'avs1_insurance_status' not in st.session_state:
+        st.session_state.avs1_insurance_status = None
+    if 'avs2_insurance_status' not in st.session_state:
+        st.session_state.avs2_insurance_status = None
+    if 'avs3_insurance_status' not in st.session_state:
+        st.session_state.avs3_insurance_status = None
 
 
 
