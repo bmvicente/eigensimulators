@@ -638,8 +638,7 @@ def main():
                 st.write("\n")
 
                 def get_display_text(pre_slash_max_slash_allowed):
-                    background_color = "#90EE90" if pre_slash_max_slash_allowed >= 0 else "#ff9999"
-                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
                     return f"""
                             <div style="
                                 border: 2px solid;
@@ -647,7 +646,7 @@ def main():
                                 padding: 5px;
                                 text-align: center;
                                 margin: 5px 0;
-                                background-color: {background_color};">
+                                background-color: white;">
                                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                                     <div style="display: block;">
                                         <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
@@ -657,9 +656,9 @@ def main():
                             </div>
                             """
 
-                # Usage example
                 display_text = get_display_text(pre_slash_max_slash_allowed)
                 st.markdown(display_text, unsafe_allow_html=True)
+
 
 
 
