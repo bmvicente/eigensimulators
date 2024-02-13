@@ -424,15 +424,21 @@ def main():
     service_categories_evaluation_result = evaluate_service_categories(st.session_state.avs1_category, st.session_state.avs2_category, st.session_state.avs3_category)
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
 
-    # Convert risk categories to their numeric equivalents
-    risk_evaluation_result1 = risk_numeric[categorize_risk(st.session_state.risk_score1)]
-    risk_evaluation_result2 = risk_numeric[categorize_risk(st.session_state.risk_score2)]
-    risk_evaluation_result3 = risk_numeric[categorize_risk(st.session_state.risk_score3)]
+    # Assume risk scores for each service are stored in st.session_state with appropriate keys
+    risk_scores_service_1 = [st.session_state.risk_score1_service1, st.session_state.risk_score2_service1, st.session_state.risk_score3_service1]
+    risk_scores_service_2 = [st.session_state.risk_score1_service2, st.session_state.risk_score2_service2, st.session_state.risk_score3_service2]
+    risk_scores_service_3 = [st.session_state.risk_score1_service3, st.session_state.risk_score2_service3, st.session_state.risk_score3_service3]
 
-    # Proceed with your calculations
-    final_result_service_1 = risk_evaluation_result1 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_2 = risk_evaluation_result2 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_3 = risk_evaluation_result3 * service_categories_evaluation_result * conditions_evaluation_result
+    # Evaluate the composite risk for each service
+    composite_risk_service_1 = evaluate_risks(*risk_scores_service_1)
+    composite_risk_service_2 = evaluate_risks(*risk_scores_service_2)
+    composite_risk_service_3 = evaluate_risks(*risk_scores_service_3)
+
+    # Now, use these composite risk scores in your final calculations
+    final_result_service_1 = composite_risk_service_1 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_2 = composite_risk_service_2 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_3 = composite_risk_service_3 * service_categories_evaluation_result * conditions_evaluation_result
+
 
 
 
