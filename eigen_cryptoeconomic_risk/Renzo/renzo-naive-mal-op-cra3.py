@@ -1193,7 +1193,7 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-        st.session_state.avs1_insurance_status = display_insurance_status_selectbox(insurance_options, "avs1_insurance_status")
+        st.session_state.avs1_insurance_status = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status")
 
     with col51:
         background_color2 = "#90EE90" if st.session_state.avs2_insurance_status == insurance_options[0] else "#FFFF00" if st.session_state.avs2_insurance_status == insurance_options[1] else "#ff6666"
@@ -1218,7 +1218,7 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-        st.session_state.avs2_insurance_status = display_insurance_status_selectbox(insurance_options, "avs2_insurance_status")
+        st.session_state.avs2_insurance_status = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status")
 
     with col52:
         background_color3 = "#90EE90" if st.session_state.avs3_insurance_status == insurance_options[0] else "#FFFF00" if st.session_state.avs3_insurance_status == insurance_options[1] else "#ff6666"
@@ -1243,8 +1243,7 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-        st.session_state.avs3_insurance_status = display_insurance_status_selectbox(insurance_options, "avs3_insurance_status")
-
+        st.session_state.avs3_insurance_status = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status")
 
 
 
