@@ -688,6 +688,8 @@ def main():
             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result_service_1}</span>
+            <div style="text-align: center; margin-top: 10px;">
+            <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Likelihood * Impact = Weighted Overall Risk for Parameter)</span>
         </div>
         """
 
