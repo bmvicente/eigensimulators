@@ -1146,11 +1146,10 @@ def main():
 
 
     st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
 
-
-
-    # Initialize session state if not already initialized
     if 'insurance_statuses' not in st.session_state:
         st.session_state.insurance_statuses = {
             'avs1_insurance_status': None,
@@ -1161,7 +1160,7 @@ def main():
     col50, col51, col52 = st.columns(3)
 
     def create_insurance_status_selectbox(column, options, key):
-        selected_status = column.selectbox("Insurance Status", options, key=key)
+        selected_status = column.selectbox("**Insurance Status**", options, key=key)
         return selected_status
 
     def display_insurance_status_selectbox(avs_insurance_status, options, key):
