@@ -427,8 +427,6 @@ def main():
 
 
     final_result_service_1 = risk_evaluation * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_2 = risk_evaluation * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_3 = risk_evaluation * service_categories_evaluation_result * conditions_evaluation_result
 
 
 
@@ -459,7 +457,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result_service_2}</span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result_service_1}</span>
         </div>
         """
 
@@ -477,7 +475,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result_service_3}</span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result_service_1}</span>
         </div>
         """
 
