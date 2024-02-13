@@ -439,7 +439,6 @@ def main():
 
 
 
-
     # Creating the markdown string
     final_result_service_1_calc = f"""
         <div style="text-align: center;">
