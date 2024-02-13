@@ -1277,11 +1277,9 @@ def main():
         # Here, you could also recalculate anything that depends on these statuses
 
 
-    # Create a single column layout that should span the full width
-    col_full_width = st.columns([1])[0]
-
-    with col_full_width:
-        if st.button('Update Insurance Statuses', key='full_width_button'):
+    col1, col2, col3 = st.columns([1, 6, 1])
+    with col2:
+        if st.button('Update Insurance Statuses'):
             update_insurance_statuses()
 
 
