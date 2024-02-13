@@ -1104,7 +1104,9 @@ def main():
 
     st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *StakeSure Approach*")
 
-
+    st.write("  \n")
+    st.write("  \n")
+    
     col50,col51,col52 = st.columns(3)
     with col50:
 
