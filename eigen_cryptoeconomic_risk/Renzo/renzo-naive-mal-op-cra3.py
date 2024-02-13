@@ -637,46 +637,30 @@ def main():
                 st.write("  \n")
                 st.write("\n")
 
-                if pre_slash_max_slash_allowed >= 0:
-                    display_text = f"""
-                        <div style="
-                            border: 1px solid;
-                            border-radius: 2px;
-                            padding: 10px;
-                            text-align: center;
-                            margin: 5px 0;
-                            background-color: white;">
-                            <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                                <div style="display: block;">
-                                    <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
-                                </div>
-                                <div style="display: block; margin-top: 10px;">
-                                    AVS Ecosystem Max Total Stake Loss "Allowed": <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
-                                </div>
-                            </h2>
-                        </div>
-                        """
-                else:
-                    display_text = f"""
-                        <div style="
-                            border: 1px solid;
-                            border-radius: 2px;
-                            padding: 10px;
-                            text-align: center;
-                            margin: 5px 0;
-                            background-color: white;">
-                            <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                                <div style="display: block;">
-                                    <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
-                                </div>
-                                <div style="display: block; margin-top: 10px;">
-                                    AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
-                                </div>
-                            </h2>
-                        </div>
-                        """
+                def get_display_text(pre_slash_max_slash_allowed):
+                    background_color = "#90EE90" if pre_slash_max_slash_allowed >= 0 else "#ff9999"
+                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+                    return f"""
+                            <div style="
+                                border: 2px solid;
+                                border-radius: 2px;
+                                padding: 5px;
+                                text-align: center;
+                                margin: 5px 0;
+                                background-color: {background_color};">
+                                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                                    <div style="display: block;">
+                                        <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
+                                        {max_slash_allowed_text}: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
+                                    </div>
+                                </h2>
+                            </div>
+                            """
 
-                    st.markdown(display_text, unsafe_allow_html=True)
+                # Usage example
+                display_text = get_display_text(pre_slash_max_slash_allowed)
+                st.markdown(display_text, unsafe_allow_html=True)
+
 
 
         with col4:
