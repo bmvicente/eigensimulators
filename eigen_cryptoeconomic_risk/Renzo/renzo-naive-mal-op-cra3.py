@@ -323,7 +323,7 @@ def main():
             )
 
         # Determine the background color based on the condition
-        background_color = "#ff9999" if actual_stake_loss > abs(pre_slash_max_slash_allowed) else "#FFC0CB"  # pink for less, red for more
+        background_color = "#ff6666" if actual_stake_loss > abs(pre_slash_max_slash_allowed) else "#FFC0CB"  # pink for less, red for more
 
         st.markdown(
             f"""
