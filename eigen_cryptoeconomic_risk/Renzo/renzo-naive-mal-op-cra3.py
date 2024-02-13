@@ -1105,6 +1105,83 @@ def main():
     st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *StakeSure Approach*")
 
 
+    col50,col51,col52 = st.columns(3)
+    with col50:
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: white;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )  
+
+    with col51:
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: white;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )       
+
+    with col52:
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: white;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )  
+
+
+
+
+
     ###################
     ####### BST #######
     ###################
