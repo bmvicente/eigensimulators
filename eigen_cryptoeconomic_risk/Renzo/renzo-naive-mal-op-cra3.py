@@ -1147,11 +1147,20 @@ def main():
 
     st.write("  \n")
 
+
+
+
+
+
+
+
+
+
     def insurance_status_selectbox(key, label="**Insurance Status**"):
         options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
         default_index = options.index("Bought Appropriate Amount of Insurance")  # Default to the first option if not already set
         # Display the selectbox and return the selected value
-        return st.selectbox(label, options, index=default_index, key=key)
+        return st.selectbox(label, options, key=key)
 
 
     col50,col51,col52 = st.columns(3)
@@ -1162,7 +1171,7 @@ def main():
     with col50:
         
         avs1_insurance_status = insurance_status_selectbox("avs1_insurance_status")
-        background_color1 = "#90EE90" if avs1_insurance_status == "Bought Appropriate Amount of Insurance" else "#FFFF00" if avs1_insurance_status == "Bought Inappropriate Amount of Insurance" else "#ff6666"
+        background_color1 = "#90EE90" if avs1_insurance_status == options[0] else "#FFFF00" if avs1_insurance_status == options[1] else "#ff6666"
         
         st.markdown(
             f"""
@@ -1209,7 +1218,7 @@ def main():
 
 
         # First, display the markdown with conditional formatting
-        background_color2 = "#90EE90" if avs2_insurance_status == "Bought Appropriate Amount of Insurance" else "#FFFF00" if avs2_insurance_status == "Bought Inappropriate Amount of Insurance" else "#ff6666"
+        background_color2 = "#90EE90" if avs2_insurance_status == options[0] else "#FFFF00" if avs2_insurance_status == options[1] else "#ff6666"
         st.markdown(
             f"""
             <div style="
@@ -1254,7 +1263,7 @@ def main():
         avs3_insurance_status = insurance_status_selectbox("avs3_insurance_status")
 
         # First, display the markdown with conditional formatting
-        background_color3 = "#90EE90" if avs3_insurance_status == "Bought Appropriate Amount of Insurance" else "#FFFF00" if avs3_insurance_status == "Bought Inappropriate Amount of Insurance" else "#ff6666"
+        background_color3 = "#90EE90" if avs3_insurance_status == options[0] else "#FFFF00" if avs3_insurance_status == options[1] else "#ff6666"
         st.markdown(
             f"""
             <div style="
