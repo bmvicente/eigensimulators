@@ -1217,7 +1217,7 @@ def main():
             unsafe_allow_html=True
         )
 
-        st.session_state.avs1_insurance_status = st.selectbox(
+        st.session_state.avs2_insurance_status = st.selectbox(
             "**AVS2 Insurance Status**",
             ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"],
             key="avs2_insurance_status"  # Ensure this key is unique if using multiple selectboxes
@@ -1255,7 +1255,7 @@ def main():
             unsafe_allow_html=True
         )
 
-        st.session_state.avs1_insurance_status = st.selectbox(
+        st.session_state.avs3_insurance_status = st.selectbox(
             "**AVS3 Insurance Status**",
             ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"],
             key="avs3_insurance_status"  # Ensure this key is unique if using multiple selectboxes
