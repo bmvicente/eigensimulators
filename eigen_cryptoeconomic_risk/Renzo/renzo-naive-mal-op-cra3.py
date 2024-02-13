@@ -1121,7 +1121,7 @@ def main():
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
     
 
-    background_color = "3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
+    background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
     message = "(Enough to Cover Stake Losses)" if stake_losses_coverage >= 0 else "(Not Enough to Cover Stake Losses)"
 
     st.markdown(
