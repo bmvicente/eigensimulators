@@ -600,6 +600,7 @@ def main():
                 
                 st.write("  \n")
                 st.write("  \n")
+                st.write("\n")
 
                 st.markdown(
                     f"""
@@ -629,6 +630,8 @@ def main():
 
                 formatted_tvl1 = "${:,.0f}".format(tvl1)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl1}""")
+                
+                st.write("\n")
 
                 st.markdown(
                     f"""
