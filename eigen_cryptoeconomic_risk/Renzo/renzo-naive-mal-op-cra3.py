@@ -368,35 +368,13 @@ def main():
 
 
 
-
-    def categorize_risk(risk_score):
-        if risk_score < 33:
-            return 'low_risk'
-        elif 33 <= risk_score <= 66:
-            return 'medium_risk'
-        else:
-            return 'high_risk'
-        
-    risk_numeric = {
-        'low_risk': 1,
-        'medium_risk': 2,
-        'high_risk': 3
-    }
-
-    # Correct individual risk evaluation to apply nuanced logic
-    def individual_risk_evaluation(risk_score):
-        # First categorize the risk score
-        category = categorize_risk(risk_score)
-        # Then map the category to its numeric value
-        return risk_numeric[category]
-
     def evaluate_conditions(pre_slash_coc, post_slash_coc):
         if pre_slash_coc < 0:
-            return 3
+            return 1.50
         elif pre_slash_coc > 0 and post_slash_coc < 0:
-            return 2
+            return 1.25
         elif pre_slash_coc > 0 and post_slash_coc > 0:
-            return 0.5
+            return 1.10
         else:
             return 0
 
@@ -405,11 +383,11 @@ def main():
         unique_categories = len(set(categories))
 
         if unique_categories == 1:
-            return 3
+            return 1.50
         elif unique_categories == 2:
-            return 2
+            return 1.25
         elif unique_categories == 3:
-            return 1.5
+            return 1.10
         else:
             return 0
 
@@ -424,31 +402,47 @@ def main():
         st.session_state.post_slash_coc
     )
 
+    def categorize_risk(risk_score):
+        if risk_score < 33:
+            return 'low_risk'
+        elif 33 <= risk_score <= 66:
+            return 'medium_risk'
+        else:
+            return 'high_risk'
+        
+    risk_numeric = {
+        'low_risk': 1,
+        'medium_risk': 2,
+        'high_risk': 3}
+
+    def individual_risk_evaluation(risk_score):
+        category = categorize_risk(risk_score)
+        return risk_numeric[category]
+    
     def collective_risk_adjustment(risk_category1, risk_category2, risk_category3):
         categories = [risk_category1, risk_category2, risk_category3]
         high_risk_count = categories.count('high_risk')
         medium_risk_count = categories.count('medium_risk')
         low_risk_count = categories.count('low_risk')
 
-        # Apply nuanced adjustments based on the combination of risk categories
         if high_risk_count == 3:
-            adjustment = 0.20
-        elif high_risk_count == 2 and low_risk_count == 1:
-            adjustment = 0.15
-        elif high_risk_count == 1 and medium_risk_count == 1 and low_risk_count == 1:
-            adjustment = 0.12
+            adjustment = 1.50
         elif high_risk_count == 2 and medium_risk_count == 1:
-            adjustment = 0.175
-        elif high_risk_count == 1 and low_risk_count == 2:
-            adjustment = 0.1
+            adjustment = 1.375
+        elif high_risk_count == 2 and low_risk_count == 1:
+            adjustment = 1.30
+        elif high_risk_count == 1 and medium_risk_count == 1 and low_risk_count == 1:
+            adjustment = 1.225
         elif medium_risk_count == 3:
-            adjustment = 0.25
+            adjustment = 1.20
         elif medium_risk_count == 2 and low_risk_count == 1:
-            adjustment = 0.3
+            adjustment = 1.15
+        elif high_risk_count == 1 and low_risk_count == 2:
+            adjustment = 1.12
         elif medium_risk_count == 1 and low_risk_count == 2:
-            adjustment = 0.35
+            adjustment = 1.10
         elif low_risk_count == 3:
-            adjustment = 0.8
+            adjustment = 1.05
         else:
             adjustment = 0
 
