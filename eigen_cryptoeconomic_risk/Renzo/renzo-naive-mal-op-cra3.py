@@ -424,20 +424,19 @@ def main():
     service_categories_evaluation_result = evaluate_service_categories(st.session_state.avs1_category, st.session_state.avs2_category, st.session_state.avs3_category)
     conditions_evaluation_result = evaluate_conditions(st.session_state.pre_slash_coc, st.session_state.post_slash_coc)
 
-    # Assume risk scores for each service are stored in st.session_state with appropriate keys
-    risk_scores_service_1 = [st.session_state.risk_score1_service1, st.session_state.risk_score2_service1, st.session_state.risk_score3_service1]
-    risk_scores_service_2 = [st.session_state.risk_score1_service2, st.session_state.risk_score2_service2, st.session_state.risk_score3_service2]
-    risk_scores_service_3 = [st.session_state.risk_score1_service3, st.session_state.risk_score2_service3, st.session_state.risk_score3_service3]
+    risk_category1 = categorize_risk(st.session_state.risk_score1)
+    risk_category2 = categorize_risk(st.session_state.risk_score2)
+    risk_category3 = categorize_risk(st.session_state.risk_score3)
 
-    # Evaluate the composite risk for each service
-    composite_risk_service_1 = evaluate_risks(*risk_scores_service_1)
-    composite_risk_service_2 = evaluate_risks(*risk_scores_service_2)
-    composite_risk_service_3 = evaluate_risks(*risk_scores_service_3)
+    risk_evaluation1 = evaluate_risks(risk_category1)
+    risk_evaluation2 = evaluate_risks(risk_category2)
+    risk_evaluation3 = evaluate_risks(risk_category3)
+
 
     # Now, use these composite risk scores in your final calculations
-    final_result_service_1 = composite_risk_service_1 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_2 = composite_risk_service_2 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_3 = composite_risk_service_3 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_1 = risk_evaluation1 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_2 = risk_evaluation2 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_3 = risk_evaluation3 * service_categories_evaluation_result * conditions_evaluation_result
 
 
 
@@ -446,7 +445,7 @@ def main():
     # Creating the markdown string
     final_result_service_1_calc = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation_result1}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation1}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -462,7 +461,7 @@ def main():
     # Creating the markdown string
     final_result_service_2_calc = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation_result2}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation2}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -480,7 +479,7 @@ def main():
     # Creating the markdown string
     final_result_service_3_calc = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation_result3}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation3}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
