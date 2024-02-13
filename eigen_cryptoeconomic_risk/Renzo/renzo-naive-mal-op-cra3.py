@@ -421,44 +421,53 @@ def main():
         st.session_state.post_slash_coc
     )
 
-    # Individual risk evaluations for each service
-    risk_evaluation1 = individual_risk_evaluation(st.session_state.risk_score1)
-    risk_evaluation2 = individual_risk_evaluation(st.session_state.risk_score2)
-    risk_evaluation3 = individual_risk_evaluation(st.session_state.risk_score3)
+    def collective_risk_adjustment(risk_category1, risk_category2, risk_category3):
+        categories = [risk_category1, risk_category2, risk_category3]
+        high_risk_count = categories.count('high_risk')
+        medium_risk_count = categories.count('medium_risk')
+        low_risk_count = categories.count('low_risk')
 
-    # Final results calculations for each service incorporating nuances
+        # Apply nuanced adjustments based on the combination of risk categories
+        if high_risk_count == 3:
+            adjustment = 0.20
+        elif high_risk_count == 2 and low_risk_count == 1:
+            adjustment = 0.15
+        elif high_risk_count == 1 and medium_risk_count == 1 and low_risk_count == 1:
+            adjustment = 0.12
+        elif high_risk_count == 2 and medium_risk_count == 1:
+            adjustment = 0.175
+        elif high_risk_count == 1 and low_risk_count == 2:
+            adjustment = 0.1
+        elif medium_risk_count == 3:
+            adjustment = 0.25
+        elif medium_risk_count == 2 and low_risk_count == 1:
+            adjustment = 0.3
+        elif medium_risk_count == 1 and low_risk_count == 2:
+            adjustment = 0.35
+        elif low_risk_count == 3:
+            adjustment = 0.8
+        else:
+            adjustment = 0
+
+        return adjustment
+
+    # Assuming individual risk scores are defined and categorized
+    risk_category1 = categorize_risk(st.session_state.risk_score1)
+    risk_category2 = categorize_risk(st.session_state.risk_score2)
+    risk_category3 = categorize_risk(st.session_state.risk_score3)
+
+    # Apply the collective risk adjustment
+    collective_adjustment = collective_risk_adjustment(risk_category1, risk_category2, risk_category3)
+
+    # Individual risk evaluations with adjustments
+    risk_evaluation1 = risk_numeric[risk_category1] + collective_adjustment
+    risk_evaluation2 = risk_numeric[risk_category2] + collective_adjustment
+    risk_evaluation3 = risk_numeric[risk_category3] + collective_adjustment
+
+    # Proceed with final results calculations incorporating the adjustments
     final_result_service_1 = actual_stake_loss * risk_evaluation1 * service_categories_evaluation_result * conditions_evaluation_result
     final_result_service_2 = actual_stake_loss * risk_evaluation2 * service_categories_evaluation_result * conditions_evaluation_result
     final_result_service_3 = actual_stake_loss * risk_evaluation3 * service_categories_evaluation_result * conditions_evaluation_result
-
-
-
-    #def individual_risk_evaluation(risk_score):
-    #    category = categorize_risk(risk_score)
-        #high_risk = category.count('high_risk')
-        #medium_risk = category.count('medium_risk')
-        #low_risk = category.count('low_risk')
-
-        #if high_risk == 3:
-        #    return 3
-        #elif high_risk == 2 and low_risk == 1:
-        #    return 2.75
-        #elif high_risk == 1 and medium_risk == 1 and low_risk == 1:
-        #    return 2.50
-        #elif high_risk == 2 and medium_risk == 1:
-        #    return 2.25
-        #elif high_risk == 1 and low_risk == 2:
-        #    return 2
-        #elif medium_risk == 3:
-        #    return 1.75
-        #elif medium_risk == 2 and low_risk == 1:
-        #    return 1.50
-        #elif medium_risk == 1 and low_risk == 2:
-        #    return 1.25
-        #elif low_risk == 3:
-        #    return 1.10
-        #else:
-        #     return 0       
 
 
 
