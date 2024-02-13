@@ -427,6 +427,7 @@ def main():
     risk_category1 = categorize_risk(st.session_state.risk_score1)
     risk_category2 = categorize_risk(st.session_state.risk_score2)
     risk_category3 = categorize_risk(st.session_state.risk_score3)
+    print(risk_category1)
 
     risk_evaluation1 = evaluate_risks(risk_category1, risk_category2, risk_category3)
     risk_evaluation2 = evaluate_risks(risk_category1, risk_category2, risk_category3)
