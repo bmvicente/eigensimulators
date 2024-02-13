@@ -837,7 +837,9 @@ def main():
 
                 formatted_tvl2 = "${:,.0f}".format(tvl2)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl2}""")
-        
+                
+                st.write("  \n")
+
                 st.markdown(
                     f"""
                     <div style="
@@ -998,6 +1000,8 @@ def main():
                 tvl3 = st.number_input("**AVS TVL**", min_value=0, max_value=1000000000000, value=st.session_state.tvl3, step=10000000)
                 formatted_tvl3 = "${:,.0f}".format(tvl3)
                 st.write(f"""&#8226; AVS TVL: {formatted_tvl3}""")
+
+                st.write("  \n")
 
                 st.markdown(
                     f"""
