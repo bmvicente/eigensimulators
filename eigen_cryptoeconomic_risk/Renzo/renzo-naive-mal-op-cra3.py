@@ -1170,84 +1170,88 @@ def main():
 
     insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
 
-    avs1_insurance_status = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status_key")
-    background_color1 = "#90EE90" if avs1_insurance_status == insurance_options[0] else "#FFFF00" if avs1_insurance_status == insurance_options[1] else "#ff6666"
-    st.markdown(
-        f"""
-        <div style="
-            border: 1px solid;
-            border-radius: 2px;
-            padding: 5px;
-            text-align: center;
-            margin: 5px 0;
-            background-color: {background_color1};">
-            <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                <div style="display: block;">
-                    <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
-                </div>
-                <div style="display: block; margin-top: 5px;">
-                    AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
-                </div>
-            </h2>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
-    avs1_insurance_status = display_insurance_status_selectbox(avs1_insurance_status, insurance_options, "avs1_insurance_status")
-
-    # Repeat similar blocks for avs2 and avs3 with appropriate keys
-
-    avs2_insurance_status = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status_key")
-    background_color2 = "#90EE90" if avs2_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
-    st.markdown(
-        f"""
-        <div style="
-            border: 1px solid;
-            border-radius: 2px;
-            padding: 5px;
-            text-align: center;
-            margin: 5px 0;
-            background-color: {background_color2};">
-            <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                <div style="display: block;">
-                    <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
-                </div>
-                <div style="display: block; margin-top: 5px;">
-                    AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
-                </div>
-            </h2>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
-    avs2_insurance_status = display_insurance_status_selectbox(avs2_insurance_status, insurance_options, "avs2_insurance_status")
+    with col50: 
+        avs1_insurance_status = create_insurance_status_selectbox(insurance_options, "avs1_insurance_status_key")
+        background_color1 = "#90EE90" if avs1_insurance_status == insurance_options[0] else "#FFFF00" if avs1_insurance_status == insurance_options[1] else "#ff6666"
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: {background_color1};">
+                <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        avs1_insurance_status = display_insurance_status_selectbox(avs1_insurance_status, insurance_options, "avs1_insurance_status")
 
 
-    # Similarly for avs3
-    avs3_insurance_status = create_insurance_status_selectbox(col51, insurance_options, "avs3_insurance_status_key")
-    background_color3 = "#90EE90" if avs3_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
-    st.markdown(
-        f"""
-        <div style="
-            border: 1px solid;
-            border-radius: 2px;
-            padding: 5px;
-            text-align: center;
-            margin: 5px 0;
-            background-color: {background_color3};">
-            <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                <div style="display: block;">
-                    <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
-                </div>
-                <div style="display: block; margin-top: 5px;">
-                    AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
-                </div>
-            </h2>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
-    avs3_insurance_status = display_insurance_status_selectbox(avs3_insurance_status, insurance_options, "avs3_insurance_status")
+
+    with col51:
+        avs2_insurance_status = create_insurance_status_selectbox(insurance_options, "avs2_insurance_status_key")
+        background_color2 = "#90EE90" if avs2_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: {background_color2};">
+                <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        avs2_insurance_status = display_insurance_status_selectbox(avs2_insurance_status, insurance_options, "avs2_insurance_status")
+
+
+
+    with col52:
+        # Similarly for avs3
+        avs3_insurance_status = create_insurance_status_selectbox(insurance_options, "avs3_insurance_status_key")
+        background_color3 = "#90EE90" if avs3_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: {background_color3};">
+                <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        avs3_insurance_status = display_insurance_status_selectbox(avs3_insurance_status, insurance_options, "avs3_insurance_status")
 
 
 
