@@ -1148,11 +1148,11 @@ def main():
     st.write("  \n")
 
     if 'avs1_insurance_status' not in st.session_state:
-        st.session_state.avs1_insurance_status == "Bought Appropriate Amount of Insurance"
+        st.session_state.avs1_insurance_status = "Bought Appropriate Amount of Insurance"
     if 'avs2_insurance_status' not in st.session_state:
-        st.session_state.avs2_insurance_status == "Bought Appropriate Amount of Insurance"
+        st.session_state.avs2_insurance_status = "Bought Appropriate Amount of Insurance"
     if 'avs3_insurance_status' not in st.session_state:
-        st.session_state.avs3_insurance_status == "Bought Appropriate Amount of Insurance"
+        st.session_state.avs3_insurance_status = "Bought Appropriate Amount of Insurance"
 
 
     col50,col51,col52 = st.columns(3)
@@ -1268,6 +1268,39 @@ def main():
             ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"],
             key="avs3_insurance_status"  # Ensure this key is unique if using multiple selectboxes
         )
+
+
+
+    def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
+        coverage_status = [avs1_coverage_status, avs2_coverage_status, avs3_coverage_status]
+        high_security_count = coverage_status.count(coverage_status)
+        medium_security_count = coverage_status.count(coverage_status)
+        low_security_count = coverage_status.count(coverage_status)
+
+        if high_security_count == 3:
+            return "Strong Cryptoeconomic Security"
+        elif high_security_count == 2 and low_security_count == 1:
+            return "Strong Cryptoeconomic Security"
+        elif high_security_count == 1 and medium_security_count == 1 and low_security_count == 1:
+            return "Strong Cryptoeconomic Security"
+        elif high_security_count == 2 and medium_security_count == 1:
+            return "Strong Cryptoeconomic Security"
+        elif high_security_count == 1 and low_security_count == 2:
+            return "Strong Cryptoeconomic Security"
+        elif medium_security_count == 3:
+            return "Strong Cryptoeconomic Security"
+        elif medium_security_count == 2 and low_security_count == 1:
+            return "Strong Cryptoeconomic Security"
+        elif medium_security_count == 1 and low_security_count == 2:
+            return "Strong Cryptoeconomic Security"
+        elif low_security_count == 3:
+            return "Weak Cryptoeconomic Security"
+        else:
+            return "Strong Cryptoeconomic Security"
+
+
+
+
 
 
 
