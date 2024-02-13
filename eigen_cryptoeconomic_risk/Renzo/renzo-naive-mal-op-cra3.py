@@ -1156,19 +1156,18 @@ def main():
 
 
 
-    # Define your options once
-    insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-
-    def create_insurance_status_selectbox(column, key):
-        selected_status = column.selectbox("Insurance Status", insurance_options, key=key)
-        return selected_status
-
     col50,col51,col52 = st.columns(3)
     
     with col50:
 
+        insurance_options1 = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+
+        def create_insurance_status_selectbox(column1, key1):
+            selected_status1 = column1.selectbox("Insurance Status", insurance_options1, key=key1)
+            return selected_status1
+        
         avs1_insurance_status = create_insurance_status_selectbox(col50, "avs1_insurance_status_key")
-        background_color1 = "#90EE90" if avs1_insurance_status == insurance_options[0] else "#FFFF00" if avs1_insurance_status == insurance_options[1] else "#ff6666"
+        background_color1 = "#90EE90" if avs1_insurance_status == insurance_options1[0] else "#FFFF00" if avs1_insurance_status == insurance_options1[1] else "#ff6666"
 
         st.markdown(
             f"""
@@ -1193,14 +1192,14 @@ def main():
         )
 
         # First, define a function to display the insurance status selectbox and return its value
-        def display_insurance_status_selectbox(avs_insurance_status, key1):
-            selected_status = st.selectbox(
+        def display_insurance_status_selectbox(avs_insurance_status1, key1):
+            selected_status1 = st.selectbox(
                 "**Insurance Status**", 
-                insurance_options, 
-                index=insurance_options.index(avs_insurance_status) if avs_insurance_status in insurance_options else 0,
+                insurance_options1, 
+                index=insurance_options1.index(avs_insurance_status1) if avs_insurance_status1 in insurance_options1 else 0,
                 key= avs1_insurance_status
             )
-            return selected_status
+            return selected_status1
 
 
         # Then, display the dropdown after the markdown
@@ -1210,9 +1209,16 @@ def main():
 
 
     with col51:
+
+        # Define your options once
+        insurance_options2 = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+
+        def create_insurance_status_selectbox(column2, key2):
+            selected_status2 = column2.selectbox("Insurance Status ", insurance_options2, key=key2)
+            return selected_status2
         
         avs2_insurance_status = create_insurance_status_selectbox(col51, "avs2_insurance_status_key")
-        background_color2 = "#90EE90" if avs2_insurance_status == insurance_options[0] else "#FFFF00" if avs2_insurance_status == insurance_options[1] else "#ff6666"
+        background_color2 = "#90EE90" if avs2_insurance_status == insurance_options2[0] else "#FFFF00" if avs2_insurance_status == insurance_options2[1] else "#ff6666"
 
         st.markdown(
             f"""
@@ -1235,16 +1241,17 @@ def main():
             """, 
             unsafe_allow_html=True
         )
+
         # First, define a function to display the insurance status selectbox and return its value
-        def display_insurance_status_selectbox(avs_insurance_status, key2):
+        def display_insurance_status_selectbox(avs_insurance_status2, key2):
             # Display the selectbox and get the selected value
-            selected_status = st.selectbox(
+            selected_status2 = st.selectbox(
                 "**Insurance Status** ", 
-                insurance_options, 
-                index=insurance_options.index(avs_insurance_status) if avs_insurance_status in insurance_options else 0,
+                insurance_options2, 
+                index=insurance_options2.index(avs_insurance_status2) if avs_insurance_status2 in insurance_options2 else 0,
                 key= avs2_insurance_status
             )
-            return selected_status
+            return selected_status2
         
         # Then, display the dropdown after the markdown
         avs2_insurance_status = display_insurance_status_selectbox(avs2_insurance_status, "avs2_insurance_status")
@@ -1254,9 +1261,17 @@ def main():
 
 
     with col52:
+
+        # Define your options once
+        insurance_options3 = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+
+        def create_insurance_status_selectbox(column3, key3):
+            selected_status3 = column3.selectbox("Insurance Status  ", insurance_options3, key=key3)
+            return selected_status3
         
+
         avs3_insurance_status = create_insurance_status_selectbox(col52, "avs3_insurance_status_key")
-        background_color3 = "#90EE90" if avs3_insurance_status == insurance_options[0] else "#FFFF00" if avs3_insurance_status == insurance_options[1] else "#ff6666"
+        background_color3 = "#90EE90" if avs3_insurance_status == insurance_options3[0] else "#FFFF00" if avs3_insurance_status == insurance_options3[1] else "#ff6666"
 
         st.markdown(
             f"""
@@ -1282,15 +1297,15 @@ def main():
 
 
         # First, define a function to display the insurance status selectbox and return its value
-        def display_insurance_status_selectbox(avs_insurance_status, key3):
+        def display_insurance_status_selectbox(avs_insurance_status3, key3):
             # Display the selectbox and get the selected value
-            selected_status = st.selectbox(
+            selected_status3 = st.selectbox(
                 "**Insurance Status**  ", 
-                insurance_options, 
-                index=insurance_options.index(avs_insurance_status) if avs_insurance_status in insurance_options else 0,
+                insurance_options3, 
+                index=insurance_options3.index(avs_insurance_status3) if avs_insurance_status3 in insurance_options3 else 0,
                 key= avs3_insurance_status
             )
-            return selected_status
+            return selected_status3
 
 
         # Then, display the dropdown after the markdown
