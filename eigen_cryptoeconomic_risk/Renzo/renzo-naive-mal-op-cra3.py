@@ -373,13 +373,19 @@ def main():
             return 'medium_risk'
         else:
             return 'high_risk'
-
-    # Adjusted Risk Numeric Mapping
+        
     risk_numeric = {
         'low_risk': 1,
         'medium_risk': 2,
         'high_risk': 3
     }
+
+    # Correct individual risk evaluation to apply nuanced logic
+    def individual_risk_evaluation(risk_score):
+        # First categorize the risk score
+        category = categorize_risk(risk_score)
+        # Then map the category to its numeric value
+        return risk_numeric[category]
 
     def evaluate_conditions(pre_slash_coc, post_slash_coc):
         if pre_slash_coc < 0:
@@ -404,35 +410,6 @@ def main():
         else:
             return 0
 
-
-    def individual_risk_evaluation(risk_score):
-        category = categorize_risk(risk_score)
-        high_risk = category.count('high_risk')
-        medium_risk = category.count('medium_risk')
-        low_risk = category.count('low_risk')
-
-        if high_risk == 3:
-            return 3
-        elif high_risk == 2 and low_risk == 1:
-            return 2.75
-        elif high_risk == 1 and medium_risk == 1 and low_risk == 1:
-            return 2.50
-        elif high_risk == 2 and medium_risk == 1:
-            return 2.25
-        elif high_risk == 1 and low_risk == 2:
-            return 2
-        elif medium_risk == 3:
-            return 1.75
-        elif medium_risk == 2 and low_risk == 1:
-            return 1.50
-        elif medium_risk == 1 and low_risk == 2:
-            return 1.25
-        elif low_risk == 3:
-            return 1.10
-        else:
-             return 0       
-        
-
     # Calculate service categories and conditions evaluation results
     service_categories_evaluation_result = evaluate_service_categories(
         st.session_state.avs1_category,
@@ -455,6 +432,33 @@ def main():
     final_result_service_3 = actual_stake_loss * risk_evaluation3 * service_categories_evaluation_result * conditions_evaluation_result
 
 
+
+    #def individual_risk_evaluation(risk_score):
+    #    category = categorize_risk(risk_score)
+        #high_risk = category.count('high_risk')
+        #medium_risk = category.count('medium_risk')
+        #low_risk = category.count('low_risk')
+
+        #if high_risk == 3:
+        #    return 3
+        #elif high_risk == 2 and low_risk == 1:
+        #    return 2.75
+        #elif high_risk == 1 and medium_risk == 1 and low_risk == 1:
+        #    return 2.50
+        #elif high_risk == 2 and medium_risk == 1:
+        #    return 2.25
+        #elif high_risk == 1 and low_risk == 2:
+        #    return 2
+        #elif medium_risk == 3:
+        #    return 1.75
+        #elif medium_risk == 2 and low_risk == 1:
+        #    return 1.50
+        #elif medium_risk == 1 and low_risk == 2:
+        #    return 1.25
+        #elif low_risk == 3:
+        #    return 1.10
+        #else:
+        #     return 0       
 
 
 
