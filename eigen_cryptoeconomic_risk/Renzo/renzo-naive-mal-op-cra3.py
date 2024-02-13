@@ -1174,7 +1174,7 @@ def main():
                 "**Insurance Status**", 
                 options, 
                 index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
-                key=key1
+                key1=key1
             )
             return selected_status
 
@@ -1219,7 +1219,7 @@ def main():
                 "**Insurance Status**", 
                 options, 
                 index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
-                key=key2
+                key2=key2
             )
             return selected_status
 
@@ -1264,7 +1264,7 @@ def main():
                 "**Insurance Status**", 
                 options, 
                 index=options.index(avs_insurance_status) if avs_insurance_status in options else 0,
-                key=key3
+                key3=key3
             )
             return selected_status
 
