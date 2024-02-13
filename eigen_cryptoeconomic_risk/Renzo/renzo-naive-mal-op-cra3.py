@@ -670,7 +670,7 @@ def main():
                                     <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
                                 </div>
                                 <div style="display: block; margin-top: 10px;">
-                                    AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
+                                    AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
                                 </div>
                             </h2>
                         </div>
@@ -820,27 +820,46 @@ def main():
                 st.write("  \n")
                 st.write("  \n")
 
-                st.markdown(
-                    f"""
-                    <div style="
-                        border: 1px solid;
-                        border-radius: 2px;
-                        padding: 10px;
-                        text-align: center;
-                        margin: 5px 0;
-                        background-color: white;">
-                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                            <div style="display: block;">
-                                <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS2 t</sub></span>
-                            </div>
-                            <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
-                                Max Total Stake Loss "Allowed" AVS2: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
-                            </div>
-                        </h2>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
-                )
+                if pre_slash_max_slash_allowed >= 0:
+                    display_text = f"""
+                        <div style="
+                            border: 1px solid;
+                            border-radius: 2px;
+                            padding: 10px;
+                            text-align: center;
+                            margin: 5px 0;
+                            background-color: white;">
+                            <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                                <div style="display: block;">
+                                    <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
+                                </div>
+                                <div style="display: block; margin-top: 10px;">
+                                    Max Total Stake Loss "Allowed" AVS1: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                                </div>
+                            </h2>
+                        </div>
+                        """
+                else:
+                    display_text = f"""
+                        <div style="
+                            border: 1px solid;
+                            border-radius: 2px;
+                            padding: 10px;
+                            text-align: center;
+                            margin: 5px 0;
+                            background-color: white;">
+                            <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                                <div style="display: block;">
+                                    <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
+                                </div>
+                                <div style="display: block; margin-top: 10px;">
+                                    AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                                </div>
+                            </h2>
+                        </div>
+                        """
+
+                    st.markdown(display_text, unsafe_allow_html=True)
 
         with col9:
                 tvl2 = st.number_input("**AVS TVL** ", min_value=0, max_value=10000000000000, value=st.session_state.tvl2, step=10000000)
@@ -978,27 +997,46 @@ def main():
                 st.write("  \n")
                 st.write("  \n")
 
-                st.markdown(
-                    f"""
-                    <div style="
-                        border: 1px solid;
-                        border-radius: 2px;
-                        padding: 10px;
-                        text-align: center;
-                        margin: 5px 0;
-                        background-color: white;">
-                        <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                            <div style="display: block;">
-                                <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS3 t</sub></span>
-                            </div>
-                            <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
-                                Max Total Stake Loss "Allowed" AVS3: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
-                            </div>
-                        </h2>
-                    </div>
-                    """, 
-                    unsafe_allow_html=True
-                )
+                if pre_slash_max_slash_allowed >= 0:
+                    display_text = f"""
+                        <div style="
+                            border: 1px solid;
+                            border-radius: 2px;
+                            padding: 10px;
+                            text-align: center;
+                            margin: 5px 0;
+                            background-color: white;">
+                            <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                                <div style="display: block;">
+                                    <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
+                                </div>
+                                <div style="display: block; margin-top: 10px;">
+                                    Max Total Stake Loss "Allowed" AVS1: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                                </div>
+                            </h2>
+                        </div>
+                        """
+                else:
+                    display_text = f"""
+                        <div style="
+                            border: 1px solid;
+                            border-radius: 2px;
+                            padding: 10px;
+                            text-align: center;
+                            margin: 5px 0;
+                            background-color: white;">
+                            <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                                <div style="display: block;">
+                                    <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">AVS1 t</sub></span>
+                                </div>
+                                <div style="display: block; margin-top: 10px;">
+                                    AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
+                                </div>
+                            </h2>
+                        </div>
+                        """
+
+                    st.markdown(display_text, unsafe_allow_html=True)
 
         with col14:
                 tvl3 = st.number_input("**AVS TVL**", min_value=0, max_value=1000000000000, value=st.session_state.tvl3, step=10000000)
