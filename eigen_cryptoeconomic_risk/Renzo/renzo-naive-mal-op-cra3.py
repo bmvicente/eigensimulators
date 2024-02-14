@@ -1463,7 +1463,7 @@ def main():
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    AVS1: <span style="font-size: 1.1em;">{message1}</span>
+                    AVS1: <span style="font-size: 1em;">{message1}</span>
                 </h2>
             </div>
             """, unsafe_allow_html=True)
@@ -1472,7 +1472,7 @@ def main():
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    AVS2: <span style="font-size: 1.1em;">{message2}</span>
+                    AVS2: <span style="font-size: 1em;">{message2}</span>
                 </h2>
             </div>
             """, unsafe_allow_html=True)
@@ -1481,7 +1481,7 @@ def main():
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    AVS3: <span style="font-size: 1.1em;">{message3}</span>
+                    AVS3: <span style="font-size: 1em;">{message3}</span>
                 </h2>
             </div>
             """, unsafe_allow_html=True)
