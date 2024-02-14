@@ -370,7 +370,7 @@ def main():
 
     st.markdown(
         """
-        <div style="padding: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
+        <div style="padding: 10px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
             <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
                 POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
             </h2>
