@@ -1396,22 +1396,12 @@ def main():
     if 'buffer_reserve_amount' not in st.session_state:
         st.session_state.buffer_reserve_amount = 0  # or any default value
 
-    if 'percentage_uninsured_1' not in st.session_state:
-        st.session_state.percentage_uninsured_1 = 50  # or any default value
-    if 'percentage_uninsured_2' not in st.session_state:
-        st.session_state.percentage_uninsured_2 = 50  # or any default value
-    if 'percentage_uninsured_3' not in st.session_state:
-        st.session_state.percentage_uninsured_3 = 50  # or any default value
-
-
-
     st.markdown(f"""
-        <div style="font-size: 22px;">
-            <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> <span style="font-size: 0.9em;">${st.session_state.op_stake_slashable:,.0f}</span> / 2 = <b><span style="font-size: 0.9em;">${st.session_state.buffer_reserve_amount:,.0f}</span></b>
+        <div style="font-size: 22px; text-align: center;">
+            <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> {st.session_state.op_stake_slashable} / 2 = {st.session_state.buffer_reserve_amount}
         </div>
         """, unsafe_allow_html=True)
-    
-    st.write("\n")
+
 
     st.session_state.buffer_reserve_amount = st.session_state.op_stake_slashable / 2
 
@@ -1419,131 +1409,82 @@ def main():
     # Initialize variables for buffer amounts for demonstration
     buffer1, buffer2, buffer3 = 0, 0, 0  # Initialize buffer amounts
 
-
     # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
-    col54, col55, col56 = st.columns(3)
-
-
-
-    # Assuming 'col54' is defined as part of st.columns(3) or similar setup
-# Assuming 'col54' is defined as part of st.columns(3) or similar setup
-    with col54:
-        # Default values
-        buffer1 = 0
-        message1 = "No Insurance Needed from Buffer"
-        
-        # Check the insurance status before displaying the slider
-        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            # Retrieve existing percentage_uninsured_1 from session state
-            percentage_uninsured_1 = st.session_state.get('percentage_uninsured_1', 50) / 100
-            
-            # Calculate buffer based on the slider's value
-            buffer1 = final_result_service_1 * percentage_uninsured_1
-            
-            # Display slider below the message
-            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, value=int(percentage_uninsured_1 * 100), key='percentage_uninsured_1') / 100
-            
-            # Update session state with new percentage
-            st.session_state['percentage_uninsured_1'] = percentage_uninsured_1 * 100
-        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+    with col50:
+        # Calculate buffer based on the selected insurance option
+        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            message1 = "No Insurance Needed from Buffer"
             buffer1 = 0
+        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
+            buffer1 = final_result_service_1 * percentage_uninsured_1
+            message1 = f"Buffer needed: {buffer1}"
         else:  # Didn't buy insurance
             buffer1 = final_result_service_1
-        
-        # Format buffer amount for display
-        formatted_buffer1 = f"${buffer1:,.2f}"
+            message1 = f"Buffer needed: {buffer1}"
 
-        # Display the markdown for buffer message
-        st.markdown(f"""
-            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    AVS1 Buffer Message: <span style="font-size: 1.2em;">{formatted_buffer1}</span>
-                </h2>
-            </div>
-            """, unsafe_allow_html=True)
-
-
-
-
-    # Assuming 'col55' and 'col56' are defined as part of st.columns(3) or similar setup
-# Assuming 'col55' and 'col56' are defined as part of st.columns(3) or similar setup
-# Assuming 'col55' and 'col56' are defined as part of st.columns(3) or similar setup
-    with col55:
-        # Default values
-        buffer2 = 0
-        message2 = "No Insurance Needed from Buffer"
-        
-        # Retrieve existing percentage_uninsured_2 from session state
-        percentage_uninsured_2 = st.session_state.get('percentage_uninsured_2', 50) / 100
-        
-        # Display the markdown for buffer message first
-        formatted_buffer2 = f"${buffer2:,.2f}"  # Default formatting for buffer amount
-        buffer_message_html = f"""
-            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    AVS2 Buffer Message: <span style="font-size: 1.2em;">{formatted_buffer2}</span>
-                </h2>
-            </div>
-            """
-        buffer_message = st.markdown(buffer_message_html, unsafe_allow_html=True)
-
-        # Adjust buffer and message based on the insurance status
-        if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+    with col51:
+        # Calculate buffer based on the selected insurance option
+        if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            message2 = "No Insurance Needed from Buffer"
+            buffer2 = 0
+        elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
             buffer2 = final_result_service_2 * percentage_uninsured_2
-            formatted_buffer2 = f"${buffer2:,.2f}"  # Format the buffer amount
-            message2 = f"Buffer needed: {formatted_buffer2}"
-            # Display slider below the message
-            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, value=int(st.session_state.get('percentage_uninsured_2', 50)), key='percentage_uninsured_2') / 100
+            message2 = f"Buffer needed: {buffer2}"
+        else:  # Didn't buy insurance
+            buffer2 = final_result_service_2
+            message2 = f"Buffer needed: {buffer2}"
 
-    # Update session state for percentage_uninsured_2
-    st.session_state['percentage_uninsured_2'] = percentage_uninsured_2 * 100
-
-
-
-
-
-
-
-    # Assuming 'col56' is defined as part of st.columns(3) or similar setup
-    with col56:
-        # Default values
-        buffer3 = 0
-        message3 = "No Insurance Needed from Buffer"
-        
-        # Check the insurance status before displaying the slider
-        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            # Retrieve existing percentage_uninsured_3 from session state
-            percentage_uninsured_3 = st.session_state.get('percentage_uninsured_3', 50) / 100
-            
-            # Calculate buffer based on the slider's value
-            buffer3 = final_result_service_3 * percentage_uninsured_3
-        elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+    with col52:
+        # Calculate buffer based on the selected insurance option
+        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            message3 = "No Insurance Needed from Buffer"
             buffer3 = 0
+        elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
+            buffer3 = final_result_service_3 * percentage_uninsured_3
+            message3 = f"Buffer needed: {buffer3}"
         else:  # Didn't buy insurance
             buffer3 = final_result_service_3
-        
-        # Format buffer amount for display
-        formatted_buffer3 = f"${buffer3:,.2f}"
+            message3 = f"Buffer needed: {buffer3}"
 
-        # Display the markdown for buffer message
+
+    total_buffer_needed = buffer1 + buffer2 + buffer3
+    if st.session_state.buffer_reserve_amount > total_buffer_needed:
+        st.success("Enough attributable security can be safeguarded from the Buffer.")
+    else:
+        st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
+
+        # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
+    col54, col55, col56 = st.columns(3)
+
+    with col54: 
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    AVS3 Buffer Message: <span style="font-size: 1.2em;">{formatted_buffer3}</span>
+                    AVS1 Buffer Message: <span style="font-size: 1.2em;">{message1}</span>
                 </h2>
             </div>
             """, unsafe_allow_html=True)
 
-        # Display the slider based on insurance status
-        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            # Retrieve existing percentage_uninsured_3 from session state
-            percentage_uninsured_3 = st.session_state.get('percentage_uninsured_3', 50) / 100
-            
-            # Display the slider below the message
-            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, value=int(percentage_uninsured_3 * 100), key='percentage_uninsured_3') / 100
-            
-            # Update session state with new percentage
-            st.session_state['percentage_uninsured_3'] = percentage_uninsured_3 * 100
+    with col55:
+        st.markdown(f"""
+            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    AVS2 Buffer Message: <span style="font-size: 1.2em;">{message2}</span>
+                </h2>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with col56:
+        st.markdown(f"""
+            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    AVS3 Buffer Message: <span style="font-size: 1.2em;">{message3}</span>
+                </h2>
+            </div>
+            """, unsafe_allow_html=True)
 
 
 
