@@ -1457,21 +1457,25 @@ def main():
 
 
     # Assuming 'col55' and 'col56' are defined as part of st.columns(3) or similar setup
+# Assuming 'col55' and 'col56' are defined as part of st.columns(3) or similar setup
     with col55:
         # Default values
         buffer2 = 0
         message2 = "No Insurance Needed from Buffer"
-        percentage_uninsured_2 = st.session_state.get('percentage_uninsured_2', 50) / 100  # Default or existing value
-
+        
+        # Retrieve existing percentage_uninsured_2 from session state
+        percentage_uninsured_2 = st.session_state.get('percentage_uninsured_2', 50) / 100
+        
         # Display the markdown for buffer message first
         formatted_buffer2 = f"${buffer2:,.2f}"  # Default formatting for buffer amount
-        st.markdown(f"""
+        buffer_message_html = f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     AVS2 Buffer Message: <span style="font-size: 1.2em;">{formatted_buffer2}</span>
                 </h2>
             </div>
-            """, unsafe_allow_html=True)
+            """
+        buffer_message = st.markdown(buffer_message_html, unsafe_allow_html=True)
 
         # Adjust buffer and message based on the insurance status
         if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
@@ -1480,7 +1484,6 @@ def main():
             message2 = f"Buffer needed: {formatted_buffer2}"
             # Display slider below the message
             percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, value=int(st.session_state.get('percentage_uninsured_2', 50)), key='percentage_uninsured_2') / 100
-            st.session_state['percentage_uninsured_2'] = percentage_uninsured_2 * 100  # Update session state
         elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             # No slider needed, message and buffer already set before
             pass
@@ -1489,14 +1492,18 @@ def main():
             formatted_buffer2 = f"${buffer2:,.2f}"  # Format the buffer amount
             message2 = f"Buffer needed: {formatted_buffer2}"
             # Update the displayed message with the new buffer amount
-            st.markdown(f"""
-                <script>
-                    document.querySelector('div[data-testid="stMarkdownContainer"] h2 span').textContent = '{formatted_buffer2}';
-                </script>
-            """, unsafe_allow_html=True)
+            buffer_message_html = f"""
+                <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        AVS2 Buffer Message: <span style="font-size: 1.2em;">{formatted_buffer2}</span>
+                    </h2>
+                </div>
+                """
+            buffer_message = st.markdown(buffer_message_html, unsafe_allow_html=True)
 
-    # Now, let's handle the session state update for percentage_uninsured_2 outside of the conditional blocks
-    st.session_state['percentage_uninsured_2'] = percentage_uninsured_2 * 100  # Update session state
+    # Update session state for percentage_uninsured_2
+    st.session_state['percentage_uninsured_2'] = percentage_uninsured_2 * 100
+
 
 
 
