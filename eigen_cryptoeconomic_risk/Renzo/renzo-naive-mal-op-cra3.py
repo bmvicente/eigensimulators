@@ -1150,21 +1150,26 @@ def main():
     
     st.write("  \n")
 
+    # A button to trigger recalculation
+    if st.button('Recalculate'):
+        # Set a flag in session_state to indicate recalculation is needed
+        st.session_state.recalculate = True
+
+    if 'recalculate' not in st.session_state:
+        st.session_state.recalculate = False
+
+    # Function defined but not immediately called
     def recalculate_and_update():
-
-        values = []
         for i in range(5):
-            # Dynamically create number inputs with unique keys
             value = st.number_input(f"Input {i+1}", key=f'unique_key_{i}')
-            values.append(value)  # Collecting inputs for later use or processing
+            # Example processing or storing of value
+            st.session_state[f'input_{i}'] = value
 
-
-        existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
-            max_value=100000000000,
-            value=0,
-            step=10000000,
-            key='existing_reserve_key'
-        )
+        existing_reserve = st.number_input("STAKESURE Insurance Amount Already in Reserve", min_value=0,
+                                        max_value=100000000000, value=0, step=10000000,
+                                        key='existing_reserve_key')
+        # Example processing or storing of existing_reserve
+        st.session_state['existing_reserve'] = existing_reserve
 
 
         st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
@@ -1507,7 +1512,8 @@ def main():
 
 
 
-    recalculate_and_update()
+    if st.session_state.recalculate:
+        recalculate_and_update()
 
     st.write("\n")
 
