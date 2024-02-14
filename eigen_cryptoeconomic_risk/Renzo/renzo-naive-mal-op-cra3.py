@@ -1508,6 +1508,12 @@ def main():
             
             # Calculate buffer based on the slider's value
             buffer3 = final_result_service_3 * percentage_uninsured_3
+            
+            # Display the slider below the message
+            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, value=int(percentage_uninsured_3 * 100), key='percentage_uninsured_3') / 100
+            
+            # Update session state with new percentage
+            st.session_state['percentage_uninsured_3'] = percentage_uninsured_3 * 100
         elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             buffer3 = 0
         else:  # Didn't buy insurance
@@ -1525,16 +1531,6 @@ def main():
             </div>
             """, unsafe_allow_html=True)
 
-        # Display the slider based on insurance status
-        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            # Retrieve existing percentage_uninsured_3 from session state
-            percentage_uninsured_3 = st.session_state.get('percentage_uninsured_3', 50) / 100
-            
-            # Display the slider below the message
-            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, value=int(percentage_uninsured_3 * 100), key='percentage_uninsured_3') / 100
-            
-            # Update session state with new percentage
-            st.session_state['percentage_uninsured_3'] = percentage_uninsured_3 * 100
 
 
 
