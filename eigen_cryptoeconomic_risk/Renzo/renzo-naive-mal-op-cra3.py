@@ -140,6 +140,8 @@ def main():
 
     actual_stake_loss = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
 
+    pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
+
 
 
 ##########################################
@@ -393,15 +395,18 @@ def main():
 
 
 
+    col60,col61 = st.columns[(2,7)]
+    with col60:
+        st.button()
+    with col61:
+        st.write("\n")
 
-    st.write("\n")
-
-    with st.expander("Logic"):
-            st.markdown(f"""
-                    The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
-                    We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
-                    In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
-                """)
+        with st.expander("Logic"):
+                st.markdown(f"""
+                        The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
+                        We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
+                        In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
+                    """)
 
     st.write("  \n")
     st.write("  \n")
@@ -409,10 +414,7 @@ def main():
     st.write("  \n")
 
 
-
-
-    pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
-
+    
     def evaluate_conditions(pre_slash_max_slash_allowed, pos_neg_actual_stake_loss):
         if pre_slash_max_slash_allowed < 0:
             return 1.50
