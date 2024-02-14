@@ -1433,21 +1433,40 @@ def main():
     # Initialize variables for buffer amounts for demonstration
     buffer1, buffer2, buffer3 = 0, 0, 0  # Initialize buffer amounts
 
-    # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
-    with col50:
+
+    total_buffer_needed = buffer1 + buffer2 + buffer3
+    if st.session_state.buffer_reserve_amount > total_buffer_needed:
+        st.success("Enough attributable security can be safeguarded from the Buffer.")
+    else:
+        st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
+
+        # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
+    col54, col55, col56 = st.columns(3)
+
+    with col54: 
+
         # Calculate buffer based on the selected insurance option
         if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message1 = "No Insurance Needed from Buffer"
-            buffer1 = 0
+                message1 = "No Insurance Needed from Buffer"
+                buffer1 = 0
         elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
-            buffer1 = final_result_service_1 * percentage_uninsured_1
-            message1 = f"Buffer needed: {buffer1}"
+                percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
+                buffer1 = final_result_service_1 * percentage_uninsured_1
+                message1 = f"Buffer needed: {buffer1}"
         else:  # Didn't buy insurance
-            buffer1 = final_result_service_1
-            message1 = f"Buffer needed: {buffer1}"
+                buffer1 = final_result_service_1
+                message1 = f"Buffer needed: {buffer1}"
 
-    with col51:
+        st.markdown(f"""
+                <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                        AVS1 Buffer Message: <span style="font-size: 1.2em;">{message1}</span>
+                    </h2>
+                </div>
+                """, unsafe_allow_html=True)
+
+    with col55:
+
         # Calculate buffer based on the selected insurance option
         if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             message2 = "No Insurance Needed from Buffer"
@@ -1460,7 +1479,16 @@ def main():
             buffer2 = final_result_service_2
             message2 = f"Buffer needed: {buffer2}"
 
-    with col52:
+        st.markdown(f"""
+            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    AVS2 Buffer Message: <span style="font-size: 1.2em;">{message2}</span>
+                </h2>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with col56:
+
         # Calculate buffer based on the selected insurance option
         if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             message3 = "No Insurance Needed from Buffer"
@@ -1473,35 +1501,6 @@ def main():
             buffer3 = final_result_service_3
             message3 = f"Buffer needed: {buffer3}"
 
-
-    total_buffer_needed = buffer1 + buffer2 + buffer3
-    if st.session_state.buffer_reserve_amount > total_buffer_needed:
-        st.success("Enough attributable security can be safeguarded from the Buffer.")
-    else:
-        st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
-
-        # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
-    col54, col55, col56 = st.columns(3)
-
-    with col54: 
-        st.markdown(f"""
-            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    AVS1 Buffer Message: <span style="font-size: 1.2em;">{message1}</span>
-                </h2>
-            </div>
-            """, unsafe_allow_html=True)
-
-    with col55:
-        st.markdown(f"""
-            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    AVS2 Buffer Message: <span style="font-size: 1.2em;">{message2}</span>
-                </h2>
-            </div>
-            """, unsafe_allow_html=True)
-
-    with col56:
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
