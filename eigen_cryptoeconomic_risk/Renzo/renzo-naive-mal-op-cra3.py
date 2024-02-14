@@ -1449,10 +1449,10 @@ def main():
 
     with col51:
         # Calculate buffer based on the selected insurance option
-        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+        if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             message2 = "No Insurance Needed from Buffer"
             buffer2 = 0
-        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+        elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
             buffer2 = final_result_service_2 * percentage_uninsured_2
             message2 = f"Buffer needed: {buffer2}"
@@ -1462,10 +1462,10 @@ def main():
 
     with col52:
         # Calculate buffer based on the selected insurance option
-        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             message3 = "No Insurance Needed from Buffer"
             buffer3 = 0
-        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+        elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
             buffer3 = final_result_service_3 * percentage_uninsured_3
             message3 = f"Buffer needed: {buffer3}"
@@ -1480,7 +1480,7 @@ def main():
     else:
         st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
-
+        # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     col54, col55, col56 = st.columns(3)
 
     with col54: 
