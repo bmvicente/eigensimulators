@@ -1407,7 +1407,7 @@ def main():
 
     st.markdown(f"""
         <div style="font-size: 22px;">
-            <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> {st.session_state.op_stake_slashable} / 2 = {st.session_state.buffer_reserve_amount}
+            <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> ${st.session_state.op_stake_slashable:,.0f} / 2 = ${st.session_state.buffer_reserve_amount:,.0f}
         </div>
         """, unsafe_allow_html=True)
     
