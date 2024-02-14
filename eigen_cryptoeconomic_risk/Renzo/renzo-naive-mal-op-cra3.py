@@ -1431,9 +1431,6 @@ def main():
     # Preset insurance options for demonstration
     insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
 
-    # Placeholder for final_result_service values for demonstration
-    final_result_service_1, final_result_service_2, final_result_service_3 = 100, 200, 300
-
     # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     with col50:
         avs1_insurance_status = st.selectbox("AVS1 Insurance Status", options=insurance_options, key='avs1_insurance_status')
