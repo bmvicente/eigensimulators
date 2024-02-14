@@ -1150,13 +1150,6 @@ def main():
     
     st.write("  \n")
 
-    # A button to trigger recalculation
-    if st.button('Recalculate'):
-        # Set a flag in session_state to indicate recalculation is needed
-        st.session_state.recalculate = True
-
-    if 'recalculate' not in st.session_state:
-        st.session_state.recalculate = False
 
     # Function defined but not immediately called
     def recalculate_and_update():
@@ -1511,9 +1504,7 @@ def main():
             st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
 
-
-    if st.session_state.recalculate:
-        recalculate_and_update()
+    recalculate_and_update()
 
     st.write("\n")
 
