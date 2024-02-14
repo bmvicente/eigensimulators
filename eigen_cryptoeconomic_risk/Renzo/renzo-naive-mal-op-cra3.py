@@ -1146,6 +1146,12 @@ def main():
 
     st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *STAKESURE Approach* (Attributable Security)")
 
+    st.number_input("STAKESURE Insurance Amount Already in Reserve", min_value=0,
+        max_value=1000000000,
+        value=0,
+        step=1000
+    ))
+
     st.write("  \n")
     st.write("  \n")
 
