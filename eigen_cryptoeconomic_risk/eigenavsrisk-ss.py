@@ -138,7 +138,7 @@ def main():
             f"""
             <div style="
                 border: 1px solid;
-                border-radius: 1px;
+                border-radius: 10px;
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
@@ -652,7 +652,7 @@ def main():
             f"""
             <div style="
                 border: 1px solid;
-                border-radius: 1px;
+                border-radius: 10px;
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
