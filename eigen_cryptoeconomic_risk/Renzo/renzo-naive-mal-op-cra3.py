@@ -1134,6 +1134,13 @@ def main():
 
 
 
+
+
+
+
+
+
+
     #############################
     ######### STAKESURE #########
     #############################
@@ -1147,7 +1154,8 @@ def main():
         existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
             max_value=100000000000,
             value=0,
-            step=10000000
+            step=10000000,
+            key='existing_reserve_key'
         )
 
 
