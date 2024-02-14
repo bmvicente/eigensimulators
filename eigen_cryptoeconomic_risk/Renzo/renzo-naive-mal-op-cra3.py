@@ -1154,14 +1154,14 @@ def main():
     #############################
 
 
-    st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *STAKESURE Approach*")
+    st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *STAKESURE Approach* (Attributable Security)")
 
     st.write("  \n")
     st.write("  \n")
 
     total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
 
-    stakesure_insurance_reserve = st.session_state.post_slash_total_restaked / 2
+    stakesure_insurance_reserve = st.session_state.op_stake_slashable
 
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
     
@@ -1180,7 +1180,7 @@ def main():
             background-color: {background_color};">
             <h2 style="color: black; margin: 0; font-size: 1.4em;">
                 <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span> - Available Insurance Reserve <span style="font-size: 0.8em; font-weight: normal;">(Tt+1 / 2)</span>: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
+                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span> - Available Insurance Reserve from Operator Slashed Funds <span style="font-size: 0.8em; font-weight: normal;">(Tt+1 / 2)</span>: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
                     <br><span style="font-size: 18px; font-weight: bold;">{message}</span>
                 </div>
             </h2>
@@ -1374,7 +1374,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown('<p style="">&#8226; Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operator(s).</p>', unsafe_allow_html=True)
+    st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operator(s).</p>', unsafe_allow_html=True)
 
     def update_insurance_statuses():
         new_status = "Bought Appropriate Amount of Insurance"
