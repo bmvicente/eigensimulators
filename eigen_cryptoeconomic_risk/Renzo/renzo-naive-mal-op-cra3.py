@@ -1421,11 +1421,12 @@ def main():
         st.session_state.buffer_reserve_amount = 0  # or any default value
 
     st.markdown(f"""
-        <div style="font-size: 22px; text-align: center;">
+        <div style="font-size: 22px;">
             <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> {st.session_state.op_stake_slashable} / 2 = {st.session_state.buffer_reserve_amount}
         </div>
         """, unsafe_allow_html=True)
-
+    
+    st.write("\n")
 
     st.session_state.buffer_reserve_amount = st.session_state.op_stake_slashable / 2
 
@@ -1434,13 +1435,7 @@ def main():
     buffer1, buffer2, buffer3 = 0, 0, 0  # Initialize buffer amounts
 
 
-    total_buffer_needed = buffer1 + buffer2 + buffer3
-    if st.session_state.buffer_reserve_amount > total_buffer_needed:
-        st.success("Enough attributable security can be safeguarded from the Buffer.")
-    else:
-        st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
-
-        # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
+    # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     col54, col55, col56 = st.columns(3)
 
     with col54: 
@@ -1508,6 +1503,15 @@ def main():
                 </h2>
             </div>
             """, unsafe_allow_html=True)
+
+
+    st.write("\n")
+
+    total_buffer_needed = buffer1 + buffer2 + buffer3
+    if st.session_state.buffer_reserve_amount > total_buffer_needed:
+        st.success("Enough attributable security can be safeguarded from the Buffer.")
+    else:
+        st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
 
 
