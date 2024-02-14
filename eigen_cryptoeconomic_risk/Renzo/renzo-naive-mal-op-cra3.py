@@ -1451,10 +1451,6 @@ def main():
 
 
     total_buffer_needed = buffer1 + buffer2 + buffer3
-    if st.session_state.buffer_reserve_amount > total_buffer_needed:
-        st.success("Enough attributable security can be safeguarded from the Buffer.")
-    else:
-        st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
         # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     col54, col55, col56 = st.columns(3)
