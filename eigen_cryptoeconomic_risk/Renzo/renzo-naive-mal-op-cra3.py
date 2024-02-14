@@ -1494,6 +1494,10 @@ def main():
                 </script>
             """, unsafe_allow_html=True)
 
+        # Now, set percentage_uninsured_2 after the slider creation
+        percentage_uninsured_2 = st.session_state.get('percentage_uninsured_2', 50) / 100  # Default or existing value
+
+
 
 
     # Assuming 'col56' is defined as part of st.columns(3) or similar setup
