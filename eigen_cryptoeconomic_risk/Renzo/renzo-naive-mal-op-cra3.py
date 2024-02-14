@@ -1360,7 +1360,7 @@ def main():
             security_level = "Undefined Cryptoeconomic Security"
 
         return f"""
-        <div style="font-size: 20px;"> <!-- Adjust the font size as needed -->
+        <div style="font-size: 19px;"> <!-- Adjust the font size as needed -->
             <b>Cryptoeconomic Security Level:</b> {security_level}
         </div>
         """
