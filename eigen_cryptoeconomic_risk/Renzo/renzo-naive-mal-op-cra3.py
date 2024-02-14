@@ -367,11 +367,7 @@ def main():
         color = "black"  # Black color for zero
         background_color = "#ffffff"  # White background
 
-    # Use the variables in the markdown
-# Define your variables above this line
-# bst_avs1, color, background_color, etc.
 
-# Use the variables in the markdown
     st.markdown(
         """
         <div style="padding: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
@@ -381,11 +377,9 @@ def main():
             <span style="font-weight: bold; font-size: 24px; display: block; margin-top: 10px;">
                 &beta;<sub style="font-size: 16px;">ijt</sub> = 
                 &alpha;<sub style="font-size: 16px;">jt</sub> - 
-                &theta;<sub style="font-size: 16px;">ijt+1</sub>
+                &theta;<sub style="font-size: 16px;">ijt+1</sub> =
+                <span style="color: {color};">${bst_avs1:,.0f}</span>
             </span>
-            <div style="border: 2px solid {color}; border-radius: 5px; padding: 10px; text-align: center; margin: 10px 0; background-color: {background_color}; color: black; font-size: 1.3em; font-weight: bold;">
-                ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
-            </div>
         </div>
         """.format(
             color=color,
