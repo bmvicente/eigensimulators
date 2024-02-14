@@ -161,12 +161,6 @@ def main():
         else:
             actual_stake_loss_color = "#FFC0CB"  # pink
 
-    # For Max Total Stake Loss "Allowed"
-    if pre_slash_max_slash_allowed >= 0:
-        max_slash_color = "#90EE90"  # light green
-    else:
-        max_slash_color = "#ff6666"  # red
-
 
 
 
@@ -254,10 +248,6 @@ def main():
                         """
 
         st.markdown(display_text, unsafe_allow_html=True)
-
-
-        # ff6666
-
 
 
 
@@ -349,7 +339,6 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-
             
     st.write("\n")
 
@@ -466,8 +455,6 @@ def main():
     final_result_service_3 = actual_stake_loss * risk_evaluation3 * service_categories_evaluation_result * conditions_evaluation_result
 
 
-
-
     col1, col2 = st.columns([1, 1], gap="large")
 
 
@@ -529,11 +516,9 @@ def main():
             st.markdown(f"""
                     """)
 
-
         st.write("\n")
         st.write("\n")
         st.write("\n")
-
 
         st.session_state.operator_stake = operator_stake
 
@@ -1325,21 +1310,18 @@ def main():
     st.markdown('<p style="">&#8226; Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operator(s).</p>', unsafe_allow_html=True)
 
     def update_insurance_statuses():
-        # Example logic to update the insurance status
-        # You would replace this with your actual logic
-        # For demonstration, I'm just toggling the status
         new_status = "Bought Appropriate Amount of Insurance"
         st.session_state.insurance_statuses['avs1_insurance_status'] = new_status
         st.session_state.insurance_statuses['avs2_insurance_status'] = new_status
         st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
-        # Here, you could also recalculate anything that depends on these statuses
 
     st.write("\n")
 
-    # Button to perform the update
     if st.button('**Update Insurance Statuses**'):
         update_insurance_statuses()
 
+
+### IS BST HERE NEEDED? WOULD IT MAKE SENSE?
 
 
     ###################
@@ -1458,7 +1440,7 @@ def main():
     st.markdown('<p style="font-weight: bold;">&#8226; Visualization of Compounded Risk Propagation in AVS Ecosystem</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Multiple Operators Restaked Into Multiple AVSs + Entrenchment Risk Level</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold; display: inline;"><s>&#8226; Slashing Risks Based on AVS Nature</s></p><span style="font-weight: normal; display: inline;"><s>(DA, keeper networks, oracles, bridges, etc.)</s></span><br><br>', unsafe_allow_html=True)
-    st.markdown('<p style="font-weight: bold;">&#8226; Stakesure&#39;s Parameters <span style="font-weight: normal;">(Post-Slashing Insurance & Reserves)</span></p>', unsafe_allow_html=True)
+    st.markdown('<p><s style="font-weight: bold;">&#8226; Stakesure&#39;s Parameters <span style="font-weight: normal;">(Post-Slashing Insurance & Reserves)</span></s></p>', unsafe_allow_html=True)
 
 
 
