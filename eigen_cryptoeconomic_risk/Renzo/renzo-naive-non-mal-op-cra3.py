@@ -873,7 +873,7 @@ def main():
 
     st.markdown(f"""
         <div style="font-size: 1.1em;"> <!-- Adjust the font size as needed -->
-            The Byzantine <i>Slashing</i> Tolerance test helps identify the AVSs that are in a compromisable state and insecure cryptoeconomic position due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
+            The Byzantine <i>Slashing</i> Tolerance test helps identify the AVSs that are in an insecure cryptoeconomic position and potentially compromisable state due to a previously-executed Operator stake-loss event, which may induce an intermediate- or max-loss risk to the whole ecosystem.
             <br>
             We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
             <br>
