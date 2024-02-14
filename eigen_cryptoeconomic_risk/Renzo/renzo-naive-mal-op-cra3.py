@@ -1456,6 +1456,7 @@ def main():
 
 
 
+    # Assuming 'col55' and 'col56' are defined as part of st.columns(3) or similar setup
     with col55:
         # Default values
         buffer2 = 0
@@ -1478,7 +1479,7 @@ def main():
             formatted_buffer2 = f"${buffer2:,.2f}"  # Format the buffer amount
             message2 = f"Buffer needed: {formatted_buffer2}"
             # Display slider below the message
-            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, key='percentage_uninsured_2', value=int(st.session_state.get('percentage_uninsured_2', 50))) / 100
+            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, value=int(st.session_state.get('percentage_uninsured_2', 50)), key='percentage_uninsured_2') / 100
             st.session_state['percentage_uninsured_2'] = percentage_uninsured_2 * 100  # Update session state
         elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             # No slider needed, message and buffer already set before
@@ -1494,8 +1495,9 @@ def main():
                 </script>
             """, unsafe_allow_html=True)
 
-        # Now, set percentage_uninsured_2 after the slider creation
-        percentage_uninsured_2 = st.session_state.get('percentage_uninsured_2', 50) / 100  # Default or existing value
+    # Now, let's handle the session state update for percentage_uninsured_2 outside of the conditional blocks
+    st.session_state['percentage_uninsured_2'] = percentage_uninsured_2 * 100  # Update session state
+
 
 
 
