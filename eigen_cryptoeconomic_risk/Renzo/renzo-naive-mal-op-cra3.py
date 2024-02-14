@@ -378,7 +378,7 @@ def main():
                 &beta;<sub style="font-size: 16px;">ijt</sub> = 
                 &alpha;<sub style="font-size: 16px;">jt</sub> - 
                 &theta;<sub style="font-size: 16px;">ijt+1</sub> =
-                ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="color: {color};">${bst_avs1:,.0f}</span>
+                ${{{pre_slash_max_slash_allowed:,.0f}}} - ${{actual_stake_loss:,.0f}} = <span style="color: {color};">${{{bst_avs1:,.0f}}}</span>
             </span>
         </div>
         """.format(
