@@ -1411,6 +1411,11 @@ def main():
     ### BUFFER ###
     ############## 
         
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+
 
     if 'buffer_reserve_amount' not in st.session_state:
         st.session_state.buffer_reserve_amount = 0  # or any default value
@@ -1481,14 +1486,36 @@ def main():
     else:
         st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
-    # Display the buffer calculations and messages for each AVS
-    st.markdown(f"""
-        <div style="text-align: center; margin-top: 20px;">
-            <p>AVS1 Buffer Message: {message1}</p>
-            <p>AVS2 Buffer Message: {message2}</p> <!-- Assume message2 is defined similar to message1 -->
-            <p>AVS3 Buffer Message: {message3}</p> <!-- Assume message3 is defined similar to message1 -->
-        </div>
-        """, unsafe_allow_html=True)
+        # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
+    col54, col55, col56 = st.columns(3)
+
+    with col54: 
+        st.markdown(f"""
+            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    AVS1 Buffer Message: <span style="font-size: 1.2em;">{message1}</span>
+                </h2>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with col55:
+        st.markdown(f"""
+            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    AVS2 Buffer Message: <span style="font-size: 1.2em;">{message2}</span>
+                </h2>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with col56:
+        st.markdown(f"""
+            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    AVS3 Buffer Message: <span style="font-size: 1.2em;">{message3}</span>
+                </h2>
+            </div>
+            """, unsafe_allow_html=True)
+
 
 
 
