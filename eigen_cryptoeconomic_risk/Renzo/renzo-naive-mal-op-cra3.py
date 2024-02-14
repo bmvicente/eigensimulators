@@ -411,14 +411,14 @@ def main():
 
 
 
+    pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
 
-
-    def evaluate_conditions(max_slash_allowed, actual_stake_loss):
-        if max_slash_allowed < 0:
+    def evaluate_conditions(pre_slash_max_slash_allowed, pos_neg_actual_stake_loss):
+        if pre_slash_max_slash_allowed < 0:
             return 1.50
-        elif max_slash_allowed > 0 and actual_stake_loss < 0:
+        elif pre_slash_max_slash_allowed > 0 and pos_neg_actual_stake_loss < 0:
             return 1.25
-        elif max_slash_allowed > 0 and actual_stake_loss > 0:
+        elif pre_slash_max_slash_allowed > 0 and pos_neg_actual_stake_loss > 0:
             return 1.10
         else:
             return 0
