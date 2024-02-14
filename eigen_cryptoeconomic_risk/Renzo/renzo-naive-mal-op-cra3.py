@@ -370,17 +370,17 @@ def main():
 
     st.markdown(
         """
-        <div style="padding: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
-            <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
-                POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
-            </h2>
-            <span style="font-weight: bold; font-size: 26px; display: block; margin-top: 10px;">
-                &beta;<sub style="font-size: 16px;">ijt</sub> = 
-                &alpha;<sub style="font-size: 16px;">jt</sub> - 
-                &theta;<sub style="font-size: 16px;">ijt+1</sub> =
-                ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="color: {color};">${bst_avs1:,.0f}</span>
-            </span>
-        </div>
+            <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
+                <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
+                    POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
+                </h2>
+                <span style="font-weight: bold; font-size: 26px; display: block; margin-top: 5px;">
+                    &beta;<sub style="font-size: 16px;">ijt</sub> = 
+                    &alpha;<sub style="font-size: 16px;">jt</sub> - 
+                    &theta;<sub style="font-size: 16px;">ijt+1</sub> =
+                    ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="color: {color};">${bst_avs1:,.0f}</span>
+                </span>
+            </div>
         """.format(
             color=color,
             background_color=background_color,
@@ -1371,18 +1371,6 @@ def main():
 
     st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operator(s).</p>', unsafe_allow_html=True)
 
-    def update_insurance_statuses():
-        new_status = "Bought Appropriate Amount of Insurance"
-        st.session_state.insurance_statuses['avs1_insurance_status'] = new_status
-        st.session_state.insurance_statuses['avs2_insurance_status'] = new_status
-        st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
-
-    st.write("\n")
-
-    if st.button('**Update Insurance Statuses**'):
-        update_insurance_statuses()
-
-
 
 
 
@@ -1559,6 +1547,19 @@ def main():
         st.success("Enough attributable security can be safeguarded from the Buffer.")
     else:
         st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
+
+
+
+    def update_insurance_statuses():
+        new_status = "Bought Appropriate Amount of Insurance"
+        st.session_state.insurance_statuses['avs1_insurance_status'] = new_status
+        st.session_state.insurance_statuses['avs2_insurance_status'] = new_status
+        st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
+
+    st.write("\n")
+
+    if st.button('**Update Insurance Statuses**'):
+        update_insurance_statuses()
 
 
 
