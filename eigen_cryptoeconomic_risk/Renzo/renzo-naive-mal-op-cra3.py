@@ -1447,27 +1447,30 @@ def main():
     # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     col54, col55, col56 = st.columns(3)
 
-    with col54: 
-        percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
-
-        # Calculate buffer based on the selected insurance option
-        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-                message1 = "No Insurance Needed from Buffer"
-                buffer1 = 0
-        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-                buffer1 = final_result_service_1 * percentage_uninsured_1
-                message1 = f"Buffer needed: {buffer1}"
+    with col54:
+        # Check the insurance status before displaying the slider
+        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            # Only show the slider if "Bought inappropriate amount" is selected
+            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
+            buffer1 = final_result_service_1 * percentage_uninsured_1
+            message1 = f"Buffer needed: {buffer1}"
+        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            message1 = "No Insurance Needed from Buffer"
+            buffer1 = 0
+            percentage_uninsured_1 = 0  # Not used but defined for consistency
         else:  # Didn't buy insurance
-                buffer1 = final_result_service_1
-                message1 = f"Buffer needed: {buffer1}"
+            buffer1 = final_result_service_1
+            message1 = f"Buffer needed: {buffer1}"
+            percentage_uninsured_1 = 1  # Assuming 100% uninsured for calculation
 
         st.markdown(f"""
-                <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                    <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                        AVS1 Buffer Message: <span style="font-size: 1.2em;">{message1}</span>
-                    </h2>
-                </div>
-                """, unsafe_allow_html=True)
+            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    AVS1 Buffer Message: <span style="font-size: 1.2em;">{message1}</span>
+                </h2>
+            </div>
+            """, unsafe_allow_html=True)
+
 
     with col55:
         percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
