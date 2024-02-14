@@ -1412,14 +1412,17 @@ def main():
     ############## 
         
 
+    if 'buffer_reserve_amount' not in st.session_state:
+        st.session_state.buffer_reserve_amount = 0  # or any default value
+
     st.markdown(f"""
         <div style="font-size: 22px; text-align: center;"> <!-- Adjust the font size as needed -->
-            <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> {st.session_state.op_stake_slashable} / 2 = {buffer_reserve_amount}
+            <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> {st.session_state.op_stake_slashable} / 2 = {st.session_state.buffer_reserve_amount}
         </div>
         """, unsafe_allow_html=True)
 
 
-    buffer_reserve_amount = st.session_state.op_stake_slashable / 2
+    st.session_state.buffer_reserve_amount = st.session_state.op_stake_slashable / 2
 
 
     # Initialize variables for buffer amounts for demonstration
