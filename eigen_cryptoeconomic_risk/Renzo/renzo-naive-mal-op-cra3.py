@@ -1433,17 +1433,13 @@ def main():
     # Initialize variables for buffer amounts for demonstration
     buffer1, buffer2, buffer3 = 0, 0, 0  # Initialize buffer amounts
 
-    # Preset insurance options for demonstration
-    insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
-
     # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     with col50:
-        avs1_insurance_status = st.selectbox("AVS1 Insurance Status", options=insurance_options, key='avs1_insurance_status_keyy')
         # Calculate buffer based on the selected insurance option
-        if avs1_insurance_status == insurance_options[0]:  # Bought appropriate amount
+        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             message1 = "No Insurance Needed from Buffer"
             buffer1 = 0
-        elif avs1_insurance_status == insurance_options[1]:  # Bought inappropriate amount
+        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
             buffer1 = final_result_service_1 * percentage_uninsured_1
             message1 = f"Buffer needed: {buffer1}"
@@ -1452,12 +1448,11 @@ def main():
             message1 = f"Buffer needed: {buffer1}"
 
     with col51:
-        avs2_insurance_status = st.selectbox("AVS2 Insurance Status", options=insurance_options, key='avs2_insurance_status_keyy')
         # Calculate buffer based on the selected insurance option
-        if avs2_insurance_status == insurance_options[0]:  # Bought appropriate amount
+        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             message2 = "No Insurance Needed from Buffer"
             buffer2 = 0
-        elif avs2_insurance_status == insurance_options[1]:  # Bought inappropriate amount
+        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
             buffer2 = final_result_service_2 * percentage_uninsured_2
             message2 = f"Buffer needed: {buffer2}"
@@ -1466,12 +1461,11 @@ def main():
             message2 = f"Buffer needed: {buffer2}"
 
     with col52:
-        avs3_insurance_status = st.selectbox("AVS3 Insurance Status", options=insurance_options, key='avs3_insurance_status_keyy')
         # Calculate buffer based on the selected insurance option
-        if avs3_insurance_status == insurance_options[0]:  # Bought appropriate amount
+        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             message3 = "No Insurance Needed from Buffer"
             buffer3 = 0
-        elif avs3_insurance_status == insurance_options[1]:  # Bought inappropriate amount
+        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
             buffer3 = final_result_service_3 * percentage_uninsured_3
             message3 = f"Buffer needed: {buffer3}"
@@ -1486,7 +1480,7 @@ def main():
     else:
         st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
-        # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
+
     col54, col55, col56 = st.columns(3)
 
     with col54: 
