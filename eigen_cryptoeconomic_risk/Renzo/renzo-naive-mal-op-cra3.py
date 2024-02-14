@@ -1410,101 +1410,87 @@ def main():
     ############## 
     ### BUFFER ###
     ############## 
-
-    st.markdown = f"""
-        <div style="font-size: 22px;"> <!-- Adjust the font size as needed -->
-            <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> op_slashable / 2 = buffer_reserve_amount
-        </div>
-    """
-
-    buffer_reserve_amount must always be > sum of buffer of the below cases, if not message "Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds."
-
-    if insurance_options = "bought appropriate amount of insurance" was selected above, show message of "No Insurance Needed from Buffer" => buffer = 0
-    if insurance_options = "bought inappropriate amount of insurance" was selected above, create a slider from 0% to 100% called % Amount Uninsured => buffer = final_result_service * %
-    if insurance_options = "didn't buy insurance" was selected above => final_result_service
-
-
-    with col50: 
-        background_color1 = "#90EE90" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1] else "#ff6666"
-        st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color1};">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    <div style="display: block;">
-                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
-                    </div>
-                    <div style="display: block; margin-top: 5px;">
-                        <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
         
-        st.write("  \n")
 
-        avs1_insurance_status_temp = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status")
+    st.markdown(f"""
+        <div style="font-size: 22px; text-align: center;"> <!-- Adjust the font size as needed -->
+            <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> {st.session_state.op_stake_slashable} / 2 = {buffer_reserve_amount}
+        </div>
+        """, unsafe_allow_html=True)
 
+
+    buffer_reserve_amount = st.session_state.op_stake_slashable / 2
+
+
+    # Initialize variables for buffer amounts for demonstration
+    buffer1, buffer2, buffer3 = 0, 0, 0  # Initialize buffer amounts
+
+    # Preset insurance options for demonstration
+    insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+
+    # Placeholder for final_result_service values for demonstration
+    final_result_service_1, final_result_service_2, final_result_service_3 = 100, 200, 300
+
+    # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
+    with col50:
+        avs1_insurance_status = st.selectbox("AVS1 Insurance Status", options=insurance_options, key='avs1_insurance_status')
+        # Calculate buffer based on the selected insurance option
+        if avs1_insurance_status == insurance_options[0]:  # Bought appropriate amount
+            message1 = "No Insurance Needed from Buffer"
+            buffer1 = 0
+        elif avs1_insurance_status == insurance_options[1]:  # Bought inappropriate amount
+            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50) / 100
+            buffer1 = final_result_service_1 * percentage_uninsured_1
+            message1 = f"Buffer needed: {buffer1}"
+        else:  # Didn't buy insurance
+            buffer1 = final_result_service_1
+            message1 = f"Buffer needed: {buffer1}"
 
     with col51:
-        background_color2 = "#90EE90" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1] else "#ff6666"
-        st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color2};">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    <div style="display: block;">
-                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
-                    </div>
-                    <div style="display: block; margin-top: 5px;">
-                        <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
-        
-        st.write("  \n")
-
-        avs2_insurance_status_temp = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status")
-
+        avs2_insurance_status = st.selectbox("AVS2 Insurance Status", options=insurance_options, key='avs2_insurance_status')
+        # Calculate buffer based on the selected insurance option
+        if avs2_insurance_status == insurance_options[0]:  # Bought appropriate amount
+            message2 = "No Insurance Needed from Buffer"
+            buffer2 = 0
+        elif avs2_insurance_status == insurance_options[1]:  # Bought inappropriate amount
+            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50) / 100
+            buffer2 = final_result_service_2 * percentage_uninsured_2
+            message2 = f"Buffer needed: {buffer2}"
+        else:  # Didn't buy insurance
+            buffer2 = final_result_service_2
+            message2 = f"Buffer needed: {buffer2}"
 
     with col52:
-        background_color3 = "#90EE90" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1] else "#ff6666"
-        st.markdown(
-            f"""
-            <div style="
-                border: 1px solid;
-                border-radius: 2px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color3};">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    <div style="display: block;">
-                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
-                    </div>
-                    <div style="display: block; margin-top: 5px;">
-                        <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+        avs3_insurance_status = st.selectbox("AVS3 Insurance Status", options=insurance_options, key='avs3_insurance_status')
+        # Calculate buffer based on the selected insurance option
+        if avs3_insurance_status == insurance_options[0]:  # Bought appropriate amount
+            message3 = "No Insurance Needed from Buffer"
+            buffer3 = 0
+        elif avs3_insurance_status == insurance_options[1]:  # Bought inappropriate amount
+            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50) / 100
+            buffer3 = final_result_service_3 * percentage_uninsured_3
+            message3 = f"Buffer needed: {buffer3}"
+        else:  # Didn't buy insurance
+            buffer3 = final_result_service_3
+            message3 = f"Buffer needed: {buffer3}"
+
+
+    # Check if buffer_reserve_amount is sufficient
+    total_buffer_needed = buffer1 + buffer2 + buffer3
+    if buffer_reserve_amount > total_buffer_needed:
+        st.success("Enough attributable security can be safeguarded from the Buffer.")
+    else:
+        st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
+
+    # Display the buffer calculations and messages for each AVS
+    st.markdown(f"""
+        <div style="text-align: center; margin-top: 20px;">
+            <p>AVS1 Buffer Message: {message1}</p>
+            <p>AVS2 Buffer Message: {message2}</p> <!-- Assume message2 is defined similar to message1 -->
+            <p>AVS3 Buffer Message: {message3}</p> <!-- Assume message3 is defined similar to message1 -->
+        </div>
+        """, unsafe_allow_html=True)
+
 
 
 #########################################
