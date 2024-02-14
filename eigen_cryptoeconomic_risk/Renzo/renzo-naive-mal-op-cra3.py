@@ -397,7 +397,15 @@ def main():
 
     col60,col61 = st.columns([2,7])
     with col60:
-        st.button()
+
+        if st.button('Update Calculations'):
+
+            st.session_state.pre_slash_total_restaked = create_total_restaked_input()
+            slashing_amount = calculate_slashing(st.session_state.pre_slash_total_restaked, st.session_state.risk_score1)
+            st.session_state.slashing_amount = slashing_amount
+            
+            st.write(f"Updated Slashing Amount: ${st.session_state.slashing_amount:,.2f}")
+
     with col61:
         st.write("\n")
 
