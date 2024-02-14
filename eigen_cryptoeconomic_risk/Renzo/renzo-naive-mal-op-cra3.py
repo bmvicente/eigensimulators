@@ -151,6 +151,8 @@ def main():
     if pre_slash_max_slash_allowed >= 0:
         if actual_stake_loss < pre_slash_max_slash_allowed:
             actual_stake_loss_color = "#90EE90"  # light green
+        elif actual_stake_loss == 0:
+            actual_stake_loss_color = "#FFFFFF"
         else:
             actual_stake_loss_color = "#FFC0CB"  # pink
     else:
@@ -327,9 +329,6 @@ def main():
                 """, 
                 unsafe_allow_html=True
             )
-
-        # Determine the background color based on the condition
-        #background_color = "#ff6666" if actual_stake_loss > abs(pre_slash_max_slash_allowed) else "#FFC0CB"  # pink for less, red for more
 
         st.markdown(
             f"""
