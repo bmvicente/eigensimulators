@@ -395,7 +395,7 @@ def main():
 
 
 
-    col60,col61 = st.columns[(2,7)]
+    col60,col61 = st.columns([2,7])
     with col60:
         st.button()
     with col61:
