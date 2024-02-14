@@ -1442,7 +1442,7 @@ def main():
             message1 = "No Insurance Needed from Buffer"
             buffer1 = 0
         elif avs1_insurance_status == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50) / 100
+            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
             buffer1 = final_result_service_1 * percentage_uninsured_1
             message1 = f"Buffer needed: {buffer1}"
         else:  # Didn't buy insurance
@@ -1456,7 +1456,7 @@ def main():
             message2 = "No Insurance Needed from Buffer"
             buffer2 = 0
         elif avs2_insurance_status == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50) / 100
+            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
             buffer2 = final_result_service_2 * percentage_uninsured_2
             message2 = f"Buffer needed: {buffer2}"
         else:  # Didn't buy insurance
@@ -1470,7 +1470,7 @@ def main():
             message3 = "No Insurance Needed from Buffer"
             buffer3 = 0
         elif avs3_insurance_status == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50) / 100
+            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
             buffer3 = final_result_service_3 * percentage_uninsured_3
             message3 = f"Buffer needed: {buffer3}"
         else:  # Didn't buy insurance
