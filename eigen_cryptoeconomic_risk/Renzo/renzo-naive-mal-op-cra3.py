@@ -368,37 +368,23 @@ def main():
         background_color = "#ffffff"  # White background
 
     # Use the variables in the markdown
+# Define your variables above this line
+# bst_avs1, color, background_color, etc.
+
+# Use the variables in the markdown
     st.markdown(
         """
-        <div style="
-            padding: 5px;
-            text-align: center;
-            margin: 5px 0;
-            background-color: white;
-            border: 2px solid {color};
-            border-radius: 5px;">
-            
+        <div style="padding: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
             <h2 style="color: black; margin: 0; font-size: 20px; font-weight: bold;">
                 POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
             </h2>
-            
             <span style="font-weight: bold; font-size: 24px; display: block; margin-top: 10px;">
                 &beta;<sub style="font-size: 16px;">ijt</sub> = 
                 &alpha;<sub style="font-size: 16px;">jt</sub> - 
                 &theta;<sub style="font-size: 16px;">ijt+1</sub>
             </span>
-            
-            <div style="
-                border: 2px solid {color};
-                border-radius: 5px;
-                padding: 10px;
-                text-align: center;
-                margin: 10px 0;
-                background-color: {background_color};
-                color: black; 
-                font-size: 1.3em; 
-                font-weight: bold;">
-                ${{{{pre_slash_max_slash_allowed:,.0f}}}} - ${{{{actual_stake_loss:,.0f}}}} = <span style="font-size: 1.3em; color: {color};">${{{{{bst_avs1:,.0f}}}}}</span>
+            <div style="border: 2px solid {color}; border-radius: 5px; padding: 10px; text-align: center; margin: 10px 0; background-color: {background_color}; color: black; font-size: 1.3em; font-weight: bold;">
+                ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
             </div>
         </div>
         """.format(
@@ -408,8 +394,9 @@ def main():
             actual_stake_loss=actual_stake_loss,
             bst_avs1=bst_avs1
         ), 
-        unsafe_allow_html=True,
+        unsafe_allow_html=True
     )
+
 
 
 
@@ -1448,55 +1435,53 @@ def main():
     col54, col55, col56 = st.columns(3)
 
     with col54:
-        # Check the insurance status before displaying the slider
-        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            # Only show the slider if "Bought inappropriate amount" is selected
-            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
-            buffer1 = final_result_service_1 * percentage_uninsured_1
-            formatted_buffer1 = f"${buffer1:,.2f}"  # Format the buffer amount
-            message1 = f"Buffer needed: {formatted_buffer1}"
-        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message1 = "No Insurance Needed from Buffer"
-            buffer1 = 0
-            formatted_buffer1 = "$0.00"  # Display as $0.00 for consistency
-        else:  # Didn't buy insurance
-            buffer1 = final_result_service_1
-            formatted_buffer1 = f"${buffer1:,.2f}"  # Format the buffer amount
-            message1 = f"Buffer needed: {formatted_buffer1}"
+        # Default values
+        buffer1 = 0
+        message1 = "No Insurance Needed from Buffer"
+        percentage_uninsured_1 = st.session_state.get('percentage_uninsured_1', 50) / 100  # Default or existing value
 
+        # Display the markdown for buffer message first
+        formatted_buffer1 = f"${buffer1:,.2f}"  # Default formatting for buffer amount
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    AVS1 Buffer Message: <span style="font-size: 1.2em;">{message1}</span>
+                    AVS1 Buffer Message: <span style="font-size: 1.2em;">{formatted_buffer1}</span>
                 </h2>
             </div>
             """, unsafe_allow_html=True)
 
-
-    with col54:
+        # Adjust buffer and message based on the insurance status
         if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            # The slider automatically updates 'percentage_uninsured_1' in the session state
-            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, key='percentage_uninsured_1') / 100
-            # Use 'percentage_uninsured_1' directly from 'st.session_state' for calculations if needed
-            buffer1 = final_result_service_1 * (st.session_state.percentage_uninsured_1 / 100)
+            buffer1 = final_result_service_1 * percentage_uninsured_1
+            formatted_buffer1 = f"${buffer1:,.2f}"  # Format the buffer amount
+            message1 = f"Buffer needed: {formatted_buffer1}"
+            # Display slider below the message
+            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, key='percentage_uninsured_1', value=int(st.session_state.get('percentage_uninsured_1', 50))) / 100
+            st.session_state['percentage_uninsured_1'] = percentage_uninsured_1 * 100  # Update session state
+        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            # No slider needed, message and buffer already set before
+            pass
+        else:  # Didn't buy insurance
+            buffer1 = final_result_service_1
+            formatted_buffer1 = f"${buffer1:,.2f}"  # Format the buffer amount
+            message1 = f"Buffer needed: {formatted_buffer1}"
+            # Update the displayed message with the new buffer amount
+            st.markdown(f"""
+                <script>
+                    document.querySelector('div[data-testid="stMarkdownContainer"] h2 span').textContent = '{formatted_buffer1}';
+                </script>
+            """, unsafe_allow_html=True)
+
 
 
     with col55:
-        # Check the insurance status before displaying the slider
-        if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
-            buffer2 = final_result_service_2 * percentage_uninsured_2
-            formatted_buffer2 = f"${buffer2:,.2f}"  # Format the buffer amount
-            message2 = f"Buffer needed: {formatted_buffer2}"
-        elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message2 = "No Insurance Needed from Buffer"
-            buffer2 = 0
-            formatted_buffer2 = "$0.00"
-        else:  # Didn't buy insurance
-            buffer2 = final_result_service_2
-            formatted_buffer2 = f"${buffer2:,.2f}"  # Format the buffer amount
-            message2 = f"Buffer needed: {formatted_buffer2}"
+        # Default values
+        buffer2 = 0
+        message2 = "No Insurance Needed from Buffer"
+        percentage_uninsured_2 = st.session_state.get('percentage_uninsured_2', 50) / 100  # Default or existing value
 
+        # Display the markdown for buffer message first
+        formatted_buffer2 = f"${buffer2:,.2f}"  # Default formatting for buffer amount
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
@@ -1504,6 +1489,29 @@ def main():
                 </h2>
             </div>
             """, unsafe_allow_html=True)
+
+        # Adjust buffer and message based on the insurance status
+        if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            buffer2 = final_result_service_2 * percentage_uninsured_2
+            formatted_buffer2 = f"${buffer2:,.2f}"  # Format the buffer amount
+            message2 = f"Buffer needed: {formatted_buffer2}"
+            # Display slider below the message
+            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, key='percentage_uninsured_2', value=int(st.session_state.get('percentage_uninsured_2', 50))) / 100
+            st.session_state['percentage_uninsured_2'] = percentage_uninsured_2 * 100  # Update session state
+        elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            # No slider needed, message and buffer already set before
+            pass
+        else:  # Didn't buy insurance
+            buffer2 = final_result_service_2
+            formatted_buffer2 = f"${buffer2:,.2f}"  # Format the buffer amount
+            message2 = f"Buffer needed: {formatted_buffer2}"
+            # Update the displayed message with the new buffer amount
+            st.markdown(f"""
+                <script>
+                    document.querySelector('div[data-testid="stMarkdownContainer"] h2 span').textContent = '{formatted_buffer2}';
+                </script>
+            """, unsafe_allow_html=True)
+
 
 
     # Assuming 'col56' is defined as part of st.columns(3) or similar setup
