@@ -1500,17 +1500,19 @@ def main():
         # Default values
         buffer3 = 0
         message3 = "No Insurance Needed from Buffer"
-        percentage_uninsured_3 = st.session_state.get('percentage_uninsured_3', 50) / 100  # Default or existing value
-
+        
         # Check the insurance status before displaying the slider
         if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            # Retrieve existing percentage_uninsured_3 from session state
+            percentage_uninsured_3 = st.session_state.get('percentage_uninsured_3', 50) / 100
+            
             # Calculate buffer based on the slider's value
             buffer3 = final_result_service_3 * percentage_uninsured_3
         elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             buffer3 = 0
         else:  # Didn't buy insurance
             buffer3 = final_result_service_3
-
+        
         # Format buffer amount for display
         formatted_buffer3 = f"${buffer3:,.2f}"
 
@@ -1525,8 +1527,15 @@ def main():
 
         # Display the slider based on insurance status
         if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, value=int(st.session_state.get('percentage_uninsured_3', 50)), key='percentage_uninsured_3') / 100
-            st.session_state['percentage_uninsured_3'] = percentage_uninsured_3 * 100  # Update session state with new percentage
+            # Retrieve existing percentage_uninsured_3 from session state
+            percentage_uninsured_3 = st.session_state.get('percentage_uninsured_3', 50) / 100
+            
+            # Display the slider below the message
+            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, value=int(percentage_uninsured_3 * 100), key='percentage_uninsured_3') / 100
+            
+            # Update session state with new percentage
+            st.session_state['percentage_uninsured_3'] = percentage_uninsured_3 * 100
+
 
 
     st.write("\n")
