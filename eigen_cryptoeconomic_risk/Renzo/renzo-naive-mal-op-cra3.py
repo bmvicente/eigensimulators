@@ -343,7 +343,6 @@ def main():
         )
             
     st.write("\n")
-    st.write("\n")
 
 
 
@@ -353,53 +352,53 @@ def main():
 
 
     # Calculate bst_avs1
-    bst_avs1 = pre_slash_max_slash_allowed - actual_stake_loss
+    #bst_avs1 = pre_slash_max_slash_allowed - actual_stake_loss
 
     # Determine color and background_color based on bst_avs1 value
-    if bst_avs1 < 0:
-        color = "#d32f2f"  # Red color for negative value
-        background_color = "#fde0dc"  # Light red background
-    elif 0 < bst_avs1 <= 20000000:  # Condition for values between 0 and 20 million
-        color = "#FB8C00"  # Orange color
-        background_color = "#FFE0B2"  # Light orange background
-    elif bst_avs1 > 20000000:
-        color = "#388e3c"  # Green color for positive value
-        background_color = "#ebf5eb"  # Light green background
-    else:  # This will be for bst_avs1 exactly equal to 0
-        color = "black"  # Black color for zero
-        background_color = "#ffffff"  # White background
+    #if bst_avs1 < 0:
+    #    color = "#d32f2f"  # Red color for negative value
+    #    background_color = "#fde0dc"  # Light red background
+    #elif 0 < bst_avs1 <= 20000000:  # Condition for values between 0 and 20 million
+    #    color = "#FB8C00"  # Orange color
+    #    background_color = "#FFE0B2"  # Light orange background
+    #elif bst_avs1 > 20000000:
+    #    color = "#388e3c"  # Green color for positive value
+    #    background_color = "#ebf5eb"  # Light green background
+    #else:  # This will be for bst_avs1 exactly equal to 0
+    #    color = "black"  # Black color for zero
+    #    background_color = "#ffffff"  # White background
 
 
-    st.markdown(
-        """
-            <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
-                <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
-                    POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
-                </h2>
-                <span style="font-weight: bold; font-size: 26px; display: block; margin-top: 5px;">
-                    &beta;<sub style="font-size: 16px;">ijt</sub> = 
-                    &alpha;<sub style="font-size: 16px;">jt</sub> - 
-                    &theta;<sub style="font-size: 16px;">ijt+1</sub> =
-                    ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="color: {color};">${bst_avs1:,.0f}</span>
-                </span>
-            </div>
-        """.format(
-            color=color,
-            background_color=background_color,
-            pre_slash_max_slash_allowed=pre_slash_max_slash_allowed,
-            actual_stake_loss=actual_stake_loss,
-            bst_avs1=bst_avs1
-        ), 
-        unsafe_allow_html=True
-    )
+    #st.markdown(
+    #    """
+    #        <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
+    #            <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
+    #                POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
+    #            </h2>
+    #            <span style="font-weight: bold; font-size: 26px; display: block; margin-top: 5px;">
+    #                &beta;<sub style="font-size: 16px;">ijt</sub> = 
+    #                &alpha;<sub style="font-size: 16px;">jt</sub> - 
+    #                &theta;<sub style="font-size: 16px;">ijt+1</sub> =
+    #                ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="color: {color};">${bst_avs1:,.0f}</span>
+    #            </span>
+    #        </div>
+    #    """.format(
+    #        color=color,
+    #        background_color=background_color,
+    #        pre_slash_max_slash_allowed=pre_slash_max_slash_allowed,
+    #        actual_stake_loss=actual_stake_loss,
+    #        bst_avs1=bst_avs1
+    #    ), 
+    #    unsafe_allow_html=True
+    #)
 
 
 
     col60,col61 = st.columns([2,2])
     with col60:
         st.write("\n")
-        
-        if st.button('Update Calculations'):
+
+        if st.button('Compute Changes'):
 
             st.session_state.pre_slash_total_restaked = create_total_restaked_input()
             slashing_amount = calculate_slashing(st.session_state.pre_slash_total_restaked, st.session_state.risk_score1)
