@@ -1145,6 +1145,8 @@ def main():
 
 
     st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *STAKESURE Approach* (Attributable Security)")
+    
+    st.write("  \n")
 
     existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
         max_value=100000000000,
@@ -1180,7 +1182,7 @@ def main():
             background-color: {background_color};">
             <h2 style="color: black; margin: 0; font-size: 1.4em;">
                 <div style="display: block; margin-top: 5px;">
-                <span style="font-size: 1.1em;"><i>STAKESURE</i></span> - Existing + Available Insurance Reserve from Operator Slashed Funds: <span style="font-size: 0.8em;">(Operator Slashed Amount / 2)</span> = $<span style="font-size: 1.1em;">{stakesure_insurance_reserve:,.0f}</span>
+                <span style="font-size: 1.1em;"><i>STAKESURE</i></span> - Existing Reserve + Gained Insurance Amount from Operator Slashed Funds: <span style="font-size: 0.8em;">(Operator Slashed Amount / 2)</span> = $<span style="font-size: 1.1em;">{stakesure_insurance_reserve:,.0f}</span>
                     <br><span style="font-size: 18px; font-weight: bold;">{message}</span>
                 </div>
             </h2>
