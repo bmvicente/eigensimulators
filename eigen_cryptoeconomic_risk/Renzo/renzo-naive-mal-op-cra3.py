@@ -341,6 +341,7 @@ def main():
         )
             
     st.write("\n")
+    st.write("\n")
 
 
 
@@ -357,6 +358,21 @@ def main():
         unsafe_allow_html=True
     )
 
+
+    bst_avs1 = pre_slash_max_slash_allowed - actual_stake_loss
+
+    if bst_avs1 < 0:
+                color = "#d32f2f"  # Red color for negative value
+                background_color = "#fde0dc"  # Light red background
+    elif 0 < bst_avs1 <= 20000000:  # Condition for values between 0 and 20 million
+                color = "#FB8C00"  # Orange color
+                background_color = "#FFE0B2"  # Light orange background
+    elif bst_avs1 > 20000000:
+                color = "#388e3c"  # Green color for positive value
+                background_color = "#ebf5eb"  # Light green background
+    else:  # This will be for bst_avs3 exactly equal to 0
+                color = "black"  # Black color for zero
+                background_color = "#ffffff"  # White background
 
     st.markdown(
             f"""
@@ -378,25 +394,6 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-
-    st.write("\n")
-    st.write("\n")
-
-
-    bst_avs1 = pre_slash_max_slash_allowed - actual_stake_loss
-
-    if bst_avs1 < 0:
-                color = "#d32f2f"  # Red color for negative value
-                background_color = "#fde0dc"  # Light red background
-    elif 0 < bst_avs1 <= 20000000:  # Condition for values between 0 and 20 million
-                color = "#FB8C00"  # Orange color
-                background_color = "#FFE0B2"  # Light orange background
-    elif bst_avs1 > 20000000:
-                color = "#388e3c"  # Green color for positive value
-                background_color = "#ebf5eb"  # Light green background
-    else:  # This will be for bst_avs3 exactly equal to 0
-                color = "black"  # Black color for zero
-                background_color = "#ffffff"  # White background
 
     st.markdown(
                     f"""
