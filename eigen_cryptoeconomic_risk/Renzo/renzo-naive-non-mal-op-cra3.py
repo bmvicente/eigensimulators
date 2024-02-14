@@ -428,7 +428,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                <h2 style="color: black; margin: 0; font-size: 1em;">
                     <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">i AVS2</sub></span> &nbsp; | &nbsp;
                     Max Potential Stake Loss on <i>AVS 2</i>: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span>
                 </h2>
@@ -445,7 +445,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;">
-                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                <h2 style="color: black; margin: 0; font-size: 1em;">
                     <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">i AVS3</sub></span> &nbsp; | &nbsp;
                     Max Potential Stake Loss on <i>AVS 3</i>: <span style="font-size: 1.2em;">${op_max_loss_avs3:,.0f}</span>
                 </h2>
@@ -465,7 +465,7 @@ def main():
                     margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">ij</sub></span> &nbsp; | &nbsp;
-                        Total Max Potential Slash Across AVSs: <span style="font-size: 1.2em;">${op_max_loss_avss:,.0f}</span>
+                        Total Max Potential Stake Loss Across AVSs: <span style="font-size: 1.2em;">${op_max_loss_avss:,.0f}</span>
                     </h2>
                 </div>
                 """,
