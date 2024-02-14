@@ -395,9 +395,10 @@ def main():
 
 
 
-    col60,col61 = st.columns([2,7])
+    col60,col61 = st.columns([2,2])
     with col60:
-
+        st.write("\n")
+        
         if st.button('Update Calculations'):
 
             st.session_state.pre_slash_total_restaked = create_total_restaked_input()
