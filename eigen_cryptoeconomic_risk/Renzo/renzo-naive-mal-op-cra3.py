@@ -1499,21 +1499,12 @@ def main():
 
 
     with col56:
-        # Check the insurance status before displaying the slider
-        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
-            buffer3 = final_result_service_3 * percentage_uninsured_3
-            formatted_buffer3 = f"${buffer3:,.2f}"  # Format the buffer amount
-            message3 = f"Buffer needed: {formatted_buffer3}"
-        elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message3 = "No Insurance Needed from Buffer"
-            buffer3 = 0
-            formatted_buffer3 = "$0.00"
-        else:  # Didn't buy insurance
-            buffer3 = final_result_service_3
-            formatted_buffer3 = f"${buffer3:,.2f}"  # Format the buffer amount
-            message3 = f"Buffer needed: {formatted_buffer3}"
+        # Initialize the message and buffer amount before the conditional checks
+        buffer3 = 0
+        formatted_buffer3 = "$0.00"  # Default formatting
+        message3 = "No Insurance Needed from Buffer"  # Default message
 
+        # Display the markdown first
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
@@ -1521,6 +1512,29 @@ def main():
                 </h2>
             </div>
             """, unsafe_allow_html=True)
+
+        # Check the insurance status and adjust buffer and message accordingly
+        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            buffer3 = final_result_service_3 * (st.session_state.get('percentage_uninsured_3', 50) / 100)
+            formatted_buffer3 = f"${buffer3:,.2f}"  # Format the buffer amount
+            message3 = f"Buffer needed: {formatted_buffer3}"
+            # Display slider below the message
+            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, key='percentage_uninsured_3', value=int(st.session_state.get('percentage_uninsured_3', 50))) / 100
+            st.session_state['percentage_uninsured_3'] = percentage_uninsured_3 * 100  # Update session state
+        elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            # No slider needed, message and buffer already set before
+            pass
+        else:  # Didn't buy insurance
+            buffer3 = final_result_service_3
+            formatted_buffer3 = f"${buffer3:,.2f}"  # Format the buffer amount
+            message3 = f"Buffer needed: {formatted_buffer3}"
+            # Update the displayed message with the new buffer amount
+            st.markdown(f"""
+                <script>
+                    document.querySelector('div[data-testid="stMarkdownContainer"] h2 span').textContent = '{formatted_buffer3}';
+                </script>
+            """, unsafe_allow_html=True)
+
 
 
 
