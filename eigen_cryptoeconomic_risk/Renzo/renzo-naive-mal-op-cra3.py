@@ -1152,6 +1152,10 @@ def main():
         step=10000000
     )
 
+
+    st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
+
+
     st.write("  \n")
     st.write("  \n")
 
