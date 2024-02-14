@@ -1480,7 +1480,7 @@ def main():
 
     # Check if buffer_reserve_amount is sufficient
     total_buffer_needed = buffer1 + buffer2 + buffer3
-    if buffer_reserve_amount > total_buffer_needed:
+    if st.session_state.buffer_reserve_amount > total_buffer_needed:
         st.success("Enough attributable security can be safeguarded from the Buffer.")
     else:
         st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
