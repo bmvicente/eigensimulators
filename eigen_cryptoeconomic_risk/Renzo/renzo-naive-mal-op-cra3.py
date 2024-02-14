@@ -1493,6 +1493,7 @@ def main():
 
     recalculate_and_update()
 
+    st.write("\n")
 
     if st.button('**Update Insurance Statuses**'):
         recalculate_and_update()
