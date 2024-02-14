@@ -398,14 +398,9 @@ def main():
 
     with st.expander("Logic"):
             st.markdown(f"""
-                <div style="font-size: 1.1em;"> <!-- Adjust the font size as needed -->
-                    The Byzantine <i>Slashing</i> Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
-                    <br>
+                    The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
                     We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
-                    <br>
-                    <br>
                     In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
-                </div>
                 """)
 
     st.write("  \n")
@@ -1454,7 +1449,6 @@ def main():
                 </h2>
             </div>
             """, unsafe_allow_html=True)
-
 
 
 
