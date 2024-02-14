@@ -1180,7 +1180,7 @@ def main():
             background-color: {background_color};">
             <h2 style="color: black; margin: 0; font-size: 1.4em;">
                 <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span> - Available Insurance Reserve from Operator Slashed Funds <span style="font-size: 0.8em; font-weight: normal;">(Tt+1 / 2)</span>: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
+                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span> - Available Insurance Reserve from Operator Slashed Funds: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
                     <br><span style="font-size: 18px; font-weight: bold;">{message}</span>
                 </div>
             </h2>
