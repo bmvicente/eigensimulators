@@ -413,12 +413,12 @@ def main():
 
 
 
-    def evaluate_conditions(pre_slash_coc, post_slash_coc):
-        if pre_slash_coc < 0:
+    def evaluate_conditions(max_slash_allowed, actual_stake_loss):
+        if max_slash_allowed < 0:
             return 1.50
-        elif pre_slash_coc > 0 and post_slash_coc < 0:
+        elif max_slash_allowed > 0 and actual_stake_loss < 0:
             return 1.25
-        elif pre_slash_coc > 0 and post_slash_coc > 0:
+        elif max_slash_allowed > 0 and actual_stake_loss > 0:
             return 1.10
         else:
             return 0
@@ -428,7 +428,7 @@ def main():
         unique_categories = len(set(categories))
 
         if unique_categories == 1:
-            return 1.50
+            return 1.5
         elif unique_categories == 2:
             return 1.25
         elif unique_categories == 3:
@@ -471,23 +471,23 @@ def main():
         low_risk_count = categories.count('low_risk')
 
         if high_risk_count == 3:
-            adjustment = 0.50
+            adjustment = 1.50
         elif high_risk_count == 2 and medium_risk_count == 1:
-            adjustment = 0.375
+            adjustment = 0.90
         elif high_risk_count == 2 and low_risk_count == 1:
-            adjustment = 0.30
+            adjustment = 0.75
         elif high_risk_count == 1 and medium_risk_count == 1 and low_risk_count == 1:
-            adjustment = 0.225
+            adjustment = 0.60
         elif medium_risk_count == 3:
-            adjustment = 0.20
+            adjustment = 0.45
         elif medium_risk_count == 2 and low_risk_count == 1:
-            adjustment = 0.15
+            adjustment = 0.35
         elif high_risk_count == 1 and low_risk_count == 2:
-            adjustment = 0.12
+            adjustment = 0.325
         elif medium_risk_count == 1 and low_risk_count == 2:
-            adjustment = 0.10
+            adjustment = 0.25
         elif low_risk_count == 3:
-            adjustment = 0.05
+            adjustment = 0.20
         else:
             adjustment = 0
 
