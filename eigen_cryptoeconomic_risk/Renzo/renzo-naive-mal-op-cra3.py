@@ -1149,10 +1149,15 @@ def main():
     st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *STAKESURE Approach* (Attributable Security)")
     
     st.write("  \n")
+
     def recalculate_and_update():
 
+        values = []
         for i in range(5):
-            st.number_input("Label", key=f'unique_key_{i}')
+            # Dynamically create number inputs with unique keys
+            value = st.number_input(f"Input {i+1}", key=f'unique_key_{i}')
+            values.append(value)  # Collecting inputs for later use or processing
+
 
         existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
             max_value=100000000000,
