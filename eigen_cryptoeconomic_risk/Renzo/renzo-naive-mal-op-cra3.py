@@ -1146,7 +1146,7 @@ def main():
 
     st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *STAKESURE Approach* (Attributable Security)")
 
-    st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
+    existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
         max_value=1000000000,
         value=0,
         step=1000
@@ -1157,7 +1157,7 @@ def main():
 
     total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
 
-    stakesure_insurance_reserve = st.session_state.op_stake_slashable / 2
+    stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
 
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
     
