@@ -1473,18 +1473,20 @@ def main():
 
 
     with col55:
-        percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
-
-        # Calculate buffer based on the selected insurance option
-        if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message2 = "No Insurance Needed from Buffer"
-            buffer2 = 0
-        elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+        # Check the insurance status before displaying the slider
+        if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            # Only show the slider if "Bought inappropriate amount" is selected
+            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_2') / 100
             buffer2 = final_result_service_2 * percentage_uninsured_2
             message2 = f"Buffer needed: {buffer2}"
+        elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            message2 = "No Insurance Needed from Buffer"
+            buffer2 = 0
+            percentage_uninsured_2 = 0  # Not used but defined for consistency
         else:  # Didn't buy insurance
             buffer2 = final_result_service_2
             message2 = f"Buffer needed: {buffer2}"
+            percentage_uninsured_2 = 1  # Assuming 100% uninsured for calculation
 
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
@@ -1495,18 +1497,20 @@ def main():
             """, unsafe_allow_html=True)
 
     with col56:
-        percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
-
-        # Calculate buffer based on the selected insurance option
-        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message3 = "No Insurance Needed from Buffer"
-            buffer3 = 0
-        elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+        # Check the insurance status before displaying the slider
+        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            # Only show the slider if "Bought inappropriate amount" is selected
+            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
             buffer3 = final_result_service_3 * percentage_uninsured_3
             message3 = f"Buffer needed: {buffer3}"
+        elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            message3 = "No Insurance Needed from Buffer"
+            buffer3 = 0
+            percentage_uninsured_3 = 0  # Not used but defined for consistency
         else:  # Didn't buy insurance
             buffer3 = final_result_service_3
             message3 = f"Buffer needed: {buffer3}"
+            percentage_uninsured_3 = 1  # Assuming 100% uninsured for calculation
 
         st.markdown(f"""
             <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
