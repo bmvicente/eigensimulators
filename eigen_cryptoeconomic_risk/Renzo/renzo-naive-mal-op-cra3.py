@@ -1416,6 +1416,9 @@ def main():
     # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     col54, col55, col56 = st.columns(3)
 
+
+
+    # Assuming 'col54' is defined as part of st.columns(3) or similar setup
     with col54:
         # Default values
         buffer1 = 0
@@ -1438,8 +1441,9 @@ def main():
             formatted_buffer1 = f"${buffer1:,.2f}"  # Format the buffer amount
             message1 = f"Buffer needed: {formatted_buffer1}"
             # Display slider below the message
-            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, key='percentage_uninsured_1', value=int(st.session_state.get('percentage_uninsured_1', 50))) / 100
-            st.session_state['percentage_uninsured_1'] = percentage_uninsured_1 * 100  # Update session state
+            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, value=int(st.session_state.get('percentage_uninsured_1', 50)), key='percentage_uninsured_1') / 100
+            # Update session state with new percentage
+            st.session_state['percentage_uninsured_1'] = percentage_uninsured_1 * 100
         elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
             # No slider needed, message and buffer already set before
             pass
@@ -1453,6 +1457,7 @@ def main():
                     document.querySelector('div[data-testid="stMarkdownContainer"] h2 span').textContent = '{formatted_buffer1}';
                 </script>
             """, unsafe_allow_html=True)
+
 
 
 
