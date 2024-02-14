@@ -1150,7 +1150,7 @@ def main():
         max_value=1000000000,
         value=0,
         step=1000
-    ))
+    )
 
     st.write("  \n")
     st.write("  \n")
