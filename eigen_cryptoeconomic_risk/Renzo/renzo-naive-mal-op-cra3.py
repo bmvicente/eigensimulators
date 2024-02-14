@@ -1379,7 +1379,16 @@ def main():
     st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against a corrupting attack by Operator(s).</p>', unsafe_allow_html=True)
 
 
+    def update_insurance_statuses():
+        new_status = "Bought Appropriate Amount of Insurance"
+        st.session_state.insurance_statuses['avs1_insurance_status'] = new_status
+        st.session_state.insurance_statuses['avs2_insurance_status'] = new_status
+        st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
 
+    st.write("\n")
+
+    if st.button('**Update Insurance Statuses**'):
+        update_insurance_statuses()
 
 
 
@@ -1497,17 +1506,6 @@ def main():
         st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
 
-
-    def update_insurance_statuses():
-        new_status = "Bought Appropriate Amount of Insurance"
-        st.session_state.insurance_statuses['avs1_insurance_status'] = new_status
-        st.session_state.insurance_statuses['avs2_insurance_status'] = new_status
-        st.session_state.insurance_statuses['avs3_insurance_status'] = new_status
-
-    st.write("\n")
-
-    if st.button('**Update Insurance Statuses**'):
-        update_insurance_statuses()
 
 
 
