@@ -367,37 +367,42 @@ def main():
 
 
     st.markdown(
-                    f"""
-                <div style="
-                    padding: 5px;
-                    text-align: center;
-                    margin: 5px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                        <div style="text-align: center; font-size: 20px; font-weight: bold">
-                            <span>POST-SLASH Aftermath:</span> BYZANTINE <i>SLASHING</i> TOLERANCE TEST
-                            <span style="font-weight: bold; font-size: 1.5em;">
-                                &beta;<sub style="font-size: 0.8em;">ijt</sub> = 
-                                &alpha;<sub style="font-size: 0.8em;">jt</sub> - 
-                                &theta;<sub style="font-size: 0.8em;">ijt+1</sub>
-                            </span>
-                        </div>
-                        <div style="
-                            border: 2px solid {color};
-                            border-radius: 5px;
-                            padding: 10px;
-                            text-align: center;
-                            margin: 10px 0;
-                            background-color: {background_color};">
-                            <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
-                                ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
-                            </div>
-                        </div>
-                    </h2>
-                </div>
-                    """, 
-                    unsafe_allow_html=True
-                )
+        """
+        <div style="
+            padding: 5px;
+            text-align: center;
+            margin: 5px 0;
+            background-color: white;
+            border: 2px solid {color};
+            border-radius: 5px;">
+            
+            <h2 style="color: black; margin: 0; font-size: 20px; font-weight: bold;">
+                POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
+            </h2>
+            
+            <span style="font-weight: bold; font-size: 24px; display: block; margin-top: 10px;">
+                &beta;<sub style="font-size: 16px;">ijt</sub> = 
+                &alpha;<sub style="font-size: 16px;">jt</sub> - 
+                &theta;<sub style="font-size: 16px;">ijt+1</sub>
+            </span>
+            
+            <div style="
+                border: 2px solid {color};
+                border-radius: 5px;
+                padding: 10px;
+                text-align: center;
+                margin: 10px 0;
+                background-color: {background_color};
+                color: black; 
+                font-size: 1.3em; 
+                font-weight: bold;">
+                ${{pre_slash_max_slash_allowed:,.0f}} - ${{actual_stake_loss:,.0f}} = <span style="font-size: 1.3em; color: {color};">${{bst_avs1:,.0f}}</span>
+            </div>
+        </div>
+        """, 
+        unsafe_allow_html=True,
+    )
+
 
     st.write("\n")
 
@@ -1161,7 +1166,7 @@ def main():
 
     total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
 
-    stakesure_insurance_reserve = st.session_state.op_stake_slashable
+    stakesure_insurance_reserve = st.session_state.op_stake_slashable / 2
 
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
     
@@ -1180,7 +1185,7 @@ def main():
             background-color: {background_color};">
             <h2 style="color: black; margin: 0; font-size: 1.4em;">
                 <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span> - Available Insurance Reserve from Operator Slashed Funds: <span style="font-size: 1.1em;">${stakesure_insurance_reserve:,.0f}</span>
+                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span> - Available Insurance Reserve from Operator Slashed Funds: <span style="font-size: 1.1em;"> op_slashable / 2 = ${stakesure_insurance_reserve:,.0f}</span>
                     <br><span style="font-size: 18px; font-weight: bold;">{message}</span>
                 </div>
             </h2>
@@ -1391,6 +1396,106 @@ def main():
 
 
 
+
+
+    ############## 
+    ### BUFFER ###
+    ############## 
+
+    st.markdown = f"""
+        <div style="font-size: 22px;"> <!-- Adjust the font size as needed -->
+            <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> op_slashable / 2 = buffer_reserve_amount
+        </div>
+    """
+
+    buffer_reserve_amount must always be > sum of buffer of the below cases, if not message "Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds."
+
+    if insurance_options = "bought appropriate amount of insurance" was selected above, show message of "No Insurance Needed from Buffer" => buffer = 0
+    if insurance_options = "bought inappropriate amount of insurance" was selected above, create a slider from 0% to 100% called % Amount Uninsured => buffer = final_result_service * %
+    if insurance_options = "didn't buy insurance" was selected above => final_result_service
+
+
+    with col50: 
+        background_color1 = "#90EE90" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1] else "#ff6666"
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: {background_color1};">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        
+        st.write("  \n")
+
+        avs1_insurance_status_temp = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status")
+
+
+    with col51:
+        background_color2 = "#90EE90" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1] else "#ff6666"
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: {background_color2};">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+        
+        st.write("  \n")
+
+        avs2_insurance_status_temp = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status")
+
+
+    with col52:
+        background_color3 = "#90EE90" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1] else "#ff6666"
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 2px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: {background_color3};">
+                <h2 style="color: black; margin: 0; font-size: 1.1em;">
+                    <div style="display: block;">
+                        <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
+                    </div>
+                    <div style="display: block; margin-top: 5px;">
+                        <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
 
 #########################################
