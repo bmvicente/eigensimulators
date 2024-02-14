@@ -1151,6 +1151,9 @@ def main():
     st.write("  \n")
     def recalculate_and_update():
 
+        for i in range(5):
+            st.number_input("Label", key=f'unique_key_{i}')
+
         existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
             max_value=100000000000,
             value=0,
