@@ -394,22 +394,7 @@ def main():
 
 
 
-    col60,col61 = st.columns([2,2])
-    with col60:
-        st.write("\n")
-
-        if st.button('Compute Changes'):
-
-            st.session_state.pre_slash_total_restaked = create_total_restaked_input()
-            slashing_amount = calculate_slashing(st.session_state.pre_slash_total_restaked, st.session_state.risk_score1)
-            st.session_state.slashing_amount = slashing_amount
-            
-            st.write(f"Updated Slashing Amount: ${st.session_state.slashing_amount:,.2f}")
-
-    with col61:
-        st.write("\n")
-
-        with st.expander("Logic"):
+    with st.expander("Logic"):
                 st.markdown(f"""
                         The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
                         We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
