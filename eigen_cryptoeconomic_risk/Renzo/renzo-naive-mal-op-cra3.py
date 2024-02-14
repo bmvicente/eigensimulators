@@ -181,7 +181,7 @@ def main():
         st.write(f"""&#8226; Total Restaked: {formatted_value}""")
         
         if st.session_state.pre_slash_total_restaked >= 10000000000:  # 10 billion
-            st.markdown(f'<span style="color: red; font-weight: bold">Even though the conditions for cryptoeconomic security may not be satisfied, a large enough amount of stake is a strong determinant of the security and liveness of a PoS blockchain, to the point where no attack is warranted.</span>', unsafe_allow_html=True)
+            st.markdown(f'<span style="color: red; font-weight: bold">Even though the conditions for cryptoeconomic security may not be satisfied, a large enough amount of stake is a strong determinant of the security and liveness of a PoS blockchain, to the point where no adversarial attack is warranted.</span>', unsafe_allow_html=True)
         
         col24,col25 = st.columns(2)
         with col24:
@@ -349,15 +349,6 @@ def main():
     ####### BST #######
     ###################
 
-    st.markdown(
-        """
-        <div style="text-align: center; font-size: 20px; font-weight: bold">
-            <span>POST-SLASH Aftermath:</span> BYZANTINE <i>SLASHING</i> TOLERANCE TEST
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
 
     bst_avs1 = pre_slash_max_slash_allowed - actual_stake_loss
 
@@ -374,40 +365,36 @@ def main():
                 color = "black"  # Black color for zero
                 background_color = "#ffffff"  # White background
 
-    st.markdown(
-            f"""
-            <div style="
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: white;">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    <div style="display: block;">
-                        <span style="font-weight: bold; font-size: 1.5em;">
-                            &beta;<sub style="font-size: 0.8em;">ijt</sub> = 
-                            &alpha;<sub style="font-size: 0.8em;">jt</sub> - 
-                            &theta;<sub style="font-size: 0.8em;">ijt+1</sub>
-                        </span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
 
     st.markdown(
                     f"""
-                    <div style="
-                        border: 2px solid {color};
-                        border-radius: 5px;
-                        padding: 10px;
-                        text-align: center;
-                        margin: 10px 0;
-                        background-color: {background_color};">
-                        <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
-                            ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
+                <div style="
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                        <div style="text-align: center; font-size: 20px; font-weight: bold">
+                            <span>POST-SLASH Aftermath:</span> BYZANTINE <i>SLASHING</i> TOLERANCE TEST
+                            <span style="font-weight: bold; font-size: 1.5em;">
+                                &beta;<sub style="font-size: 0.8em;">ijt</sub> = 
+                                &alpha;<sub style="font-size: 0.8em;">jt</sub> - 
+                                &theta;<sub style="font-size: 0.8em;">ijt+1</sub>
+                            </span>
                         </div>
-                    </div>
+                        <div style="
+                            border: 2px solid {color};
+                            border-radius: 5px;
+                            padding: 10px;
+                            text-align: center;
+                            margin: 10px 0;
+                            background-color: {background_color};">
+                            <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
+                                ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
+                            </div>
+                        </div>
+                    </h2>
+                </div>
                     """, 
                     unsafe_allow_html=True
                 )

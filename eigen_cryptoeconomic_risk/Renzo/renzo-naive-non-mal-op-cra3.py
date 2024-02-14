@@ -129,7 +129,7 @@ def main():
     st.write(f"""&#8226; Total Restaked: {formatted_value}""")
     
     if st.session_state.total_restaked >= 10000000000:  # 10 billion
-        st.markdown(f'<span style="color: red; font-weight: bold">Even though the conditions for cryptoeconomic security may not be satisfied, a large enough amount of stake is a strong determinant of the security and liveness of a PoS blockchain, to the point where no attack is warranted.</span>', unsafe_allow_html=True)
+        st.markdown(f'<span style="color: red; font-weight: bold">Even though the conditions for cryptoeconomic security may not be satisfied, a large enough amount of stake is a strong determinant of the security and liveness of a PoS blockchain, to the point where no adversarial attack is warranted.</span>', unsafe_allow_html=True)
 
     st.write("\n")
 
