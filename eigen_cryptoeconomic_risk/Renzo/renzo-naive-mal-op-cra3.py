@@ -1402,6 +1402,7 @@ def main():
         </div>
         """, unsafe_allow_html=True)
 
+    st.write("\n")
 
     st.session_state.buffer_reserve_amount = st.session_state.op_stake_slashable / 2
 
