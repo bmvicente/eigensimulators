@@ -1529,16 +1529,6 @@ def main():
             percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, value=int(st.session_state.get('percentage_uninsured_3', 50)), key='percentage_uninsured_3') / 100
             st.session_state['percentage_uninsured_3'] = percentage_uninsured_3 * 100  # Update session state with new percentage
 
-    # After handling each AVS, check if the total buffer needed is within the reserve
-    total_buffer_needed = buffer1 + buffer2 + buffer3  # Assuming buffer1 and buffer2 are calculated similarly
-    if st.session_state.buffer_reserve_amount >= total_buffer_needed:
-        st.success("Enough attributable security can be safeguarded from the Buffer.")
-    else:
-        st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
-
-
-
-
 
     st.write("\n")
 
