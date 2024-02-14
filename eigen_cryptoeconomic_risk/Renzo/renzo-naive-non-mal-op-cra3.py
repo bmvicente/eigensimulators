@@ -115,10 +115,6 @@ def main():
                         """)
         
     st.write("  \n")
-
-    st.markdown('<p style="font-weight: bold;">&#8226; Would the Operator Stake lost through validating a risky AVS put the Ecosystem at risk? Would the Ecosystem end up in an insecure cryptoeconomic position?</span>', unsafe_allow_html=True)
-
-    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
