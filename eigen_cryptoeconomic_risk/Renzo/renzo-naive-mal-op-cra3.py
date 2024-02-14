@@ -1416,7 +1416,7 @@ def main():
         st.session_state.buffer_reserve_amount = 0  # or any default value
 
     st.markdown(f"""
-        <div style="font-size: 22px; text-align: center;"> <!-- Adjust the font size as needed -->
+        <div style="font-size: 22px; text-align: center;">
             <b>Cryptoeconomic Buffer Available for Uninsured Users:</b> {st.session_state.op_stake_slashable} / 2 = {st.session_state.buffer_reserve_amount}
         </div>
         """, unsafe_allow_html=True)
@@ -1433,7 +1433,7 @@ def main():
 
     # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     with col50:
-        avs1_insurance_status = st.selectbox("AVS1 Insurance Status", options=insurance_options, key='avs1_insurance_status')
+        avs1_insurance_status = st.selectbox("AVS1 Insurance Status", options=insurance_options, key='avs1_insurance_status_keyy')
         # Calculate buffer based on the selected insurance option
         if avs1_insurance_status == insurance_options[0]:  # Bought appropriate amount
             message1 = "No Insurance Needed from Buffer"
@@ -1447,7 +1447,7 @@ def main():
             message1 = f"Buffer needed: {buffer1}"
 
     with col51:
-        avs2_insurance_status = st.selectbox("AVS2 Insurance Status", options=insurance_options, key='avs2_insurance_status')
+        avs2_insurance_status = st.selectbox("AVS2 Insurance Status", options=insurance_options, key='avs2_insurance_status_keyy')
         # Calculate buffer based on the selected insurance option
         if avs2_insurance_status == insurance_options[0]:  # Bought appropriate amount
             message2 = "No Insurance Needed from Buffer"
@@ -1461,7 +1461,7 @@ def main():
             message2 = f"Buffer needed: {buffer2}"
 
     with col52:
-        avs3_insurance_status = st.selectbox("AVS3 Insurance Status", options=insurance_options, key='avs3_insurance_status')
+        avs3_insurance_status = st.selectbox("AVS3 Insurance Status", options=insurance_options, key='avs3_insurance_status_keyy')
         # Calculate buffer based on the selected insurance option
         if avs3_insurance_status == insurance_options[0]:  # Bought appropriate amount
             message3 = "No Insurance Needed from Buffer"
@@ -1475,7 +1475,6 @@ def main():
             message3 = f"Buffer needed: {buffer3}"
 
 
-    # Check if buffer_reserve_amount is sufficient
     total_buffer_needed = buffer1 + buffer2 + buffer3
     if st.session_state.buffer_reserve_amount > total_buffer_needed:
         st.success("Enough attributable security can be safeguarded from the Buffer.")
