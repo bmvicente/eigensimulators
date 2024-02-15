@@ -1160,6 +1160,7 @@ def main():
 
     stakesure_calc = f"""
     <div style="text-align: center;">
+        <span style="font-size: 20px; font-weight: bold; ">STAKESURE Insurance Available = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${existing_reserve:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">+</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
@@ -1355,6 +1356,7 @@ def main():
 
     stakesure_coverage_level_calc = f"""
         <div style="text-align: center;">
+            <span style="font-size: 20px; font-weight: bold; ">STAKESURE Insurance Coverage Level = </span>
             <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
             <span style="font-size: 24px; font-weight: bold;">-</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
@@ -1401,6 +1403,7 @@ def main():
 
     buffer_available_calc = f"""
         <div style="text-align: center;">
+            <span style="font-size: 20px; font-weight: bold; ">Buffer Insurance Amount Available = </span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span> 
             <span style="font-size: 24px; font-weight: bold;">+</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
@@ -1504,7 +1507,7 @@ def main():
 
     buffer_coverage_level_calc = f"""
     <div style="text-align: center;">
-        <span style="font-size: 20px; ">Buffer Coverage Level = </span>
+        <span style="font-size: 20px; font-weight: bold; ">Buffer Coverage Level = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
