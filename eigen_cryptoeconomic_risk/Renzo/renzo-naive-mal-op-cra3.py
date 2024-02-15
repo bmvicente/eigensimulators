@@ -1173,6 +1173,7 @@ def main():
     st.markdown(stakesure_calc, unsafe_allow_html=True)
 
     st.write("  \n")
+    st.write("  \n")
 
 
     if 'insurance_statuses' not in st.session_state:
