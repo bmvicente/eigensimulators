@@ -770,19 +770,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                **ΩAVS1**
-                ```python
-                def calculate_slashing(total_restaked, risk_score):
-                if risk_score == 10:
-                    risk_factor = (9 + 1) * 10
-                else:
-                    risk_factor = (risk_score + 1) * 10
-                
-                slashing_amount = (total_restaked / 3) * (risk_factor / 100)
-                return slashing_amount
-                ```
-                ```python
-                potential_total_slashing1 = calculate_slashing(total_restaked, risk_score1)
+                AVSs are more prone to compounded risks if their risk profiles are equally high, if they’re being secured by the same operator, if they fall into the same category of AVSs. What else?
                 """)
             
 
@@ -932,19 +920,7 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
-                **ΩAVS2**
-                ```python
-                def calculate_slashing(total_restaked, risk_score):
-                if risk_score == 10:
-                    risk_factor = (9 + 1) * 10
-                else:
-                    risk_factor = (risk_score + 1) * 10
-                
-                slashing_amount = (total_restaked / 3) * (risk_factor / 100)
-                return slashing_amount
-                ```
-                ```python
-                potential_total_slashing2 = calculate_slashing(total_restaked, risk_score2)
+                AVSs are more prone to compounded risks if their risk profiles are equally high, if they’re being secured by the same operator, if they fall into the same category of AVSs. What else?
                 """)
         
         
@@ -1092,19 +1068,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                **ΩAVS3**
-                ```python
-                def calculate_slashing(total_restaked, risk_score):
-                if risk_score == 10:
-                    risk_factor = (9 + 1) * 10
-                else:
-                    risk_factor = (risk_score + 1) * 10
-                
-                slashing_amount = (total_restaked / 3) * (risk_factor / 100)
-                return slashing_amount
-                ```
-                ```python
-                potential_total_slashing3 = calculate_slashing(total_restaked, risk_score3)
+                AVSs are more prone to compounded risks if their risk profiles are equally high, if they’re being secured by the same operator, if they fall into the same category of AVSs. What else?
                 """)
 
 
