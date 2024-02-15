@@ -1165,7 +1165,7 @@ def main():
     st.markdown(
             f"""
             <div style="
-                border: 2px solid;
+                border: 3px solid;
                 border-radius: 2px;
                 padding: 5px;
                 text-align: center;
