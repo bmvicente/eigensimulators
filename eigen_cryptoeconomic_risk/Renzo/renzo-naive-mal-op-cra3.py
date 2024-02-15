@@ -1168,9 +1168,24 @@ def main():
         <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${(stakesure_insurance_reserve):,.0f}</span>
     </div>
     """
-
-
     st.markdown(stakesure_calc, unsafe_allow_html=True)
+
+    stakesure_coverage_level_calc = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">-</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">+</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">+</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;"> = </span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span>
+        </div>
+    """    
+    st.markdown(stakesure_coverage_level_calc, unsafe_allow_html=True)
+
+
 
     st.write("  \n")
     st.write("  \n")
@@ -1376,28 +1391,24 @@ def main():
             """, unsafe_allow_html=True)
 
 
-    stake_losses_coverage_display = f"""
+    buffer_available_calc = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">-</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">+</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">+</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span> 
             <span style="font-size: 24px; font-weight: bold;">+</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
             <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span>
         </div>
-    """    
+    """        
+    
+    st.markdown(buffer_available_calc, unsafe_allow_html=True)
+
     
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
 
-    st.markdown(stake_losses_coverage_display, unsafe_allow_html=True)
 
     st.session_state.buffer_reserve_amount = stake_losses_coverage + st.session_state.op_stake_slashable / 2
 
