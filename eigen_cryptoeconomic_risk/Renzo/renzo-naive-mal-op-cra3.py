@@ -1128,7 +1128,7 @@ def main():
 
     total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
 
-    stakesure_insurance_reserve = (existing_reserve + st.session_state.op_stake_slashable) / 2
+    stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
 
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
         
