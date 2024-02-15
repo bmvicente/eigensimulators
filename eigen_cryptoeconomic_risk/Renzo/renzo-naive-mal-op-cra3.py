@@ -1362,7 +1362,7 @@ def main():
     stakesure_coverage_level_calc = f"""
     <div style="text-align: center;">
         <span style="font-size: 20px; font-weight: bold;">STAKESURE Insurance Coverage Level = </span>
-        <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{stake_losses_coverage_sign}${avs1_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">+</span>
@@ -1523,13 +1523,13 @@ def main():
     buffer_coverage_level_calc = f"""
     <div style="text-align: center;">
         <span style="font-size: 20px; font-weight: bold;">Buffer Coverage Level = </span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lighgrey; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{buffer_coverage_level_sign}${buffer1:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightbrown; border-radius: 10px; padding: 5px; margin: 2px;">{buffer_coverage_level_sign}${buffer1:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{buffer_coverage_level_sign}${buffer2:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightbrown; border-radius: 10px; padding: 5px; margin: 2px;">{buffer_coverage_level_sign}${buffer2:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{buffer_coverage_level_sign}${buffer3:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightbrown; border-radius: 10px; padding: 5px; margin: 2px;">{buffer_coverage_level_sign}${buffer3:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
         <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {buffer_coverage_level_color};">{buffer_coverage_level_sign}${buffer_coverage_level_value:,.0f}</span>
     </div>
