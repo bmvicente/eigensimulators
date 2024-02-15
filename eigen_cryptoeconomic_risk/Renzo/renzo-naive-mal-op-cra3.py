@@ -1166,7 +1166,7 @@ def main():
             f"""
             <div style="
                 border: 3px solid;
-                border-radius: 2px;
+                border-radius: 5px;
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
