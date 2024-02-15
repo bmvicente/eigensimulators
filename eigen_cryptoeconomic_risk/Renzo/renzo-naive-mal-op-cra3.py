@@ -1101,7 +1101,11 @@ def main():
 
     st.session_state.pre_slash_pfc = tvl1 + tvl2 + tvl3
 
-    st.write("  \n" * 10)
+    st.write("  \n") * 10
+
+
+
+
 
 
 
@@ -1352,6 +1356,8 @@ def main():
     st.write("\n" * 2)
 
 
+
+
         ############## 
         ### BUFFER ###
         ############## 
@@ -1496,16 +1502,7 @@ def main():
 #########################################
 #########################################
 
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
+    st.write("  \n" * 10)
     
     st.write("-----------------------")
 
@@ -1521,22 +1518,7 @@ def main():
 
 
 
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
+    st.write("  \n" * 15)
 
     col30, col31, col32 = st.columns([4,2,4])
 
