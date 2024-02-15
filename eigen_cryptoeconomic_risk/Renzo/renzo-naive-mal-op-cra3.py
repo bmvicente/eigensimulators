@@ -403,21 +403,15 @@ def main():
     st.write("  \n")
 
 
-    if 'pos_neg_actual_stake_loss' not in st.session_state:
-        st.session_state.pos_neg_actual_stake_loss = 0
-
-
-    st.session_state.pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
-
-    def evaluate_conditions(pre_slash_max_slash_allowed, pos_neg_actual_stake_loss):
-        if pre_slash_max_slash_allowed < 0:
-            return 1.50
-        elif pre_slash_max_slash_allowed > 0 and pos_neg_actual_stake_loss < 0:
-            return 1.25
-        elif pre_slash_max_slash_allowed > 0 and pos_neg_actual_stake_loss > 0:
+    def evaluate_allowed_vs_actual(actual_stake_loss_color):
+        if actual_stake_loss_color == "#90EE90":  # light green
             return 1.10
-        else:
-            return 1
+        elif actual_stake_loss_color == "#FFFFFF":  # white
+            return 1.20
+        elif actual_stake_loss_color == "#FFC0CB":  # pink
+            return 1.50
+        elif actual_stake_loss_color == "#ff6666":  # red
+            return 2
 
 
     def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
@@ -439,7 +433,7 @@ def main():
         st.session_state.avs2_category,
         st.session_state.avs3_category
     )
-    conditions_evaluation_result = evaluate_conditions(
+    conditions_evaluation_result = evaluate_allowed_vs_actual(
         st.session_state.pre_slash_max_slash_allowed,
         st.session_state.pos_neg_actual_stake_loss
     )
