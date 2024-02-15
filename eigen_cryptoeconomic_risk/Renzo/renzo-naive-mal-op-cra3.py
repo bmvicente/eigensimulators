@@ -1493,6 +1493,24 @@ def main():
 
     st.write("\n")
 
+
+    buffer_coverage_level_calc = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">+</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">-</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer2:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">-</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer3:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;"> = </span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span>
+        </div>
+    """        
+    
+    st.markdown(buffer_coverage_level_calc, unsafe_allow_html=True)
+
+
     total_buffer_needed = buffer1 + buffer2 + buffer3
     if st.session_state.buffer_reserve_amount > total_buffer_needed:
             st.success("Enough attributable security can be safeguarded from the Buffer.")
