@@ -1514,7 +1514,6 @@ def main():
                 
     st.write("\n")
     st.write("\n")
-    st.write("\n")
 
                 
     # Adjust the column widths to try and center the button more effectively
