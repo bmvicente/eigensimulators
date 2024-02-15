@@ -404,7 +404,7 @@ def main():
     
     def evaluate_conditions(pre_slash_max_slash_allowed, pos_neg_actual_stake_loss):
         pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
-        
+
         if pre_slash_max_slash_allowed < 0:
             return 1.50
         elif pre_slash_max_slash_allowed > 0 and pos_neg_actual_stake_loss < 0:
@@ -434,8 +434,8 @@ def main():
         st.session_state.avs3_category
     )
     conditions_evaluation_result = evaluate_conditions(
-        st.session_state.pre_slash_coc,
-        st.session_state.post_slash_coc
+        st.session_state.pre_slash_max_slash_allowed,
+        st.session_state.pos_neg_actual_stake_loss
     )
 
     def categorize_risk(risk_score):
