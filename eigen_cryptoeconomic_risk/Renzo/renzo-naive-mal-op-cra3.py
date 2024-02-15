@@ -347,27 +347,38 @@ def main():
     ###################
 
     def evaluate_allowed_vs_actual(actual_stake_loss_color):
-        if actual_stake_loss_color == "#90EE90":  # light green
-            return 1.00, "> 0"
-        elif actual_stake_loss_color == "#FFFFFF":  # white
-            return 1.10, "= 0"
+        if actual_stake_loss_color == "#90EE90":  # light green or white
+            return 1.00
+        elif actual_stake_loss_color == "#FFFFFF":
+             return 1.10
         elif actual_stake_loss_color == "#FFC0CB" or actual_stake_loss_color == "#ff6666":  # pink or light red
-            return 1.50, "< 0"
-
+            return 1.50
+        
+        
     # Assuming actual_stake_loss_color is defined somewhere above
-    evaluation_result, formula_end = evaluate_allowed_vs_actual(actual_stake_loss_color)
+    evaluation_result = evaluate_allowed_vs_actual(actual_stake_loss_color)
 
-    # Calculate bst_avs1
+    #Calculate bst_avs1
     bst_avs1 = pre_slash_max_slash_allowed - actual_stake_loss
+
+    # Define formula_end outside the if-elif conditions
+    formula_end = ""
 
     # Determine color and background_color based on bst_avs1 value and evaluation_result
     if evaluation_result == 1.00:
-        color = "#388e3c"  # Green color for positive or zero value
-        background_color = "#ebf5eb"  # Light green background
+        formula_end = "> 0"  # For conditions leading to a 1.00 evaluation result
+        if bst_avs1 >= 0:
+            color = "#388e3c"  # Green color for positive or zero value
+            background_color = "#ebf5eb"  # Light green background
+        else:
+            color = "#d32f2f"  # Red color for negative value
+            background_color = "#fde0dc"  # Light red background
     elif evaluation_result == 1.10:
-        color = "#000000"  # Black, since it's for the white background condition
-        background_color = "#FFFFFF"  # White background
+        formula_end = "= 0"  # For conditions leading to a 1.50 evaluation result
+        color = "#000000"  # Light red, considering it a more critical condition
+        background_color = "#FFFFFF"  # white background
     elif evaluation_result == 1.50:
+        formula_end = "< 0"  # For conditions leading to a 1.50 evaluation result
         color = "#ff6666"  # Light red, considering it a more critical condition
         background_color = "#FFC0CB"  # Pinkish light red background
 
@@ -375,13 +386,14 @@ def main():
     st.markdown(
         f"""
             <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
-                <h2 style="color: {color}; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
+                <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
                     POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
                 </h2>
                 <span style="font-weight: bold; font-size: 26px; display: block; margin-top: 5px;">
                     &beta;<sub style="font-size: 16px;">ijt</sub> = 
                     &alpha;<sub style="font-size: 16px;">jt</sub> - 
-                    &theta;<sub style="font-size: 16px;">ijt+1</sub> {formula_end}
+                    &theta;<sub style="font-size: 16px;">ijt+1</sub>
+                    {formula_end}
                 </span>
             </div>
         """, 
