@@ -1354,22 +1354,27 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    stakesure_coverage_level_calc = f"""
-        <div style="text-align: center;">
-            <span style="font-size: 20px; font-weight: bold; ">STAKESURE Insurance Coverage Level = </span>
-            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">-</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">+</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">+</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span>
-        </div>
-    """    
-    st.markdown(stakesure_coverage_level_calc, unsafe_allow_html=True)
 
+    stake_losses_coverage_value = stake_losses_coverage if stake_losses_coverage >= 0 else abs(stake_losses_coverage)
+
+    stake_losses_coverage_color = "green" if stake_losses_coverage >= 0 else "red"
+
+    stakesure_coverage_level_calc = f"""
+    <div style="text-align: center;">
+        <span style="font-size: 20px; font-weight: bold;">STAKESURE Insurance Coverage Level = </span>
+        <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">-</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">+</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">+</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;"> = </span>
+        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {stake_losses_coverage_color};">${stake_losses_coverage_value:,.0f}</span>
+    </div>
+    """
+
+    st.markdown(stakesure_coverage_level_calc, unsafe_allow_html=True)
 
 
 
@@ -1390,7 +1395,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    
+
 
     if 'buffer_reserve_amount' not in st.session_state:
             st.session_state.buffer_reserve_amount = 0  # or any default value
@@ -1508,9 +1513,12 @@ def main():
 
     buffer_coverage_level = st.session_state.buffer_reserve_amount - buffer1 - buffer2 - buffer3
 
+    buffer_coverage_level_value = buffer_coverage_level if buffer_coverage_level >= 0 else abs(buffer_coverage_level)
+    buffer_coverage_level_color = "green" if buffer_coverage_level >= 0 else "red"
+
     buffer_coverage_level_calc = f"""
     <div style="text-align: center;">
-        <span style="font-size: 20px; font-weight: bold; ">Buffer Coverage Level = </span>
+        <span style="font-size: 20px; font-weight: bold;">Buffer Coverage Level = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
@@ -1519,12 +1527,13 @@ def main():
         <span style="font-size: 24px; font-weight: bold;">-</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer3:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
-        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${buffer_coverage_level:,.0f}</span>
+        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {buffer_coverage_level_color};">${buffer_coverage_level_value:,.0f}</span>
     </div>
     """
 
-    
     st.markdown(buffer_coverage_level_calc, unsafe_allow_html=True)
+
+
 
     st.write("\n")
     st.write("\n")
