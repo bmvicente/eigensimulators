@@ -1428,6 +1428,7 @@ def main():
     
     st.write("  \n")
     st.write("  \n")
+    st.write("  \n")
 
 
     st.session_state.buffer_reserve_amount = stake_losses_coverage + st.session_state.op_stake_slashable / 2
