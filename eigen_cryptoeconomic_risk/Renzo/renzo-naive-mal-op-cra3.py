@@ -1518,34 +1518,13 @@ def main():
     st.write("\n")
 
                 
-    # Custom CSS to style the markdown "button"
-    button_style = """
-    <style>
-    .custom-button {
-        display: block;
-        background-color: transparent; /* Transparent background */
-        color: black;
-        padding: 10px 24px; /* Padding */
-        cursor: pointer;
-        border-radius: 8px; /* Rounded corners */
-        border: 2px solid #4CAF50; /* Border color */
-        font-size: 16px; /* Font size */
-        font-weight: normal; /* Non-bold font */
-        text-align: center; /* Center text */
-        margin: auto; /* Center the button */
-        width: fit-content; /* Fit the content's width */
-    }
-    .custom-button:hover {
-        background-color: #f5f5f5; /* Slight background on hover for visual feedback */
-    }
-    </style>
-    """
+    # Create three columns
+    col1, col2, col3 = st.columns([1,2,1])
 
-    # Display the custom-styled button
-    st.markdown(button_style, unsafe_allow_html=True)
-    # Wrap the button text in a div with class for styling
-    st.markdown('<div class="custom-button">Update Calculations</div>', unsafe_allow_html=True)
-
+    # Place the button in the middle column
+    with col2:
+        if st.button('Update Calculations'):
+            recalculate_and_update()
 
 
 
