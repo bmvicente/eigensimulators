@@ -1518,13 +1518,18 @@ def main():
     st.write("\n")
 
                 
-    # Create three columns
-    col1, col2, col3 = st.columns([1,2,1])
+    # Adjust the column widths to try and center the button more effectively
+    col1, col2, col3 = st.columns([1,3,1])
 
-    # Place the button in the middle column
+    # Use the middle column for the button
     with col2:
+        # Button with increased emphasis
+        button_text = '<p style="text-align: center; font-size: 20px;"><b>Update Calculations</b></p>'
         if st.button('Update Calculations'):
             recalculate_and_update()
+            # Optionally, you can display the button text with markdown below or above the button for emphasis
+            # st.markdown(button_text, unsafe_allow_html=True)
+
 
 
 
