@@ -1395,7 +1395,7 @@ def main():
 
     st.write("\n")
 
-    st.session_state.buffer_reserve_amount = st.session_state.op_stake_slashable / 2
+    st.session_state.buffer_reserve_amount = stake_losses_coverage + st.session_state.op_stake_slashable / 2
 
 
         # Initialize variables for buffer amounts for demonstration
