@@ -1153,17 +1153,11 @@ def main():
 
     # Function defined but not immediately called
     def recalculate_and_update():
-        for i in range(5):
-            value = st.number_input(f"Input {i+1}", key=f'unique_key_{i}')
-            # Example processing or storing of value
-            st.session_state[f'input_{i}'] = value
 
         existing_reserve = st.number_input("STAKESURE Insurance Amount Already in Reserve", min_value=0,
                                         max_value=100000000000, value=0, step=10000000,
                                         key='existing_reserve_key')
-        
-        # Example processing or storing of existing_reserve
-        st.session_state['existing_reserve'] = existing_reserve
+    
 
 
         st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
