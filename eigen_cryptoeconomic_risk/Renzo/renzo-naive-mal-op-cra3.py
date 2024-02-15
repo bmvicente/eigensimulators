@@ -1147,7 +1147,7 @@ def main():
                 background-color: {background_color};">
                 <h2 style="color: black; margin: 0; font-size: 1.4em;">
                     <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span>: Existing Insurance Reserve + Gained Amount from Operator Slashed Funds <span style="font-size: 0.8em;">(Operator Slashed Amount / 2)</span> = $<span style="font-size: 1.1em;">{stakesure_insurance_reserve:,.0f}</span>
+                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span>: Existing Insurance Reserve + Amount from Operator Slashed Funds <span style="font-size: 0.8em;">(Operator Slashed Amount / 2)</span> = $<span style="font-size: 1.1em;">{stakesure_insurance_reserve:,.0f}</span>
                         <br><span style="font-size: 18px; font-weight: bold;">{message}</span>
                     </div>
                 </h2>
@@ -1519,7 +1519,7 @@ def main():
     buffer_coverage_level_value = buffer_coverage_level if buffer_coverage_level >= 0 else abs(buffer_coverage_level)
     buffer_coverage_level_sign = '' if buffer_coverage_level >= 0 else '-'
     buffer_coverage_level_color = "green" if buffer_coverage_level >= 0 else "red"
-    
+
     buffer_coverage_level_calc = f"""
     <div style="text-align: center;">
         <span style="font-size: 20px; font-weight: bold;">Buffer Coverage Level = </span>
