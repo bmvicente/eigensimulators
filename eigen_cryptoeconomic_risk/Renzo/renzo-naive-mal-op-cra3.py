@@ -1519,7 +1519,7 @@ def main():
 
                 
     # Adjust the column widths to try and center the button more effectively
-    col1, col2, col3 = st.columns([10,10,1])
+    col1, col2, col3 = st.columns([9,10,1])
 
     # Use the middle column for the button
     with col2:
