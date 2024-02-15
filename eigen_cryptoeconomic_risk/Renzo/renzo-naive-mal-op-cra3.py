@@ -387,7 +387,7 @@ def main():
         f"""
             <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
                 <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
-                    POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
+                    POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE (BST) TEST
                 </h2>
                 <span style="font-weight: bold; font-size: 26px; display: block; margin-top: 5px; text-align: center;">
                     &beta;<sub style="font-size: 16px;">ijt</sub> = 
@@ -399,6 +399,7 @@ def main():
         """, 
         unsafe_allow_html=True
     )
+
 
 
 
