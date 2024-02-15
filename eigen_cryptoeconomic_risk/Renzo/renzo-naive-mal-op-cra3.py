@@ -1380,7 +1380,6 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    st.write("  \n")
 
 
     if 'buffer_reserve_amount' not in st.session_state:
@@ -1402,43 +1401,43 @@ def main():
 
         # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     with col50:
-            # Calculate buffer based on the selected insurance option
-            if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-                message1 = "No Insurance Needed from Buffer"
-                buffer1 = 0
-            elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-                percentage_uninsured_1 = st.slider("% Amount Insured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
-                buffer1 = final_result_service_1 * percentage_uninsured_1
-                message1 = f"Buffer Insurance Amount Needed: {buffer1}"
-            else:  # Didn't buy insurance
-                buffer1 = final_result_service_1
-                message1 = f"Buffer Insurance Amount Needed: {buffer1}"
+        # Calculate buffer based on the selected insurance option
+        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            message1 = "No Insurance Needed from Buffer"
+            buffer1 = 0
+        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            percentage_uninsured_1 = st.slider("% Amount Insured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
+            buffer1 = final_result_service_1 * percentage_uninsured_1
+            message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.2f}"
+        else:  # Didn't buy insurance
+            buffer1 = final_result_service_1
+            message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.2f}"
 
     with col51:
-            # Calculate buffer based on the selected insurance option
-            if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-                message2 = "No Insurance Needed from Buffer"
-                buffer2 = 0
-            elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-                percentage_uninsured_2 = st.slider("% Amount Insured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
-                buffer2 = final_result_service_2 * percentage_uninsured_2
-                message2 = f"Buffer Insurance Amount Needed: {buffer2}"
-            else:  # Didn't buy insurance
-                buffer2 = final_result_service_2
-                message2 = f"Buffer Insurance Amount Needed: {buffer2}"
+        # Calculate buffer based on the selected insurance option
+        if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            message2 = "No Insurance Needed from Buffer"
+            buffer2 = 0
+        elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            percentage_uninsured_2 = st.slider("% Amount Insured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
+            buffer2 = final_result_service_2 * percentage_uninsured_2
+            message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.2f}"
+        else:  # Didn't buy insurance
+            buffer2 = final_result_service_2
+            message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.2f}"
 
     with col52:
-            # Calculate buffer based on the selected insurance option
-            if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-                message3 = "No Insurance Needed from Buffer"
-                buffer3 = 0
-            elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-                percentage_uninsured_3 = st.slider("% Amount Insured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
-                buffer3 = final_result_service_3 * percentage_uninsured_3
-                message3 = f"Buffer Insurance Amount Needed: {buffer3}"
-            else:  # Didn't buy insurance
-                buffer3 = final_result_service_3
-                message3 = f"Buffer Insurance Amount Needed: {buffer3}"
+        # Calculate buffer based on the selected insurance option
+        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+            message3 = "No Insurance Needed from Buffer"
+            buffer3 = 0
+        elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+            percentage_uninsured_3 = st.slider("% Amount Insured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
+            buffer3 = final_result_service_3 * percentage_uninsured_3
+            message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.2f}"
+        else:  # Didn't buy insurance
+            buffer3 = final_result_service_3
+            message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.2f}"
 
 
     total_buffer_needed = buffer1 + buffer2 + buffer3
@@ -1447,31 +1446,31 @@ def main():
     col54, col55, col56 = st.columns(3)
 
     with col54: 
-        st.markdown(f"""
-            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    AVS1: <span style="font-size: 1em;">${message1:,.0f}</span>
-                </h2>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(f"""
+                <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                        AVS1: <span style="font-size: 1em;">{message1}</span>
+                    </h2>
+                </div>
+                """, unsafe_allow_html=True)
 
     with col55:
-        st.markdown(f"""
-            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    AVS2: <span style="font-size: 1em;">${message2:,.0f}</span>
-                </h2>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(f"""
+                <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                        AVS2: <span style="font-size: 1em;">{message2}</span>
+                    </h2>
+                </div>
+                """, unsafe_allow_html=True)
 
     with col56:
-        st.markdown(f"""
-            <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                    AVS3: <span style="font-size: 1em;">${message3:,.0f}</span>
-                </h2>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown(f"""
+                <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                        AVS3: <span style="font-size: 1em;">{message3}</span>
+                    </h2>
+                </div>
+                """, unsafe_allow_html=True)
 
 
 
