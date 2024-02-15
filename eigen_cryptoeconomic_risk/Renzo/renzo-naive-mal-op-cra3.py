@@ -396,7 +396,10 @@ def main():
                         In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
                     """)
 
-    st.write("  \n" * 4)
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
 
     
@@ -783,7 +786,10 @@ def main():
                 """)
             
 
-        st.write("  \n" * 4)
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
 
 
@@ -942,7 +948,10 @@ def main():
                 """)
         
         
-        st.write("  \n" * 4)
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
 
 
@@ -1303,7 +1312,8 @@ def main():
     st.session_state.insurance_statuses['avs3_insurance_status'] = avs3_insurance_status_temp
 
 
-    st.write("  \n" * 2)
+    st.write("  \n")
+    st.write("  \n")
 
 
     def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
@@ -1360,7 +1370,8 @@ def main():
     st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack.</p>', unsafe_allow_html=True)
 
 
-    st.write("\n" * 2)
+    st.write("  \n")
+    st.write("  \n")
 
 
 
@@ -1369,7 +1380,12 @@ def main():
         ### BUFFER ###
         ############## 
             
-    st.write("\n" * 6)
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
 
     if 'buffer_reserve_amount' not in st.session_state:
@@ -1509,8 +1525,17 @@ def main():
 #########################################
 #########################################
 
-    st.write("  \n" * 10)
-    
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+
     st.write("-----------------------")
 
     st.write("\n")
@@ -1524,8 +1549,23 @@ def main():
     st.markdown('<p><s style="font-weight: bold;">&#8226; STAKESURE&#39;s Parameters <span style="font-weight: normal;">(Post-Slashing Insurance & Reserves)</span></s></p>', unsafe_allow_html=True)
 
 
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
-    st.write("  \n" * 15)
+
 
     col30, col31, col32 = st.columns([4,2,4])
 
