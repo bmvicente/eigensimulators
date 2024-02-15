@@ -385,11 +385,11 @@ def main():
     # Adjust the markdown to include the dynamic formula_end based on evaluation_result
     st.markdown(
         f"""
-            <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
-                <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
+            <div style="padding: 10px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px; display: flex; flex-direction: column; align-items: center;">
+                <h2 style="color: black; margin: 0; padding-bottom: 10px; font-size: 20px; font-weight: bold; line-height: 1.1;">
                     POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE (BST) TEST
                 </h2>
-                <span style="font-weight: bold; font-size: 26px; display: block; margin-top: 5px; text-align: center;">
+                <span style="font-weight: bold; font-size: 26px; margin-top: 5px;">
                     &beta;<sub style="font-size: 16px;">ijt</sub> = 
                     &alpha;<sub style="font-size: 16px;">jt</sub> - 
                     &theta;<sub style="font-size: 16px;">ijt+1</sub>
@@ -399,6 +399,7 @@ def main():
         """, 
         unsafe_allow_html=True
     )
+
 
 
 
@@ -740,7 +741,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 10px;">
-                    AVS1 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
+                    AVS1 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -762,7 +763,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span>
             <div style="text-align: center; margin-top: 10px;">
-            <span style="font-size: 16px; font-weight: bold;">(Actual Stake Loss * Category * Risk Score * BST status (β) = AVS1 Total Compounded Stake Loss)</span>
+            <span style="font-size: 16px; font-weight: bold;">(Actual Stake Loss * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake Loss)</span>
         </div>
         """
 
@@ -892,7 +893,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
+                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1040,7 +1041,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
+                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1202,7 +1203,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS1 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs1_compounded_loss:,.0f}</span>
+                            AVS1 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs1_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -1231,7 +1232,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS2 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
+                            AVS2 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -1260,7 +1261,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS3 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
+                            AVS3 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
