@@ -1485,8 +1485,6 @@ def main():
             st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
 
-    st.write("\n")
-
     def recalculate_and_update():
 
         existing_reserve = st.session_state.get('existing_reserve', 0)
