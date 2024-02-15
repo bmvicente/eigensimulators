@@ -1155,6 +1155,8 @@ def main():
             """, 
             unsafe_allow_html=True
         )
+    
+    st.write("  \n")
 
     stakesure_calc = f"""
     <div style="text-align: center;">
@@ -1372,7 +1374,6 @@ def main():
 
     st.write("\n")
 
-
     stake_losses_coverage_display = f"""
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
@@ -1385,6 +1386,8 @@ def main():
         </div>
     """
     
+    st.write("  \n")
+
     st.markdown(stake_losses_coverage_display, unsafe_allow_html=True)
 
     st.session_state.buffer_reserve_amount = stake_losses_coverage + st.session_state.op_stake_slashable / 2
