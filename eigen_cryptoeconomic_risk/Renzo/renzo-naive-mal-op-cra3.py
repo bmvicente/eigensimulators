@@ -1150,13 +1150,18 @@ def main():
     
     st.write("  \n")
 
+    if 'existing_reserve' not in st.session_state:
+        st.session_state['existing_reserve'] = 0  # Default value
+
+    # Similarly for other variables that need to be initialized
+    if 'op_stake_slashable' not in st.session_state:
+        st.session_state['op_stake_slashable'] = 0  # Default value
 
 
     existing_reserve = st.number_input("STAKESURE Insurance Amount Already in Reserve", min_value=0,
                                         max_value=100000000000, value=0, step=10000000,
                                         key='existing_reserve_key')
     
-
 
     st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
 
@@ -1390,8 +1395,6 @@ def main():
     st.write("\n" * 6)
 
 
-
-
     if 'buffer_reserve_amount' not in st.session_state:
             st.session_state.buffer_reserve_amount = 0  # or any default value
 
@@ -1496,6 +1499,10 @@ def main():
     st.write("\n")
 
     def recalculate_and_update():
+
+        existing_reserve = st.session_state.get('existing_reserve', 0)
+        op_stake_slashable = st.session_state.get('op_stake_slashable', 0) / 2
+
         # Example recalculations based on current input values
         existing_reserve = st.session_state['existing_reserve']
         op_stake_slashable = st.session_state.op_stake_slashable / 2  # Assuming this is already set somewhere
