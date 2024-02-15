@@ -1371,9 +1371,9 @@ def main():
 
 
 
-        ############## 
-        ### BUFFER ###
-        ############## 
+    ############## 
+    ### BUFFER ###
+    ############## 
             
     st.write("  \n")
     st.write("  \n")
@@ -1389,7 +1389,7 @@ def main():
 
     st.markdown(f"""
             <div style="font-size: 22px;">
-                <b>Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users:</b> <span style="font-size: 0.9em;">${st.session_state.op_stake_slashable:,.0f} / 2 = <b>${st.session_state.buffer_reserve_amount:,.0f}</b></span>
+                <b>Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users:</b> <span style="font-size: 0.9em;">${stake_losses_coverage:,.0f} + ${st.session_state.op_stake_slashable:,.0f} / 2 = <b>${st.session_state.buffer_reserve_amount:,.0f}</b></span>
             </div>
             """, unsafe_allow_html=True)
 
