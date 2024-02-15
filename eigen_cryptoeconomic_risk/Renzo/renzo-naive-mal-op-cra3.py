@@ -1095,6 +1095,8 @@ def main():
 
 
 
+
+
     #############################
     ######### STAKESURE #########
     #############################
@@ -1156,7 +1158,7 @@ def main():
     if background_color == "#ff6666":
             st.markdown("""
                 <div style="color: red; font-weight: bold; font-size: 18px; text-align: center;">
-                    The System Has Been Compromised Due to Lack of Cryptoeconomic Security.
+                    Insufficient Insurance Amount In Reserve. The System Has Been Compromised Due to Lack of Cryptoeconomic Security.
                 </div>
                 """, unsafe_allow_html=True)
 
