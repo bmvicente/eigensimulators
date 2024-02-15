@@ -1503,21 +1503,22 @@ def main():
     buffer_coverage_level = st.session_state.buffer_reserve_amount - buffer1 - buffer2 - buffer3
 
     buffer_coverage_level_calc = f"""
-        <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">-</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">-</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer2:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">-</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer3:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${buffer_coverage_level:,.0f}</span>
-        </div>
-    """        
+    <div style="text-align: center;">
+        Buffer Coverage Level =
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">-</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">-</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer2:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">-</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer3:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;"> = </span>
+        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${buffer_coverage_level:,.0f}</span>
+    </div>
+    """
     
     st.markdown(buffer_coverage_level_calc, unsafe_allow_html=True)
-    
+
     st.write("\n")
     st.write("\n")
 
