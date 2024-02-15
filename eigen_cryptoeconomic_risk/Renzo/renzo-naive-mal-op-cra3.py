@@ -72,7 +72,6 @@ def main():
     pre_slash_total_restaked = st.session_state.pre_slash_total_restaked
     
 
-    #st.image("images/renzo1.png", width=400)
     st.write("  \n")
 
     st.title("Cryptoeconomic Risk Analysis III")
@@ -1370,17 +1369,12 @@ def main():
     st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack.</p>', unsafe_allow_html=True)
 
 
-    st.write("  \n")
-    st.write("  \n")
-
-
 
 
         ############## 
         ### BUFFER ###
         ############## 
             
-    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
