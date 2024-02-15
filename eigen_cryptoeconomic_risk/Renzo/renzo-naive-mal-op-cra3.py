@@ -1441,7 +1441,7 @@ def main():
     with col50:
         # Calculate buffer based on the selected insurance option
         if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message1 = "No Insurance Needed from Buffer"
+            message1 = "No Extra Insurance Needed from Buffer"
             buffer1 = 0
         elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
@@ -1454,7 +1454,7 @@ def main():
     with col51:
         # Calculate buffer based on the selected insurance option
         if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message2 = "No Insurance Needed from Buffer"
+            message2 = "No Extra Insurance Needed from Buffer"
             buffer2 = 0
         elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
@@ -1467,7 +1467,7 @@ def main():
     with col52:
         # Calculate buffer based on the selected insurance option
         if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message3 = "No Insurance Needed from Buffer"
+            message3 = "No Extra Insurance Needed from Buffer"
             buffer3 = 0
         elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
