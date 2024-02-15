@@ -1522,25 +1522,30 @@ def main():
     button_style = """
     <style>
     .custom-button {
-        display: inline-block;
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 24px; /* Larger padding */
+        display: block;
+        background-color: transparent; /* Transparent background */
+        color: black;
+        padding: 10px 24px; /* Padding */
         cursor: pointer;
         border-radius: 8px; /* Rounded corners */
-        border: 2px solid #4CAF50; /* Thicker border */
-        font-size: 16px; /* Larger font size */
-        font-weight: bold; /* Bold font */
+        border: 2px solid #4CAF50; /* Border color */
+        font-size: 16px; /* Font size */
+        font-weight: normal; /* Non-bold font */
+        text-align: center; /* Center text */
+        margin: auto; /* Center the button */
+        width: fit-content; /* Fit the content's width */
     }
     .custom-button:hover {
-        background-color: #45a049; /* Darker shade on hover */
+        background-color: #f5f5f5; /* Slight background on hover for visual feedback */
     }
     </style>
     """
 
     # Display the custom-styled button
     st.markdown(button_style, unsafe_allow_html=True)
+    # Wrap the button text in a div with class for styling
     st.markdown('<div class="custom-button">Update Calculations</div>', unsafe_allow_html=True)
+
 
 
 
