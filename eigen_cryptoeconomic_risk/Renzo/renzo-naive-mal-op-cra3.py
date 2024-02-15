@@ -405,13 +405,13 @@ def main():
 
     def evaluate_allowed_vs_actual(actual_stake_loss_color):
         if actual_stake_loss_color == "#90EE90":  # light green
-            return 1.10
+            return 1.00
         elif actual_stake_loss_color == "#FFFFFF":  # white
-            return 1.20
+            return 1.10
         elif actual_stake_loss_color == "#FFC0CB":  # pink
-            return 1.50
+            return 1.25
         elif actual_stake_loss_color == "#ff6666":  # red
-            return 2
+            return 1.50
 
 
     def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
@@ -419,13 +419,13 @@ def main():
         unique_categories = len(set(categories))
 
         if unique_categories == 1:
-            return 1.5
+            return 1.50
         elif unique_categories == 2:
             return 1.25
         elif unique_categories == 3:
             return 1.10
         else:
-            return 1
+            return 1.00
 
     # Calculate service categories and conditions evaluation results
     service_categories_evaluation_result = evaluate_service_categories(
@@ -750,7 +750,7 @@ def main():
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation1:,.3f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation1:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -914,7 +914,7 @@ def main():
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation2:,.3f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation2:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -1074,7 +1074,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation3:,.3f}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation3:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
