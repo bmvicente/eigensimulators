@@ -1287,21 +1287,6 @@ def main():
             avs3_insurance_status_temp = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status")
 
 
-    stakesure_coverage_level_calc = f"""
-        <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">-</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">+</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">+</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span>
-        </div>
-    """    
-    st.markdown(stakesure_coverage_level_calc, unsafe_allow_html=True)
-
         # Update session state dictionary
     st.session_state.insurance_statuses['avs1_insurance_status'] = avs1_insurance_status_temp
     st.session_state.insurance_statuses['avs2_insurance_status'] = avs2_insurance_status_temp
@@ -1364,6 +1349,26 @@ def main():
     st.write("\n")
 
     st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack.</p>', unsafe_allow_html=True)
+    
+    st.write("\n")
+    st.write("\n")
+
+    stakesure_coverage_level_calc = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">-</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">+</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">+</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;"> = </span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span>
+        </div>
+    """    
+    st.markdown(stakesure_coverage_level_calc, unsafe_allow_html=True)
+
+
 
 
 
@@ -1390,6 +1395,8 @@ def main():
                 <b>Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users
             </div>
             """, unsafe_allow_html=True)
+    
+    st.write("  \n")
 
 
     buffer_available_calc = f"""
@@ -1406,7 +1413,6 @@ def main():
     st.markdown(buffer_available_calc, unsafe_allow_html=True)
 
     
-    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
 
@@ -1511,6 +1517,9 @@ def main():
     """        
     
     st.markdown(buffer_coverage_level_calc, unsafe_allow_html=True)
+    
+    st.write("\n")
+    st.write("\n")
 
 
     total_buffer_needed = buffer1 + buffer2 + buffer3
