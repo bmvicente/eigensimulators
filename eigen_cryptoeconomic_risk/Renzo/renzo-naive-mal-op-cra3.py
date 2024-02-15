@@ -1190,11 +1190,6 @@ def main():
                 """, unsafe_allow_html=True)
 
 
-
-    st.write("  \n")
-
-
-
     if 'insurance_statuses' not in st.session_state:
             st.session_state.insurance_statuses = {
                 'avs1_insurance_status': None,
