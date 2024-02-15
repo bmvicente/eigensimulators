@@ -134,7 +134,7 @@ def main():
 
     actual_stake_loss = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
 
-    pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
+    st.session_state.pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
 
 
 
