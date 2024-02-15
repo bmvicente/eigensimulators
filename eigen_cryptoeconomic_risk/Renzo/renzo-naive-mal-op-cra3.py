@@ -1387,6 +1387,8 @@ def main():
     st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack.</p>', unsafe_allow_html=True)
 
 
+    st.write("\n" * 2)
+
 
         ############## 
         ### BUFFER ###
@@ -1497,6 +1499,7 @@ def main():
 
 
     st.write("\n")
+    st.write("\n")
 
     def recalculate_and_update():
 
@@ -1523,7 +1526,6 @@ def main():
     # Button to trigger recalculation and updates
     if st.button('Update Calculations'):
         recalculate_and_update()
-        st.success('Calculations and UI updated successfully.')
 
 
 
