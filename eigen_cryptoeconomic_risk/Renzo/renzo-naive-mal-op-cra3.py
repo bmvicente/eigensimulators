@@ -1161,6 +1161,7 @@ def main():
         existing_reserve = st.number_input("STAKESURE Insurance Amount Already in Reserve", min_value=0,
                                         max_value=100000000000, value=0, step=10000000,
                                         key='existing_reserve_key')
+        
         # Example processing or storing of existing_reserve
         st.session_state['existing_reserve'] = existing_reserve
 
@@ -1503,8 +1504,6 @@ def main():
         else:
             st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
-
-    recalculate_and_update()
 
     st.write("\n")
 
