@@ -1522,12 +1522,18 @@ def main():
 
     # Use the middle column for the button
     with col2:
-        # Button with increased emphasis
-        button_text = '<p style="text-align: center; font-size: 20px;"><b>Update Calculations</b></p>'
+        st.write('\n\n\n')
+
+        # Use markdown to create a visually larger text as a cue
+        button_cue = '<p style="text-align: center; font-size: 24px; margin-bottom: -20px;"><b>Update Calculations</b></p>'
+        st.markdown(button_cue, unsafe_allow_html=True)
+        
+        # Actual button
         if st.button('Update Calculations'):
             recalculate_and_update()
-            # Optionally, you can display the button text with markdown below or above the button for emphasis
-            # st.markdown(button_text, unsafe_allow_html=True)
+
+        # Increase space below the button for visual separation
+        st.write('\n\n')
 
 
 
