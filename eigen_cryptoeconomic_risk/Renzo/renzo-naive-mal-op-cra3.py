@@ -655,7 +655,7 @@ def main():
 
         st.write("  \n")
 
-        st.session_state.avs1_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Oracle", "Shared Sequencer"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avs1_category_key")
+        st.session_state.avs1_category = st.selectbox("**AVS Category**", ["Data Availability Layer", "Decentralized Sequencer", "Oracle"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avs1_category_key")
         
         st.write("  \n")
 
@@ -812,7 +812,7 @@ def main():
         
         st.write("  \n")
 
-        st.session_state.avs2_category = st.selectbox("**AVS Category** ", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs2_category_key")
+        st.session_state.avs2_category = st.selectbox("**AVS Category** ", ["Data Availability Layer", "Decentralized Sequencer", "Oracle"], key="avs2_category_key")
 
         st.write("  \n")
 
@@ -961,7 +961,7 @@ def main():
         
         st.write("  \n")
 
-        st.session_state.avs3_category = st.selectbox("**AVS Category**  ", ["Data Availability Layer", "Oracle", "Shared Sequencer"], key="avs3_category_key")
+        st.session_state.avs3_category = st.selectbox("**AVS Category**  ", ["Data Availability Layer", "Decentralized Sequencer", "Oracle"], key="avs3_category_key")
 
         st.write("  \n")
 
