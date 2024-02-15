@@ -1518,9 +1518,30 @@ def main():
     st.write("\n")
 
                 
-    # Button to trigger recalculation and updates
-    if st.button('Update Calculations'):
-        recalculate_and_update()
+    # Custom CSS to style the markdown "button"
+    button_style = """
+    <style>
+    .custom-button {
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 24px; /* Larger padding */
+        cursor: pointer;
+        border-radius: 8px; /* Rounded corners */
+        border: 2px solid #4CAF50; /* Thicker border */
+        font-size: 16px; /* Larger font size */
+        font-weight: bold; /* Bold font */
+    }
+    .custom-button:hover {
+        background-color: #45a049; /* Darker shade on hover */
+    }
+    </style>
+    """
+
+    # Display the custom-styled button
+    st.markdown(button_style, unsafe_allow_html=True)
+    st.markdown('<div class="custom-button">Update Calculations</div>', unsafe_allow_html=True)
+
 
 
 
