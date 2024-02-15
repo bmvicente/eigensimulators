@@ -428,7 +428,7 @@ def main():
             return 1.00
 
     # Calculate service categories and conditions evaluation results
-    service_categories_evaluation_result = evaluate_service_categories(
+    categories_evaluation_result = evaluate_service_categories(
         st.session_state.avs1_category,
         st.session_state.avs2_category,
         st.session_state.avs3_category
@@ -497,9 +497,9 @@ def main():
     risk_evaluation3 = risk_numeric[risk_category3] + collective_adjustment
 
     # Proceed with final results calculations incorporating the adjustments
-    final_result_service_1 = actual_stake_loss * risk_evaluation1 * service_categories_evaluation_result * allowed_vs_actual_evaluation_result
-    final_result_service_2 = actual_stake_loss * risk_evaluation2 * service_categories_evaluation_result * allowed_vs_actual_evaluation_result
-    final_result_service_3 = actual_stake_loss * risk_evaluation3 * service_categories_evaluation_result * allowed_vs_actual_evaluation_result
+    avs1_compounded_loss = actual_stake_loss * risk_evaluation1 * categories_evaluation_result * allowed_vs_actual_evaluation_result
+    avs2_compounded_loss = actual_stake_loss * risk_evaluation2 * categories_evaluation_result * allowed_vs_actual_evaluation_result
+    avs3_compounded_loss = actual_stake_loss * risk_evaluation3 * categories_evaluation_result * allowed_vs_actual_evaluation_result
 
 
     col1, col2 = st.columns([1, 1], gap="large")
@@ -736,7 +736,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 10px;">
-                        AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.2em;">${final_result_service_1:,.0f}</span>
+                        AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -746,23 +746,23 @@ def main():
         
         st.write("\n")
 
-        final_result_service_1_calc = f"""
+        avs1_compounded_loss_calc = f"""
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation1:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result:,.2f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{allowed_vs_actual_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${final_result_service_1:,.0f}</span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span>
             <div style="text-align: center; margin-top: 10px;">
             <span style="font-size: 16px; font-weight: bold;">(Actual Stake Loss * Risk Score * Category * CoC <> PfC Threshold = AVS1 Total Compounded Stake Loss)</span>
         </div>
         """
 
-        st.markdown(final_result_service_1_calc, unsafe_allow_html=True)
+        st.markdown(avs1_compounded_loss_calc, unsafe_allow_html=True)
 
         st.write("\n")
         st.write("\n")
@@ -900,7 +900,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
+                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -910,22 +910,22 @@ def main():
 
         st.write("\n")
 
-        final_result_service_2_calc = f"""
+        avs2_compounded_loss_calc = f"""
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation2:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result:,.2f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{allowed_vs_actual_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${final_result_service_2:,.0f}</span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span>
         </div>
         """
 
         # Displaying the markdown in Streamlit
-        st.markdown(final_result_service_2_calc, unsafe_allow_html=True)
+        st.markdown(avs2_compounded_loss_calc, unsafe_allow_html=True)
 
         st.write("\n")
 
@@ -1060,7 +1060,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
+                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1070,22 +1070,22 @@ def main():
 
         st.write("\n")
 
-        final_result_service_3_calc = f"""
+        avs3_compounded_loss_calc = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation3:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result:,.2f}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{categories_evaluation_result:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{allowed_vs_actual_evaluation_result:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
-                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${final_result_service_3:,.0f}</span>
+                <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span>
             </div>
             """
 
         # Displaying the markdown in Streamlit
-        st.markdown(final_result_service_3_calc, unsafe_allow_html=True)
+        st.markdown(avs3_compounded_loss_calc, unsafe_allow_html=True)
 
         st.write("\n")
     
@@ -1153,7 +1153,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
+    total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
 
     stakesure_insurance_reserve = (existing_reserve + st.session_state.op_stake_slashable) / 2
 
@@ -1234,7 +1234,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_1:,.0f}</span>
+                            AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs1_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -1263,7 +1263,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_2:,.0f}</span>
+                            AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -1292,7 +1292,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${final_result_service_3:,.0f}</span>
+                            AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -1409,10 +1409,10 @@ def main():
             buffer1 = 0
         elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
-            buffer1 = final_result_service_1 * percentage_uninsured_1
+            buffer1 = avs1_compounded_loss * percentage_uninsured_1
             message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.0f}"
         else:  # Didn't buy insurance
-            buffer1 = final_result_service_1
+            buffer1 = avs1_compounded_loss
             message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.0f}"
 
     with col51:
@@ -1422,10 +1422,10 @@ def main():
             buffer2 = 0
         elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
-            buffer2 = final_result_service_2 * percentage_uninsured_2
+            buffer2 = avs2_compounded_loss * percentage_uninsured_2
             message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.0f}"
         else:  # Didn't buy insurance
-            buffer2 = final_result_service_2
+            buffer2 = avs2_compounded_loss
             message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.0f}"
 
     with col52:
@@ -1435,10 +1435,10 @@ def main():
             buffer3 = 0
         elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
-            buffer3 = final_result_service_3 * percentage_uninsured_3
+            buffer3 = avs3_compounded_loss * percentage_uninsured_3
             message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.0f}"
         else:  # Didn't buy insurance
-            buffer3 = final_result_service_3
+            buffer3 = avs3_compounded_loss
             message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.0f}"
 
 
@@ -1494,8 +1494,8 @@ def main():
         existing_reserve = st.session_state['existing_reserve']
         op_stake_slashable = st.session_state.op_stake_slashable / 2  # Assuming this is already set somewhere
         
-        # Assuming final_result_service_{1,2,3} are calculated based on some logic not shown here
-        total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
+        # Assuming avs_compounded_loss_{1,2,3} are calculated based on some logic not shown here
+        total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
         stakesure_insurance_reserve = existing_reserve + op_stake_slashable
         stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
 
