@@ -43,6 +43,7 @@ def calculate_slashing(pre_slash_total_restaked, risk_score):
     return slashing_amount
 
 
+#################################
 
 
 def main():
@@ -407,7 +408,7 @@ def main():
         elif pre_slash_max_slash_allowed > 0 and pos_neg_actual_stake_loss > 0:
             return 1.10
         else:
-            return 0
+            return 1
 
     def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
         categories = [avs1_category, avs2_category, avs3_category]
@@ -420,7 +421,7 @@ def main():
         elif unique_categories == 3:
             return 1.10
         else:
-            return 0
+            return 1
 
     # Calculate service categories and conditions evaluation results
     service_categories_evaluation_result = evaluate_service_categories(
