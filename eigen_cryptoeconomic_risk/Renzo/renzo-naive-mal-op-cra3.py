@@ -1408,6 +1408,7 @@ def main():
             """, unsafe_allow_html=True)
     
     st.write("  \n")
+    st.write("  \n")
 
 
     buffer_available_calc = f"""
