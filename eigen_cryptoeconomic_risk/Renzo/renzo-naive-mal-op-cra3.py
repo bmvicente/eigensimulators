@@ -1408,10 +1408,10 @@ def main():
         elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_1 = st.slider("% Amount Insured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
             buffer1 = final_result_service_1 * percentage_uninsured_1
-            message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.2f}"
+            message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.0f}"
         else:  # Didn't buy insurance
             buffer1 = final_result_service_1
-            message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.2f}"
+            message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.0f}"
 
     with col51:
         # Calculate buffer based on the selected insurance option
@@ -1421,10 +1421,10 @@ def main():
         elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_2 = st.slider("% Amount Insured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
             buffer2 = final_result_service_2 * percentage_uninsured_2
-            message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.2f}"
+            message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.0f}"
         else:  # Didn't buy insurance
             buffer2 = final_result_service_2
-            message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.2f}"
+            message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.0f}"
 
     with col52:
         # Calculate buffer based on the selected insurance option
@@ -1434,10 +1434,10 @@ def main():
         elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_uninsured_3 = st.slider("% Amount Insured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
             buffer3 = final_result_service_3 * percentage_uninsured_3
-            message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.2f}"
+            message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.0f}"
         else:  # Didn't buy insurance
             buffer3 = final_result_service_3
-            message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.2f}"
+            message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.0f}"
 
 
     total_buffer_needed = buffer1 + buffer2 + buffer3
