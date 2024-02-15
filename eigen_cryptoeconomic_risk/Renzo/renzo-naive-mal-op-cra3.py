@@ -1,10 +1,4 @@
 
-# Naive & Mal Op
-
-# CoC = Stake / 3
-# PfC = TVL
-
-
 
 import streamlit as st
 
@@ -401,10 +395,7 @@ def main():
                         In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
                     """)
 
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
+    st.write("  \n" * 4)
 
 
     
@@ -790,12 +781,8 @@ def main():
                 potential_total_slashing1 = calculate_slashing(total_restaked, risk_score1)
                 """)
             
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
 
-
+        st.write("  \n" * 4)
 
 
 
@@ -954,13 +941,7 @@ def main():
                 """)
         
         
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-
-
-
+        st.write("  \n" * 4)
 
 
 
@@ -1116,28 +1097,10 @@ def main():
                 potential_total_slashing3 = calculate_slashing(total_restaked, risk_score3)
                 """)
 
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
 
     st.session_state.pre_slash_pfc = tvl1 + tvl2 + tvl3
 
-
-
-
-
-
-
-
-
-
+    st.write("  \n" * 10)
 
 
 
@@ -1208,9 +1171,7 @@ def main():
 
 
 
-
     st.write("  \n")
-
 
 
 
@@ -1329,8 +1290,8 @@ def main():
     st.session_state.insurance_statuses['avs2_insurance_status'] = avs2_insurance_status_temp
     st.session_state.insurance_statuses['avs3_insurance_status'] = avs3_insurance_status_temp
 
-    st.write("  \n")
-    st.write("  \n")
+
+    st.write("  \n" * 2)
 
 
     def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
