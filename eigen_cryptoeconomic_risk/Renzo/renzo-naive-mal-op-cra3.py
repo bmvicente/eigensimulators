@@ -1484,7 +1484,6 @@ def main():
 
 
     st.write("\n")
-    st.write("\n")
 
     def recalculate_and_update():
 
@@ -1507,8 +1506,6 @@ def main():
         # Optionally, refresh displayed data directly if not using session state for dynamic UI elements
         # For dynamic UI updates based on session state, you don't need to do anything here
         # as the UI will reference the session state variables directly
-
-    st.write("\n")
 
     with st.expander("Logic"):
                 st.markdown(f"""
