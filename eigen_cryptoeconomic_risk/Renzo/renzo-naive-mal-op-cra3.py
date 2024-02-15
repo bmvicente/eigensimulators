@@ -1509,9 +1509,7 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
-                        The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
-                        We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
-                        In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
+                    Half the Operator slashed amount is not accounted for the Insurance Reserve to either be burnt or allocated to a cryptoeconomic buffer to safeguard against irrational users that have not bought enough insurance or bought no insurance at all.
                     """)
                 
     st.write("\n")
