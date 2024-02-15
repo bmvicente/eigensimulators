@@ -1155,13 +1155,6 @@ def main():
             unsafe_allow_html=True
         )
 
-    if background_color == "#ff6666":
-            st.markdown("""
-                <div style="color: red; font-weight: bold; font-size: 18px; text-align: center;">
-                    Insufficient Insurance Amount In Reserve. The System Has Been Compromised Due to Lack of Cryptoeconomic Security.
-                </div>
-                """, unsafe_allow_html=True)
-
 
     st.write("  \n")
 
