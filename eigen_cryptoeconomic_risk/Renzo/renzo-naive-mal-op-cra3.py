@@ -1356,7 +1356,7 @@ def main():
 
 
     stake_losses_coverage_value = stake_losses_coverage if stake_losses_coverage >= 0 else abs(stake_losses_coverage)
-
+    stake_losses_coverage_sign = '' if stake_losses_coverage >= 0 else '-'
     stake_losses_coverage_color = "green" if stake_losses_coverage >= 0 else "red"
 
     stakesure_coverage_level_calc = f"""
@@ -1364,17 +1364,18 @@ def main():
         <span style="font-size: 20px; font-weight: bold;">STAKESURE Insurance Coverage Level = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{stake_losses_coverage_sign}${avs1_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">+</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">+</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
-        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {stake_losses_coverage_color};">${stake_losses_coverage_value:,.0f}</span>
+        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {stake_losses_coverage_color};">{stake_losses_coverage_sign}${stake_losses_coverage_value:,.0f}</span>
     </div>
     """
 
     st.markdown(stakesure_coverage_level_calc, unsafe_allow_html=True)
+
 
 
 
@@ -1514,6 +1515,7 @@ def main():
     buffer_coverage_level = st.session_state.buffer_reserve_amount - buffer1 - buffer2 - buffer3
 
     buffer_coverage_level_value = buffer_coverage_level if buffer_coverage_level >= 0 else abs(buffer_coverage_level)
+    buffer_coverage_level_sign = '' if buffer_coverage_level >= 0 else '-'
     buffer_coverage_level_color = "green" if buffer_coverage_level >= 0 else "red"
 
     buffer_coverage_level_calc = f"""
@@ -1521,17 +1523,18 @@ def main():
         <span style="font-size: 20px; font-weight: bold;">Buffer Coverage Level = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{buffer_coverage_level_sign}${buffer1:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer2:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{buffer_coverage_level_sign}${buffer2:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${buffer3:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{buffer_coverage_level_sign}${buffer3:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
-        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {buffer_coverage_level_color};">${buffer_coverage_level_value:,.0f}</span>
+        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {buffer_coverage_level_color};">{buffer_coverage_level_sign}${buffer_coverage_level_value:,.0f}</span>
     </div>
     """
 
     st.markdown(buffer_coverage_level_calc, unsafe_allow_html=True)
+
 
 
 
