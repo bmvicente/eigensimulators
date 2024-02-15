@@ -348,11 +348,11 @@ def main():
 
     def evaluate_allowed_vs_actual(actual_stake_loss_color):
         if actual_stake_loss_color == "#90EE90":  # light green
-            return 1.00
+            return 1.00, None
         elif actual_stake_loss_color == "#FFFFFF":  # white
             return 1.00, "white"
         elif actual_stake_loss_color == "#FFC0CB" or actual_stake_loss_color == "#ff6666":  # pink or light red
-            return 1.50
+            return 1.50, None
 
     # Assuming actual_stake_loss_color is defined somewhere above
     evaluation_result, color_case = evaluate_allowed_vs_actual(actual_stake_loss_color)
