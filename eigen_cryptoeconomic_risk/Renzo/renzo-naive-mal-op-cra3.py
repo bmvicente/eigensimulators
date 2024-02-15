@@ -385,7 +385,7 @@ def main():
     # Adjust the markdown to include the dynamic formula_end based on evaluation_result
     st.markdown(
         f"""
-            <div style="padding: 10px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px; display: flex; flex-direction: column; align-items: center;">
+            <div style="padding: 5px 10px 15px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px; display: flex; flex-direction: column; align-items: center;">
                 <h2 style="color: black; margin: 0; padding-bottom: 3px; font-size: 20px; font-weight: bold; line-height: 1.1;">
                     POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE (BST) TEST
                 </h2>
@@ -399,6 +399,7 @@ def main():
         """, 
         unsafe_allow_html=True
     )
+
 
 
 
