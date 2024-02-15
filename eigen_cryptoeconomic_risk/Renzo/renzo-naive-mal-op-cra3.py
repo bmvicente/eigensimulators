@@ -400,7 +400,8 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-
+    if 'pos_neg_actual_stake_loss' not in st.session_state:
+        st.session_state.pos_neg_actual_stake_loss = 0
     
     def evaluate_conditions(pre_slash_max_slash_allowed, pos_neg_actual_stake_loss):
         pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
@@ -413,6 +414,7 @@ def main():
             return 1.10
         else:
             return 1
+        
 
     def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
         categories = [avs1_category, avs2_category, avs3_category]
