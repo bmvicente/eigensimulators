@@ -1154,7 +1154,7 @@ def main():
 
     total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
 
-    stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
+    stakesure_insurance_reserve = (existing_reserve + st.session_state.op_stake_slashable) / 2
 
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
         
@@ -1508,6 +1508,19 @@ def main():
         # For dynamic UI updates based on session state, you don't need to do anything here
         # as the UI will reference the session state variables directly
 
+    st.write("\n")
+
+    with st.expander("Logic"):
+                st.markdown(f"""
+                        The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
+                        We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
+                        In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
+                    """)
+                
+    st.write("\n")
+    st.write("\n")
+
+                
     # Button to trigger recalculation and updates
     if st.button('Update Calculations'):
         recalculate_and_update()
