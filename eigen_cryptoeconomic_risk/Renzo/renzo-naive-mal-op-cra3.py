@@ -1371,7 +1371,7 @@ def main():
 
     st.markdown(f"""
             <div style="font-size: 22px;">
-                <b>Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users:</b> <span style="font-size: 0.9em;">${stake_losses_coverage:,.0f} + ${st.session_state.op_stake_slashable:,.0f} / 2 = <b>${st.session_state.buffer_reserve_amount:,.0f}</b></span>
+                <b>Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users
             </div>
             """, unsafe_allow_html=True)
 
@@ -1381,14 +1381,15 @@ def main():
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
             <span style="font-size: 24px; font-weight: bold;">-</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: red; border-radius: 10px; padding: 5px; margin: 2px;">${total_stake_losses:,.0f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: blue; border-radius: 10px; padding: 5px; margin: 2px;">${total_stake_losses:,.0f}</span> 
             <span style="font-size: 24px; font-weight: bold;">+</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable / 2:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span>
         </div>
-    """
+    """    
     
+    st.write("  \n")
     st.write("  \n")
 
     st.markdown(stake_losses_coverage_display, unsafe_allow_html=True)
