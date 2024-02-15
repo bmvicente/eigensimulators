@@ -222,7 +222,7 @@ def main():
         # Determine the background color and text based on the condition
         if pre_slash_max_slash_allowed >= 0:
             background_color = "#90EE90"  # light green for positive allowed loss
-            max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security"
+            max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Still Maintain Cryptoeconomic Security"
         else:
             background_color = "#ff9999"  # red for a negative allowed loss, indicating an insecure condition
             max_slash_allowed_text = "Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
@@ -669,7 +669,7 @@ def main():
                 st.write("\n")
 
                 def get_display_text(pre_slash_max_slash_allowed):
-                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Still Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
                     return f"""
                         <div style="
                             border: 1px solid;
@@ -826,7 +826,7 @@ def main():
                 st.write("  \n")
 
                 def get_display_text(pre_slash_max_slash_allowed):
-                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Still Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
                     return f"""
                         <div style="
                             border: 1px solid;
@@ -975,7 +975,7 @@ def main():
                 st.write("  \n")
 
                 def get_display_text(pre_slash_max_slash_allowed):
-                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Still Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
                     return f"""
                         <div style="
                             border: 1px solid;
