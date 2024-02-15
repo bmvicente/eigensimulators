@@ -742,7 +742,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 10px;">
-                    AVS1 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
+                    AVS1 Total Compounded Stake Loss based on <i>Category, Risk Profile & BST Status (β)</i>: <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
