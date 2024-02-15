@@ -126,6 +126,8 @@ def main():
     if 'avs3_category' not in st.session_state:
         st.session_state.avs3_category = "Data Availability Layer"
         
+    if 'pre_slash_max_slash_allowed' not in st.session_state:
+        st.session_state.pre_slash_max_slash_allowed = 0
     
 
     st.session_state.pre_slash_coc = st.session_state.pre_slash_total_restaked / 3
@@ -403,8 +405,7 @@ def main():
 
     if 'pos_neg_actual_stake_loss' not in st.session_state:
         st.session_state.pos_neg_actual_stake_loss = 0
-    if 'pre_slash_max_slash_allowed' not in st.session_state:
-        st.session_state.pre_slash_max_slash_allowed = 0
+
 
     st.session_state.pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
 
