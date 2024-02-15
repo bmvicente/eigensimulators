@@ -1151,32 +1151,30 @@ def main():
     st.write("  \n")
 
 
-    # Function defined but not immediately called
-    def recalculate_and_update():
 
-        existing_reserve = st.number_input("STAKESURE Insurance Amount Already in Reserve", min_value=0,
+    existing_reserve = st.number_input("STAKESURE Insurance Amount Already in Reserve", min_value=0,
                                         max_value=100000000000, value=0, step=10000000,
                                         key='existing_reserve_key')
     
 
 
-        st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
+    st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
 
 
-        st.write("  \n")
-        st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
-        total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
+    total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
 
-        stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
+    stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
 
-        stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
+    stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
         
 
-        background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
-        message = "(Enough to Cover Stake Losses)" if stake_losses_coverage >= 0 else "(Not Enough to Cover Stake Losses)"
+    background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
+    message = "(Enough to Cover Stake Losses)" if stake_losses_coverage >= 0 else "(Not Enough to Cover Stake Losses)"
 
-        st.markdown(
+    st.markdown(
             f"""
             <div style="
                 border: 2px solid;
@@ -1196,7 +1194,7 @@ def main():
             unsafe_allow_html=True
         )
 
-        if background_color == "#ff6666":
+    if background_color == "#ff6666":
             st.markdown("""
                 <div style="color: red; font-weight: bold; font-size: 18px; text-align: center;">
                     The System Has Been Compromised Due to Lack of Cryptoeconomic Security.
@@ -1206,25 +1204,25 @@ def main():
 
 
 
-        st.write("  \n")
+    st.write("  \n")
 
 
 
 
-        if 'insurance_statuses' not in st.session_state:
+    if 'insurance_statuses' not in st.session_state:
             st.session_state.insurance_statuses = {
                 'avs1_insurance_status': None,
                 'avs2_insurance_status': None,
                 'avs3_insurance_status': None
             }
 
-        col50, col51, col52 = st.columns(3)
+    col50, col51, col52 = st.columns(3)
 
-        def create_insurance_status_selectbox(column, options, key):
+    def create_insurance_status_selectbox(column, options, key):
             selected_status = column.selectbox("Insurance Status", options, key=key)
             return selected_status
 
-        def display_insurance_status_selectbox(avs_insurance_status, options, key):
+    def display_insurance_status_selectbox(avs_insurance_status, options, key):
             selected_status = st.selectbox(
                 "**Insurance Status**", 
                 options, 
@@ -1233,9 +1231,9 @@ def main():
             )
             return selected_status
 
-        insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
+    insurance_options = ["Bought Appropriate Amount of Insurance", "Bought Inappropriate Amount of Insurance", "Didn't Buy Insurance"]
 
-        with col50: 
+    with col50: 
             background_color1 = "#90EE90" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1] else "#ff6666"
             st.markdown(
                 f"""
@@ -1264,7 +1262,7 @@ def main():
             avs1_insurance_status_temp = create_insurance_status_selectbox(col50, insurance_options, "avs1_insurance_status")
 
 
-        with col51:
+    with col51:
             background_color2 = "#90EE90" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1] else "#ff6666"
             st.markdown(
                 f"""
@@ -1293,7 +1291,7 @@ def main():
             avs2_insurance_status_temp = create_insurance_status_selectbox(col51, insurance_options, "avs2_insurance_status")
 
 
-        with col52:
+    with col52:
             background_color3 = "#90EE90" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else "#FFFF00" if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1] else "#ff6666"
             st.markdown(
                 f"""
@@ -1322,15 +1320,15 @@ def main():
             avs3_insurance_status_temp = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status")
 
         # Update session state dictionary
-        st.session_state.insurance_statuses['avs1_insurance_status'] = avs1_insurance_status_temp
-        st.session_state.insurance_statuses['avs2_insurance_status'] = avs2_insurance_status_temp
-        st.session_state.insurance_statuses['avs3_insurance_status'] = avs3_insurance_status_temp
+    st.session_state.insurance_statuses['avs1_insurance_status'] = avs1_insurance_status_temp
+    st.session_state.insurance_statuses['avs2_insurance_status'] = avs2_insurance_status_temp
+    st.session_state.insurance_statuses['avs3_insurance_status'] = avs3_insurance_status_temp
 
-        st.write("  \n")
-        st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
 
-        def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
+    def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
             high = "Bought Appropriate Amount of Insurance"
             medium = "Bought Inappropriate Amount of Insurance"
             low = "Didn't Buy Insurance"
@@ -1371,17 +1369,17 @@ def main():
             """
             
         # Assuming avs1_insurance_status, avs2_insurance_status, and avs3_insurance_status are defined somewhere in your code
-        cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
+    cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
             st.session_state.insurance_statuses['avs1_insurance_status'],
             st.session_state.insurance_statuses['avs2_insurance_status'],
             st.session_state.insurance_statuses['avs3_insurance_status']
         )
 
-        st.markdown(cryptoeconomic_security_level, unsafe_allow_html=True)
+    st.markdown(cryptoeconomic_security_level, unsafe_allow_html=True)
 
-        st.write("\n")
+    st.write("\n")
 
-        st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack.</p>', unsafe_allow_html=True)
 
 
 
@@ -1389,34 +1387,30 @@ def main():
         ### BUFFER ###
         ############## 
             
-        st.write("\n")
-        st.write("\n")
-        st.write("\n")
-        st.write("\n")
-        st.write("\n")
-        st.write("\n")
+    st.write("\n" * 6)
 
 
 
-        if 'buffer_reserve_amount' not in st.session_state:
+
+    if 'buffer_reserve_amount' not in st.session_state:
             st.session_state.buffer_reserve_amount = 0  # or any default value
 
-        st.markdown(f"""
+    st.markdown(f"""
             <div style="font-size: 22px;">
                 <b>Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users:</b> <span style="font-size: 0.9em;">${st.session_state.op_stake_slashable:,.0f} / 2 = <b>${st.session_state.buffer_reserve_amount:,.0f}</b></span>
             </div>
             """, unsafe_allow_html=True)
 
-        st.write("\n")
+    st.write("\n")
 
-        st.session_state.buffer_reserve_amount = st.session_state.op_stake_slashable / 2
+    st.session_state.buffer_reserve_amount = st.session_state.op_stake_slashable / 2
 
 
         # Initialize variables for buffer amounts for demonstration
-        buffer1, buffer2, buffer3 = 0, 0, 0  # Initialize buffer amounts
+    buffer1, buffer2, buffer3 = 0, 0, 0  # Initialize buffer amounts
 
         # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
-        with col50:
+    with col50:
             # Calculate buffer based on the selected insurance option
             if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
                 message1 = "No Insurance Needed from Buffer"
@@ -1429,7 +1423,7 @@ def main():
                 buffer1 = final_result_service_1
                 message1 = f"Buffer Insurance Amount Needed: {buffer1}"
 
-        with col51:
+    with col51:
             # Calculate buffer based on the selected insurance option
             if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
                 message2 = "No Insurance Needed from Buffer"
@@ -1442,7 +1436,7 @@ def main():
                 buffer2 = final_result_service_2
                 message2 = f"Buffer Insurance Amount Needed: {buffer2}"
 
-        with col52:
+    with col52:
             # Calculate buffer based on the selected insurance option
             if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
                 message3 = "No Insurance Needed from Buffer"
@@ -1456,12 +1450,12 @@ def main():
                 message3 = f"Buffer Insurance Amount Needed: {buffer3}"
 
 
-        total_buffer_needed = buffer1 + buffer2 + buffer3
+    total_buffer_needed = buffer1 + buffer2 + buffer3
 
             # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
-        col54, col55, col56 = st.columns(3)
+    col54, col55, col56 = st.columns(3)
 
-        with col54: 
+    with col54: 
             st.markdown(f"""
                 <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1.2em;">
@@ -1470,7 +1464,7 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
 
-        with col55:
+    with col55:
             st.markdown(f"""
                 <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1.2em;">
@@ -1479,7 +1473,7 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
 
-        with col56:
+    with col56:
             st.markdown(f"""
                 <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1.2em;">
@@ -1490,19 +1484,40 @@ def main():
 
 
 
-        st.write("\n")
+    st.write("\n")
 
-        total_buffer_needed = buffer1 + buffer2 + buffer3
-        if st.session_state.buffer_reserve_amount > total_buffer_needed:
+    total_buffer_needed = buffer1 + buffer2 + buffer3
+    if st.session_state.buffer_reserve_amount > total_buffer_needed:
             st.success("Enough attributable security can be safeguarded from the Buffer.")
-        else:
+    else:
             st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds.")
 
 
     st.write("\n")
 
-    if st.button('**Update Insurance Statuses**'):
+    def recalculate_and_update():
+        # Example recalculations based on current input values
+        existing_reserve = st.session_state['existing_reserve']
+        op_stake_slashable = st.session_state.op_stake_slashable / 2  # Assuming this is already set somewhere
+        
+        # Assuming final_result_service_{1,2,3} are calculated based on some logic not shown here
+        total_stake_losses = final_result_service_1 + final_result_service_2 + final_result_service_3
+        stakesure_insurance_reserve = existing_reserve + op_stake_slashable
+        stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
+
+        # Update session state with recalculated values for dynamic UI update
+        st.session_state['stakesure_insurance_reserve'] = stakesure_insurance_reserve
+        st.session_state['stake_losses_coverage'] = stake_losses_coverage
+
+        # Optionally, refresh displayed data directly if not using session state for dynamic UI elements
+        # For dynamic UI updates based on session state, you don't need to do anything here
+        # as the UI will reference the session state variables directly
+
+    # Button to trigger recalculation and updates
+    if st.button('Update Calculations'):
         recalculate_and_update()
+        st.success('Calculations and UI updated successfully.')
+
 
 
 
