@@ -1166,6 +1166,8 @@ def main():
     </div>
     """
 
+    st.markdown(stakesure_calc, unsafe_allow_html=True)
+
     st.write("  \n")
 
 
@@ -1372,16 +1374,18 @@ def main():
 
 
     stake_losses_coverage_display = f"""
-    <div style="text-align: center;">
-        <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
-        <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: red; border-radius: 10px; padding: 5px; margin: 2px;">${total_stake_losses:,.0f}</span> 
-        <span style="font-size: 24px; font-weight: bold;">+</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable / 2:,.2f}</span> 
-        <span style="font-size: 24px; font-weight: bold;"> = </span>
-        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span>
-    </div>
+        <div style="text-align: center;">
+            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">-</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: red; border-radius: 10px; padding: 5px; margin: 2px;">${total_stake_losses:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">+</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable / 2:,.2f}</span> 
+            <span style="font-size: 24px; font-weight: bold;"> = </span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span>
+        </div>
     """
+    
+    st.markdown(stake_losses_coverage_display, unsafe_allow_html=True)
 
     st.session_state.buffer_reserve_amount = stake_losses_coverage + st.session_state.op_stake_slashable / 2
 
