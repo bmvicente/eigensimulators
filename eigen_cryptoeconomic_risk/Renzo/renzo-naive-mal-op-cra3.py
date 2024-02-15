@@ -1162,11 +1162,19 @@ def main():
     <div style="text-align: center;">
         <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${existing_reserve:,.2f}</span> 
         <span style="font-size: 24px; font-weight: bold;">+</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable / 2:,.2f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.2f}</span> 
+        <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
+        <span style="font-size: 24px; font-weight: bold;"> = </span>
+        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${(st.session_state.op_stake_slashable / 2):,.2f}</span>
+        <br>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${(st.session_state.op_stake_slashable / 2):,.2f}</span>
+        <span style="font-size: 24px; font-weight: bold;">+</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${(st.session_state.op_stake_slashable / 2):,.2f}</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
         <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span>
     </div>
     """
+
 
     st.markdown(stakesure_calc, unsafe_allow_html=True)
 
