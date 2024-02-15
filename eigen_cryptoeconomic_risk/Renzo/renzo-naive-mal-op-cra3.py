@@ -1224,7 +1224,7 @@ def main():
                 <div style="
                     border: 1px solid;
                     border-radius: 2px;
-                    padding: 4px;
+                    padding: 3px;
                     text-align: center;
                     margin: 5px 0;
                     background-color: {background_color1};">
@@ -1253,7 +1253,7 @@ def main():
                 <div style="
                     border: 1px solid;
                     border-radius: 2px;
-                    padding: 4px;
+                    padding: 3px;
                     text-align: center;
                     margin: 5px 0;
                     background-color: {background_color2};">
@@ -1282,7 +1282,7 @@ def main():
                 <div style="
                     border: 1px solid;
                     border-radius: 2px;
-                    padding: 4px;
+                    padding: 3px;
                     text-align: center;
                     margin: 5px 0;
                     background-color: {background_color3};">
