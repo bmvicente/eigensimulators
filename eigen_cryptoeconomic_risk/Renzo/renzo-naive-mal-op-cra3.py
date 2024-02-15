@@ -346,47 +346,50 @@ def main():
     ####### BST #######
     ###################
 
+    def evaluate_allowed_vs_actual(actual_stake_loss_color):
+        if actual_stake_loss_color == "#90EE90" or actual_stake_loss_color == "#FFFFFF":  # light green or white
+            return 1.00
+        elif actual_stake_loss_color == "#FFC0CB" or actual_stake_loss_color == "#ff6666":  # pink or light red
+            return 1.50
+        
+        
+    # Assuming actual_stake_loss_color is defined somewhere above
+    evaluation_result = evaluate_allowed_vs_actual(actual_stake_loss_color)
 
-    # Calculate bst_avs1
-    #bst_avs1 = pre_slash_max_slash_allowed - actual_stake_loss
+    #Calculate bst_avs1
+    bst_avs1 = pre_slash_max_slash_allowed - actual_stake_loss
 
-    # Determine color and background_color based on bst_avs1 value
-    #if bst_avs1 < 0:
-    #    color = "#d32f2f"  # Red color for negative value
-    #    background_color = "#fde0dc"  # Light red background
-    #elif 0 < bst_avs1 <= 20000000:  # Condition for values between 0 and 20 million
-    #    color = "#FB8C00"  # Orange color
-    #    background_color = "#FFE0B2"  # Light orange background
-    #elif bst_avs1 > 20000000:
-    #    color = "#388e3c"  # Green color for positive value
-    #    background_color = "#ebf5eb"  # Light green background
-    #else:  # This will be for bst_avs1 exactly equal to 0
-    #    color = "black"  # Black color for zero
-    #    background_color = "#ffffff"  # White background
+    # Determine color and background_color based on bst_avs1 value and evaluation_result
+    if evaluation_result == 1.00:
+        formula_end = "> 0"  # For conditions leading to a 1.00 evaluation result
+        if bst_avs1 >= 0:
+            color = "#388e3c"  # Green color for positive or zero value
+            background_color = "#ebf5eb"  # Light green background
+        else:
+            color = "#d32f2f"  # Red color for negative value
+            background_color = "#fde0dc"  # Light red background
+    elif evaluation_result == 1.50:
+        formula_end = "< 0"  # For conditions leading to a 1.50 evaluation result
+        color = "#ff6666"  # Light red, considering it a more critical condition
+        background_color = "#FFC0CB"  # Pinkish light red background
 
-
-    #st.markdown(
-    #    """
-    #        <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
-    #            <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
-    #                POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
-    #            </h2>
-    #            <span style="font-weight: bold; font-size: 26px; display: block; margin-top: 5px;">
-    #                &beta;<sub style="font-size: 16px;">ijt</sub> = 
-    #                &alpha;<sub style="font-size: 16px;">jt</sub> - 
-    #                &theta;<sub style="font-size: 16px;">ijt+1</sub> =
-    #                ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="color: {color};">${bst_avs1:,.0f}</span>
-    #            </span>
-    #        </div>
-    #    """.format(
-    #        color=color,
-    #        background_color=background_color,
-    #        pre_slash_max_slash_allowed=pre_slash_max_slash_allowed,
-    #        actual_stake_loss=actual_stake_loss,
-    #        bst_avs1=bst_avs1
-    #    ), 
-    #    unsafe_allow_html=True
-    #)
+    # Adjust the markdown to include the dynamic formula_end based on evaluation_result
+    st.markdown(
+        f"""
+            <div style="padding-top: 10px; padding-bottom: 10px; padding-left: 5px; padding-right: 5px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px;">
+                <h2 style="color: black; margin: 0; padding-bottom: 0; font-size: 20px; font-weight: bold; line-height: 1.1;">
+                    POST-SLASH Aftermath: BYZANTINE <i>SLASHING</i> TOLERANCE TEST
+                </h2>
+                <span style="font-weight: bold; font-size: 26px; display: block; margin-top: 5px;">
+                    &beta;<sub style="font-size: 16px;">ijt</sub> = 
+                    &alpha;<sub style="font-size: 16px;">jt</sub> - 
+                    &theta;<sub style="font-size: 16px;">ijt+1</sub> =
+                    ${pre_slash_max_slash_allowed:,.0f} - ${actual_stake_loss:,.0f} = <span style="color: {color};">${bst_avs1:,.0f}</span> {formula_end}
+                </span>
+            </div>
+        """, 
+        unsafe_allow_html=True
+    )
 
 
 
@@ -402,16 +405,6 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-
-    def evaluate_allowed_vs_actual(actual_stake_loss_color):
-        if actual_stake_loss_color == "#90EE90":  # light green
-            return 1.00
-        elif actual_stake_loss_color == "#FFFFFF":  # white
-            return 1.10
-        elif actual_stake_loss_color == "#FFC0CB":  # pink
-            return 1.25
-        elif actual_stake_loss_color == "#ff6666":  # red
-            return 1.50
 
 
     def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
@@ -736,7 +729,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 10px;">
-                        AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
+                    AVS1 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -758,7 +751,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span>
             <div style="text-align: center; margin-top: 10px;">
-            <span style="font-size: 16px; font-weight: bold;">(Actual Stake Loss * Category * Risk Score * CoC <> PfC Threshold = AVS1 Total Compounded Stake Loss)</span>
+            <span style="font-size: 16px; font-weight: bold;">(Actual Stake Loss * Category * Risk Score * BST status (β) = AVS1 Total Compounded Stake Loss)</span>
         </div>
         """
 
@@ -888,7 +881,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
+                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1036,7 +1029,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
+                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1198,7 +1191,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS1 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs1_compounded_loss:,.0f}</span>
+                            AVS1 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs1_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -1227,7 +1220,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS2 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
+                            AVS2 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -1256,7 +1249,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS3 Total Compounded Stake Loss based on Category, Risk Profile & CoC <> PfC Threshold: <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
+                            AVS3 Total Compounded Stake Loss based on Category, Risk Profile & BST status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
