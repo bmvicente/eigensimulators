@@ -1130,7 +1130,7 @@ def main():
 
     stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
 
-    stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses + st.session_state.op_stake_slashable / 2
+    stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
         
 
     background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
@@ -1389,7 +1389,7 @@ def main():
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
             <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span>
         </div>
     """    
     
