@@ -433,9 +433,8 @@ def main():
         st.session_state.avs2_category,
         st.session_state.avs3_category
     )
-    conditions_evaluation_result = evaluate_allowed_vs_actual(
-        st.session_state.pre_slash_max_slash_allowed,
-        st.session_state.pos_neg_actual_stake_loss
+    allowed_vs_actual_evaluation_result = evaluate_allowed_vs_actual(
+        actual_stake_loss_color
     )
 
     def categorize_risk(risk_score):
@@ -498,9 +497,9 @@ def main():
     risk_evaluation3 = risk_numeric[risk_category3] + collective_adjustment
 
     # Proceed with final results calculations incorporating the adjustments
-    final_result_service_1 = actual_stake_loss * risk_evaluation1 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_2 = actual_stake_loss * risk_evaluation2 * service_categories_evaluation_result * conditions_evaluation_result
-    final_result_service_3 = actual_stake_loss * risk_evaluation3 * service_categories_evaluation_result * conditions_evaluation_result
+    final_result_service_1 = actual_stake_loss * risk_evaluation1 * service_categories_evaluation_result * allowed_vs_actual_evaluation_result
+    final_result_service_2 = actual_stake_loss * risk_evaluation2 * service_categories_evaluation_result * allowed_vs_actual_evaluation_result
+    final_result_service_3 = actual_stake_loss * risk_evaluation3 * service_categories_evaluation_result * allowed_vs_actual_evaluation_result
 
 
     col1, col2 = st.columns([1, 1], gap="large")
@@ -755,7 +754,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result:,.2f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{allowed_vs_actual_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${final_result_service_1:,.0f}</span>
             <div style="text-align: center; margin-top: 10px;">
@@ -919,7 +918,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result:,.2f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{allowed_vs_actual_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${final_result_service_2:,.0f}</span>
         </div>
@@ -1079,7 +1078,7 @@ def main():
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{service_categories_evaluation_result:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{conditions_evaluation_result:,.2f}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{allowed_vs_actual_evaluation_result:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${final_result_service_3:,.0f}</span>
             </div>
