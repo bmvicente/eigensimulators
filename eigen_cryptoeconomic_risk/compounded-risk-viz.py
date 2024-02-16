@@ -128,6 +128,7 @@ for avs in avss:
                                  marker=dict(size=20, color='blue', symbol='square'), text=avs['operator'], name='Operators'))
         operator_legend_added.add(avs['operator'])
 
+
 # Add AVSs
 initial_avs_size = 20
 avs_sizes = [initial_avs_size] * len(avss)  # Start with size 20 for all AVSs
@@ -135,14 +136,17 @@ for avs in avss:
     category = avs['category']
     color = ['green', 'pink', 'red'][category]
     size_factor = avs['risk_score'] * 0.20
-    entrenchment_size_factor = entrenchment_level * 0.1  # Assuming entrenchment_level is a percentage
-    avs_sizes.append(initial_avs_size + size_factor + entrenchment_size_factor)
+    entrenchment_size_factor = entrenchment_level * 0.15  # Assuming entrenchment_level is a percentage
+    category_dominance_size_factor = category_dominance * 0.15  # Assuming category_dominance is a percentage
+    avs_sizes.append(initial_avs_size + size_factor + category_dominance_size_factor)
     fig.add_trace(go.Scatter(x=[pos[avs['name']][0]], 
                              y=[pos[avs['name']][1]], 
                              mode='markers', 
-                             marker=dict(size=initial_avs_size + size_factor + entrenchment_size_factor, color=color), 
+                             marker=dict(size=initial_avs_size + size_factor + category_dominance_size_factor, color=color), 
                              text=avs['name'], 
                              name=['Decentralized Sequencer AVS', 'Oracle AVS', 'Data Availability AVS'][category]))
+
+
 
 # Add edges
 edge_trace = []
