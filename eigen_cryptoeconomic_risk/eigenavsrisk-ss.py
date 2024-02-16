@@ -42,8 +42,9 @@ def main():
     st.write("  \n")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
-        st.markdown(f"""The Simulator takes ten of the parameters that can compose an AVS to simulate their Risk Score. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
-                    The most significant parameter is the first, since it poses the greatest weight on an AVS being exposed to corruption or being economically secured.
+        st.markdown(f"""The Simulator takes six of the parameters that can compose an AVS to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Espresso. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
+                    A good deal of the logic behind the right side of the Simulator (ESPRESSO-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
+                    The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being exposed to corruption or to being cryptoeconomically secured.
                     """)
         
     st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for a Shared-Sequencer AVS.")
