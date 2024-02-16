@@ -129,6 +129,7 @@ for avs in avss:
         operator_legend_added.add(avs['operator'])
 
 
+
 # Add AVSs
 initial_avs_size = 20
 avs_sizes = [initial_avs_size] * len(avss)  # Start with size 20 for all AVSs
@@ -136,7 +137,8 @@ for avs in avss:
     category = avs['category']
     color = ['green', 'pink', 'red'][category]
     size_factor = avs['risk_score'] * 0.20
-    entrenchment_size_factor = entrenchment_level * 0.15  # Assuming entrenchment_level is a percentage
+    max_entrenchment_level = 100  # Assuming maximum entrenchment level is 100%
+    entrenchment_size_factor = (avs['entrenchment_level'] / max_entrenchment_level) * 10  # Adjust the scaling factor as needed
     category_dominance_size_factor = category_dominance * 0.15  # Assuming category_dominance is a percentage
     avs_sizes.append(initial_avs_size + size_factor + entrenchment_size_factor + category_dominance_size_factor)
     fig.add_trace(go.Scatter(x=[pos[avs['name']][0]], 
