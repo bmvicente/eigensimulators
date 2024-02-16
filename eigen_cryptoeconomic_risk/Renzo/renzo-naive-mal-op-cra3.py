@@ -1370,7 +1370,7 @@ def main():
         <span style="font-size: 24px; font-weight: bold;">-</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
-        <span style="font-size: 22px; font-weight: bold; background-color: FFC0CB; border-radius: 10px; padding: 5px; margin: 2px; color: {stake_losses_coverage_color};">{stake_losses_coverage_sign}${stake_losses_coverage_value:,.0f}</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: #FFC0CB; border-radius: 10px; padding: 5px; margin: 2px; color: {stake_losses_coverage_color};">{stake_losses_coverage_sign}${stake_losses_coverage_value:,.0f}</span>
     </div>
     """
 
@@ -1414,12 +1414,12 @@ def main():
     buffer_available_calc = f"""
         <div style="text-align: center;">
             <span style="font-size: 20px; font-weight: bold; ">Buffer Insurance Amount Available = </span>
-            <span style="font-size: 22px; font-weight: bold; background-color: FFC0CB; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: #FFC0CB; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span> 
             <span style="font-size: 24px; font-weight: bold;">+</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
             <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; background-color: grey; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span>
         </div>
     """        
     
