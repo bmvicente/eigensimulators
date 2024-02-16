@@ -41,13 +41,14 @@ st.write("\n")
 col5, col6, col7 = st.columns(3, gap="large")
 
 with col5:
-    entrenchment_level = st.slider('**Operator Entrenchment Level (%)**', 0, 100, 0)
+    entrenchment_level = st.slider('**Operator Entrenchment Level (%)**', 0, 100, 0, key='entrenchment_slider')
 
 with col6:
-    centralization_level = st.slider('**Centralization Level of Node Operators**', 0, 100, 0)
+    centralization_level = st.slider('**Centralization Level of Node Operators**', 0, 100, 0, key='centralization_slider')
 
 with col7:
-    reputation_level = st.slider('**Operator Reputation Level**', 0, 100, 0)
+    reputation_level = st.slider('**Operator Reputation Level**', 0, 100, 0, key='reputation_slider')
+
 
 if st.button("Update State"):
     st.write("")
@@ -56,6 +57,9 @@ np.random.seed(0)
 
 operators = [f"Operator {i+1}" for i in range(num_operators)]
 avss = []
+
+
+
 
 # Creating operators and AVSs with attributes
 for i in range(num_avss):
@@ -73,12 +77,18 @@ for i in range(num_avss):
     # Add 'category' key to each AVS dictionary
     avss.append({'name': f"AVS {i+1}", 'category': category, 'risk_score': int(risk_score), 'operator': operator})
 
+
+
+
 # Assigning at least one AVS to each Operator and filling the rest
 for i in range(num_operators):
     risk_score = np.random.normal(loc=avg_risk_score, scale=10)  # Normal distribution around the average risk score
     risk_score = np.clip(risk_score, 1, 100)  # Ensure risk score is within bounds
     avss.append({'name': f"AVS {i+1}",
                 'risk_score': int(risk_score), 'operator': operators[i], 'category': np.random.randint(0, 3)})
+
+
+
 
 # Adjusting operator entrenchment level
 if entrenchment_level > 0:
@@ -91,6 +101,10 @@ if entrenchment_level > 0:
 
     for avs in avss:
         avs['operator'] = np.random.choice(operators, p=normalized_entrenchment)
+
+
+
+
 
 # Create the graph
 G = nx.DiGraph()
@@ -116,16 +130,17 @@ for avs in avss:
 
 # Add AVSs
 initial_avs_size = 20
-avs_sizes = [initial_avs_size] * len(avss)  # Start with size 5 for all AVSs
+avs_sizes = [initial_avs_size] * len(avss)  # Start with size 20 for all AVSs
 for avs in avss:
     category = avs['category']
     color = ['green', 'pink', 'red'][category]
     size_factor = avs['risk_score'] * 0.20
-    avs_sizes.append(initial_avs_size + size_factor)
+    entrenchment_size_factor = entrenchment_level * 0.1  # Assuming entrenchment_level is a percentage
+    avs_sizes.append(initial_avs_size + size_factor + entrenchment_size_factor)
     fig.add_trace(go.Scatter(x=[pos[avs['name']][0]], 
                              y=[pos[avs['name']][1]], 
                              mode='markers', 
-                             marker=dict(size=initial_avs_size + size_factor, color=color), 
+                             marker=dict(size=initial_avs_size + size_factor + entrenchment_size_factor, color=color), 
                              text=avs['name'], 
                              name=['Decentralized Sequencer AVS', 'Oracle AVS', 'Data Availability AVS'][category]))
 
