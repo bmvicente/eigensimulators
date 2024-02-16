@@ -408,7 +408,7 @@ def main():
                 margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1em;">
                     <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">i AVS1</sub></span> &nbsp; | &nbsp;
-                    Max Stake Loss on <i>AVS 1</i>: <span style="font-size: 1.2em;">${op_max_loss_avs1:,.0f}</span>
+                    Max Potential Stake Loss on <i>AVS 1</i>: <span style="font-size: 1.2em;">${op_max_loss_avs1:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -425,7 +425,7 @@ def main():
                 margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1em;">
                     <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">i AVS2</sub></span> &nbsp; | &nbsp;
-                    Max Stake Loss on <i>AVS 2</i>: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span>
+                    Max Potential Stake Loss on <i>AVS 2</i>: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -442,7 +442,7 @@ def main():
                 margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1em;">
                     <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">i AVS3</sub></span> &nbsp; | &nbsp;
-                    Max Stake Loss on <i>AVS 3</i>: <span style="font-size: 1.2em;">${op_max_loss_avs3:,.0f}</span>
+                    Max Potential Stake Loss on <i>AVS 3</i>: <span style="font-size: 1.2em;">${op_max_loss_avs3:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -460,7 +460,7 @@ def main():
                     margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">ij</sub></span> &nbsp; | &nbsp;
-                        Total Max Stake Loss Across AVSs: <span style="font-size: 1.2em;">${op_max_loss_avss:,.0f}</span>
+                        Total Max Potential Stake Loss Across AVSs: <span style="font-size: 1.2em;">${op_max_loss_avss:,.0f}</span>
                     </h2>
                 </div>
                 """,
@@ -473,6 +473,8 @@ def main():
                     We take the Operator's amount of Stake, either delegated by himself or on behalf of Restakers, and calculate the Fraction of Total Stake this Operator is securing, which is simply calculated by his stake divided by the Total Stake, given by lambda???
                     
                     The total maximum potential stake loss this Operator may be subject to by validating each of the AVSs is given by the above formula. It is composed by the sum Risk Exposure variable of each AVS times the fraction of total stake the Operator is securing.
+                        
+                    Of course, to do this calculation, it is assumed that each AVS in facto failed in some way to cause the Operator to lose stake, and that that stake loss was maximized. So the worst case scanrio was taken. into account here.
                 """)
         
         st.write("\n")
