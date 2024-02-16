@@ -805,6 +805,7 @@ def main():
 
 
 
+
         ##############################################
         ################### AVS 2 ####################
         ##############################################
@@ -941,7 +942,7 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
-                AVSs are more prone to compounded risks if their risk profiles are equally high, if they’re being secured by the same operator, if they fall into the same category of AVSs. What else?
+                AVSs are more prone to compounded risks if their risk profiles are equally high, if they are being secured by a common operator, and if they belong to the same category of AVS.
                 """)
         
         
@@ -1089,7 +1090,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                AVSs are more prone to compounded risks if their risk profiles are equally high, if they’re being secured by the same operator, if they fall into the same category of AVSs. What else?
+                AVSs are more prone to compounded risks if their risk profiles are equally high, if they are being secured by a common operator, and if they belong to the same category of AVS.
                 """)
 
 
@@ -1117,9 +1118,9 @@ def main():
 
 
 
-    #############################
-    ######### STAKESURE #########
-    #############################
+    ###########################
+    ######## STAKESURE ########
+    ###########################
 
 
     st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *STAKESURE Approach* (Attributable Security)")
@@ -1401,9 +1402,12 @@ def main():
 
 
 
-    ############## 
-    ### BUFFER ###
-    ############## 
+
+
+
+    ####################
+    ###### BUFFER ######
+    ####################
             
     st.write("  \n")
     st.write("  \n")
@@ -1594,6 +1598,8 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
+                    Get ideas from the paper.
+                    
                     Half the Operator slashed amount is not accounted for the Insurance Reserve to either be burnt or allocated to a cryptoeconomic buffer to safeguard against irrational users that have not bought enough insurance or bought no insurance at all.
                     """)
                 
@@ -1661,6 +1667,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+
 
 
 
