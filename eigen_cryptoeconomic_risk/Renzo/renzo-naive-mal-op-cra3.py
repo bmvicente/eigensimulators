@@ -35,7 +35,7 @@ def create_risk_score_input(risk_score_key, label):
 
 def calculate_slashing(pre_slash_total_restaked, risk_score):
     if risk_score == 100:
-        risk_factor = (90 + 10)  # This will give the same value as when risk_score is 9
+        risk_factor = (90 + 10)  
     else:
         risk_factor = (risk_score + 10)
 
@@ -55,18 +55,15 @@ def main():
     if 'operator_stake' not in st.session_state:
         st.session_state.operator_stake = 0
 
-
-    # Initialize session state variables
     if 'pre_slash_total_restaked' not in st.session_state:
         st.session_state.pre_slash_total_restaked = 0
 
-
     if 'risk_score1' not in st.session_state:
-        st.session_state.risk_score1 = 0  # or any default value
+        st.session_state.risk_score1 = 0  
     if 'risk_score2' not in st.session_state:
-        st.session_state.risk_score2 = 0  # or any default value
+        st.session_state.risk_score2 = 0  
     if 'risk_score3' not in st.session_state:
-        st.session_state.risk_score3 = 0  # or any default value
+        st.session_state.risk_score3 = 0 
 
 
     pre_slash_total_restaked = st.session_state.pre_slash_total_restaked
@@ -222,7 +219,6 @@ def main():
 
 
 
-        # Determine the background color and text based on the condition
         if pre_slash_max_slash_allowed >= 0:
             background_color = "#90EE90"  # light green for positive allowed loss
             max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Still Maintain Cryptoeconomic Security"
@@ -230,7 +226,6 @@ def main():
             background_color = "#ff9999"  # red for a negative allowed loss, indicating an insecure condition
             max_slash_allowed_text = "Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
 
-        # Markdown for Max Total Stake Loss "Allowed"
         display_text = f"""
                         <div style="
                             border: 2px solid;
@@ -362,19 +357,15 @@ def main():
             return 1.50
         
         
-    # Assuming actual_stake_loss_color is defined somewhere above
     evaluation_result = evaluate_allowed_vs_actual(actual_stake_loss_color)
 
-    #Calculate bst_avs1
-    bst_avs1 = pre_slash_max_slash_allowed - actual_stake_loss
+    bst = pre_slash_max_slash_allowed - actual_stake_loss
 
-    # Define formula_end outside the if-elif conditions
     formula_end = ""
 
-    # Determine color and background_color based on bst_avs1 value and evaluation_result
     if evaluation_result == 1.00:
         formula_end = "> 0"  # For conditions leading to a 1.00 evaluation result
-        if bst_avs1 >= 0:
+        if bst >= 0:
             color = "#388e3c"  # Green color for positive or zero value
             background_color = "#ebf5eb"  # Light green background
         else:
@@ -389,7 +380,7 @@ def main():
         color = "#ff6666"  # Light red, considering it a more critical condition
         background_color = "#FFC0CB"  # Pinkish light red background
 
-    # Adjust the markdown to include the dynamic formula_end based on evaluation_result
+
     st.markdown(
         f"""
             <div style="padding: 5px 10px 15px; text-align: center; margin: 5px 0; background-color: {background_color}; border: 2px solid {color}; border-radius: 5px; display: flex; flex-direction: column; align-items: center;">
@@ -445,15 +436,17 @@ def main():
         else:
             return 1.00
 
-    # Calculate service categories and conditions evaluation results
     categories_evaluation_result = evaluate_service_categories(
         st.session_state.avs1_category,
         st.session_state.avs2_category,
         st.session_state.avs3_category
+    
+
     )
     allowed_vs_actual_evaluation_result = evaluate_allowed_vs_actual(
         actual_stake_loss_color
     )
+
 
     def categorize_risk(risk_score):
         if risk_score < 33:
@@ -462,7 +455,7 @@ def main():
             return 'medium_risk'
         else:
             return 'high_risk'
-        
+    
     risk_numeric = {
         'low_risk': 1.00,
         'medium_risk': 1.05,
@@ -501,24 +494,19 @@ def main():
 
         return adjustment
 
-    # Assuming individual risk scores are defined and categorized
     risk_category1 = categorize_risk(st.session_state.risk_score1)
     risk_category2 = categorize_risk(st.session_state.risk_score2)
     risk_category3 = categorize_risk(st.session_state.risk_score3)
 
-    # Apply the collective risk adjustment
     collective_adjustment = collective_risk_adjustment(risk_category1, risk_category2, risk_category3)
 
-    # Individual risk evaluations with adjustments
     risk_evaluation1 = risk_numeric[risk_category1] + collective_adjustment
     risk_evaluation2 = risk_numeric[risk_category2] + collective_adjustment
     risk_evaluation3 = risk_numeric[risk_category3] + collective_adjustment
 
-    # Proceed with final results calculations incorporating the adjustments
     avs1_compounded_loss = actual_stake_loss * risk_evaluation1 * categories_evaluation_result * allowed_vs_actual_evaluation_result
     avs2_compounded_loss = actual_stake_loss * risk_evaluation2 * categories_evaluation_result * allowed_vs_actual_evaluation_result
     avs3_compounded_loss = actual_stake_loss * risk_evaluation3 * categories_evaluation_result * allowed_vs_actual_evaluation_result
-
 
     col1, col2 = st.columns([1, 1], gap="large")
 
@@ -575,7 +563,6 @@ def main():
         else:
                 operator_stake = st.number_input("", min_value=0, max_value=1000000000000, value=int(st.session_state.operator_stake), step=10000000)
 
-        # Format the operator_stake value as currency with a dollar sign and commas
         formatted_operator_stake = "${:,.0f}".format(operator_stake)
 
         st.write(f"""&#8226; Operator Stake: {formatted_operator_stake}""")
@@ -741,7 +728,6 @@ def main():
                     """, 
                     unsafe_allow_html=True
                 )
-
         
         st.markdown(
             f"""
@@ -1082,7 +1068,6 @@ def main():
             </div>
             """
 
-        # Displaying the markdown in Streamlit
         st.markdown(avs3_compounded_loss_calc, unsafe_allow_html=True)
 
         st.write("\n")
@@ -1128,11 +1113,10 @@ def main():
     st.write("  \n")
 
     if 'existing_reserve' not in st.session_state:
-        st.session_state['existing_reserve'] = 0  # Default value
+        st.session_state['existing_reserve'] = 0
 
-    # Similarly for other variables that need to be initialized
     if 'op_stake_slashable' not in st.session_state:
-        st.session_state['op_stake_slashable'] = 0  # Default value
+        st.session_state['op_stake_slashable'] = 0
 
 
     existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
@@ -1141,7 +1125,6 @@ def main():
     
 
     st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
-
 
     st.write("  \n")
     st.write("  \n")
@@ -1308,7 +1291,6 @@ def main():
             avs3_insurance_status_temp = create_insurance_status_selectbox(col52, insurance_options, "avs3_insurance_status")
 
 
-        # Update session state dictionary
     st.session_state.insurance_statuses['avs1_insurance_status'] = avs1_insurance_status_temp
     st.session_state.insurance_statuses['avs2_insurance_status'] = avs2_insurance_status_temp
     st.session_state.insurance_statuses['avs3_insurance_status'] = avs3_insurance_status_temp
@@ -1328,7 +1310,6 @@ def main():
             medium_security_count = coverage_status.count(medium)
             low_security_count = coverage_status.count(low)
 
-            # Determine the overall cryptoeconomic security level
             if high_security_count == 3:
                 security_level = "Strong Cryptoeconomic Security"
             elif high_security_count == 2 and medium_security_count == 1:
@@ -1358,7 +1339,6 @@ def main():
             </div>
             """
             
-        # Assuming avs1_insurance_status, avs2_insurance_status, and avs3_insurance_status are defined somewhere in your code
     cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
             st.session_state.insurance_statuses['avs1_insurance_status'],
             st.session_state.insurance_statuses['avs2_insurance_status'],
@@ -1456,10 +1436,8 @@ def main():
     st.session_state.buffer_reserve_amount = stake_losses_coverage + st.session_state.op_stake_slashable / 2
 
 
-        # Initialize variables for buffer amounts for demonstration
-    buffer1, buffer2, buffer3 = 0, 0, 0  # Initialize buffer amounts
+    buffer1, buffer2, buffer3 = 0, 0, 0 
 
-        # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     with col50:
         # Calculate buffer based on the selected insurance option
         if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
@@ -1502,7 +1480,6 @@ def main():
 
     total_buffer_needed = buffer1 + buffer2 + buffer3
 
-            # Assuming col50, col51, col52 are defined as st.columns(3) somewhere in your script
     col54, col55, col56 = st.columns(3)
 
     with col54: 
@@ -1557,9 +1534,7 @@ def main():
     </div>
     """
 
-
     st.markdown(buffer_coverage_level_calc, unsafe_allow_html = True)
-
 
 
 
@@ -1579,22 +1554,16 @@ def main():
         existing_reserve = st.session_state.get('existing_reserve', 0)
         op_stake_slashable = st.session_state.get('op_stake_slashable', 0) / 2
 
-        # Example recalculations based on current input values
         existing_reserve = st.session_state['existing_reserve']
-        op_stake_slashable = st.session_state.op_stake_slashable / 2  # Assuming this is already set somewhere
+        op_stake_slashable = st.session_state.op_stake_slashable / 2
         
-        # Assuming avs_compounded_loss_{1,2,3} are calculated based on some logic not shown here
         total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
         stakesure_insurance_reserve = existing_reserve + op_stake_slashable
         stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
 
-        # Update session state with recalculated values for dynamic UI update
         st.session_state['stakesure_insurance_reserve'] = stakesure_insurance_reserve
         st.session_state['stake_losses_coverage'] = stake_losses_coverage
 
-        # Optionally, refresh displayed data directly if not using session state for dynamic UI elements
-        # For dynamic UI updates based on session state, you don't need to do anything here
-        # as the UI will reference the session state variables directly
 
     with st.expander("Logic"):
                 st.markdown(f"""
@@ -1607,17 +1576,13 @@ def main():
     st.write("\n")
 
                 
-    # Adjust the column widths to try and center the button more effectively
     col1, col2, col3 = st.columns([9,10,1])
 
-    # Use the middle column for the button
     with col2:
-        # Button with increased emphasis
         button_text = '<p style="text-align: center; font-weight: bold; font-size: 20px;"><b>Update State</b></p>'
         if st.button('Update State'):
             recalculate_and_update()
-            # Optionally, you can display the button text with markdown below or above the button for emphasis
-            # st.markdown(button_text, unsafe_allow_html=True)
+
 
 
 
