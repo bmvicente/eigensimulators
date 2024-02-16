@@ -76,8 +76,9 @@ for i in range(num_avss):
     # Determine entrenchment level based on operator's entrenchment level slider value
     entrenchment_level = np.random.randint(0, 100)  # Random entrenchment level between 0 and 100
 
-    # Add 'category' and 'entrenchment_level' keys to each AVS dictionary
+    # Add 'category', 'entrenchment_level' keys to each AVS dictionary
     avss.append({'name': f"AVS {i+1}", 'category': category, 'risk_score': int(risk_score), 'operator': operator, 'entrenchment_level': entrenchment_level})
+
 
 
 
