@@ -98,7 +98,7 @@ def main():
     st.write("  \n")
 
     st.title("Cryptoeconomic Risk Analysis III")
-    st.subheader("**AVS ↔ Non-Malicious Operator Slashing Event Simulator:** *Naïve Approach*")
+    st.subheader("**AVS ↔ Non-Malicious Operator Stake Loss Event Simulator:** *Naïve Approach*")
     
     st.write("  \n")
 
@@ -190,7 +190,6 @@ def main():
         )
 
 
-
     with col21:
         st.markdown(
                     f"""
@@ -209,7 +208,7 @@ def main():
                                 <br> <!-- Extra space -->
                             </div>
                             <div style="display: block;">
-                                Max Slash "Allowed" To Still Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${max_slash_allowed:,.0f}</span>
+                                Max Stake Loss "Allowed" To Still Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${max_slash_allowed:,.0f}</span>
                             </div>
                         </h2>
                     </div>
@@ -567,7 +566,7 @@ def main():
                         <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
+                        Potential Max Stake Loss Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -580,7 +579,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                Omega returns the potential stake loss exposure an Operator is subjecting themselves too, based on the risk factor of the AVS (as given below) times the 
+                Omega returns the potential stake loss exposure an Operator is subjecting themselves too by validating the AVS. It's based on the total staked amount in the ecosystem times the risk factor of the AVS (as calculated below). The AVS Risk Score input should be based on the Normalized Risk Score calculated by our AVS Underlying Risk Simulator.
                     
                 **ΩAVS1**
                 ```python
@@ -656,7 +655,7 @@ def main():
                         <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
+                        Potential Max Stake Loss Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -670,6 +669,8 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
+                Omega returns the potential stake loss exposure an Operator is subjecting themselves too by validating the AVS. It's based on the total staked amount in the ecosystem times the risk factor of the AVS (as calculated below). The AVS Risk Score input should be based on the Normalized Risk Score calculated by our AVS Underlying Risk Simulator.
+                
                 **ΩAVS2**
                 ```python
                 def calculate_slashing(total_restaked, risk_score):
@@ -744,7 +745,7 @@ def main():
                         <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Slash Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
+                        Potential Max Stake Loss Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -757,6 +758,8 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+                Omega returns the potential stake loss exposure an Operator is subjecting themselves too by validating the AVS. It's based on the total staked amount in the ecosystem times the risk factor of the AVS (as calculated below). The AVS Risk Score input should be based on the Normalized Risk Score calculated by our AVS Underlying Risk Simulator.
+
                 **ΩAVS3**
                 ```python
                 def calculate_slashing(total_restaked, risk_score):
@@ -781,8 +784,12 @@ def main():
     st.write("  \n")
 
 
-
     st.session_state.pfc = tvl1 + tvl2 + tvl3
+
+
+
+
+
 
 
     ###################
@@ -868,7 +875,9 @@ def main():
 
     st.markdown(f"""
         <div style="font-size: 1.1em;"> <!-- Adjust the font size as needed -->
-            The Byzantine <i>Slashing</i> Tolerance test helps identify the AVSs that are in an insecure cryptoeconomic position and potentially compromisable state due to a previously-executed Operator stake-loss event, which may induce an intermediate- or max-loss risk to the whole ecosystem. We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
+            The Byzantine <i>Slashing</i> Tolerance test identifies the AVSs that are in an insecure cryptoeconomic position and potentially compromisable state due to a previously-executed Operator stake-loss event, which may induce an intermediate- or max-loss risk to the whole ecosystem. We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
+            <br>
+            This formula takes the Max Potential Stake Loss
             <br>
             <br>
             In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
