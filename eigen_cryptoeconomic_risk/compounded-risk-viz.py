@@ -138,7 +138,7 @@ for avs in avss:
     size_factor = avs['risk_score'] * 0.20
     entrenchment_size_factor = entrenchment_level * 0.15  # Assuming entrenchment_level is a percentage
     category_dominance_size_factor = category_dominance * 0.15  # Assuming category_dominance is a percentage
-    avs_sizes.append(initial_avs_size + size_factor + category_dominance_size_factor)
+    avs_sizes.append(initial_avs_size + size_factor + entrenchment_size_factor + category_dominance_size_factor)
     fig.add_trace(go.Scatter(x=[pos[avs['name']][0]], 
                              y=[pos[avs['name']][1]], 
                              mode='markers', 
