@@ -692,10 +692,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
-                    
-                    ```python
-                    avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+                    The rationale behind the Impact and Likelihood default values in the slider of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
                     ```
                             """)
                 
