@@ -827,13 +827,19 @@ def main():
 
         col14,col15 = st.columns(2)
         with col14:
-            censorship_likelihood = st.slider("**Likelihood**       ", min_value=1, max_value=10, value=3)
+            censorship_likelihood = st.slider("**Likelihood**       ", min_value=1, max_value=10, value=2)
         with col15:
             censorship_impact = st.slider("**Impact**       ", min_value=1, max_value=10, value=6)
 
         with st.expander("Logic"):
                 st.markdown("""
                     The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
+                            
+                    "*Transaction Censorship: Although censoring specific transactions may be attempted, L2s can implement escape routes or backup sequencers, making this approach unsustainable over the long term.*"        
+                            
+                    "*Censoring transactions through shared sequencers is difficult to achieve. In most shared sequencer systems, only the leader possesses the authority to order transactions, thus granting it the ability to potentially censor transactions. However, due to leader rotation and random leader selection, it would be exceedingly difficult for an attacker to carry out transaction censorship. Even if a single user gains control over all validators, shared sequencer-based chains can implement contingency measures, such as alternative routes, that bypass the shared sequencer.*"        
+
+                    Due to the technical difficulties and solutions already in place to mitigate such a Risk, it was assigned a low potential Likelihood.
                             """)
                 
         result9 = st.session_state.censorship_score * censorship_likelihood * censorship_impact
