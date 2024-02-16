@@ -37,7 +37,7 @@ with col2:
     avg_risk_score = st.slider('**AVS Average Risk Score**', 0, 100, 0)
 
 with col3:
-    category_dominance = st.slider('**AVS Category Dominance**', 0, 100, 0)
+    category_dominance = st.slider('**AVS Category Dominance**', 0, 100, 0, format='%d%%')
 
 st.write("\n")
 st.write("\n")
@@ -49,13 +49,13 @@ with col4:
     st.session_state.num_operators = st.slider('**Number of Operators**', 1, 5, 5)
 
 with col5:
-    entrenchment_level = st.slider('**Operator Entrenchment Level (%)**', 0, 100, 0, key='entrenchment_slider')
+    entrenchment_level = st.slider('**Operator Entrenchment Level**', 0, 100, 0, key='entrenchment_slider', format='%d%%')
 
 with col6:
-    centralization_level = st.slider('**Centralization Level of Node Operators**', 0, 100, 0, key='centralization_slider')
+    centralization_level = st.slider('**Centralization Level of Node Operators**', 0, 100, 0, key='centralization_slider', format='%d%%')
 
 with col7:
-    reputation_level = st.slider('**Operator Reputation Level**', 0, 100, 0, key='reputation_slider')
+    reputation_level = st.slider('**Operator Reputation Level**', 0, 100, 0, key='reputation_slider', format='%d%%')
 
 
 if st.button("Update State"):
