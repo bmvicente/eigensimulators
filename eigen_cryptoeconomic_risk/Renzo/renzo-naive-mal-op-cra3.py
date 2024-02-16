@@ -81,6 +81,10 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
+                    - <b>Pre-Slash</b>
+
+                    - <b>Post-Slash</b>
+
                     The main goal of the Simulator is to demonstrate how the Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash to the Operator would, in turn, affect the AVSs individually.
 
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
