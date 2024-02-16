@@ -771,9 +771,10 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
+                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
                     
                     "*Notably, shared sequencers are primarily exposed to three potential types of attacks, namely, MEV extraction, censorship, and liveness attacks. Among these, **liveness attacks pose the greatest threat.***" 
+                    
                     "*The main advantage of attacking a sequencer lies more in sabotage and attacking the shared sequencer liveness. An attacker could gain from discrediting a chain, leading to a drop in its transaction, a decline in the value of its native token, and an increase in the market share of competing projects.*"
                             
                     Therefore, Liveness Degradation Risk was assigned the greatest impact level out of the 4 specific metrics.      
