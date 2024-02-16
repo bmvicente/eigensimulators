@@ -26,9 +26,9 @@ if 'num_operators' not in st.session_state:
     st.session_state.num_operators = 0
 
 
-col1, col2, col3 = st.columns(3, gap="large")
-
 st.write("**AVS METRICS**")
+
+col1, col2, col3 = st.columns(3, gap="large")
 
 with col1:
     num_avss = st.slider('**Number of AVSs**', st.session_state.num_operators, 15, max(st.session_state.num_operators, 15))
@@ -62,7 +62,7 @@ if st.button("Update State"):
 
 np.random.seed(0)
 
-operators = [f"Operator {i+1}" for i in range(num_operators)]
+operators = [f"Operator {i+1}" for i in range(st.session_state.num_operators)]
 avss = []
 
 
@@ -91,7 +91,7 @@ for i in range(num_avss):
 
 
 # Assigning at least one AVS to each Operator and filling the rest
-for i in range(num_operators):
+for i in range(st.session_state.num_operators):
     risk_score = np.random.normal(loc=avg_risk_score, scale=10)  # Normal distribution around the average risk score
     risk_score = np.clip(risk_score, 1, 100)  # Ensure risk score is within bounds
     avss.append({'name': f"AVS {i+1}",
