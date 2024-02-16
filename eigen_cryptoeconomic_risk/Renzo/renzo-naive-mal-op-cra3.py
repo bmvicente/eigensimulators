@@ -425,8 +425,6 @@ def main():
 
 
 
-
-
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
@@ -604,7 +602,10 @@ def main():
         st.write("\n")
 
         with st.expander("Logic"):
-            st.markdown("""Default slash for a malicious Operator attack is 100% of the Operator's stake.
+            st.markdown("""
+                        Default slash for a malicious Operator attack is 100% of the Operator's stake.
+                        
+                        Operator Stake 
                         """)
         
         st.write("\n")
@@ -790,7 +791,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                AVSs are more prone to compounded risks if their risk profiles are equally high, if they’re being secured by the same operator, if they fall into the same category of AVSs. What else?
+                AVSs are more prone to compounded risks if their risk profiles are equally high, if they are being secured by a common operator, and if they belong to the same category of AVS.
                 """)
             
 
