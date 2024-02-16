@@ -95,7 +95,6 @@ def main():
     potential_total_slashing3 = calculate_slashing(st.session_state.total_restaked, st.session_state.risk_score3)
     
 
-    #st.image("images/renzo1.png", width=400)
     st.write("  \n")
 
     st.title("Cryptoeconomic Risk Analysis III")
@@ -110,6 +109,8 @@ def main():
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
                     This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security.
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
+
+                    There are few approaches provisioned to levy this CoC further, such as the Naive Approach, Reorgs within Reversion Periods and STAKESURE. We start here by the Naive one and later STAKESURE. For more detailed information about these, check out [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797).
                     
                     We begin by assuming that the 3 AVS herein are equally secured by the Total Amount Restaked, therefore each has 33.33% "distribution".
                         """)
