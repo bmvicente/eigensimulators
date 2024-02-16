@@ -81,10 +81,6 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
-                    - <b>Pre-Slash</b> ...
-
-                    - <b>Post-Slash</b> ...
-
                     The main goal of the Simulator is to demonstrate how the Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash to the Operator would, in turn, affect the AVSs individually.
 
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
@@ -93,11 +89,13 @@ def main():
                     
                     We begin by assuming that the 3 AVS herein are equally secured by the Total Amount Restaked, therefore each has 33.33% "distribution".
                         """)
-        
+    
+
 
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+
 
 
     if 'tvl1' not in st.session_state:
@@ -162,6 +160,7 @@ def main():
             actual_stake_loss_color = "#ff6666"  # red
         else:
             actual_stake_loss_color = "#FFC0CB"  # pink
+
 
 
 
@@ -347,6 +346,9 @@ def main():
 
 
 
+
+
+
     ###################
     ####### BST #######
     ###################
@@ -406,16 +408,24 @@ def main():
     )
 
 
-
-
-
-
     with st.expander("Logic"):
                 st.markdown(f"""
+                        - <b>Pre-Slash</b> ...
+
+                        - <b>Post-Slash</b> ...
+    
+
                         The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
                         We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
                         In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
                     """)
+
+
+
+
+
+
+
 
     st.write("  \n")
     st.write("  \n")
