@@ -40,6 +40,7 @@ with col3:
     category_dominance = st.slider('**AVS Category Dominance**', 0, 100, 0)
 
 st.write("\n")
+st.write("\n")
 
 st.write("**OPERATOR METRICS**")
 
