@@ -6,7 +6,7 @@ import networkx as nx  # Added import statement for networkx
 
 st.set_page_config(layout="wide")
 
-st.title("AVS Compounding Risk with Operator Network")
+st.title("AVS Ecosystem Compounded Risk Simulator")
 
 st.write("\n")
 st.write("\n")
