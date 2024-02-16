@@ -320,7 +320,7 @@ def main():
 
             xeth_percentage = 100 - avs_token_percentage
             
-            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, format='%d%%'e)
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, format='%d%%')
 
             st.write("&#8226; **Native Dual Staking Balance**: {}% $SS : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
