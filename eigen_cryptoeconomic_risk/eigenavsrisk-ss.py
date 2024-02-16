@@ -692,7 +692,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    The rationale behind the Impact and Likelihood default values in the slider of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
+                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
                             """)
                 
         result7 = st.session_state.mev_extraction_score * mev_extraction_likelihood * mev_extraction_impact
@@ -747,13 +747,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    Thanks to Espresso's HotStuff algorithm it is able to maintain a low likelihood of a Liveness attack, although, were that attack to happen it would be extremely impactful.
-                            
-                    Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
-                    
-                    ```python
-                    avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-                    ```
+                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
                             """)
                 
         result8 = st.session_state.liveness_deg_score * liveness_deg_likelihood * liveness_deg_impact
@@ -809,11 +803,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
-                    
-                    ```python
-                    avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-                    ```
+                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
                             """)
                 
         result9 = st.session_state.censorship_score * censorship_likelihood * censorship_impact
@@ -869,11 +859,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
-                    
-                    ```python
-                    avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-                    ```
+                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
                             """)
                 
         result10 = st.session_state.validator_collusion_score * validator_collusion_likelihood * validator_collusion_impact
