@@ -22,23 +22,30 @@ def adjust_positions(pos, operators, adjustment_step=0.1):
     return adjusted_pos
 
 
-col1, col2, col3, col4 = st.columns(4, gap="large")
+if 'num_operators' not in st.session_state:
+    st.session_state.num_operators = 0
+
+
+col1, col2, col3 = st.columns(4, gap="large")
+
+st.write("**AVS METRICS**")
 
 with col1:
-    num_operators = st.slider('**Number of Operators**', 1, 5, 5)
+    num_avss = st.slider('**Number of AVSs**', st.session_state.num_operators, 15, max(st.session_state.num_operators, 15))
 
 with col2:
-    num_avss = st.slider('**Number of AVSs**', num_operators, 15, max(num_operators, 15))
-
-with col3:
     avg_risk_score = st.slider('**AVS Average Risk Score**', 0, 100, 0)
 
-with col4:
+with col3:
     category_dominance = st.slider('**AVS Category Dominance**', 0, 100, 0)
 
 st.write("\n")
 
-col5, col6, col7 = st.columns(3, gap="large")
+st.write("**OPERATOR METRICS**")
+
+col4, col5, col6, col7 = st.columns(3, gap="large")
+with col4:
+    st.session_state.num_operators = st.slider('**Number of Operators**', 1, 5, 5)
 
 with col5:
     entrenchment_level = st.slider('**Operator Entrenchment Level (%)**', 0, 100, 0, key='entrenchment_slider')
