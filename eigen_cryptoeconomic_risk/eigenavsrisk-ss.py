@@ -839,7 +839,7 @@ def main():
                             
                     "*Censoring transactions through shared sequencers is difficult to achieve. In most shared sequencer systems, only the leader possesses the authority to order transactions, thus granting it the ability to potentially censor transactions. However, due to leader rotation and random leader selection, it would be exceedingly difficult for an attacker to carry out transaction censorship. Even if a single user gains control over all validators, shared sequencer-based chains can implement contingency measures, such as alternative routes, that bypass the shared sequencer.*"        
 
-                    Due to the technical difficulties and solutions already in place to mitigate such a Risk, it was assigned a low potential Likelihood.
+                    Due to the technical difficulties around such a Risk and the solutions already in place to mitigate it, it was assigned a low potential Likelihood.
                             """)
                 
         result9 = st.session_state.censorship_score * censorship_likelihood * censorship_impact
