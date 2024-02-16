@@ -57,6 +57,8 @@ with col6:
 with col7:
     reputation_level = st.slider('**Operator Reputation Level**', 0, 100, 0, key='reputation_slider', format='%d%%')
 
+st.write("\n")
+
 
 if st.button("Update State"):
     st.write("")
