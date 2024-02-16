@@ -877,9 +877,9 @@ def main():
 
     st.markdown(f"""
         <div style="font-size: 1.1em;"> <!-- Adjust the font size as needed -->
-            The Byzantine <i>Slashing</i> Tolerance test identifies the AVSs that are in an insecure cryptoeconomic position and potentially compromisable state due to a previously-executed Operator stake-loss event, which may induce an intermediate- or max-loss risk to the whole ecosystem. We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
+            The <b>Byzantine <i>Slashing</i> Tolerance test</b> identifies the AVSs that are in an insecure cryptoeconomic position and potentially compromisable state due to a previously-executed Operator stake-loss event, which may induce an intermediate- or max-loss risk to the whole ecosystem. We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
             <br>
-            This formula takes the Max Allowed Stake Loss and subtracts it to the Operator Max Stake Loss suffered across all the AVSs.
+            This formula takes the Max Allowed Stake Loss and subtracts it to the Operator Max Stake Loss suffered across all the AVSs. 
             <br>
             <br>
             In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
