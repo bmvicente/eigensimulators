@@ -60,7 +60,6 @@ avss = []
 
 
 
-
 # Creating operators and AVSs with attributes
 for i in range(num_avss):
     operator = operators[i % len(operators)]  # Ensures at least one AVS per operator, then cycles through operators
@@ -74,8 +73,11 @@ for i in range(num_avss):
     risk_score = np.random.normal(loc=avg_risk_score, scale=10)
     risk_score = np.clip(risk_score, 1, 100)
 
-    # Add 'category' key to each AVS dictionary
-    avss.append({'name': f"AVS {i+1}", 'category': category, 'risk_score': int(risk_score), 'operator': operator})
+    # Determine entrenchment level based on operator's entrenchment level slider value
+    entrenchment_level = np.random.randint(0, 100)  # Random entrenchment level between 0 and 100
+
+    # Add 'category' and 'entrenchment_level' keys to each AVS dictionary
+    avss.append({'name': f"AVS {i+1}", 'category': category, 'risk_score': int(risk_score), 'operator': operator, 'entrenchment_level': entrenchment_level})
 
 
 
