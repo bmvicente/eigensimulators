@@ -777,7 +777,7 @@ def main():
                     
                     "*The main advantage of attacking a sequencer lies more in sabotage and attacking the shared sequencer liveness. An attacker could gain from discrediting a chain, leading to a drop in its transaction, a decline in the value of its native token, and an increase in the market share of competing projects.*"
                             
-                    Therefore, Liveness Degradation Risk was assigned the greatest impact level out of the 4 specific metrics.      
+                    Therefore, Liveness Degradation Risk was assigned the greatest impact level out of the 4 specific metrics. Still somewhat of an unlikely event, nevertheless.
                             """)
                 
         result8 = st.session_state.liveness_deg_score * liveness_deg_likelihood * liveness_deg_impact
