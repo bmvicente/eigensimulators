@@ -286,10 +286,6 @@ def main():
 
         st.write(f"""&#8226; Operator Stake: {formatted_operator_stake}""")
 
-        with st.expander("Logic"):
-            st.markdown(f"""
-                    """)
-
 
         st.write("\n")
         st.write("\n")
