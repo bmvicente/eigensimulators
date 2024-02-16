@@ -1558,7 +1558,7 @@ def main():
     """
 
 
-    st.markdown(buffer_coverage_level_calc, unsafe_allow_html=True)
+    st.markdown(buffer_coverage_level_calc, unsafe_allow_html = True)
 
 
 
