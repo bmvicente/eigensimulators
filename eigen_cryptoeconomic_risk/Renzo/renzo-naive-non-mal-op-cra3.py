@@ -112,7 +112,7 @@ def main():
 
                     There are few approaches provisioned to levy this CoC further, such as the Naive Approach, Reorgs within Reversion Periods and STAKESURE. We start here by the Naive one and later STAKESURE. For more detailed information about these, check out [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797).
                     
-                    We begin by assuming that the 3 AVS herein are equally secured by the Total Amount Restaked, therefore each has 33.33% "distribution".
+                    We assume that the 3 AVS herein are equally secured by the Total Amount Restaked, therefore each has 33.33% "distribution" of Total Stake.
                         """)
         
     st.write("  \n")
