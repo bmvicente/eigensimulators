@@ -704,7 +704,7 @@ def main():
 
         st.markdown('<p class="header-style">MEV Extraction Risk</p>', unsafe_allow_html=True)
 
-        mev_extraction = st.selectbox("", "High", "Medium", "Low"], index=1)
+        mev_extraction = st.selectbox("", ["High", "Medium", "Low"], index=1)
 
         st.write("  \n")
 
