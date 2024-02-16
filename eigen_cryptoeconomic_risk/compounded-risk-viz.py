@@ -26,7 +26,7 @@ if 'num_operators' not in st.session_state:
     st.session_state.num_operators = 0
 
 
-col1, col2, col3 = st.columns(4, gap="large")
+col1, col2, col3 = st.columns(3, gap="large")
 
 st.write("**AVS METRICS**")
 
@@ -43,7 +43,7 @@ st.write("\n")
 
 st.write("**OPERATOR METRICS**")
 
-col4, col5, col6, col7 = st.columns(3, gap="large")
+col4, col5, col6, col7 = st.columns(4, gap="large")
 with col4:
     st.session_state.num_operators = st.slider('**Number of Operators**', 1, 5, 5)
 
