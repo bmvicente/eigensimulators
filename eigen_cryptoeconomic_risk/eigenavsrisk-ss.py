@@ -693,7 +693,6 @@ def main():
         with st.expander("Logic"):
                 st.markdown("""
                     The rationale behind the Impact and Likelihood default values in the slider of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
-                    ```
                             """)
                 
         result7 = st.session_state.mev_extraction_score * mev_extraction_likelihood * mev_extraction_impact
