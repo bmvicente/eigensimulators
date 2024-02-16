@@ -771,7 +771,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
+                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was influenced by Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
                     
                     "*Notably, shared sequencers are primarily exposed to three potential types of attacks, namely, MEV extraction, censorship, and liveness attacks. Among these, **liveness attacks pose the greatest threat.***" 
                     
@@ -833,7 +833,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
+                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was influenced by Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
                             
                     "*Transaction Censorship: Although censoring specific transactions may be attempted, L2s can implement escape routes or backup sequencers, making this approach unsustainable over the long term.*"        
                             
@@ -895,7 +895,9 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
+                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was influenced by Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
+                    
+                    
                             """)
                 
         result10 = st.session_state.validator_collusion_score * validator_collusion_likelihood * validator_collusion_impact
