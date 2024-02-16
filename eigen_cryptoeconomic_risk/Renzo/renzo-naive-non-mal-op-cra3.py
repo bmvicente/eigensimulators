@@ -58,7 +58,7 @@ def calculate_slashing(total_restaked, risk_score):
     else:
         risk_factor = (risk_score + 10)
 
-    slashing_amount = (total_restaked / 3) * (risk_factor / 1000)
+    slashing_amount = total_restaked * (risk_factor / 1000)
     return slashing_amount
 
 
@@ -221,6 +221,8 @@ def main():
 
     with st.expander("Logic"):
             st.markdown(f"""
+                Under the Naive scenario,the cost to corrupt Coc PfC Calcs,the  TVLs to compute the PfC that can be extracted can be inputted below per AVS.
+                The Max Stake Allowed to still maintain cryptoeconomic scurity is given by the difference between CoC PfC, if CoC > PfC, since no loss is allowed if CoC < PfC, since the system is already in compromisable cryptoeconimic position.
                 """)
 
     st.write("  \n")
@@ -229,14 +231,15 @@ def main():
     st.write("  \n")
 
 
-    col1, col2 = st.columns([1, 1], gap="large")
-
 
 
 
     ##########################################
     ################ OPERATOR ################
     ##########################################
+
+
+    col1, col2 = st.columns([1, 1], gap="large")
 
     with col2:
 
@@ -468,12 +471,9 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                    **Θij**
-                    ```python
-                    op_max_loss_avs1 = potential_total_slashing1 * perc_stake_avs_1
-                    op_max_loss_avs2 = potential_total_slashing2 * perc_stake_avs_2
-                    op_max_loss_avs3 = potential_total_slashing3 * perc_stake_avs_3
-                    ```
+                    We take the Operator's amount of Stake, either delegated by himself or on behalf of Restakers, and calculate the Fraction of Total Stake this Operator is securing, which is simply calculated by his stake divided by the Total Stake, given by lambda???
+                    
+                    The total maximum potential stake loss this Operator may be subject to by validating each of the AVSs is given by the above formula. It is composed by the sum Risk Exposure variable of each AVS times the fraction of total stake the Operator is securing.
                 """)
         
         st.write("\n")
@@ -580,6 +580,8 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+                Omega returns the potential stake loss exposure an Operator is subjecting themselves too, based on the risk factor of the AVS (as given below) times the 
+                    
                 **ΩAVS1**
                 ```python
                 def calculate_slashing(total_restaked, risk_score):
@@ -588,7 +590,7 @@ def main():
                 else:
                     risk_factor = (risk_score + 1) * 10
                 
-                slashing_amount = (total_restaked / 3) * (risk_factor / 100)
+                slashing_amount = (total_restaked) * (risk_factor / 100)
                 return slashing_amount
                 ```
                 ```python
@@ -676,7 +678,7 @@ def main():
                 else:
                     risk_factor = (risk_score + 1) * 10
                 
-                slashing_amount = (total_restaked / 3) * (risk_factor / 100)
+                slashing_amount = (total_restaked) * (risk_factor / 100)
                 return slashing_amount
                 ```
                 ```python
@@ -763,7 +765,7 @@ def main():
                 else:
                     risk_factor = (risk_score + 1) * 10
                 
-                slashing_amount = (total_restaked / 3) * (risk_factor / 100)
+                slashing_amount = (total_restaked) * (risk_factor / 100)
                 return slashing_amount
                 ```
                 ```python
