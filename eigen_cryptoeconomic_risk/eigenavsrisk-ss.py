@@ -897,7 +897,9 @@ def main():
                 st.markdown("""
                     The rationale behind the Impact and Likelihood default values in the sliders of this metric was influenced by Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
                     
-                    
+                    "*Collusion among validators, while not considered a slashable offense, would likely need to be addressed off-chain. However, such collusion would be easily detectable due to a significant increase in the MEV captured by validators, and it’s probable that transactions would stop being directed to the shared sequencer. The duration of the attack would depend on how long it remains undetected. Once detected, users may stop using the sequencer, thereby limiting the maximum potential reward an attacker can extract to the amount of MEV generated during the attack’s duration.*"
+
+                    Due to the ease of detection and mitigation rules, a low Likelihood was assigned.      
                             """)
                 
         result10 = st.session_state.validator_collusion_score * validator_collusion_likelihood * validator_collusion_impact
