@@ -46,7 +46,7 @@ def main():
             The Simulator takes six of the parameters that can compose an AVS to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Espresso. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
             A good deal of the logic behind the right side of the Simulator (ESPRESSO-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
         
-            The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being exposed to corruption or to being cryptoeconomically secured.
+            The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being exposed to corruption or to being cryptoeconomically secured. The dropdown 
         """)
 
         
@@ -178,7 +178,7 @@ def main():
         col3, col4 = st.columns([3, 3])
 
         with col3:
-                total_restaked = st.number_input("**Total Amount Restaked ($)**", min_value=0, max_value=1000000000000, value=0, step=100000000)
+                total_restaked = st.number_input("**Total Amount Restaked on AVS Ecosystem ($)**", min_value=0, max_value=1000000000000, value=0, step=100000000)
                 st.write(f"&#8226; Total Amount Restaked: ${total_restaked:,.0f}")
 
         with col4:
@@ -348,6 +348,26 @@ def main():
                     
                     ```python
                     business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
+                            
+                    def dual_staking_balance_calc(avs_token_percentage, xeth_percentage):
+                        ratio = avs_token_percentage / xeth_percentage
+
+                        if ratio > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+                            return 9
+                        elif ratio > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+                            return 8
+                        elif ratio > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                            return 7
+                        elif ratio > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                            return 6
+                        elif ratio == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+                            return 5 # Neutral adjustment for balanced scenario
+                        elif ratio > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+                            return 4
+                        elif ratio > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+                            return 3
+                        else:  # Very low AVS compared to ETH
+                            return 2
                     ```
                             
 
