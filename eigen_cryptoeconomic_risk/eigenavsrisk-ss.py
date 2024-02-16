@@ -773,7 +773,7 @@ def main():
                 st.markdown("""
                     The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
                     
-                    "*Notably, shared sequencers are primarily exposed to three potential types of attacks, namely, MEV extraction, censorship, and liveness attacks. Among these, **liveness attacks pose the greatest threat.***" Therefore, Liveness Degradation was assigned the greatest impact level out of the 4 specific metrics.      
+                    "*Notably, shared sequencers are primarily exposed to three potential types of attacks, namely, MEV extraction, censorship, and liveness attacks. Among these, **liveness attacks pose the greatest threat.***" Therefore, Liveness Degradation Risk was assigned the greatest impact level out of the 4 specific metrics.      
                             """)
                 
         result8 = st.session_state.liveness_deg_score * liveness_deg_likelihood * liveness_deg_impact
