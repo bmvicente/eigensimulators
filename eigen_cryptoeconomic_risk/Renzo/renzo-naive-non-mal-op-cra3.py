@@ -685,7 +685,7 @@ def main():
                         risk_factor = (risk_score + 10)
 
                     slashing_amount = total_restaked * (risk_factor / 1000)
-                ```python
+
                 potential_total_slashing2 = calculate_slashing(total_restaked, risk_score2)
                 ```
                 """)
@@ -773,7 +773,7 @@ def main():
                         risk_factor = (risk_score + 10)
 
                     slashing_amount = total_restaked * (risk_factor / 1000)
-                ```python
+                
                 potential_total_slashing3 = calculate_slashing(total_restaked, risk_score3)
                 ```
                 """)
