@@ -670,7 +670,7 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
-                Omega returns the potential stake loss exposure an Operator is subjecting themselves too by validating the AVS. It's based on the total staked amount in the ecosystem times the risk factor of the AVS (as calculated below). The AVS Risk Score input should be based on the Normalized Risk Score calculated by our AVS Underlying Risk Simulator.
+                **Ωj returns the Potential Stake Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs with their own Risk Profiles**. It is computed by the Total Staked Amount times the Risk Factor of the AVS (as calculated below). For consistency, the AVS Risk Score input should be based on the Normalized Risk Score calculated in our AVS Underlying Risk Simulator.
                 
                 **ΩAVS2**
                 ```python
@@ -758,7 +758,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                Omega returns the potential stake loss exposure an Operator is subjecting themselves too by validating the AVS. It's based on the total staked amount in the ecosystem times the risk factor of the AVS (as calculated below). The AVS Risk Score input should be based on the Normalized Risk Score calculated by our AVS Underlying Risk Simulator.
+                **Ωj returns the Potential Stake Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs with their own Risk Profiles**. It is computed by the Total Staked Amount times the Risk Factor of the AVS (as calculated below). For consistency, the AVS Risk Score input should be based on the Normalized Risk Score calculated in our AVS Underlying Risk Simulator.
 
                 **ΩAVS3**
                 ```python
