@@ -591,14 +591,14 @@ def main():
                 ```python
                 def calculate_slashing(total_restaked, risk_score):
                     if risk_score == 100:
-                        risk_factor = (90 + 10)  # This will give the same value as when risk_score is 9
+                        risk_factor = (90 + 10)
                     else:
                         risk_factor = (risk_score + 10)
 
                     slashing_amount = total_restaked * (risk_factor / 1000)
-                ```
                 ```python
                 potential_total_slashing1 = calculate_slashing(total_restaked, risk_score1)
+                ```
                 """)
             
         st.write("  \n")
@@ -680,13 +680,14 @@ def main():
                 ```python
                 def calculate_slashing(total_restaked, risk_score):
                     if risk_score == 100:
-                        risk_factor = (90 + 10)  # This will give the same value as when risk_score is 9
+                        risk_factor = (90 + 10)
                     else:
                         risk_factor = (risk_score + 10)
 
                     slashing_amount = total_restaked * (risk_factor / 1000)
-                ```
+                ```python
                 potential_total_slashing2 = calculate_slashing(total_restaked, risk_score2)
+                ```
                 """)
         
         
@@ -767,13 +768,14 @@ def main():
                 ```python
                 def calculate_slashing(total_restaked, risk_score):
                     if risk_score == 100:
-                        risk_factor = (90 + 10)  # This will give the same value as when risk_score is 9
+                        risk_factor = (90 + 10)
                     else:
                         risk_factor = (risk_score + 10)
 
                     slashing_amount = total_restaked * (risk_factor / 1000)
                 ```python
                 potential_total_slashing3 = calculate_slashing(total_restaked, risk_score3)
+                ```
                 """)
 
     st.write("  \n")
