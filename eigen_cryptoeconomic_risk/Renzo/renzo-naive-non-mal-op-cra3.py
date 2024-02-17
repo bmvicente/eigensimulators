@@ -884,7 +884,7 @@ def main():
             The <b>Byzantine <i>Slashing</i> Tolerance test</b> assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Stake Loss event.
             <br>
             <br>
-            The formula takes the **Max Allowed Stake Loss** and subtracts it to the **Operator Max Stake Loss suffered across all AVSs**. We say that the pool of AVSs has failed the BST test if β < 0, and passed if β > 0. 
+            The formula takes the <b>Max Allowed Stake Loss</b> and subtracts it to the <b>Operator Max Stake Loss suffered across all AVSs</b>. We say that the pool of AVSs has failed the BST test if β < 0, and passed if β > 0. 
             <br>            
             Under the Naive Analysis and without access to staking insurance, the set of AVSs may end up in an insecure cryptoeconomic position and potentially compromisable state, which may induce an intermediate- or max-loss risk to the whole network (scenario where either some or all AVSs fail).
             <br>
