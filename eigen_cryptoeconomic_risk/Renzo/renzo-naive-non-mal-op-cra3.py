@@ -581,7 +581,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                **Ωj returns the potential stake loss exposure an Operator is subjecting themselves to by validating a set of AVSs**. It is based on the Total Staked Amount times the Risk Factor of the AVS (as calculated below). For consistency, the AVS Risk Score input should be based on the Normalized Risk Score calculated in our AVS Underlying Risk Simulator.
+                **Ωj returns the Potential Stake Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs**. It is based on the Total Staked Amount times the Risk Factor of the AVS (as calculated below). For consistency, the AVS Risk Score input should be based on the Normalized Risk Score calculated in our AVS Underlying Risk Simulator.
                     
                 **ΩAVS1**
                 ```python
