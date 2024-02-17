@@ -472,9 +472,9 @@ def main():
             st.markdown("""
                     We take the Operator's amount of Stake (Si, where *i* represents a given Operator), either delegated by themselves or on behalf of Restakers by proxy, and calculate the Fraction of Total Stake this Operator is securing (γij) which is simply calculated by their Stake divided by the Total Stake. For reference, each Restaker can only delegate to one Operator at a time.
                     
-                    The **Total Maximum Potential Stake Loss** (Θij) this Operator may be subject to by validating each of the AVSs is given by the formula just above. It is composed by the sum Risk Exposure variable of each AVS times the fraction of total stake the Operator is securing.
+                    The **Total Maximum Potential Stake Loss** (Θij) this Operator may be subject to by validating each of the AVSs is given by the formula just above: it is composed by the **sum of all the Potential Stake Loss given by the Risk Exposures per AVS** (Σ Ωj), calculated on the left side, times the fraction of Total Stake the Operator is securing.
                         
-                    Of course, to do this calculation, it is assumed that each AVS in facto failed in some way to cause the Operator to lose stake, and that that stake loss was maximized. So the worst case scanrio was taken. into account here.
+                    Of course, to do this calculation, it is assumed that each AVS de facto had some sort of vulnerability that was triggered that caused the Operator to lose Stake. Note that this Stake Loss was also maximized, based on AVS Risk Profile, to illustrate the worst-case possible.
                 """)
         
         st.write("\n")
