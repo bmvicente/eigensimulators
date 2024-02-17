@@ -98,7 +98,7 @@ def main():
     st.write("  \n")
 
     st.title("Cryptoeconomic Risk Analysis III")
-    st.subheader("**AVS ↔ Non-Malicious Operator Stake Loss Event Simulator:** *Naïve Approach*")
+    st.subheader("**AVS ↔ Non-Malicious Operator Stake-Loss Event Simulator:** *Naïve Approach*")
     
     st.write("  \n")
 
