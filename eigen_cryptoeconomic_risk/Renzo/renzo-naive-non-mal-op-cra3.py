@@ -679,15 +679,13 @@ def main():
                 **ΩAVS2**
                 ```python
                 def calculate_slashing(total_restaked, risk_score):
-                if risk_score == 10:
-                    risk_factor = (9 + 1) * 10
-                else:
-                    risk_factor = (risk_score + 1) * 10
-                
-                slashing_amount = (total_restaked) * (risk_factor / 100)
-                return slashing_amount
+                    if risk_score == 100:
+                        risk_factor = (90 + 10)  # This will give the same value as when risk_score is 9
+                    else:
+                        risk_factor = (risk_score + 10)
+
+                    slashing_amount = total_restaked * (risk_factor / 1000)
                 ```
-                ```python
                 potential_total_slashing2 = calculate_slashing(total_restaked, risk_score2)
                 """)
         
@@ -768,14 +766,12 @@ def main():
                 **ΩAVS3**
                 ```python
                 def calculate_slashing(total_restaked, risk_score):
-                if risk_score == 10:
-                    risk_factor = (9 + 1) * 10
-                else:
-                    risk_factor = (risk_score + 1) * 10
-                
-                slashing_amount = (total_restaked) * (risk_factor / 100)
-                return slashing_amount
-                ```
+                    if risk_score == 100:
+                        risk_factor = (90 + 10)  # This will give the same value as when risk_score is 9
+                    else:
+                        risk_factor = (risk_score + 10)
+
+                    slashing_amount = total_restaked * (risk_factor / 1000)
                 ```python
                 potential_total_slashing3 = calculate_slashing(total_restaked, risk_score3)
                 """)
