@@ -221,7 +221,7 @@ def main():
                 As laid out in the first dropdown, *CoC = T / 3* and *PfC = &Sigma; TVLj* (*j* corresponding to the set of AVSs at hand).
                 
                 The variable **Max Stake Loss Allowed to Still Maintain Cryptoeconomic Security** (αj) represents the difference between CoC and PfC. We've quoted "Allowed" because the loss is not to be permissioned or validated by any entity; it simply represents the buffer (or the abscence of the buffer) that the AVS network can be slashed further and still keep the network secure.
-                        If CoC > PfC, there is some amount "allowed" that can be slashed, and if CoC < PfC, the system is already in compromisable cryptoeconomic position and the slashed "allowed" equals 0.
+                        If CoC > PfC, there is some amount "allowed" that can be slashed, and if CoC < PfC, the system is already in compromisable cryptoeconomic position and the slash "allowed" equals 0.
                 """)
 
     st.write("  \n")
@@ -470,9 +470,9 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                    We take the Operator's amount of Stake, either delegated by himself or on behalf of Restakers, and calculate the Fraction of Total Stake this Operator is securing, which is simply calculated by his stake divided by the Total Stake, given by lambda???
+                    We take the Operator's amount of Stake (Si, where *i* represents a given Operator), either delegated by themselves or on behalf of Restakers by proxy, and calculate the Fraction of Total Stake this Operator is securing (γij) which is simply calculated by their Stake divided by the Total Stake. For reference, each Restaker can only delegate to one Operator at a time.
                     
-                    The total maximum potential stake loss this Operator may be subject to by validating each of the AVSs is given by the above formula. It is composed by the sum Risk Exposure variable of each AVS times the fraction of total stake the Operator is securing.
+                    The **Total Maximum Potential Stake Loss** (Θij) this Operator may be subject to by validating each of the AVSs is given by the formula just above. It is composed by the sum Risk Exposure variable of each AVS times the fraction of total stake the Operator is securing.
                         
                     Of course, to do this calculation, it is assumed that each AVS in facto failed in some way to cause the Operator to lose stake, and that that stake loss was maximized. So the worst case scanrio was taken. into account here.
                 """)
