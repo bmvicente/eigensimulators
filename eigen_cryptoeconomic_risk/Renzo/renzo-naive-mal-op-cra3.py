@@ -1155,6 +1155,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+
     total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
 
     stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
