@@ -419,7 +419,7 @@ def main():
         """, 
         unsafe_allow_html=True
     )
-    
+
     st.write("\n")
 
     with st.expander("Logic"):
@@ -441,6 +441,7 @@ def main():
 
 
 
+    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
