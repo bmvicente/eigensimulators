@@ -78,6 +78,12 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
+                    Explain Strong cryptoeconomic security vs cryptoeconomic security:
+                    Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security. A core idea of EigenLayer is to provision cryptoeconomic security
+                    through various slashing mechanisms which levy a high cost of corruption.
+
+                    Eigenlayer is going to manage situations where a few AVSs simultaneously take out insurances, and then a cascading effect is induced by some unexpected event, like a security breach. This could significantly reduce the shared security pool all at once
+
                     The main goal of the Simulator is to demonstrate how the Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash to the Operator would, in turn, affect the AVSs individually.
 
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
@@ -85,6 +91,16 @@ def main():
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
                     
                     We begin by assuming that the 3 AVS herein are equally secured by the Total Amount Restaked, therefore each has 33.33% "distribution".
+
+                    **Context of EigenLayer**: EigenLayer is a blockchain protocol that allows for the re-staking of Ethereum (ETH) to secure multiple protocols. This re-staking introduces a layer of complexity when it comes to quantifying risks, as the security and value of the re-staked ETH are interdependent with the performance and security of the protocols it is securing.
+                    
+                    **Max-Loss Risk in Slashing**:
+                    - The max-loss risk refers to the worst-case scenario of loss due to slashing. In the context of EigenLayer, this could mean evaluating the potential total loss a validator might face if their entire staked ETH is slashed due to violations or breaches of protocol rules.
+                    - The article discusses how slashing increases the cost-of-corruption for attackers, indicating that the risk of max-loss is a significant deterrent against malicious behavior. However, it doesn't provide a formula or method to directly quantify this max-loss risk in a multi-protocol staking environment like EigenLayer.
+                    
+                    3. **Intermediate-Loss Risk in Slashing**:
+                    - Intermediate-loss risk refers to partial losses that might occur due to less severe violations or smaller scale breaches of protocol rules.
+                    - The article implies that slashing can be variable based on the severity of the offense, which is pertinent to understanding intermediate-loss risks. However, it doesn't delve into specific mechanisms or quantifications for these types of risks, especially not in the complex setting of a protocol like EigenLayer where staked assets are used across multiple protocols.
                         """)
     
 
@@ -409,7 +425,9 @@ def main():
                         The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
                         We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
                         In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
-                    """)
+                    
+                        Byzantine Fault Tolerant (BFT) protocols have been developed to prioritize safety, ensuring deterministic security against attacks if the number of adversarial nodes doesn't exceed a certain threshold (β). The Byzantine BFT model has limitations as it doesn't consider the economic incentives that might motivate nodes to deviate from the protocol for personal gain. 
+                            """)
 
 
 
@@ -1567,11 +1585,18 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
+                    How much insurance should honest AVSs buy?
+                    
+                    **Max-Loss Risk Quantification**: In EigenLayer, maximum loss risk refers to the total potential loss a staker could face if all the tasks they are involved in (across multiple AVSs) fail. This is calculated by summing up the risks associated with each task, where the risk for each task is determined by the staker's share of the total stake in that task and the task’s vulnerability to corruption.
+                    
+                    **Intermediate-Loss Risk Quantification**: Intermediate loss concerns the potential loss if only some, but not all, tasks fail. This is more complex as it requires analyzing various combinations of task failures and their individual impact on the total stake. The risk assessment for each task remains the same, but the combinations of task failures create a spectrum of possible loss scenarios, less than the maximum but more than zero.
+                    
                     Get ideas from the paper.
                     
                     Half the Operator slashed amount is not accounted for the Insurance Reserve to either be burnt or allocated to a cryptoeconomic buffer to safeguard against irrational users that have not bought enough insurance or bought no insurance at all.
                     """)
                 
+
     st.write("\n")
     st.write("\n")
 
