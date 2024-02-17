@@ -218,8 +218,10 @@ def main():
 
     with st.expander("Logic"):
             st.markdown(f"""
-                Under the Naive scenario,the cost to corrupt Coc PfC Calcs,the  TVLs to compute the PfC that can be extracted can be inputted below per AVS.
-                The Max Stake Allowed to still maintain cryptoeconomic scurity is given by the difference between CoC PfC, if CoC > PfC, since no loss is allowed if CoC < PfC, since the system is already in compromisable cryptoeconimic position.
+                As laid out in the first dropdown, CoC = T / 3 and PfC = sum TVLj. j corresponding to the set of AVSs at hand.
+                
+                The Max Stake Loss Allowed to still maintain cryptoeconomic scurity is given by the difference between CoC and PfC. We've quoted "Allowed" because it is not to be permissioned by any entity. It simply represents the buffer (or the abscence of the buffer) that the AVS network can be slashed further and still keep the network secure.
+                        If CoC > PfC, there is some amount "allowed" to be slashed, and if CoC < PfC, the system is already in compromisable cryptoeconimic position and the slashed "allowed" equals 0.
                 """)
 
     st.write("  \n")
