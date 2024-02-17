@@ -881,12 +881,15 @@ def main():
 
     st.markdown(f"""
         <div style="font-size: 1.1em;"> <!-- Adjust the font size as needed -->
-            The <b>Byzantine <i>Slashing</i> Tolerance test</b> identifies the AVSs that are in an insecure cryptoeconomic position and potentially compromisable state due to a previously-executed Operator stake-loss event, which may induce an intermediate- or max-loss risk to the whole ecosystem. We say that a set of AVSs has failed the BST test if β < 0, and passed if β > 0.
-            <br>
-            The formula takes the **Max Allowed Stake Loss** and subtracts it from the **Operator Max Stake Loss suffered across all the AVSs**. 
+            The <b>Byzantine <i>Slashing</i> Tolerance test</b> assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Stake Loss event.
             <br>
             <br>
-            In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
+            The formula takes the **Max Allowed Stake Loss** and subtracts it to the **Operator Max Stake Loss suffered across all AVSs**. We say that the pool of AVSs has failed the BST test if β < 0, and passed if β > 0. 
+            <br>            
+            Under the Naive Analysis and without access to staking insurance, the set of AVSs may end up in an insecure cryptoeconomic position and potentially compromisable state, which may induce an intermediate- or max-loss risk to the whole network (scenario where either some or all AVSs fail).
+            <br>
+            <br>
+            In the above box, the green background represents a comfortable AVS tolerance post-slashing event, the orange background represents a warning signal for an uncomfortable but still secure system, and the red background represents a danger signal where the AVSs are in an insecure position, ripe for adversarial corruption.
         </div>
     """, unsafe_allow_html=True)
 
