@@ -583,7 +583,7 @@ def main():
             st.markdown("""
                 **Ωj returns the Potential Stake Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs with their own Risk Profiles**. It is computed by the Total Staked Amount times the Risk Factor of the AVS (as calculated below). 
                 
-                Since these AVSs are accessing pooled security in EigenLayer, it only makes sense for the same amount of Total Stake to be equally considered in the calculation for each AVS. Also, for consistency, the AVS Risk Score input should be based on the Normalized Risk Score calculated in our AVS Underlying Risk Simulator.
+                Since AVSs access pooled security in EigenLayer, it only makes sense for the same amount of Total Stake to be equally considered in the calculation for each AVS. Also, for consistency, the AVS Risk Score input should be based on the Normalized Risk Score calculated in our AVS Underlying Risk Simulator.
                     
                 **ΩAVS1**
                 ```python
