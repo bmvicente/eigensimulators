@@ -86,6 +86,12 @@ def main():
 
                     The main goal of the Simulator is to demonstrate how the Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash to the Operator would, in turn, affect the AVSs individually.
 
+                    This Simulator deep dives on both these topics:
+
+                    - **Cryptoeconomic Safety**: CoC > PfC
+
+                    - **Strong Cryptoeconomic Safety**: No honest user of the system suffers any loss of funds.
+
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
                     This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security.
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
@@ -101,7 +107,7 @@ def main():
                     3. **Intermediate-Loss Risk in Slashing**:
                     - Intermediate-loss risk refers to partial losses that might occur due to less severe violations or smaller scale breaches of protocol rules.
                     - The article implies that slashing can be variable based on the severity of the offense, which is pertinent to understanding intermediate-loss risks. However, it doesn't delve into specific mechanisms or quantifications for these types of risks, especially not in the complex setting of a protocol like EigenLayer where staked assets are used across multiple protocols.
-                        """)
+                    """)
     
 
 
@@ -1594,7 +1600,19 @@ def main():
                     Get ideas from the paper.
                     
                     Half the Operator slashed amount is not accounted for the Insurance Reserve to either be burnt or allocated to a cryptoeconomic buffer to safeguard against irrational users that have not bought enough insurance or bought no insurance at all.
-                    """)
+                    
+                    We observe that the definition of cryptoeconomic safety does not really guarantee that a transaction user enjoys unconditional safety, rather it only says that an attacker does not derive profit from the attack. However, in complex scenarios, it is possible that an attacker may attack out of pure malice or other reasons, and a honest transactor is affected. We therefore define a stronger notion of cryptoeconomic safety as follows:
+                    Strong cryptoeconomic safety is a much stronger definition than the definition of cryptoeconomic safety. While cryptoeconomic safety ensures that there is no incentive for an adversary to attack, a malicious adversary may still go ahead and attack the system which will lead to honest users in the system suffering without recourse. In contrast, in a system with strong cryptoeconomic safety, this can never happen.
+                    In this section, we design and show a mechanism, called as STAKESURE, which achieves this stringent property while also solving for the information signalling problem from the previous section.      
+                            
+                    Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available, which is Stot . Thus even if only 3 a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact. But this increases the insurance rate that such transactors may be willing to pay, in turn, increasing the total amount staked (as there is now enough return available for more stake). Thus staking in the system sets itself automatically to the right level of security rather than being controlled by an arbitrary preallocated rewards curve.        
+                            
+                    It is possible that smaller transactors may not have the foresight to buy insurance or may simply risk their funds (trying to freeride on the assumed safety of the system). We need to make sure that there is enough cryptoeconomic buffer in the system for these transactors to exist. We need to make sure that there is enough cost-of-corruption to protect against these small trans- actors, even though they do not have any insurance.       
+                            
+                    A possible way to solve both these problems is to allocate a certain amount of slashed fund to be purely burnt rather than to be allocated to insurance. This ensures some non-zero cost on grieving attacks. Furthermore, if the amount allocated to be burnt is greater than the benefit from attacking the small / irrational transactors, then there is no incentive to attack them.        
+                            
+                    In a nutshell, STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. If the total amount staked is not sufficient to satisfy the insurance demand, then automatically the price of insurance increases, increases the staking returns, which incentivizes new stake to enter the system        
+                            """)
                 
 
     st.write("\n")

@@ -104,6 +104,8 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
+                    Before the AVS and its related infrastructure and contracts are battle-tested, there are various slashing risks that need to be mitigated in EigenLayer in order to avoid risk cascades. One risk is the case in which an AVS is created with an unintentional slashing vulnerability (for example, a programming bug) which gets triggered and causes loss of funds to honest users.
+                    
                     The main goal of the Simulator is to demonstrate how the Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash would, in turn, affect the AVSs individually. (Compounding effects of slashing were not taken into account herein.)
 
                     **Cryptoeconomic Security** quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
@@ -113,6 +115,8 @@ def main():
                     There are few approaches provisioned to levy this CoC further, such as the Naive Approach, Reorgs within Reversion Periods and STAKESURE. We start here by the Naive one and later STAKESURE. For more detailed information about these, check out [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797).
                     
                     We assume that the 3 AVS herein are equally secured by the Total Amount Restaked, therefore each has 33.33% "distribution" of Total Stake.
+
+                    CoC = 1/3 of Total Stake because that's usually the amount node operators' stake needed to be corrupt and gain control of the network.
                         """)
         
     st.write("  \n")
