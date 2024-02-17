@@ -218,7 +218,7 @@ def main():
 
     with st.expander("Logic"):
             st.markdown(f"""
-                As laid out in the first dropdown, CoC = T / 3 and PfC = sum TVLj. j corresponding to the set of AVSs at hand.
+                As laid out in the first dropdown, CoC = T / 3 and PfC = &Sigma; TVLj (j corresponding to the set of AVSs at hand).
                 
                 The Max Stake Loss Allowed to still maintain cryptoeconomic scurity is given by the difference between CoC and PfC. We've quoted "Allowed" because it is not to be permissioned by any entity. It simply represents the buffer (or the abscence of the buffer) that the AVS network can be slashed further and still keep the network secure.
                         If CoC > PfC, there is some amount "allowed" to be slashed, and if CoC < PfC, the system is already in compromisable cryptoeconimic position and the slashed "allowed" equals 0.
