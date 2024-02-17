@@ -1134,7 +1134,7 @@ def main():
     ###########################
 
 
-    st.subheader("**Malicious Operator → AVS Potential Slashing Event Simulator:** *STAKESURE Approach* (Attributable Security)")
+    st.subheader("**Malicious Operator → AVS Slashing Event Simulator:** *STAKESURE Approach* (Attributable Security)")
     
     st.write("  \n")
 
