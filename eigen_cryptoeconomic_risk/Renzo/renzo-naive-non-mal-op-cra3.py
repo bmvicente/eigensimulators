@@ -568,7 +568,7 @@ def main():
                         <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Stake Loss Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
+                        Potential Max Stake Loss Exposure to Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -658,7 +658,7 @@ def main():
                         <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Stake Loss Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
+                        Potential Max Stake Loss Exposure to Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -749,7 +749,7 @@ def main():
                         <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Stake Loss Exposure to a Set of Operators based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
+                        Potential Max Stake Loss Exposure to Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
                     </div>
                 </h2>
             </div>
