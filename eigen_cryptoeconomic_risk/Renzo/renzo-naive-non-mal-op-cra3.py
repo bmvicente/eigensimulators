@@ -889,7 +889,7 @@ def main():
             Under the Naive Analysis and without access to staking insurance, the set of AVSs may end up in an insecure cryptoeconomic position and potentially compromisable state, which may induce an intermediate- or max-loss risk to the whole network (scenario where either some or all AVSs fail).
             <br>
             <br>
-            In the above box, the green background represents a comfortable AVS tolerance state post-slashing event, the orange background represents a warning signal for an uncomfortable but still secure system, and the red background represents a danger signal where the AVSs are in an insecure position, ripe for adversarial corruption.
+            In the above box, the green background represents a comfortable AVS tolerance state post-slashing event, the orange background represents a warning signal for an uncomfortable but still secure system, and the red background represents a danger signal where the AVSs are in a cryptoeconomically insecure position, ripe for adversarial corruption.
         </div>
     """, unsafe_allow_html=True)
 
