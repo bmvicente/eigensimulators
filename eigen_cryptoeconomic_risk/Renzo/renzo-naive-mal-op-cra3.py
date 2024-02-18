@@ -438,9 +438,9 @@ def main():
                         - **Pre-Slash** (t): In the same way the calculation for the *AVS <> Non-Malicious Operator: Naive Approach* Simulator was done, the Naive Analysis here was applied to CoC = Stake / 3 and PfC = Σ TVL.
 
                         - **Post-Slash** (t+1): What changes post-slashing event is the amount of the Operator's Stake that has been slashed, how it affects the Total Stake Amount and everything that comes after it: the slash in CoC, the status of cryptoeconomic security, the impact on AVS, etc.. 
-                            Naturally, the Total Amount Staked Post-Slash (*Tt+1*) is given by *Tt - Slashed Operator Stake*. PfC post-slash should stay the same as the slash should have no impact on AVSs' TVL. As a result, **Actual Slash on Cryptoeconomic Security** (δ) is given by the CoC amount pre-slash subtracted by the CoC post-slash.
-    
-                        As introduced in the previous Simulator, the Byzantine Slashing Tolerance test assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Slash or Stake-Loss event. The ecosystem has failed this test if β < 0, and passed if β > 0. 
+                            Naturally, the Total Amount Staked Post-Slash (Tt+1) is given by *Tt - Slashed Operator Stake*. PfC post-slash should stay the same as the slash should have no impact on the AVSs' TVL. As a result, **Actual Slash on Cryptoeconomic Security** (δ) is given by the CoC amount pre-slash subtracted by the CoC post-slash.
+
+                        - **BST test** (β): As introduced in the previous Simulator, the Byzantine Slashing Tolerance test assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Slash or Stake-Loss event. The network is in a secure cryptoeconomic position if the **Max Total Stake-Loss "Allowed" To Still Maintain Cryptoeconomic Security** is bigger than the **Actual Slash Effected on Cryptoeconomic Security**, and in an insecure position if the opposite is true. Therefore, the ecosystem has failed this test if β < 0, and passed if β > 0
                         
                         At the end of the simulator, we introduce the **STAKESURE staking insurance mechanism** to illustrate how this situation might be reverted.
                             """)
