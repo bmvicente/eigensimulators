@@ -358,7 +358,7 @@ def main():
                         <span style="font-size: 1.3em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
                         Actual Slash on Cryptoeconomic Security: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
                         <br>
-                        <br>
+                        <span style="font-size: 8px;">&nbsp;</span>
                         <span style="font-size: 16px; font-weight: normal;">(since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1. More on Logic below.)</span>
                     </div>
                 </h2>
@@ -366,6 +366,7 @@ def main():
             """, 
             unsafe_allow_html=True
         )
+
 
             
     st.write("\n")
