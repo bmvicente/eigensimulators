@@ -349,7 +349,7 @@ def main():
                 background-color: {actual_stake_loss_color};">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
-                        <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
+                        <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
                         Actual Stake Loss: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
                     </div>
                 </h2>
@@ -412,7 +412,7 @@ def main():
                 <span style="font-weight: bold; font-size: 26px; margin-top: 3px;">
                     &beta;<sub style="font-size: 16px;">ijt</sub> = 
                     &alpha;<sub style="font-size: 16px;">jt</sub> - 
-                    &theta;<sub style="font-size: 16px;">ijt+1</sub>
+                    δ<sub style="font-size: 16px;">ijt+1</sub>
                     {formula_end}
                 </span>
             </div>
