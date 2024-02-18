@@ -615,7 +615,7 @@ def main():
 
         st.session_state.op_stake_slashable = operator_stake * op_stake_perc_slashable * 0.01
         
-        st.write(f"""• Slashable Operator Stake Amount: **${st.session_state.op_stake_slashable:,.0f}**""")
+        st.write(f"""• Slashed Operator Stake Amount: **${st.session_state.op_stake_slashable:,.0f}**""")
 
         st.write("\n")
 
