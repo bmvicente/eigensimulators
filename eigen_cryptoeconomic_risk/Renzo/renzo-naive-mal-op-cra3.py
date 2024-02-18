@@ -791,7 +791,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span>
             <div style="text-align: center; margin-top: 10px;">
-            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on Cryptoeconomic Security * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake Loss)</span>
+            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on C.S. * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake Loss)</span>
         </div>
         """
 
