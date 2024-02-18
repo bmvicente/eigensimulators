@@ -354,7 +354,7 @@ def main():
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
                         Actual Slash on Cryptoeconomic Security: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
-                        <span style="font-size: 16px; font-weight: bold;">(since PfC stays the same post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1)</span>
+                        <span style="font-size: 16px; font-weight: bold;">(since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1)</span>
                     </div>
                 </h2>
             </div>
