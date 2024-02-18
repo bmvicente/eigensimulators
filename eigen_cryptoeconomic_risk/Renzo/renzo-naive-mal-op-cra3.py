@@ -851,7 +851,7 @@ def main():
                             else:
                                 adjustment = 0
 
-                        # AVS Categories
+                        # AVS Category
                         def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
                             categories = [avs1_category, avs2_category, avs3_category]
                             unique_categories = len(set(categories))
