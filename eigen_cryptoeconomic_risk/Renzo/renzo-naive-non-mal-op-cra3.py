@@ -206,7 +206,7 @@ def main():
                                 <br> <!-- Extra space -->
                             </div>
                             <div style="display: block;">
-                                Max Stake Loss "Allowed" To Still Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${max_slash_allowed:,.0f}</span>
+                                Max Stake-Loss "Allowed" To Still Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${max_slash_allowed:,.0f}</span>
                             </div>
                         </h2>
                     </div>
@@ -220,7 +220,7 @@ def main():
             st.markdown(f"""
                 As laid out in the first dropdown, *CoC = T / 3* and *PfC = &Sigma; TVLj* (*j* corresponding to the set of AVSs at hand).
                 
-                The variable **Max Stake Loss Allowed to Still Maintain Cryptoeconomic Security** (αj) represents the difference between CoC and PfC. We've quoted "Allowed" because the loss is not to be permissioned or validated by any entity; it simply represents the buffer (or the abscence of the buffer) that the AVS network can be slashed further and still keep the network secure.
+                The variable **Max Stake-Loss Allowed to Still Maintain Cryptoeconomic Security** (αj) represents the difference between CoC and PfC. We've quoted "Allowed" because the loss is not to be permissioned or validated by any entity; it simply represents the buffer (or the abscence of the buffer) that the AVS network can be slashed further and still keep the network secure.
                         If CoC > PfC, there is some amount "allowed" that can be slashed, and if CoC < PfC, the system is already in compromisable cryptoeconomic position and the slash "allowed" equals 0.
                 """)
 
@@ -408,7 +408,7 @@ def main():
                 margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1em;">
                     <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">i AVS1</sub></span> &nbsp; | &nbsp;
-                    Max Potential Stake Loss on <i>AVS 1</i>: <span style="font-size: 1.2em;">${op_max_loss_avs1:,.0f}</span>
+                    Max Potential Stake-Loss on <i>AVS 1</i>: <span style="font-size: 1.2em;">${op_max_loss_avs1:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -425,7 +425,7 @@ def main():
                 margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1em;">
                     <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">i AVS2</sub></span> &nbsp; | &nbsp;
-                    Max Potential Stake Loss on <i>AVS 2</i>: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span>
+                    Max Potential Stake-Loss on <i>AVS 2</i>: <span style="font-size: 1.2em;">${op_max_loss_avs2:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -442,7 +442,7 @@ def main():
                 margin: 5px 0;">
                 <h2 style="color: black; margin: 0; font-size: 1em;">
                     <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">i AVS3</sub></span> &nbsp; | &nbsp;
-                    Max Potential Stake Loss on <i>AVS 3</i>: <span style="font-size: 1.2em;">${op_max_loss_avs3:,.0f}</span>
+                    Max Potential Stake-Loss on <i>AVS 3</i>: <span style="font-size: 1.2em;">${op_max_loss_avs3:,.0f}</span>
                 </h2>
             </div>
             """, 
@@ -460,7 +460,7 @@ def main():
                     margin: 5px 0;">
                     <h2 style="color: black; margin: 0; font-size: 1.1em;">
                         <span style="font-size: 1.3em;">&Theta;<sub style="font-size: 0.9em;">ij</sub></span> &nbsp; | &nbsp;
-                        Total Max Potential Stake Loss Across AVSs: <span style="font-size: 1.2em;">${op_max_loss_avss:,.0f}</span>
+                        Total Max Potential Stake-Loss Across AVSs: <span style="font-size: 1.2em;">${op_max_loss_avss:,.0f}</span>
                     </h2>
                 </div>
                 """,
@@ -473,7 +473,7 @@ def main():
             st.markdown("""
                     We take the **Operator's amount of Stake** (Si, where *i* represents a given Operator), either delegated by themselves or on behalf of Restakers by proxy, and calculate the **Fraction of Total Stake this Operator is securing** (γij) which is simply calculated by their Stake divided by the Total Stake. For reference, each Restaker can only delegate to one Operator at a time.
                     
-                    The **Total Maximum Potential Stake Loss** (Θij) this Operator may be subject to by validating each of the AVSs is given by the formula just above: it is composed by the **sum of all the Potential Stake Losses given by the Risk Exposures per AVS** (Σ Ωj), calculated on the left side, times the **fraction of Total Stake the Operator is securing**.
+                    The **Total Maximum Potential Stake-Loss** (Θij) this Operator may be subject to by validating each of the AVSs is given by the formula just above: it is composed by the **sum of all the Potential Stake Losses given by the Risk Exposures per AVS** (Σ Ωj), calculated on the left side, times the **fraction of Total Stake the Operator is securing**.
                         
                     Of course, to do this calculation, it is assumed that each AVS de facto had some sort of vulnerability that was triggered that caused the Operator to lose Stake. Note that this Stake Loss was also maximized, based on AVS Risk Profile, to illustrate the worst-case possible.
                 """)
@@ -569,7 +569,7 @@ def main():
                         <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Stake Loss Exposure to Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
+                        Potential Max Stake-Loss Exposure to Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing1:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -582,7 +582,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                **Ωj returns the Potential Stake Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs with their own Risk Profiles**. It is computed by the Total Staked Amount times the Risk Factor of the AVS (as calculated below). 
+                **Ωj returns the Potential Stake-Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs with their own Risk Profiles**. It is computed by the Total Staked Amount times the Risk Factor of the AVS (as calculated below). 
                 
                 Since AVSs access pooled security in EigenLayer, it only makes sense for the same amount of Total Stake to be equally considered in the calculation for each AVS. For consistency, the AVS Risk Score input should be based on the Normalized Risk Score calculated in our AVS Underlying Risk Simulator.
                     
@@ -659,7 +659,7 @@ def main():
                         <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Stake Loss Exposure to Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
+                        Potential Max Stake-Loss Exposure to Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing2:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -673,7 +673,7 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
-                **Ωj returns the Potential Stake Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs with their own Risk Profiles**. It is computed by the Total Staked Amount times the Risk Factor of the AVS (as calculated below). 
+                **Ωj returns the Potential Stake-Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs with their own Risk Profiles**. It is computed by the Total Staked Amount times the Risk Factor of the AVS (as calculated below). 
                 
                 Since AVSs access pooled security in EigenLayer, it only makes sense for the same amount of Total Stake to be equally considered in the calculation for each AVS. For consistency, the AVS Risk Score input should be based on the Normalized Risk Score calculated in our AVS Underlying Risk Simulator.
                                 
@@ -750,7 +750,7 @@ def main():
                         <span style="font-size: 1.1em;">Ω<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        Potential Max Stake Loss Exposure to Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
+                        Potential Max Stake-Loss Exposure to Operator based on AVS Risk Profile: <span style="font-size: 1.1em;">${potential_total_slashing3:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -763,7 +763,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                **Ωj returns the Potential Stake Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs with their own Risk Profiles**. It is computed by the Total Staked Amount times the Risk Factor of the AVS (as calculated below). 
+                **Ωj returns the Potential Stake-Loss Exposure an Operator is subjecting themselves to by validating a set of AVSs with their own Risk Profiles**. It is computed by the Total Staked Amount times the Risk Factor of the AVS (as calculated below). 
                 
                 Since AVSs access pooled security in EigenLayer, it only makes sense for the same amount of Total Stake to be equally considered in the calculation for each AVS. For consistency, the AVS Risk Score input should be based on the Normalized Risk Score calculated in our AVS Underlying Risk Simulator.
                 
@@ -881,10 +881,10 @@ def main():
 
     st.markdown(f"""
         <div style="font-size: 1.1em;"> <!-- Adjust the font size as needed -->
-            The <b>Byzantine <i>Slashing</i> Tolerance test</b> assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Stake Loss event.
+            The <b>Byzantine <i>Slashing</i> Tolerance test</b> assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Stake-Loss event.
             <br>
             <br>
-            The formula takes the <b>Max Allowed Stake Loss</b> and subtracts it to the <b>Operator Max Stake Loss suffered across all AVSs</b>. We say that the pool of AVSs has failed the BST test if β < 0, and passed if β > 0. 
+            The formula takes the <b>Max Allowed Stake-Loss</b> and subtracts it to the <b>Operator Max Stake-Loss suffered across all AVSs</b>. We say that the pool of AVSs has failed the BST test if β < 0, and passed if β > 0. 
             <br>            
             Under the Naive Analysis and without access to staking insurance, the set of AVSs may end up in an insecure cryptoeconomic position and potentially compromisable state, which may induce an intermediate- or max-loss risk to the whole network (scenario where either some or all AVSs fail).
             <br>
