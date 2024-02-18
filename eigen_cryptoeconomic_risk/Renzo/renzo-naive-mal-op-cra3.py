@@ -244,7 +244,7 @@ def main():
 
         if pre_slash_max_slash_allowed >= 0:
             background_color = "#90EE90"  # light green for positive allowed loss
-            max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Still Maintain Cryptoeconomic Security"
+            max_slash_allowed_text = "Max Total Stake-Loss \"Allowed\" To Still Maintain Cryptoeconomic Security"
         else:
             background_color = "#ff9999"  # red for a negative allowed loss, indicating an insecure condition
             max_slash_allowed_text = "Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
@@ -434,7 +434,7 @@ def main():
 
                         - **Post-Slash** (t+1): What changes post-slashing event is the amount of the Operator's Stake that has been slashed, how it affects the Total Stake Amount and everything that comes after it: the slash in CoC, the status of cryptoeconomic security, the impact on AVs, etc. *Tt+1 = Tt - Slashed Operator Stake*. PfC post-slash should stay the same as it should have no impact on AVSs' TVL, and, therefore, **Actual Slash on Cryptoeconomic Security** is given by the CoC amount pre-slash minus the CoC post-slash.
     
-                        As introduced in the previous Simulator, the Byzantine Slashing Tolerance test assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Slash or Stake Loss event. The ecosystem has failed this test if β < 0, and passed if β > 0.
+                        As introduced in the previous Simulator, the Byzantine Slashing Tolerance test assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Slash or Stake-Loss event. The ecosystem has failed this test if β < 0, and passed if β > 0.
                             """)
 
 
@@ -697,7 +697,7 @@ def main():
                 st.write("\n")
 
                 def get_display_text(pre_slash_max_slash_allowed):
-                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Still Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+                    max_slash_allowed_text = "Max Total Stake-Loss \"Allowed\" To Still Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
                     return f"""
                         <div style="
                             border: 1px solid;
@@ -769,7 +769,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 10px;">
-                    AVS1 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
+                    AVS1 Total Compounded Stake-Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -791,7 +791,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span>
             <div style="text-align: center; margin-top: 10px;">
-            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on C.S. * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake Loss)</span>
+            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on C.S. * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake-Loss)</span>
         </div>
         """
 
@@ -913,7 +913,7 @@ def main():
                 st.write("  \n")
 
                 def get_display_text(pre_slash_max_slash_allowed):
-                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Still Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+                    max_slash_allowed_text = "Max Total Stake-Loss \"Allowed\" To Still Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
                     return f"""
                         <div style="
                             border: 1px solid;
@@ -981,7 +981,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS2 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
+                        AVS2 Total Compounded Stake-Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1065,7 +1065,7 @@ def main():
                 st.write("  \n")
 
                 def get_display_text(pre_slash_max_slash_allowed):
-                    max_slash_allowed_text = "Max Total Stake Loss \"Allowed\" To Still Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+                    max_slash_allowed_text = "Max Total Stake-Loss \"Allowed\" To Still Maintain Cryptoeconomic Security" if pre_slash_max_slash_allowed >= 0 else "AVS Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
                     return f"""
                         <div style="
                             border: 1px solid;
@@ -1132,7 +1132,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS3 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
+                        AVS3 Total Compounded Stake-Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1309,7 +1309,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS1</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS1 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs1_compounded_loss:,.0f}</span>
+                            AVS1 Total Compounded Stake-Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs1_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -1338,7 +1338,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS2 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
+                            AVS2 Total Compounded Stake-Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
@@ -1367,7 +1367,7 @@ def main():
                             <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span>
                         </div>
                         <div style="display: block; margin-top: 5px;">
-                            AVS3 Total Compounded Stake Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
+                            AVS3 Total Compounded Stake-Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
                         </div>
                     </h2>
                 </div>
