@@ -78,7 +78,7 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
-                    This Simulator covers and deep dives on two very important concepts:
+                    This Simulator covers and deep dives on two different kinds of Cryptoeconomic Security:
 
                     The main goal of the Simulator is to demonstrate how the Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash to the Operator would, in turn, affect the AVSs individually.
 
