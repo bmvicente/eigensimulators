@@ -812,7 +812,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                        On a post-slash potential risk-cascading event, AVSs are more prone to compounded risks if their **Risk Profiles are equally high**, if they are being **secured by a common Operator**, if they belong to the **same category of AVS**, and what the **status of the BST test** looks like. Those were the 4 main metrics taken into account to assess each **AVS Total Compounded Stake-Loss** (Ψ).
+                        On a post-slash potential risk-cascading event, AVSs are more prone to compounded risks if they are being secured by a **common Operator** (Operator entrenchment level), if they belong to the **same category of AVSs**, if their ** Individual Risk Profiles are equally high**, and if they have **collectively failed (and to what degree) the BST test**. Those were the 4 main metrics taken into account to assess each **AVS Total Compounded Stake-Loss** (Ψ).
 
                         ```python
                         # Common Operator
