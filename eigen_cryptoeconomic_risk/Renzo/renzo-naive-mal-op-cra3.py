@@ -1031,6 +1031,8 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
+                        The **α**jt and **δ**ijt+1 variables were displayed above per AVS to illustrate how cryptoeconomic security is in fact pooled and shared among AVSs, not fractionalized or customized. 
+
                         On a post-slash potential risk-cascading event, AVSs are more prone to compounded risks if they are being secured by a **common Operator** (Operator entrenchment level), if they belong to the **same category of AVSs**, if their **Individual Risk Profiles are equally high**, and if they have **collectively failed (and to what degree) the BST test**. Those were the 4 main metrics taken into account to assess each **AVS Total Compounded Stake-Loss** (Ψ).
                         
                         The AVS Individual Risk Scores should be derived from the normalized result outputted in our *AVS Underlying Risk* Simulator, for consistency.
@@ -1246,6 +1248,8 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+                        The **α**jt and **δ**ijt+1 variables were displayed above per AVS to illustrate how cryptoeconomic security is in fact pooled and shared among AVSs, not fractionalized or customized. 
+
                         On a post-slash potential risk-cascading event, AVSs are more prone to compounded risks if they are being secured by a **common Operator** (Operator entrenchment level), if they belong to the **same category of AVSs**, if their **Individual Risk Profiles are equally high**, and if they have **collectively failed (and to what degree) the BST test**. Those were the 4 main metrics taken into account to assess each **AVS Total Compounded Stake-Loss** (Ψ).
                         
                         The AVS Individual Risk Scores should be derived from the normalized result outputted in our *AVS Underlying Risk* Simulator, for consistency.
