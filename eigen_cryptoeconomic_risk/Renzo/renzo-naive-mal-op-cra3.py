@@ -441,7 +441,7 @@ def main():
     
                         As introduced in the previous Simulator, the Byzantine Slashing Tolerance test assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Slash or Stake-Loss event. 
                         
-                        The ecosystem has failed this test if β < 0, and passed if β > 0. We introduce the STAKESURE staking insurance mechanism to illustrate how this situation might be reverted.
+                        The ecosystem has failed this test if β < 0, and passed if β > 0. At the end of the simulator, we introduce the STAKESURE staking insurance mechanism to illustrate how this situation might be reverted.
                             """)
 
 
