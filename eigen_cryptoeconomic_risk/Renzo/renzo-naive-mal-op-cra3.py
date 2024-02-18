@@ -776,7 +776,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span>
                     </div>
                     <div style="display: block; margin-top: 10px;">
-                    AVS1 Total Compounded Stake-Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
+                    AVS1 Total Compounded Stake-Loss based on Operator Entrenchment, AVS Category, Risk Profile & BST Status (β): <span style="font-size: 1.2em;">${avs1_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -800,7 +800,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span>
             <div style="text-align: center; margin-top: 10px;">
-            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on C.S. * Common Operator * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake-Loss)</span>
+            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on Cryptoeconomic Security * Operator Entrenchment Level * AVS Category * AVS Individual Risk Score * BST Status (β) = AVS1 Total Compounded Stake-Loss)</span>
         </div>
         """
 
@@ -816,7 +816,7 @@ def main():
 
                         ```python
                         # Common Operator
-                        common_operator = 1.10 # Flat value for now, could be adapted based on Operator reputation and node centralization level
+                        common_operator = 1.10 # Flat value for now, could be adapted based on Operator reputation, node centralization, and entrenchment levels
 
                         # Individual AVS Risk Profiles
                         def categorize_risk(risk_score):
@@ -993,7 +993,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS2 Total Compounded Stake-Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
+                        AVS2 Total Compounded Stake-Loss based on Operator Entrenchment, AVS Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs2_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1146,7 +1146,7 @@ def main():
                         <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>
                     </div>
                     <div style="display: block; margin-top: 5px;">
-                        AVS3 Total Compounded Stake-Loss based on Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
+                        AVS3 Total Compounded Stake-Loss based on Operator Entrenchment, AVS Category, Risk Profile & BST Status (β): <span style="font-size: 1.1em;">${avs3_compounded_loss:,.0f}</span>
                     </div>
                 </h2>
             </div>
