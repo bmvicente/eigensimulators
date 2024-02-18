@@ -445,18 +445,18 @@ def main():
 
 
 
-def update_values():
-    # Update the pre_slash_total_restaked value
-    st.session_state.pre_slash_total_restaked = create_total_restaked_input()
+    def update_values():
+        # Update the pre_slash_total_restaked value
+        st.session_state.pre_slash_total_restaked = create_total_restaked_input()
 
-    # Recalculate other values based on the updated pre_slash_total_restaked
-    st.session_state.pre_slash_coc = st.session_state.pre_slash_total_restaked / 3
-    pre_slash_max_slash_allowed = st.session_state.pre_slash_coc - st.session_state.pre_slash_pfc
-    actual_slash_on_cs = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
-    actual_slash_on_cs_color = "#90EE90" if actual_slash_on_cs < pre_slash_max_slash_allowed else "#FFC0CB"
+        # Recalculate other values based on the updated pre_slash_total_restaked
+        st.session_state.pre_slash_coc = st.session_state.pre_slash_total_restaked / 3
+        pre_slash_max_slash_allowed = st.session_state.pre_slash_coc - st.session_state.pre_slash_pfc
+        actual_slash_on_cs = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
+        actual_slash_on_cs_color = "#90EE90" if actual_slash_on_cs < pre_slash_max_slash_allowed else "#FFC0CB"
 
-if st.button("Update Values"):
     update_values()
+
 
     st.write("  \n")
     st.write("  \n")
