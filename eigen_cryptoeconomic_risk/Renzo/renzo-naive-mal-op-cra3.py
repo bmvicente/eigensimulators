@@ -166,7 +166,7 @@ def main():
 
     col20,col21 = st.columns(2, gap="medium")
 
-    # For Actual Stake Loss
+    # For Actual Slash on Cryptoeconomic Security
     if pre_slash_max_slash_allowed >= 0:
         if actual_slash_on_cs < pre_slash_max_slash_allowed:
             actual_slash_on_cs_color = "#90EE90"  # light green
