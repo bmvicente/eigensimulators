@@ -437,7 +437,7 @@ def main():
                 st.markdown(f"""
                         - **Pre-Slash** (t): In the same way the calculation for the *AVS <> Non-Malicious Operator: Naive Approach* Simulator was done, the Naive Analysis here was applied to CoC = Stake / 3 and PfC = Σ TVL.
 
-                        - **Post-Slash** (t+1): What changes post-slashing event is the amount of the Operator's Stake that has been slashed, how it affects the Total Stake Amount and everything that comes after it: the slash in CoC, the status of cryptoeconomic security, the impact on AVs, etc. *Tt+1 = Tt - Slashed Operator Stake*. PfC post-slash should stay the same as it should have no impact on AVSs' TVL, and, therefore, **Actual Slash on Cryptoeconomic Security** is given by the CoC amount pre-slash minus the CoC post-slash.
+                        - **Post-Slash** (t+1): What changes post-slashing event is the amount of the Operator's Stake that has been slashed, how it affects the Total Stake Amount and everything that comes after it: the slash in CoC, the status of cryptoeconomic security, the impact on AVS, etc.. *Tt+1 = Tt - Slashed Operator Stake*. PfC post-slash should stay the same as the slash should have no impact on AVSs' TVL, and, therefore, **Actual Slash on Cryptoeconomic Security** is given by the CoC amount pre-slash subtracted by the CoC post-slash.
     
                         As introduced in the previous Simulator, the Byzantine Slashing Tolerance test assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Slash or Stake-Loss event. 
                         
