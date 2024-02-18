@@ -263,7 +263,7 @@ def main():
                                     {max_slash_allowed_text}: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
                                 </div>
                                 <!-- New line for (CoC t - PfC t), without bold font -->
-                                <div style="font-size: 16px; margin-top: 5px;">
+                                <div style="font-size: 16px; margin-top: 5px; font-weight: normal">
                                     (CoC t - PfC t)
                                 </div>
                             </h2>
@@ -345,29 +345,30 @@ def main():
                 unsafe_allow_html=True
             )
 
-    st.markdown(
-        f"""
-        <div style="
-            border: 2px solid;
-            border-radius: 2px;
-            padding: 5px;
-            text-align: center;
-            margin: 5px 0;
-            background-color: {actual_slash_on_cs_color};">
-            <div style="color: black; margin: 0; font-size: 1.1em;">
-                <div style="display: block;">
-                    <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
-                    Actual Slash on Cryptoeconomic Security: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
+        st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 2px;
+                    padding: 5px;
+                    text-align: center;
+                    margin: 5px 0;
+                    background-color: {actual_slash_on_cs_color};">
+                    <div style="color: black; margin: 0; font-size: 1.1em;">
+                        <div style="display: block;">
+                            <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
+                            Actual Slash on Cryptoeconomic Security: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
+                        </div>
+                        <!-- Correctly placed outside of <h2> and with normal font weight -->
+                        <div style="font-size: 16px; margin-top: 5px; font-weight: normal;">
+                            (since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1. More on Logic below.)
+                        </div>
+                    </div>
                 </div>
-                <!-- Correctly placed outside of <h2> and with normal font weight -->
-                <div style="font-size: 16px; margin-top: 5px; font-weight: normal;">
-                    (since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1. More on Logic below.)
-                </div>
-            </div>
-        </div>
-        """, 
-        unsafe_allow_html=True
-    )
+                """, 
+                unsafe_allow_html=True
+            )
+
 
             
     st.write("\n")
