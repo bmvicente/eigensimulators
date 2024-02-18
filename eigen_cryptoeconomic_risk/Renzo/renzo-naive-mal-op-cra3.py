@@ -744,7 +744,7 @@ def main():
                         background-color: white;">
                         <h2 style="color: black; margin: 0; font-size: 1.1em;">
                             <div style="display: block;">
-                                <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">iAVS1 t+1</sub></span>
+                                <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">iAVS1 t+1</sub></span>
                             </div>
                             <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
                                 Actual Stake Loss AVS1: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
@@ -897,7 +897,7 @@ def main():
                         background-color: white;">
                         <h2 style="color: black; margin: 0; font-size: 1.1em;">
                             <div style="display: block;">
-                                <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">iAVS2 t+1</sub></span>
+                                <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">iAVS2 t+1</sub></span>
                             </div>
                             <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
                                 Actual Stake Loss AVS2: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
@@ -1045,7 +1045,7 @@ def main():
                         background-color: white;">
                         <h2 style="color: black; margin: 0; font-size: 1.1em;">
                             <div style="display: block;">
-                                <span style="font-size: 1.2em;">&Theta;<sub style="font-size: 0.8em;">iAVS3 t+1</sub></span>
+                                <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">iAVS3 t+1</sub></span>
                             </div>
                             <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
                                 Actual Stake Loss AVS3: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
