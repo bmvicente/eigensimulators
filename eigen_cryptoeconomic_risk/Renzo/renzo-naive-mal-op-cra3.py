@@ -623,7 +623,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                        The default slash for a malicious Operator attack is usually 100% of their Stake (and proxied Restakers). Naturally, this slash directly affects the Total Amount Staked.
+                        The default slash for a malicious Operator attack is usually 100% of their Stake (and of the proxied Restakers). Naturally, this slash negatively affects the Total Amount Staked and the underlying security of the whole ecosystem.
                         """)
         
         st.write("\n")
@@ -812,7 +812,7 @@ def main():
                         AVSs are more prone to compounded risks if their Risk Profiles are equally high, if they are being secured by a common operator, if they belong to the same category of AVS, and the status of the overall BST test. Those were the 3 main metrics taken into account right now.
 
                         ```python
-                        # Individual Risk Profiles
+                        # Individual AVS Risk Profiles
                         def categorize_risk(risk_score):
                             if risk_score < 33:
                                 return 'low_risk'
@@ -845,7 +845,7 @@ def main():
                             else:
                                 adjustment = 0
 
-                        # Category
+                        # AVS Categories
                         def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
                             categories = [avs1_category, avs2_category, avs3_category]
                             unique_categories = len(set(categories))
@@ -861,11 +861,11 @@ def main():
                         
                         # BST test
                         def evaluate_allowed_vs_actual(actual_slash_on_cs_color):
-                            if actual_slash_on_cs_color == "#90EE90":  # Light Green or White
+                            if actual_slash_on_cs_color == "#90EE90":  # Light Green
                                 return 1.00
-                            elif actual_slash_on_cs_color == "#FFFFFF":
+                            elif actual_slash_on_cs_color == "#FFFFFF": #  White
                                 return 1.10
-                            elif actual_slash_on_cs_color == "#FFC0CB" or actual_slash_on_cs_color == "#ff6666":  # Pink or Light Red
+                            elif actual_slash_on_cs_color == "#FFC0CB" or actual_slash_on_cs_color == "#ff6666":  # Light Red
                                 return 1.50
                         ```
                         """)
