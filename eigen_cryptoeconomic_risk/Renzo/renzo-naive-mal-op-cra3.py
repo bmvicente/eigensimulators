@@ -16,6 +16,7 @@ def create_total_restaked_input():
         key="pre_slash_total_restaked"
 
     )
+    st.session_state.pre_slash_total_restaked = pre_slash_total_restaked
 
     return pre_slash_total_restaked
 
