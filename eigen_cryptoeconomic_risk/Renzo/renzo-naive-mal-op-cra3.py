@@ -95,18 +95,6 @@ def main():
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property. 
                     This is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security.
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
-                    
-                    We begin by assuming that the 3 AVS herein are equally secured by the Total Amount Restaked, therefore each has 33.33% "distribution".
-
-                    **Context of EigenLayer**: EigenLayer is a blockchain protocol that allows for the re-staking of Ethereum (ETH) to secure multiple protocols. This re-staking introduces a layer of complexity when it comes to quantifying risks, as the security and value of the re-staked ETH are interdependent with the performance and security of the protocols it is securing.
-                    
-                    **Max-Loss Risk in Slashing**:
-                    - The max-loss risk refers to the worst-case scenario of loss due to slashing. In the context of EigenLayer, this could mean evaluating the potential total loss a validator might face if their entire staked ETH is slashed due to violations or breaches of protocol rules.
-                    - The article discusses how slashing increases the cost-of-corruption for attackers, indicating that the risk of max-loss is a significant deterrent against malicious behavior. However, it doesn't provide a formula or method to directly quantify this max-loss risk in a multi-protocol staking environment like EigenLayer.
-                    
-                    3. **Intermediate-Loss Risk in Slashing**:
-                    - Intermediate-loss risk refers to partial losses that might occur due to less severe violations or smaller scale breaches of protocol rules.
-                    - The article implies that slashing can be variable based on the severity of the offense, which is pertinent to understanding intermediate-loss risks. However, it doesn't delve into specific mechanisms or quantifications for these types of risks, especially not in the complex setting of a protocol like EigenLayer where staked assets are used across multiple protocols.
                     """)
     
 
@@ -709,7 +697,7 @@ def main():
                         <div style="
                             border: 1px solid;
                             border-radius: 2px;
-                            padding: 5px;
+                            padding: 10px;
                             text-align: center;
                             margin: 5px 0;
                             background-color: white;">
