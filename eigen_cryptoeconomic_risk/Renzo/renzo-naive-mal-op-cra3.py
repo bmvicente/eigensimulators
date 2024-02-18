@@ -537,7 +537,7 @@ def main():
     risk_evaluation2 = risk_numeric[risk_category2] + collective_adjustment
     risk_evaluation3 = risk_numeric[risk_category3] + collective_adjustment
     
-    common_operator = 1.20
+    common_operator = 1.10
 
     avs1_compounded_loss = actual_slash_on_cs * common_operator * risk_evaluation1 * categories_evaluation_result * allowed_vs_actual_evaluation_result
     avs2_compounded_loss = actual_slash_on_cs * common_operator * risk_evaluation2 * categories_evaluation_result * allowed_vs_actual_evaluation_result
@@ -815,6 +815,9 @@ def main():
                         On a post-slash potential risk-cascading event, AVSs are more prone to compounded risks if their **Risk Profiles are equally high**, if they are being **secured by a common Operator**, if they belong to the **same category of AVS**, and what the **status of the BST test** looks like. Those were the 4 main metrics taken into account to assess each **AVS Total Compounded Stake-Loss** (Ψ).
 
                         ```python
+                        # Common Operator
+                        common_operator = 1.10 # Flat value for now, could be adapted based on Operator reputation and node centralization level
+
                         # Individual AVS Risk Profiles
                         def categorize_risk(risk_score):
                             if risk_score < 33:
