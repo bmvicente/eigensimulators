@@ -354,7 +354,7 @@ def main():
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
                         Actual Slash on Cryptoeconomic Security: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
-                        <span style="font-size: 16px; font-weight: bold;">(since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1)</span>
+                        <span style="font-size: 16px; font-weight: bold;">(since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1. More on Logic below.)</span>
                     </div>
                 </h2>
             </div>
@@ -432,14 +432,9 @@ def main():
                 st.markdown(f"""
                         - **Pre-Slash** (t): In the same way the calculation for the *AVS <> Non-Malicious Operator: Naive Approach* Simulator was done, the Naive analysis was initially applied to this case as well.
 
-                        - **Post-Slash** (t+1): What changes post-slash is the amount slashable of the Operator's stake and how it affects the Total Stake Amount and everything that comes after it: the reduction of CoC, the status of cryptoeconomic security, the impact on AVs, etc. *Tt+1 = Tt - Slashed Operator Stake*. PfC post-slash should stay the same as it should have no impact on AVSs' TVL, and the **Actual Slash on Cryptoeconomic Security** is given by the CoC amount pre-slash minus the CoC post-slash.
+                        - **Post-Slash** (t+1): What changes post-slashing event is the amount of the Operator's Stake that has been slashed, how it affects the Total Stake Amount and everything that comes after it: the slash in CoC, the status of cryptoeconomic security, the impact on AVs, etc. *Tt+1 = Tt - Slashed Operator Stake*. PfC post-slash should stay the same as it should have no impact on AVSs' TVL, and, therefore, **Actual Slash on Cryptoeconomic Security** is given by the CoC amount pre-slash minus the CoC post-slash.
     
-
-                        The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
-                        We say that an AVS has failed the BST test if β < 0, and passed if β > 0.
-                        In the above boxes, the green background represents a comfortable AVS tolerance in the case of a slashing event, the orange background represents a warning signal for a potential AVS failure, and the red background represents a danger signal where the AVS is in a very compromisable position, ripe for corruption.
-                    
-                        Byzantine Fault Tolerant (BFT) protocols have been developed to prioritize safety, ensuring deterministic security against attacks if the number of adversarial nodes doesn't exceed a certain threshold (β). The Byzantine BFT model has limitations as it doesn't consider the economic incentives that might motivate nodes to deviate from the protocol for personal gain. 
+                        As introduced in the previous Simulator, the Byzantine Slashing Tolerance test assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Slash or Stake Loss event. The ecosystem has failed this test if β < 0, and passed if β > 0.
                             """)
 
 
@@ -622,9 +617,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                        Default slash for a malicious Operator attack is 100% of the Operator's stake.
-                        
-                        Operator Stake 
+                        The default slash for a malicious Operator attack is usually 100% of the Operator's Stake (and proxied Restakers). Naturally, this slash directly affects the Total Amount Staked.
                         """)
         
         st.write("\n")
@@ -810,9 +803,70 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                AVSs are more prone to compounded risks if their risk profiles are equally high, if they are being secured by a common operator, and if they belong to the same category of AVS.
-                """)
-            
+                        AVSs are more prone to compounded risks if their Risk Profiles are equally high, if they are being secured by a common operator, if they belong to the same category of AVS, and the status of the overall BST test. Those were the 3 main metrics taken into account right now.
+
+                        ```python
+                        # Individual Risk Profiles
+                        def categorize_risk(risk_score):
+                            if risk_score < 33:
+                                return 'low_risk'
+                            elif 33 <= risk_score <= 66:
+                                return 'medium_risk'
+                            else:
+                                return 'high_risk'
+
+                        def collective_risk_adjustment(risk_category1, risk_category2, risk_category3):
+                            categories = [risk_category1, risk_category2, risk_category3]
+                            high_risk_count = categories.count('high_risk')
+                            medium_risk_count = categories.count('medium_risk')
+                            low_risk_count = categories.count('low_risk')
+
+                            if high_risk_count == 3: # All 3 AVSs have Risk Scores higher than 66
+                                adjustment = 1.50
+                            elif high_risk_count == 2 and medium_risk_count == 1:
+                                adjustment = 0.90
+                            elif high_risk_count == 2 and low_risk_count == 1:
+                                adjustment = 0.75
+                            elif high_risk_count == 1 and medium_risk_count == 1 and low_risk_count == 1:
+                                adjustment = 0.60
+                            elif medium_risk_count == 3:
+                                adjustment = 0.45
+                            elif medium_risk_count == 2 and low_risk_count == 1:
+                                adjustment = 0.35
+                            elif high_risk_count == 1 and low_risk_count == 2:
+                                adjustment = 0.325
+                            elif medium_risk_count == 1 and low_risk_count == 2:
+                                adjustment = 0.25
+                            elif low_risk_count == 3: # All 3 AVSs have Risk Scores lower than 33
+                                adjustment = 0.20
+                            else:
+                                adjustment = 0
+
+                        # Category
+                        def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
+                            categories = [avs1_category, avs2_category, avs3_category]
+                            unique_categories = len(set(categories))
+
+                            if unique_categories == 1: # Same category for all AVs
+                                return 1.50
+                            elif unique_categories == 2:
+                                return 1.25
+                            elif unique_categories == 3: # Different categories for all AVSs
+                                return 1.10
+                            else:
+                                return 1.00
+                        
+                        # BST test
+                        def evaluate_allowed_vs_actual(actual_slash_on_cs_color):
+                            if actual_slash_on_cs_color == "#90EE90":  # light green or white
+                                return 1.00
+                            elif actual_slash_on_cs_color == "#FFFFFF":
+                                return 1.10
+                            elif actual_slash_on_cs_color == "#FFC0CB" or actual_slash_on_cs_color == "#ff6666":  # pink or light red
+                                return 1.50
+                        ```
+                        """)
+
 
         st.write("  \n")
         st.write("  \n")
