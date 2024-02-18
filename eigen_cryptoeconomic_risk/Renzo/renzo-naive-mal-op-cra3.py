@@ -813,6 +813,8 @@ def main():
         with st.expander("Logic"):
             st.markdown("""
                         On a post-slash potential risk-cascading event, AVSs are more prone to compounded risks if they are being secured by a **common Operator** (Operator entrenchment level), if they belong to the **same category of AVSs**, if their **Individual Risk Profiles are equally high**, and if they have **collectively failed (and to what degree) the BST test**. Those were the 4 main metrics taken into account to assess each **AVS Total Compounded Stake-Loss** (Ψ).
+                        
+                        The Individual Risk Scores should be derived from the normalized result outputted in our *AVS Underlying Risk* Simulator, for consistency.
 
                         ```python
                         # Common Operator
@@ -1027,8 +1029,71 @@ def main():
     
         with st.expander("Logic"):
             st.markdown("""
-                AVSs are more prone to compounded risks if their risk profiles are equally high, if they are being secured by a common operator, and if they belong to the same category of AVS.
-                """)
+                        On a post-slash potential risk-cascading event, AVSs are more prone to compounded risks if they are being secured by a **common Operator** (Operator entrenchment level), if they belong to the **same category of AVSs**, if their **Individual Risk Profiles are equally high**, and if they have **collectively failed (and to what degree) the BST test**. Those were the 4 main metrics taken into account to assess each **AVS Total Compounded Stake-Loss** (Ψ).
+                        
+                        The Individual Risk Scores should be derived from the normalized result outputted in our *AVS Underlying Risk* Simulator, for consistency.
+
+                        ```python
+                        # Common Operator
+                        common_operator = 1.10 # Flat value for now, could be adapted based on Operator reputation, node centralization, and entrenchment levels
+
+                        # Individual AVS Risk Profiles
+                        def categorize_risk(risk_score):
+                            if risk_score < 33:
+                                return 'low_risk'
+                            elif 33 <= risk_score <= 66:
+                                return 'medium_risk'
+                            else:
+                                return 'high_risk'
+
+                        def collective_risk_adjustment(risk_category1, risk_category2, risk_category3):
+                            ...
+
+                            if high_risk_count == 3: # All 3 AVSs have Risk Scores higher than 66
+                                adjustment = 1.50
+                            elif high_risk_count == 2 and medium_risk_count == 1:
+                                adjustment = 0.90
+                            elif high_risk_count == 2 and low_risk_count == 1:
+                                adjustment = 0.75
+                            elif high_risk_count == 1 and medium_risk_count == 1 and low_risk_count == 1:
+                                adjustment = 0.60
+                            elif medium_risk_count == 3:
+                                adjustment = 0.45
+                            elif medium_risk_count == 2 and low_risk_count == 1:
+                                adjustment = 0.35
+                            elif high_risk_count == 1 and low_risk_count == 2:
+                                adjustment = 0.325
+                            elif medium_risk_count == 1 and low_risk_count == 2:
+                                adjustment = 0.25
+                            elif low_risk_count == 3: # All 3 AVSs have Risk Scores lower than 33
+                                adjustment = 0.20
+                            else:
+                                adjustment = 0
+
+                        # AVS Category
+                        def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
+                            categories = [avs1_category, avs2_category, avs3_category]
+                            unique_categories = len(set(categories))
+
+                            if unique_categories == 1: # Same category for all AVs
+                                return 1.50
+                            elif unique_categories == 2:
+                                return 1.25
+                            elif unique_categories == 3: # Different categories for all AVSs
+                                return 1.10
+                            else:
+                                return 1.00
+                        
+                        # BST test
+                        def evaluate_allowed_vs_actual(actual_slash_on_cs_color):
+                            if actual_slash_on_cs_color == "#90EE90":  # Light Green
+                                return 1.00
+                            elif actual_slash_on_cs_color == "#FFFFFF": #  White
+                                return 1.10
+                            elif actual_slash_on_cs_color == "#FFC0CB" or actual_slash_on_cs_color == "#ff6666":  # Light Red
+                                return 1.50
+                        ```                
+                        """)
         
         
         st.write("  \n")
@@ -1179,8 +1244,71 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                AVSs are more prone to compounded risks if their risk profiles are equally high, if they are being secured by a common operator, and if they belong to the same category of AVS.
-                """)
+                        On a post-slash potential risk-cascading event, AVSs are more prone to compounded risks if they are being secured by a **common Operator** (Operator entrenchment level), if they belong to the **same category of AVSs**, if their **Individual Risk Profiles are equally high**, and if they have **collectively failed (and to what degree) the BST test**. Those were the 4 main metrics taken into account to assess each **AVS Total Compounded Stake-Loss** (Ψ).
+                        
+                        The Individual Risk Scores should be derived from the normalized result outputted in our *AVS Underlying Risk* Simulator, for consistency.
+
+                        ```python
+                        # Common Operator
+                        common_operator = 1.10 # Flat value for now, could be adapted based on Operator reputation, node centralization, and entrenchment levels
+
+                        # Individual AVS Risk Profiles
+                        def categorize_risk(risk_score):
+                            if risk_score < 33:
+                                return 'low_risk'
+                            elif 33 <= risk_score <= 66:
+                                return 'medium_risk'
+                            else:
+                                return 'high_risk'
+
+                        def collective_risk_adjustment(risk_category1, risk_category2, risk_category3):
+                            ...
+
+                            if high_risk_count == 3: # All 3 AVSs have Risk Scores higher than 66
+                                adjustment = 1.50
+                            elif high_risk_count == 2 and medium_risk_count == 1:
+                                adjustment = 0.90
+                            elif high_risk_count == 2 and low_risk_count == 1:
+                                adjustment = 0.75
+                            elif high_risk_count == 1 and medium_risk_count == 1 and low_risk_count == 1:
+                                adjustment = 0.60
+                            elif medium_risk_count == 3:
+                                adjustment = 0.45
+                            elif medium_risk_count == 2 and low_risk_count == 1:
+                                adjustment = 0.35
+                            elif high_risk_count == 1 and low_risk_count == 2:
+                                adjustment = 0.325
+                            elif medium_risk_count == 1 and low_risk_count == 2:
+                                adjustment = 0.25
+                            elif low_risk_count == 3: # All 3 AVSs have Risk Scores lower than 33
+                                adjustment = 0.20
+                            else:
+                                adjustment = 0
+
+                        # AVS Category
+                        def evaluate_service_categories(avs1_category, avs2_category, avs3_category):
+                            categories = [avs1_category, avs2_category, avs3_category]
+                            unique_categories = len(set(categories))
+
+                            if unique_categories == 1: # Same category for all AVs
+                                return 1.50
+                            elif unique_categories == 2:
+                                return 1.25
+                            elif unique_categories == 3: # Different categories for all AVSs
+                                return 1.10
+                            else:
+                                return 1.00
+                        
+                        # BST test
+                        def evaluate_allowed_vs_actual(actual_slash_on_cs_color):
+                            if actual_slash_on_cs_color == "#90EE90":  # Light Green
+                                return 1.00
+                            elif actual_slash_on_cs_color == "#FFFFFF": #  White
+                                return 1.10
+                            elif actual_slash_on_cs_color == "#FFC0CB" or actual_slash_on_cs_color == "#ff6666":  # Light Red
+                                return 1.50
+                        ```                
+                        """)
 
 
     st.session_state.pre_slash_pfc = tvl1 + tvl2 + tvl3
