@@ -4,21 +4,21 @@ import streamlit as st
 
 
 def create_total_restaked_input():
-    if 'pre_slash_total_restaked' not in st.session_state:
-        st.session_state.pre_slash_total_restaked = 0
+    pre_slash_total_restaked = st.session_state.get("pre_slash_total_restaked", 0)
 
     pre_slash_total_restaked = st.number_input(
         "",
         min_value=0,
         max_value=10000000000000,
-        value=st.session_state.pre_slash_total_restaked,
+        value=pre_slash_total_restaked,
         step=100000000,
-        key="pre_slash_total_restaked"
-
+        key="pre_slash_total_restaked"  # Unique key for this input
     )
+
     st.session_state.pre_slash_total_restaked = pre_slash_total_restaked
 
     return pre_slash_total_restaked
+
 
 
 def create_risk_score_input(risk_score_key, label):
