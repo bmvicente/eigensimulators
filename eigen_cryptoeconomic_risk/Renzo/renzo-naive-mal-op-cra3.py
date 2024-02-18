@@ -858,11 +858,11 @@ def main():
                         
                         # BST test
                         def evaluate_allowed_vs_actual(actual_slash_on_cs_color):
-                            if actual_slash_on_cs_color == "#90EE90":  # light green or white
+                            if actual_slash_on_cs_color == "#90EE90":  # Light Green or White
                                 return 1.00
                             elif actual_slash_on_cs_color == "#FFFFFF":
                                 return 1.10
-                            elif actual_slash_on_cs_color == "#FFC0CB" or actual_slash_on_cs_color == "#ff6666":  # pink or light red
+                            elif actual_slash_on_cs_color == "#FFC0CB" or actual_slash_on_cs_color == "#ff6666":  # Pink or Light Red
                                 return 1.50
                         ```
                         """)
