@@ -299,7 +299,7 @@ def main():
                 margin: 5px 0;
                 background-color: white;">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
-                    Total Amount Restaked on AVS Ecosystem (<span style="font-weight: normal;">T t+1</span>)<span style="font-weight: bold;">:</span> <span style="font-size: 1.1em;">${st.session_state.post_slash_total_restaked:,.0f}</span>
+                    Total Amount Restaked on AVS Ecosystem <span style="font-weight: normal;">(T t+1)</span><span style="font-weight: bold;">:</span> <span style="font-size: 1.1em;">${st.session_state.post_slash_total_restaked:,.0f}</span>
                 </h2>
             </div>
             """, 
