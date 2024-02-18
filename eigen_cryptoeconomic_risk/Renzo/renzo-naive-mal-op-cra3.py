@@ -78,9 +78,9 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
-                    This Simulator covers and deep dives on two different kinds of Cryptoeconomic Security:
+                    The main goal of the Simulator is to demonstrate the effect an adversarial attack from an Operator could have on an ecosystem of 3 AVSs. the Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash to the Operator would, in turn, affect the AVSs individually.
 
-                    The main goal of the Simulator is to demonstrate how the Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash to the Operator would, in turn, affect the AVSs individually.
+                    We will cover and deep dive on two different kinds of Cryptoeconomic Security:
 
                     - **Cryptoeconomic Safety** (Naive): *CoC > PfC*. 
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property (CoC). 
