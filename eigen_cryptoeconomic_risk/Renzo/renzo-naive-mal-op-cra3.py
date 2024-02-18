@@ -78,7 +78,7 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
-                    The main goal of the Simulator is to demonstrate the effect an adversarial attack from an Operator could have on an ecosystem of 3 AVSs. the Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash to the Operator would, in turn, affect the AVSs individually.
+                    The main goal of the Simulator is to demonstrate the effect a slashing event toward an adversarial Operator has on an ecosystem of 3 AVSs. This effect takes form in the compounded risks each AVS becomes exposed to, post-slashing event, and how the STAKESURE insurance mechanism may safeguard security against poorly or non-insured AVSs.
 
                     We will cover and deep dive on two different kinds of Cryptoeconomic Security:
 
