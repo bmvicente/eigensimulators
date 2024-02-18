@@ -87,7 +87,7 @@ def main():
                     When CoC is greater than any potential PfC, we say that the system has robust security. The inverse suggests fleeble security.
 
                     - **Strong Cryptoeconomic Safety** (STAKESURE Approach): *No honest user of the system suffers any loss of funds*. 
-                    Strong Cryptoeconomic Security introduces staking insurance through STAKESURE to attest to such losses never happening.
+                    Strong Cryptoeconomic Security introduces staking insurance through STAKESURE to attest to such losses never happening. As per the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/html/2401.05797v1) by the EigenLayer founders: "STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it." This is what we attempted to model and simulate at the end of this Simulator.
 
                     Whilst inbetween Naive and STAKESURE approaches there exist mechanisms around Reversion Periods for Reorg attacks to further levy CoC and reduce PfC, we took the Naive case and went straight to STAKESURE insurance. This is bridging is helpful in taking the scenario of lesser security and stress-testing STAKESURE to safeguard such a scenario.
                     """)
