@@ -6,18 +6,18 @@ import streamlit as st
 def create_total_restaked_input():
     pre_slash_total_restaked = st.session_state.get("pre_slash_total_restaked", 0)
 
-    pre_slash_total_restaked = st.number_input(
+    pre_slash_total_restaked_input = st.number_input(
         "",
         min_value=0,
         max_value=10000000000000,
         value=pre_slash_total_restaked,
         step=100000000,
-        key="pre_slash_total_restaked"  # Unique key for this input
+        key="pre_slash_total_restaked_input"  # Use a different key for the input widget
     )
 
-    st.session_state.pre_slash_total_restaked = pre_slash_total_restaked
+    st.session_state.pre_slash_total_restaked = pre_slash_total_restaked_input
 
-    return pre_slash_total_restaked
+    return pre_slash_total_restaked_input
 
 
 
