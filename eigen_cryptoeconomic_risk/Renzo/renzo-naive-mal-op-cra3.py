@@ -261,11 +261,15 @@ def main():
                                 <div style="display: block;">
                                     <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
                                     {max_slash_allowed_text}: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
-                                    <span style="font-size: 16px; font-weight: bold;">(CoC t - PfC t)</span>
+                                </div>
+                                <!-- New line for (CoC t - PfC t), without bold font -->
+                                <div style="font-size: 16px; margin-top: 5px;">
+                                    (CoC t - PfC t)
                                 </div>
                             </h2>
                         </div>
                         """
+
 
         st.markdown(display_text, unsafe_allow_html=True)
 
