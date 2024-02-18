@@ -358,7 +358,7 @@ def main():
                         <span style="font-size: 1.3em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
                         Actual Slash on Cryptoeconomic Security: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
                         <br>
-                        <span style="font-size: 16px; font-weight: normal;">(since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1. More on Logic below.)</span>
+                        <span style="font-size: 16px; font-weight: normal;">(Since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1. More on Logic below.)</span>
                     </div>
                 </h2>
             </div>
@@ -435,7 +435,7 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
-                        - **Pre-Slash** (t): In the same way the calculation for the *AVS <> Non-Malicious Operator: Naive Approach* Simulator was done, the Naive analysis was initially applied to this case as well.
+                        - **Pre-Slash** (t): In the same way the calculation for the *AVS <> Non-Malicious Operator: Naive Approach* Simulator was done, the Naive Analysis was initially applied to the Coc and PfC in this case.
 
                         - **Post-Slash** (t+1): What changes post-slashing event is the amount of the Operator's Stake that has been slashed, how it affects the Total Stake Amount and everything that comes after it: the slash in CoC, the status of cryptoeconomic security, the impact on AVs, etc. *Tt+1 = Tt - Slashed Operator Stake*. PfC post-slash should stay the same as it should have no impact on AVSs' TVL, and, therefore, **Actual Slash on Cryptoeconomic Security** is given by the CoC amount pre-slash minus the CoC post-slash.
     
