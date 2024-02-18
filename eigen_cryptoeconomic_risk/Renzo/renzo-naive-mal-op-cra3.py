@@ -155,9 +155,9 @@ def main():
 
     pre_slash_max_slash_allowed = st.session_state.pre_slash_coc - st.session_state.pre_slash_pfc
 
-    actual_stake_loss = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
+    actual_slash_on_cs = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
 
-    st.session_state.pos_neg_actual_stake_loss = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
+    st.session_state.pos_neg_actual_slash_on_c = st.session_state.pre_slash_coc - st.session_state.post_slash_coc
 
 
 
@@ -168,17 +168,17 @@ def main():
 
     # For Actual Stake Loss
     if pre_slash_max_slash_allowed >= 0:
-        if actual_stake_loss < pre_slash_max_slash_allowed:
-            actual_stake_loss_color = "#90EE90"  # light green
-        elif actual_stake_loss == 0:
-            actual_stake_loss_color = "#FFFFFF"
+        if actual_slash_on_cs < pre_slash_max_slash_allowed:
+            actual_slash_on_cs_color = "#90EE90"  # light green
+        elif actual_slash_on_cs == 0:
+            actual_slash_on_cs_color = "#FFFFFF"
         else:
-            actual_stake_loss_color = "#FFC0CB"  # pink
+            actual_slash_on_cs_color = "#FFC0CB"  # pink
     else:
-        if actual_stake_loss > pre_slash_max_slash_allowed:
-            actual_stake_loss_color = "#ff6666"  # red
+        if actual_slash_on_cs > pre_slash_max_slash_allowed:
+            actual_slash_on_cs_color = "#ff6666"  # red
         else:
-            actual_stake_loss_color = "#FFC0CB"  # pink
+            actual_slash_on_cs_color = "#FFC0CB"  # pink
 
 
 
@@ -346,11 +346,11 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: {actual_stake_loss_color};">
+                background-color: {actual_slash_on_cs_color};">
                 <h2 style="color: black; margin: 0; font-size: 1.1em;">
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
-                        Actual Stake Loss: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
+                        Actual Slash on Cryptoeconomic Security: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -370,18 +370,18 @@ def main():
     ####### BST #######
     ###################
 
-    def evaluate_allowed_vs_actual(actual_stake_loss_color):
-        if actual_stake_loss_color == "#90EE90":  # light green or white
+    def evaluate_allowed_vs_actual(actual_slash_on_cs_color):
+        if actual_slash_on_cs_color == "#90EE90":  # light green or white
             return 1.00
-        elif actual_stake_loss_color == "#FFFFFF":
+        elif actual_slash_on_cs_color == "#FFFFFF":
              return 1.10
-        elif actual_stake_loss_color == "#FFC0CB" or actual_stake_loss_color == "#ff6666":  # pink or light red
+        elif actual_slash_on_cs_color == "#FFC0CB" or actual_slash_on_cs_color == "#ff6666":  # pink or light red
             return 1.50
         
         
-    evaluation_result = evaluate_allowed_vs_actual(actual_stake_loss_color)
+    evaluation_result = evaluate_allowed_vs_actual(actual_slash_on_cs_color)
 
-    bst = pre_slash_max_slash_allowed - actual_stake_loss
+    bst = pre_slash_max_slash_allowed - actual_slash_on_cs
 
     formula_end = ""
 
@@ -426,7 +426,7 @@ def main():
                 st.markdown(f"""
                         - **Pre-Slash** (t): In the same way the calculation for the *AVS <> Non-Malicious Operator: Naive Approach* Simulator was done, the Naive analysis was initially applied to this case as well.
 
-                        - **Post-Slash** (t+1): What changes post-slash is the amount slashable of the Operator's stake and how it affects the Total Stake Amount and everything that comes after it: the reduction of CoC, the status of cryptoeconomic security, the impact on AVs, etc. *Tt+1 = Tt - Slashed Operator Stake*. PfC post-slash should stay the same as it should have no impact on AVSs' TVL, and the **Actual Stake Loss** is given by the CoC amount pre-slash minus the CoC post-slash.
+                        - **Post-Slash** (t+1): What changes post-slash is the amount slashable of the Operator's stake and how it affects the Total Stake Amount and everything that comes after it: the reduction of CoC, the status of cryptoeconomic security, the impact on AVs, etc. *Tt+1 = Tt - Slashed Operator Stake*. PfC post-slash should stay the same as it should have no impact on AVSs' TVL, and the **Actual Slash on Cryptoeconomic Security** is given by the CoC amount pre-slash minus the CoC post-slash.
     
 
                         The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
@@ -470,7 +470,7 @@ def main():
 
     )
     allowed_vs_actual_evaluation_result = evaluate_allowed_vs_actual(
-        actual_stake_loss_color
+        actual_slash_on_cs_color
     )
 
 
@@ -530,9 +530,9 @@ def main():
     risk_evaluation2 = risk_numeric[risk_category2] + collective_adjustment
     risk_evaluation3 = risk_numeric[risk_category3] + collective_adjustment
 
-    avs1_compounded_loss = actual_stake_loss * risk_evaluation1 * categories_evaluation_result * allowed_vs_actual_evaluation_result
-    avs2_compounded_loss = actual_stake_loss * risk_evaluation2 * categories_evaluation_result * allowed_vs_actual_evaluation_result
-    avs3_compounded_loss = actual_stake_loss * risk_evaluation3 * categories_evaluation_result * allowed_vs_actual_evaluation_result
+    avs1_compounded_loss = actual_slash_on_cs * risk_evaluation1 * categories_evaluation_result * allowed_vs_actual_evaluation_result
+    avs2_compounded_loss = actual_slash_on_cs * risk_evaluation2 * categories_evaluation_result * allowed_vs_actual_evaluation_result
+    avs3_compounded_loss = actual_slash_on_cs * risk_evaluation3 * categories_evaluation_result * allowed_vs_actual_evaluation_result
 
     col1, col2 = st.columns([1, 1], gap="large")
 
@@ -747,7 +747,7 @@ def main():
                                 <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">iAVS1 t+1</sub></span>
                             </div>
                             <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
-                                Actual Stake Loss AVS1: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
+                                Actual Slash on Cryptoeconomic Security AVS1: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
                             </div>
                         </h2>
                     </div>
@@ -781,7 +781,7 @@ def main():
 
         avs1_compounded_loss_calc = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_slash_on_cs:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -791,7 +791,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span>
             <div style="text-align: center; margin-top: 10px;">
-            <span style="font-size: 16px; font-weight: bold;">(Actual Stake Loss * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake Loss)</span>
+            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on Cryptoeconomic Security * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake Loss)</span>
         </div>
         """
 
@@ -900,7 +900,7 @@ def main():
                                 <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">iAVS2 t+1</sub></span>
                             </div>
                             <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
-                                Actual Stake Loss AVS2: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
+                                Actual Slash on Cryptoeconomic Security AVS2: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
                             </div>
                         </h2>
                     </div>
@@ -934,7 +934,7 @@ def main():
 
         avs2_compounded_loss_calc = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_slash_on_cs:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -1048,7 +1048,7 @@ def main():
                                 <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">iAVS3 t+1</sub></span>
                             </div>
                             <div style="display: block; margin-top: 10px;"> <!-- Increased margin-top for more space -->
-                                Actual Stake Loss AVS3: <span style="font-size: 1.1em;">${actual_stake_loss:,.0f}</span>
+                                Actual Slash on Cryptoeconomic Security AVS3: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
                             </div>
                         </h2>
                     </div>
@@ -1082,7 +1082,7 @@ def main():
 
         avs3_compounded_loss_calc = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_stake_loss:,.2f}</span> 
+                <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_slash_on_cs:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{categories_evaluation_result:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
