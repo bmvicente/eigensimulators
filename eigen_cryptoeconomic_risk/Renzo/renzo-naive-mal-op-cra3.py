@@ -355,11 +355,11 @@ def main():
                 margin: 5px 0;
                 background-color: {actual_slash_on_cs_color};">
                 <div style="color: black; margin: 0; font-size: 1.1em;">
-                    <div style="display: block;">
+                    <div style="display: block; font-weight: bold;"> <!-- Ensure this part is bold -->
                         <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
                         Actual Slash on Cryptoeconomic Security: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
                     </div>
-                    <!-- This specific part in normal font, rest remains as per original styling -->
+                    <!-- Only this specific part in normal font -->
                     <div style="font-size: 16px; margin-top: 5px; font-weight: normal;">
                         (since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1. More on Logic below.)
                     </div>
@@ -368,8 +368,6 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-
-
 
 
             
