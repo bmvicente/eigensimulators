@@ -612,7 +612,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                        The default slash for a malicious Operator attack is usually 100% of their Stake (and of the proxied Restakers). Naturally, this slash negatively affects the Total Amount Staked and the underlying security of the whole ecosystem.
+                        The default slash for a malicious Operator attack is usually 100% of their Stake (and of the proxied Restakers). Naturally, this slash negatively affects the Total Amount Staked and the underlying cryptoeconomic security of the whole ecosystem.
                         """)
         
         st.write("\n")
@@ -1802,10 +1802,8 @@ def main():
                             - STAKESURE Insurance Coverage Level gives the total available for insurance subtracted by the amount insured by the AVSs beforehand.
                             - The Buffer takes the leftover (if positive) of the Staksure reserve that hasn't been used + if needed, the remaining half of Operator's slashed stake to adequately accomodate for uninsured or poorly insured users.
                             - Finally the Buffer Covergae Level assesses if the Buffer, in turn, was able to cover for the uninsured portions of stake per AVS that were not covered by the initial STAKESURE reserve.
-                    
-                    ATTRIBUTABLE AND SCALING SECURITY        
-                    
-                    The above also helps answer the question:How much insurance should honest AVSs buy? The potential compounded risks of AVSs and how much insurance is already in reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.    
+                                        
+                    This simulatio model also helps answer the question:How much insurance should honest AVSs buy? The potential compounded risks of AVSs and how much insurance is already in reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.    
                             
                     Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available. Thus even if only a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact.
                             
@@ -1814,6 +1812,7 @@ def main():
                     Half the Operator slashed amount is not accounted for the Insurance Reserve to either be burnt or allocated to a cryptoeconomic buffer to safeguard against irrational users that have not bought enough insurance or bought no insurance at all.
                     
                     In a nutshell and as said in the beginning of the Simulator, STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it.        
+                    This is what it means to have attributable and scaling security in a Restaking cryptoeconomic context.        
                             """)
                 
 
