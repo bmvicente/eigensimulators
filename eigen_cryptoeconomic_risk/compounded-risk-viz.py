@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
 import random
-import networkx as nx  # Added import statement for networkx
+import networkx as nx
 
 st.set_page_config(layout="wide")
 
@@ -67,6 +67,7 @@ np.random.seed(0)
 
 operators = [f"Operator {i+1}" for i in range(st.session_state.num_operators)]
 avss = []
+
 
 
 

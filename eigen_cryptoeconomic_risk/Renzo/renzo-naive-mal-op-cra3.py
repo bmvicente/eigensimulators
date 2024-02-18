@@ -816,10 +816,7 @@ def main():
                                 return 'high_risk'
 
                         def collective_risk_adjustment(risk_category1, risk_category2, risk_category3):
-                            categories = [risk_category1, risk_category2, risk_category3]
-                            high_risk_count = categories.count('high_risk')
-                            medium_risk_count = categories.count('medium_risk')
-                            low_risk_count = categories.count('low_risk')
+                            ...
 
                             if high_risk_count == 3: # All 3 AVSs have Risk Scores higher than 66
                                 adjustment = 1.50
@@ -872,6 +869,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+
 
 
 
@@ -1023,6 +1021,9 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+
+
+
 
 
 
@@ -1657,14 +1658,6 @@ def main():
                 st.markdown(f"""
                     How much insurance should honest AVSs buy?
                     
-                    **Max-Loss Risk Quantification**: In EigenLayer, maximum loss risk refers to the total potential loss a staker could face if all the tasks they are involved in (across multiple AVSs) fail. This is calculated by summing up the risks associated with each task, where the risk for each task is determined by the staker's share of the total stake in that task and the task’s vulnerability to corruption.
-                    
-                    **Intermediate-Loss Risk Quantification**: Intermediate loss concerns the potential loss if only some, but not all, tasks fail. This is more complex as it requires analyzing various combinations of task failures and their individual impact on the total stake. The risk assessment for each task remains the same, but the combinations of task failures create a spectrum of possible loss scenarios, less than the maximum but more than zero.
-                    
-                    Get ideas from the paper.
-                    
-                    Half the Operator slashed amount is not accounted for the Insurance Reserve to either be burnt or allocated to a cryptoeconomic buffer to safeguard against irrational users that have not bought enough insurance or bought no insurance at all.
-                    
                     We observe that the definition of cryptoeconomic safety does not really guarantee that a transaction user enjoys unconditional safety, rather it only says that an attacker does not derive profit from the attack. However, in complex scenarios, it is possible that an attacker may attack out of pure malice or other reasons, and a honest transactor is affected. We therefore define a stronger notion of cryptoeconomic safety as follows:
                     Strong cryptoeconomic safety is a much stronger definition than the definition of cryptoeconomic safety. While cryptoeconomic safety ensures that there is no incentive for an adversary to attack, a malicious adversary may still go ahead and attack the system which will lead to honest users in the system suffering without recourse. In contrast, in a system with strong cryptoeconomic safety, this can never happen.
                     In this section, we design and show a mechanism, called as STAKESURE, which achieves this stringent property while also solving for the information signalling problem from the previous section.      
@@ -1673,8 +1666,8 @@ def main():
                             
                     It is possible that smaller transactors may not have the foresight to buy insurance or may simply risk their funds (trying to freeride on the assumed safety of the system). We need to make sure that there is enough cryptoeconomic buffer in the system for these transactors to exist. We need to make sure that there is enough cost-of-corruption to protect against these small trans- actors, even though they do not have any insurance.       
                             
-                    A possible way to solve both these problems is to allocate a certain amount of slashed fund to be purely burnt rather than to be allocated to insurance. This ensures some non-zero cost on grieving attacks. Furthermore, if the amount allocated to be burnt is greater than the benefit from attacking the small / irrational transactors, then there is no incentive to attack them.        
-                            
+                    Half the Operator slashed amount is not accounted for the Insurance Reserve to either be burnt or allocated to a cryptoeconomic buffer to safeguard against irrational users that have not bought enough insurance or bought no insurance at all.
+                    
                     In a nutshell, STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. If the total amount staked is not sufficient to satisfy the insurance demand, then automatically the price of insurance increases, increases the staking returns, which incentivizes new stake to enter the system        
                             """)
                 
@@ -1682,7 +1675,8 @@ def main():
     st.write("\n")
     st.write("\n")
 
-                
+
+
     col1, col2, col3 = st.columns([9,10,1])
 
     with col2:
@@ -1768,4 +1762,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
