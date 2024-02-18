@@ -442,7 +442,7 @@ def main():
 
                         - **BST test** (β): As introduced in the previous Simulator, the Byzantine Slashing Tolerance test assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Slash or Stake-Loss event. The network is in a secure cryptoeconomic position if the **Max Total Stake-Loss "Allowed" To Still Maintain Cryptoeconomic Security** is bigger than the **Actual Slash Effected on Cryptoeconomic Security**, and in an insecure position if the opposite is true. Therefore, the ecosystem has failed this test if β < 0, and passed if β > 0
                         
-                        At the end of the simulator, we introduce the **STAKESURE staking insurance mechanism** to illustrate how a β < 0 situation might be reverted.
+                        At the end of the Simulator, we introduce the **STAKESURE staking insurance mechanism** to illustrate how a β < 0 situation might be reverted.
                             """)
 
 
@@ -623,7 +623,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                        The default slash for a malicious Operator attack is usually 100% of the Operator's Stake (and proxied Restakers). Naturally, this slash directly affects the Total Amount Staked.
+                        The default slash for a malicious Operator attack is usually 100% of their Stake (and proxied Restakers). Naturally, this slash directly affects the Total Amount Staked.
                         """)
         
         st.write("\n")
