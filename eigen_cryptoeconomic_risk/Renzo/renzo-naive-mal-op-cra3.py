@@ -83,10 +83,13 @@ def main():
                     We will cover and deep dive on two different kinds of Cryptoeconomic Security:
 
                     - **Cryptoeconomic Safety** (Naive Approach): *CoC > PfC*. 
+                    We observe that the definition of cryptoeconomic safety does not really guarantee that a transaction user enjoys unconditional safety, rather it only says that an attacker does not derive profit from the attack. However, in complex scenarios, it is possible that an attacker may attack out of pure malice or other reasons, and a honest transactor is affected.
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property (CoC). 
                     When CoC is greater than any potential PfC, we say that the system has robust security. The inverse suggests fleeble security.
 
                     - **Strong Cryptoeconomic Safety** (STAKESURE Approach): *No honest user of the system suffers any loss of funds*. 
+                    Strong cryptoeconomic safety is a much stronger definition than the definition of cryptoeconomic safety. While cryptoeconomic safety ensures that there is no incentive for an adversary to attack, a malicious adversary may still go ahead and attack the system which will lead to honest users in the system suffering without recourse. In contrast, in a system with strong cryptoeconomic safety, this can never happen.
+                    STAKESURE, which achieves this stringent property while also solving for the information signalling problem from the previous section.  
                     Strong Cryptoeconomic Security introduces staking insurance, through STAKESURE, to attest to such losses never happening. As per the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/html/2401.05797v1) by the EigenLayer founders: "**STAKESURE** ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it." 
                     Additionally, in the event of the insurance reserve being insufficient, the paper also advises: "It is possible that smaller transactors may not have the foresight to buy insurance or may simply risk their funds. We need to make sure that there is enough **cryptoeconomic buffer** in the system for these transactors to exist." This is exactly what we attempt to model and simulate at the end of this Simulator: the STAKESURE mechanism with the optional Insurance Buffer for negligent users.
 
@@ -1792,19 +1795,15 @@ def main():
                 st.markdown(f"""
                     ATTRIBUTABLE AND SCALING SECURITY        
                     
-                    How much insurance should honest AVSs buy?
-                    
-                    We observe that the definition of cryptoeconomic safety does not really guarantee that a transaction user enjoys unconditional safety, rather it only says that an attacker does not derive profit from the attack. However, in complex scenarios, it is possible that an attacker may attack out of pure malice or other reasons, and a honest transactor is affected. We therefore define a stronger notion of cryptoeconomic safety as follows:
-                    Strong cryptoeconomic safety is a much stronger definition than the definition of cryptoeconomic safety. While cryptoeconomic safety ensures that there is no incentive for an adversary to attack, a malicious adversary may still go ahead and attack the system which will lead to honest users in the system suffering without recourse. In contrast, in a system with strong cryptoeconomic safety, this can never happen.
-                    In this section, we design and show a mechanism, called as STAKESURE, which achieves this stringent property while also solving for the information signalling problem from the previous section.      
+                    The above also helps answer the question:How much insurance should honest AVSs buy? The potential compounded risks of AVSs and how much insurance is already in reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.    
                             
-                    Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available, which is Stot . Thus even if only 3 a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact. But this increases the insurance rate that such transactors may be willing to pay, in turn, increasing the total amount staked (as there is now enough return available for more stake). Thus staking in the system sets itself automatically to the right level of security rather than being controlled by an arbitrary preallocated rewards curve.        
+                    Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available. Thus even if only a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact.
                             
                     It is possible that smaller transactors may not have the foresight to buy insurance or may simply risk their funds (trying to freeride on the assumed safety of the system). We need to make sure that there is enough cryptoeconomic buffer in the system for these transactors to exist. We need to make sure that there is enough cost-of-corruption to protect against these small trans- actors, even though they do not have any insurance.       
                             
                     Half the Operator slashed amount is not accounted for the Insurance Reserve to either be burnt or allocated to a cryptoeconomic buffer to safeguard against irrational users that have not bought enough insurance or bought no insurance at all.
                     
-                    In a nutshell, STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. If the total amount staked is not sufficient to satisfy the insurance demand, then automatically the price of insurance increases, increases the staking returns, which incentivizes new stake to enter the system        
+                    In a nutshell and as said in the beginning of the Simulator, STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it.        
                             """)
                 
 
