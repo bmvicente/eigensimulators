@@ -809,7 +809,7 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                        On a post-slash potential risk-cascading event, AVSs are more prone to these compounded risks if their **Risk Profiles are equally high**, if they are being **secured by a common Operator**, if they belong to the **same category of AVS**, and how the status of the overall BST test looks like. Those were the 3 main metrics taken into account right now.
+                        On a post-slash potential risk-cascading event, AVSs are more prone to compounded risks if their **Risk Profiles are equally high**, if they are being **secured by a common Operator**, if they belong to the **same category of AVS**, and how the status of the overall BST test looks like. Those were the 3 main metrics taken into account right now.
 
                         ```python
                         # Individual AVS Risk Profiles
