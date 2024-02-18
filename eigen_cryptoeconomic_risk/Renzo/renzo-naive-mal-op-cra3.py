@@ -12,7 +12,9 @@ def create_total_restaked_input():
         min_value=0,
         max_value=10000000000000,
         value=st.session_state.pre_slash_total_restaked,
-        step=100000000
+        step=100000000,
+        key="pre_slash_total_restaked"
+
     )
 
     return pre_slash_total_restaked
@@ -27,7 +29,8 @@ def create_risk_score_input(risk_score_key, label):
         min_value=0,
         max_value=100,
         value=st.session_state[risk_score_key],
-        step=10
+        step=10,
+        key=risk_score_key
     )
 
     return risk_score
