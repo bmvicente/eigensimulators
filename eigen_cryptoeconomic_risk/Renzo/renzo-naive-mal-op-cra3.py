@@ -1793,6 +1793,16 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
+                    Talk about:
+                            - Staking Insurance Available: Reserve + Operator Stake Amount / 2
+                            - Other half Operator Stake Amount / 2 burnt or allocate to a cryptoeconomic buffer
+                            - If Stakesure insurance avaiable > Σ Ψj and if all the AVSs bought an appropriate amount of insurance, the system is cryptoeconomically secure.
+                            - If Stakesure insurance avaiable < Σ Ψj and if not all the AVSs bought an appropriate amount of insurance, the system is cryptoeconomically insecure. Mind that it would also be cryptoeconomically insecure if Stakesure insurance avaiable > Σ Ψj and not all AVSs bought an appropriate amount of insurance.
+                            - In the "Didn't Buy Inurance" all the Ψ amount for that AVS will be represented in the cryptoeconomic buffer at the bottom and on the "Bought inappropriate amount of insurance" a slider gets displyed that enables the user to set the percentage of Ψ that is uninsured, and should therefore be covered by the buffer too.
+                            - STAKESURE Insurance Coverage Level gives the total available for insurance subtracted by the amount insured by the AVSs beforehand.
+                            - The Buffer takes the leftover (if positive) of the Staksure reserve that hasn't been used + if needed, the remaining half of Operator's slashed stake to adequately accomodate for uninsured or poorly insured users.
+                            - Finally the Buffer Covergae Level assesses if the Buffer, in turn, was able to cover for the uninsured portions of stake per AVS that were not covered by the initial STAKESURE reserve.
+                    
                     ATTRIBUTABLE AND SCALING SECURITY        
                     
                     The above also helps answer the question:How much insurance should honest AVSs buy? The potential compounded risks of AVSs and how much insurance is already in reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.    
