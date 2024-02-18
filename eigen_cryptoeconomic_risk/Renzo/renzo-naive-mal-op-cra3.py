@@ -424,9 +424,9 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
-                        - **Pre-Slash**: ...
+                        - **Pre-Slash** (t): In the same way the calculation for the *AVS <> Non-Malicious Operator: Naive Approach* Simulator was done, the Naive analysis was initially applied to this case as well.
 
-                        - **Post-Slash**: ...
+                        - **Post-Slash** (t+1): What changes post-slash is the amount slashable of the Operator's stake and how it affects the Total Stake Amount and everything that comes after it: the reduction of CoC, the status of cryptoeconomic security, the impact on AVs, etc. *Tt+1 = Tt - Slashed Operator Stake*. PfC post-slash should stay the same as it should have no impact on AVSs' TVL, and the **Actual Stake Loss** is given by the CoC amount pre-slash minus the CoC post-slash.
     
 
                         The Byzantine Slashing Tolerance test helps identify the AVSs that are in a compromisable state due to a previously-executed Operator slashing event, which may induce an intermediate- or max-loss risk to the ecosystem.
