@@ -1330,7 +1330,7 @@ def main():
     ###########################
 
 
-    st.subheader("**Malicious Operator → AVS Slashing Event Simulator:** *STAKESURE Approach* (Attributable Security)")
+    st.subheader("**Malicious Operator → AVS Slashing Event Simulator:** *STAKESURE Approach*")
     
     st.write("  \n")
 
@@ -1790,6 +1790,8 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
+                    ATTRIBUTABLE AND SCALING SECURITY        
+                    
                     How much insurance should honest AVSs buy?
                     
                     We observe that the definition of cryptoeconomic safety does not really guarantee that a transaction user enjoys unconditional safety, rather it only says that an attacker does not derive profit from the attack. However, in complex scenarios, it is possible that an attacker may attack out of pure malice or other reasons, and a honest transactor is affected. We therefore define a stronger notion of cryptoeconomic safety as follows:
