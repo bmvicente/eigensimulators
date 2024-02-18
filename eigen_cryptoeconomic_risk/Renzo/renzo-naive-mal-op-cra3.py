@@ -358,13 +358,17 @@ def main():
                     <div style="display: block;">
                         <span style="font-size: 1.2em;">δ<sub style="font-size: 0.8em;">ijt+1</sub></span> &nbsp; | &nbsp;
                         Actual Slash on Cryptoeconomic Security: <span style="font-size: 1.1em;">${actual_slash_on_cs:,.0f}</span>
-                        <span style="font-size: 16px; font-weight: bold;">(since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1. More on Logic below.)</span>
+                    </div>
+                    <!-- New line for the explanatory text, without bold font -->
+                    <div style="font-size: 16px; margin-top: 5px;">
+                        (since PfC remains unchanged post-slash, the de facto cryptoeconomic slash = CoC t - CoC t+1. More on Logic below.)
                     </div>
                 </h2>
             </div>
             """, 
             unsafe_allow_html=True
         )
+
             
     st.write("\n")
     st.write("\n")
