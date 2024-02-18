@@ -4,21 +4,18 @@ import streamlit as st
 
 
 def create_total_restaked_input():
-    pre_slash_total_restaked = st.session_state.get("pre_slash_total_restaked", 0)
+    if 'pre_slash_total_restaked' not in st.session_state:
+        st.session_state.pre_slash_total_restaked = 0
 
-    pre_slash_total_restaked_input = st.number_input(
+    pre_slash_total_restaked = st.number_input(
         "",
         min_value=0,
         max_value=10000000000000,
-        value=pre_slash_total_restaked,
-        step=100000000,
-        key="pre_slash_total_restaked_input"  # Use a different key for the input widget
+        value=st.session_state.pre_slash_total_restaked,
+        step=100000000
     )
 
-    st.session_state.pre_slash_total_restaked = pre_slash_total_restaked_input
-
-    return pre_slash_total_restaked_input
-
+    return pre_slash_total_restaked
 
 
 def create_risk_score_input(risk_score_key, label):
@@ -30,8 +27,7 @@ def create_risk_score_input(risk_score_key, label):
         min_value=0,
         max_value=100,
         value=st.session_state[risk_score_key],
-        step=10,
-        key=risk_score_key
+        step=10
     )
 
     return risk_score
@@ -447,19 +443,6 @@ def main():
                             """)
 
 
-
-
-    def update_values():
-        # Update the pre_slash_total_restaked value
-        st.session_state.pre_slash_total_restaked = create_total_restaked_input()
-
-        # Recalculate other values based on the updated pre_slash_total_restaked
-        st.session_state.pre_slash_coc = st.session_state.pre_slash_total_restaked / 3
-        pre_slash_max_slash_allowed = st.session_state.pre_slash_coc - st.session_state.pre_slash_pfc
-        actual_slash_on_cs = max(0, st.session_state.pre_slash_coc - st.session_state.post_slash_coc)
-        actual_slash_on_cs_color = "#90EE90" if actual_slash_on_cs < pre_slash_max_slash_allowed else "#FFC0CB"
-
-    update_values()
 
 
     st.write("  \n")
