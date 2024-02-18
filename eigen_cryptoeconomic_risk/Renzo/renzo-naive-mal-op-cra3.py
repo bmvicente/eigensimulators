@@ -536,10 +536,12 @@ def main():
     risk_evaluation1 = risk_numeric[risk_category1] + collective_adjustment
     risk_evaluation2 = risk_numeric[risk_category2] + collective_adjustment
     risk_evaluation3 = risk_numeric[risk_category3] + collective_adjustment
+    
+    common_operator = 1.20
 
-    avs1_compounded_loss = actual_slash_on_cs * risk_evaluation1 * categories_evaluation_result * allowed_vs_actual_evaluation_result
-    avs2_compounded_loss = actual_slash_on_cs * risk_evaluation2 * categories_evaluation_result * allowed_vs_actual_evaluation_result
-    avs3_compounded_loss = actual_slash_on_cs * risk_evaluation3 * categories_evaluation_result * allowed_vs_actual_evaluation_result
+    avs1_compounded_loss = actual_slash_on_cs * common_operator * risk_evaluation1 * categories_evaluation_result * allowed_vs_actual_evaluation_result
+    avs2_compounded_loss = actual_slash_on_cs * common_operator * risk_evaluation2 * categories_evaluation_result * allowed_vs_actual_evaluation_result
+    avs3_compounded_loss = actual_slash_on_cs * common_operator * risk_evaluation3 * categories_evaluation_result * allowed_vs_actual_evaluation_result
 
     col1, col2 = st.columns([1, 1], gap="large")
 
@@ -640,8 +642,7 @@ def main():
     #############################################
     ################### AVSs ####################
     #############################################
-
-
+    
     with col1:
 
         custom_css = """
@@ -789,6 +790,8 @@ def main():
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_slash_on_cs:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{common_operator:,.2f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation1:,.2f}</span> 
@@ -797,7 +800,7 @@ def main():
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span>
             <div style="text-align: center; margin-top: 10px;">
-            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on C.S. * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake-Loss)</span>
+            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on C.S. * Common Operator * Category * Risk Score * BST Status (β) = AVS1 Total Compounded Stake-Loss)</span>
         </div>
         """
 
@@ -1001,6 +1004,8 @@ def main():
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_slash_on_cs:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{common_operator:,.2f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{categories_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;">&times;</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{risk_evaluation2:,.2f}</span> 
@@ -1151,6 +1156,8 @@ def main():
         avs3_compounded_loss_calc = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${actual_slash_on_cs:,.2f}</span> 
+                <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{common_operator:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
                 <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{categories_evaluation_result:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;">&times;</span>
