@@ -82,13 +82,13 @@ def main():
 
                     We will cover and deep dive on two different kinds of Cryptoeconomic Security:
 
-                    - **Cryptoeconomic Safety** (Naive): *CoC > PfC*. 
+                    - **Cryptoeconomic Safety** (Naive Approach): *CoC > PfC*. 
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property (CoC). 
                     When CoC is greater than any potential PfC, we say that the system has robust security. The inverse suggests fleeble security.
 
-                    - **Strong Cryptoeconomic Safety** (STAKESURE): *No honest user of the system suffers any loss of funds*. 
-                    Eigenlayer is going to manage situations where a few AVSs simultaneously take out insurances, and then a cascading effect is induced by some unexpected event, like a security breach. This could significantly reduce the shared security pool all at once
-                    
+                    - **Strong Cryptoeconomic Safety** (STAKESURE Approach): *No honest user of the system suffers any loss of funds*. 
+                    Strong Cryptoeconomic Security introduces staking insurance through STAKESURE to attest to such losses never happening.
+
                     Whilst inbetween Naive and STAKESURE approaches there exist mechanisms around Reversion Periods for Reorg attacks to further levy CoC and reduce PfC, we took the Naive case and went straight to STAKESURE insurance. This is bridging is helpful in taking the scenario of lesser security and stress-testing STAKESURE to safeguard such a scenario.
                     """)
     
