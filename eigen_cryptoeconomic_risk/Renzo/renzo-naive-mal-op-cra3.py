@@ -1753,7 +1753,7 @@ def main():
 
     st.write("\n")
 
-    buffer_coverage_level = buffer_reserve_amount - buffer1 - buffer2 - buffer3
+    buffer_coverage_level = buffer_reserve_amount - st.session_state.buffer1 - st.session_state.buffer2 - st.session_state.buffer3
 
     buffer_coverage_level_value = buffer_coverage_level if buffer_coverage_level >= 0 else abs(buffer_coverage_level)
     buffer_coverage_level_sign = '' if buffer_coverage_level >= 0 else '-'
@@ -1764,11 +1764,11 @@ def main():
         <span style="font-size: 20px; font-weight: bold;">Buffer Coverage Level = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">${buffer_reserve_amount:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer1:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer2:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer2:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer3:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer3:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
         <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {buffer_coverage_level_color};">{buffer_coverage_level_sign}${buffer_coverage_level_value:,.0f}</span>
     </div>
