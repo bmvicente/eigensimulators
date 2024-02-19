@@ -1584,7 +1584,7 @@ def main():
                 background-color: {background_color};">
                 <h2 style="color: black; margin: 0; font-size: 1.4em;">
                     <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 1.1em;">Post-Slash <i>STAKESURE</i></span> (t+1) = $<span style="font-size: 1.1em;">{st.session_state.post_slash_reserve:,.0f}</span>
+                    <span style="font-size: 1.1em;">Post-Slash <i>STAKESURE</i></span> Insurance Reserve (t+1) = $<span style="font-size: 1.1em;">{st.session_state.post_slash_reserve:,.0f}</span>
                     </div>
                 </h2>
             </div>
