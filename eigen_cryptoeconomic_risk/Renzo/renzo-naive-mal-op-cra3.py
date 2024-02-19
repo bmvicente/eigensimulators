@@ -1616,184 +1616,184 @@ def main():
 
 
 
-    ####################
-    ###### BUFFER ######
-    ####################
-            
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
+        ####################
+        ###### BUFFER ######
+        ####################
+                
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
 
-    if 'buffer_reserve_amount' not in st.session_state:
-            st.session_state.buffer_reserve_amount = 0  # or any default value
+        if 'buffer_reserve_amount' not in st.session_state:
+                st.session_state.buffer_reserve_amount = 0  # or any default value
 
-    st.markdown(f"""
-            <div style="font-size: 22px;">
-                <b>Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users
-            </div>
-            """, unsafe_allow_html=True)
-    
-    st.write("  \n")
-    st.write("  \n")
-
-
-    buffer_available_calc = f"""
-        <div style="text-align: center;">
-            <span style="font-size: 20px; font-weight: bold; ">Buffer Insurance Amount Available = </span>
-            <span style="font-size: 22px; font-weight: bold; background-color: #FFCCCC; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span> 
-            <span style="font-size: 24px; font-weight: bold;">+</span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
-            <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
-            <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span>
-        </div>
-    """        
-    
-    st.markdown(buffer_available_calc, unsafe_allow_html=True)
-
-    
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-
-
-    st.session_state.buffer_reserve_amount = stake_losses_coverage + st.session_state.op_stake_slashable / 2
-
-
-    buffer1, buffer2, buffer3 = 0, 0, 0 
-
-    with col50:
-        # Calculate buffer based on the selected insurance option
-        if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message1 = "No Extra Insurance Needed from Buffer"
-            buffer1 = 0
-        elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
-            buffer1 = avs1_compounded_loss * percentage_uninsured_1
-            message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.0f}"
-        else:  # Didn't buy insurance
-            buffer1 = avs1_compounded_loss
-            message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.0f}"
-
-    with col51:
-        # Calculate buffer based on the selected insurance option
-        if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message2 = "No Extra Insurance Needed from Buffer"
-            buffer2 = 0
-        elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
-            buffer2 = avs2_compounded_loss * percentage_uninsured_2
-            message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.0f}"
-        else:  # Didn't buy insurance
-            buffer2 = avs2_compounded_loss
-            message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.0f}"
-
-    with col52:
-        # Calculate buffer based on the selected insurance option
-        if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
-            message3 = "No Extra Insurance Needed from Buffer"
-            buffer3 = 0
-        elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
-            percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
-            buffer3 = avs3_compounded_loss * percentage_uninsured_3
-            message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.0f}"
-        else:  # Didn't buy insurance
-            buffer3 = avs3_compounded_loss
-            message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.0f}"
-
-
-    total_buffer_needed = buffer1 + buffer2 + buffer3
-
-    col54, col55, col56 = st.columns(3)
-
-    with col54: 
-            st.markdown(f"""
-                <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                        AVS1 - <span style="font-size: 1em;">{message1}</span>
-                    </h2>
+        st.markdown(f"""
+                <div style="font-size: 22px;">
+                    <b>Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users
                 </div>
                 """, unsafe_allow_html=True)
-
-    with col55:
-            st.markdown(f"""
-                <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                        AVS2 - <span style="font-size: 1em;">{message2}</span>
-                    </h2>
-                </div>
-                """, unsafe_allow_html=True)
-
-    with col56:
-            st.markdown(f"""
-                <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
-                    <h2 style="color: black; margin: 0; font-size: 1.2em;">
-                        AVS3 - <span style="font-size: 1em;">{message3}</span>
-                    </h2>
-                </div>
-                """, unsafe_allow_html=True)
-
-
-
-    st.write("\n")
-
-    buffer_coverage_level = st.session_state.buffer_reserve_amount - buffer1 - buffer2 - buffer3
-
-    buffer_coverage_level_value = buffer_coverage_level if buffer_coverage_level >= 0 else abs(buffer_coverage_level)
-    buffer_coverage_level_sign = '' if buffer_coverage_level >= 0 else '-'
-    buffer_coverage_level_color = "green" if buffer_coverage_level >= 0 else "red"
-
-    buffer_coverage_level_calc = f"""
-    <div style="text-align: center;">
-        <span style="font-size: 20px; font-weight: bold;">Buffer Coverage Level = </span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
-        <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
-        <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer2:,.0f}</span> 
-        <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer3:,.0f}</span> 
-        <span style="font-size: 24px; font-weight: bold;"> = </span>
-        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {buffer_coverage_level_color};">{buffer_coverage_level_sign}${buffer_coverage_level_value:,.0f}</span>
-    </div>
-    """
-
-    st.markdown(buffer_coverage_level_calc, unsafe_allow_html = True)
-
-
-
-    st.write("\n")
-    st.write("\n")
-
-
-    total_buffer_needed = buffer1 + buffer2 + buffer3
-    if st.session_state.buffer_reserve_amount > total_buffer_needed:
-            st.success("Enough attributable security can be safeguarded from the Buffer.")
-    else:
-            st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds. We may be in the presence of an **Intermediate- or Max-Loss Risk of some or all the 3 AVSs failing**.")
-
-
-    def recalculate_and_update():
-
-        existing_reserve = st.session_state.get('existing_reserve', 0)
-        op_stake_slashable = st.session_state.get('op_stake_slashable', 0) / 2
-
-        existing_reserve = st.session_state['existing_reserve']
-        op_stake_slashable = st.session_state.op_stake_slashable / 2
         
-        total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
-        stakesure_insurance_reserve = existing_reserve + op_stake_slashable
-        stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
+        st.write("  \n")
+        st.write("  \n")
 
-        st.session_state['stakesure_insurance_reserve'] = stakesure_insurance_reserve
-        st.session_state['stake_losses_coverage'] = stake_losses_coverage
+
+        buffer_available_calc = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 20px; font-weight: bold; ">Buffer Insurance Amount Available = </span>
+                <span style="font-size: 22px; font-weight: bold; background-color: #FFCCCC; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span> 
+                <span style="font-size: 24px; font-weight: bold;">+</span>
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
+                <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
+                <span style="font-size: 24px; font-weight: bold;"> = </span>
+                <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span>
+            </div>
+        """        
+        
+        st.markdown(buffer_available_calc, unsafe_allow_html=True)
+
+        
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+
+
+        st.session_state.buffer_reserve_amount = stake_losses_coverage + st.session_state.op_stake_slashable / 2
+
+
+        buffer1, buffer2, buffer3 = 0, 0, 0 
+
+        with col50:
+            # Calculate buffer based on the selected insurance option
+            if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+                message1 = "No Extra Insurance Needed from Buffer"
+                buffer1 = 0
+            elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+                percentage_uninsured_1 = st.slider("% Amount Uninsured for AVS1", 0, 100, 50, key='percentage_uninsured_1') / 100
+                buffer1 = avs1_compounded_loss * percentage_uninsured_1
+                message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.0f}"
+            else:  # Didn't buy insurance
+                buffer1 = avs1_compounded_loss
+                message1 = f"Buffer Insurance Amount Needed: ${buffer1:,.0f}"
+
+        with col51:
+            # Calculate buffer based on the selected insurance option
+            if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+                message2 = "No Extra Insurance Needed from Buffer"
+                buffer2 = 0
+            elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+                percentage_uninsured_2 = st.slider("% Amount Uninsured for AVS2", 0, 100, 50, key='percentage_uninsured_2') / 100
+                buffer2 = avs2_compounded_loss * percentage_uninsured_2
+                message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.0f}"
+            else:  # Didn't buy insurance
+                buffer2 = avs2_compounded_loss
+                message2 = f"Buffer Insurance Amount Needed: ${buffer2:,.0f}"
+
+        with col52:
+            # Calculate buffer based on the selected insurance option
+            if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0]:  # Bought appropriate amount
+                message3 = "No Extra Insurance Needed from Buffer"
+                buffer3 = 0
+            elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
+                percentage_uninsured_3 = st.slider("% Amount Uninsured for AVS3", 0, 100, 50, key='percentage_uninsured_3') / 100
+                buffer3 = avs3_compounded_loss * percentage_uninsured_3
+                message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.0f}"
+            else:  # Didn't buy insurance
+                buffer3 = avs3_compounded_loss
+                message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.0f}"
+
+
+        total_buffer_needed = buffer1 + buffer2 + buffer3
+
+        col54, col55, col56 = st.columns(3)
+
+        with col54: 
+                st.markdown(f"""
+                    <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                        <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                            AVS1 - <span style="font-size: 1em;">{message1}</span>
+                        </h2>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+        with col55:
+                st.markdown(f"""
+                    <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                        <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                            AVS2 - <span style="font-size: 1em;">{message2}</span>
+                        </h2>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+        with col56:
+                st.markdown(f"""
+                    <div style="border: 1px solid; border-radius: 2px; padding: 5px; text-align: center; margin: 5px 0;">
+                        <h2 style="color: black; margin: 0; font-size: 1.2em;">
+                            AVS3 - <span style="font-size: 1em;">{message3}</span>
+                        </h2>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+
+
+        st.write("\n")
+
+        buffer_coverage_level = st.session_state.buffer_reserve_amount - buffer1 - buffer2 - buffer3
+
+        buffer_coverage_level_value = buffer_coverage_level if buffer_coverage_level >= 0 else abs(buffer_coverage_level)
+        buffer_coverage_level_sign = '' if buffer_coverage_level >= 0 else '-'
+        buffer_coverage_level_color = "green" if buffer_coverage_level >= 0 else "red"
+
+        buffer_coverage_level_calc = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 20px; font-weight: bold;">Buffer Coverage Level = </span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">-</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">-</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer2:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;">-</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer3:,.0f}</span> 
+            <span style="font-size: 24px; font-weight: bold;"> = </span>
+            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {buffer_coverage_level_color};">{buffer_coverage_level_sign}${buffer_coverage_level_value:,.0f}</span>
+        </div>
+        """
+
+        st.markdown(buffer_coverage_level_calc, unsafe_allow_html = True)
+
+
+
+        st.write("\n")
+        st.write("\n")
+
+
+        total_buffer_needed = buffer1 + buffer2 + buffer3
+        if st.session_state.buffer_reserve_amount > total_buffer_needed:
+                st.success("Enough attributable security can be safeguarded from the Buffer.")
+        else:
+                st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds. We may be in the presence of an **Intermediate- or Max-Loss Risk of some or all the 3 AVSs failing**.")
+
+
+        def recalculate_and_update():
+
+            existing_reserve = st.session_state.get('existing_reserve', 0)
+            op_stake_slashable = st.session_state.get('op_stake_slashable', 0) / 2
+
+            existing_reserve = st.session_state['existing_reserve']
+            op_stake_slashable = st.session_state.op_stake_slashable / 2
+            
+            total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
+            stakesure_insurance_reserve = existing_reserve + op_stake_slashable
+            stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
+
+            st.session_state['stakesure_insurance_reserve'] = stakesure_insurance_reserve
+            st.session_state['stake_losses_coverage'] = stake_losses_coverage
 
 
     with st.expander("Logic"):
