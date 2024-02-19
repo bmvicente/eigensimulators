@@ -1558,20 +1558,14 @@ def main():
     st.write("  \n")
 
 
-    total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
+    post_slash_reserve = pre_slash_reserve - avs1_insured_portion - avs2_insured_portion - avs3_insured_portion + st.session_state.op_stake_slashable / 2
 
-    stakesure_insurance_reserve = pre_slash_reserve
-
-    stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
-        
-
-    background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
+    background_color = "#3CB371" if post_slash_reserve >= 0 else "#ff6666"  # green for enough, red for not enough
 
     avs1_insured_portion = avs1_compounded_loss - st.session_state.buffer1
     avs2_insured_portion = avs2_compounded_loss - st.session_state.buffer2
     avs3_insured_portion = avs3_compounded_loss - st.session_state.buffer3
 
-    post_slash_reserve = pre_slash_reserve - avs1_insured_portion - avs2_insured_portion - avs3_insured_portion + st.session_state.op_stake_slashable / 2
 
     st.markdown(
             f"""
@@ -1595,9 +1589,6 @@ def main():
     st.write("  \n")
 
 
-    stake_losses_coverage_value = stake_losses_coverage if stake_losses_coverage >= 0 else abs(stake_losses_coverage)
-    stake_losses_coverage_sign = '' if stake_losses_coverage >= 0 else '-'
-    stake_losses_coverage_color = "green" if stake_losses_coverage >= 0 else "red"
 
     stakesure_calc = f"""
     <div style="text-align: center;">
