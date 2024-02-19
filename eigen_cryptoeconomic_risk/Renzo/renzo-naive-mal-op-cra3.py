@@ -1551,10 +1551,7 @@ def main():
     stakesure_insurance_reserve = pre_slash_reserve + st.session_state.op_stake_slashable / 2
 
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
-        
-
-    background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
-    message = "(Enough to Cover Stake Losses)" if stake_losses_coverage >= 0 else "(Not Enough to Cover Stake Losses)"
+    
 
     st.markdown(
             f"""
@@ -1568,7 +1565,6 @@ def main():
                 <h2 style="color: black; margin: 0; font-size: 1.4em;">
                     <div style="display: block; margin-top: 5px;">
                     <span style="font-size: 1.1em;">Post-Slash <i>STAKESURE</i></span> (t+1): Existing Insurance Reserve + Amount from Operator Slashed Funds <span style="font-size: 0.8em;">(Operator Slashed Amount / 2)</span> = $<span style="font-size: 1.1em;">{stakesure_insurance_reserve:,.0f}</span>
-                        <br><span style="font-size: 18px; font-weight: bold;">{message}</span>
                     </div>
                 </h2>
             </div>
