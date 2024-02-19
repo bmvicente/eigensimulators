@@ -1560,7 +1560,7 @@ def main():
             <div style="
                 border: 3px solid;
                 border-radius: 5px;
-                padding: 5px;
+                padding: 10px;
                 text-align: center;
                 margin: 5px 0;
                 background-color: {background_color};">
