@@ -1551,7 +1551,9 @@ def main():
     stakesure_insurance_reserve = pre_slash_reserve + st.session_state.op_stake_slashable / 2
 
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
-    
+        
+
+    background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
 
     st.markdown(
             f"""
