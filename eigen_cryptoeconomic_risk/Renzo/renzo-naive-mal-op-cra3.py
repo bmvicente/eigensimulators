@@ -1596,6 +1596,7 @@ def main():
         <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(stakesure_insurance_reserve):,.0f}</span>
+        <span style="font-size: 16px; font-weight: bold;">(Pre-Slash Insurance Reserve - <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span> - <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span> - <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span> - Operator Slash Amount / 2 = Post-Slash Insurance Reserve)</span>
     </div>
     """
     st.markdown(stakesure_calc, unsafe_allow_html=True)
