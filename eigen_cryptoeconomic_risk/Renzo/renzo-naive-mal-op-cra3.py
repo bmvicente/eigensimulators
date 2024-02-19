@@ -1650,7 +1650,7 @@ def main():
     buffer_available_calc = f"""
         <div style="text-align: center;">
             <span style="font-size: 20px; font-weight: bold; ">Buffer Insurance Amount Available = </span>
-            <span style="font-size: 22px; font-weight: bold; background-color: #FFCCCC; border-radius: 10px; padding: 5px; margin: 2px;">${stake_losses_coverage:,.0f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${post_slash_reserve:,.0f}</span> 
             <span style="font-size: 24px; font-weight: bold;">+</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
             <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
