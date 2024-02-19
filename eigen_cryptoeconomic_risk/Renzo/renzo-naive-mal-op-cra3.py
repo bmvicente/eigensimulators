@@ -1467,13 +1467,6 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    if 'buffer1' not in st.session_state:
-        st.session_state.buffer1 = 0  
-    if 'buffer2' not in st.session_state:
-        st.session_state.buffer2 = 0  
-    if 'buffer3' not in st.session_state:
-        st.session_state.buffer3 = 0 
-
 
     def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
             high = "Bought Appropriate Amount of Insurance"
@@ -1594,11 +1587,11 @@ def main():
         <span style="font-size: 20px; font-weight: bold;">Post-Slash STAKESURE Insurance Available = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${pre_slash_reserve:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer1:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer2:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer3:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">+</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
         <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
