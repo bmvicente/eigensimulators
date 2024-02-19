@@ -1605,7 +1605,7 @@ def main():
         <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(post_slash_reserve):,.0f}</span>
     </div>
     <br>
-    <div style="text-align: center; font-size: 18px; font-weight: bold;">
+    <div style="text-align: center; font-size: 18px; font-weight: normal;">
         (Pre-Slash Insurance Reserve - <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span> - <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span> - <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span> - Operator Slash Amount / 2 = Post-Slash Insurance Reserve)
     </div>
     """
@@ -1769,7 +1769,7 @@ def main():
         <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px; color: {buffer_coverage_level_color};">{buffer_coverage_level_sign}${buffer_coverage_level_value:,.0f}</span>
     </div>
     <br>
-        <div style="text-align: center; font-size: 18px; font-weight: bold;">
+        <div style="text-align: center; font-size: 18px; font-weight: normal;">
             (Buffer Insurance Available - Uninsured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span> 
             - Uninsured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span> 
             - Uninsured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>)
