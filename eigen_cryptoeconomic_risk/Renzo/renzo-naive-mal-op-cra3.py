@@ -1342,6 +1342,10 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+    pre_slash_reserve = st.number_input("**Pre-Slash STAKESURE Insurance Amount Reserve (t)**", min_value=0,
+                                        max_value=100000000000, value=0, step=10000000,
+                                        key='pre_slash_reserve_key')
+    
 
     if 'insurance_statuses' not in st.session_state:
             st.session_state.insurance_statuses = {
@@ -1525,6 +1529,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+
 ###########################################################
 
 
@@ -1537,19 +1542,13 @@ def main():
         st.session_state['op_stake_slashable'] = 0
 
 
-    existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
-                                        max_value=100000000000, value=0, step=10000000,
-                                        key='existing_reserve_key')
-    
-
-    st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
 
     st.write("  \n")
 
 
     total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
 
-    stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
+    stakesure_insurance_reserve = pre_slash_reserve + st.session_state.op_stake_slashable / 2
 
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
         
@@ -1582,7 +1581,7 @@ def main():
     stakesure_calc = f"""
     <div style="text-align: center;">
         <span style="font-size: 20px; font-weight: bold; ">STAKESURE Insurance Available = </span>
-        <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${existing_reserve:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${pre_slash_reserve:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">+</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
         <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
