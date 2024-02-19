@@ -1558,7 +1558,6 @@ def main():
     st.write("  \n")
 
 
-    post_slash_reserve = pre_slash_reserve - avs1_insured_portion - avs2_insured_portion - avs3_insured_portion + st.session_state.op_stake_slashable / 2
 
     background_color = "#3CB371" if post_slash_reserve >= 0 else "#ff6666"  # green for enough, red for not enough
 
@@ -1566,6 +1565,7 @@ def main():
     avs2_insured_portion = avs2_compounded_loss - st.session_state.buffer2
     avs3_insured_portion = avs3_compounded_loss - st.session_state.buffer3
 
+    post_slash_reserve = pre_slash_reserve - avs1_insured_portion - avs2_insured_portion - avs3_insured_portion + st.session_state.op_stake_slashable / 2
 
     st.markdown(
             f"""
