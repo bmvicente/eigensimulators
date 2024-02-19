@@ -1770,7 +1770,9 @@ def main():
     </div>
     <br>
         <div style="text-align: center; font-size: 18px; font-weight: bold;">
-            (Buffer Insurance Available - Uninsured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span> - Uninsured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span> - Uninsured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>)
+            (Buffer Insurance Available - Uninsured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span> 
+            - Uninsured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span> 
+            - Uninsured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span>)
     </div>
     """
 
