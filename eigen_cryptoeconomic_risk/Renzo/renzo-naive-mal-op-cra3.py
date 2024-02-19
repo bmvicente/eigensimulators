@@ -1346,6 +1346,7 @@ def main():
                                         max_value=100000000000, value=0, step=10000000,
                                         key='pre_slash_reserve_key')
     
+    st.write("  \n")
 
     if 'insurance_statuses' not in st.session_state:
             st.session_state.insurance_statuses = {
