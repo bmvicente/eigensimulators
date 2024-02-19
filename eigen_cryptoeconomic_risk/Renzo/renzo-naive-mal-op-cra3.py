@@ -1545,10 +1545,11 @@ def main():
 
     st.write("  \n")
 
+    post_slash_reserve = pre_slash_reserve - avs1_compounded_loss - avs2_compounded_loss - avs3_compounded_loss + st.session_state.op_stake_slashable / 2
 
     total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
 
-    stakesure_insurance_reserve = pre_slash_reserve + st.session_state.op_stake_slashable / 2
+    stakesure_insurance_reserve = pre_slash_reserve
 
     stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
         
@@ -1595,7 +1596,7 @@ def main():
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
         <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
-        <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(stakesure_insurance_reserve):,.0f}</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(post_slash_reserve):,.0f}</span>
     </div>
     <br>
     <div style="text-align: center; font-size: 18px; font-weight: bold;">
