@@ -1585,7 +1585,7 @@ def main():
 
     stakesure_calc = f"""
     <div style="text-align: center;">
-        <span style="font-size: 20px; font-weight: bold; ">STAKESURE Insurance Available = </span>
+        <span style="font-size: 20px; font-weight: bold; ">Post-Slash STAKESURE Insurance Available = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${pre_slash_reserve:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
@@ -1605,8 +1605,6 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-
-    st.markdown(stakesure_coverage_level_calc, unsafe_allow_html=True)
 
 
 
