@@ -1518,9 +1518,11 @@ def main():
     st.write("\n")
 
 
-    button_text = '<p style="text-align: center; font-weight: bold; font-size: 20px;"><b>Update State</b></p>'
-    if st.button('Update State'):
-         st.write("")
+    update_button_clicked = st.button("Update State")
+
+    if update_button_clicked:
+        # Place your app update logic here
+        st.write("")
 
     st.write("\n")
     st.write("\n")
