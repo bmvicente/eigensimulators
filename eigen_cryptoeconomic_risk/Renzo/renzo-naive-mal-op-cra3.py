@@ -1467,6 +1467,13 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+    if 'buffer1' not in st.session_state:
+        st.session_state.buffer1 = 0  
+    if 'buffer2' not in st.session_state:
+        st.session_state.buffer2 = 0  
+    if 'buffer3' not in st.session_state:
+        st.session_state.buffer3 = 0 
+
 
     def evaluate_cryptoeconomic_security(avs1_coverage_status, avs2_coverage_status, avs3_coverage_status):
             high = "Bought Appropriate Amount of Insurance"
