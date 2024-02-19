@@ -1342,8 +1342,9 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    st.markdown('<p class="header-style" style="font-size: 22px;">PRE-SLASH (t)</p>', unsafe_allow_html=True)
+    st.markdown('<p class="header-style" style="font-size: 21px;">PRE-SLASH (t)</p>', unsafe_allow_html=True)
 
+    st.write("  \n")
     st.write("  \n")
 
     pre_slash_reserve = st.number_input("**Pre-Slash STAKESURE Insurance Amount Reserve (t):**", min_value=0,
@@ -1538,7 +1539,7 @@ def main():
 ###########################################################
 
 
-    st.markdown('<p class="header-style" style="font-size: 22px;">POST-SLASH (t+1)</p>', unsafe_allow_html=True)
+    st.markdown('<p class="header-style" style="font-size: 21px;">POST-SLASH (t+1)</p>', unsafe_allow_html=True)
 
 
     if 'existing_reserve' not in st.session_state:
