@@ -1793,8 +1793,8 @@ def main():
     st.write("\n")
 
 
-    total_buffer_needed = buffer1 + buffer2 + buffer3
-    if st.session_state.buffer_reserve_amount > total_buffer_needed:
+    total_buffer_needed = st.session_state.buffer1 + st.session_state.buffer2 + st.session_state.buffer3
+    if buffer_reserve_amount > total_buffer_needed:
             st.success("Enough attributable security can be safeguarded from the Buffer.")
     else:
             st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds. We may be in the presence of an **Intermediate- or Max-Loss Risk of some or all the 3 AVSs failing**.")
