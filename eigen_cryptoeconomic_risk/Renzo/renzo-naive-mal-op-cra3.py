@@ -1548,7 +1548,12 @@ def main():
     if 'op_stake_slashable' not in st.session_state:
         st.session_state['op_stake_slashable'] = 0
 
-
+    if 'buffer1' not in st.session_state:
+        st.session_state.buffer1 = 0
+    if 'buffer2' not in st.session_state:
+        st.session_state.buffer2 = 0
+    if 'buffer3' not in st.session_state:
+        st.session_state.buffer3 = 0
 
     st.write("  \n")
 
