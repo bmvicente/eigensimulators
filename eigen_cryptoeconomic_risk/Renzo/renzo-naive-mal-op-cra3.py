@@ -1624,8 +1624,6 @@ def main():
 
 
 
-
-
     ####################
     ###### BUFFER ######
     ####################
@@ -1643,7 +1641,7 @@ def main():
 
     st.markdown(f"""
             <div style="font-size: 22px;">
-                <b>Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users
+                <b>• Cryptoeconomic Buffer Available for Poorly Insured or Uninsured Users
             </div>
             """, unsafe_allow_html=True)
     
