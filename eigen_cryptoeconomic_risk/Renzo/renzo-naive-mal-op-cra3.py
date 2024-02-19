@@ -1522,9 +1522,9 @@ def main():
 
     #if update_button_clicked:
     #    st.write("")
-    
+
     button_text = '<p style="text-align: center; font-weight: bold; font-size: 20px;"><b>Update State</b></p>'
-    if st.button('Update State'):
+    if st.button('Update State')
 
     st.write("\n")
     st.write("\n")
