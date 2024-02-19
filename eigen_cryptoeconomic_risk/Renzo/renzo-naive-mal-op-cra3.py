@@ -1796,6 +1796,15 @@ def main():
             st.session_state['stake_losses_coverage'] = stake_losses_coverage
 
 
+        col1, col2, col3 = st.columns([9,10,1])
+
+        with col2:
+            button_text = '<p style="text-align: center; font-weight: bold; font-size: 20px;"><b>Update State</b></p>'
+            if st.button('Update State'):
+                recalculate_and_update()
+
+
+
     with st.expander("Logic"):
                 st.markdown(f"""
                     In a nutshell and as said in the beginning of the Simulator, STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. 
@@ -1823,13 +1832,6 @@ def main():
     st.write("\n")
 
 
-
-    col1, col2, col3 = st.columns([9,10,1])
-
-    with col2:
-        button_text = '<p style="text-align: center; font-weight: bold; font-size: 20px;"><b>Update State</b></p>'
-        if st.button('Update State'):
-            recalculate_and_update()
 
 
 
