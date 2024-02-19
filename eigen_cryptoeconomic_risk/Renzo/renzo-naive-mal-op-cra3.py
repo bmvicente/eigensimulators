@@ -1342,7 +1342,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    st.markdown('<p class="header-style" style="font-size: 20px;">PRE-SLASH (t)</p>', unsafe_allow_html=True)
+    st.markdown('<p class="header-style" style="font-size: 22px;">PRE-SLASH (t)</p>', unsafe_allow_html=True)
 
     st.write("  \n")
 
@@ -1538,7 +1538,7 @@ def main():
 ###########################################################
 
 
-    st.markdown('<p class="header-style" style="font-size: 20px;">POST-SLASH (t+1)</p>', unsafe_allow_html=True)
+    st.markdown('<p class="header-style" style="font-size: 22px;">POST-SLASH (t+1)</p>', unsafe_allow_html=True)
 
 
     if 'existing_reserve' not in st.session_state:
