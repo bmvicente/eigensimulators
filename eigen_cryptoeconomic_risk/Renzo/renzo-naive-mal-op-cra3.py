@@ -1516,6 +1516,9 @@ def main():
     
     st.write("\n")
     st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
 
 
 ###########################################################
@@ -1583,6 +1586,8 @@ def main():
     """
     st.markdown(stakesure_calc, unsafe_allow_html=True)
 
+    st.write("  \n")
+    st.write("  \n")
 
 
     stake_losses_coverage_value = stake_losses_coverage if stake_losses_coverage >= 0 else abs(stake_losses_coverage)
