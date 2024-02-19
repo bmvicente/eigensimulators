@@ -1594,7 +1594,7 @@ def main():
         <span style="font-size: 20px; font-weight: bold;">STAKESURE Insurance Coverage Level = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${stakesure_insurance_reserve:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{stake_losses_coverage_sign}${avs1_compounded_loss:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
