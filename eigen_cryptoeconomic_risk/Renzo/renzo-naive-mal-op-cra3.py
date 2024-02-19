@@ -1497,6 +1497,21 @@ def main():
         </div>
         """
 
+
+    def recalculate_and_update():
+        existing_reserve = st.session_state.get('existing_reserve', 0)
+        op_stake_slashable = st.session_state.get('op_stake_slashable', 0) / 2
+
+        existing_reserve = st.session_state['existing_reserve']
+        op_stake_slashable = st.session_state.op_stake_slashable / 2
+
+        total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
+        stakesure_insurance_reserve = existing_reserve + op_stake_slashable
+        stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
+
+        st.session_state['stakesure_insurance_reserve'] = stakesure_insurance_reserve
+        st.session_state['stake_losses_coverage'] = stake_losses_coverage
+
     def update_state():
         cryptoeconomic_security_level = evaluate_cryptoeconomic_security(
             st.session_state.insurance_statuses['avs1_insurance_status'],
@@ -1512,6 +1527,8 @@ def main():
 
         st.write("\n")
         st.write("\n")
+
+        recalculate_and_update()
 
     button_text = '<p style="text-align: center; font-weight: bold; font-size: 20px;"><b>Update State</b></p>'
     if st.button('Update State'):
