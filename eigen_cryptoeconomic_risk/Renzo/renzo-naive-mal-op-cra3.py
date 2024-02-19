@@ -1801,25 +1801,11 @@ def main():
                     st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds. We may be in the presence of an **Intermediate- or Max-Loss Risk of some or all the 3 AVSs failing**.")
 
 
-            def recalculate_and_update():
-
-                existing_reserve = st.session_state.get('existing_reserve', 0)
-                op_stake_slashable = st.session_state.get('op_stake_slashable', 0) / 2
-
-                existing_reserve = st.session_state['existing_reserve']
-                op_stake_slashable = st.session_state.op_stake_slashable / 2
-                
-                total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
-                stakesure_insurance_reserve = existing_reserve + op_stake_slashable
-                stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
-
-                st.session_state['stakesure_insurance_reserve'] = stakesure_insurance_reserve
-                st.session_state['stake_losses_coverage'] = stake_losses_coverage
 
 
             col1, col2, col3 = st.columns([9,10,1])
 
-            with col2:
+    with col2:
                 button_text = '<p style="text-align: center; font-weight: bold; font-size: 20px;"><b>Update State</b></p>'
                 if st.button('Update State'):
                     recalculate_and_update()
