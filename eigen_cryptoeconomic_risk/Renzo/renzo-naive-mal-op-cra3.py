@@ -1342,6 +1342,10 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+    st.write("**PRE-SLASH (t)**")
+
+    st.write("  \n")
+
     pre_slash_reserve = st.number_input("**Pre-Slash STAKESURE Insurance Amount Reserve (t):**", min_value=0,
                                         max_value=100000000000, value=0, step=10000000,
                                         key='pre_slash_reserve_key')
@@ -1534,6 +1538,7 @@ def main():
 
 ###########################################################
 
+    st.write("**POST-SLASH (t+1)**")
 
 
 
