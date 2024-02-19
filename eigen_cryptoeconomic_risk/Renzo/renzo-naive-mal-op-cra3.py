@@ -1341,70 +1341,6 @@ def main():
     
     st.write("  \n")
 
-    if 'existing_reserve' not in st.session_state:
-        st.session_state['existing_reserve'] = 0
-
-    if 'op_stake_slashable' not in st.session_state:
-        st.session_state['op_stake_slashable'] = 0
-
-
-    existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
-                                        max_value=100000000000, value=0, step=10000000,
-                                        key='existing_reserve_key')
-    
-
-    st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
-
-    st.write("  \n")
-    st.write("  \n")
-
-
-    total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
-
-    stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
-
-    stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
-        
-
-    background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
-    message = "(Enough to Cover Stake Losses)" if stake_losses_coverage >= 0 else "(Not Enough to Cover Stake Losses)"
-
-    st.markdown(
-            f"""
-            <div style="
-                border: 3px solid;
-                border-radius: 5px;
-                padding: 5px;
-                text-align: center;
-                margin: 5px 0;
-                background-color: {background_color};">
-                <h2 style="color: black; margin: 0; font-size: 1.4em;">
-                    <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span>: Existing Insurance Reserve + Amount from Operator Slashed Funds <span style="font-size: 0.8em;">(Operator Slashed Amount / 2)</span> = $<span style="font-size: 1.1em;">{stakesure_insurance_reserve:,.0f}</span>
-                        <br><span style="font-size: 18px; font-weight: bold;">{message}</span>
-                    </div>
-                </h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
-    
-    st.write("  \n")
-
-    stakesure_calc = f"""
-    <div style="text-align: center;">
-        <span style="font-size: 20px; font-weight: bold; ">STAKESURE Insurance Available = </span>
-        <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${existing_reserve:,.0f}</span> 
-        <span style="font-size: 24px; font-weight: bold;">+</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
-        <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
-        <span style="font-size: 24px; font-weight: bold;"> = </span>
-        <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(stakesure_insurance_reserve):,.0f}</span>
-    </div>
-    """
-    st.markdown(stakesure_calc, unsafe_allow_html=True)
-
-
 
     st.write("  \n")
     st.write("  \n")
@@ -1583,6 +1519,73 @@ def main():
     
     st.write("\n")
     st.write("\n")
+
+
+###########################################################
+
+    if 'existing_reserve' not in st.session_state:
+        st.session_state['existing_reserve'] = 0
+
+    if 'op_stake_slashable' not in st.session_state:
+        st.session_state['op_stake_slashable'] = 0
+
+
+    existing_reserve = st.number_input("**STAKESURE Insurance Amount Already in Reserve**", min_value=0,
+                                        max_value=100000000000, value=0, step=10000000,
+                                        key='existing_reserve_key')
+    
+
+    st.write(f"""• STAKESURE Amount in Reserve: ${existing_reserve:,.0f}""")
+
+    st.write("  \n")
+    st.write("  \n")
+
+
+    total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
+
+    stakesure_insurance_reserve = existing_reserve + st.session_state.op_stake_slashable / 2
+
+    stake_losses_coverage = stakesure_insurance_reserve - total_stake_losses
+        
+
+    background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
+    message = "(Enough to Cover Stake Losses)" if stake_losses_coverage >= 0 else "(Not Enough to Cover Stake Losses)"
+
+    st.markdown(
+            f"""
+            <div style="
+                border: 3px solid;
+                border-radius: 5px;
+                padding: 5px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: {background_color};">
+                <h2 style="color: black; margin: 0; font-size: 1.4em;">
+                    <div style="display: block; margin-top: 5px;">
+                    <span style="font-size: 1.1em;"><i>STAKESURE</i></span>: Existing Insurance Reserve + Amount from Operator Slashed Funds <span style="font-size: 0.8em;">(Operator Slashed Amount / 2)</span> = $<span style="font-size: 1.1em;">{stakesure_insurance_reserve:,.0f}</span>
+                        <br><span style="font-size: 18px; font-weight: bold;">{message}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+    
+    st.write("  \n")
+
+    stakesure_calc = f"""
+    <div style="text-align: center;">
+        <span style="font-size: 20px; font-weight: bold; ">STAKESURE Insurance Available = </span>
+        <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${existing_reserve:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">+</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
+        <span style="font-size: 24px; font-weight: bold;"> = </span>
+        <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(stakesure_insurance_reserve):,.0f}</span>
+    </div>
+    """
+    st.markdown(stakesure_calc, unsafe_allow_html=True)
+
 
 
     stake_losses_coverage_value = stake_losses_coverage if stake_losses_coverage >= 0 else abs(stake_losses_coverage)
