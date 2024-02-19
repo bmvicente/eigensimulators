@@ -1526,13 +1526,6 @@ def main():
 
     st.markdown('<p style="font-size: 18px;">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses. If we are presented only with a Medium or Weak Level of Cryptoeconomic Security, we should turn to STAKESURE.</p>', unsafe_allow_html=True)
     
-    st.write("\n")
-    st.write("\n")
-
-    avs1_insured_portion = avs1_compounded_loss - st.session_state.buffer1
-    avs2_insured_portion = avs2_compounded_loss - st.session_state.buffer2
-    avs3_insured_portion = avs3_compounded_loss - st.session_state.buffer3
-
 
 
     st.write("\n")
@@ -1559,7 +1552,7 @@ def main():
 
     st.write("  \n")
 
-    post_slash_reserve = pre_slash_reserve - avs1_insured_portion - avs2_insured_portion - avs3_insured_portion + st.session_state.op_stake_slashable / 2
+    post_slash_reserve = pre_slash_reserve - st.session_state.avs1_insured_portion - st.session_state.avs2_insured_portion - st.session_state.avs3_insured_portion + st.session_state.op_stake_slashable / 2
 
     total_stake_losses = avs1_compounded_loss + avs2_compounded_loss + avs3_compounded_loss
 
@@ -1569,6 +1562,10 @@ def main():
         
 
     background_color = "#3CB371" if stake_losses_coverage >= 0 else "#ff6666"  # green for enough, red for not enough
+
+    st.session_state.avs1_insured_portion = avs1_compounded_loss - st.session_state.buffer1
+    st.session_state.avs2_insured_portion = avs2_compounded_loss - st.session_state.buffer2
+    st.session_state.avs3_insured_portion = avs3_compounded_loss - st.session_state.buffer3
 
     st.markdown(
             f"""
@@ -1601,11 +1598,11 @@ def main():
         <span style="font-size: 20px; font-weight: bold;">Post-Slash STAKESURE Insurance Available = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${pre_slash_reserve:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_insured_portion:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.avs1_insured_portion:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_insured_portion:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.avs2_insured_portion:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_insured_portion:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.avs3_insured_portion:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">+</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
         <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
