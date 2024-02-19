@@ -1548,6 +1548,9 @@ def main():
     if 'op_stake_slashable' not in st.session_state:
         st.session_state['op_stake_slashable'] = 0
 
+    if 'post_slash_reserve' not in st.session_state:
+        st.session_state['post_slash_reserve'] = 0
+
     if 'buffer1' not in st.session_state:
         st.session_state.buffer1 = 0
     if 'buffer2' not in st.session_state:
@@ -1559,13 +1562,13 @@ def main():
 
 
 
-    background_color = "#3CB371" if post_slash_reserve >= 0 else "#ff6666"  # green for enough, red for not enough
+    background_color = "#3CB371" if st.session_state.post_slash_reserve >= 0 else "#ff6666"  # green for enough, red for not enough
 
     avs1_insured_portion = avs1_compounded_loss - st.session_state.buffer1
     avs2_insured_portion = avs2_compounded_loss - st.session_state.buffer2
     avs3_insured_portion = avs3_compounded_loss - st.session_state.buffer3
 
-    post_slash_reserve = pre_slash_reserve - avs1_insured_portion - avs2_insured_portion - avs3_insured_portion + st.session_state.op_stake_slashable / 2
+    st.session_state.post_slash_reserve = pre_slash_reserve - avs1_insured_portion - avs2_insured_portion - avs3_insured_portion + st.session_state.op_stake_slashable / 2
 
     st.markdown(
             f"""
@@ -1578,7 +1581,7 @@ def main():
                 background-color: {background_color};">
                 <h2 style="color: black; margin: 0; font-size: 1.4em;">
                     <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 1.1em;">Post-Slash <i>STAKESURE</i></span> (t+1) = $<span style="font-size: 1.1em;">{post_slash_reserve:,.0f}</span>
+                    <span style="font-size: 1.1em;">Post-Slash <i>STAKESURE</i></span> (t+1) = $<span style="font-size: 1.1em;">{st.session_state.post_slash_reserve:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1604,7 +1607,7 @@ def main():
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
         <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
-        <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(post_slash_reserve):,.0f}</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(st.session_state.post_slash_reserve):,.0f}</span>
     </div>
     <br>
     <div style="text-align: center; font-size: 18px; font-weight: normal;">
@@ -1650,12 +1653,12 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    buffer_reserve_amount = post_slash_reserve + st.session_state.op_stake_slashable / 2
+    buffer_reserve_amount = st.session_state.post_slash_reserve + st.session_state.op_stake_slashable / 2
 
     buffer_available_calc = f"""
         <div style="text-align: center;">
             <span style="font-size: 20px; font-weight: bold; ">Buffer Insurance Amount Available = </span>
-            <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${post_slash_reserve:,.0f}</span> 
+            <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.post_slash_reserve:,.0f}</span> 
             <span style="font-size: 24px; font-weight: bold;">+</span>
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
             <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
