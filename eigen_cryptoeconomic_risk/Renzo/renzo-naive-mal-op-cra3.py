@@ -1007,6 +1007,8 @@ def main():
             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{allowed_vs_actual_evaluation_result:,.2f}</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span>
+            <div style="text-align: center; margin-top: 10px;">
+            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on Cryptoeconomic Security * Operator Entrenchment Level * AVS Category * AVS Individual Risk Score * BST Status (β) = AVS2 Total Compounded Stake-Loss)</span>
         </div>
         """
 
@@ -1225,6 +1227,8 @@ def main():
                 <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{allowed_vs_actual_evaluation_result:,.2f}</span> 
                 <span style="font-size: 24px; font-weight: bold;"> = </span>
                 <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span>
+            <div style="text-align: center; margin-top: 10px;">
+            <span style="font-size: 16px; font-weight: bold;">(Actual Slash on Cryptoeconomic Security * Operator Entrenchment Level * AVS Category * AVS Individual Risk Score * BST Status (β) = AVS3 Total Compounded Stake-Loss)</span>
             </div>
             """
 
