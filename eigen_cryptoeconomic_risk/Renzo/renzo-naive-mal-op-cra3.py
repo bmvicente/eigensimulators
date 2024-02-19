@@ -1338,9 +1338,6 @@ def main():
 
 
     st.subheader("**Malicious Operator → AVS Slashing Event Simulator:** *STAKESURE Approach*")
-    
-    st.write("  \n")
-
 
     st.write("  \n")
     st.write("  \n")
