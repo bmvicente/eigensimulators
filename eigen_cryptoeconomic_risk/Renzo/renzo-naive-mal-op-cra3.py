@@ -1583,7 +1583,7 @@ def main():
 
     stakesure_calc = f"""
     <div style="text-align: center;">
-        <span style="font-size: 20px; font-weight: bold; ">Post-Slash STAKESURE Insurance Available = </span>
+        <span style="font-size: 20px; font-weight: bold;">Post-Slash STAKESURE Insurance Available = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${pre_slash_reserve:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
@@ -1596,9 +1596,13 @@ def main():
         <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
         <span style="font-size: 24px; font-weight: bold;"> = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(stakesure_insurance_reserve):,.0f}</span>
-        <span style="font-size: 16px; font-weight: bold;">(Pre-Slash Insurance Reserve - <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span> - <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS2</sub></span> - <span style="font-size: 1.2em;">Ψ<sub style="font-size: 0.9em;">AVS3</sub></span> - Operator Slash Amount / 2 = Post-Slash Insurance Reserve)</span>
+    </div>
+    <div style="text-align: center; font-size: 16px; font-weight: bold;">
+        (Pre-Slash Insurance Reserve - <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span> - <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span> - <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span> - Operator Slash Amount / 2 = Post-Slash Insurance Reserve)
     </div>
     """
+
+
     st.markdown(stakesure_calc, unsafe_allow_html=True)
 
     st.write("  \n")
