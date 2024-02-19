@@ -1586,16 +1586,16 @@ def main():
     <div style="text-align: center;">
         <span style="font-size: 20px; font-weight: bold;">Post-Slash STAKESURE Insurance Available = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: orange; border-radius: 10px; padding: 5px; margin: 2px;">${pre_slash_reserve:,.0f}</span> 
-        <span style="font-size: 26px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs1_compounded_loss:,.0f}</span> 
-        <span style="font-size: 26px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs2_compounded_loss:,.0f}</span> 
-        <span style="font-size: 26px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${avs3_compounded_loss:,.0f}</span> 
-        <span style="font-size: 26px; font-weight: bold;">+</span>
+        <span style="font-size: 24px; font-weight: bold;">-</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer1:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">-</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer2:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">-</span>
+        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer3:,.0f}</span> 
+        <span style="font-size: 24px; font-weight: bold;">+</span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
         <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
-        <span style="font-size: 26px; font-weight: bold;"> = </span>
+        <span style="font-size: 24px; font-weight: bold;"> = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(post_slash_reserve):,.0f}</span>
     </div>
     <br>
@@ -1712,7 +1712,7 @@ def main():
             message3 = f"Buffer Insurance Amount Needed: ${buffer3:,.0f}"
 
 
-    total_buffer_needed = buffer1 + buffer2 + buffer3
+    total_buffer_needed = st.session_state.buffer1 + st.session_state.buffer2 + st.session_state.buffer3
 
     col54, col55, col56 = st.columns(3)
 
@@ -1758,7 +1758,7 @@ def main():
         <span style="font-size: 20px; font-weight: bold;">Buffer Coverage Level = </span>
         <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
-        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer1:,.0f}</span> 
+        <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer1:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
         <span style="font-size: 22px; font-weight: bold; background-color: #D2B48C; border-radius: 10px; padding: 5px; margin: 2px;">${buffer2:,.0f}</span> 
         <span style="font-size: 24px; font-weight: bold;">-</span>
