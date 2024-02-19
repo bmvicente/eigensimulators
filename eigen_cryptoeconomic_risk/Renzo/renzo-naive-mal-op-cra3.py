@@ -1690,7 +1690,7 @@ def main():
             st.session_state.buffer1 = 0
         elif st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_insured_1 = st.slider("% Amount Insured for AVS1", 0, 100, 50, key='percentage_insured_1') / 100
-            st.session_state.buffer1 = avs1_compounded_loss * (100 - percentage_insured_1)
+            st.session_state.buffer1 = avs1_compounded_loss * (1 - percentage_insured_1)
             message1 = f"Buffer Insurance Amount Needed: ${st.session_state.buffer1:,.0f}"
         else:  # Didn't buy insurance
             st.session_state.buffer1 = avs1_compounded_loss
@@ -1703,7 +1703,7 @@ def main():
             st.session_state.buffer2 = 0
         elif st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_insured_2 = st.slider("% Amount Insured for AVS2", 0, 100, 50, key='percentage_insured_2') / 100
-            st.session_state.buffer2 = avs2_compounded_loss * (100 - percentage_insured_2)
+            st.session_state.buffer2 = avs2_compounded_loss * (1 - percentage_insured_2)
             message2 = f"Buffer Insurance Amount Needed: ${st.session_state.buffer2:,.0f}"
         else:  # Didn't buy insurance
             st.session_state.buffer2 = avs2_compounded_loss
@@ -1716,7 +1716,7 @@ def main():
             st.session_state.buffer3 = 0
         elif st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[1]:  # Bought inappropriate amount
             percentage_insured_3 = st.slider("% Amount Insured for AVS3", 0, 100, 50, key='percentage_insured_3') / 100
-            st.session_state.buffer3 = avs3_compounded_loss * (100 - percentage_insured_3)
+            st.session_state.buffer3 = avs3_compounded_loss * (1 - percentage_insured_3)
             message3 = f"Buffer Insurance Amount Needed: ${st.session_state.buffer3:,.0f}"
         else:  # Didn't buy insurance
             st.session_state.buffer3 = avs3_compounded_loss
