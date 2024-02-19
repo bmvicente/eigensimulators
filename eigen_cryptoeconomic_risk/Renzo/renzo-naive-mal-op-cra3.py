@@ -1793,8 +1793,9 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
-                    In a nutshell and as said in the beginning of the Simulator, STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. We recommend checking out the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797) for a deeper dive on this topic.
+                    In a nutshell and as said in the beginning of the Simulator, STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. 
                     This is what it means to have attributable and scaling security in a Restaking cryptoeconomic context.
+                    We recommend checking out the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797) for a deeper dive on this topic.
                     
                     Main insights:
                     - **STAKESURE Insurance Reserve Available**: Reserve + Operator Stake Amount / 2 (Other half Operator Stake Amount / 2 burnt or allocate to a cryptoeconomic buffer)
