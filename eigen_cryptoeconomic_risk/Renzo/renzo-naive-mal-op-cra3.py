@@ -1646,6 +1646,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+    buffer_reserve_amount = post_slash_reserve + st.session_state.op_stake_slashable / 2
 
     buffer_available_calc = f"""
         <div style="text-align: center;">
@@ -1655,7 +1656,7 @@ def main():
             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.op_stake_slashable:,.0f}</span> 
             <span style="font-size: 22px; font-weight: bold;">/ 2</span> 
             <span style="font-size: 24px; font-weight: bold;"> = </span>
-            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">${st.session_state.buffer_reserve_amount:,.0f}</span>
+            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">${buffer_reserve_amount:,.0f}</span>
         </div>
     """        
     
@@ -1666,8 +1667,6 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-
-    st.session_state.buffer_reserve_amount = stake_losses_coverage + st.session_state.op_stake_slashable / 2
 
 
     buffer1, buffer2, buffer3 = 0, 0, 0 
