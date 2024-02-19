@@ -1791,9 +1791,9 @@ def main():
 
     total_buffer_needed = st.session_state.buffer1 + st.session_state.buffer2 + st.session_state.buffer3
     if buffer_reserve_amount > total_buffer_needed:
-            st.success("Enough attributable security can be safeguarded from the Buffer.")
+            st.success("Enough **Attributable Security** can be safeguarded from the Buffer.")
     else:
-            st.error("Not enough attributable security can be safeguarded from the Buffer due to a shortage of funds. We may be in the presence of an **Intermediate- or Max-Loss Risk of some or all the 3 AVSs failing**.")
+            st.error("Not enough **Attributable Security** can be safeguarded from the Buffer due to a shortage of funds. We may be in the presence of an **Intermediate- or Max-Loss Risk of some or all the 3 AVSs failing**.")
 
 
     def recalculate_and_update():
