@@ -1514,13 +1514,7 @@ def main():
 
     st.markdown('<p style="">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses.</p>', unsafe_allow_html=True)
     
-
-    update_button_clicked = st.button("Update App")
-
-    if update_button_clicked:
-        # Place your app update logic here
-        st.write("App updated successfully!")
-
+    
     st.write("\n")
     st.write("\n")
     st.write("\n")
