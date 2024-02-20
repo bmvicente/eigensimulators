@@ -1668,7 +1668,7 @@ def main():
             <div style="
                 border: 3px solid;
                 border-radius: 5px;
-                padding: 10px;
+                padding: 5px;
                 text-align: center;
                 margin: 5px 0;
                 background-color: {background_color};">
@@ -1682,6 +1682,7 @@ def main():
             unsafe_allow_html=True
         )
 
+    st.write("  \n")
 
     buffer_available_calc = f"""
         <div style="text-align: center;">
