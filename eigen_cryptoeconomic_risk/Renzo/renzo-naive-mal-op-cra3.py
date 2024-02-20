@@ -1524,7 +1524,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown('<p style="font-size: 18px;">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses. If we are presented only with a Medium or Weak Level of Cryptoeconomic Security, we should pass on to STAKESURE Reserve.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 18px;">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses. If we are presented only with a Medium or Weak Level of Cryptoeconomic Security, we should revert to STAKESURE Reserve.</p>', unsafe_allow_html=True)
     
 
 
@@ -1625,7 +1625,7 @@ def main():
     if st.session_state.post_slash_reserve > 0:
             st.success("Enough **Attributable Security** can be safeguarded from the **STAKESURE Reserve**.")
     else:
-            st.error("Not enough **Attributable Security** can be safeguarded from the **STAKESURE Reserve** due to a shortage of funds. We should pass on to the **Buffer**.")
+            st.error("Not enough **Attributable Security** can be safeguarded from the **STAKESURE Reserve** due to a shortage of funds. We should revert to the **Buffer**.")
 
 
 
@@ -1837,7 +1837,7 @@ def main():
                     "*Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available. Thus even if only a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact. 
                     It is possible, nevertheless, that smaller transactors may not have the foresight to buy insurance or may simply risk their funds (trying to freeride on the assumed safety of the system). We need to make sure that there is enough cryptoeconomic buffer in the system for these transactors to exist. We need to make sure that there is enough cost-of-corruption to protect against these small transactors, even though they do not have any insurance.*"
                     
-                    From the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797). Recommmended reading for a deeper dive on this topic.
+                    From the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797). Recommended reading for a deeper dive on this topic.
                     
                     Logic behind the STAKESURE Approach Simulator:
                     - **Post-Slash STAKESURE Insurance Reserve Available**: Pre-Slash Reserve Available - Σ(Insured Ψj) + Operator Slashed Stake Amount/2 (other half of Operator Slashed Stake is to be allocated to a cryptoeconomic buffer or burnt to safeguard against irrational users that have not bought enough insurance or bought no insurance at all);
