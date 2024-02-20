@@ -1846,9 +1846,10 @@ def main():
                     - If it so happens that **Post-Slash STAKESURE Insurance Available < 0** and if NOT all AVSs bought an appropriate amount of Insurance, we should revert to the **Buffer**;
                     - If an AVS "Didn't Buy Insurance", all the Ψ amount for that AVS will be passed on to the **Buffer**, and if an AVS "Bought Inappropriate Amount of Insurance" a slider pops up that enables the user to set the *percentage of Ψ that was Insured and covered by the STAKESURE Reserve*, while the remaining *percentage of Ψ that was Uninsured will be covered by the Buffer*;
                     - The **Buffer** takes the leftover from the Reserve (if it exists) that hasn't been allocated and, if needed, the other half of Operator's slashed stake to adequately accommodate for Uninsured or Poorly-Insured users;
-                    - Finally, the **Buffer Coverage Level** assesses if the Buffer, in turn, is able to cover for the Uninsured portions of stake per AVS that were not covered by the initial STAKESURE Reserve.
+                    - Finally, the **Buffer Coverage Level** assesses if the Buffer, in turn, is able to cover for the Uninsured portions of stake per AVS that were not covered by the initial STAKESURE Reserve. If that's the case, we may be in the presence of an intermediate- or max-loss cascading risk scenario, as the pop-up message displays.
                                         
                     By offering such hindsight view, this simulation model also helps answer the question: *How much insurance should honest AVSs buy?* 
+                    
                     The potential compounded risks of AVSs and how much insurance is already in Reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.          
                             """)
                 
