@@ -248,7 +248,7 @@ def main():
                             <h2 style="color: black; margin: 0; font-size: 1.1em;">
                                 <div style="display: block;">
                                     <span style="font-size: 1.3em;">α<sub style="font-size: 0.8em;">jt</sub></span> &nbsp; | &nbsp;
-                                    {max_slash_allowed_text}: <span style="font-size: 1.1em;">${abs(pre_slash_max_slash_allowed):,.0f}</span>
+                                    {max_slash_allowed_text}: <span style="font-size: 1.1em;">${pre_slash_max_slash_allowed:,.0f}</span>
                                     <br>
                                     <span style="font-size: 16px; font-weight: normal;">(CoC t - PfC t)</span>
                                 </div>

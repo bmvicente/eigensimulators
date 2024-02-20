@@ -189,6 +189,16 @@ def main():
 
 
     with col21:
+
+        if max_slash_allowed >= 0:
+            background_color = "#90EE90"  # light green for positive allowed loss
+            max_slash_allowed_text = "Max Total Stake-Loss \"Allowed\" To Still Maintain Cryptoeconomic Security"
+        else:
+            background_color = "#ff9999"  # red for a negative allowed loss, indicating an insecure condition
+            max_slash_allowed_text = "Ecosystem Already in an Insecure and Compromisable Cryptoeconomic Position of"
+
+        
+
         st.markdown(
                     f"""
                     <div style="
@@ -206,7 +216,7 @@ def main():
                                 <br> <!-- Extra space -->
                             </div>
                             <div style="display: block;">
-                                Max Stake-Loss "Allowed" To Still Maintain Cryptoeconomic Security: <span style="font-size: 1.1em;">${max_slash_allowed:,.0f}</span>
+                                {max_slash_allowed_text}: <span style="font-size: 1.1em;">${max_slash_allowed:,.0f}</span>
                             </div>
                         </h2>
                     </div>
