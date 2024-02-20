@@ -1845,7 +1845,7 @@ def main():
                     - The system is always cryptoeconomically insecure to some degree if NOT all AVSs bought an appropriate amount of Insurance;
                     - If it so happens that **Post-Slash STAKESURE Insurance Available < 0** and if NOT all AVSs bought an appropriate amount of Insurance, we should revert to the **Buffer**;
                     - If an AVS "Didn't Buy Insurance", all the Ψ amount for that AVS will be passed on to the **Buffer**, and if an AVS "Bought Inappropriate Amount of Insurance" a slider pops up that enables the user to set the *percentage of Ψ that was Insured and covered by the STAKESURE Reserve*, while the remaining *percentage of Ψ that was Uninsured will be covered by the Buffer*;
-                    - The **Buffer** takes the leftover (if it exists) of this Reserve that hasn't been used and, if needed, the remaining half of Operator's slashed stake to adequately accommodate for Uninsured or poorly Insured users;
+                    - The **Buffer** takes the leftover from the Reserve (if it exists) that hasn't been allocated and, if needed, the remaining half of Operator's slashed stake to adequately accommodate for Uninsured or poorly Insured users;
                     - Finally, the **Buffer Coverage Level** assesses if the Buffer, in turn, is able to cover for the Uninsured portions of stake per AVS that were not covered by the initial STAKESURE Reserve.
                                         
                     By offering such hindsight view, this simulation model also helps answer the question: *How much insurance should honest AVSs buy?* 
