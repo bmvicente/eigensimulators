@@ -94,7 +94,7 @@ def main():
                     
                     This is exactly what we attempt to model and simulate at the end of this Simulator: the STAKESURE mechanism with the optional Insurance Buffer for negligent users.
 
-                    Whilst in-between the Naive and STAKESURE approaches there exist mechanisms around Reversion Periods for Reorg attacks to further levy CoC and reduce chances at extracting PfC, we took the Naive case and then went straight to STAKESURE. This unorthodox bridging is helpful to stress-test STAKESURE against the least-cryptoeconomically-secure approach possible.
+                    Whilst in-between the Naive and STAKESURE approaches there exist mechanisms around Reversion Periods for Reorg attacks to further levy CoC and reduce chances at extracting PfC, we took the Naive case and then went straight to STAKESURE. This unorthodox bridging is helpful to understand how **Attributable Security** can work and stress-test STAKESURE against the least-cryptoeconomically-secure approach possible.
                     """)
     
 
@@ -431,9 +431,7 @@ def main():
                             Naturally, the Total Amount Staked Post-Slash (Tt+1) is given by *Tt - Slashed Operator Stake*. PfC post-slash should stay the same as the slash should have no impact on the AVSs' TVL. As a result, **Actual Slash on Cryptoeconomic Security** (δ) is given by the CoC amount pre-slash subtracted by the CoC amount post-slash.
 
                         - **BST test** (β): As introduced in the previous Simulator, the Byzantine Slashing Tolerance test assesses the Cryptoeconomic Security of the AVS ecosystem, post Operator Slash or Stake-Loss event. The network is in a secure cryptoeconomic position if the **Max Total Stake-Loss "Allowed" To Still Maintain Cryptoeconomic Security** is greater than the **Actual Slash on Cryptoeconomic Security**, and in an insecure position if the opposite is true. Therefore, the ecosystem has failed this test if β < 0, and passed if β > 0.
-                        
-                        At the end of the Simulator, we introduce the **STAKESURE staking insurance mechanism** to illustrate how a β < 0 situation might be reverted.
-                            """)
+                                                    """)
 
 
 
@@ -1832,23 +1830,21 @@ def main():
     with st.expander("Logic"):
                 st.markdown(f"""
                     In a nutshell and as said in the beginning of the Simulator, **STAKESURE** ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. 
-                    This is what it means to have Attributable Security in a Restaking cryptoeconomic context.
-                    
+                    This is what it means to have Attributable Security in a Restaking cryptoeconomic context.      
+                            
                     From the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797) (recommended reading for a deeper dive on this topic):
 
                     "*Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available. Thus even if only a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact. 
                     It is possible, nevertheless, that smaller transactors may not have the foresight to buy insurance or may simply risk their funds (trying to freeride on the assumed safety of the system). We need to make sure that there is enough cryptoeconomic buffer in the system for these transactors to exist. We need to make sure that there is enough cost-of-corruption to protect against these small transactors, even though they do not have any insurance.*"
-                                        
+                    
                     Logic behind the STAKESURE Approach Simulator:
                     - **Post-Slash STAKESURE Insurance Reserve Available**: Pre-Slash Reserve Available - Σ(Insured Ψj) + Operator Slashed Stake Amount/2 (other half of Operator Slashed Stake is to be allocated to a cryptoeconomic buffer or burnt to safeguard against irrational users that have not bought enough insurance or bought no insurance at all);
-                    - If all AVSs bought an appropriate amount of insurance, the system is cryptoeconomically secure. There's no need to revert to the Reserve or Buffer;
-                    - The system is always cryptoeconomically insecure to some degree if NOT all AVSs bought an appropriate amount of Insurance;
-                    - If it so happens that **Post-Slash STAKESURE Insurance Available < 0** and if NOT all AVSs bought an appropriate amount of Insurance, we should revert to the **Buffer**;
+                    - If **Post-Slash STAKESURE Insurance Reserve Available > 0** and all AVSs bought an appropriate amount of insurance, the system is cryptoeconomically secure, there is no need to revert to the Reserve or Buffer. The system is always cryptoeconomically insecure to some degree if NOT all AVSs bought an appropriate amount of Insurance, and we should revert to the **Buffer**, as a result;
                     - If an AVS "Didn't Buy Insurance", all the Ψ amount for that AVS will be passed on to the **Buffer**, and if an AVS "Bought Inappropriate Amount of Insurance" a slider pops up that enables the user to set the *percentage of Ψ that was Insured and covered by the STAKESURE Reserve*, while the remaining *percentage of Ψ that was Uninsured will be covered by the Buffer*;
                     - The **Buffer** takes the leftover from the Reserve (if it exists) that hasn't been allocated and, if needed, the other half of Operator's slashed stake to adequately accommodate for Uninsured or Poorly-Insured users;
-                    - Finally, the **Buffer Coverage Level** assesses if the Buffer, in turn, is able to cover for the Uninsured portions of stake per AVS that were not covered by the initial STAKESURE Reserve. If that's the case, we may be in the presence of an intermediate- or max-loss cascading risk scenario, as the pop-up message displays.
+                    - Finally, the **Buffer Coverage Level** assesses if the Buffer, in turn, is able to cover for the Uninsured portions of stake per AVS that were not covered by the initial STAKESURE Reserve. If that's the case, we may be in the presence of an Intermediate- or Max-Loss cascading risk scenario, as the pop-up message displays.
                                         
-                    By offering such hindsight view, this simulation model also helps answer the question: *How much insurance should honest AVSs buy?*  The potential compounding risks of AVSs and how much insurance is in Reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.          
+                    By offering such an hindsight view, this simulation model also helps answer the question: *How much insurance should honest AVSs buy?*  The potential compounding risks of AVSs and how much insurance is in Reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.          
                             """)
                 
 
