@@ -1675,7 +1675,7 @@ def main():
                 background-color: {background_color_buffer};">
                 <h2 style="color: black; margin: 0; font-size: 1.4em;">
                     <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 1.1em;">Buffer</i></span> Insurance Available (t+1) = $<span style="font-size: 1.1em;">{buffer_reserve_amount:,.0f}</span>
+                    <span style="font-size: 1em;">Buffer</i></span> Insurance Available (t+1) = $<span style="font-size: 1.1em;">{buffer_reserve_amount:,.0f}</span>
                     </div>
                 </h2>
             </div>
@@ -1702,10 +1702,9 @@ def main():
     
     st.write("  \n")
     st.write("  \n")
+    st.write("  \n")
 
 
-
-    buffer1, buffer2, buffer3 = 0, 0, 0 
 
     with col50:
         # Calculate buffer based on the selected insurance option
