@@ -1656,7 +1656,7 @@ def main():
     buffer_reserve_amount = st.session_state.post_slash_reserve + st.session_state.op_stake_slashable / 2
 
     
-    background_color_buffer = "#3CB371" if buffer_reserve_amount >= 0 else "#ff6666"  # green for enough, red for not enough
+    background_color_buffer = "#90EE90" if buffer_reserve_amount >= 0 else "#FFCCCC"  # green for enough, red for not enough
 
     st.markdown(
             f"""
