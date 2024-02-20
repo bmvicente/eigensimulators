@@ -1848,7 +1848,7 @@ def main():
                     - The **Buffer** takes the leftover from the Reserve (if it exists) that hasn't been allocated and, if needed, the other half of Operator's slashed stake to adequately accommodate for Uninsured or Poorly-Insured users;
                     - Finally, the **Buffer Coverage Level** assesses if the Buffer, in turn, is able to cover for the Uninsured portions of stake per AVS that were not covered by the initial STAKESURE Reserve. If that's the case, we may be in the presence of an intermediate- or max-loss cascading risk scenario, as the pop-up message displays.
                                         
-                    By offering such hindsight view, this simulation model also helps answer the question: *How much insurance should honest AVSs buy?*  The potential compounded risks of AVSs and how much insurance is already in Reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.          
+                    By offering such hindsight view, this simulation model also helps answer the question: *How much insurance should honest AVSs buy?*  The potential compounding risks of AVSs and how much insurance is already in Reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.          
                             """)
                 
 
