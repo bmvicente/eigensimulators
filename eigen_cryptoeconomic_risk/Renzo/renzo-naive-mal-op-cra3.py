@@ -1653,7 +1653,7 @@ def main():
 
     st.markdown(f"""
             <div style="font-size: 22px;">
-                <b>•  Cryptoeconomic Buffer for Poorly Insured or Uninsured Users
+                <b>Cryptoeconomic Buffer for Poorly Insured or Uninsured Users
             </div>
             """, unsafe_allow_html=True)
     
@@ -1661,6 +1661,27 @@ def main():
     st.write("  \n")
 
     buffer_reserve_amount = st.session_state.post_slash_reserve + st.session_state.op_stake_slashable / 2
+
+
+    st.markdown(
+            f"""
+            <div style="
+                border: 3px solid;
+                border-radius: 5px;
+                padding: 10px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: {background_color};">
+                <h2 style="color: black; margin: 0; font-size: 1.4em;">
+                    <div style="display: block; margin-top: 5px;">
+                    <span style="font-size: 1.1em;">Buffer</i></span> Insurance Available (t+1) = $<span style="font-size: 1.1em;">{buffer_reserve_amount:,.0f}</span>
+                    </div>
+                </h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
 
     buffer_available_calc = f"""
         <div style="text-align: center;">
