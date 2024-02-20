@@ -568,7 +568,7 @@ def main():
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #28a745;"> <!-- Green background color -->
+                background-color: #5cb85c;"> <!-- Green background color -->
                 <h2 class='large-header-style' style="color: white; margin:0;">OPERATOR</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
@@ -656,7 +656,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #28a745;"> <!-- Green background color -->
+                background-color: #5cb85c;"> <!-- Green background color -->
                 <h2 class='large-header-style' style="color: white; margin:0;">AVS ECOSYSTEM</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
