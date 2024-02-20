@@ -1669,7 +1669,7 @@ def main():
                 background-color: {background_color_buffer};">
                 <h2 style="color: black; margin: 0; font-size: 1.4em;">
                     <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 0.95em;">Cryptoeconomic <i>Buffer</i> Insurance Available for Poorly Insured or Uninsured Users (t+1) = $<span style="font-size: 1.1em;">{buffer_reserve_amount:,.0f}</span>
+                    <span style="font-size: 0.95em;"><i>Buffer</i> Insurance Available for Poorly Insured or Uninsured Users (t+1) = $<span style="font-size: 1.1em;">{buffer_reserve_amount:,.0f}</span>
                     </div>
                 </h2>
             </div>
