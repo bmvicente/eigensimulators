@@ -104,8 +104,12 @@ def main():
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
 
                     Some of these slashing mechanisms concern the *Naive approach*, *Reorgs within Reversion Periods*, and *STAKESURE*. We start with the Naive one in this Simulator and STAKESURE on a later one. For more detailed information about these, check out [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797).
-                    Very simply, the Naive approach takes the **CoC to be 1/3 of Total Stake** because that's usually the amount of node operators' stake needed to be corrupt and gain control of the network, takes **PfC to be the total amount of TVL that can be extracted by an adversary**. It was coined as Naive because the profit from an attack is usually not this straightforward, in that there are new and improved mechanisms in place to increase the bound on PfC. We consider it to be a important topic of research and analysis, to take the worst-case scenario in a situation like this, nevertheless.
-                        """)
+                    
+                    Very simply, the Naive approach takes the **CoC to be 1/3 of Total Stake** because that's usually the amount of node operators' stake needed to corrupt and gain control of the network, and takes **PfC to be the total amount of TVL that can be extracted by an adversary**. This analysis and approach was coined as Naive because the profit from an attack is usually not this straightforward, since there already exist new and improved mechanisms in place to increase the bound on PfC. 
+                    Nevertheless, we consider this approach to be an important topic of research and analysis, in taking the worst-case scenario in such an event.
+
+                    At the end, we perform a Byzantine "Slashing" Tolerance test to assess whether the AVS system is cryptoeconomically secure, post the Stake-Loss event.    
+                    """)
         
     st.write("  \n")
     st.write("  \n")

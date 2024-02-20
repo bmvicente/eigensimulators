@@ -97,15 +97,19 @@ def main():
     st.write("  \n")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
-        st.markdown("""
+        st.markdownst.markdown("""
                     An AVS may be created with an unintentional slashing vulnerability (like a programming bug) which gets triggered and causes loss of funds to honest users. The main goal of the Simulator is to demonstrate how the Underlying Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash would, in turn, affect the AVSs individually. (Compounding effects of slashing were not taken into account.) 
 
                     **Cryptoeconomic Security** quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property, which is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security.
                     A core idea of EigenLayer is to provision cryptoeconomic security through various slashing mechanisms which levy a high cost of corruption.
 
                     Some of these slashing mechanisms concern the *Naive approach*, *Reorgs within Reversion Periods*, and *STAKESURE*. We start with the Naive one in this Simulator and STAKESURE on a later one. For more detailed information about these, check out [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797).
-                    Very simply, the Naive approach takes the **CoC to be 1/3 of Total Stake** because that's usually the amount of node operators' stake needed to be corrupt and gain control of the network, takes **PfC to be the total amount of TVL that can be extracted by an adversary**. It was coined as Naive because the profit from an attack is usually not this straightforward, in that there are new and improved mechanisms in place to increase the bound on PfC. We consider it to be a important topic of research and analysis, to take the worst-case scenario in a situation like this, nevertheless.
-                        """)
+                    
+                    Very simply, the Naive approach takes the **CoC to be 1/3 of Total Stake** because that's usually the amount of node operators' stake needed to corrupt and gain control of the network, and takes **PfC to be the total amount of TVL that can be extracted by an adversary**. This analysis and approach was coined as Naive because the profit from an attack is usually not this straightforward, since there already exist new and improved mechanisms in place to increase the bound on PfC. 
+                    Nevertheless, we consider this approach to be an important topic of research and analysis, in taking the worst-case scenario in such an event.
+                        
+                    At the end, we perform a Byzantine "Slashing" Tolerance test to assess whether the AVS system is cryptoeconomically secure, post the Stake-Loss event.
+                               """)
         
     st.write("  \n")
     st.write("  \n")
