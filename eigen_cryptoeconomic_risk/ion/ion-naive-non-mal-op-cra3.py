@@ -202,9 +202,9 @@ def main():
                     <div style="
                         border: 2px solid;
                         border-radius: 2px;
-                        padding: 19px;
+                        padding: 10px;
                         text-align: center;
-                        margin: 5px 0;
+                        margin: 4px 0;
                         background-color: {background_color};">
                         <h2 style="color: black; margin: 0; font-size: 1.1em;">
                             <div style="display: block;">
@@ -215,6 +215,9 @@ def main():
                             </div>
                             <div style="display: block;">
                                 {max_slash_allowed_text}: <span style="font-size: 1.1em;">${max_slash_allowed:,.0f}</span>
+                                </div>
+                            <div style="display: block; font-size: 1em; font-weight: normal;">
+                                (CoC - PfC)
                             </div>
                         </h2>
                     </div>
