@@ -207,7 +207,7 @@ def main():
                         padding: 19px;
                         text-align: center;
                         margin: 5px 0;
-                        background-color: white;">
+                        background-color: {background_color};">
                         <h2 style="color: black; margin: 0; font-size: 1.1em;">
                             <div style="display: block;">
                                 <span style="font-size: 1.2em;">α<sub style="font-size: 0.8em;">j</sub></span>
