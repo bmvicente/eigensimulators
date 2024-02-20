@@ -145,7 +145,7 @@ def main():
     if 'coc' not in st.session_state:
         st.session_state.coc = 0  # Default value
 
-    max_slash_allowed = max(0, st.session_state.coc - st.session_state.pfc)
+    max_slash_allowed = st.session_state.coc - st.session_state.pfc
     st.session_state.coc = total_restaked / 3
 
 
