@@ -1840,7 +1840,7 @@ def main():
                     
                     We recommend checking out the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797) for a deeper dive on this topic.
                     
-                    Logic of the STAKESURE Simulator:
+                    Logic behind the STAKESURE Simulator:
                     - **STAKESURE Insurance Reserve Available**: Reserve - Σ (Insured Ψj) + Operator Stake Amount/2 (other half of Operator Stake Amount is to be allocated to a cryptoeconomic buffer or burnt to safeguard against irrational users that have not bought enough insurance or bought no insurance at all);
                     - If **STAKESURE Insurance Available > Σ Ψj** and if all the AVSs bought an appropriate amount of insurance, the system is cryptoeconomically secure.
                             It is cryptoeconomically insecure a) if **STAKESURE Insurance Available > Σ Ψj** and NOT all AVSs bought an appropriate amount of insurance, or if b) **STAKESURE Insurance Available < Σ Ψj** and if NOT all AVSs bought an appropriate amount of Insurance;
