@@ -1524,7 +1524,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown('<p style="font-size: 18px;">&#8226; <i>Strong Cryptoeconomic Security</i> is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses. If we are presented only with a Medium or Weak Level of Cryptoeconomic Security, we should revert to the <b>STAKESURE Reserve</b>.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 18px;">&#8226; <i>Strong Cryptoeconomic Security</i> is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses. If we are presented only with a Medium or Weak Level of Cryptoeconomic Securit -- which signals poorly-insured AVSs --, we should revert to the <b>STAKESURE Reserve</b>.</p>', unsafe_allow_html=True)
     
 
 
