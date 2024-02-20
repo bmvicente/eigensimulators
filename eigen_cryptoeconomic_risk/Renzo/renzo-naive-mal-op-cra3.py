@@ -1832,12 +1832,12 @@ def main():
     with st.expander("Logic"):
                 st.markdown(f"""
                     In a nutshell and as said in the beginning of the Simulator, **STAKESURE** ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. 
-                    This is what it means to have Attributable Security in a Restaking cryptoeconomic context.
-                    
+                    This is what it means to have Attributable Security in a Restaking cryptoeconomic context.      
+                            
+                    From the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797) (recommended reading for a deeper dive on this topic):
+
                     "*Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available. Thus even if only a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact. 
                     It is possible, nevertheless, that smaller transactors may not have the foresight to buy insurance or may simply risk their funds (trying to freeride on the assumed safety of the system). We need to make sure that there is enough cryptoeconomic buffer in the system for these transactors to exist. We need to make sure that there is enough cost-of-corruption to protect against these small transactors, even though they do not have any insurance.*"
-                    
-                    From the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797). Recommended reading for a deeper dive on this topic.
                     
                     Logic behind the STAKESURE Approach Simulator:
                     - **Post-Slash STAKESURE Insurance Reserve Available**: Pre-Slash Reserve Available - Σ(Insured Ψj) + Operator Slashed Stake Amount/2 (other half of Operator Slashed Stake is to be allocated to a cryptoeconomic buffer or burnt to safeguard against irrational users that have not bought enough insurance or bought no insurance at all);
