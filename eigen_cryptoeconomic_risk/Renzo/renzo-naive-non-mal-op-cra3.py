@@ -225,10 +225,10 @@ def main():
 
     with st.expander("Logic"):
             st.markdown(f"""
-                As laid out in the first dropdown, *CoC = T / 3* and *PfC = &Sigma; TVLj* (*j* corresponding to the set of AVSs at hand).
+                As laid out in the first dropdown, the Naive approach takes CoC and PfC as: *CoC = T / 3* and *PfC = &Sigma; TVLj* (*j* corresponding to the set of AVSs at hand).
                 
                 The variable **Max Stake-Loss Allowed to Still Maintain Cryptoeconomic Security** (αj) represents the difference between CoC and PfC. We've quoted "Allowed" because the loss is not to be permissioned or validated by any entity; it simply represents the buffer (or the abscence of the buffer) that the AVS network can be slashed further and still keep the network secure.
-                        If CoC > PfC, there is some amount "allowed" that can be slashed, and if CoC < PfC, the system is already in compromisable cryptoeconomic position and the slash "allowed" equals 0.
+                        If CoC > PfC, there is some amount "allowed" that can be slashed, and if CoC < PfC, the system is already in a compromisable cryptoeconomic position and the slash "allowed" equals 0.
                 """)
 
     st.write("  \n")
