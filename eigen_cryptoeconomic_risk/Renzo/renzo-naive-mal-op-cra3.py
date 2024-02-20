@@ -1524,7 +1524,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown('<p style="font-size: 18px;">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses. If we are presented only with a Medium or Weak Level of Cryptoeconomic Security, we should turn to STAKESURE.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 18px;">&#8226; Strong Cryptoeconomic Security is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses. If we are presented only with a Medium or Weak Level of Cryptoeconomic Security, we should pass on to STAKESURE Reserve.</p>', unsafe_allow_html=True)
     
 
 
@@ -1624,6 +1624,10 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+    if st.session_state.post_slash_reserve > 0:
+            st.success("Enough **Attributable Security** can be safeguarded from the STAKESURE Reserve.")
+    else:
+            st.error("Not enough **Attributable Security** can be safeguarded from the STAKESURE Reserve due to a shortage of funds. We should pass on to the **Buffer**.")
 
 
 
@@ -1791,9 +1795,9 @@ def main():
 
     total_buffer_needed = st.session_state.buffer1 + st.session_state.buffer2 + st.session_state.buffer3
     if buffer_reserve_amount > total_buffer_needed:
-            st.success("Enough **Attributable Security** can be safeguarded from the Buffer.")
+            st.success("Enough extra **Attributable Security** can be safeguarded from the Buffer.")
     else:
-            st.error("Not enough **Attributable Security** can be safeguarded from the Buffer due to a shortage of funds. We may be in the presence of an **Intermediate- or Max-Loss Risk of some or all the 3 AVSs failing**.")
+            st.error("No extra **Attributable Security** can be safeguarded from the Buffer due to a shortage of funds. We may be in the presence of an **Intermediate- or Max-Loss Risk of some or all the 3 AVSs failing**.")
 
 
     def recalculate_and_update():
