@@ -1650,12 +1650,6 @@ def main():
 
     if 'buffer_reserve_amount' not in st.session_state:
             st.session_state.buffer_reserve_amount = 0  # or any default value
-
-    st.markdown(f"""
-            <div style="font-size: 22px;">
-                <b>Cryptoeconomic Buffer for Poorly Insured or Uninsured Users
-            </div>
-            """, unsafe_allow_html=True)
     
     st.write("  \n")
 
@@ -1675,7 +1669,7 @@ def main():
                 background-color: {background_color_buffer};">
                 <h2 style="color: black; margin: 0; font-size: 1.4em;">
                     <div style="display: block; margin-top: 5px;">
-                    <span style="font-size: 1em;">Buffer</i></span> Insurance Available (t+1) = $<span style="font-size: 1.1em;">{buffer_reserve_amount:,.0f}</span>
+                    <span style="font-size: 1em;">Cryptoeconomic Buffer Insurance Available for Poorly Insured or Uninsured Users (t+1) = $<span style="font-size: 1.1em;">{buffer_reserve_amount:,.0f}</span>
                     </div>
                 </h2>
             </div>
