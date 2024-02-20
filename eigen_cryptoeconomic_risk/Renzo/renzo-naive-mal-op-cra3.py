@@ -1623,9 +1623,9 @@ def main():
     st.write("  \n")
 
     if st.session_state.post_slash_reserve > 0:
-            st.success("Enough **Attributable Security** can be safeguarded from the STAKESURE Reserve.")
+            st.success("Enough **Attributable Security** can be safeguarded from the **STAKESURE Reserve**.")
     else:
-            st.error("Not enough **Attributable Security** can be safeguarded from the STAKESURE Reserve due to a shortage of funds. We should pass on to the **Buffer**.")
+            st.error("Not enough **Attributable Security** can be safeguarded from the **STAKESURE Reserve** due to a shortage of funds. We should pass on to the **Buffer**.")
 
 
 
