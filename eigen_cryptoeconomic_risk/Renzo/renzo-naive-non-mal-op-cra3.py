@@ -61,7 +61,7 @@ def main():
 
     st.set_page_config(layout="wide")
 
-    st.image("images/renzo1.png", width=450)
+    st.image("images/renzo1.png", width=400)
 
     if 'operator_stake' not in st.session_state:
         st.session_state.operator_stake = 0
