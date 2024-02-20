@@ -1667,9 +1667,9 @@ def main():
     st.markdown(
             f"""
             <div style="
-                border: 3px solid;
+                border: 1px solid;
                 border-radius: 5px;
-                padding: 3px;
+                padding: 2px;
                 text-align: center;
                 margin: 5px 0;
                 background-color: {background_color_buffer};">
