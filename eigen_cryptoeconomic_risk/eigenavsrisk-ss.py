@@ -47,9 +47,8 @@ def main():
             A good deal of the logic behind the right side of the Simulator (ESPRESSO-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
                     
             The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being exposed to corruption or to being cryptoeconomically secured. 
-                    Although for the case of Shared Sequencers, it is infeasible to post invalid states and extract funds from users there the Likelihood assumed was low: "*The execution layer handles transaction execution, including the exclusion of invalid transactions. 
-                    As a result, the profits extracted are comparatively limited when compared to a Layer 1 or a bridge, as the shared sequencer cannot post invalid states and steal money from users.* If the set forms a majority quorum on certain AVSs, they can potentially extract a PfC from those AVSs.
-"
+            Although for the case of Shared Sequencers, it is infeasible to post invalid states and extract funds from users there the Likelihood assumed was low: "*The execution layer handles transaction execution, including the exclusion of invalid transactions. 
+            As a result, the profits extracted are comparatively limited when compared to a Layer 1 or a bridge, as the shared sequencer cannot post invalid states and steal money from users.* If the set forms a majority quorum on certain AVSs, they can potentially extract a PfC from those AVSs.
         """)
 
         
