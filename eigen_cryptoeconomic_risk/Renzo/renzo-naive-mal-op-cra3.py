@@ -1658,20 +1658,21 @@ def main():
             """, unsafe_allow_html=True)
     
     st.write("  \n")
-    st.write("  \n")
 
     buffer_reserve_amount = st.session_state.post_slash_reserve + st.session_state.op_stake_slashable / 2
 
+    
+    background_color_buffer = "#3CB371" if buffer_reserve_amount >= 0 else "#ff6666"  # green for enough, red for not enough
 
     st.markdown(
             f"""
             <div style="
                 border: 3px solid;
                 border-radius: 5px;
-                padding: 5px;
+                padding: 3px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: {background_color};">
+                background-color: {background_color_buffer};">
                 <h2 style="color: black; margin: 0; font-size: 1.4em;">
                     <div style="display: block; margin-top: 5px;">
                     <span style="font-size: 1.1em;">Buffer</i></span> Insurance Available (t+1) = $<span style="font-size: 1.1em;">{buffer_reserve_amount:,.0f}</span>
