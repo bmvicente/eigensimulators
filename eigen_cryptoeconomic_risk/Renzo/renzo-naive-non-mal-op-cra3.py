@@ -1,11 +1,4 @@
 
-# Naive & Non-Mal Op
-
-# CoC = Stake / 3
-# PfC = TVL
-
-
-
 import pandas as pd
 import streamlit as st
 
