@@ -1637,8 +1637,7 @@ def main():
     ###### BUFFER ######
     ####################
             
-    st.write("  \n")
-    st.write("  \n")
+
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
