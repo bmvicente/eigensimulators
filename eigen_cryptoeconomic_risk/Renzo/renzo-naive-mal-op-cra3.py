@@ -423,7 +423,7 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
-                        The 2 main ideas in this portion are:
+                        The 3 main ideas in this portion are:
                             
                         - **Pre-Slash** (t): In the same way the calculation for the *AVS <> Non-Malicious Operator: Naive Approach* Simulator was performed, here again the Naive Analysis was applied as *CoC = T/3* and *PfC = ΣTVL*.
 
