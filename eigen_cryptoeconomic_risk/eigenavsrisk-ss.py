@@ -212,7 +212,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    It is assumed a Total Amount Restaked superior to $10 billion is nearly impossible to be 51%-attacked and therefore is assigned the minimal risk of PfC exceeding CoC, in the Simulator.
+                    It is assumed a Total Amount Restaked superior to $10 billion is nearly impossible to be 51%-attacked and therefore is assigned the minimal risk of PfC exceeding CoC.
                                             
                     The **TVL/Total Restaked** risk logic herein is set so that the greater the *(AVS Total Restaked/2) : AVS TVL* ratio, the safer the AVS is, and vice-versa.
                     

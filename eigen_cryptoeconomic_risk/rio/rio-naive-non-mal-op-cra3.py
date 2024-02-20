@@ -108,7 +108,7 @@ def main():
                     Very simply, the Naive approach takes the **CoC to be 1/3 of Total Stake** because that's usually the amount of node operators' stake needed to corrupt and gain control of the network, and takes **PfC to be the total amount of TVL that can be extracted by an adversary**. This analysis and approach was coined as Naive because the profit from an attack is usually not this straightforward, since there already exist new and improved mechanisms in place to increase the bound on PfC. 
                     Nevertheless, we consider this approach to be an important topic of research and analysis, in taking the worst-case scenario in such an event.
                         
-                    At the end, we perform a Byzantine "Slashing" Tolerance test to assess whether the AVS system is cryptoeconomically secure, post the Stake-Loss event.
+                    At the end, we perform a **Byzantine "Slashing" Tolerance test** to assess whether the AVS system is cryptoeconomically secure, post the Stake-Loss event.
                     """)
         
     st.write("  \n")
