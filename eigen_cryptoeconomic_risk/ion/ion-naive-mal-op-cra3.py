@@ -83,17 +83,18 @@ def main():
                     We will cover and deep dive on two different kinds of Cryptoeconomic Security:
 
                     - **Cryptoeconomic Safety** (Naive Approach): *CoC > PfC*. 
-                    We observe that the definition of cryptoeconomic safety does not really guarantee that a transaction user enjoys unconditional safety, rather it only says that an attacker does not derive profit from the attack. However, in complex scenarios, it is possible that an attacker may attack out of pure malice or other reasons, and a honest transactor is affected.
+                    We observe that the definition of cryptoeconomic safety does not really guarantee that a transactor enjoys unconditional safety, rather it only says that an attacker does not derive profit from the attack.
                     Cryptoeconomic security quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property (CoC). 
                     When CoC is greater than any potential PfC, we say that the system has robust security. The inverse suggests fleeble security.
 
-                    - **Strong Cryptoeconomic Safety** (STAKESURE Approach): *No honest user of the system suffers any loss of funds*. 
+                    - **Strong Cryptoeconomic Safety** (STAKESURE Approach): *No honest user of the system suffers any loss of funds*. This is the promise.
                     Strong cryptoeconomic safety is a much stronger definition than the definition of cryptoeconomic safety. While cryptoeconomic safety ensures that there is no incentive for an adversary to attack, a malicious adversary may still go ahead and attack the system which will lead to honest users in the system suffering without recourse. In contrast, in a system with strong cryptoeconomic safety, this can never happen.
-                    STAKESURE, which achieves this stringent property while also solving for the information signalling problem from the previous section.  
-                    Strong Cryptoeconomic Security introduces staking insurance, through STAKESURE, to attest to such losses never happening. As per the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/html/2401.05797v1) by the EigenLayer founders: "**STAKESURE** ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it." 
-                    Additionally, in the event of the insurance reserve being insufficient, the paper also advises: "It is possible that smaller transactors may not have the foresight to buy insurance or may simply risk their funds. We need to make sure that there is enough **cryptoeconomic buffer** in the system for these transactors to exist." This is exactly what we attempt to model and simulate at the end of this Simulator: the STAKESURE mechanism with the optional Insurance Buffer for negligent users.
+                    It introduces staking insurance, through STAKESURE, to attest to such losses never happening. As per the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/html/2401.05797v1) by the EigenLayer founders: "***STAKESURE** ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it.*" 
+                    Additionally, in the event of the insurance reserve being insufficient, the paper also advises: "*It is possible that smaller transactors may not have the foresight to buy insurance or may simply risk their funds. We need to make sure that there is enough **cryptoeconomic buffer** in the system for these transactors to exist.*" 
+                    
+                    This is exactly what we attempt to model and simulate at the end of this Simulator: the STAKESURE mechanism with the optional Insurance Buffer for negligent users.
 
-                    Whilst inbetween the Naive and STAKESURE approaches there exist mechanisms around Reversion Periods for Reorg attacks to further levy CoC and reduce chances at extracting PfC, we took the Naive case and then went straight to STAKESURE. This unorthodox bridging is helpful to stress-test STAKESURE against the least-secure approach possible.
+                    Whilst in-between the Naive and STAKESURE approaches there exist mechanisms around Reversion Periods for Reorg attacks to further levy CoC and reduce chances at extracting PfC, we took the Naive case and then went straight to STAKESURE. This unorthodox bridging is helpful to stress-test STAKESURE against the least-cryptoeconomically-secure approach possible.
                     """)
     
 
