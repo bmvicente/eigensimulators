@@ -44,11 +44,9 @@ def main():
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""
             The Simulator takes six of the parameters that can compose an AVS to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Espresso. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
-            A good deal of the logic behind the right side of the Simulator (ESPRESSO-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581).
+            A good deal of the logic behind the right side of the Simulator (ESPRESSO-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581), specifically for Espresso.
                     
-            The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being exposed to corruption or to being cryptoeconomically secured. 
-            Although for the case of Shared Sequencers, it is infeasible to post invalid states and extract funds from users there the Likelihood assumed was low: "*The execution layer handles transaction execution, including the exclusion of invalid transactions. 
-            As a result, the profits extracted are comparatively limited when compared to a Layer 1 or a bridge, as the shared sequencer cannot post invalid states and steal money from users.* If the set forms a majority quorum on certain AVSs, they can potentially extract a PfC from those AVSs.
+            The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being exposed to corruption or to being cryptoeconomically secure. 
         """)
 
         
@@ -219,11 +217,12 @@ def main():
                     The **TVL/Total Restaked** risk logic herein is set so that the greater the *(AVS Total Restaked/2) : AVS TVL* ratio, the safer the AVS is, and vice-versa.
                     
                     To take the simplest scenario of the single-AVS restaking by operators [(Section 3.4.1 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) to begin with: an AVS appears to be most secure when the amount of restaked ETH is at least double the total locked value (TVL) and a 50% quorum is required for a collusion attack to capture the TVL, as any successful attack would result in at least half of the attacker's stake being slashed. If *AVS Total Restaked* increases from there compared to the *AVS TVL*, the risk gets reduced even further. If both variables are under $100K, we consider it the maximum risk scenario.
+                    If a set of adversaries forms a majority quorum on certain AVSs, they can potentially extract a PfC from those AVSs.
 
                     Accordingly, the main goal is to maintain the *CoC (Cost of Corruption)* ***above*** *the PfC (Profit from Corruption)* to desincentivize colluding, malicious operators to perform an attack. Appropriate bridges and oracles could be built to restrict the transaction flow within the period of slashing or to have bonds on the transacted value to maximize CoC/minimize PfC.
 
                     Understanding what a reduced risk level should be is not useful for operator-collusion cases only, but also for increasing the [CVS (Cost to Violate Safety) and the CVL (Cost to Violate Liveness)](https://www.blog.eigenlayer.xyz/dual-staking/), i.e. in a Dual Staking Model and Veto Dual Staking context, for example, which are useful to maintain the health of the AVS dual token pool (or AVS TVL, in other words).
-                    
+
                     ```python
                     def calculate_operator_attack_risk(total_restaked, tvl):
                         if tvl < 100000 or total_restaked < 100000:
