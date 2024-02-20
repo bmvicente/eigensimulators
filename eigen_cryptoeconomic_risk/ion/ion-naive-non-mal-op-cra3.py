@@ -97,7 +97,7 @@ def main():
     st.write("  \n")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
-        st.markdownst.markdown("""
+        st.markdown("""
                     An AVS may be created with an unintentional slashing vulnerability (like a programming bug) which gets triggered and causes loss of funds to honest users. The main goal of the Simulator is to demonstrate how the Underlying Risk Profile of AVSs may influence the potential slashing an Operator may face, and how such a slash would, in turn, affect the AVSs individually. (Compounding effects of slashing were not taken into account.) 
 
                     **Cryptoeconomic Security** quantifies the cost that an adversary must bear in order to cause a protocol to lose a desired security property, which is referred to as the Cost-of-Corruption (CoC). When CoC is much greater than any potential Profit-from-Corruption (PfC), we say that the system has robust security.
