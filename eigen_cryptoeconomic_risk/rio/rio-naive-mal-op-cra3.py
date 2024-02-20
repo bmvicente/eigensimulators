@@ -1527,7 +1527,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown('<p style="font-size: 18px;">&#8226; <i>Strong Cryptoeconomic Security</i> is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses. If we are presented only with a Medium or Weak Level of Cryptoeconomic Securit -- which signals poorly-insured AVSs --, we should revert to the <b>STAKESURE Reserve</b>.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 18px;">&#8226; <i>Strong Cryptoeconomic Security</i> is only met when all AVSs are properly insured against an adversarial attack and no honest users suffer losses. If we are presented only with a Medium or Weak Level of Cryptoeconomic Security -- which signals poorly-insured AVSs --, we should revert to the <b>STAKESURE Reserve</b>.</p>', unsafe_allow_html=True)
     
 
 
@@ -1832,7 +1832,7 @@ def main():
     with st.expander("Logic"):
                 st.markdown(f"""
                     In a nutshell and as said in the beginning of the Simulator, **STAKESURE** ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. 
-                    This is what it means to have attributable in a Restaking cryptoeconomic context.
+                    This is what it means to have Attributable Security in a Restaking cryptoeconomic context.
                     
                     "*Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available. Thus even if only a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact. 
                     It is possible, nevertheless, that smaller transactors may not have the foresight to buy insurance or may simply risk their funds (trying to freeride on the assumed safety of the system). We need to make sure that there is enough cryptoeconomic buffer in the system for these transactors to exist. We need to make sure that there is enough cost-of-corruption to protect against these small transactors, even though they do not have any insurance.*"
