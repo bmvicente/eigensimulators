@@ -203,7 +203,7 @@ def main():
                         border-radius: 2px;
                         padding: 10px;
                         text-align: center;
-                        margin: 5px 0;
+                        margin: 4px 0;
                         background-color: {background_color};">
                         <h2 style="color: black; margin: 0; font-size: 1.1em;">
                             <div style="display: block;">
