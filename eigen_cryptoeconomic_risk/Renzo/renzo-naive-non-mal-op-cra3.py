@@ -866,7 +866,7 @@ def main():
                         AVS Ecosystem
                     </div>
                     <div style="color: black; font-size: 1.3em; margin-top: 1px; font-weight: bold;">
-                        ${max_slash_allowed:,.0f} - ${op_max_loss_avs1:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
+                        ${max_slash_allowed:,.0f} - ${op_max_loss_avss:,.0f} = <span style="font-size: 1.3em; color: {color};">${bst_avs1:,.0f}</span>
                     </div>
                 </div>
                 """, 
