@@ -1832,24 +1832,23 @@ def main():
 
     with st.expander("Logic"):
                 st.markdown(f"""
-                    In a nutshell and as said in the beginning of the Simulator, STAKESURE ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. 
+                    In a nutshell and as said in the beginning of the Simulator, **STAKESURE** ensures that the system can automatically find out how much cryptoeconomic security is needed by looking at how much insurance is needed and allocate it. 
                     This is what it means to have attributable and scaling security in a Restaking cryptoeconomic context.
+                    
+                    Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available. Thus even if only a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact. 
+                    It is possible, nevertheless, that smaller transactors may not have the foresight to buy insurance or may simply risk their funds (trying to freeride on the assumed safety of the system). We need to make sure that there is enough cryptoeconomic buffer in the system for these transactors to exist. We need to make sure that there is enough cost-of-corruption to protect against these small transactors, even though they do not have any insurance. 
                     We recommend checking out the paper [*STAKESURE: Proof of Stake Mechanisms with Strong Cryptoeconomic Safety*](https://arxiv.org/abs/2401.05797) for a deeper dive on this topic.
                     
                     Main insights:
-                    - **STAKESURE Insurance Reserve Available**: Reserve + Operator Stake Amount/2 (other half of Operator Stake Amount is to be allocated to a cryptoeconomic buffer or burnt to safeguard against irrational users that have not bought enough insurance or bought no insurance at all);
-                    - If **Total Insurance Available > Σ Ψj** and if all the AVSs bought an appropriate amount of insurance, the system is cryptoeconomically secure.
-                            It is cryptoeconomically insecure if a) **Total Insurance Available > Σ Ψj** and NOT all AVSs bought an appropriate amount of insurance and b) **Total Insurance Available < Σ Ψj** and if NOT all AVSs bought an appropriate amount of insurance;
-                    - If the AVS "Didn't Buy Insurance" all the Ψ amount for that AVS will be passed on to the cryptoeconomic Buffer and if the AVS "Bought Inappropriate Amount of Insurance", a slider pops up that enables the user to set the percentage of Ψ that is uninsured, and should therefore be covered by the b
-                            Buffer as well;
-                    - **STAKESURE Insurance Coverage Level** gives the **Total Insurance Available** subtracted by the **amount insured by the AVSs beforehand**;
-                    - The **Buffer** takes the leftover (if it exists) of the this Reserve that hasn't been used and, if needed, the remaining half of Operator's slashed stake to adequately accommodate for uninsured or poorly insured users;
-                    - Finall, the **Buffer Coverage Level** assesses if the Buffer, in turn, was able to cover for the uninsured portions of stake per AVS that were not covered by the initial STAKESURE reserve.
+                    - **STAKESURE Insurance Reserve Available**: Reserve - Σ (Insured Ψj) + Operator Stake Amount/2 (other half of Operator Stake Amount is to be allocated to a cryptoeconomic buffer or burnt to safeguard against irrational users that have not bought enough insurance or bought no insurance at all);
+                    - If **STAKESURE Insurance Available > Σ Ψj** and if all the AVSs bought an appropriate amount of insurance, the system is cryptoeconomically secure.
+                            It is cryptoeconomically insecure a) if **STAKESURE Insurance Available > Σ Ψj** and NOT all AVSs bought an appropriate amount of insurance, or if b) **STAKESURE Insurance Available < Σ Ψj** and if NOT all AVSs bought an appropriate amount of Insurance;
+                    - If an AVS "Didn't Buy Insurance", all the Ψ amount for that AVS will be passed on to the cryptoeconomic Buffer and if an AVS "Bought Inappropriate Amount of Insurance", a slider pops up that enables the user to set the percentage of Ψ that was Insured that was covered by the STAKESURE Reserve, and, reversely, the percentage of Ψ that was Uninsured and should be covered by the Buffer;
+                    - The **Buffer** takes the leftover (if it exists) of the this Reserve that hasn't been used and, if needed, the remaining half of Operator's slashed stake to adequately accommodate for Uninsured or poorly Insured users;
+                    - Finally, the **Buffer Coverage Level** assesses if the Buffer, in turn, was able to cover for the Uninsured portions of stake per AVS that were not covered by the initial STAKESURE Reserve.
                                         
                     By offering such hindsight view, this simulation model also helps answer the question: *How much insurance should honest AVSs buy?* 
-                    The potential compounded risks of AVSs and how much insurance is already in reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.    
-                    
-                    Since rational transactors only transact if they have enough coverage, automatically the total cryptoconomic load on the system will be smaller than the total insurance coverage available. Thus even if only a smaller amount of stake is in the system, the system remains completely unconditionally safe. It is only the liveness of the honest transactors that get affected, i.e., they may have to wait to obtain insurance in order to transact. It is possible, nevertheless, that smaller transactors may not have the foresight to buy insurance or may simply risk their funds (trying to freeride on the assumed safety of the system). We need to make sure that there is enough cryptoeconomic buffer in the system for these transactors to exist. We need to make sure that there is enough cost-of-corruption to protect against these small trans- actors, even though they do not have any insurance.       
+                    The potential compounded risks of AVSs and how much insurance is already in Reserve should be good pointers as to how much insurance an honest AVS should secure for a future slashing event.          
                             """)
                 
 
