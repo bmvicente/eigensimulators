@@ -214,6 +214,9 @@ def main():
                             </div>
                             <div style="display: block;">
                                 {max_slash_allowed_text}: <span style="font-size: 1.1em;">${max_slash_allowed:,.0f}</span>
+                                </div>
+                            <div style="display: block; font-size: 1em; font-weight: normal;">
+                                (CoC - PfC)
                             </div>
                         </h2>
                     </div>
