@@ -1612,7 +1612,7 @@ def main():
         <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">${(st.session_state.post_slash_reserve):,.0f}</span>
     </div>
     <div style="text-align: center; font-size: 18px; font-weight: normal;">
-        (Pre-Slash Insurance Reserve - Insured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span> - Insured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span> - Insured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span> + Operator Slash Amount / 2 = Post-Slash Insurance Reserve)
+        (Pre-Slash Insurance Reserve - Insured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS1</sub></span> - Insured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS2</sub></span> - Insured <span style="font-size: 1.1em;">Ψ<sub style="font-size: 0.8em;">AVS3</sub></span> + Operator Slash Amount / 2)
     </div>
     """
 
