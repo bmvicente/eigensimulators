@@ -1,10 +1,4 @@
 
-# Naive & Non-Mal Op
-
-# CoC = Stake / 3
-# PfC = TVL
-
-
 
 import pandas as pd
 import streamlit as st
@@ -68,7 +62,7 @@ def main():
 
     st.set_page_config(layout="wide")
 
-    st.image("images/renzo1.png", width=450)
+    st.image("images/rio.png", width=450)
 
     if 'operator_stake' not in st.session_state:
         st.session_state.operator_stake = 0
@@ -276,7 +270,7 @@ def main():
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #28a745;"> <!-- Green background color -->
+                background-color: #000000;"> 
                 <h2 class='large-header-style' style="color: white; margin:0;">OPERATOR</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
@@ -530,7 +524,7 @@ def main():
                 padding: 5px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #28a745;"> <!-- Green background color -->
+                background-color: #000000;">
                 <h2 class='large-header-style' style="color: white; margin:0;">AVS ECOSYSTEM</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
