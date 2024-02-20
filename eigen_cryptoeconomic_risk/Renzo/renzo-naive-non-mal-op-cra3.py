@@ -201,7 +201,7 @@ def main():
                     <div style="
                         border: 2px solid;
                         border-radius: 2px;
-                        padding: 15px;
+                        padding: 10px;
                         text-align: center;
                         margin: 5px 0;
                         background-color: {background_color};">
