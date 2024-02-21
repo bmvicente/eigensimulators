@@ -1,9 +1,10 @@
-
-# EigenLayer AVS Risks
-
 import streamlit as st
+import pandas as pd
+import os
 
-# Function to calculate AVS risk
+st.set_page_config(layout="wide")  # This should be the first Streamlit command
+
+# Function to calculate AVS risk (unchanged from your script)
 def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation):
     # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
 
@@ -60,14 +61,39 @@ def avs_risk(security_audits, business_model, avs_type, operator_attack_risk, re
 
 
 
+# Function to save data to CSV
+def save_data_to_csv(data):
+    # Define CSV file path
+    csv_file_path = 'avs_risk_data.csv'
+    
+    # Check if the CSV file already exists
+    if os.path.exists(csv_file_path):
+        # If exists, load existing data and append new data
+        existing_data = pd.read_csv(csv_file_path)
+        updated_data = existing_data.append(data, ignore_index=True)
+    else:
+        # If not exists, create a new DataFrame
+        updated_data = pd.DataFrame(data, index=[0])
+    
+    # Save updated data to CSV
+    updated_data.to_csv(csv_file_path, index=False)
+
+
+
+
 # Streamlit app setup
 def main():
-    st.set_page_config(layout="wide")
 
-    st.image("images/eigenimage.png")
+    #st.image("images/eigenimage.png")
 
     st.title("AVS Risk Simulator")
 
+    if 'total_restaked' not in st.session_state:
+        st.session_state.total_restaked = 0
+    if 'tvl' not in st.session_state:
+        st.session_state.tvl = 0
+    if 'risk_score' not in st.session_state:
+        st.session_state.risk_score = 0
     
     st.write("  \n")
     st.write("  \n")
@@ -100,13 +126,13 @@ def main():
         col3, col4 = st.columns([3, 3])
 
         with col3:
-                total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
+                st.session_state.total_restaked = st.number_input("**AVS Total Restaked ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
 
         with col4:
-                tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
+                st.session_state.tvl = st.number_input("**AVS TVL ($)**", min_value=0, max_value=10000000000, value=0, step=1000000)
         
-        tvl = float(tvl) if tvl else 0
-        total_restaked = float(total_restaked) if total_restaked else 0
+        st.session_state.tvl = float(st.session_state.tvl) if st.session_state.tvl else 0
+        st.session_state.total_restaked = float(st.session_state.total_restaked) if st.session_state.total_restaked else 0
 
 
 
@@ -129,8 +155,6 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
-
-
 
         # AVS Business Model
         st.markdown("""
@@ -328,16 +352,19 @@ def main():
         else:
             return 9
 
+    tvl = st.session_state.tvl
+    total_restaked = st.session_state.total_restaked
+
     operator_attack_risk = calculate_operator_attack_risk(total_restaked, tvl)
 
         
-    risk_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
+    st.session_state.risk_score = avs_risk(security_audits, business_model, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation)
 
     # Determine the color and background color based on the risk score
-    if risk_score >= 7.5:
+    if st.session_state.risk_score >= 7.5:
         color = "#d32f2f"  # Red color for high risk
         background_color = "#fde0dc"  # Light red background
-    elif risk_score <= 2.5:
+    elif st.session_state.risk_score <= 2.5:
         color = "#388e3c"  # Green color for low risk
         background_color = "#ebf5eb"  # Light green background
     else:
@@ -356,7 +383,7 @@ def main():
         text-align: center;
         margin: 10px 0;
         background-color: {background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.4em;">AVS Risk Score: <span style="font-size: 1.5em; color: {color};">{risk_score:.0f}</span></h2>
+        <h2 style="color: black; margin:0; font-size: 1.4em;">AVS Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
     </div>
     """, 
     unsafe_allow_html=True
@@ -389,6 +416,18 @@ def main():
                 </div>
                 """, unsafe_allow_html=True)
 
+
+    # Button to update and save data
+    if st.button("Calculate Normalized Risk Score"):
+        # Prepare data to save (expand this dictionary as needed)
+        data_to_save = {
+            'total_restaked': st.session_state.total_restaked, 
+            'tvl': st.session_state.tvl,                   
+            'risk_score': st.session_state.risk_score
+        }
+        
+        # Save data to CSV
+        save_data_to_csv(data_to_save)
 
 
     st.write("  \n")
@@ -430,4 +469,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
 
