@@ -2141,6 +2141,11 @@ def main():
                 unsafe_allow_html=True
             )
 
+        with st.expander("Logic"):
+            st.markdown("""
+            """)
+
+
 
 
 
@@ -2314,7 +2319,9 @@ def main():
                 unsafe_allow_html=True
             )
 
-
+        with st.expander("Logic"):
+            st.markdown("""
+            """)
 
 
 
@@ -2485,6 +2492,10 @@ def main():
                 """, 
                 unsafe_allow_html=True
             )
+
+        with st.expander("Logic"):
+            st.markdown("""
+            """)
 
 
     st.write("\n")
