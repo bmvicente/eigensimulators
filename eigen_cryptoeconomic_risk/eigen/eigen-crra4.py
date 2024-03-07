@@ -1935,7 +1935,7 @@ def main():
 
     with col62:
 
-        op_entrenchment_level = st.number_input('**Entrenchment Level**', min_value=3, max_value=3, value=3, step=1, key='entrenchment_slider',  disabled=True)
+        op_entrenchment_level = st.number_input('**Entrenchment Level**', min_value=3, max_value=3, value=3, step=1, key='entrenchment_slider',  disabled=True, help="Entrenched on 3 AVSs only for this Simulator")
 
        
 
