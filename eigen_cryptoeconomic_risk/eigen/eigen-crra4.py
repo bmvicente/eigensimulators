@@ -1962,8 +1962,7 @@ def main():
     st.write("\n")
     st.write("\n")        
     st.write("\n")
-    st.write("\n")
-    
+
 
     st.markdown("""
     <style>
@@ -2004,6 +2003,7 @@ def main():
         st.write(f"""&#8226; AVS1 Revenue: **${avs1_revenue:,.0f}**""")
 
         st.write("\n")
+        st.write("\n")
 
 
 
@@ -2037,9 +2037,10 @@ def main():
 
         st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
-
+        st.write("\n")
         st.write("\n")
         st.write("  \n")
+
 
         ### AVS TOKENOMICS
 
@@ -2169,6 +2170,7 @@ def main():
         st.write(f"""&#8226; AVS2 Revenue: **${avs2_revenue:,.0f}**""")
 
         st.write("\n")
+        st.write("\n")
 
 
 
@@ -2206,6 +2208,7 @@ def main():
 
         st.write("\n")
         st.write("  \n")
+        st.write("\n")
 
 
 
@@ -2339,6 +2342,7 @@ def main():
 
 
         st.write("\n")
+        st.write("\n")
 
 
 
@@ -2374,6 +2378,7 @@ def main():
 
         st.write("\n")
         st.write("  \n")
+        st.write("\n")
 
 
 
