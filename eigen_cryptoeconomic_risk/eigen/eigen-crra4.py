@@ -2555,7 +2555,7 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
-    
+
     col80, col81, col82 = st.columns(3, gap="large")
     
     with col80:
@@ -2578,7 +2578,7 @@ def main():
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
             </div>
-            <span style="font-size: 20px; font-weight: bold;"> = {formatted_result}</span>
+            <span style="font-size: 21px; font-weight: bold;"> = {formatted_result}</span>
         </div>
         """
 
@@ -2605,7 +2605,7 @@ def main():
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
             </div>
-            <span style="font-size: 20px; font-weight: bold;"> = {formatted_result}</span>
+            <span style="font-size: 21px; font-weight: bold;"> = {formatted_result}</span>
         </div>
         """
 
@@ -2631,7 +2631,7 @@ def main():
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
             </div>
-            <span style="font-size: 20px; font-weight: bold;"> = {formatted_result}</span>
+            <span style="font-size: 21px; font-weight: bold;"> = {formatted_result}</span>
         </div>
         """
 
