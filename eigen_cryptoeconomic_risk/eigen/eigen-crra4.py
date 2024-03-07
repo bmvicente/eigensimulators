@@ -2578,7 +2578,7 @@ def main():
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
             </div>
-            <span style="font-size: 22px; font-weight: bold;"> = {formatted_result}</span>
+            <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
         </div>
         """
 
@@ -2605,7 +2605,7 @@ def main():
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
             </div>
-            <span style="font-size: 22px; font-weight: bold;"> = {formatted_result}</span>
+            <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
         </div>
         """
 
@@ -2631,7 +2631,7 @@ def main():
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
             </div>
-            <span style="font-size: 22px; font-weight: bold;"> = {formatted_result}</span>
+            <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
         </div>
         """
 
