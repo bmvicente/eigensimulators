@@ -2006,7 +2006,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">$AVS1 Staker / xETH Restaker Reward: <span style="font-size: 1.2em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS1 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">m</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2028,7 +2028,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">AVS1 Operator Reward: <span style="font-size: 1.2em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS1 Operator Reward: <span style="font-size: 1.3em;">m</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2084,7 +2084,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">$AVS2 Staker / xETH Restaker Reward: <span style="font-size: 1.2em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS2 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">m</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2106,7 +2106,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1em;">AVS2 Operator Reward: <span style="font-size: 1.2em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS2 Operator Reward: <span style="font-size: 1.3em;">m</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2162,7 +2162,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">$AVS3 Staker / xETH Restaker Reward: <span style="font-size: 1.2em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS3 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">m</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2184,7 +2184,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.1em;">AVS3 Operator Reward: <span style="font-size: 1.2em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS3 Operator Reward: <span style="font-size: 1.3em;">m</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
