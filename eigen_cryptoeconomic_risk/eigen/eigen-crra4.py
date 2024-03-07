@@ -89,7 +89,10 @@ def main():
 
 
     st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
+    st.header("**RISK**")
     st.subheader("**Malicious Operator → AVS Slashing Event Simulator:** *Naïve Approach*")
 
     
