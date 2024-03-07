@@ -79,12 +79,12 @@ def main():
     with st.expander("Index"):
         st.markdown("""
     **RISK**
-        1. **Malicious Operator → AVS Slashing Event Simulator:** *Naïve Approach*
-        2. **Malicious Operator → AVS Slashing Event Simulator:** *STAKESURE Approach*
+    1. **Malicious Operator → AVS Slashing Event Simulator:** *Naïve Approach*
+    2. **Malicious Operator → AVS Slashing Event Simulator:** *STAKESURE Approach*
 
     **REWARD**
-        1. Staker/Operator Reward Distribution
-        2. Sharpe Ratios
+    1. Staker/Operator Reward Distribution
+    2. Sharpe Ratios
         """, unsafe_allow_html=False)
 
 
