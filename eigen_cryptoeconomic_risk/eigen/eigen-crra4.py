@@ -1980,6 +1980,58 @@ def main():
         
         st.write(f"""&#8226; AVS1 Revenue: **${avs1_revenue:,.0f}**""")
 
+
+
+        col66, col67 = st.columns(2)
+
+        with col66:
+            # Calculate the percentage and handle division by zero
+            #if avs_total_staked != 0:
+            #    staker_reward_percentage = (staker_reward / avs_revenue) * 100
+            #else:
+            #    staker_reward_percentage = 0.00
+
+            st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.5em;">$AVS Staker / xETH Restaker Reward: <span style="font-size: 1.2em;">m</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+        with col67:
+            # Calculate the percentage and handle division by zero
+            #if avs_total_staked != 0:
+            #    operator_reward_percentage = (operator_reward / avs_revenue) * 100
+            #else:
+            #    operator_reward_percentage = 0.00
+
+            st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.5em;">AVS Operator Reward: <span style="font-size: 1.2em;">m</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+
+
+
+
     with col64:
          
         st.markdown("""
@@ -2003,6 +2055,57 @@ def main():
         avs2_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_revenue")
 
         st.write(f"""&#8226; AVS2 Revenue: **${avs2_revenue:,.0f}**""")
+
+
+
+        col68, col69 = st.columns(2)
+
+        with col68:
+            # Calculate the percentage and handle division by zero
+            #if avs_total_staked != 0:
+            #    staker_reward_percentage = (staker_reward / avs_revenue) * 100
+            #else:
+            #    staker_reward_percentage = 0.00
+
+            st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.5em;">$AVS Staker / xETH Restaker Reward: <span style="font-size: 1.2em;">m</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+        with col69:
+            # Calculate the percentage and handle division by zero
+            #if avs_total_staked != 0:
+            #    operator_reward_percentage = (operator_reward / avs_revenue) * 100
+            #else:
+            #    operator_reward_percentage = 0.00
+
+            st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.5em;">AVS Operator Reward: <span style="font-size: 1.2em;">m</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+
+
 
 
     with col65:
@@ -2031,6 +2134,51 @@ def main():
 
 
 
+        col70, col71 = st.columns(2)
+
+        with col70:
+            # Calculate the percentage and handle division by zero
+            #if avs_total_staked != 0:
+            #    staker_reward_percentage = (staker_reward / avs_revenue) * 100
+            #else:
+            #    staker_reward_percentage = 0.00
+
+            st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.5em;">$AVS Staker / xETH Restaker Reward: <span style="font-size: 1.2em;">m</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+        with col71:
+            # Calculate the percentage and handle division by zero
+            #if avs_total_staked != 0:
+            #    operator_reward_percentage = (operator_reward / avs_revenue) * 100
+            #else:
+            #    operator_reward_percentage = 0.00
+
+            st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.5em;">AVS Operator Reward: <span style="font-size: 1.2em;">m</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
 
 
     st.write("\n")
