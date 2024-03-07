@@ -87,7 +87,8 @@ def main():
     2. **REWARD**
         - 2.1 Staker/Operator Reward Distribution
         - 2.2 Sharpe Ratios
-        """, unsafe_allow_html=False)
+        """, unsafe_allow_html=True)
+
 
 
 
