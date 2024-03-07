@@ -2553,7 +2553,9 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
-
+    st.write("\n")
+    st.write("\n")
+    
     col80, col81, col82 = st.columns(3, gap="large")
     
     with col80:
@@ -2570,6 +2572,7 @@ def main():
         fraction_html1 = f"""
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold;">AVS1 Sharpe Ratio Calculation</span><br>
+            <br>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -2596,6 +2599,7 @@ def main():
         fraction_html2 = f"""
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold;">AVS2 Sharpe Ratio Calculation</span><br>
+            <br>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
