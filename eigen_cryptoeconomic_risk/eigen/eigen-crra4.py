@@ -1909,6 +1909,7 @@ def main():
     st.subheader("**2.1 Staker/Operator Reward Distributions**")
     
     st.write("\n")
+    st.write("\n")
 
     st.markdown("""
     <style>
@@ -1920,6 +1921,7 @@ def main():
     <div class='big-font'>OPERATOR METRICS</div>
     """, unsafe_allow_html=True)
 
+    st.write("\n")
 
     col60, col61, col62 = st.columns(3, gap="large")
 
