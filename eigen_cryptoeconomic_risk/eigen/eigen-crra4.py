@@ -1896,7 +1896,7 @@ def main():
 
 
     st.header("**2. REWARD**")
-    st.subheader("**2.1 Staker/Operator Reward Distributio**")
+    st.subheader("**2.1 Staker/Operator Reward Distributions**")
 
     st.write("\n")
     st.write("\n")
