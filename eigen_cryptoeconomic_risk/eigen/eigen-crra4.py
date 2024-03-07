@@ -1931,7 +1931,7 @@ def main():
 
     with col61:
         
-        op_reputation_level = st.slider('**Reputation Level**', 0, 100, 0, key='reputation_slider', format='%d%%')
+        op_reputation_level = st.selectbox('**Reputation Level**', ['Unknown', 'Established', 'Renowned'], index=0, key='reputation_select')
 
     with col62:
 
