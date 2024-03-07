@@ -2393,8 +2393,6 @@ def main():
         elif avs3_inf_def_rate < 0:
             st.write(f"&#8226; **$AVS3 Deflation Rate**: {(avs3_inf_def_rate)}%")
 
-        st.write("  \n")
-
         col3, col4 = st.columns([3, 3])
 
         with col3:
