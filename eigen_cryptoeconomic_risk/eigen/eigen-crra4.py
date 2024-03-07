@@ -1910,9 +1910,32 @@ def main():
     
     st.write("\n")
 
-    col60, col61 = st.columns(2, gap="large")
+    st.write("**OPERATOR METRICS**")
+
+    col60, col61, col62 = st.columns(3, gap="large")
 
     with col60:
+        
+        op_entrenchment_level = st.slider('**Operator Entrenchment Level**', 0, 100, 0, key='entrenchment_slider', format='%d%%')
+
+    with col61:
+        
+        op_centralization_level = st.slider('**Operator Centralization Level**', 0, 100, 0, key='centrlization_slider', format='%d%%')
+
+    with col62:
+       
+        op_reputation_level = st.slider('**Operator Reputation Level**', 0, 100, 0, key='reputation_slider', format='%d%%')
+
+  
+    st.write("\n")        
+    st.write("\n")
+
+    st.write("**AVS METRICS**")
+
+    col63, col64, col65 = st.columns(3, gap="large")
+
+    with col63:
+         
         st.markdown("""
                     <style>
                     .header-style {
@@ -1935,10 +1958,8 @@ def main():
         
         st.write(f"""&#8226; AVS1 Revenue: **${avs1_revenue:,.0f}**""")
 
-
-        st.write("\n")
-
-
+    with col64:
+         
         st.markdown("""
                     <style>
                     .header-style {
@@ -1962,8 +1983,7 @@ def main():
         st.write(f"""&#8226; AVS2 Revenue: **${avs2_revenue:,.0f}**""")
 
 
-        st.write("\n")
-
+    with col65:
 
         st.markdown("""
                     <style>
@@ -1986,23 +2006,6 @@ def main():
         avs3_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_revenue")
 
         st.write(f"""&#8226; AVS1 Revenue: **${avs3_revenue:,.0f}**""")
-
-
-
-
-
-    with col61:
-
-        op_entrenchment_level = st.slider('**Operator Entrenchment Level**', 0, 100, 0, key='entrenchment_slider', format='%d%%')
-        
-        st.write("\n")
-
-        op_centralization_level = st.slider('**Operator Centralization Level**', 0, 100, 0, key='centrlization_slider', format='%d%%')
-        
-        st.write("\n")
-
-        op_reputation_level = st.slider('**Operator Reputation Level**', 0, 100, 0, key='reputation_slider', format='%d%%')
-
 
 
 
