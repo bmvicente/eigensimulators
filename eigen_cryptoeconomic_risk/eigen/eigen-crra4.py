@@ -96,7 +96,7 @@ def main():
     st.write("  \n")
 
     st.header("**1. RISK**")
-    st.subheader("**Malicious Operator → AVS Slashing Event Simulator:** *Naïve Approach*")
+    st.subheader("**1.1 Malicious Operator → AVS Slashing Event Simulator:** *Naïve Approach*")
 
     
     st.write("  \n")
@@ -1363,7 +1363,7 @@ def main():
     ###########################
 
 
-    st.subheader("**Malicious Operator → AVS Slashing Event Simulator:** *STAKESURE Approach*")
+    st.subheader("**1.2 Malicious Operator → AVS Slashing Event Simulator:** *STAKESURE Approach*")
 
     st.write("  \n")
     st.write("  \n")
@@ -1884,6 +1884,22 @@ def main():
         button_text = '<p style="text-align: center; font-weight: bold; font-size: 20px;"><b>Update State</b></p>'
         if st.button('Update State'):
             recalculate_and_update()
+
+
+
+
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+
+
+
+    st.header("**2. REWARD**")
+    st.subheader("**2.1 Staker/Operator Reward Distribution*")
+    st.subheader("**2.2 Sharpe Ratios*")
+
+
 
 
 
