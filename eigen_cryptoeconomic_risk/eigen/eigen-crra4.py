@@ -2547,8 +2547,72 @@ def main():
         </div>
     </div> """
 
-
     st.markdown(fraction_html, unsafe_allow_html=True)
+
+    col80, col81, col82 = st.columns(3, gap="large")
+
+    with col80:
+        avs_net_profit = 10000  # Example value
+        min_expected_slash = 500  # Example value
+        excess_return_deviation = 20  # Example percentage
+
+        formatted_avs_net_profit = f"{avs_net_profit:,}"
+        formatted_min_expected_slash = f"{min_expected_slash:,}"
+        formatted_excess_return_deviation = f"{excess_return_deviation}%"
+
+        fraction_html = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
+            <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
+                <span>{formatted_avs_net_profit}  -  {formatted_min_expected_slash}</span><br>
+                <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
+                <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+            </div>
+        </div>
+        """
+
+    with col81:
+        avs_net_profit = 10000  # Example value
+        min_expected_slash = 500  # Example value
+        excess_return_deviation = 20  # Example percentage
+
+        formatted_avs_net_profit = f"{avs_net_profit:,}"
+        formatted_min_expected_slash = f"{min_expected_slash:,}"
+        formatted_excess_return_deviation = f"{excess_return_deviation}%"
+
+        fraction_html = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
+            <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
+                <span>{formatted_avs_net_profit}  -  {formatted_min_expected_slash}</span><br>
+                <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
+                <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+            </div>
+        </div>
+        """
+
+    with col82:
+        avs_net_profit = 10000  # Example value
+        min_expected_slash = 500  # Example value
+        excess_return_deviation = 20  # Example percentage
+
+        formatted_avs_net_profit = f"{avs_net_profit:,}"
+        formatted_min_expected_slash = f"{min_expected_slash:,}"
+        formatted_excess_return_deviation = f"{excess_return_deviation}%"
+
+        fraction_html = f"""
+        <div style="text-align: center;">
+            <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
+            <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
+                <span>{formatted_avs_net_profit}  -  {formatted_min_expected_slash}</span><br>
+                <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
+                <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+            </div>
+        </div>
+        """
+
+
+
 
 
 
