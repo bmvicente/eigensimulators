@@ -2549,6 +2549,11 @@ def main():
 
     st.markdown(fraction_html, unsafe_allow_html=True)
 
+
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+
     col80, col81, col82 = st.columns(3, gap="large")
 
     with col80:
@@ -2562,7 +2567,7 @@ def main():
 
         fraction_html1 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
+            <span style="font-size: 20px; font-weight: bold;">AVS1 Sharpe Ratio Calculation =  </span>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit}  -  {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -2583,7 +2588,7 @@ def main():
 
         fraction_html2 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
+            <span style="font-size: 20px; font-weight: bold;">AVS2 Sharpe Ratio Calculation =  </span>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit}  -  {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -2604,7 +2609,7 @@ def main():
 
         fraction_html3 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
+            <span style="font-size: 20px; font-weight: bold;">AVS3 Sharpe Ratio Calculation =  </span>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit}  -  {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
