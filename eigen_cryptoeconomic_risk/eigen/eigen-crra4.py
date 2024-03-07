@@ -1910,73 +1910,79 @@ def main():
     
     st.write("\n")
 
-    st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                .stExpander {
-                    border: none !important;
-                    box-shadow: none !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
+    col60, col61 = st.columns(2)
 
-            # Displaying the custom styled header
-    st.markdown('<p class="header-style">AVS 1 Revenue ($)</p>', unsafe_allow_html=True)
+    with col60:
+        st.markdown("""
+                    <style>
+                    .header-style {
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 0px;  /* Adjust the space below the header */
+                    }
+                    .stExpander {
+                        border: none !important;
+                        box-shadow: none !important;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
 
-        # Manual input for AVS TVL
-    avs1_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_revenue")
+                # Displaying the custom styled header
+        st.markdown('<p class="header-style">AVS 1 Revenue ($)</p>', unsafe_allow_html=True)
 
-
-    st.write("\n")
-
-
-    st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                .stExpander {
-                    border: none !important;
-                    box-shadow: none !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
-            # Displaying the custom styled header
-    st.markdown('<p class="header-style">AVS 2 Revenue ($)</p>', unsafe_allow_html=True)
-
-        # Manual input for AVS TVL
-    avs2_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_revenue")
+            # Manual input for AVS TVL
+        avs1_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_revenue")
 
 
-    st.write("\n")
+        st.write("\n")
 
 
-    st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                .stExpander {
-                    border: none !important;
-                    box-shadow: none !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
+        st.markdown("""
+                    <style>
+                    .header-style {
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 0px;  /* Adjust the space below the header */
+                    }
+                    .stExpander {
+                        border: none !important;
+                        box-shadow: none !important;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
 
-            # Displaying the custom styled header
-    st.markdown('<p class="header-style">AVS 3 Revenue ($)</p>', unsafe_allow_html=True)
+                # Displaying the custom styled header
+        st.markdown('<p class="header-style">AVS 2 Revenue ($)</p>', unsafe_allow_html=True)
 
-        # Manual input for AVS TVL
-    avs3_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_revenue")
+            # Manual input for AVS TVL
+        avs2_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_revenue")
+
+
+        st.write("\n")
+
+
+        st.markdown("""
+                    <style>
+                    .header-style {
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 0px;  /* Adjust the space below the header */
+                    }
+                    .stExpander {
+                        border: none !important;
+                        box-shadow: none !important;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
+
+                # Displaying the custom styled header
+        st.markdown('<p class="header-style">AVS 3 Revenue ($)</p>', unsafe_allow_html=True)
+
+            # Manual input for AVS TVL
+        avs3_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_revenue")
+
+
+    with col61:
 
 
 
