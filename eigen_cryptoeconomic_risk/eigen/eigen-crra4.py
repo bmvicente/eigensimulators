@@ -1927,7 +1927,7 @@ def main():
 
     with col60:
 
-        op_centralization_level = st.slider('**Centralization Level**', 0, 100, 0, key='centrlization_slider', format='%d%%')
+        op_centralization_level = st.selectbox('**Centralization Level**', ['Centralized', 'Semi-Decentralized', 'Decentralized'], index=0, key='centralization_select')
 
     with col61:
         
