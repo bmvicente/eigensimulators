@@ -1899,7 +1899,11 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n") 
+    st.write("\n")
+    st.write("\n")
 
+    
 
     st.header("**2. REWARD**")
     st.subheader("**2.1 Staker/Operator Reward Distributions**")
