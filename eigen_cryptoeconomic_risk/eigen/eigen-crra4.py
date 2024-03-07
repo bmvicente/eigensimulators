@@ -1907,6 +1907,78 @@ def main():
 
     st.header("**2. REWARD**")
     st.subheader("**2.1 Staker/Operator Reward Distributions**")
+    
+    st.write("\n")
+
+    st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+    st.markdown('<p class="header-style">AVS 1 Revenue ($)</p>', unsafe_allow_html=True)
+
+        # Manual input for AVS TVL
+    avs1_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
+
+
+    st.write("\n")
+
+
+    st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+    st.markdown('<p class="header-style">AVS 2 Revenue ($)</p>', unsafe_allow_html=True)
+
+        # Manual input for AVS TVL
+    avs2_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
+
+
+    st.write("\n")
+
+
+    st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+    st.markdown('<p class="header-style">AVS 3 Revenue ($)</p>', unsafe_allow_html=True)
+
+        # Manual input for AVS TVL
+    avs3_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
+
+
 
     st.write("\n")
     st.write("\n")
@@ -1914,13 +1986,16 @@ def main():
 
     st.subheader("**2.2 Sharpe Ratios**")
 
+    st.write("\n")
+    st.write("\n")
+
     fraction_html = """
     <div style="text-align: center;">
         <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
         <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
             <span>AVS Net Profit  -  Min Expected Slash on Co-Joint AVS</span><br>
             <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-            <span>Excess Return Deviation(20%)</span>
+            <span>Excess Return Deviation (20%)</span>
         </div>
     </div> """
 
