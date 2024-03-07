@@ -2643,6 +2643,9 @@ def main():
         st.markdown(fraction_html3, unsafe_allow_html=True)
 
 
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
 
     with st.expander("Logic"):
             st.markdown("""
