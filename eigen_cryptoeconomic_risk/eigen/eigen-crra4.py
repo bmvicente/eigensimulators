@@ -72,7 +72,7 @@ def main():
     st.write("  \n")
 
     st.title("Cryptoeconomic Risk/Reward Analysis IV")
-    st.subheader("**Malicious Operator → AVS Slashing Event Simulator:** *Naïve & STAKESURE Approaches*")
+    st.header("**Malicious Operator → AVS Slashing Event Simulator:** *Naïve & STAKESURE Approaches*")
     
     st.write("  \n")
 
