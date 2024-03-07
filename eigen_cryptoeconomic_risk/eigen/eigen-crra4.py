@@ -2042,7 +2042,7 @@ def main():
 
         st.write("  \n")
 
-        avs_inf_def_rate = st.slider("**$AVS1 Inflation/Deflation Rate**", 
+        avs1_inf_def_rate = st.slider("**$AVS1 Inflation/Deflation Rate**", 
                                     min_value=-50, 
                                     max_value=50, 
                                     value=0,
@@ -2050,20 +2050,20 @@ def main():
                                     key="avs1_tok")
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
-        if avs_inf_def_rate > 0:
-            st.write(f"&#8226; **$AVS1 Inflation Rate**: {avs_inf_def_rate}%")
-        elif avs_inf_def_rate < 0:
-            st.write(f"&#8226; **$AVS1 Deflation Rate**: {(avs_inf_def_rate)}%")
+        if avs1_inf_def_rate > 0:
+            st.write(f"&#8226; **$AVS1 Inflation Rate**: {avs1_inf_def_rate}%")
+        elif avs1_inf_def_rate < 0:
+            st.write(f"&#8226; **$AVS1 Deflation Rate**: {(avs1_inf_def_rate)}%")
 
         st.write("  \n")
 
         col3, col4 = st.columns([3, 3])
 
         with col3:
-                avs1_circ_supply = st.number_input("**$AVS2 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply", key="avs1_circ")
+                avs1_circ_supply = st.number_input("**$AVS1 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply", key="avs1_circ")
 
         with col4:
-                avs1_total_supply = st.number_input("**$AVS2 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_total")
+                avs1_total_supply = st.number_input("**$AVS1 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_total")
 
 
 
@@ -2187,6 +2187,9 @@ def main():
         st.write("\n")
 
 
+
+
+
         ### AVS TOKENOMICS
 
         st.markdown("""
@@ -2208,7 +2211,7 @@ def main():
 
         st.write("  \n")
 
-        avs_inf_def_rate = st.slider("**$AVS2 Inflation/Deflation Rate**", 
+        avs2_inf_def_rate = st.slider("**$AVS2 Inflation/Deflation Rate**", 
                                     min_value=-50, 
                                     max_value=50, 
                                     value=0,
@@ -2216,10 +2219,10 @@ def main():
                                     key="avs2_tok")
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
-        if avs_inf_def_rate > 0:
-            st.write(f"&#8226; **$AVS2 Inflation Rate**: {avs_inf_def_rate}%")
-        elif avs_inf_def_rate < 0:
-            st.write(f"&#8226; **$AVS2 Deflation Rate**: {(avs_inf_def_rate)}%")
+        if avs2_inf_def_rate > 0:
+            st.write(f"&#8226; **$AVS2 Inflation Rate**: {avs2_inf_def_rate}%")
+        elif avs2_inf_def_rate < 0:
+            st.write(f"&#8226; **$AVS2 Deflation Rate**: {(avs2_inf_def_rate)}%")
 
         st.write("  \n")
 
@@ -2351,6 +2354,8 @@ def main():
 
 
 
+
+
         ### AVS TOKENOMICS
 
         st.markdown("""
@@ -2372,7 +2377,7 @@ def main():
 
         st.write("  \n")
 
-        avs_inf_def_rate = st.slider("**$AVS3 Inflation/Deflation Rate**", 
+        avs3_inf_def_rate = st.slider("**$AVS3 Inflation/Deflation Rate**", 
                                     min_value=-50, 
                                     max_value=50, 
                                     value=0,
@@ -2381,9 +2386,9 @@ def main():
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
         if avs_inf_def_rate > 0:
-            st.write(f"&#8226; **$AVS3 Inflation Rate**: {avs_inf_def_rate}%")
+            st.write(f"&#8226; **$AVS3 Inflation Rate**: {avs3_inf_def_rate}%")
         elif avs_inf_def_rate < 0:
-            st.write(f"&#8226; **$AVS3 Deflation Rate**: {(avs_inf_def_rate)}%")
+            st.write(f"&#8226; **$AVS3 Deflation Rate**: {(avs3_inf_def_rate)}%")
 
         st.write("  \n")
 
