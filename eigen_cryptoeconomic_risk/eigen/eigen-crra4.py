@@ -2556,16 +2556,16 @@ def main():
 
     col80, col81, col82 = st.columns(3, gap="large")
     
-    formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
-
     with col80:
         avs_net_profit = 10000  # Example value
         min_expected_slash = 500  # Example value
         excess_return_deviation = 20  # Example percentage
+        sharpe_ratio_result = 1.5  # Example calculation result
 
         formatted_avs_net_profit = f"{avs_net_profit:,}"
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
+        formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
 
         fraction_html1 = f"""
         <div style="text-align: center;">
@@ -2585,10 +2585,12 @@ def main():
         avs_net_profit = 10000  # Example value
         min_expected_slash = 500  # Example value
         excess_return_deviation = 20  # Example percentage
+        sharpe_ratio_result = 1.5  # Example calculation result
 
         formatted_avs_net_profit = f"{avs_net_profit:,}"
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
+        formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
 
         # Assuming sharpe_ratio_result and other variables are defined as per the context
         fraction_html2 = f"""
@@ -2614,6 +2616,7 @@ def main():
         formatted_avs_net_profit = f"{avs_net_profit:,}"
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
+        formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
 
         fraction_html3 = f"""
         <div style="text-align: center;">
