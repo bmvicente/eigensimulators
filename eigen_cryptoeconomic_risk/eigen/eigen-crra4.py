@@ -2560,7 +2560,7 @@ def main():
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
 
-        fraction_html = f"""
+        fraction_html1 = f"""
         <div style="text-align: center;">
             <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
@@ -2570,6 +2570,7 @@ def main():
             </div>
         </div>
         """
+        st.markdown(fraction_html1, unsafe_allow_html=True)
 
     with col81:
         avs_net_profit = 10000  # Example value
@@ -2580,7 +2581,7 @@ def main():
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
 
-        fraction_html = f"""
+        fraction_html2 = f"""
         <div style="text-align: center;">
             <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
@@ -2590,6 +2591,7 @@ def main():
             </div>
         </div>
         """
+        st.markdown(fraction_html2, unsafe_allow_html=True)
 
     with col82:
         avs_net_profit = 10000  # Example value
@@ -2600,7 +2602,7 @@ def main():
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
 
-        fraction_html = f"""
+        fraction_html3 = f"""
         <div style="text-align: center;">
             <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
@@ -2611,8 +2613,7 @@ def main():
         </div>
         """
 
-
-
+        st.markdown(fraction_html3, unsafe_allow_html=True)
 
 
 
