@@ -1988,6 +1988,40 @@ def main():
 
 
 
+        st.markdown("""
+            <style>
+            .header-style {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 0px;  /* Adjust the space below the header */
+            }
+            .stExpander {
+                border: none !important;
+                box-shadow: none !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
+        # Displaying the custom styled header
+        st.markdown('<p class="header-style">AVS Dual Staking Model</p>', unsafe_allow_html=True)
+        
+        st.write("  \n")
+
+        col5, col6 = st.columns(2)
+        with col5:
+            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50)
+        with col6:
+            xeth_percentage = 100 - avs_token_percentage
+        
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True)
+
+        st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
+
+
+        st.write("\n")
+
+
+
         col66, col67 = st.columns(2)
 
         with col66:
