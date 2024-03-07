@@ -1927,15 +1927,15 @@ def main():
 
     with col60:
 
-        op_centralization_level = st.slider('**Operator Centralization Level**', 0, 100, 0, key='centrlization_slider', format='%d%%')
+        op_centralization_level = st.slider('**Centralization Level**', 0, 100, 0, key='centrlization_slider', format='%d%%')
 
     with col61:
         
-        op_reputation_level = st.slider('**Operator Reputation Level**', 0, 100, 0, key='reputation_slider', format='%d%%')
+        op_reputation_level = st.slider('**Reputation Level**', 0, 100, 0, key='reputation_slider', format='%d%%')
 
     with col62:
-        
-        op_entrenchment_level = st.number_input('**Operator Entrenchment Level**', min_value=3, max_value=3, value=3, step=1, key='entrenchment_slider',  disabled=True)
+
+        op_entrenchment_level = st.number_input('**Entrenchment Level**', min_value=3, max_value=3, value=3, step=1, key='entrenchment_slider',  disabled=True)
 
        
 
