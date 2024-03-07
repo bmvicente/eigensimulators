@@ -2539,6 +2539,7 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
 
     fraction_html = """
     <div style="text-align: center;">
@@ -2649,7 +2650,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    
+
     with st.expander("Logic"):
             st.markdown("""
             """)
