@@ -2003,7 +2003,7 @@ def main():
             """, unsafe_allow_html=True)
 
         # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS Dual Staking Model</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS1 Dual Staking Model</p>', unsafe_allow_html=True)
         
         st.write("  \n")
 
@@ -2100,6 +2100,43 @@ def main():
         st.write("\n")
 
 
+
+
+        st.markdown("""
+            <style>
+            .header-style {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 0px;  /* Adjust the space below the header */
+            }
+            .stExpander {
+                border: none !important;
+                box-shadow: none !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
+        # Displaying the custom styled header
+        st.markdown('<p class="header-style">AVS2 Dual Staking Model</p>', unsafe_allow_html=True)
+        
+        st.write("  \n")
+
+        col5, col6 = st.columns(2)
+        with col5:
+            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50)
+        with col6:
+            xeth_percentage = 100 - avs_token_percentage
+        
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True)
+
+        st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
+
+
+
+
+        st.write("\n")
+
+
         col68, col69 = st.columns(2)
 
         with col68:
@@ -2174,6 +2211,44 @@ def main():
         avs3_revenue = st.number_input("Revenue", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_revenue")
 
         st.write(f"""&#8226; AVS3 Revenue: **${avs3_revenue:,.0f}**""")
+
+
+
+
+
+        st.markdown("""
+            <style>
+            .header-style {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 0px;  /* Adjust the space below the header */
+            }
+            .stExpander {
+                border: none !important;
+                box-shadow: none !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+
+        # Displaying the custom styled header
+        st.markdown('<p class="header-style">AVS3 Dual Staking Model</p>', unsafe_allow_html=True)
+        
+        st.write("  \n")
+
+        col5, col6 = st.columns(2)
+        with col5:
+            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50)
+        with col6:
+            xeth_percentage = 100 - avs_token_percentage
+        
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True)
+
+        st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
+
+
+        st.write("\n")
+
+
 
 
         st.write("\n")
