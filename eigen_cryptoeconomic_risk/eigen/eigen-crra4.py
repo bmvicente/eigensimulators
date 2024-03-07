@@ -1932,7 +1932,16 @@ def main():
     st.write("\n")
 
 
-    st.write("**AVS METRICS**")
+    st.markdown("""
+    <style>
+    .big-font {
+        font-size:30px !important;
+        font-weight:bold;
+    }
+    </style>
+    <div class='big-font'>**AVS METRICS**</div>
+    """, unsafe_allow_html=True)
+
 
     col63, col64, col65 = st.columns(3, gap="large")
 
@@ -2023,7 +2032,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    
+
     st.subheader("**2.2 Sharpe Ratios**")
 
     st.write("\n")
