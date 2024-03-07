@@ -2232,7 +2232,7 @@ def main():
                 avs2_circ_supply = st.number_input("**$AVS2 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply", key="avs2_circ")
 
         with col4:
-                avs2_total_supply = st.number_input("**$AVS2 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_total")
+                avs2_total_supply = st.number_input("**$AVS2 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_total")
 
 
 
@@ -2398,7 +2398,7 @@ def main():
                 avs3_circ_supply = st.number_input("**$AVS3 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply", key="avs3_circ")
 
         with col4:
-                avs3_total_supply = st.number_input("**$AVS3 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_supply")
+                avs3_total_supply = st.number_input("**$AVS3 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_total")
         
 
 
