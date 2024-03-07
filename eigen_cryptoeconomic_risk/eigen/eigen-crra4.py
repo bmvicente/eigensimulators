@@ -1910,7 +1910,7 @@ def main():
     
     st.write("\n")
 
-    col60, col61 = st.columns(2)
+    col60, col61 = st.columns(2, gap="large")
 
     with col60:
         st.markdown("""
