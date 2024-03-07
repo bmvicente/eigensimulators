@@ -2009,11 +2009,11 @@ def main():
 
         col5, col6 = st.columns(2)
         with col5:
-            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50)
+            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50, key="avs1_dual")
         with col6:
             xeth_percentage = 100 - avs_token_percentage
         
-            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True)
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="avs1_dualx")
 
         st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
@@ -2123,11 +2123,11 @@ def main():
 
         col5, col6 = st.columns(2)
         with col5:
-            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50)
+            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50, key="avs2_dual")
         with col6:
             xeth_percentage = 100 - avs_token_percentage
         
-            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True)
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="avs2_dualx")
 
         st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
@@ -2237,11 +2237,11 @@ def main():
 
         col5, col6 = st.columns(2)
         with col5:
-            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50)
+            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50, key="avs3_dual")
         with col6:
             xeth_percentage = 100 - avs_token_percentage
         
-            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True)
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="avs3_dualx")
 
         st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
