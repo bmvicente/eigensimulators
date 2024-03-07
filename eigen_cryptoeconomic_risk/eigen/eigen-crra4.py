@@ -2577,7 +2577,7 @@ def main():
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold;">AVS1 Sharpe Ratio Calculation</span><br>
             <br>
-            <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
+            <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
@@ -2604,7 +2604,7 @@ def main():
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold;">AVS2 Sharpe Ratio Calculation</span><br>
             <br>
-            <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
+            <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
@@ -2630,7 +2630,7 @@ def main():
         <div style="text-align: center;">
             <span style="font-size: 22px; font-weight: bold;">AVS3 Sharpe Ratio Calculation</span><br>
             <br>
-            <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
+            <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
