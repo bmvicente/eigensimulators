@@ -2646,7 +2646,10 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
+    st.write("\n")
 
+    
     with st.expander("Logic"):
             st.markdown("""
             """)
