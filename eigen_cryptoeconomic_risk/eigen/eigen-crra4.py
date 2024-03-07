@@ -2082,13 +2082,16 @@ def main():
 
         with col3:
                 avs1_circ_supply = st.number_input("**$AVS1 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply", key="avs1_circ")
+                st.write(f"&#8226; **Circulating Supply**: {avs1_circ_supply}%")
 
         with col4:
                 avs1_total_supply = st.number_input("**$AVS1 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_total")
+                st.write(f"&#8226; **Circulating Supply**: {avs1_total_supply}%")
 
 
 
         st.write("\n")
+        st.write("  \n")
         st.write("  \n")
 
 
@@ -2254,15 +2257,18 @@ def main():
 
         with col3:
                 avs2_circ_supply = st.number_input("**$AVS2 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply", key="avs2_circ")
+                st.write(f"&#8226; **Circulating Supply**: {avs2_circ_supply}%")
 
         with col4:
                 avs2_total_supply = st.number_input("**$AVS2 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_total")
+                st.write(f"&#8226; **Circulating Supply**: {avs2_total_supply}%")
 
 
 
 
         st.write("\n")
         st.write("  \n")
+        st.write("\n")
 
 
         col68, col69 = st.columns(2)
@@ -2422,16 +2428,19 @@ def main():
 
         with col3:
                 avs3_circ_supply = st.number_input("**$AVS3 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply", key="avs3_circ")
+                st.write(f"&#8226; **Circulating Supply**: {avs3_circ_supply}%")
 
         with col4:
                 avs3_total_supply = st.number_input("**$AVS3 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_total")
-        
+                st.write(f"&#8226; **Total Supply**: {avs3_total_supply}%")
+
 
 
 
 
         st.write("\n")
         st.write("  \n")
+        st.write("\n")
 
 
         col70, col71 = st.columns(2)
