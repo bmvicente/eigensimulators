@@ -1926,6 +1926,22 @@ def main():
     st.subheader("**2.1 Staker/Operator Revenue Distributions**")
     
     st.write("\n")
+
+    with st.expander("How this Simulator Works & Basic Assumptions"):
+        st.markdown("""
+                    An **AVS's Revenue**, at any given time, is a useful indicator to help assess the level of rewards an AVS might be able to emit. From the revenue inputted by the user, we assume a 20% profit for the AVS, and [10-30]% of that profit to be distributable as rewards (specific value of this range dependent on weighting of all the chosen inputs in our Simulator).
+
+                    - Current AVS Revenue: **\${avs_revenue:,}**
+
+                    - Total Distributable Reward Amount, if rewards = *10%* of profit: **\${dist_rewards_10:,}**
+
+                    - Total Distributable Reward Amount, if rewards = *30%* of profit: **\${dist_rewards_30:,}**
+
+                    Such a reward range is necessary to be calculated to account for the underlying riskiness/security of an AVS and subsequent reward emission values. 
+                    We find these percentages reasonable, although would highly appreciate feedback from EigenLayer.
+                    """)
+    
+    st.write("\n")
     st.write("\n")
 
     st.markdown("""
