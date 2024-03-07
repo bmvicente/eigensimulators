@@ -1925,7 +1925,6 @@ def main():
     st.header("**2. REWARD**")
     st.subheader("**2.1 Staker/Operator Revenue Distributions**")
     
-    st.write("\n")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
