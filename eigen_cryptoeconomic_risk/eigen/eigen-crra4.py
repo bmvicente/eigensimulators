@@ -2555,6 +2555,8 @@ def main():
     st.write("\n")
 
     col80, col81, col82 = st.columns(3, gap="large")
+    
+    formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
 
     with col80:
         avs_net_profit = 10000  # Example value
@@ -2567,14 +2569,16 @@ def main():
 
         fraction_html1 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 20px; font-weight: bold;">AVS1 Sharpe Ratio Calculation =  </span>
+            <span style="font-size: 20px; font-weight: bold;">AVS1 Sharpe Ratio Calculation</span><br>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
-                <span>{formatted_avs_net_profit}  -  {formatted_min_expected_slash}</span><br>
+                <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
             </div>
+            <span style="font-size: 20px; font-weight: bold;"> = {formatted_result}</span>
         </div>
         """
+
         st.markdown(fraction_html1, unsafe_allow_html=True)
 
     with col81:
@@ -2586,22 +2590,26 @@ def main():
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
 
+        # Assuming sharpe_ratio_result and other variables are defined as per the context
         fraction_html2 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 20px; font-weight: bold;">AVS2 Sharpe Ratio Calculation =  </span>
+            <span style="font-size: 20px; font-weight: bold;">AVS2 Sharpe Ratio Calculation</span><br>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
-                <span>{formatted_avs_net_profit}  -  {formatted_min_expected_slash}</span><br>
+                <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
             </div>
+            <span style="font-size: 20px; font-weight: bold;"> = {formatted_result}</span>
         </div>
         """
+
         st.markdown(fraction_html2, unsafe_allow_html=True)
 
     with col82:
         avs_net_profit = 10000  # Example value
         min_expected_slash = 500  # Example value
         excess_return_deviation = 20  # Example percentage
+        sharpe_ratio_result = 1.5  # Example calculation result
 
         formatted_avs_net_profit = f"{avs_net_profit:,}"
         formatted_min_expected_slash = f"{min_expected_slash:,}"
@@ -2609,14 +2617,16 @@ def main():
 
         fraction_html3 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 20px; font-weight: bold;">AVS3 Sharpe Ratio Calculation =  </span>
+            <span style="font-size: 20px; font-weight: bold;">AVS3 Sharpe Ratio Calculation</span><br>
             <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
-                <span>{formatted_avs_net_profit}  -  {formatted_min_expected_slash}</span><br>
+                <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
             </div>
+            <span style="font-size: 20px; font-weight: bold;"> = {formatted_result}</span>
         </div>
         """
+
 
         st.markdown(fraction_html3, unsafe_allow_html=True)
 
