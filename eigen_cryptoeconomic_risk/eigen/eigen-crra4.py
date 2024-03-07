@@ -2385,9 +2385,9 @@ def main():
                                     key="avs3_tok")
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
-        if avs_inf_def_rate > 0:
+        if avs3_inf_def_rate > 0:
             st.write(f"&#8226; **$AVS3 Inflation Rate**: {avs3_inf_def_rate}%")
-        elif avs_inf_def_rate < 0:
+        elif avs3_inf_def_rate < 0:
             st.write(f"&#8226; **$AVS3 Deflation Rate**: {(avs3_inf_def_rate)}%")
 
         st.write("  \n")
