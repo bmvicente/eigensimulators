@@ -2046,7 +2046,8 @@ def main():
                                     min_value=-50, 
                                     max_value=50, 
                                     value=0,
-                                    format="%d%%")
+                                    format="%d%%",
+                                    key="avs1_tok")
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
         if avs_inf_def_rate > 0:
@@ -2211,7 +2212,8 @@ def main():
                                     min_value=-50, 
                                     max_value=50, 
                                     value=0,
-                                    format="%d%%")
+                                    format="%d%%",
+                                    key="avs2_tok")
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
         if avs_inf_def_rate > 0:
@@ -2374,7 +2376,8 @@ def main():
                                     min_value=-50, 
                                     max_value=50, 
                                     value=0,
-                                    format="%d%%")
+                                    format="%d%%",
+                                    key="avs3_tok")
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
         if avs_inf_def_rate > 0:
