@@ -1929,6 +1929,8 @@ def main():
   
     st.write("\n")        
     st.write("\n")
+    st.write("\n")
+
 
     st.write("**AVS METRICS**")
 
@@ -2014,7 +2016,14 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
 
+    
     st.subheader("**2.2 Sharpe Ratios**")
 
     st.write("\n")
