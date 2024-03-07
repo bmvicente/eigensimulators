@@ -1935,11 +1935,11 @@ def main():
     st.markdown("""
     <style>
     .big-font {
-        font-size:30px !important;
+        font-size:25px !important;
         font-weight:bold;
     }
     </style>
-    <div class='big-font'>**AVS METRICS**</div>
+    <div class='big-font'>AVS METRICS</div>
     """, unsafe_allow_html=True)
 
 
