@@ -1973,10 +1973,10 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS1 Revenue</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS1</p>', unsafe_allow_html=True)
 
             # Manual input for AVS TVL
-        avs1_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_revenue")
+        avs1_revenue = st.number_input("AVS1 Revenue", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_revenue")
         
         st.write(f"""&#8226; AVS1 Revenue: **${avs1_revenue:,.0f}**""")
 
@@ -2052,10 +2052,10 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS2 Revenue</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS2</p>', unsafe_allow_html=True)
 
             # Manual input for AVS TVL
-        avs2_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_revenue")
+        avs2_revenue = st.number_input("AVS2 Revenue", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_revenue")
 
         st.write(f"""&#8226; AVS2 Revenue: **${avs2_revenue:,.0f}**""")
 
@@ -2129,12 +2129,12 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS3 Revenue</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS3</p>', unsafe_allow_html=True)
 
             # Manual input for AVS TVL
-        avs3_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_revenue")
+        avs3_revenue = st.number_input("AVS3 Revenue", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_revenue")
 
-        st.write(f"""&#8226; AVS1 Revenue: **${avs3_revenue:,.0f}**""")
+        st.write(f"""&#8226; AVS3 Revenue: **${avs3_revenue:,.0f}**""")
 
 
         st.write("\n")
