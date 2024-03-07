@@ -1910,7 +1910,16 @@ def main():
     
     st.write("\n")
 
-    st.write("**OPERATOR METRICS**")
+    st.markdown("""
+    <style>
+    .big-font {
+        font-size:23px !important;
+        font-weight:bold;
+    }
+    </style>
+    <div class='big-font'>OPERATOR METRICS</div>
+    """, unsafe_allow_html=True)
+
 
     col60, col61, col62 = st.columns(3, gap="large")
 
@@ -1935,7 +1944,7 @@ def main():
     st.markdown("""
     <style>
     .big-font {
-        font-size:25px !important;
+        font-size:23px !important;
         font-weight:bold;
     }
     </style>
