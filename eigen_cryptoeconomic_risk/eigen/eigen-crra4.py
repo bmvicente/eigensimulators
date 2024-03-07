@@ -1913,16 +1913,16 @@ def main():
     st.write("\n")
 
     st.subheader("**2.2 Sharpe Ratios**")
-    
+
     fraction_html = """
     <div style="text-align: center;">
+        <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation = </span>
         <div style="display: inline-block; vertical-align: middle; font-size: 20px; font-weight: bold; text-align: center;">
             <span>(AVS Net Profit - Min Expected Slash)</span><br>
             <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
             <span>Excess Return (20%)</span>
         </div>
-    </div>
-    """
+    </div> """
 
 
     st.markdown(fraction_html, unsafe_allow_html=True)
