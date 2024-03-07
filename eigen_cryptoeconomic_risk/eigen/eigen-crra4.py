@@ -1916,7 +1916,7 @@ def main():
 
     fraction_html = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">Operator Collateralization Level:</span><br><br>
+                <span style="font-size: 20px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation:</span><br><br>
                 <span style="font-size: 24px; font-weight: bold; background-color:grey; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span> 
                 <span style="font-size: 28px; font-weight: bold;">-</span>
                 <span style="font-size: 24px; font-weight: bold; background-color:lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span> 
