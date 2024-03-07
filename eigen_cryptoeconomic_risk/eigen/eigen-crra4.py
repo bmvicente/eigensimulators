@@ -2088,9 +2088,9 @@ def main():
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
         if avs1_inf_def_rate > 0:
-            st.write(f"&#8226; **$AVS1 Inflation Rate**: {avs1_inf_def_rate}%")
+            st.write(f"&#8226; $AVS1 Inflation Rate: {avs1_inf_def_rate}%")
         elif avs1_inf_def_rate < 0:
-            st.write(f"&#8226; **$AVS1 Deflation Rate**: {(avs1_inf_def_rate)}%")
+            st.write(f"&#8226; $AVS1 Deflation Rate: {(avs1_inf_def_rate)}%")
 
         col3, col4 = st.columns([3, 3])
 
@@ -2268,9 +2268,9 @@ def main():
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
         if avs2_inf_def_rate > 0:
-            st.write(f"&#8226; **$AVS2 Inflation Rate**: {avs2_inf_def_rate}%")
+            st.write(f"&#8226; $AVS2 Inflation Rate: {avs2_inf_def_rate}%")
         elif avs2_inf_def_rate < 0:
-            st.write(f"&#8226; **$AVS2 Deflation Rate**: {(avs2_inf_def_rate)}%")
+            st.write(f"&#8226; $AVS2 Deflation Rate: {(avs2_inf_def_rate)}%")
 
 
         col3, col4 = st.columns([3, 3])
@@ -2444,9 +2444,9 @@ def main():
                                     #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
 
         if avs3_inf_def_rate > 0:
-            st.write(f"&#8226; **$AVS3 Inflation Rate**: {avs3_inf_def_rate}%")
+            st.write(f"&#8226; $AVS3 Inflation Rate: {avs3_inf_def_rate}%")
         elif avs3_inf_def_rate < 0:
-            st.write(f"&#8226; **$AVS3 Deflation Rate**: {(avs3_inf_def_rate)}%")
+            st.write(f"&#8226; $AVS3 Deflation Rate: {(avs3_inf_def_rate)}%")
 
         col3, col4 = st.columns([3, 3])
 
