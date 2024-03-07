@@ -2019,7 +2019,7 @@ def main():
 
 
         st.write("\n")
-
+        st.write("  \n")
 
         ### AVS TOKENOMICS
 
@@ -2068,7 +2068,7 @@ def main():
 
 
         st.write("\n")
-
+        st.write("  \n")
 
 
 
@@ -2185,6 +2185,7 @@ def main():
 
 
         st.write("\n")
+        st.write("  \n")
 
 
 
@@ -2238,6 +2239,7 @@ def main():
 
 
         st.write("\n")
+        st.write("  \n")
 
 
         col68, col69 = st.columns(2)
@@ -2351,6 +2353,7 @@ def main():
 
 
         st.write("\n")
+        st.write("  \n")
 
 
 
@@ -2405,6 +2408,8 @@ def main():
 
 
         st.write("\n")
+        st.write("  \n")
+
 
         col70, col71 = st.columns(2)
 
