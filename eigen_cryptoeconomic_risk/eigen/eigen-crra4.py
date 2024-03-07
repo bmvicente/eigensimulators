@@ -1928,7 +1928,7 @@ def main():
     st.markdown('<p class="header-style">AVS 1 Revenue ($)</p>', unsafe_allow_html=True)
 
         # Manual input for AVS TVL
-    avs1_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
+    avs1_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_revenue")
 
 
     st.write("\n")
@@ -1952,7 +1952,7 @@ def main():
     st.markdown('<p class="header-style">AVS 2 Revenue ($)</p>', unsafe_allow_html=True)
 
         # Manual input for AVS TVL
-    avs2_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
+    avs2_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_revenue")
 
 
     st.write("\n")
@@ -1976,7 +1976,7 @@ def main():
     st.markdown('<p class="header-style">AVS 3 Revenue ($)</p>', unsafe_allow_html=True)
 
         # Manual input for AVS TVL
-    avs3_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000)
+    avs3_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_revenue")
 
 
 
