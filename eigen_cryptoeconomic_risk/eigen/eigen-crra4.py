@@ -1950,7 +1950,7 @@ def main():
         font-weight:bold;
     }
     </style>
-    <div class='big-font'>AVS METRICS</div>
+    <div class='big-font'>AVSs METRICS</div>
     """, unsafe_allow_html=True)
 
 
