@@ -1933,8 +1933,6 @@ def main():
             # Manual input for AVS TVL
         avs1_revenue = st.number_input("", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_revenue")
         
-        st.write(f"• Pre-Slash STAKESURE Insurance Amount Reserve (t): **${pre_slash_reserve:,.0f}**")
-
         st.write(f"""&#8226; AVS1 Revenue: **${avs1_revenue:,.0f}**""")
 
 
