@@ -2021,6 +2021,56 @@ def main():
         st.write("\n")
 
 
+        ### AVS TOKENOMICS
+
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+        st.markdown('<p class="header-style">$AVS1 Tokenomics [Optional]</p>', unsafe_allow_html=True)
+
+        st.write("  \n")
+
+        avs_inf_def_rate = st.slider("**$AVS1 Inflation/Deflation Rate**", 
+                                    min_value=-50, 
+                                    max_value=50, 
+                                    value=0,
+                                    format="%d%%")
+                                    #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
+
+        if avs_inf_def_rate > 0:
+            st.write(f"&#8226; **$AVS1 Inflation Rate**: {avs_inf_def_rate}%")
+        elif avs_inf_def_rate < 0:
+            st.write(f"&#8226; **$AVS1 Deflation Rate**: {(avs_inf_def_rate)}%")
+
+        st.write("  \n")
+
+        col3, col4 = st.columns([3, 3])
+
+        with col3:
+                avs1_circ_supply = st.number_input("**$AVS2 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply")
+
+        with col4:
+                avs1_total_supply = st.number_input("**$AVS2 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000)
+
+
+
+        st.write("\n")
+
+
+
+
 
         col66, col67 = st.columns(2)
 
@@ -2130,6 +2180,54 @@ def main():
             st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="avs2_dualx")
 
         st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
+
+
+
+        st.write("\n")
+
+
+        ### AVS TOKENOMICS
+
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+        st.markdown('<p class="header-style">$AVS2 Tokenomics [Optional]</p>', unsafe_allow_html=True)
+
+        st.write("  \n")
+
+        avs_inf_def_rate = st.slider("**$AVS2 Inflation/Deflation Rate**", 
+                                    min_value=-50, 
+                                    max_value=50, 
+                                    value=0,
+                                    format="%d%%")
+                                    #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
+
+        if avs_inf_def_rate > 0:
+            st.write(f"&#8226; **$AVS2 Inflation Rate**: {avs_inf_def_rate}%")
+        elif avs_inf_def_rate < 0:
+            st.write(f"&#8226; **$AVS2 Deflation Rate**: {(avs_inf_def_rate)}%")
+
+        st.write("  \n")
+
+        col3, col4 = st.columns([3, 3])
+
+        with col3:
+                avs2_circ_supply = st.number_input("**$AVS2 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply")
+
+        with col4:
+                avs2_total_supply = st.number_input("**$AVS2 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000)
 
 
 
@@ -2248,6 +2346,52 @@ def main():
 
 
         st.write("\n")
+
+
+
+        ### AVS TOKENOMICS
+
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+        st.markdown('<p class="header-style">$AVS3 Tokenomics [Optional]</p>', unsafe_allow_html=True)
+
+        st.write("  \n")
+
+        avs_inf_def_rate = st.slider("**$AVS3 Inflation/Deflation Rate**", 
+                                    min_value=-50, 
+                                    max_value=50, 
+                                    value=0,
+                                    format="%d%%")
+                                    #help="Slide to set the inflation or deflation rate for $AVS token. -50% indicates deflation, 50% indicates inflation.")
+
+        if avs_inf_def_rate > 0:
+            st.write(f"&#8226; **$AVS3 Inflation Rate**: {avs_inf_def_rate}%")
+        elif avs_inf_def_rate < 0:
+            st.write(f"&#8226; **$AVS3 Deflation Rate**: {(avs_inf_def_rate)}%")
+
+        st.write("  \n")
+
+        col3, col4 = st.columns([3, 3])
+
+        with col3:
+                avs3_circ_supply = st.number_input("**$AVS3 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply")
+
+        with col4:
+                avs3_total_supply = st.number_input("**$AVS3 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000)
+        
 
 
 
