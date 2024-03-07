@@ -1903,7 +1903,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    
+
 
     st.header("**2. REWARD**")
     st.subheader("**2.1 Staker/Operator Reward Distributions**")
@@ -1914,7 +1914,26 @@ def main():
 
     st.subheader("**2.2 Sharpe Ratios**")
 
+    fraction_html = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 20px; font-weight: bold;">Operator Collateralization Level:</span><br><br>
+                <span style="font-size: 24px; font-weight: bold; background-color:grey; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span> 
+                <span style="font-size: 28px; font-weight: bold;">-</span>
+                <span style="font-size: 24px; font-weight: bold; background-color:lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span> 
+                <span style="font-size: 28px; font-weight: bold;">*</span>
+                <div style="display: inline-block; vertical-align: middle;">
+                    <div style="font-size: 24px; font-weight: bold; text-align: center;">
+                        <span style="background-color:lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span><br>
+                        <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
+                        <span style="background-color:green; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span>
+                    </div>
+                </div>
+                <span style="font-size: 24px; font-weight: bold;"> = </span>
+                <span style="font-size: 24px; font-weight: bold; color: {formatted_operator_stake}; border-radius: 10px; padding: 5px; margin: 2px;">{formatted_operator_stake}</span>
+            </div>
+        """
 
+    st.markdown(fraction_html, unsafe_allow_html=True)
 
 
 
