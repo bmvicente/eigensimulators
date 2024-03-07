@@ -1927,7 +1927,7 @@ def main():
 
     with col60:
         
-        op_entrenchment_level = st.slider('**Operator Entrenchment Level**', 0, 100, 0, key='entrenchment_slider', format='%d%%')
+        op_entrenchment_level = st.number_input('**Operator Entrenchment Level**', min_value=0, max_value=100, value=3, step=1, format='%d%%', key='entrenchment_slider', help="This value is set to a default and should not be changed.")
 
     with col61:
         
