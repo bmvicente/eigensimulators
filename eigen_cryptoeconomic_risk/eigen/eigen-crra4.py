@@ -1980,6 +1980,7 @@ def main():
         
         st.write(f"""&#8226; AVS1 Revenue: **${avs1_revenue:,.0f}**""")
 
+        st.write("\n")
 
 
         col66, col67 = st.columns(2)
@@ -2056,6 +2057,7 @@ def main():
 
         st.write(f"""&#8226; AVS2 Revenue: **${avs2_revenue:,.0f}**""")
 
+        st.write("\n")
 
 
         col68, col69 = st.columns(2)
@@ -2133,6 +2135,7 @@ def main():
         st.write(f"""&#8226; AVS1 Revenue: **${avs3_revenue:,.0f}**""")
 
 
+        st.write("\n")
 
         col70, col71 = st.columns(2)
 
