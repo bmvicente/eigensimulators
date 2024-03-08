@@ -2582,8 +2582,14 @@ def main():
 
         st.markdown(fraction_html1, unsafe_allow_html=True)
         
-        avs1_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000)
+        col85, col86 = st.columns(2, gap="large")
 
+        with col85:
+            avs1_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000)
+        with col86:
+            avs1_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%')
+        
+        st.write("\n")
 
         fraction_html11 = f"""
             <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
