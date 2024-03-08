@@ -2900,7 +2900,11 @@ def main():
         st.write("\n")
 
         avs1_st_dev_dec = avs1_st_dev * 0.01
-        sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash)/avs1_st_dev_dec
+
+        if avs1_st_dev_dec != 0:
+            sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash) / avs1_st_dev_dec
+        else:
+            sharpe_ratio1 = 0
 
         fraction_html11 = f"""
             <div style="text-align: center;">
@@ -2964,7 +2968,11 @@ def main():
         st.write("\n")
 
         avs2_st_dev_dec = avs2_st_dev * 0.01
-        sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash)/avs2_st_dev_dec
+
+        if avs2_st_dev_dec != 0:
+            sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash) / avs2_st_dev_dec
+        else:
+            sharpe_ratio2 = 0
 
         fraction_html22 = f"""
             <div style="text-align: center;">
@@ -3027,7 +3035,11 @@ def main():
         st.write("\n")
 
         avs3_st_dev_dec = avs3_st_dev * 0.01
-        sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash)/avs3_st_dev_dec
+
+        if avs3_st_dev_dec != 0:
+            sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash) / avs3_st_dev_dec
+        else:
+            sharpe_ratio3 = 0
 
         fraction_html33 = f"""
             <div style="text-align: center;">
