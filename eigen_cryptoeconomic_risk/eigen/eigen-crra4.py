@@ -2908,7 +2908,7 @@ def main():
 
         fraction_html11 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 21px; font-weight: bold;">In-Isolation Ratio:</span>
+                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS1 Ratio:</span>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -2919,17 +2919,17 @@ def main():
         """
 
         st.markdown(fraction_html11, unsafe_allow_html=True)
-        
+
         st.write("\n")
         st.write("\n")
 
         fraction_html111 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 21px; font-weight: bold;">Ecosystem-Aware Ratio:</span>
+                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS1 Ratio:</span>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - ${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
                 </div>
-                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio1}</span> <!-- replace with actual resulting value -->
+                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio1:.2f}</span> <!-- replace with actual resulting value -->
             </div>
         """
 
