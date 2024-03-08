@@ -941,7 +941,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">SS Operator Reputation</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">SS Operator Reputation Level</p>', unsafe_allow_html=True)
 
             avs_operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
 
@@ -992,7 +992,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">SS Operator Centralization</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">SS Operator Centralization Level</p>', unsafe_allow_html=True)
 
             avs_operator_centralization = st.selectbox("", ["Centralized", "Semi-Decentralized", "Decentralized"])
 
@@ -1157,7 +1157,7 @@ def main():
     st.write("\n")
 
     st.markdown('<p style="font-weight: bold; font-size: 1.2em;">NEXT...</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-weight: bold;">&#8226; Operator Centralization Risk Level</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-weight: bold;"><s>&#8226; Operator Centralization Risk Level</s></p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold;">&#8226; Proposed Minimum AVS TVL and TVL caps</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-weight: bold; display: inline;"><s>&#8226; Risks Based on AVS Nature</s></p><span style="font-weight: normal; display: inline;"><s> (data availability, keeper networks, oracles, bridges, etc.)</s></span>', unsafe_allow_html=True)
 
