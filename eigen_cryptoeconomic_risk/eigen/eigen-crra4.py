@@ -3091,8 +3091,8 @@ def main():
                     <div>
                         <p style="font-size: 18px !important;">The LRT protocol should expect:</p>
                         <p style="font-size: 18px !important;">
-                            <b>&#8226; Greater expected risk-adjusted return by selecting {greater_avs}</b><br>
-                            <b>&#8226; Smaller expected risk-adjusted return by selecting {smaller_avs}</b>
+                            <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
+                            <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
                         </p>
                     </div>
                 """
@@ -3101,8 +3101,8 @@ def main():
                     <div>
                         <p style="font-size: 18px;">The LRT protocol should expect:</p>
                         <p style="font-size: 18px;">
-                            <b>&#8226; Greater expected risk-adjusted return by selecting {greater_avs}</b><br>
-                            <b>&#8226; Smaller expected risk-adjusted return by selecting {smaller_avs}</b>
+                            <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
+                            <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
                         </p>
                     </div>
                 """
@@ -3111,9 +3111,9 @@ def main():
                     <div>
                         <p style="font-size: 18px;">The LRT protocol should expect:</p>
                         <p style="font-size: 18px;">
-                            <b>&#8226; Greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b><br>
-                            <b>&#8226; Milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b><br>
-                            <b>&#8226; Smaller expected risk-adjusted return by selecting {sorted_results[2][0]}</b>
+                            <b>&#8226; Greater risk-adjusted return by selecting {sorted_results[0][0]}</b><br>
+                            <b>&#8226; Milder risk-adjusted return by selecting {sorted_results[1][0]}</b><br>
+                            <b>&#8226; Smaller risk-adjusted return by selecting {sorted_results[2][0]}</b>
                         </p>
                     </div>
                 """
