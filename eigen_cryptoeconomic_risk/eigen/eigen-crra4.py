@@ -2342,7 +2342,6 @@ def main():
 
         return staker_reward2, operator_reward2
 
-
     with col64:
          
         st.markdown("""
@@ -2814,6 +2813,11 @@ def main():
 
 
 
+
+
+
+
+
     st.subheader("**2.2 Sharpe Ratios**")
     st.write("\n")
 
@@ -2848,16 +2852,11 @@ def main():
 
     col80, col81, col82 = st.columns(3, gap="large")
     
-    with col80:
-        avs_net_profit = 10000  # Example value
-        min_expected_slash = 500  # Example value
-        excess_return_deviation = 20  # Example percentage
-        sharpe_ratio_result1 = 3  # Example calculation result
+    profit_percentage = 0.20
 
-        formatted_avs_net_profit = f"{avs_net_profit:,}"
-        formatted_min_expected_slash = f"{min_expected_slash:,}"
-        formatted_excess_return_deviation = f"{excess_return_deviation}%"
-        formatted_result1 = f"{sharpe_ratio_result1:,.2f}"  # Format with commas and two decimal places
+    with col80:
+
+        avs1_net_yield = avs1_revenue * profit_percentage - staker_reward1 - operator_reward1
 
         fraction_html1 = f"""
         <div style="text-align: center;">
@@ -2867,6 +2866,7 @@ def main():
         st.markdown(fraction_html1, unsafe_allow_html=True)
         
         st.write("\n")
+
 
         st.markdown(
                 f"""
@@ -2899,29 +2899,28 @@ def main():
         st.write("\n")
         st.write("\n")
 
+        sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash)/avs1_st_dev
+
         fraction_html11 = f"""
             <div style="text-align: center;">
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                    <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
+                    <span>{avs1_net_yield} - {avs1_expected_slash}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+                    <span>Excess Return Deviation ({avs1_st_dev})</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result1}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio1}</span>
             </div>
         """
 
         st.markdown(fraction_html11, unsafe_allow_html=True)
 
-    with col81:
-        avs_net_profit = 10000  # Example value
-        min_expected_slash = 500  # Example value
-        excess_return_deviation = 20  # Example percentage
-        sharpe_ratio_result2 = 2  # Example calculation result
 
-        formatted_avs_net_profit = f"{avs_net_profit:,}"
-        formatted_min_expected_slash = f"{min_expected_slash:,}"
-        formatted_excess_return_deviation = f"{excess_return_deviation}%"
-        formatted_result2 = f"{sharpe_ratio_result2:,.2f}"  # Format with commas and two decimal places
+
+
+
+    with col81:
+        
+        avs2_net_yield = avs2_revenue * profit_percentage - staker_reward2 - operator_reward2
 
         fraction_html2 = f"""
         <div style="text-align: center;">
@@ -2963,30 +2962,28 @@ def main():
         st.write("\n")
         st.write("\n")
 
+        sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash)/avs2_st_dev
+
         fraction_html22 = f"""
             <div style="text-align: center;">
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                    <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
+                    <span>{avs2_net_yield} - {avs2_expected_slash}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+                    <span>Excess Return Deviation ({avs2_st_dev})</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result2}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio2}</span>
             </div>
         """
 
         st.markdown(fraction_html22, unsafe_allow_html=True)
 
+
+
+
+
     with col82:
-        avs_net_profit = 10000  # Example value
-        min_expected_slash = 500  # Example value
-        excess_return_deviation = 20  # Example percentage
-        sharpe_ratio_result3 = 1.5  # Example calculation result
 
-        formatted_avs_net_profit = f"{avs_net_profit:,}"
-        formatted_min_expected_slash = f"{min_expected_slash:,}"
-        formatted_excess_return_deviation = f"{excess_return_deviation}%"
-        formatted_result3 = f"{sharpe_ratio_result3:,.2f}"  # Format with commas and two decimal places
-
+        avs3_net_yield = avs3_revenue * profit_percentage - staker_reward3 - operator_reward3
 
         fraction_html3 = f"""
         <div style="text-align: center;">
@@ -3027,14 +3024,16 @@ def main():
         st.write("\n")
         st.write("\n")
 
+        sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash)/avs3_st_dev
+
         fraction_html33 = f"""
             <div style="text-align: center;">
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                    <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
+                    <span>{avs3_net_yield} - {avs3_expected_slash}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+                    <span>Excess Return Deviation ({avs3_st_dev})</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result3}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio3}</span>
             </div>
         """
 
@@ -3051,7 +3050,7 @@ def main():
     # Assuming the updated scenario with possible equal values among formatted_result1, formatted_result2, and formatted_result3.
 
     # Re-organize the results in a dictionary for easier handling
-    results = {"AVS1": formatted_result1, "AVS2": formatted_result2, "AVS3": formatted_result3}
+    results = {"AVS1": sharpe_ratio1, "AVS2": sharpe_ratio2, "AVS3": sharpe_ratio3}
 
     # Check if all values are the same
     if len(set(results.values())) == 1:
