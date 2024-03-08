@@ -2601,6 +2601,7 @@ def main():
             avs1_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%', key='avs1_sd')
         
         st.write("\n")
+        st.write("\n")
 
         fraction_html11 = f"""
             <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
@@ -2642,6 +2643,7 @@ def main():
         with col88:
             avs2_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%', key='avs2_sd')
         
+        st.write("\n")
         st.write("\n")
 
         fraction_html22 = f"""
@@ -2685,6 +2687,7 @@ def main():
         with col90:
             avs3_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%', key='avs3_sd')
         
+        st.write("\n")
         st.write("\n")
 
         fraction_html33 = f"""
