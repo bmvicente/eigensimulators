@@ -2899,16 +2899,16 @@ def main():
         st.write("\n")
         st.write("\n")
 
-        sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash)/avs1_st_dev
+        sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash)/(avs1_st_dev*0.01)
 
         fraction_html11 = f"""
             <div style="text-align: center;">
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                    <span>{avs1_net_yield} - {avs1_expected_slash}</span><br>
+                    <span>${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs1_st_dev}</span>
+                    <span>{avs1_st_dev:,.2f}</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio1}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio1:,.0f}</span>
             </div>
         """
 
@@ -2962,16 +2962,16 @@ def main():
         st.write("\n")
         st.write("\n")
 
-        sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash)/avs2_st_dev
+        sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash)/(avs2_st_dev*0.01)
 
         fraction_html22 = f"""
             <div style="text-align: center;">
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                    <span>{avs2_net_yield} - {avs2_expected_slash}</span><br>
+                    <span>${avs2_net_yield:,.0f} - ${avs2_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs2_st_dev}</span>
+                    <span>{avs2_st_dev:,.2f}</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio2}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio2:,.0f}</span>
             </div>
         """
 
@@ -3024,16 +3024,16 @@ def main():
         st.write("\n")
         st.write("\n")
 
-        sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash)/avs3_st_dev
+        sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash)/(avs3_st_dev*0.01)
 
         fraction_html33 = f"""
             <div style="text-align: center;">
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                    <span>{avs3_net_yield} - {avs3_expected_slash}</span><br>
+                    <span>${avs3_net_yield:,.0f} - ${avs3_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs3_st_dev}</span>
+                    <span>{avs3_st_dev:,.2f}</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio3}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio3:,.0f}</span>
             </div>
         """
 
@@ -3090,7 +3090,10 @@ def main():
 
 
     with st.expander("Logic"):
-            st.markdown("""The denominator of the Sharpe Ratio represents the standard deviation of the portfolio's excess returns, which is a measure of the investment's volatility or risk. Specifically, it quantifies how much the returns of the investment deviate from their average over a certain period. This measure is crucial in the context of the Sharpe Ratio because it provides a way to adjust for risk: by dividing the excess return (the return of the investment minus the risk-free rate) by the standard deviation of these excess returns, the Sharpe Ratio essentially tells you how much excess return you are getting for each unit of risk taken.
+            st.markdown("""
+                        The result of 20 represents the amount of net profit (after accounting for expected losses) earned for each unit of risk, as measured by the standard deviation of returns or profit.
+
+                        The denominator of the Sharpe Ratio represents the standard deviation of the portfolio's excess returns, which is a measure of the investment's volatility or risk. Specifically, it quantifies how much the returns of the investment deviate from their average over a certain period. This measure is crucial in the context of the Sharpe Ratio because it provides a way to adjust for risk: by dividing the excess return (the return of the investment minus the risk-free rate) by the standard deviation of these excess returns, the Sharpe Ratio essentially tells you how much excess return you are getting for each unit of risk taken.
 
 In essence, the denominator of the Sharpe Ratio allows investors to understand the risk-adjusted return of an investment. A higher standard deviation indicates a higher level of risk (since the investment's returns are more spread out from the average), which in turn would require a higher excess return to achieve the same Sharpe Ratio. This helps investors compare investments on a risk-adjusted basis, making it easier to identify which investments are truly outperforming on a risk-adjusted basis rather than simply due to taking on more risk.
             """)
