@@ -2913,7 +2913,7 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span>${avs1_st_dev_abs:,.0f}</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio1:,.0f}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio1:.2f}</span>
             </div>
         """
 
@@ -2982,7 +2982,7 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span>${avs2_st_dev_abs:,.0f}</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio2:,.0f}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio2:.2f}</span>
             </div>
         """
 
@@ -3049,7 +3049,7 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span>${avs3_st_dev_abs:,.0f}</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio3:,.0f}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio3:.2f}</span>
             </div>
         """
 
