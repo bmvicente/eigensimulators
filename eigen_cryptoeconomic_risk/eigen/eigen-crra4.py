@@ -2893,16 +2893,16 @@ def main():
             st.write(f"""&#8226; AVS1 Expected Slash: **${avs1_expected_slash:,.0f}**""")
 
         with col86:
-            avs1_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=0, max_value=100, value=20, format='%d%%', key='avs1_sd')
-        
+            avs1_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, value=1, format='%d%%', key='avs1_sd')
+            avs1_st_dev_abs = avs1_revenue * avs1_st_dev
+            st.write(f"""&#8226; AVS1 Standard Deviation: ${avs1_revenue:,.0f} * {avs1_st_dev:.0f}% = **${avs1_st_dev_abs:,.0f}**""")
+
         st.write("\n")
         st.write("\n")
         st.write("\n")
 
-        avs1_st_dev_dec = avs1_st_dev * 0.01
-
-        if avs1_st_dev_dec != 0:
-            sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash) / avs1_st_dev_dec
+        if avs1_st_dev_abs != 0:
+            sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash) / avs1_st_dev_abs
         else:
             sharpe_ratio1 = 0
 
@@ -2911,7 +2911,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs1_st_dev_dec:.2f}</span>
+                    <span>{avs1_st_dev_abs:.2f}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio1:,.0f}</span>
             </div>
@@ -2961,16 +2961,16 @@ def main():
             st.write(f"""&#8226; AVS2 Expected Slash: **${avs2_expected_slash:,.0f}**""")
 
         with col88:
-            avs2_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=0, max_value=100, value=20, format='%d%%', key='avs2_sd')
-        
+            avs2_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, value=2, format='%d%%', key='avs2_sd')
+            avs2_st_dev_abs = avs2_revenue * avs2_st_dev
+            st.write(f"""&#8226; AVS2 Standard Deviation: ${avs2_revenue:,.0f} * {avs2_st_dev:.0f}% = **${avs2_st_dev_abs:,.0f}**""")
+
         st.write("\n")
         st.write("\n")
         st.write("\n")
 
-        avs2_st_dev_dec = avs2_st_dev * 0.01
-
-        if avs2_st_dev_dec != 0:
-            sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash) / avs2_st_dev_dec
+        if avs2_st_dev_abs != 0:
+            sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash) / avs2_st_dev_abs
         else:
             sharpe_ratio2 = 0
 
@@ -2979,7 +2979,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>${avs2_net_yield:,.0f} - ${avs2_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs2_st_dev_dec:.2f}</span>
+                    <span>{avs2_st_dev_abs:.2f}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio2:,.0f}</span>
             </div>
@@ -3029,15 +3029,16 @@ def main():
 
         with col90:
             avs3_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=0, max_value=100, value=20, format='%d%%', key='avs3_sd')
-        
+            avs3_st_dev_abs = avs3_revenue * avs3_st_dev
+            st.write(f"""&#8226; AVS3 Standard Deviation: ${avs3_revenue:,.0f} * {avs3_st_dev:.0f}% = **${avs3_st_dev_abs:,.0f}**""")
+
+
         st.write("\n")
         st.write("\n")
         st.write("\n")
 
-        avs3_st_dev_dec = avs3_st_dev * 0.01
-
-        if avs3_st_dev_dec != 0:
-            sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash) / avs3_st_dev_dec
+        if avs3_st_dev_abs != 0:
+            sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash) / avs3_st_dev_abs
         else:
             sharpe_ratio3 = 0
 
@@ -3046,7 +3047,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>${avs3_net_yield:,.0f} - ${avs3_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs3_st_dev_dec:.2f}</span>
+                    <span>{avs3_st_dev_abs:.2f}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio3:,.0f}</span>
             </div>
