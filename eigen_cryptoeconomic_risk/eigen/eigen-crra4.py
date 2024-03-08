@@ -2922,6 +2922,7 @@ def main():
 
         st.write("\n")
         st.write("\n")
+        st.write("\n")
 
         fraction_html111 = f"""
             <div style="text-align: center;">
