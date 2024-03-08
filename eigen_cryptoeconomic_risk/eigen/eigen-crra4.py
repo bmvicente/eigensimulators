@@ -2935,6 +2935,14 @@ def main():
 
         st.markdown(fraction_html111, unsafe_allow_html=True)
 
+        st.write("\n")
+        st.write("\n")
+        
+        with st.expander("Logic"):
+            st.markdown("""
+                        """)
+
+
 
 
     with col81:
@@ -3002,7 +3010,12 @@ def main():
 
         st.markdown(fraction_html22, unsafe_allow_html=True)
 
-
+        st.write("\n")
+        st.write("\n")
+        
+        with st.expander("Logic"):
+            st.markdown("""
+                        """)
 
 
 
@@ -3069,6 +3082,12 @@ def main():
 
         st.markdown(fraction_html33, unsafe_allow_html=True)
 
+        st.write("\n")
+        st.write("\n")
+
+        with st.expander("Logic"):
+            st.markdown("""
+                        """)
 
     st.write("\n")
     st.write("\n")
