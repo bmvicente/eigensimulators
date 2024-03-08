@@ -2187,7 +2187,7 @@ def main():
 
         with col66:
             # Calculate the percentage and handle division by zero
-            if pre_slash_total_restaked != 0:
+            if pre_slash_total_restaked != 0 and avs1_revenue != 0:
                 staker_reward1_percentage = (staker_reward1 / avs1_revenue) * 100
             else:
                 staker_reward1_percentage = 0.00
@@ -2210,7 +2210,7 @@ def main():
 
         with col67:
             # Calculate the percentage and handle division by zero
-            if pre_slash_total_restaked != 0:
+            if pre_slash_total_restaked != 0 and avs1_revenue != 0:
                 operator_reward1_percentage = (operator_reward1 / avs1_revenue) * 100
             else:
                 operator_reward1_percentage = 0.00
@@ -2489,7 +2489,7 @@ def main():
 
         with col69:
             # Calculate the percentage and handle division by zero
-            if pre_slash_total_restaked != 0:
+            if pre_slash_total_restaked != 0 and avs2_revenue != 0:
                 operator_reward2_percentage = (operator_reward2 / avs2_revenue) * 100
             else:
                 operator_reward2_percentage = 0.00
@@ -2742,7 +2742,7 @@ def main():
 
         with col70:
             # Calculate the percentage and handle division by zero
-            if pre_slash_total_restaked != 0:
+            if pre_slash_total_restaked != 0 and avs3_revenue != 0:
                 staker_reward3_percentage = (staker_reward3 / avs3_revenue) * 100
             else:
                 staker_reward3_percentage = 0.00
@@ -2764,7 +2764,7 @@ def main():
 
         with col71:
             # Calculate the percentage and handle division by zero
-            if pre_slash_total_restaked != 0:
+            if pre_slash_total_restaked != 0 and avs3_revenue != 0:
                 operator_reward3_percentage = (operator_reward3 / avs3_revenue) * 100
             else:
                 operator_reward3_percentage = 0.00
