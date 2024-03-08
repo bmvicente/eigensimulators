@@ -3074,11 +3074,11 @@ def main():
             smaller_avs = ', '.join(grouped_results[smaller_value_group])
             
             if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
-                recommendation = f"The LRT protocol should expect a **greater expected risk-adjusted return by selecting {greater_avs}**, and **smaller return by selecting {smaller_avs}**."
+                recommendation = f"The LRT protocol should expect a <b>greater expected risk-adjusted return by selecting {greater_avs}</b>, and <b>smaller return by selecting {smaller_avs}</b>."
             else:  # If the smaller group has more than one AVS
-                recommendation = f"The LRT protocol should expect a **greater expected risk-adjusted return by selecting {greater_avs}**, and **smaller return by selecting {smaller_avs}**."
+                recommendation = f"The LRT protocol should expect a <b>greater expected risk-adjusted return by selecting {greater_avs}</b>, and <b>smaller return by selecting {smaller_avs}</b>."
         else:  # If all values are distinct
-            recommendation = f"The LRT protocol should expect a **greater expected risk-adjusted return by selecting {sorted_results[0][0]}**, a **milder expected risk-adjusted return by selecting {sorted_results[1][0]}**, and the **smallest risk-adjusted return by selecting {sorted_results[2][0]}**."
+            recommendation = f"The LRT protocol should expect a <b>greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b>, a <b>milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b>, and the <b>smallest risk-adjusted return by selecting {sorted_results[2][0]}</b>."
 
     recommendation_html = f'<div style="font-size: 20px;">{recommendation}</div>'
 
