@@ -1554,8 +1554,6 @@ def main():
     
 
 
-    st.write("\n")
-    st.write("\n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
@@ -1571,10 +1569,8 @@ def main():
 
     if 'existing_reserve' not in st.session_state:
         st.session_state['existing_reserve'] = 0
-
     if 'op_stake_slashable' not in st.session_state:
         st.session_state['op_stake_slashable'] = 0
-
     if 'post_slash_reserve' not in st.session_state:
         st.session_state['post_slash_reserve'] = 0
 
@@ -2535,6 +2531,12 @@ def main():
 
 
     st.subheader("**2.2 Sharpe Ratios**")
+    st.write("\n")
+
+    st.write("Number input for Expected Slashing by AVS")
+    st.write("AVS1/2/3 Net Yields")
+    st.write("Section below on AVS Selection by LRT Protocol")
+    st.write("Multipliers on Sharpe Ratio that were not accounted in in the calcs, and also weightings on specific variables per LRT's will")
 
     st.write("\n")
     st.write("\n")

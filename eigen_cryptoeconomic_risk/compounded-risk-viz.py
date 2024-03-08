@@ -1,3 +1,9 @@
+# MAKE ARROWS ALL THE SAME SIZE & MAKE SURE THEY DON'T OVERLAP
+# MAKE THE DISPLAY REALLY ORGANIZED, LIKE IN A FLOWER FORMAT
+# ONE FLOWER IN THE TOP LEFT, ANOTHER IN THE TOP RIGHT, ETC
+
+
+
 # Import necessary libraries
 import streamlit as st  # For creating web applications
 import numpy as np  # For numerical operations
@@ -8,10 +14,8 @@ import networkx as nx  # For creating and visualizing complex networks
 # Set Streamlit page layout to wide mode for better visualization
 st.set_page_config(layout="wide")
 
-# Title of the web application
 st.title("AVS Ecosystem Compounded Risk Simulator")
 
-# Insert blank lines for formatting purposes
 st.write("\n" * 4)
 
 # Function to adjust node positions to prevent overlap
@@ -29,74 +33,84 @@ def adjust_positions(pos, operators, adjustment_step=0.1):
 if 'num_operators' not in st.session_state:
     st.session_state.num_operators = 0
 
-# Section header for AVS metrics
+
+
+
+
 st.write("**AVS METRICS**")
 
-# Create three columns with large gaps in between for AVS metrics sliders
 col1, col2, col3 = st.columns(3, gap="large")
 
-# Column 1: Slider to set the number of AVSs (Autonomous Vehicle Systems)
 with col1:
     num_avss = st.slider('**Number of AVSs**', st.session_state.num_operators, 15, max(st.session_state.num_operators, 15))
 
-# Column 2: Slider to set the average risk score of AVSs
 with col2:
     avg_risk_score = st.slider('**AVS Average Risk Score**', 0, 100, 0)
 
-# Column 3: Slider to set the dominance of a certain category of AVSs
 with col3:
     category_dominance = st.slider('**AVS Category Dominance**', 0, 100, 0, format='%d%%')
 
-# Insert blank lines for formatting purposes
 st.write("\n" * 2)
 
-# Section header for Operator metrics
+
+
+
+
 st.write("**OPERATOR METRICS**")
 
-# Create four columns with large gaps in between for operator metrics sliders
 col4, col5, col6, col7 = st.columns(4, gap="large")
 
-# Column 4: Slider to set the number of operators
 with col4:
     st.session_state.num_operators = st.slider('**Number of Operators**', 1, 5, 5)
 
-# Column 5: Slider to set the level of entrenchment for operators
 with col5:
     entrenchment_level = st.slider('**Operator Entrenchment Level**', 0, 100, 0, key='entrenchment_slider', format='%d%%')
 
-# Column 6: Slider to set the centralization level of node operators
 with col6:
     centralization_level = st.slider('**Centralization Level of Node Operators**', 0, 100, 0, key='centralization_slider', format='%d%%')
 
-# Column 7: Slider to set the reputation level for operators
 with col7:
     reputation_level = st.slider('**Operator Reputation Level**', 0, 100, 0, key='reputation_slider', format='%d%%')
 
-# Insert blank line for formatting purposes
 st.write("\n")
 
-# A button in Streamlit that when clicked, triggers a state update
+
+
+
+
+
 if st.button("Update State"):
-    st.write("")  # Placeholder for any actions to take on state update
+    st.write("")
 
 # Set random seed for reproducibility
 np.random.seed(0)
 
+
+
+
+
+
 # Create a list of operator names based on the number of operators
 operators = [f"Operator {i+1}" for i in range(st.session_state.num_operators)]
+
 # Initialize an empty list for AVSs
 avss = []
 
 # Loop to create AVSs with attributes based on input metrics
 for i in range(num_avss):
+
     # Assign an operator to each AVS, cycling through the list of operators
     operator = operators[i % len(operators)]
+
     # Determine category based on dominance slider or randomly
     category = 0 if np.random.rand() < category_dominance / 100.0 else np.random.randint(0, 3)
+
     # Generate a risk score for the AVS based on the average risk score with some variability
     risk_score = np.clip(np.random.normal(loc=avg_risk_score, scale=10), 1, 100)
+
     # Generate a random entrenchment level for the AVS
     entrenchment = np.random.randint(0, 100)
+
     # Append a dictionary with AVS details to the avss list
     avss.append({
         'name': f"AVS {i+1}",
@@ -106,10 +120,13 @@ for i in range(num_avss):
         'entrenchment_level': entrenchment
     })
 
+
 # Loop to ensure each operator has at least one AVS and fill the rest
 for i in range(st.session_state.num_operators):
+
     # Generate a risk score for the AVS
     risk_score = np.clip(np.random.normal(loc=avg_risk_score, scale=10), 1, 100)
+
     # Append an AVS for each operator to the avss list
     avss.append({
         'name': f"AVS {i+1}",
@@ -118,16 +135,24 @@ for i in range(st.session_state.num_operators):
         'category': np.random.randint(0, 3)
     })
 
+
+
+### WTF is this
+
 # Adjust operator entrenchment level if it's greater than 0
 if entrenchment_level > 0:
+
     # Create a dictionary mapping operators to their entrenchment level
     operator_entrenchment = {op: entrenchment_level / 100.0 for op in operators}
+
     # Normalize entrenchment levels to sum to 1
     total_entrenchment = sum(operator_entrenchment.values())
     normalized_entrenchment = {op: level / total_entrenchment for op, level in operator_entrenchment.items()}
+
     # Assign normalized entrenchment levels to AVSs
     for avs in avss:
         avs['operator_entrenchment'] = normalized_entrenchment[avs['operator']]
+
 
 
 
