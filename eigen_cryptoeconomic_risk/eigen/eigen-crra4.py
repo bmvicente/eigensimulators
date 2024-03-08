@@ -2540,8 +2540,6 @@ def main():
     st.subheader("**2.2 Sharpe Ratios**")
     st.write("\n")
 
-    st.write("Number input for Expected Slashing by AVS")
-    st.write("AVS1/2/3 Net Yields")
     st.write("Section below on AVS Selection by LRT Protocol")
     st.write("Multipliers on Sharpe Ratio that were not accounted in in the calcs, and also weightings on specific variables per LRT's will")
 
@@ -2623,13 +2621,14 @@ def main():
         st.write("\n")
 
         fraction_html11 = f"""
-            <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
-                <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+            <div style="text-align: center;">
+                <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
+                    <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
+                    <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
+                    <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+                </div>
+                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
             </div>
-            <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
-        </div>
         """
 
         st.markdown(fraction_html11, unsafe_allow_html=True)
@@ -2685,13 +2684,14 @@ def main():
         st.write("\n")
 
         fraction_html22 = f"""
-            <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
-                <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+            <div style="text-align: center;">
+                <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
+                    <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
+                    <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
+                    <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+                </div>
+                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
             </div>
-            <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
-        </div>
         """
 
         st.markdown(fraction_html22, unsafe_allow_html=True)
@@ -2747,13 +2747,14 @@ def main():
         st.write("\n")
 
         fraction_html33 = f"""
-            <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
-                <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+            <div style="text-align: center;">
+                <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
+                    <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
+                    <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
+                    <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
+                </div>
+                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
             </div>
-            <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
-        </div>
         """
 
         st.markdown(fraction_html33, unsafe_allow_html=True)
