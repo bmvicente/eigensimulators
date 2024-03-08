@@ -3076,8 +3076,8 @@ def main():
             if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
                 recommendation = f"""
                     <div>
-                        <p style="font-size: 20px;">The LRT protocol should expect:</p> <!-- Adjust the font-size as needed -->
-                        <ul style="font-size: 20px;"> <!-- Apply font-size directly to the list -->
+                        <p style="font-size: 20px !important;">The LRT protocol should expect:</p> <!-- Apply font-size with !important -->
+                        <ul style="font-size: 24px !important;"> <!-- Apply font-size with !important to the list -->
                             <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
                             <li><b>Smaller return by selecting {smaller_avs}</b></li>
                         </ul>
@@ -3087,7 +3087,7 @@ def main():
                 recommendation = f"""
                     <div>
                         <p style="font-size: 20px;">The LRT protocol should expect:</p> <!-- Adjust the font-size as needed -->
-                        <ul style="font-size: 24px;"> <!-- Apply font-size directly to the list -->
+                        <ul style="font-size: 20px;"> <!-- Apply font-size directly to the list -->
                             <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
                             <li><b>Smaller return by selecting {smaller_avs}</b></li>
                         </ul>
@@ -3097,7 +3097,7 @@ def main():
                 recommendation = f"""
                     <div>
                         <p style="font-size: 20px;">The LRT protocol should expect:</p> <!-- Adjust the font-size as needed -->
-                        <ul style="font-size: 40px;"> <!-- Apply font-size directly to the list -->
+                        <ul style="font-size: 20px;"> <!-- Apply font-size directly to the list -->
                             <li><b>Greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b></li>
                             <li><b>Milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b></li>
                             <li><b>Smallest risk-adjusted return by selecting {sorted_results[2][0]}</b></li>
