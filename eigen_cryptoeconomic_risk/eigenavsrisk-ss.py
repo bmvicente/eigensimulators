@@ -941,7 +941,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">SS Operators\' Reputation</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">SS Operator Reputation</p>', unsafe_allow_html=True)
 
             avs_operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
 
@@ -952,7 +952,7 @@ def main():
 
             with st.expander("Logic"):
                 st.markdown("""
-                    Although being a purely qualitative metric, the **Reputation Level of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
+                    Although being a purely qualitative metric, the **Reputation Level of the Operator** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
                     
                     ```python
                     avs_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
@@ -992,18 +992,18 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">SS Operators\' Centralization</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">SS Operator Centralization</p>', unsafe_allow_html=True)
 
             avs_operator_centralization = st.selectbox("", ["Centralized", "Semi-Decentralized", "Decentralized"])
 
             st.write("  \n")
 
-            avs_operator_centralization_likelihood = st.slider("**Likelihood**      ", min_value=1, max_value=10, value=2)
-            avs_operator_centralization_impact = st.slider("**Impact**      ", min_value=1, max_value=10, value=8)
+            avs_operator_centralization_likelihood = st.slider("**Likelihood**      ", min_value=1, max_value=10, value=5)
+            avs_operator_centralization_impact = st.slider("**Impact**      ", min_value=1, max_value=10, value=9)
 
             with st.expander("Logic"):
                 st.markdown("""
-                    Although being a purely qualitative metric, the **Centralization Level of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
+                    Although being a purely qualitative metric, the **Centralization Level of the Operator** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
                     
                     ```python
                     avs_operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
