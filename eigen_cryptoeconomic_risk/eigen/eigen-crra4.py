@@ -2893,7 +2893,7 @@ def main():
             st.write(f"""&#8226; AVS1 Expected Slash: **${avs1_expected_slash:,.0f}**""")
 
         with col86:
-            avs1_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, value=1, format='%d%%', key='avs1_sd')
+            avs1_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, step=1, format='%d%%', key='avs1_sd')
             avs1_st_dev_abs = avs1_revenue * avs1_st_dev
             st.write(f"""&#8226; AVS1 Standard Deviation: ${avs1_revenue:,.0f} * {avs1_st_dev:.0f}% = **${avs1_st_dev_abs:,.0f}**""")
 
@@ -2961,7 +2961,7 @@ def main():
             st.write(f"""&#8226; AVS2 Expected Slash: **${avs2_expected_slash:,.0f}**""")
 
         with col88:
-            avs2_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, value=2, format='%d%%', key='avs2_sd')
+            avs2_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, step=1, format='%d%%', key='avs2_sd')
             avs2_st_dev_abs = avs2_revenue * avs2_st_dev
             st.write(f"""&#8226; AVS2 Standard Deviation: ${avs2_revenue:,.0f} * {avs2_st_dev:.0f}% = **${avs2_st_dev_abs:,.0f}**""")
 
@@ -3028,7 +3028,7 @@ def main():
             st.write(f"""&#8226; AVS3 Expected Slash: **${avs3_expected_slash:,.0f}**""")
 
         with col90:
-            avs3_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=0, max_value=100, value=20, format='%d%%', key='avs3_sd')
+            avs3_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, step=1, format='%d%%', key='avs3_sd')
             avs3_st_dev_abs = avs3_revenue * avs3_st_dev
             st.write(f"""&#8226; AVS3 Standard Deviation: ${avs3_revenue:,.0f} * {avs3_st_dev:.0f}% = **${avs3_st_dev_abs:,.0f}**""")
 
