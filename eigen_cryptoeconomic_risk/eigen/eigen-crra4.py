@@ -3092,7 +3092,7 @@ def main():
                 recommendation = f"""
                     <div>
                         <p style="font-size: 18px !important;">The LRT protocol should expect:</p>
-                        <p style="font-size: 18px !important;">
+                        <p style="font-size: 19px !important;">
                             <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
                             <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
                         </p>
@@ -3102,7 +3102,7 @@ def main():
                 recommendation = f"""
                     <div>
                         <p style="font-size: 18px;">The LRT protocol should expect:</p>
-                        <p style="font-size: 18px;">
+                        <p style="font-size: 19px;">
                             <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
                             <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
                         </p>
@@ -3112,7 +3112,7 @@ def main():
                 recommendation = f"""
                     <div>
                         <p style="font-size: 18px;">The LRT protocol should expect:</p>
-                        <p style="font-size: 18px;">
+                        <p style="font-size: 19px;">
                             <b>&#8226; Greater risk-adjusted return by selecting {sorted_results[0][0]}</b><br>
                             <b>&#8226; Milder risk-adjusted return by selecting {sorted_results[1][0]}</b><br>
                             <b>&#8226; Smaller risk-adjusted return by selecting {sorted_results[2][0]}</b>
