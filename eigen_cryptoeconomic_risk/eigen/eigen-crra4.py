@@ -2899,14 +2899,15 @@ def main():
         st.write("\n")
         st.write("\n")
 
-        sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash)/(avs1_st_dev*0.01)
+        avs1_st_dev_dec = avs1_st_dev * 0.01
+        sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash)/avs1_st_dev_dec
 
         fraction_html11 = f"""
             <div style="text-align: center;">
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    f'<span>{avs1_st_dev:,.2f}</span>'
+                    <span>{avs1_st_dev_dec}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio1:,.0f}</span>
             </div>
@@ -2962,14 +2963,15 @@ def main():
         st.write("\n")
         st.write("\n")
 
-        sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash)/(avs2_st_dev*0.01)
+        avs2_st_dev_dec = avs2_st_dev * 0.01
+        sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash)/avs2_st_dev_dec
 
         fraction_html22 = f"""
             <div style="text-align: center;">
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>${avs2_net_yield:,.0f} - ${avs2_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs2_st_dev:,.2f}</span>
+                    <span>{avs2_st_dev_dec}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio2:,.0f}</span>
             </div>
@@ -3024,14 +3026,15 @@ def main():
         st.write("\n")
         st.write("\n")
 
-        sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash)/(avs3_st_dev*0.01)
+        avs3_st_dev_dec = avs3_st_dev * 0.01
+        sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash)/avs3_st_dev_dec
 
         fraction_html33 = f"""
             <div style="text-align: center;">
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>${avs3_net_yield:,.0f} - ${avs3_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs3_st_dev:,.2f}</span>
+                    <span>{avs3_st_dev_dec}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio3:,.0f}</span>
             </div>
