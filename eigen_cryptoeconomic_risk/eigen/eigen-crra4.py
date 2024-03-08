@@ -2919,6 +2919,9 @@ def main():
         """
 
         st.markdown(fraction_html11, unsafe_allow_html=True)
+        
+        st.write("\n")
+        st.write("\n")
 
         fraction_html111 = f"""
             <div style="text-align: center;">
