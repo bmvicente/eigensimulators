@@ -3145,7 +3145,34 @@ def main():
                         The denominator of the Sharpe Ratio represents the standard deviation of the portfolio's excess returns, which is a measure of the investment's volatility or risk. Specifically, it quantifies how much the returns of the investment deviate from their average over a certain period. This measure is crucial in the context of the Sharpe Ratio because it provides a way to adjust for risk: by dividing the excess return (the return of the investment minus the risk-free rate) by the standard deviation of these excess returns, the Sharpe Ratio essentially tells you how much excess return you are getting for each unit of risk taken.
 
 In essence, the denominator of the Sharpe Ratio allows investors to understand the risk-adjusted return of an investment. A higher standard deviation indicates a higher level of risk (since the investment's returns are more spread out from the average), which in turn would require a higher excess return to achieve the same Sharpe Ratio. This helps investors compare investments on a risk-adjusted basis, making it easier to identify which investments are truly outperforming on a risk-adjusted basis rather than simply due to taking on more risk.
-            """)
+            
+                            <style>
+                .big-font {
+                    font-size: 18px;  /* Adjust font size as needed */
+                }
+                </style>
+
+                <div class="big-font">
+                The <strong>AVS Reward Emission</strong> simulator percentage-results suggest how much should be distributed among <strong>$AVS Stakers</strong>, <strong>xETH Restakers</strong> and <strong>AVS Operators</strong>, given the risk and economic security profile of the AVS. To build on the <em>Assumptions</em> explanation on top, this calculation is based on the correlated reward-to-risk sensitivity per variable input -- the <em>Logic</em> below each input parameter helps understand the underlying rationale.
+                </div>
+                <br>
+
+                <div class="big-font">
+                <strong><em>Operator Reward</em></strong> is naturally being given greater weight than the <strong><em>Staker Reward</em></strong> due to their paramount role in validating modules crucial to the well-function of an AVS. We've assigned 60% of distributable rewards to Operators and 40% to Stakers and Restakers.
+                </div>
+                <br>
+
+                <div class="big-font">
+                The <strong>$AVS’s Tokenomics</strong> (while not included in the reward calculation) were deemed useful to include since they provide a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. 
+                An important factor that should help AVS developers determine the <strong>$AVS minting rate</strong> is that of rewarding operators for their capital costs.
+                </div>
+                <br>
+
+                <div class="big-font">
+                <em>It's important to bear in mind that this Simulator was built from an AVS perspective alone.</em> 
+                </div>
+            
+                        """)
 
 
 
