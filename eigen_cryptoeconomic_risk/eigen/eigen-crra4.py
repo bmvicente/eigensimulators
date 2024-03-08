@@ -2911,7 +2911,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs1_st_dev_abs:.2f}</span>
+                    <span>${avs1_st_dev_abs:,.0f}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio1:,.0f}</span>
             </div>
