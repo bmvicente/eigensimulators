@@ -2625,7 +2625,7 @@ def main():
 
         fraction_html2 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold;">AVS1 Sharpe Ratio Calculation</span><br>"""
+            <span style="font-size: 22px; font-weight: bold;">AVS2 Sharpe Ratio Calculation</span><br>"""
 
         st.markdown(fraction_html2, unsafe_allow_html=True)
         
@@ -2666,7 +2666,7 @@ def main():
 
         fraction_html3 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold;">AVS1 Sharpe Ratio Calculation</span><br>"""
+            <span style="font-size: 22px; font-weight: bold;">AVS3 Sharpe Ratio Calculation</span><br>"""
 
         st.markdown(fraction_html3, unsafe_allow_html=True)
         
