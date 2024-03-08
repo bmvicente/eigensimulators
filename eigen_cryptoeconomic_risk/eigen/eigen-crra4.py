@@ -2547,7 +2547,9 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
-
+    st.write("\n")
+    st.write("\n")
+    
     fraction_html = """
     <div style="text-align: center;">
         <span style="font-size: 24px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
