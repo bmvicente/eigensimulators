@@ -2555,7 +2555,7 @@ def main():
         <div style="display: inline-block; vertical-align: middle; font-size: 24px; font-weight: bold; text-align: center;">
             <span>AVS Net Yield  -  AVS Expected Slash</span><br>
             <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-            <span>Excess Return Deviation (20%)</span>
+            <span>Standard Deviation of Excess Return</span>
         </div>
     </div> """
 
