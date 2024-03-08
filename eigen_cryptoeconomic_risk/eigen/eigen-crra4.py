@@ -2575,12 +2575,12 @@ def main():
         avs_net_profit = 10000  # Example value
         min_expected_slash = 500  # Example value
         excess_return_deviation = 20  # Example percentage
-        sharpe_ratio_result = 1.5  # Example calculation result
+        sharpe_ratio_result1 = 1.5  # Example calculation result
 
         formatted_avs_net_profit = f"{avs_net_profit:,}"
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
-        formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
+        formatted_result1 = f"{sharpe_ratio_result1:,.2f}"  # Format with commas and two decimal places
 
         fraction_html1 = f"""
         <div style="text-align: center;">
@@ -2628,7 +2628,7 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result1}</span>
             </div>
         """
 
@@ -2638,12 +2638,12 @@ def main():
         avs_net_profit = 10000  # Example value
         min_expected_slash = 500  # Example value
         excess_return_deviation = 20  # Example percentage
-        sharpe_ratio_result = 1.5  # Example calculation result
+        sharpe_ratio_result2 = 1.5  # Example calculation result
 
         formatted_avs_net_profit = f"{avs_net_profit:,}"
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
-        formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
+        formatted_result2 = f"{sharpe_ratio_result2:,.2f}"  # Format with commas and two decimal places
 
         fraction_html2 = f"""
         <div style="text-align: center;">
@@ -2691,7 +2691,7 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result2}</span>
             </div>
         """
 
@@ -2701,12 +2701,12 @@ def main():
         avs_net_profit = 10000  # Example value
         min_expected_slash = 500  # Example value
         excess_return_deviation = 20  # Example percentage
-        sharpe_ratio_result = 1.5  # Example calculation result
+        sharpe_ratio_result3 = 1.5  # Example calculation result
 
         formatted_avs_net_profit = f"{avs_net_profit:,}"
         formatted_min_expected_slash = f"{min_expected_slash:,}"
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
-        formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
+        formatted_result3 = f"{sharpe_ratio_result3:,.2f}"  # Format with commas and two decimal places
 
 
         fraction_html3 = f"""
@@ -2754,11 +2754,35 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span>Excess Return Deviation ({formatted_excess_return_deviation})</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result}</span>
+                <span style="font-size: 25px; font-weight: bold;"> = {formatted_result3}</span>
             </div>
         """
 
         st.markdown(fraction_html33, unsafe_allow_html=True)
+
+
+    st.write("\n")
+    st.write("\n")
+    
+    # Assuming formatted_result1, formatted_result2, and formatted_result3 contain numerical values of risk-adjusted returns for AVS1, AVS2, and AVS3 respectively.
+
+    formatted_result1 = 1.5  # Example value for AVS1
+    formatted_result2 = 2.0  # Example value for AVS2
+    formatted_result3 = 1.0  # Example value for AVS3
+
+    # Organize the results in a dictionary for easier handling
+    results = {"AVS1": formatted_result1, "AVS2": formatted_result2, "AVS3": formatted_result3}
+
+    # Sort the results based on their values
+    sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+
+    # Extract the sorted AVS labels
+    greatest, medium, smallest = [avsn[0] for avsn in sorted_results]
+
+    # Construct the recommendation string
+    recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {greatest} (greatest value), a milder expected risk-adjusted return by selecting {medium} (medium), and the smallest risk-adjusted return by selecting {smallest} (smallest value)."
+
+    recommendation
 
 
     st.write("\n")
