@@ -2585,7 +2585,7 @@ def main():
 
         fraction_html1 = f"""
         <div style="text-align: center;">
-        <span style="font-size: 20px; font-weight: bold;"> <span style="font-size: 22px;">AVS1</span> Sharpe Ratio Calculation</span><br>
+        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS1</span> Sharpe Ratio</span><br>
         </div>"""
 
         st.markdown(fraction_html1, unsafe_allow_html=True)
