@@ -2088,7 +2088,7 @@ def main():
 
         st.write("\n")
 
-        avs1_revenue = st.number_input("Revenue", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs1_revenue")
+        avs1_revenue = st.number_input("Revenue", min_value=0, max_value=1000000000000, value=0, step=10000000, key="avs1_revenue")
         
         st.write(f"""&#8226; AVS1 Revenue: **${avs1_revenue:,.0f}**""")
 
@@ -2363,7 +2363,7 @@ def main():
 
         st.write("\n")
 
-        avs2_revenue = st.number_input("Revenue", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_revenue")
+        avs2_revenue = st.number_input("Revenue", min_value=0, max_value=1000000000000, value=0, step=10000000, key="avs2_revenue")
 
         st.write(f"""&#8226; AVS2 Revenue: **${avs2_revenue:,.0f}**""")
 
@@ -2639,7 +2639,7 @@ def main():
 
         st.write("\n")
 
-        avs3_revenue = st.number_input("Revenue", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs3_revenue")
+        avs3_revenue = st.number_input("Revenue", min_value=0, max_value=1000000000000, value=0, step=10000000, key="avs3_revenue")
 
         st.write(f"""&#8226; AVS3 Revenue: **${avs3_revenue:,.0f}**""")
 
