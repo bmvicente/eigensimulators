@@ -3074,27 +3074,37 @@ def main():
             smaller_avs = ', '.join(grouped_results[smaller_value_group])
             
             if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
-                recommendation = f"""The LRT protocol should expect:
-                <ul>
-                    <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
-                    <li><b>Smaller return by selecting {smaller_avs}</b></li>
-                </ul>
+                recommendation = f"""
+                <div style="font-size: 20px;"> <!-- Adjust the font-size as needed -->
+                    The LRT protocol should expect:
+                    <ul>
+                        <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
+                        <li><b>Smaller return by selecting {smaller_avs}</b></li>
+                    </ul>
+                </div>
                 """
             else:  # If the smaller group has more than one AVS
-                recommendation = f"""The LRT protocol should expect:
-                <ul>
-                    <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
-                    <li><b>Smaller return by selecting {smaller_avs}</b></li>
-                </ul>
+                recommendation = f"""
+                <div style="font-size: 20px;"> <!-- Adjust the font-size as needed -->
+                    The LRT protocol should expect:
+                    <ul>
+                        <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
+                        <li><b>Smaller return by selecting {smaller_avs}</b></li>
+                    </ul>
+                </div>
                 """
         else:  # If all values are distinct
-                recommendation = f"""The LRT protocol should expect:
-                <ul>
-                    <li><b>Greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b></li>
-                    <li><b>Milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b></li>
-                    <li><b>Smallest risk-adjusted return by selecting {sorted_results[2][0]}</b></li>
-                </ul>
+                recommendation = f"""
+                <div style="font-size: 20px;"> <!-- Adjust the font-size as needed -->
+                    The LRT protocol should expect:
+                    <ul>
+                        <li><b>Greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b></li>
+                        <li><b>Milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b></li>
+                        <li><b>Smallest risk-adjusted return by selecting {sorted_results[2][0]}</b></li>
+                    </ul>
+                </div>
                 """
+
 
 
     recommendation_html = f'<div style="font-size: 20px;">{recommendation}</div>'
