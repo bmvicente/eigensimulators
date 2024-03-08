@@ -2467,7 +2467,7 @@ def main():
 
         with col68:
             # Calculate the percentage and handle division by zero
-            if pre_slash_total_restaked != 0:
+            if pre_slash_total_restaked != 0 and avs2_revenue != 0:
                 staker_reward2_percentage = (staker_reward2 / avs2_revenue) * 100
             else:
                 staker_reward2_percentage = 0.00
