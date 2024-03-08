@@ -2763,7 +2763,8 @@ def main():
 
     st.write("\n")
     st.write("\n")
-
+    st.write("\n")
+    st.write("\n")
 
     # Assuming the updated scenario with possible equal values among formatted_result1, formatted_result2, and formatted_result3.
 
@@ -2795,7 +2796,7 @@ def main():
         else:  # If all values are distinct
             recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {sorted_results[0][0]} (greatest value), a milder expected risk-adjusted return by selecting {sorted_results[1][0]} (medium), and the smallest risk-adjusted return by selecting {sorted_results[2][0]} (smallest value)."
 
-    recommendation_html = f'<div style="font-size: 22px; text-align: center;">{recommendation}</div>'
+    recommendation_html = f'<div style="font-size: 20px;">{recommendation}</div>'
 
     st.markdown(recommendation_html, unsafe_allow_html=True)
 
