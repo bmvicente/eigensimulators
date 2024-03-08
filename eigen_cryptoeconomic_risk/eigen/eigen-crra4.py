@@ -2893,7 +2893,7 @@ def main():
             st.write(f"""&#8226; AVS1 Expected Slash: **${avs1_expected_slash:,.0f}**""")
 
         with col86:
-            avs1_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, step=1, format='%d%%', key='avs1_sd', help="AVSs have been recently euipped to bonds which standard deviations are historically between 5 and 10%. For lack of historical data on AVSs, that logic was applied here. Standard deviation, in absolute terms, was calculated as the product of an AVS net yield by the standard deviation % chosen.")
+            avs1_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, step=1, format='%d%%', key='avs1_sd', help="AVSs have been benchmarked against bonds, which historically exhibit standard deviations ranging from 5% to 10%. Given the lack of historical data on AVSs, that same logic was applied here. The standard deviations, in absolute terms, were calculated as the product of an AVS net yield by the standard deviation % chosen.")
             avs1_st_dev_abs = avs1_net_yield * (avs1_st_dev/100)
             st.write(f"""&#8226; AVS1 Standard Deviation: **${avs1_st_dev_abs:,.0f}**""")
 
