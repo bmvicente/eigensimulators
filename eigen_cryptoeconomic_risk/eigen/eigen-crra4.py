@@ -2980,7 +2980,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>${avs2_net_yield:,.0f} - ${avs2_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs2_st_dev_abs:.2f}</span>
+                    <span>${avs2_st_dev_abs:,.0f}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio2:,.0f}</span>
             </div>
@@ -3047,7 +3047,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>${avs3_net_yield:,.0f} - ${avs3_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>{avs3_st_dev_abs:.2f}</span>
+                    <span>${avs3_st_dev_abs:,.0f}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = ${sharpe_ratio3:,.0f}</span>
             </div>
