@@ -2962,8 +2962,9 @@ def main():
 
         with col88:
             avs2_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, step=1, format='%d%%', key='avs2_sd')
-            avs2_st_dev_abs = avs2_revenue * avs2_st_dev
-            st.write(f"""&#8226; AVS2 Standard Deviation: ${avs2_revenue:,.0f} * {avs2_st_dev:.0f}% = **${avs2_st_dev_abs:,.0f}**""")
+            avs2_st_dev_abs = avs2_net_yield * (avs2_st_dev/100)
+            st.write(f"""&#8226; AVS2 Standard Deviation: **${avs2_st_dev_abs:,.0f}**""")
+
 
         st.write("\n")
         st.write("\n")
@@ -3029,9 +3030,8 @@ def main():
 
         with col90:
             avs3_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, step=1, format='%d%%', key='avs3_sd')
-            avs3_st_dev_abs = avs3_revenue * avs3_st_dev
-            st.write(f"""&#8226; AVS3 Standard Deviation: ${avs3_revenue:,.0f} * {avs3_st_dev:.0f}% = **${avs3_st_dev_abs:,.0f}**""")
-
+            avs3_st_dev_abs = avs3_net_yield * (avs3_st_dev/100)
+            st.write(f"""&#8226; AVS3 Standard Deviation: **${avs3_st_dev_abs:,.0f}**""")
 
         st.write("\n")
         st.write("\n")
