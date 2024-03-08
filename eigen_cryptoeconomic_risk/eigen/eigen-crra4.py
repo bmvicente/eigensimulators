@@ -2578,8 +2578,14 @@ def main():
 
         fraction_html1 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold;">AVS1 Sharpe Ratio Calculation</span><br>
-            <br>
+            <span style="font-size: 22px; font-weight: bold;">AVS1 Sharpe Ratio Calculation</span><br>"""
+
+        st.markdown(fraction_html1, unsafe_allow_html=True)
+        
+        avs1_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000)
+
+
+        fraction_html11 = f"""
             <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -2589,7 +2595,7 @@ def main():
         </div>
         """
 
-        st.markdown(fraction_html1, unsafe_allow_html=True)
+        st.markdown(fraction_html11, unsafe_allow_html=True)
 
     with col81:
         avs_net_profit = 10000  # Example value
