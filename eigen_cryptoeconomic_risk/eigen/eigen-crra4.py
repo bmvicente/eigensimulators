@@ -2583,7 +2583,7 @@ def main():
             st.write(f"""&#8226; AVS1 Expected Slash: **${avs1_expected_slash:,.0f}**""")
 
         with col86:
-            avs1_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%', key='avs1_sd')
+            avs1_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=20, format='%d%%', key='avs1_sd')
         
         st.write("\n")
         st.write("\n")
@@ -2647,7 +2647,7 @@ def main():
             st.write(f"""&#8226; AVS2 Expected Slash: **${avs2_expected_slash:,.0f}**""")
 
         with col88:
-            avs2_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%', key='avs2_sd')
+            avs2_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=20, format='%d%%', key='avs2_sd')
         
         st.write("\n")
         st.write("\n")
@@ -2711,7 +2711,7 @@ def main():
             st.write(f"""&#8226; AVS3 Expected Slash: **${avs3_expected_slash:,.0f}**""")
 
         with col90:
-            avs3_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%', key='avs3_sd')
+            avs3_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=20, format='%d%%', key='avs3_sd')
         
         st.write("\n")
         st.write("\n")
