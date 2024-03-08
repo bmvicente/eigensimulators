@@ -2877,7 +2877,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">{avs1_net_yield:.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2906,7 +2906,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>{avs1_net_yield} - {avs1_expected_slash}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>Excess Return Deviation ({avs1_st_dev})</span>
+                    <span>{avs1_st_dev}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio1}</span>
             </div>
@@ -2940,7 +2940,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS2 Net Yield: <span style="font-size: 1.3em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS2 Net Yield: <span style="font-size: 1.3em;">{avs2_net_yield:.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2969,7 +2969,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>{avs2_net_yield} - {avs2_expected_slash}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>Excess Return Deviation ({avs2_st_dev})</span>
+                    <span>{avs2_st_dev}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio2}</span>
             </div>
@@ -3003,7 +3003,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS3 Net Yield: <span style="font-size: 1.3em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS3 Net Yield: <span style="font-size: 1.3em;">{avs3_net_yield:.0f}</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -3031,7 +3031,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                     <span>{avs3_net_yield} - {avs3_expected_slash}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>Excess Return Deviation ({avs3_st_dev})</span>
+                    <span>{avs3_st_dev}</span>
                 </div>
                 <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio3}</span>
             </div>
