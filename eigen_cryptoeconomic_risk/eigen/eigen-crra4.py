@@ -2763,26 +2763,40 @@ def main():
 
     st.write("\n")
     st.write("\n")
-    
-    # Assuming formatted_result1, formatted_result2, and formatted_result3 contain numerical values of risk-adjusted returns for AVS1, AVS2, and AVS3 respectively.
 
-    formatted_result1 = 1.5  # Example value for AVS1
-    formatted_result2 = 2.0  # Example value for AVS2
-    formatted_result3 = 1.0  # Example value for AVS3
 
-    # Organize the results in a dictionary for easier handling
+    # Assuming the updated scenario with possible equal values among formatted_result1, formatted_result2, and formatted_result3.
+
+    # Re-organize the results in a dictionary for easier handling
     results = {"AVS1": formatted_result1, "AVS2": formatted_result2, "AVS3": formatted_result3}
 
-    # Sort the results based on their values
-    sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
-
-    # Extract the sorted AVS labels
-    greatest, medium, smallest = [avsn[0] for avsn in sorted_results]
-
-    # Construct the recommendation string
-    recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {greatest} (greatest value), a milder expected risk-adjusted return by selecting {medium} (medium), and the smallest risk-adjusted return by selecting {smallest} (smallest value)."
+    # Check if all values are the same
+    if len(set(results.values())) == 1:
+        recommendation = "The LRT protocol should expect the same risk-adjusted return on AVS1, AVS2, and AVS3."
+    else:
+        # Sort the results based on their values
+        sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+        # Group by value to handle equals
+        grouped_results = {}
+        for avs, value in sorted_results:
+            grouped_results.setdefault(value, []).append(avs)
+        
+        if len(grouped_results) == 2:  # If two groups, one has the greater, other two are equal
+            greater_value_group = max(grouped_results.keys())
+            smaller_value_group = min(grouped_results.keys())
+            
+            greater_avs = ', '.join(grouped_results[greater_value_group])
+            smaller_avs = ', '.join(grouped_results[smaller_value_group])
+            
+            if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
+                recommendation = f"Greater return on {greater_avs}, and smaller return on {smaller_avs}"
+            else:  # If the smaller group has more than one AVS
+                recommendation = f"Greatest return on {greater_avs}, and smaller return on {smaller_avs}"
+        else:  # If all values are distinct
+            recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {sorted_results[0][0]} (greatest value), a milder expected risk-adjusted return by selecting {sorted_results[1][0]} (medium), and the smallest risk-adjusted return by selecting {sorted_results[2][0]} (smallest value)."
 
     recommendation
+
 
 
     st.write("\n")
