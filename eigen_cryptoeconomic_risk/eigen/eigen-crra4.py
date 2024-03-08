@@ -2192,20 +2192,20 @@ def main():
             else:
                 staker_reward1_percentage = 0.00
 
-        st.markdown(
-            f"""
-            <div style="
-                border: 2px solid;
-                border-radius: 5px;
-                padding: 10px;
-                text-align: center;
-                margin: 10px 0;
-                background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS1 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">{staker_reward1_percentage:.2f}%</span></h2>
-            </div>
-            """, 
-            unsafe_allow_html=True
-        )
+            st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS1 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">{staker_reward1_percentage:.2f}%</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
 
 
         with col67:
