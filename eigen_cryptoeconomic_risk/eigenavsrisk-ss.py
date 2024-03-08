@@ -959,7 +959,7 @@ def main():
 
             avs_operator_reputation_calc = f"""
                 <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_operator_reputation}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_operator_reputation_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_operator_reputation_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -1008,7 +1008,7 @@ def main():
 
             avs_operator_centralization_calc = f"""
                 <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_operator_centralization}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_operator_centralization_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_operator_centralization_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
