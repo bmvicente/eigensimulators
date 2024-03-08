@@ -927,7 +927,9 @@ def main():
 
         col50, col51 = st.columns(2)
         with col50:
-             
+            
+            st.write("  \n")
+
             # AVS Operator Reputation
             st.markdown("""
                 <style>
@@ -976,6 +978,8 @@ def main():
 
             
         with col51:
+
+            st.write("  \n")
 
             # AVS Operator Centralization
             st.markdown("""
