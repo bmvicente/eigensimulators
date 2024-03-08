@@ -2589,13 +2589,14 @@ def main():
 
         st.markdown(fraction_html1, unsafe_allow_html=True)
         
+        st.write("\n")
 
         st.markdown(
                 f"""
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 21px;
+                    padding: 10px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
@@ -2649,12 +2650,14 @@ def main():
 
         st.markdown(fraction_html2, unsafe_allow_html=True)
         
+        st.write("\n")
+
         st.markdown(
                 f"""
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 21px;
+                    padding: 10px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
@@ -2709,12 +2712,14 @@ def main():
 
         st.markdown(fraction_html3, unsafe_allow_html=True)
         
+        st.write("\n")
+
         st.markdown(
                 f"""
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 21px;
+                    padding: 10px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
