@@ -2893,7 +2893,7 @@ def main():
             st.write(f"""&#8226; AVS1 Expected Slash: **${avs1_expected_slash:,.0f}**""")
 
         with col86:
-            avs1_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=20, format='%d%%', key='avs1_sd')
+            avs1_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=0, max_value=100, value=20, format='%d%%', key='avs1_sd')
         
         st.write("\n")
         st.write("\n")
@@ -2961,7 +2961,7 @@ def main():
             st.write(f"""&#8226; AVS2 Expected Slash: **${avs2_expected_slash:,.0f}**""")
 
         with col88:
-            avs2_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=20, format='%d%%', key='avs2_sd')
+            avs2_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=0, max_value=100, value=20, format='%d%%', key='avs2_sd')
         
         st.write("\n")
         st.write("\n")
@@ -3028,7 +3028,7 @@ def main():
             st.write(f"""&#8226; AVS3 Expected Slash: **${avs3_expected_slash:,.0f}**""")
 
         with col90:
-            avs3_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=20, format='%d%%', key='avs3_sd')
+            avs3_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=0, max_value=100, value=20, format='%d%%', key='avs3_sd')
         
         st.write("\n")
         st.write("\n")
@@ -3070,7 +3070,7 @@ def main():
 
     # Check if all values are the same
     if len(set(results.values())) == 1:
-        recommendation = "The LRT protocol should expect the **same risk-adjusted return on AVS1, AVS2, and AVS3**."
+        recommendation = "The LRT protocol should expect the <b>same risk-adjusted return on AVS1, AVS2, and AVS3</b>."
     else:
         # Sort the results based on their values
         sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
