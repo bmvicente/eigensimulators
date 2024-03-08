@@ -3098,23 +3098,23 @@ def main():
             else:  # If the smaller group has more than one AVS
                 recommendation = f"""
                     <div>
-                        <p style="font-size: 20px;">The LRT protocol should expect:</p> <!-- Adjust the font-size as needed -->
-                        <ul style="font-size: 20px;"> <!-- Apply font-size directly to the list -->
-                            <b>- Greater expected risk-adjusted return by selecting {greater_avs}</b>
-                            <b>- Smaller return by selecting {smaller_avs}</b></li>
+                        <p style="font-size: 20px;">The LRT protocol should expect:</p>
+                        <ul style="font-size: 20px; list-style-type: disc; margin-left: 20px;">
+                            <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
+                            <li><b>Smaller return by selecting {smaller_avs}</b></li>
                         </ul>
                     </div>
                 """
         else:  # If all values are distinct
                 recommendation = f"""
-                    <div>
-                        <p style="font-size: 20px;">The LRT protocol should expect:</p> <!-- Adjust the font-size as needed -->
-                        <ul style="font-size: 20px;"> <!-- Apply font-size directly to the list -->
-                            <b>- Greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b>
-                            <b>- Milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b>
-                            <b>- Smallest risk-adjusted return by selecting {sorted_results[2][0]}</b>
-                        </ul>
-                    </div>
+                <div>
+                    <p style="font-size: 20px;">The LRT protocol should expect:</p>
+                    <ul style="font-size: 20px; list-style-type: disc; margin-left: 20px;">
+                        <li><b>Greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b></li>
+                        <li><b>Milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b></li>
+                        <li><b>Smallest risk-adjusted return by selecting {sorted_results[2][0]}</b></li>
+                    </ul>
+                </div>
                 """
 
 
