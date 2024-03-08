@@ -3057,7 +3057,7 @@ def main():
 
     # Check if all values are the same
     if len(set(results.values())) == 1:
-        recommendation = "The LRT protocol should expect the same risk-adjusted return on AVS1, AVS2, and AVS3."
+        recommendation = "The LRT protocol should expect the **same risk-adjusted return on AVS1, AVS2, and AVS3**."
     else:
         # Sort the results based on their values
         sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
@@ -3074,11 +3074,11 @@ def main():
             smaller_avs = ', '.join(grouped_results[smaller_value_group])
             
             if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
-                recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {greater_avs}, and smaller return by selecting {smaller_avs}."
+                recommendation = f"The LRT protocol should expect a **greater expected risk-adjusted return by selecting {greater_avs}**, and **smaller return by selecting {smaller_avs}**."
             else:  # If the smaller group has more than one AVS
-                recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {greater_avs}, and smaller return by selecting {smaller_avs}."
+                recommendation = f"The LRT protocol should expect a **greater expected risk-adjusted return by selecting {greater_avs}**, and **smaller return by selecting {smaller_avs}**."
         else:  # If all values are distinct
-            recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {sorted_results[0][0]}, a milder expected risk-adjusted return by selecting {sorted_results[1][0]}, and the smallest risk-adjusted return by selecting {sorted_results[2][0]}."
+            recommendation = f"The LRT protocol should expect a **greater expected risk-adjusted return by selecting {sorted_results[0][0]}**, a **milder expected risk-adjusted return by selecting {sorted_results[1][0]}**, and the **smallest risk-adjusted return by selecting {sorted_results[2][0]}**."
 
     recommendation_html = f'<div style="font-size: 20px;">{recommendation}</div>'
 
