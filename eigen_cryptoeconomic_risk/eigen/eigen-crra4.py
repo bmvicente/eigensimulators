@@ -1918,6 +1918,11 @@ def main():
 
 
 
+
+
+
+
+
     st.header("**2. REWARD**")
     st.subheader("**2.1 Staker/Operator Revenue Distributions**")
     
@@ -1937,6 +1942,99 @@ def main():
                     We find these percentages reasonable, although would highly appreciate feedback from EigenLayer.
                     """)
 
+
+
+
+    def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xeth_percentage):
+        
+        reward_percentage = 0.20  # Base reward percentage
+
+        # Adjusting the base reward based on the AVS token and xETH balance
+        #dual_staking_balance_adjustment = (avs_token_percentage - xeth_percentage) / 100.0
+
+        def dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage):
+            ratio = avs_token_percentage / xeth_percentage
+
+            if ratio > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+                return 0.020
+            elif ratio > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+                return 0.015
+            elif ratio > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.010
+            elif ratio > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.005
+            elif ratio == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+                return 0  # Neutral adjustment for balanced scenario
+            elif ratio > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+                return -0.010
+            elif ratio > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+                return -0.015
+            else:  # Very low AVS compared to ETH
+                return -0.020
+
+        dual_staking_adjustment = dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage)
+
+
+        # Check the ratio of Total Staked to TVL
+        def ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
+            
+            if avs_tvl == 0:
+                return 0
+            
+            ratio = (avs_total_restaked / 2) / avs_tvl
+
+            if ratio > 2:
+                return -0.03
+            elif ratio > 1.5:
+                return -0.02
+            elif ratio > 1:
+                return -0.01
+            elif ratio == 1:
+                return 0
+            elif ratio < 1:
+                return 0.01
+            elif ratio < 0.5:
+                return 0.02
+            elif ratio < 0.25:
+                return 0.03
+            else:
+                return 0
+
+        ratio_tvl_totalstaked_adjustment = ratio_tvl_totalstaked(avs_total_staked, avs_tvl)
+
+
+        # Revenue-based adjustment
+        if avs_revenue > 100000000:  # Greater than $100M
+            avs_revenue_adjustment = 0.01
+        elif avs_revenue > 50000000:  # Greater than $50M
+            avs_revenue_adjustment = 0.02
+        elif avs_revenue > 20000000:  # Greater than $20M
+            avs_revenue_adjustment = 0.03
+        elif avs_revenue > 5000000:   # Greater than $5M
+            avs_revenue_adjustment = 0.04
+        elif avs_revenue > 1000000:   # Greater than $1M
+            avs_revenue_adjustment = 0.05
+        else:
+            avs_revenue_adjustment = 0
+
+
+        # Combine all adjustments
+        reward_percentage_sum = reward_percentage + dual_staking_adjustment + avs_revenue_adjustment + ratio_tvl_totalstaked_adjustment
+
+        # Ensure the reward percentage is within reasonable bounds
+        reward_percentage_adj = max(min(reward_percentage_sum, 0.30), 0.10)
+
+        # Calculate rewards for stakers and operators
+        profit_percentage = 0.20
+        staker_percentage = 0.40
+        operator_percentage = 0.60
+
+        staker_reward = avs_revenue * profit_percentage * reward_percentage_adj * staker_percentage
+        operator_reward = avs_revenue * profit_percentage * reward_percentage_adj * operator_percentage
+
+        return staker_reward, operator_reward
+
+
   
     st.write("\n")        
     st.write("\n")
@@ -1955,6 +2053,17 @@ def main():
 
 
     col63, col64, col65 = st.columns(3, gap="large")
+
+
+
+
+
+
+
+    #####################
+    ####### AVS 1 #######
+    #####################
+
 
     with col63:
          
@@ -1986,7 +2095,6 @@ def main():
 
 
 
-
         st.markdown("""
             <style>
             .header-style {
@@ -2008,13 +2116,13 @@ def main():
 
         col5, col6 = st.columns(2)
         with col5:
-            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50, key="avs1_dual")
+            avs1_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50, key="avs1_dual")
         with col6:
-            xeth_percentage = 100 - avs_token_percentage
+            xeth1_percentage = 100 - avs1_token_percentage
         
-            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="avs1_dualx")
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth1_percentage, disabled=True, key="avs1_dualx")
 
-        st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
+        st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs1_token_percentage, xeth1_percentage))
 
         st.write("\n")
         st.write("\n")
@@ -2071,17 +2179,17 @@ def main():
         st.write("  \n")
         st.write("  \n")
 
-
+        staker_reward1, operator_reward1 = avs_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
 
 
         col66, col67 = st.columns(2)
 
         with col66:
             # Calculate the percentage and handle division by zero
-            #if avs_total_staked != 0:
-            #    staker_reward_percentage = (staker_reward / avs_revenue) * 100
-            #else:
-            #    staker_reward_percentage = 0.00
+            if pre_slash_total_restaked != 0:
+                staker_reward1_percentage = (staker_reward1 / avs1_revenue) * 100
+            else:
+                staker_reward1_percentage = 0.00
 
             st.markdown(
                 f"""
@@ -2100,10 +2208,10 @@ def main():
 
         with col67:
             # Calculate the percentage and handle division by zero
-            #if avs_total_staked != 0:
-            #    operator_reward_percentage = (operator_reward / avs_revenue) * 100
-            #else:
-            #    operator_reward_percentage = 0.00
+            if pre_slash_total_restaked != 0:
+                operator_reward1_percentage = (operator_reward1 / avs1_revenue) * 100
+            else:
+                operator_reward1_percentage = 0.00
 
             st.markdown(
                 f"""
@@ -2131,6 +2239,15 @@ def main():
 
 
 
+
+
+
+
+
+    #####################
+    ####### AVS 2 #######
+    #####################
+            
     with col64:
          
         st.markdown("""
@@ -2160,8 +2277,6 @@ def main():
         st.write("\n")
 
 
-
-
         st.markdown("""
             <style>
             .header-style {
@@ -2183,21 +2298,19 @@ def main():
 
         col5, col6 = st.columns(2)
         with col5:
-            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50, key="avs2_dual")
+            avs2_token_percentage = st.slider("**% $AVS2**", min_value=10, max_value=90, value=50, key="avs2_dual")
         with col6:
-            xeth_percentage = 100 - avs_token_percentage
+            xeth2_percentage = 100 - avs2_token_percentage
         
-            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="avs2_dualx")
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth2_percentage, disabled=True, key="avs2_dualx")
 
-        st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
+        st.write("&#8226; **Dual Staking Balance**: {}% $AVS2 : {}% xETH".format(avs2_token_percentage, xeth2_percentage))
 
 
 
         st.write("\n")
         st.write("  \n")
         st.write("\n")
-
-
 
 
 
@@ -2253,15 +2366,16 @@ def main():
         st.write("  \n")
         st.write("\n")
 
+        staker_reward2, operator_reward2 = avs_rewards(avs2_revenue, tvl2, pre_slash_total_restaked, avs2_token_percentage, xeth2_percentage)
 
         col68, col69 = st.columns(2)
 
         with col68:
             # Calculate the percentage and handle division by zero
-            #if avs_total_staked != 0:
-            #    staker_reward_percentage = (staker_reward / avs_revenue) * 100
-            #else:
-            #    staker_reward_percentage = 0.00
+            if pre_slash_total_restaked != 0:
+                staker_reward2_percentage = (staker_reward2 / avs2_revenue) * 100
+            else:
+                staker_reward2_percentage = 0.00
 
             st.markdown(
                 f"""
@@ -2280,10 +2394,10 @@ def main():
 
         with col69:
             # Calculate the percentage and handle division by zero
-            #if avs_total_staked != 0:
-            #    operator_reward_percentage = (operator_reward / avs_revenue) * 100
-            #else:
-            #    operator_reward_percentage = 0.00
+            if pre_slash_total_restaked != 0:
+                operator_reward2_percentage = (operator_reward2 / avs2_revenue) * 100
+            else:
+                operator_reward2_percentage = 0.00
 
             st.markdown(
                 f"""
@@ -2307,6 +2421,17 @@ def main():
             """)
 
 
+
+
+
+
+
+
+
+    #####################
+    ####### AVS 3 #######
+    #####################
+            
 
     with col65:
 
@@ -2360,20 +2485,18 @@ def main():
 
         col5, col6 = st.columns(2)
         with col5:
-            avs_token_percentage = st.slider("**% $AVS**", min_value=10, max_value=90, value=50, key="avs3_dual")
+            avs3_token_percentage = st.slider("**% $AVS3**", min_value=10, max_value=90, value=50, key="avs3_dual")
         with col6:
-            xeth_percentage = 100 - avs_token_percentage
+            xeth3_percentage = 100 - avs3_token_percentage
         
-            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, key="avs3_dualx")
+            st.slider("**% xETH**", min_value=10, max_value=90, value=xeth3_percentage, disabled=True, key="avs3_dualx")
 
-        st.write("&#8226; **Dual Staking Balance**: {}% $AVS : {}% xETH".format(avs_token_percentage, xeth_percentage))
+        st.write("&#8226; **Dual Staking Balance**: {}% $AVS3 : {}% xETH".format(avs3_token_percentage, xeth3_percentage))
 
 
         st.write("\n")
         st.write("  \n")
         st.write("\n")
-
-
 
 
 
@@ -2423,8 +2546,6 @@ def main():
 
 
 
-
-
         st.write("\n")
         st.write("  \n")
         st.write("\n")
@@ -2434,10 +2555,10 @@ def main():
 
         with col70:
             # Calculate the percentage and handle division by zero
-            #if avs_total_staked != 0:
-            #    staker_reward_percentage = (staker_reward / avs_revenue) * 100
-            #else:
-            #    staker_reward_percentage = 0.00
+            if pre_slash_total_restaked != 0:
+                staker_reward3_percentage = (staker_reward3 / avs3_revenue) * 100
+            else:
+                staker_reward3_percentage = 0.00
 
             st.markdown(
                 f"""
@@ -2456,10 +2577,10 @@ def main():
 
         with col71:
             # Calculate the percentage and handle division by zero
-            #if avs_total_staked != 0:
-            #    operator_reward_percentage = (operator_reward / avs_revenue) * 100
-            #else:
-            #    operator_reward_percentage = 0.00
+            if pre_slash_total_restaked != 0:
+                operator_reward3_percentage = (operator_reward3 / avs3_revenue) * 100
+            else:
+                operator_reward3_percentage = 0.00
 
             st.markdown(
                 f"""
@@ -2482,6 +2603,8 @@ def main():
         with st.expander("Logic"):
             st.markdown("""
             """)
+
+
 
 
     st.write("\n")
@@ -2736,6 +2859,8 @@ def main():
     st.write("\n")
     st.write("\n")
 
+
+
     # Assuming the updated scenario with possible equal values among formatted_result1, formatted_result2, and formatted_result3.
 
     # Re-organize the results in a dictionary for easier handling
@@ -2760,11 +2885,11 @@ def main():
             smaller_avs = ', '.join(grouped_results[smaller_value_group])
             
             if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
-                recommendation = f"Greater return on {greater_avs}, and smaller return on {smaller_avs}"
+                recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {greater_avs}, and smaller return by selecting {smaller_avs}."
             else:  # If the smaller group has more than one AVS
-                recommendation = f"Greatest return on {greater_avs}, and smaller return on {smaller_avs}"
+                recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {greater_avs}, and smaller return by selecting {smaller_avs}."
         else:  # If all values are distinct
-            recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {sorted_results[0][0]} (greatest value), a milder expected risk-adjusted return by selecting {sorted_results[1][0]} (medium), and the smallest risk-adjusted return by selecting {sorted_results[2][0]} (smallest value)."
+            recommendation = f"The LRT protocol should expect a greater expected risk-adjusted return by selecting {sorted_results[0][0]}, a milder expected risk-adjusted return by selecting {sorted_results[1][0]}, and the smallest risk-adjusted return by selecting {sorted_results[2][0]}."
 
     recommendation_html = f'<div style="font-size: 20px;">{recommendation}</div>'
 
@@ -2779,7 +2904,9 @@ def main():
 
 
     with st.expander("Logic"):
-            st.markdown("""
+            st.markdown("""The denominator of the Sharpe Ratio represents the standard deviation of the portfolio's excess returns, which is a measure of the investment's volatility or risk. Specifically, it quantifies how much the returns of the investment deviate from their average over a certain period. This measure is crucial in the context of the Sharpe Ratio because it provides a way to adjust for risk: by dividing the excess return (the return of the investment minus the risk-free rate) by the standard deviation of these excess returns, the Sharpe Ratio essentially tells you how much excess return you are getting for each unit of risk taken.
+
+In essence, the denominator of the Sharpe Ratio allows investors to understand the risk-adjusted return of an investment. A higher standard deviation indicates a higher level of risk (since the investment's returns are more spread out from the average), which in turn would require a higher excess return to achieve the same Sharpe Ratio. This helps investors compare investments on a risk-adjusted basis, making it easier to identify which investments are truly outperforming on a risk-adjusted basis rather than simply due to taking on more risk.
             """)
 
 
