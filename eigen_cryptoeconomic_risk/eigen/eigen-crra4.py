@@ -2589,6 +2589,23 @@ def main():
 
         st.markdown(fraction_html1, unsafe_allow_html=True)
         
+
+        st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 21px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">m</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+
         st.write("\n")
 
         col85, col86 = st.columns(2, gap="medium")
@@ -2632,6 +2649,22 @@ def main():
 
         st.markdown(fraction_html2, unsafe_allow_html=True)
         
+        st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 21px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS2 Net Yield: <span style="font-size: 1.3em;">m</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+
         st.write("\n")
 
         col87, col88 = st.columns(2, gap="medium")
@@ -2675,6 +2708,21 @@ def main():
             <span style="font-size: 22px; font-weight: bold;">AVS3 Sharpe Ratio Calculation</span><br>"""
 
         st.markdown(fraction_html3, unsafe_allow_html=True)
+        
+        st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 21px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS3 Net Yield: <span style="font-size: 1.3em;">m</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
         
         st.write("\n")
 
