@@ -1,14 +1,15 @@
 
 import streamlit as st
 
-def avs_risk(security_audits, business_model, dual_staking_balance, avs_type, operator_attack_risk, restaking_mods, avs_avg_operator_reputation, mev_extraction, liveness_deg, censorship, validator_collusion):
+def avs_risk(security_audits, business_model, dual_staking_balance, avs_type, operator_attack_risk, restaking_mods, avs_operator_reputation, avs_operator_centralization, mev_extraction, liveness_deg, censorship, validator_collusion):
     # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
 
     security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
     business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
     avs_type_risk = {"Lightweight": 7, "Hyperscale": 3}
     restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
-    avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+    avs_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+    avs_operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
     mev_extraction_risk = {"High": 10, "Medium": 5, "Low": 2}
     liveness_deg_risk = {"High": 10, "Medium": 5, "Low": 2}
     censorship_risk = {"High": 10, "Medium": 5, "Low": 2}
@@ -20,14 +21,15 @@ def avs_risk(security_audits, business_model, dual_staking_balance, avs_type, op
     business_model_score = business_model_risk[business_model]
     avs_type_score = avs_type_risk[avs_type]
     restaking_mod_score = restaking_mods_risk[restaking_mods]
-    avs_avg_operator_reputation_score = avs_avg_operator_reputation_risk[avs_avg_operator_reputation]
+    avs_operator_reputation_score = avs_operator_reputation_risk[avs_operator_reputation]
+    avs_operator_centralization_score = avs_operator_centralization_risk[avs_operator_centralization]
     mev_extraction_score = mev_extraction_risk[mev_extraction]
     liveness_deg_score = liveness_deg_risk[liveness_deg]
     censorship_score = censorship_risk[censorship]
     validator_collusion_score = validator_collusion_risk[validator_collusion]
 
 
-    return security_audit_score, business_model_score, dual_staking_balance, avs_type_score, restaking_mod_score, avs_avg_operator_reputation_score, operator_attack_risk, mev_extraction_score, liveness_deg_score, censorship_score, validator_collusion_score
+    return security_audit_score, business_model_score, dual_staking_balance, avs_type_score, restaking_mod_score, avs_operator_reputation_score, avs_operator_centralization_score, operator_attack_risk, mev_extraction_score, liveness_deg_score, censorship_score, validator_collusion_score
 
 
 
@@ -101,8 +103,10 @@ def main():
         st.session_state.avs_type_score = 0
     if 'restaking_mod_score' not in st.session_state:
         st.session_state.restaking_mod_score = 0
-    if 'avs_avg_operator_reputation_score' not in st.session_state:
-        st.session_state.avs_avg_operator_reputation_score = 0
+    if 'avs_operator_reputation_score' not in st.session_state:
+        st.session_state.avs_operator_reputation_score = 0
+    if 'avs_operator_centralization_score' not in st.session_state:
+        st.session_state.avs_operator_centralization_score = 0
     if 'mev_extraction_score' not in st.session_state:
         st.session_state.mev_extraction_score = 0
     if 'liveness_deg_score' not in st.session_state:
@@ -154,6 +158,7 @@ def main():
         )
 
         st.write("\n")
+
 
 
         # AVS TVL & Total Restaked
@@ -458,7 +463,7 @@ def main():
                     ```
                             """)
                 
-            result5 = st.session_state.restaking_mod_score * restaking_mods_likelihood * restaking_mods_impact
+            result3 = st.session_state.restaking_mod_score * restaking_mods_likelihood * restaking_mods_impact
 
             restaking_mod_calc = f"""
                 <div style="text-align: center;">
@@ -468,7 +473,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{restaking_mods_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result3}</span>
                 </div>
                 """
 
@@ -584,7 +589,7 @@ def main():
                             """)
                 
 
-            result3 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
+            result5 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
 
             security_audits_calc = f"""
                 <div style="text-align: center;">
@@ -594,7 +599,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result3}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5}</span>
                 </div>
             """
 
@@ -604,51 +609,8 @@ def main():
 
 
         with col28:
-
-            # AVS Average Operator Reputation
-            st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
-            st.markdown('<p class="header-style">SS Average Operators\' Reputation</p>', unsafe_allow_html=True)
-
-            avs_avg_operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
-
-            st.write("  \n")
-
-            avs_avg_operator_reputation_likelihood = st.slider("**Likelihood**     ", min_value=1, max_value=10, value=2)
-            avs_avg_operator_reputation_impact = st.slider("**Impact**     ", min_value=1, max_value=10, value=8)
-
-            with st.expander("Logic"):
-                st.markdown("""
-                    Although being a purely qualitative metric, the **Average Reputation of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
-                    
-                    ```python
-                    avs_avg_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-                    ```
-                            """)
-                
-            result6 = st.session_state.avs_avg_operator_reputation_score * avs_avg_operator_reputation_likelihood * avs_avg_operator_reputation_impact
-
-            avs_avg_operator_reputation_calc = f"""
-                <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_avg_operator_reputation_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_likelihood}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_avg_operator_reputation_impact}</span> 
-                    <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
-                </div>
-                """
-
-            st.markdown(avs_avg_operator_reputation_calc, unsafe_allow_html=True)
+            
+            st.write("\n")
 
 
 #############################
@@ -725,7 +687,7 @@ def main():
                     Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
                             """)
                 
-        result7 = st.session_state.mev_extraction_score * mev_extraction_likelihood * mev_extraction_impact
+        result6 = st.session_state.mev_extraction_score * mev_extraction_likelihood * mev_extraction_impact
 
         mev_extraction_calc = f"""
                 <div style="text-align: center;">
@@ -735,7 +697,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{mev_extraction_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result7}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
                 </div>
                 """
 
@@ -786,7 +748,7 @@ def main():
                     Therefore, Liveness Degradation Risk was assigned the greatest impact level out of the 4 specific metrics. Still somewhat of an unlikely event, nevertheless.
                             """)
                 
-        result8 = st.session_state.liveness_deg_score * liveness_deg_likelihood * liveness_deg_impact
+        result7 = st.session_state.liveness_deg_score * liveness_deg_likelihood * liveness_deg_impact
 
         liveness_deg_calc = f"""
                 <div style="text-align: center;">
@@ -796,7 +758,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{liveness_deg_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result8}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result7}</span>
                 </div>
                 """
 
@@ -848,7 +810,7 @@ def main():
                     Due to the technical difficulties around such a Risk and the solutions already in place to mitigate it, it was assigned a low potential Likelihood.
                             """)
                 
-        result9 = st.session_state.censorship_score * censorship_likelihood * censorship_impact
+        result8 = st.session_state.censorship_score * censorship_likelihood * censorship_impact
 
         censorship_calc = f"""
                 <div style="text-align: center;">
@@ -858,7 +820,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{censorship_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result8}</span>
                 </div>
                 """
 
@@ -908,7 +870,7 @@ def main():
                     Due to the ease of detection and mitigation rules, a low Likelihood was assigned.      
                             """)
                 
-        result10 = st.session_state.validator_collusion_score * validator_collusion_likelihood * validator_collusion_impact
+        result9 = st.session_state.validator_collusion_score * validator_collusion_likelihood * validator_collusion_impact
 
         validator_collusion_calc = f"""
                 <div style="text-align: center;">
@@ -918,7 +880,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{validator_collusion_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result10}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9}</span>
                 </div>
                 """
 
@@ -930,11 +892,133 @@ def main():
         st.write("  \n")
         st.write("  \n")
 
+        custom_css = """
+            <style>
+            .header-style {
+                font-size: 16px; /* Existing font size */
+                font-weight: bold;
+            }
+
+            .large-header-style {
+                font-size: 20px; /* Larger font size */
+                font-weight: bold;
+            }
+            </style>
+            """
+
+        st.markdown(custom_css, unsafe_allow_html=True)
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid;
+                border-radius: 10px;
+                padding: 4px;
+                text-align: center;
+                margin: 5px 0;
+                background-color: #CC8E00;"> <!-- Green background color -->
+                <h2 class='large-header-style' style="color: white; margin:0;">OPERATOR METRICS</h2> <!-- Larger font for AVSs -->
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
+        col50, col51 = st.columns(2)
+        with col50:
+             
+            # AVS Operator Reputation
+            st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            st.markdown('<p class="header-style">SS Operators\' Reputation</p>', unsafe_allow_html=True)
+
+            avs_operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"])
+
+            st.write("  \n")
+
+            avs_operator_reputation_likelihood = st.slider("**Likelihood**     ", min_value=1, max_value=10, value=2)
+            avs_operator_reputation_impact = st.slider("**Impact**     ", min_value=1, max_value=10, value=8)
+
+            with st.expander("Logic"):
+                st.markdown("""
+                    Although being a purely qualitative metric, the **Reputation Level of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
+                    
+                    ```python
+                    avs_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+                    ```
+                            """)
+                
+            result10 = st.session_state.avs_operator_reputation_score * avs_operator_reputation_likelihood * avs_operator_reputation_impact
+
+            avs_operator_reputation_calc = f"""
+                <div style="text-align: center;">
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_operator_reputation}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_operator_reputation_likelihood}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_operator_reputation_impact}</span> 
+                    <span style="font-size: 24px; font-weight: bold;"> = </span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result10}</span>
+                </div>
+                """
+
+            st.markdown(avs_operator_reputation_calc, unsafe_allow_html=True)
 
 
+            
+        with col51:
 
+            # AVS Operator Centralization
+            st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                </style>
+                """, unsafe_allow_html=True)
 
+            st.markdown('<p class="header-style">SS Operators\' Centralization</p>', unsafe_allow_html=True)
 
+            avs_operator_centralization = st.selectbox("", ["Unknown", "Established", "Renowned"])
+
+            st.write("  \n")
+
+            avs_operator_centralization_likelihood = st.slider("**Likelihood**     ", min_value=1, max_value=10, value=2)
+            avs_operator_centralization_impact = st.slider("**Impact**     ", min_value=1, max_value=10, value=8)
+
+            with st.expander("Logic"):
+                st.markdown("""
+                    Although being a purely qualitative metric, the **Centralization Level of Operators** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider operators’ historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
+                    
+                    ```python
+                    avs_operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+                    ```
+                            """)
+                
+            result11 = st.session_state.avs_operator_centralization_score * avs_operator_centralization_likelihood * avs_operator_centralization_impact
+
+            avs_operator_centralization_calc = f"""
+                <div style="text-align: center;">
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.avs_operator_centralization}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{avs_operator_centralization_likelihood}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{avs_operator_centralization_impact}</span> 
+                    <span style="font-size: 24px; font-weight: bold;"> = </span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result11}</span>
+                </div>
+                """
+
+            st.markdown(avs_operator_centralization_calc, unsafe_allow_html=True)
 
 
 
@@ -956,7 +1040,7 @@ def main():
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
 
-    final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10
+    final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10 + result11
     normalized_risk_score = normalize_score(final_result)
 
     st.session_state.risk_score = normalized_risk_score
@@ -983,6 +1067,8 @@ def main():
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result10}</span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result11}</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
                 <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
             </div>
@@ -1003,8 +1089,8 @@ def main():
     st.write("  \n")
     
     
-    risk_score = avs_risk(security_audits, business_model, st.session_state.dual_staking_balance, avs_type, st.session_state.operator_attack_risk, restaking_mods, avs_avg_operator_reputation, mev_extraction, liveness_deg, censorship, validator_collusion)
-    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_avg_operator_reputation_score, st.session_state.operator_attack_risk, st.session_state.mev_extraction_score, st.session_state.liveness_deg_score, st.session_state.censorship_score, st.session_state.validator_collusion_score) = risk_score
+    risk_score = avs_risk(security_audits, business_model, st.session_state.dual_staking_balance, avs_type, st.session_state.operator_attack_risk, restaking_mods, avs_operator_reputation, avs_operator_centralization, mev_extraction, liveness_deg, censorship, validator_collusion)
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_operator_reputation_score, st.session_state.avs_operator_centralization_score, st.session_state.operator_attack_risk, st.session_state.mev_extraction_score, st.session_state.liveness_deg_score, st.session_state.censorship_score, st.session_state.validator_collusion_score) = risk_score
 
 
     # Determine the color and background color based on the risk score
