@@ -2591,7 +2591,7 @@ def main():
         
         st.write("\n")
 
-        col85, col86 = st.columns(2, gap="large")
+        col85, col86 = st.columns(2, gap="medium")
 
         with col85:
             avs1_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000, key='avs1_es')
@@ -2631,7 +2631,7 @@ def main():
         
         st.write("\n")
 
-        col87, col88 = st.columns(2, gap="large")
+        col87, col88 = st.columns(2, gap="medium")
 
         with col87:
             avs2_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000, key='avs2_es')
@@ -2672,7 +2672,7 @@ def main():
         
         st.write("\n")
 
-        col89, col90 = st.columns(2, gap="large")
+        col89, col90 = st.columns(2, gap="medium")
 
         with col89:
             avs3_expected_slash = st.number_input("**AVS3 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000, key='avs3_es')
