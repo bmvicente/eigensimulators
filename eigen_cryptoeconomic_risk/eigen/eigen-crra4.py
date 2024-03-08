@@ -2553,7 +2553,7 @@ def main():
     <div style="text-align: center;">
         <span style="font-size: 24px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
         <div style="display: inline-block; vertical-align: middle; font-size: 24px; font-weight: bold; text-align: center;">
-            <span>AVS Net Yield  -  AVS Expected Slash</span><br>
+            <span>AVS Net Yield  <span style="font-size: 24px;">-</span>  AVS Expected Slash</span><br>
             <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
             <span>Standard Deviation of Excess Return</span>
         </div>
