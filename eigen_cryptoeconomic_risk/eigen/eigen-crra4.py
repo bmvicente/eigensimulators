@@ -3123,6 +3123,7 @@ def main():
     st.markdown(recommendation_html, unsafe_allow_html=True)
 
     st.write("\n")
+    st.write("\n")
 
     st.markdown('''
         <div style="font-size: 18px;">
