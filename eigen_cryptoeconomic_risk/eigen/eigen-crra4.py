@@ -1917,8 +1917,11 @@ def main():
 
 
 
-
-
+    ###################################
+    ###################################
+    ############# REWARD ##############
+    ###################################
+    ###################################
 
 
 
@@ -1941,98 +1944,6 @@ def main():
                     Such a reward range is necessary to be calculated to account for the underlying riskiness/security of an AVS and subsequent reward emission values. 
                     We find these percentages reasonable, although would highly appreciate feedback from EigenLayer.
                     """)
-
-
-
-
-    def avs_rewards(avs_revenue, avs_tvl, avs_total_staked, avs_token_percentage, xeth_percentage):
-        
-        reward_percentage = 0.20  # Base reward percentage
-
-        # Adjusting the base reward based on the AVS token and xETH balance
-        #dual_staking_balance_adjustment = (avs_token_percentage - xeth_percentage) / 100.0
-
-        def dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage):
-            ratio = avs_token_percentage / xeth_percentage
-
-            if ratio > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
-                return 0.020
-            elif ratio > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
-                return 0.015
-            elif ratio > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
-                return 0.010
-            elif ratio > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
-                return 0.005
-            elif ratio == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
-                return 0  # Neutral adjustment for balanced scenario
-            elif ratio > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
-                return -0.010
-            elif ratio > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
-                return -0.015
-            else:  # Very low AVS compared to ETH
-                return -0.020
-
-        dual_staking_adjustment = dual_staking_balance_adjustment(avs_token_percentage, xeth_percentage)
-
-
-        # Check the ratio of Total Staked to TVL
-        def ratio_tvl_totalstaked(avs_total_restaked, avs_tvl):
-            
-            if avs_tvl == 0:
-                return 0
-            
-            ratio = (avs_total_restaked / 2) / avs_tvl
-
-            if ratio > 2:
-                return -0.03
-            elif ratio > 1.5:
-                return -0.02
-            elif ratio > 1:
-                return -0.01
-            elif ratio == 1:
-                return 0
-            elif ratio < 1:
-                return 0.01
-            elif ratio < 0.5:
-                return 0.02
-            elif ratio < 0.25:
-                return 0.03
-            else:
-                return 0
-
-        ratio_tvl_totalstaked_adjustment = ratio_tvl_totalstaked(avs_total_staked, avs_tvl)
-
-
-        # Revenue-based adjustment
-        if avs_revenue > 100000000:  # Greater than $100M
-            avs_revenue_adjustment = 0.01
-        elif avs_revenue > 50000000:  # Greater than $50M
-            avs_revenue_adjustment = 0.02
-        elif avs_revenue > 20000000:  # Greater than $20M
-            avs_revenue_adjustment = 0.03
-        elif avs_revenue > 5000000:   # Greater than $5M
-            avs_revenue_adjustment = 0.04
-        elif avs_revenue > 1000000:   # Greater than $1M
-            avs_revenue_adjustment = 0.05
-        else:
-            avs_revenue_adjustment = 0
-
-
-        # Combine all adjustments
-        reward_percentage_sum = reward_percentage + dual_staking_adjustment + avs_revenue_adjustment + ratio_tvl_totalstaked_adjustment
-
-        # Ensure the reward percentage is within reasonable bounds
-        reward_percentage_adj = max(min(reward_percentage_sum, 0.30), 0.10)
-
-        # Calculate rewards for stakers and operators
-        profit_percentage = 0.20
-        staker_percentage = 0.40
-        operator_percentage = 0.60
-
-        staker_reward = avs_revenue * profit_percentage * reward_percentage_adj * staker_percentage
-        operator_reward = avs_revenue * profit_percentage * reward_percentage_adj * operator_percentage
-
-        return staker_reward, operator_reward
 
 
   
@@ -2063,6 +1974,97 @@ def main():
     #####################
     ####### AVS 1 #######
     #####################
+
+
+    def avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage):
+        
+        reward_percentage = 0.20  # Base reward percentage
+
+        # Adjusting the base reward based on the AVS token and xETH balance
+        #dual_staking_balance_adjustment = (avs_token_percentage - xeth_percentage) / 100.0
+
+        def dual_staking_balance_adjustment1(avs1_token_percentage, xeth1_percentage):
+            ratio1 = avs1_token_percentage / xeth1_percentage
+
+            if ratio1 > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+                return 0.020
+            elif ratio1 > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+                return 0.015
+            elif ratio1 > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.010
+            elif ratio1 > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.005
+            elif ratio1 == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+                return 0  # Neutral adjustment for balanced scenario
+            elif ratio1 > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+                return -0.010
+            elif ratio1 > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+                return -0.015
+            else:  # Very low AVS compared to ETH
+                return -0.020
+
+        dual_staking_adjustment1 = dual_staking_balance_adjustment1(avs1_token_percentage, xeth1_percentage)
+
+
+        # Check the ratio of Total Staked to TVL
+        def ratio_tvl_totalstaked1(pre_slash_total_restaked, tvl1):
+            
+            if tvl1 == 0:
+                return 0
+            
+            ratio1 = (pre_slash_total_restaked / 2) / tvl1
+
+            if ratio1 > 2:
+                return -0.03
+            elif ratio1 > 1.5:
+                return -0.02
+            elif ratio1 > 1:
+                return -0.01
+            elif ratio1 == 1:
+                return 0
+            elif ratio1 < 1:
+                return 0.01
+            elif ratio1 < 0.5:
+                return 0.02
+            elif ratio1 < 0.25:
+                return 0.03
+            else:
+                return 0
+
+        ratio_tvl_totalstaked_adjustment = ratio_tvl_totalstaked1(pre_slash_total_restaked, tvl1)
+
+
+        # Revenue-based adjustment
+        if avs1_revenue > 100000000:  # Greater than $100M
+            avs1_revenue_adjustment = 0.01
+        elif avs1_revenue > 50000000:  # Greater than $50M
+            avs1_revenue_adjustment = 0.02
+        elif avs1_revenue > 20000000:  # Greater than $20M
+            avs1_revenue_adjustment = 0.03
+        elif avs1_revenue > 5000000:   # Greater than $5M
+            avs1_revenue_adjustment = 0.04
+        elif avs1_revenue > 1000000:   # Greater than $1M
+            avs1_revenue_adjustment = 0.05
+        else:
+            avs1_revenue_adjustment = 0
+
+
+        # Combine all adjustments
+        reward_percentage_sum1 = reward_percentage + dual_staking_adjustment1 + avs1_revenue_adjustment + ratio_tvl_totalstaked_adjustment
+
+        # Ensure the reward percentage is within reasonable bounds
+        reward_percentage_adj1 = max(min(reward_percentage_sum1, 0.30), 0.10)
+
+        # Calculate rewards for stakers and operators
+        profit_percentage = 0.20
+        staker_percentage = 0.40
+        operator_percentage = 0.60
+
+        staker_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * staker_percentage
+        operator_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * operator_percentage
+
+        return staker_reward1, operator_reward1
+
 
 
     with col63:
@@ -2179,8 +2181,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
 
-        staker_reward1, operator_reward1 = avs_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
-
+        staker_reward1, operator_reward1 = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
 
         col66, col67 = st.columns(2)
 
@@ -2191,20 +2192,21 @@ def main():
             else:
                 staker_reward1_percentage = 0.00
 
-            st.markdown(
-                f"""
-                <div style="
-                    border: 2px solid;
-                    border-radius: 5px;
-                    padding: 10px;
-                    text-align: center;
-                    margin: 10px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS1 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">m</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+        st.markdown(
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 5px;
+                padding: 10px;
+                text-align: center;
+                margin: 10px 0;
+                background-color: white;">
+                <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS1 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">{staker_reward1_percentage:.2f}%</span></h2>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
 
         with col67:
             # Calculate the percentage and handle division by zero
@@ -2218,15 +2220,16 @@ def main():
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 21px;
+                    padding: 10px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS1 Operator Reward: <span style="font-size: 1.3em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS1 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">{operator_reward1_percentage:.2f}%</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
             )
+
 
         st.write("  \n")
 
@@ -2248,6 +2251,98 @@ def main():
     ####### AVS 2 #######
     #####################
             
+
+
+    def avs2_rewards(avs2_revenue, tvl2, pre_slash_total_restaked, avs2_token_percentage, xeth2_percentage):
+        
+        reward_percentage = 0.20  # Base reward percentage
+
+        # Adjusting the base reward based on the AVS token and xETH balance
+        dual_staking_balance_adjustment2 = (avs2_token_percentage - xeth2_percentage) / 100.0
+
+        def dual_staking_balance_adjustment2(avs2_token_percentage, xeth2_percentage):
+            ratio2 = avs2_token_percentage / xeth2_percentage
+
+            if ratio2 > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+                return 0.020
+            elif ratio2 > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+                return 0.015
+            elif ratio2 > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.010
+            elif ratio2 > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.005
+            elif ratio2 == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+                return 0  # Neutral adjustment for balanced scenario
+            elif ratio2 > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+                return -0.010
+            elif ratio2 > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+                return -0.015
+            else:  # Very low AVS compared to ETH
+                return -0.020
+
+        dual_staking_adjustment2 = dual_staking_balance_adjustment2(avs2_token_percentage, xeth2_percentage)
+
+
+        # Check the ratio of Total Staked to TVL
+        def ratio_tvl_totalstaked2(pre_slash_total_restaked, tvl2):
+            
+            if tvl2 == 0:
+                return 0
+            
+            ratio2 = (pre_slash_total_restaked / 2) / tvl2
+
+            if ratio2 > 2:
+                return -0.03
+            elif ratio2 > 1.5:
+                return -0.02
+            elif ratio2 > 1:
+                return -0.01
+            elif ratio2 == 1:
+                return 0
+            elif ratio2 < 1:
+                return 0.01
+            elif ratio2 < 0.5:
+                return 0.02
+            elif ratio2 < 0.25:
+                return 0.03
+            else:
+                return 0
+
+        ratio_tvl_totalstaked_adjustment2 = ratio_tvl_totalstaked2(pre_slash_total_restaked, tvl2)
+
+
+        # Revenue-based adjustment
+        if avs2_revenue > 100000000:  # Greater than $100M
+            avs2_revenue_adjustment = 0.01
+        elif avs2_revenue > 50000000:  # Greater than $50M
+            avs2_revenue_adjustment = 0.02
+        elif avs2_revenue > 20000000:  # Greater than $20M
+            avs2_revenue_adjustment = 0.03
+        elif avs2_revenue > 5000000:   # Greater than $5M
+            avs2_revenue_adjustment = 0.04
+        elif avs2_revenue > 1000000:   # Greater than $1M
+            avs2_revenue_adjustment = 0.05
+        else:
+            avs2_revenue_adjustment = 0
+
+
+        # Combine all adjustments
+        reward_percentage_sum2 = reward_percentage + dual_staking_adjustment2 + avs2_revenue_adjustment + ratio_tvl_totalstaked_adjustment2
+
+        # Ensure the reward percentage is within reasonable bounds
+        reward_percentage_adj2 = max(min(reward_percentage_sum2, 0.30), 0.10)
+
+        # Calculate rewards for stakers and operators
+        profit_percentage = 0.20
+        staker_percentage = 0.40
+        operator_percentage = 0.60
+
+        staker_reward2 = avs2_revenue * profit_percentage * reward_percentage_adj2 * staker_percentage
+        operator_reward2 = avs2_revenue * profit_percentage * reward_percentage_adj2 * operator_percentage
+
+        return staker_reward2, operator_reward2
+
+
     with col64:
          
         st.markdown("""
@@ -2366,7 +2461,7 @@ def main():
         st.write("  \n")
         st.write("\n")
 
-        staker_reward2, operator_reward2 = avs_rewards(avs2_revenue, tvl2, pre_slash_total_restaked, avs2_token_percentage, xeth2_percentage)
+        staker_reward2, operator_reward2 = avs2_rewards(avs2_revenue, tvl2, pre_slash_total_restaked, avs2_token_percentage, xeth2_percentage)
 
         col68, col69 = st.columns(2)
 
@@ -2386,7 +2481,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS2 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS2 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">{staker_reward2_percentage:.2f}%</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2404,11 +2499,11 @@ def main():
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 21px;
+                    padding: 10px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS2 Operator Reward: <span style="font-size: 1.3em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS2 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">{operator_reward2_percentage:.2f}%</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2431,7 +2526,98 @@ def main():
     #####################
     ####### AVS 3 #######
     #####################
+
+
+    def avs3_rewards(avs3_revenue, tvl3, pre_slash_total_restaked, avs3_token_percentage, xeth3_percentage):
+        
+        reward_percentage = 0.20  # Base reward percentage
+
+        # Adjusting the base reward based on the AVS token and xETH balance
+        dual_staking_balance_adjustment3 = (avs3_token_percentage - xeth3_percentage) / 100.0
+
+        def dual_staking_balance_adjustment3(avs3_token_percentage, xeth3_percentage):
+            ratio3 = avs3_token_percentage / xeth3_percentage
+
+            if ratio3 > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+                return 0.020
+            elif ratio3 > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+                return 0.015
+            elif ratio3 > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.010
+            elif ratio3 > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.005
+            elif ratio3 == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+                return 0  # Neutral adjustment for balanced scenario
+            elif ratio3 > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+                return -0.010
+            elif ratio3 > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+                return -0.015
+            else:  # Very low AVS compared to ETH
+                return -0.020
+
+        dual_staking_adjustment3 = dual_staking_balance_adjustment3(avs3_token_percentage, xeth3_percentage)
+
+
+        # Check the ratio of Total Staked to TVL
+        def ratio_tvl_totalstaked3(pre_slash_total_restaked, tvl3):
             
+            if tvl3 == 0:
+                return 0
+            
+            ratio3 = (pre_slash_total_restaked / 2) / tvl3
+
+            if ratio3 > 2:
+                return -0.03
+            elif ratio3 > 1.5:
+                return -0.02
+            elif ratio3 > 1:
+                return -0.01
+            elif ratio3 == 1:
+                return 0
+            elif ratio3 < 1:
+                return 0.01
+            elif ratio3 < 0.5:
+                return 0.02
+            elif ratio3 < 0.25:
+                return 0.03
+            else:
+                return 0
+
+        ratio_tvl_totalstaked_adjustment3 = ratio_tvl_totalstaked3(pre_slash_total_restaked, tvl3)
+
+
+        # Revenue-based adjustment
+        if avs3_revenue > 100000000:  # Greater than $100M
+            avs3_revenue_adjustment = 0.01
+        elif avs3_revenue > 50000000:  # Greater than $50M
+            avs3_revenue_adjustment = 0.02
+        elif avs3_revenue > 20000000:  # Greater than $20M
+            avs3_revenue_adjustment = 0.03
+        elif avs3_revenue > 5000000:   # Greater than $5M
+            avs3_revenue_adjustment = 0.04
+        elif avs3_revenue > 1000000:   # Greater than $1M
+            avs3_revenue_adjustment = 0.05
+        else:
+            avs3_revenue_adjustment = 0
+
+
+        # Combine all adjustments
+        reward_percentage_sum3 = reward_percentage + dual_staking_adjustment3 + avs3_revenue_adjustment + ratio_tvl_totalstaked_adjustment3
+
+        # Ensure the reward percentage is within reasonable bounds
+        reward_percentage_adj3 = max(min(reward_percentage_sum3, 0.30), 0.10)
+
+        # Calculate rewards for stakers and operators
+        profit_percentage = 0.20
+        staker_percentage = 0.40
+        operator_percentage = 0.60
+
+        staker_reward3 = avs3_revenue * profit_percentage * reward_percentage_adj3 * staker_percentage
+        operator_reward3 = avs3_revenue * profit_percentage * reward_percentage_adj3 * operator_percentage
+
+        return staker_reward3, operator_reward3
+
+
 
     with col65:
 
@@ -2550,6 +2736,7 @@ def main():
         st.write("  \n")
         st.write("\n")
 
+        staker_reward3, operator_reward3 = avs3_rewards(avs3_revenue, tvl3, pre_slash_total_restaked, avs3_token_percentage, xeth3_percentage)
 
         col70, col71 = st.columns(2)
 
@@ -2569,7 +2756,7 @@ def main():
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS3 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS3 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">{staker_reward3_percentage:.2f}%</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -2587,11 +2774,11 @@ def main():
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 21px;
+                    padding: 10px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS3 Operator Reward: <span style="font-size: 1.3em;">m</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">$AVS3 Staker / xETH Restaker Reward: <span style="font-size: 1.3em;">{operator_reward3_percentage:.2f}%</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
