@@ -3089,32 +3089,32 @@ def main():
                 recommendation = f"""
                     <div>
                         <p style="font-size: 20px !important;">The LRT protocol should expect:</p>
-                        <ul style="font-size: 20px !important; list-style-type: disc; margin-left: 20px;"> <!-- Apply list-style-type to ensure bullets appear -->
-                            <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
-                            <li><b>Smaller return by selecting {smaller_avs}</b></li>
-                        </ul>
+                        <p style="font-size: 20px !important;">
+                            <b>&#8226; Greater expected risk-adjusted return by selecting {greater_avs}</b><br>
+                            <b>&#8226; Smaller return by selecting {smaller_avs}</b>
+                        </p>
                     </div>
                 """
             else:  # If the smaller group has more than one AVS
                 recommendation = f"""
                     <div>
                         <p style="font-size: 20px;">The LRT protocol should expect:</p>
-                        <ul style="font-size: 20px; list-style-type: disc; margin-left: 20px;">
-                            <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
-                            <li><b>Smaller return by selecting {smaller_avs}</b></li>
-                        </ul>
+                        <p style="font-size: 20px;">
+                            <b>&#8226; Greater expected risk-adjusted return by selecting {greater_avs}</b><br>
+                            <b>&#8226; Smaller return by selecting {smaller_avs}</b>
+                        </p>
                     </div>
                 """
         else:  # If all values are distinct
                 recommendation = f"""
-                <div>
-                    <p style="font-size: 20px;">The LRT protocol should expect:</p>
-                    <ul style="font-size: 20px; list-style-type: disc; margin-left: 20px;">
-                        <li><b>Greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b></li>
-                        <li><b>Milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b></li>
-                        <li><b>Smallest risk-adjusted return by selecting {sorted_results[2][0]}</b></li>
-                    </ul>
-                </div>
+                    <div>
+                        <p style="font-size: 20px;">The LRT protocol should expect:</p>
+                        <p style="font-size: 20px;">
+                            <b>&#8226; Greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b><br>
+                            <b>&#8226; Milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b><br>
+                            <b>&#8226; Smallest risk-adjusted return by selecting {sorted_results[2][0]}</b>
+                        </p>
+                    </div>
                 """
 
 
