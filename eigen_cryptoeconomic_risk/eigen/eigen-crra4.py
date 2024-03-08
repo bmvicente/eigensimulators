@@ -2530,6 +2530,13 @@ def main():
     st.write("\n")
 
 
+
+
+
+
+
+
+
     st.subheader("**2.2 Sharpe Ratios**")
     st.write("\n")
 
@@ -2616,11 +2623,24 @@ def main():
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
         formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
 
-        # Assuming sharpe_ratio_result and other variables are defined as per the context
         fraction_html2 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold;">AVS2 Sharpe Ratio Calculation</span><br>
-            <br>
+            <span style="font-size: 22px; font-weight: bold;">AVS1 Sharpe Ratio Calculation</span><br>"""
+
+        st.markdown(fraction_html2, unsafe_allow_html=True)
+        
+        st.write("\n")
+
+        col87, col88 = st.columns(2, gap="large")
+
+        with col87:
+            avs2_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000)
+        with col88:
+            avs2_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%')
+        
+        st.write("\n")
+
+        fraction_html22 = f"""
             <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -2630,7 +2650,7 @@ def main():
         </div>
         """
 
-        st.markdown(fraction_html2, unsafe_allow_html=True)
+        st.markdown(fraction_html22, unsafe_allow_html=True)
 
     with col82:
         avs_net_profit = 10000  # Example value
@@ -2643,10 +2663,25 @@ def main():
         formatted_excess_return_deviation = f"{excess_return_deviation}%"
         formatted_result = f"{sharpe_ratio_result:,.2f}"  # Format with commas and two decimal places
 
+
         fraction_html3 = f"""
         <div style="text-align: center;">
-            <span style="font-size: 22px; font-weight: bold;">AVS3 Sharpe Ratio Calculation</span><br>
-            <br>
+            <span style="font-size: 22px; font-weight: bold;">AVS1 Sharpe Ratio Calculation</span><br>"""
+
+        st.markdown(fraction_html3, unsafe_allow_html=True)
+        
+        st.write("\n")
+
+        col89, col90 = st.columns(2, gap="large")
+
+        with col89:
+            avs1_expected_slash = st.number_input("**AVS3 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000)
+        with col90:
+            avs1_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%')
+        
+        st.write("\n")
+
+        fraction_html33 = f"""
             <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
                 <span>{formatted_avs_net_profit} - {formatted_min_expected_slash}</span><br>
                 <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -2656,8 +2691,7 @@ def main():
         </div>
         """
 
-
-        st.markdown(fraction_html3, unsafe_allow_html=True)
+        st.markdown(fraction_html33, unsafe_allow_html=True)
 
 
     st.write("\n")
