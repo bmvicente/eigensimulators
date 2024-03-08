@@ -3087,7 +3087,7 @@ def main():
                 recommendation = f"""
                     <div>
                         <p style="font-size: 20px;">The LRT protocol should expect:</p> <!-- Adjust the font-size as needed -->
-                        <ul style="font-size: 20px;"> <!-- Apply font-size directly to the list -->
+                        <ul style="font-size: 24px;"> <!-- Apply font-size directly to the list -->
                             <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
                             <li><b>Smaller return by selecting {smaller_avs}</b></li>
                         </ul>
