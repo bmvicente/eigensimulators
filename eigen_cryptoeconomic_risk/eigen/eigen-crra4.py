@@ -2895,7 +2895,7 @@ def main():
         with col86:
             avs1_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, step=1, format='%d%%', key='avs1_sd')
             avs1_st_dev_abs = avs1_revenue * (avs1_st_dev/100)
-            st.write(f"""&#8226; AVS1 Standard Deviation: ${avs1_revenue:,.0f} * {avs1_st_dev:.0f}% = <b>${avs1_st_dev_abs:,.0f}</b>""")
+            st.write(f"""&#8226; AVS1 Standard Deviation: ${avs1_revenue:,.0f} * {avs1_st_dev:.0f}% = **${avs1_st_dev_abs:,.0f}**""")
 
         st.write("\n")
         st.write("\n")
