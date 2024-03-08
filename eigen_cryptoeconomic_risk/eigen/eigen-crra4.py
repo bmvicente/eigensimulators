@@ -2594,9 +2594,9 @@ def main():
         col85, col86 = st.columns(2, gap="large")
 
         with col85:
-            avs1_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000)
+            avs1_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000, key='avs1_es')
         with col86:
-            avs1_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%')
+            avs1_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%', key='avs1_sd')
         
         st.write("\n")
 
@@ -2634,9 +2634,9 @@ def main():
         col87, col88 = st.columns(2, gap="large")
 
         with col87:
-            avs2_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000)
+            avs2_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000, key='avs2_es')
         with col88:
-            avs2_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%')
+            avs2_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%', key='avs2_sd')
         
         st.write("\n")
 
@@ -2675,9 +2675,9 @@ def main():
         col89, col90 = st.columns(2, gap="large")
 
         with col89:
-            avs1_expected_slash = st.number_input("**AVS3 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000)
+            avs3_expected_slash = st.number_input("**AVS3 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=10000000, key='avs3_es')
         with col90:
-            avs1_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%')
+            avs3_st_dev = st.slider("**Expected Return Standard Deviation**", min_value=0, max_value=100, value=100, format='%d%%', key='avs3_sd')
         
         st.write("\n")
 
