@@ -3088,10 +3088,10 @@ def main():
             if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
                 recommendation = f"""
                     <div>
-                        <p style="font-size: 20px !important;">The LRT protocol should expect:</p> <!-- Apply font-size with !important -->
-                        <ul style="font-size: 24px !important;"> <!-- Apply font-size with !important to the list -->
-                            <b>- Greater expected risk-adjusted return by selecting {greater_avs}</b>
-                            <b>- Smaller return by selecting {smaller_avs}</b></li>
+                        <p style="font-size: 20px !important;">The LRT protocol should expect:</p>
+                        <ul style="font-size: 20px !important; list-style-type: disc; margin-left: 20px;"> <!-- Apply list-style-type to ensure bullets appear -->
+                            <li><b>Greater expected risk-adjusted return by selecting {greater_avs}</b></li>
+                            <li><b>Smaller return by selecting {smaller_avs}</b></li>
                         </ul>
                     </div>
                 """
