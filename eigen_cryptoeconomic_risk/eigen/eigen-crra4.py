@@ -3089,8 +3089,8 @@ def main():
             if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
                 recommendation = f"""
                     <div>
-                        <p style="font-size: 16px !important;">The LRT protocol should expect:</p>
-                        <p style="font-size: 16px !important;">
+                        <p style="font-size: 18px !important;">The LRT protocol should expect:</p>
+                        <p style="font-size: 18px !important;">
                             <b>&#8226; Greater expected risk-adjusted return by selecting {greater_avs}</b><br>
                             <b>&#8226; Smaller return by selecting {smaller_avs}</b>
                         </p>
@@ -3099,8 +3099,8 @@ def main():
             else:  # If the smaller group has more than one AVS
                 recommendation = f"""
                     <div>
-                        <p style="font-size: 16px;">The LRT protocol should expect:</p>
-                        <p style="font-size: 16px;">
+                        <p style="font-size: 18px;">The LRT protocol should expect:</p>
+                        <p style="font-size: 18px;">
                             <b>&#8226; Greater expected risk-adjusted return by selecting {greater_avs}</b><br>
                             <b>&#8226; Smaller return by selecting {smaller_avs}</b>
                         </p>
@@ -3109,8 +3109,8 @@ def main():
         else:  # If all values are distinct
                 recommendation = f"""
                     <div>
-                        <p style="font-size: 16px;">The LRT protocol should expect:</p>
-                        <p style="font-size: 16px;">
+                        <p style="font-size: 18px;">The LRT protocol should expect:</p>
+                        <p style="font-size: 18px;">
                             <b>&#8226; Greater expected risk-adjusted return by selecting {sorted_results[0][0]}</b><br>
                             <b>&#8226; Milder expected risk-adjusted return by selecting {sorted_results[1][0]}</b><br>
                             <b>&#8226; Smallest risk-adjusted return by selecting {sorted_results[2][0]}</b>
