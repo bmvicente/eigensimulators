@@ -3088,8 +3088,8 @@ def main():
             if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
                 recommendation = f"""
                     <div>
-                        <p style="font-size: 20px !important;">The LRT protocol should expect:</p>
-                        <p style="font-size: 20px !important;">
+                        <p style="font-size: 18px !important;">The LRT protocol should expect:</p>
+                        <p style="font-size: 18px !important;">
                             <b>&#8226; Greater expected risk-adjusted return by selecting {greater_avs}</b><br>
                             <b>&#8226; Smaller return by selecting {smaller_avs}</b>
                         </p>
