@@ -1936,37 +1936,6 @@ def main():
                     Such a reward range is necessary to be calculated to account for the underlying riskiness/security of an AVS and subsequent reward emission values. 
                     We find these percentages reasonable, although would highly appreciate feedback from EigenLayer.
                     """)
-    
-    st.write("\n")
-    st.write("\n")
-
-    st.markdown("""
-    <style>
-    .big-font {
-        font-size:23px !important;
-        font-weight:bold;
-    }
-    </style>
-    <div class='big-font'>OPERATOR METRICS</div>
-    """, unsafe_allow_html=True)
-
-    st.write("\n")
-
-    col60, col61, col62 = st.columns(3, gap="large")
-
-    with col60:
-
-        op_centralization_level = st.selectbox('**Centralization Level**', ['Centralized', 'Semi-Decentralized', 'Decentralized'], index=0, key='centralization_select')
-
-    with col61:
-        
-        op_reputation_level = st.selectbox('**Reputation Level**', ['Unknown', 'Established', 'Renowned'], index=0, key='reputation_select')
-
-    with col62:
-
-        op_entrenchment_level = st.number_input('**Entrenchment Level**', min_value=3, max_value=3, value=3, step=1, key='entrenchment_slider',  disabled=True, help="Operator is entrenched on 3 AVSs in this Simulator")
-
-       
 
   
     st.write("\n")        
