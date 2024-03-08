@@ -2582,6 +2582,8 @@ def main():
 
         st.markdown(fraction_html1, unsafe_allow_html=True)
         
+        st.write("\n")
+
         col85, col86 = st.columns(2, gap="large")
 
         with col85:
