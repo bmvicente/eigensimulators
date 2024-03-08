@@ -2638,7 +2638,7 @@ def main():
         avs_net_profit = 10000  # Example value
         min_expected_slash = 500  # Example value
         excess_return_deviation = 20  # Example percentage
-        sharpe_ratio_result2 = 1.5  # Example calculation result
+        sharpe_ratio_result2 = 2  # Example calculation result
 
         formatted_avs_net_profit = f"{avs_net_profit:,}"
         formatted_min_expected_slash = f"{min_expected_slash:,}"
