@@ -2914,7 +2914,7 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span style="font-size: 21px; font-weight: bold;">${avs1_st_dev_abs:,.0f}</span>
                 </div>
-                <span style="font-size: 21px; font-weight: bold;">= {sharpe_ratio1:.2f}</span>
+                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio1:.2f}</span>
             </div>
         """
 
@@ -2925,9 +2925,8 @@ def main():
                 <span style="font-size: 21px; font-weight: bold;">Ecosystem-Aware Ratio:</span>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - ${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
-                    <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                 </div>
-                <span style="font-size: 21px; font-weight: bold;">= {sharpe_ratio1}</span> <!-- replace with actual resulting value -->
+                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio1}</span> <!-- replace with actual resulting value -->
             </div>
         """
 
