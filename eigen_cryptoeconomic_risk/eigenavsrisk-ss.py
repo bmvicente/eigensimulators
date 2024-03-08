@@ -547,9 +547,11 @@ def main():
         st.write("  \n")
 
 
+        col27,col28 = st.columns(2)
+        with col27:
 
             # Number of Security Audits
-        st.markdown("""
+            st.markdown("""
                 <style>
                 .header-style {
                     font-size: 18px;
@@ -564,18 +566,18 @@ def main():
                 """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-        st.markdown('<p class="header-style">SS Number of Security Audits</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">SS Number of Security Audits</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-        security_audits = st.number_input("", min_value=0, max_value=5, step=1)
+            security_audits = st.number_input("", min_value=0, max_value=5, step=1)
 
-        st.write("  \n")
+            st.write("  \n")
 
-        security_audits_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4)
-        security_audits_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8)
+            security_audits_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4)
+            security_audits_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8)
 
             # The expander without a visible outline
-        with st.expander("Logic"):
+            with st.expander("Logic"):
                 st.markdown("""
                     Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
                     
@@ -587,9 +589,9 @@ def main():
                             """)
                 
 
-        result5 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
+            result5 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
 
-        security_audits_calc = f"""
+            security_audits_calc = f"""
                 <div style="text-align: center;">
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -601,10 +603,14 @@ def main():
                 </div>
             """
 
-        st.markdown(security_audits_calc, unsafe_allow_html=True)
+            st.markdown(security_audits_calc, unsafe_allow_html=True)
         
 
 
+
+        with col28:
+            
+            st.write("\n")
 
 
 #############################
@@ -982,12 +988,12 @@ def main():
 
             st.markdown('<p class="header-style">SS Operators\' Centralization</p>', unsafe_allow_html=True)
 
-            avs_operator_centralization = st.selectbox("", ["Unknown", "Established", "Renowned"])
+            avs_operator_centralization = st.selectbox("", ["Centralized", "Semi-Decentralized", "Decentralized"])
 
             st.write("  \n")
 
-            avs_operator_centralization_likelihood = st.slider("**Likelihood**     ", min_value=1, max_value=10, value=2)
-            avs_operator_centralization_impact = st.slider("**Impact**     ", min_value=1, max_value=10, value=8)
+            avs_operator_centralization_likelihood = st.slider("**Likelihood**      ", min_value=1, max_value=10, value=2)
+            avs_operator_centralization_impact = st.slider("**Impact**      ", min_value=1, max_value=10, value=8)
 
             with st.expander("Logic"):
                 st.markdown("""
