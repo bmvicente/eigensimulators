@@ -3022,7 +3022,7 @@ def main():
         col93, col94 = st.columns(2, gap="medium")
 
         with col93:
-            avs1_comp_loss_weight = st.slider("**Compounded Loss/Actual Slash Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs1_clac_w")
+            avs1_comp_loss_weight = st.slider("**Compounded Loss (Ψ AVS1)/Actual Slash (δj) Ratio Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs1_clac_w")
 
         with col94:
             avs1_insurance_status_weight = 100 - avs1_comp_loss_weight
