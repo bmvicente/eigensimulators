@@ -3091,40 +3091,60 @@ def main():
         # Display the figure in Streamlit
     #st.plotly_chart(fig)
 
+
     # Placeholder for the values returned from the avs1_rewards function
     avs1_rewards_results = (10000, 5000, 0.02, 0.01, 0.03, 0.04)
 
-    # Ensure these index positions are according to the actual returns of the avs1_rewards function
-    dual_staking_adjustment = avs1_rewards_results[2]
-    ratio_tvl_totalstaked_adjustment = avs1_rewards_results[3]
-    avs1_revenue_adjustment = avs1_rewards_results[4]
-    staker_reward = avs1_rewards_results[0]
-    operator_reward = avs1_rewards_results[1]
+    # Unpack the results based on the expected return order from the function
+    staker_reward, operator_reward, dual_staking_adjustment, ratio_tvl_totalstaked_adjustment, avs1_revenue_adjustment, _ = avs1_rewards_results
 
-    # The 'source' and 'target' arrays should have a matching 'value' element for each flow
-    fig = go.Figure(go.Sankey(
+    # Sankey diagram setup
+    labels = [
+        "AVS1 Revenue", "Staker Reward", "Operator Reward",
+        "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment"
+    ]
+
+    # Mapping the flow of rewards
+    sources = [0, 0, 0, 3, 3, 3]  # Indexes correspond to 'labels' above
+    targets = [1, 2, 3, 4, 4, 5]  # Indexes for where the flow goes
+    values = [
+        staker_reward,  # Flow from AVS1 Revenue to Staker Reward
+        operator_reward,  # Flow from AVS1 Revenue to Operator Reward
+        avs1_revenue_adjustment,  # Flow from AVS1 Revenue to Revenue Adjustment
+        dual_staking_adjustment,  # Flow from Dual Staking Adjustment
+        ratio_tvl_totalstaked_adjustment,  # Flow from TVL to Total Staked Adjustment
+        # You need to ensure these values are correctly calculated
+        # Typically, they would not be static numbers like this.
+    ]
+
+    # Define the colors for the nodes
+    node_colors = ['blue', 'green', 'red', 'orange', 'yellow', 'purple']
+
+    # Define the Sankey diagram
+    fig = go.Figure(data=[go.Sankey(
         node=dict(
-            pad=15,
+            pad=10,
             thickness=20,
             line=dict(color="black", width=0.5),
-            label=["AVS1 Revenue", "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment", "Staker Reward", "Operator Reward"],
-            color=["blue", "orange", "green", "red", "purple", "grey"]
+            label=labels,
+            color=node_colors
         ),
         link=dict(
-            source=[0, 0, 0, 0, 3, 3],  # These indices must correspond to the 'label' indices
-            target=[1, 2, 3, 4, 4, 5],  # These indices must also correspond to the 'label' indices
-            value=[
-                dual_staking_adjustment,  # Make sure this value is positive
-                ratio_tvl_totalstaked_adjustment,  # Make sure this value is positive
-                avs1_revenue_adjustment,  # Make sure this value is positive
-                staker_reward,  # Make sure this value is positive
-                operator_reward  # Make sure this value is positive
-            ]
+            source=sources,
+            target=targets,
+            value=values
         )
-    ))
+    )])
 
-    fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
-    st.plotly_chart(fig)
+    # Update the layout to match the style in the image
+    fig.update_layout(
+        title_text="AVS1 Rewards Distribution",
+        font_size=10
+    )
+
+    # Show the Sankey diagram
+    fig.show()
+
 
 
 
