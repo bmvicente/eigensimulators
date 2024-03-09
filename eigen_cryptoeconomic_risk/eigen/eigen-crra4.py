@@ -2972,6 +2972,8 @@ def main():
 
         col85, col86 = st.columns(2, gap="medium")
 
+        st.write("**WEIGHT**")
+
         with col85:
             avs1_net_yield_weight = st.slider("**Net Yield Weight**", min_value=10, max_value=90, value=50, key="avs1_ny_w")
 
