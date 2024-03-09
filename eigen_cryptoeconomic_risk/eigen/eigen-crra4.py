@@ -1,6 +1,7 @@
 
 
 import streamlit as st
+import plotly.graph_objects as go
 
 
 def create_total_restaked_input():
@@ -2021,7 +2022,7 @@ def main():
 
 
         # Check the ratio of Total Staked to TVL
-        def ratio_tvl_totalstaked1(avs1_compounded_loss, tvl1):
+        def ratio_tvl_totalstaked1(pre_slash_total_restaked, tvl1):
             
             if tvl1 == 0:
                 return 0
@@ -2045,7 +2046,7 @@ def main():
             else:
                 return 0
 
-        ratio_tvl_totalstaked_adjustment = ratio_tvl_totalstaked1(pre_slash_total_restaked, tvl1)
+        ratio_tvl_totalstaked_adjustment1 = ratio_tvl_totalstaked1(pre_slash_total_restaked, tvl1)
 
 
         # Revenue-based adjustment
@@ -2064,7 +2065,7 @@ def main():
 
 
         # Combine all adjustments
-        reward_percentage_sum1 = reward_percentage + dual_staking_adjustment1 + avs1_revenue_adjustment + ratio_tvl_totalstaked_adjustment
+        reward_percentage_sum1 = reward_percentage + dual_staking_adjustment1 + avs1_revenue_adjustment + ratio_tvl_totalstaked_adjustment1
 
         # Ensure the reward percentage is within reasonable bounds
         reward_percentage_adj1 = max(min(reward_percentage_sum1, 0.30), 0.10)
@@ -2077,7 +2078,7 @@ def main():
         staker_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * staker_percentage
         operator_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * operator_percentage
 
-        return staker_reward1, operator_reward1
+        return staker_reward1, operator_reward1, dual_staking_adjustment1, ratio_tvl_totalstaked_adjustment1, reward_percentage_sum1, reward_percentage_adj1
 
 
 
@@ -3057,6 +3058,44 @@ def main():
             ```
             """)
 
+
+
+    # Calculate the rewards and adjustments based on the provided details
+    avs1_revenue = 12000000  # Example revenue
+    tvl1 = 30000000  # Example total value locked
+    pre_slash_total_restaked = 15000000  # Example pre-slash total restaked
+    avs1_token_percentage = 70  # Example AVS token percentage
+    xeth1_percentage = 30  # Example xETH percentage
+
+    # Assuming these values are calculated using the provided functions:
+    dual_staking_adjustment1 = 0.015  # Example dual staking adjustment
+    ratio_tvl_totalstaked_adjustment = 0.01  # Example TVL to total staked adjustment
+    avs1_revenue_adjustment = 0.03  # Example revenue-based adjustment
+    reward_percentage_sum1 = 0.20 + dual_staking_adjustment1 + avs1_revenue_adjustment + ratio_tvl_totalstaked_adjustment
+    reward_percentage_adj1 = max(min(reward_percentage_sum1, 0.30), 0.10)  # Ensured within bounds
+    profit_percentage = 0.20
+    staker_percentage = 0.40
+    operator_percentage = 0.60
+    staker_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * staker_percentage
+    operator_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * operator_percentage
+
+    # Create Sankey diagram
+    fig = go.Figure(go.Sankey(
+        node = dict(
+        pad = 15,
+        thickness = 20,
+        line = dict(color = "black", width = 0.5),
+        label = ["AVS1 Revenue", "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment", "Staker Reward", "Operator Reward"],
+        color = ["blue", "orange", "green", "red", "purple", "grey"]
+        ),
+        link = dict(
+        source = [0, 0, 0, 0, 3, 3],  # indices correspond to labels, here it's assumed all flows start from AVS1 Revenue
+        target = [1, 2, 3, 4, 4, 5],
+        value = [avs1_revenue * dual_staking_adjustment1, avs1_revenue * ratio_tvl_totalstaked_adjustment, avs1_revenue * avs1_revenue_adjustment, avs1_revenue * reward_percentage_adj1 * staker_percentage, avs1_revenue * reward_percentage_adj1 * operator_percentage]
+        )))
+
+    fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
+    fig.show()
 
 
 
