@@ -2859,7 +2859,7 @@ def main():
     with col95:
         fraction_html = """
             <div style="text-align: center;">
-                <span style="font-size: 24px; font-weight: bold;">In-Isolation AVS Sharpe Ratio =  </span>
+                <span style="font-size: 25px; font-weight: bold;">In-Isolation AVS Sharpe Ratio =  </span>
                 <div style="display: inline-block; vertical-align: middle; font-size: 22px; font-weight: bold; text-align: center;">
                     <span>AVS Net Yield  <span style="font-size: 30px;">-</span>  AVS Expected Slash</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -2872,7 +2872,7 @@ def main():
     with col96:
         fractiona_html = """
             <div style="text-align: center;">
-                <span style="font-size: 24px; font-weight: bold;">Ecosystem-Aware AVS Sharpe Ratio =  </span>
+                <span style="font-size: 25px; font-weight: bold;">Ecosystem-Aware AVS Sharpe Ratio =  </span>
                 <div style="display: inline-block; vertical-align: middle; font-size: 22px; font-weight: bold; text-align: center;">
                     <span>In-Isolation AVS Sharpe Ratio <span style="font-size: 30px;">-</span> Compounded Loss(Ψj)/Actual Slash(δj) Ratio Factor <span style="font-size: 30px;">-</span> AVS Insurance Status Factor</span>
                 </div>
