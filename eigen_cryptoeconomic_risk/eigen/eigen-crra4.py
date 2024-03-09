@@ -2893,8 +2893,11 @@ def main():
     def avs_sr_eco(avs1_compounded_loss, avs2_compounded_loss, avs3_compounded_loss, actual_slash_on_cs):
         
         def avs1_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs):
-            ratio1 = avs1_compounded_loss / actual_slash_on_cs
-
+            if actual_slash_on_cs == 0:
+                return 0
+            else:
+                ratio1 = avs1_compounded_loss / actual_slash_on_cs
+            
             if ratio1 > 3:
                 return 1
             elif ratio1 > 2:
@@ -2905,8 +2908,11 @@ def main():
                 return 1
             
         def avs2_comp_vs_actual_slash(avs2_compounded_loss, actual_slash_on_cs):
-            ratio2 = avs2_compounded_loss / actual_slash_on_cs
-
+            if actual_slash_on_cs == 0:
+                return 0
+            else:
+                ratio2 = avs2_compounded_loss / actual_slash_on_cs
+            
             if ratio2 > 3:
                 return 1
             elif ratio2 > 2:
@@ -2917,8 +2923,11 @@ def main():
                 return 1
         
         def avs3_comp_vs_actual_slash(avs3_compounded_loss, actual_slash_on_cs):
-            ratio3 = avs3_compounded_loss / actual_slash_on_cs
-
+            if actual_slash_on_cs == 0:
+                return 0
+            else:
+                ratio3 = avs3_compounded_loss / actual_slash_on_cs
+            
             if ratio3 > 3:
                 return 1
             elif ratio3 > 2:
