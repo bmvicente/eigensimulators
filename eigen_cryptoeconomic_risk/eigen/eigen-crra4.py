@@ -2999,7 +2999,7 @@ def main():
         st.write("\n")
 
         if avs1_st_dev_abs != 0:
-            sharpe_ratio1 = ((avs1_net_yield_weight * avs1_net_yield) - (avs1_expected_slash_weight * avs1_expected_slash)) / avs1_st_dev_abs
+            sharpe_ratio1 = ((avs1_net_yield_weight*0.01 * avs1_net_yield) - (avs1_expected_slash_weight*0.01 * avs1_expected_slash)) / avs1_st_dev_abs
         else:
             sharpe_ratio1 = 0
 
