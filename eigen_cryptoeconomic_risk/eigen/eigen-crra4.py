@@ -3078,6 +3078,23 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+        def avs1_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs):
+            if actual_slash_on_cs == 0:
+                return 0
+            else:
+                ratio1 = avs1_compounded_loss / actual_slash_on_cs
+            
+            if ratio1 > 3:
+                return 1
+            elif ratio1 > 2:
+                return 0.50
+            elif ratio1 <= 2:
+                return 0.20
+            else:
+                return 1
+                        
+        avs_insurance_adjustment1 = 0 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else 1
+
                         """)
 
 
@@ -3203,6 +3220,23 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+        def avs1_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs):
+            if actual_slash_on_cs == 0:
+                return 0
+            else:
+                ratio1 = avs1_compounded_loss / actual_slash_on_cs
+            
+            if ratio1 > 3:
+                return 1
+            elif ratio1 > 2:
+                return 0.50
+            elif ratio1 <= 2:
+                return 0.20
+            else:
+                return 1
+
+        avs_insurance_adjustment1 = 0 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else 1
+
                         """)
 
 
@@ -3325,6 +3359,23 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+        def avs1_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs):
+            if actual_slash_on_cs == 0:
+                return 0
+            else:
+                ratio1 = avs1_compounded_loss / actual_slash_on_cs
+            
+            if ratio1 > 3:
+                return 1
+            elif ratio1 > 2:
+                return 0.50
+            elif ratio1 <= 2:
+                return 0.20
+            else:
+                return 1
+                        
+        avs_insurance_adjustment1 = 0 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else 1
+
                         """)
             
 
