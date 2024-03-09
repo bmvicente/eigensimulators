@@ -3014,7 +3014,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS1 Ratio:</span>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - {avs_comp_vs_actual_slash_adj1} - {avs_insurance_adjustment1}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - {avs_comp_vs_actual_slash_adj1:.2f} - {avs_insurance_adjustment1:.2f}</span><br>
                 </div>
                 <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio1:.2f}</span> <!-- replace with actual resulting value -->
             </div>
@@ -3107,7 +3107,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS2 Ratio:</span>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio2:.2f} - {avs_comp_vs_actual_slash_adj2} - {avs_insurance_adjustment2}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio2:.2f} - {avs_comp_vs_actual_slash_adj2:.2f} - {avs_insurance_adjustment2:.2f}</span><br>
                 </div>
                 <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio2:.2f}</span> <!-- replace with actual resulting value -->
             </div>
@@ -3196,7 +3196,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS3 Ratio:</span>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio3:.2f} - {avs_comp_vs_actual_slash_adj3} - {avs_insurance_adjustment3}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio3:.2f} - {avs_comp_vs_actual_slash_adj3:.2f} - {avs_insurance_adjustment3:.2f}</span><br>
                 </div>
                 <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio3:.2f}</span> <!-- replace with actual resulting value -->
             </div>
