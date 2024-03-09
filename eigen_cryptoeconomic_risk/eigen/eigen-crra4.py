@@ -3052,7 +3052,7 @@ def main():
 
         with col94:
             avs1_insurance_status_weight = 100 - avs1_comp_loss_weight
-            st.slider("**Insurance Status Weight**", min_value=10, max_value=90, value=avs1_insurance_status_weight, format='%d%%', disabled=True, key="avs1_is_w")
+            st.slider("**Insurance Status Factor Weight**", min_value=10, max_value=90, value=avs1_insurance_status_weight, format='%d%%', disabled=True, key="avs1_is_w")
         
         st.write("\n")
         st.write("\n")
@@ -3177,7 +3177,7 @@ def main():
 
         with col94:
             avs2_insurance_status_weight = 100 - avs2_comp_loss_weight
-            st.slider("**Insurance Status Weight**", min_value=10, max_value=90, value=avs2_insurance_status_weight, format='%d%%', disabled=True, key="avs2_is_w")
+            st.slider("**Insurance Status Factor Weight**", min_value=10, max_value=90, value=avs2_insurance_status_weight, format='%d%%', disabled=True, key="avs2_is_w")
         
         st.write("\n")
         st.write("\n")
@@ -3299,7 +3299,7 @@ def main():
 
         with col94:
             avs3_insurance_status_weight = 100 - avs3_comp_loss_weight
-            st.slider("**Insurance Status Weight**", min_value=10, max_value=90, value=avs3_insurance_status_weight, format='%d%%', disabled=True, key="avs3_is_w")
+            st.slider("**Insurance Status Factor Weight**", min_value=10, max_value=90, value=avs3_insurance_status_weight, format='%d%%', disabled=True, key="avs3_is_w")
         
         st.write("\n")
         st.write("\n")
