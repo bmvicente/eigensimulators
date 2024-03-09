@@ -3401,12 +3401,13 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
+    st.write("\n")
 
 
 
 
-
-    st.subheader("**2.3 AVS Selection by LRT Protocol**")
+    st.subheader("**2.3 AVS Selection Methodology by LRT Protocol**")
 
     st.write("\n")
     st.write("\n")
