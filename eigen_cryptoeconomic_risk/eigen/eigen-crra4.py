@@ -2997,6 +2997,7 @@ def main():
         st.write("\n")
         st.write("\n")
         st.write("\n")
+        st.write("\n")
 
         if avs1_st_dev_abs != 0:
             sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash) / avs1_st_dev_abs
