@@ -2196,8 +2196,8 @@ def main():
         st.write("  \n")
         st.write("  \n")
 
-# Adjusted call if the function returns a tuple
-        staker_reward1, operator_reward1, avs1_revenue_returned, tvl1_returned, pre_slash_total_restaked_returned, dual_staking_adjustment1_returned, avs1_token_percentage_returned, xeth1_percentage_returned, reward_percentage_sum1_returned, reward_percentage_adj1_returned = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
+        # Adjusted call if the function returns a tuple
+        staker_reward1, operator_reward1 = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
 
 
         col66, col67 = st.columns(2)
