@@ -2982,6 +2982,7 @@ def main():
             st.write(f"""&#8226; AVS1 Standard Deviation: **${avs1_st_dev_abs:,.0f}**""")
 
         st.write("--------")
+        st.write("\n")
 
         st.write("**IN-ISOLATION WEIGHTINGS**")
 
