@@ -2981,9 +2981,7 @@ def main():
             avs1_st_dev_abs = avs1_net_yield * (avs1_st_dev/100)
             st.write(f"""&#8226; AVS1 Standard Deviation: **${avs1_st_dev_abs:,.0f}**""")
 
-        st.write("\n")
         st.write("--------")
-        st.write("\n")
 
         st.write("**IN-ISOLATION WEIGHTINGS**")
 
