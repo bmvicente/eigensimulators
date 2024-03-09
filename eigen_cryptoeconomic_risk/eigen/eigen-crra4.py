@@ -3463,6 +3463,8 @@ def main():
 
     st.write("\n")
     st.write("\n")
+    st.write("\n")
+    st.write("\n")
 
     st.markdown("""
     **The Sharpe Ratio results represent the amount of net yield (after accounting for expected slashes) AVSs may earn going forward for each unit of risk, as measured by the standard deviation of those net yields over a previous time period.**
