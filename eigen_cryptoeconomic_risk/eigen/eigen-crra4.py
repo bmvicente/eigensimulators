@@ -3406,7 +3406,12 @@ def main():
     col97,col98 = st.columns(2, gap="large")
     with col97:
         
-        st.write("**IN-ISOLATION SHARPE RATIO**")
+        st.markdown("""
+            <div style='font-size: 24px; font-weight: bold;'>
+                IN-ISOLATION SHARPE RATIO
+            </div>
+            """, unsafe_allow_html=True)
+        st.write("\n")
 
         results = {
             "AVS1": f"{sharpe_ratio1:.2f}",
@@ -3469,9 +3474,17 @@ def main():
         st.markdown(recommendation_html, unsafe_allow_html=True)
 
 
+
+
+
     with col98: 
 
-        st.write("**ECOSYSTEM-AWARE SHARPE RATIO**")
+        st.markdown("""
+            <div style='font-size: 24px; font-weight: bold;'>
+                ECOSYSTEM-AWARE SHARPE RATIO
+            </div>
+            """, unsafe_allow_html=True)
+        st.write("\n")
 
         results = {
             "AVS1": f"{eco_sharpe_ratio1:.2f}",
