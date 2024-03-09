@@ -3403,67 +3403,135 @@ def main():
 
 
     # Assuming the updated scenario with possible equal values among formatted_result1, formatted_result2, and formatted_result3.
-
-    # Re-organize the results in a dictionary for easier handling
-    results = {
-        "AVS1": f"{sharpe_ratio1:.2f}",
-        "AVS2": f"{sharpe_ratio2:.2f}",
-        "AVS3": f"{sharpe_ratio3:.2f}"
-    }
-
-    # Check if all values are the same
-    if len(set(results.values())) == 1:
-        recommendation = "The LRT protocol should expect the <b>same risk-adjusted return on AVS1, AVS2, and AVS3</b>."
-    else:
-        # Sort the results based on their values
-        sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
-        # Group by value to handle equals
-        grouped_results = {}
-        for avs, value in sorted_results:
-            grouped_results.setdefault(value, []).append(avs)
+    col97,col98 = st.columns(2, gap="large")
+    with col97:
         
-        if len(grouped_results) == 2:  # If two groups, one has the greater, other two are equal
-            greater_value_group = max(grouped_results.keys())
-            smaller_value_group = min(grouped_results.keys())
-            
-            greater_avs = ', '.join(grouped_results[greater_value_group])
-            smaller_avs = ', '.join(grouped_results[smaller_value_group])
-            
-            if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
-                recommendation = f"""
-                    <div>
-                        <p style="font-size: 18px !important;">The LRT protocol should expect:</p>
-                        <p style="font-size: 19px !important;">
-                            <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
-                            <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
-                        </p>
-                    </div>
-                """
-            else:  # If the smaller group has more than one AVS
-                recommendation = f"""
-                    <div>
-                        <p style="font-size: 18px;">The LRT protocol should expect:</p>
-                        <p style="font-size: 19px;">
-                            <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
-                            <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
-                        </p>
-                    </div>
-                """
-        else:  # If all values are distinct
-                recommendation = f"""
-                    <div>
-                        <p style="font-size: 18px;">The LRT protocol should expect:</p>
-                        <p style="font-size: 19px;">
-                            <b>&#8226; Greater risk-adjusted return by selecting {sorted_results[0][0]}</b><br>
-                            <b>&#8226; Milder risk-adjusted return by selecting {sorted_results[1][0]}</b><br>
-                            <b>&#8226; Smaller risk-adjusted return by selecting {sorted_results[2][0]}</b>
-                        </p>
-                    </div>
-                """
+        st.write("**IN-ISOLATION SHARPE RATIO")
 
-    recommendation_html = f'<div style="font-size: 20px;">{recommendation}</div>'
+        results = {
+            "AVS1": f"{sharpe_ratio1:.2f}",
+            "AVS2": f"{sharpe_ratio2:.2f}",
+            "AVS3": f"{sharpe_ratio3:.2f}"
+        }
 
-    st.markdown(recommendation_html, unsafe_allow_html=True)
+        # Check if all values are the same
+        if len(set(results.values())) == 1:
+            recommendation = "The LRT protocol should expect the <b>same risk-adjusted return on AVS1, AVS2, and AVS3</b>."
+        else:
+            # Sort the results based on their values
+            sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+            # Group by value to handle equals
+            grouped_results = {}
+            for avs, value in sorted_results:
+                grouped_results.setdefault(value, []).append(avs)
+            
+            if len(grouped_results) == 2:  # If two groups, one has the greater, other two are equal
+                greater_value_group = max(grouped_results.keys())
+                smaller_value_group = min(grouped_results.keys())
+                
+                greater_avs = ', '.join(grouped_results[greater_value_group])
+                smaller_avs = ', '.join(grouped_results[smaller_value_group])
+                
+                if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
+                    recommendation = f"""
+                        <div>
+                            <p style="font-size: 18px !important;">The LRT protocol should expect:</p>
+                            <p style="font-size: 19px !important;">
+                                <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
+                                <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
+                            </p>
+                        </div>
+                    """
+                else:  # If the smaller group has more than one AVS
+                    recommendation = f"""
+                        <div>
+                            <p style="font-size: 18px;">The LRT protocol should expect:</p>
+                            <p style="font-size: 19px;">
+                                <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
+                                <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
+                            </p>
+                        </div>
+                    """
+            else:  # If all values are distinct
+                    recommendation = f"""
+                        <div>
+                            <p style="font-size: 18px;">The LRT protocol should expect:</p>
+                            <p style="font-size: 19px;">
+                                <b>&#8226; Greater risk-adjusted return by selecting {sorted_results[0][0]}</b><br>
+                                <b>&#8226; Milder risk-adjusted return by selecting {sorted_results[1][0]}</b><br>
+                                <b>&#8226; Smaller risk-adjusted return by selecting {sorted_results[2][0]}</b>
+                            </p>
+                        </div>
+                    """
+
+        recommendation_html = f'<div style="font-size: 20px;">{recommendation}</div>'
+
+        st.markdown(recommendation_html, unsafe_allow_html=True)
+
+
+    with col98: 
+
+        st.write("**ECOSYSTEM-AWARE SHARPE RATIO")
+
+        results = {
+            "AVS1": f"{eco_sharpe_ratio1:.2f}",
+            "AVS2": f"{eco_sharpe_ratio2:.2f}",
+            "AVS3": f"{eco_sharpe_ratio3:.2f}"
+        }
+
+        # Check if all values are the same
+        if len(set(results.values())) == 1:
+            recommendation = "The LRT protocol should expect the <b>same risk-adjusted return on AVS1, AVS2, and AVS3</b>."
+        else:
+            # Sort the results based on their values
+            sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
+            # Group by value to handle equals
+            grouped_results = {}
+            for avs, value in sorted_results:
+                grouped_results.setdefault(value, []).append(avs)
+            
+            if len(grouped_results) == 2:  # If two groups, one has the greater, other two are equal
+                greater_value_group = max(grouped_results.keys())
+                smaller_value_group = min(grouped_results.keys())
+                
+                greater_avs = ', '.join(grouped_results[greater_value_group])
+                smaller_avs = ', '.join(grouped_results[smaller_value_group])
+                
+                if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
+                    recommendation = f"""
+                        <div>
+                            <p style="font-size: 18px !important;">The LRT protocol should expect:</p>
+                            <p style="font-size: 19px !important;">
+                                <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
+                                <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
+                            </p>
+                        </div>
+                    """
+                else:  # If the smaller group has more than one AVS
+                    recommendation = f"""
+                        <div>
+                            <p style="font-size: 18px;">The LRT protocol should expect:</p>
+                            <p style="font-size: 19px;">
+                                <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
+                                <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
+                            </p>
+                        </div>
+                    """
+            else:  # If all values are distinct
+                    recommendation = f"""
+                        <div>
+                            <p style="font-size: 18px;">The LRT protocol should expect:</p>
+                            <p style="font-size: 19px;">
+                                <b>&#8226; Greater risk-adjusted return by selecting {sorted_results[0][0]}</b><br>
+                                <b>&#8226; Milder risk-adjusted return by selecting {sorted_results[1][0]}</b><br>
+                                <b>&#8226; Smaller risk-adjusted return by selecting {sorted_results[2][0]}</b>
+                            </p>
+                        </div>
+                    """
+
+        recommendation_html = f'<div style="font-size: 20px;">{recommendation}</div>'
+
+        st.markdown(recommendation_html, unsafe_allow_html=True)
 
     st.write("\n")
     st.write("\n")
