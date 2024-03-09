@@ -3408,7 +3408,7 @@ def main():
     with col97:
         
         st.markdown("""
-            <div style='font-size: 22px; font-weight: bold;'>
+            <div style='font-size: 21px; font-weight: bold;'>
                 IN-ISOLATION SHARPE RATIO
             </div>
             """, unsafe_allow_html=True)
@@ -3481,7 +3481,7 @@ def main():
     with col98: 
 
         st.markdown("""
-            <div style='font-size: 22px; font-weight: bold;'>
+            <div style='font-size: 21px; font-weight: bold;'>
                 ECOSYSTEM-AWARE SHARPE RATIO
             </div>
             """, unsafe_allow_html=True)
