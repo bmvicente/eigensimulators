@@ -2078,7 +2078,7 @@ def main():
         staker_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * staker_percentage
         operator_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * operator_percentage
 
-        return staker_reward1, operator_reward1, avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage
+        return staker_reward1, operator_reward1, dual_staking_adjustment1, ratio_tvl_totalstaked_adjustment1, avs1_revenue_adjustment, avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage
 
 
 
@@ -3062,33 +3062,32 @@ def main():
 
 
 
-    avs1_rewards_results = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
+        avs1_rewards_results = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
 
+        fig = go.Figure(go.Sankey(
+            node=dict(
+                pad=15,
+                thickness=20,
+                line=dict(color="black", width=0.5),
+                label=["AVS1 Revenue", "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment", "Staker Reward", "Operator Reward"],
+                color=["blue", "orange", "green", "red", "purple", "grey"]
+            ),
+            link=dict(
+                source=[0, 0, 0, 0, 3, 3],
+                target=[1, 2, 3, 4, 4, 5],
+                value=[
+                    avs1_rewards_results['dual_staking_adjustment'],
+                    avs1_rewards_results['ratio_tvl_totalstaked_adjustment'],
+                    avs1_rewards_results['avs1_revenue_adjustment'],
+                    avs1_rewards_results['staker_reward'],
+                    avs1_rewards_results['operator_reward']
+                ]
+            )
+        ))
 
-    fig = go.Figure(go.Sankey(
-        node=dict(
-            pad=15,
-            thickness=20,
-            line=dict(color="black", width=0.5),
-            label=["AVS1 Revenue", "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment", "Staker Reward", "Operator Reward"],
-            color=["blue", "orange", "green", "red", "purple", "grey"]
-        ),
-        link=dict(
-            # Correctly populate the 'source', 'target', and 'value' lists based on your actual scenario and calculation results
-            source=[0, 0, 0, 0, 3, 3],  # Example setup
-            target=[1, 2, 3, 4, 4, 5],
-            value=[
-                avs1_rewards_results['dual_staking_adjustment1'],  # You will need to adjust these to match how you want to represent the flow based on the actual adjustments and results
-                avs1_rewards_results['ratio_tvl_totalstaked_adjustment1'],
-                avs1_rewards_results['avs1_revenue_adjustment'],
-                avs1_rewards_results['staker_reward1'],
-                avs1_rewards_results['operator_reward1']
-            ]
-        )
-    ))
+        fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
+        fig.show()
 
-    fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
-    fig.show()
 
 
 
