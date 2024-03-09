@@ -3015,9 +3015,9 @@ def main():
 
         st.markdown(fraction_html11, unsafe_allow_html=True)
 
+        st.write("------")
         st.write("\n")
 
-        st.write("------")
         st.write("**ECOSYSTEM-AWARE WEIGHTINGS**")
         col93, col94 = st.columns(2, gap="medium")
 
