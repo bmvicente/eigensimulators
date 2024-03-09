@@ -3127,7 +3127,7 @@ def main():
             thickness=20,
             line=dict(color="black", width=0.5),
             label=labels,
-            color=node_colors
+            color=['rgba(133, 193, 233, 0.8)',  'rgba(93, 173, 226, 0.8)',]   # Color for the second link
         ),
         link=dict(
             source=sources,
