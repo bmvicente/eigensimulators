@@ -3246,6 +3246,7 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
 
 
     # Assuming the updated scenario with possible equal values among formatted_result1, formatted_result2, and formatted_result3.
