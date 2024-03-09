@@ -2007,7 +2007,7 @@ def main():
 
 
         # Check the ratio of Total Staked to TVL
-        def ratio_tvl_totalstaked1(pre_slash_total_restaked, tvl1):
+        def ratio_tvl_totalstaked1(avs1_compounded_loss, tvl1):
             
             if tvl1 == 0:
                 return 0
@@ -2818,6 +2818,36 @@ def main():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     st.subheader("**2.2 Sharpe Ratios**")
     st.write("\n")
 
@@ -2850,8 +2880,41 @@ def main():
     st.write("\n")
     st.write("\n")
 
+
+    def avs_sr_eco(avs1_compounded_loss, avs2_compounded_loss, avs3_compounded_loss, actual_slash_on_cs):
+        
+        def avs_comp_vs_actual_slash(avs1_compounded_loss, avs2_compounded_loss, avs3_compounded_loss, actual_slash_on_cs):
+            ratio1 = avs1_compounded_loss / actual_slash_on_cs
+            ratio2 = avs2_compounded_loss / actual_slash_on_cs
+            ratio3 = avs3_compounded_loss / actual_slash_on_cs
+
+            if ratio1 or ratio2 or ratio3 > 3:
+                return 1.20
+            elif ratio1 or ratio2 or ratio3 > 2:
+                return 1.10
+            elif ratio1 or ratio2 or ratio3 <= 2:
+                return 1.05
+            else:
+                return 1
+
+        avs_comp_vs_actual_slash_adj1 = avs_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs)
+        avs_comp_vs_actual_slash_adj2 = avs_comp_vs_actual_slash(avs2_compounded_loss, actual_slash_on_cs)
+        avs_comp_vs_actual_slash_adj3 = avs_comp_vs_actual_slash(avs3_compounded_loss, actual_slash_on_cs)
+
+        avs_insurance_adjustment1 = 0.5 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else -0.5
+        avs_insurance_adjustment2 = 0.5 if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else -0.5
+        avs_insurance_adjustment3 = 0.5 if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else -0.5
+
+        return avs_comp_vs_actual_slash_adj1, avs_comp_vs_actual_slash_adj2, avs_comp_vs_actual_slash_adj3, avs_insurance_adjustment1, avs_insurance_adjustment2, avs_insurance_adjustment3
+
+
+
+
+
     col80, col81, col82 = st.columns(3, gap="large")
     
+    avs_comp_vs_actual_slash_adj1, avs_comp_vs_actual_slash_adj2, avs_comp_vs_actual_slash_adj3, avs_insurance_adjustment1, avs_insurance_adjustment2, avs_insurance_adjustment3 = avs_sr_eco(avs1_compounded_loss, avs2_compounded_loss, avs3_compounded_loss, actual_slash_on_cs)
+
     profit_percentage = 0.20
 
     with col80:
@@ -2923,13 +2986,15 @@ def main():
         st.write("\n")
         st.write("\n")
 
+        eco_sharpe_ratio1 = sharpe_ratio1 - avs_comp_vs_actual_slash_adj1 - avs_insurance_adjustment1
+
         fraction_html111 = f"""
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS1 Ratio:</span>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - ${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - {avs_comp_vs_actual_slash_adj1} - {avs_insurance_adjustment1}</span><br>
                 </div>
-                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio1:.2f}</span> <!-- replace with actual resulting value -->
+                <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio1:.2f}</span> <!-- replace with actual resulting value -->
             </div>
         """
 
@@ -3178,7 +3243,7 @@ def main():
 
                         The denominator of the Sharpe Ratio represents the standard deviation of the portfolio's excess returns, which is a measure of the investment's volatility or risk. Specifically, it quantifies how much the returns of the investment deviate from their average over a certain period. This measure is crucial in the context of the Sharpe Ratio because it provides a way to adjust for risk: by dividing the excess return (the return of the investment minus the risk-free rate) by the standard deviation of these excess returns, the Sharpe Ratio essentially tells you how much excess return you are getting for each unit of risk taken.
 
-In essence, the denominator of the Sharpe Ratio allows investors to understand the risk-adjusted return of an investment. A higher standard deviation indicates a higher level of risk (since the investment's returns are more spread out from the average), which in turn would require a higher excess return to achieve the same Sharpe Ratio. This helps investors compare investments on a risk-adjusted basis, making it easier to identify which investments are truly outperforming on a risk-adjusted basis rather than simply due to taking on more risk.
+                In essence, the denominator of the Sharpe Ratio allows investors to understand the risk-adjusted return of an investment. A higher standard deviation indicates a higher level of risk (since the investment's returns are more spread out from the average), which in turn would require a higher excess return to achieve the same Sharpe Ratio. This helps investors compare investments on a risk-adjusted basis, making it easier to identify which investments are truly outperforming on a risk-adjusted basis rather than simply due to taking on more risk.
             
                             <style>
                 .big-font {
@@ -3214,6 +3279,7 @@ In essence, the denominator of the Sharpe Ratio allows investors to understand t
 #########################################
 #########################################
 #########################################
+
 
     st.write("  \n")
     st.write("  \n")
