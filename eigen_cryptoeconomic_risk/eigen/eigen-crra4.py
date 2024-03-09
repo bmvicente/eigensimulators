@@ -2982,7 +2982,7 @@ def main():
             st.write(f"""&#8226; AVS1 Standard Deviation: **${avs1_st_dev_abs:,.0f}**""")
 
         st.write("--------")
-        st.write("**WEIGHT**")
+        st.write("**WEIGHTINGS**")
 
         col91, col92 = st.columns(2, gap="medium")
 
@@ -2991,7 +2991,6 @@ def main():
 
         with col92:
             avs1_expected_slash_weight = 100 - avs1_net_yield_weight
-        
             st.slider("**Expected Slash Weight**", min_value=10, max_value=90, value=avs1_expected_slash_weight, format='%d%%', disabled=True, key="avs1_es_w")
         
         st.write("\n")
@@ -3000,7 +2999,7 @@ def main():
         st.write("\n")
 
         if avs1_st_dev_abs != 0:
-            sharpe_ratio1 = (avs1_net_yield - avs1_expected_slash) / avs1_st_dev_abs
+            sharpe_ratio1 = ((avs1_net_yield_weight * avs1_net_yield) - (avs1_expected_slash_weight * avs1_expected_slash)) / avs1_st_dev_abs
         else:
             sharpe_ratio1 = 0
 
@@ -3008,7 +3007,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS1 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">{avs1_net_yield_weight}% * ${avs1_net_yield:,.0f} - {avs1_expected_slash_weight}% * ${avs1_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span style="font-size: 21px; font-weight: bold;">${avs1_st_dev_abs:,.0f}</span>
                 </div>
