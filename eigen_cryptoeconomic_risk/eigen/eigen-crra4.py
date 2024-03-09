@@ -3005,7 +3005,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS1 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">{avs1_net_yield_weight}% * ${avs1_net_yield:,.0f} - {avs1_expected_slash_weight}% * ${avs1_expected_slash:,.0f}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">({avs1_net_yield_weight}% * ${avs1_net_yield:,.0f}) - ({avs1_expected_slash_weight}% * ${avs1_expected_slash:,.0f})</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span style="font-size: 21px; font-weight: bold;">${avs1_st_dev_abs:,.0f}</span>
                 </div>
