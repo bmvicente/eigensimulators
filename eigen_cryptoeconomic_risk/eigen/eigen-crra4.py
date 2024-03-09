@@ -3087,12 +3087,13 @@ def main():
 
         fraction_html22 = f"""
             <div style="text-align: center;">
-                <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                    <span>${avs2_net_yield:,.0f} - ${avs2_expected_slash:,.0f}</span><br>
+                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS2 Ratio:</span>
+                <div style="display: inline-block; vertical-align: middle; text-align: center;">
+                    <span style="font-size: 21px; font-weight: bold;">${avs2_net_yield:,.0f} - ${avs2_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>${avs2_st_dev_abs:,.0f}</span>
+                    <span style="font-size: 21px; font-weight: bold;">${avs2_st_dev_abs:,.0f}</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio2:.2f}</span>
+                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio2:.2f}</span>
             </div>
         """
 
@@ -3176,12 +3177,13 @@ def main():
 
         fraction_html33 = f"""
             <div style="text-align: center;">
-                <div style="display: inline-block; vertical-align: middle; font-size: 21px; font-weight: bold; text-align: center;">
-                    <span>${avs3_net_yield:,.0f} - ${avs3_expected_slash:,.0f}</span><br>
+                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS3 Ratio:</span>
+                <div style="display: inline-block; vertical-align: middle; text-align: center;">
+                    <span style="font-size: 21px; font-weight: bold;">${avs3_net_yield:,.0f} - ${avs3_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-                    <span>${avs3_st_dev_abs:,.0f}</span>
+                    <span style="font-size: 21px; font-weight: bold;">${avs3_st_dev_abs:,.0f}</span>
                 </div>
-                <span style="font-size: 25px; font-weight: bold;"> = {sharpe_ratio3:.2f}</span>
+                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio3:.2f}</span>
             </div>
         """
 
