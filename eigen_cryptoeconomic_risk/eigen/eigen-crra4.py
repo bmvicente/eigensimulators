@@ -3177,12 +3177,13 @@ def main():
 
         fraction_html33 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS3 Ratio:</span>
+                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS3 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">${avs3_net_yield:,.0f} - ${avs3_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span style="font-size: 21px; font-weight: bold;">${avs3_st_dev_abs:,.0f}</span>
                 </div>
+                <br>
                 <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio3:.2f}</span>
             </div>
         """
