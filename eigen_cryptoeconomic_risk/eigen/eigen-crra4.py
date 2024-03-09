@@ -2972,24 +2972,28 @@ def main():
 
         col85, col86 = st.columns(2, gap="medium")
 
-        st.write("--------")
-        st.write("**WEIGHT**")
-
         with col85:
-            avs1_net_yield_weight = st.slider("**Net Yield Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs1_ny_w")
-
             avs1_expected_slash = st.number_input("**AVS1 Expected Slash**", min_value=0, max_value=1000000000000, value=0, step=1000000, key='avs1_es')
             st.write(f"""&#8226; AVS1 Expected Slash: **${avs1_expected_slash:,.0f}**""")
 
         with col86:
-            avs1_expected_slash_weight = 100 - avs1_net_yield_weight
-        
-            st.slider("**Expected Slash Weight**", min_value=10, max_value=90, value=avs1_expected_slash_weight, format='%d%%', disabled=True, key="avs1_es_w")
-
             avs1_st_dev = st.slider("**Standard Deviation of Excess Return**", min_value=5, max_value=10, step=1, format='%d%%', key='avs1_sd', help="AVSs have been benchmarked against bonds, which historically exhibit standard deviations ranging from 5% to 10%. Given the lack of historical data on AVSs, that same logic was applied here. The standard deviations, in absolute terms, were calculated as the product of an AVS net yield by the standard deviation % chosen.")
             avs1_st_dev_abs = avs1_net_yield * (avs1_st_dev/100)
             st.write(f"""&#8226; AVS1 Standard Deviation: **${avs1_st_dev_abs:,.0f}**""")
 
+        st.write("--------")
+        st.write("**WEIGHT**")
+
+        col91, col92 = st.columns(2, gap="medium")
+
+        with col91:
+            avs1_net_yield_weight = st.slider("**Net Yield Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs1_ny_w")
+
+        with col92:
+            avs1_expected_slash_weight = 100 - avs1_net_yield_weight
+        
+            st.slider("**Expected Slash Weight**", min_value=10, max_value=90, value=avs1_expected_slash_weight, format='%d%%', disabled=True, key="avs1_es_w")
+        
         st.write("\n")
         st.write("\n")
         st.write("\n")
