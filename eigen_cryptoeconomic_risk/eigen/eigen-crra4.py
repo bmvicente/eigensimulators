@@ -3774,7 +3774,7 @@ def main():
 
         # Check if all values are the same
         if len(set(results.values())) == 1:
-            recommendation = "Considering each AVS as an element in the whole ecosystem, the LRT protocol should expect the <b>same risk-adjusted return on AVS1, AVS2, and AVS3</b>."
+            recommendation = "Considering each AVS as an interconnected agent in the whole ecosystem, the LRT protocol should expect the <b>same risk-adjusted return on AVS1, AVS2, and AVS3</b>."
         else:
             # Sort the results based on their values
             sorted_results = sorted(results.items(), key=lambda x: x[1], reverse=True)
@@ -3793,7 +3793,7 @@ def main():
                 if len(grouped_results[greater_value_group]) > 1:  # If the greater group has more than one AVS
                     recommendation = f"""
                         <div>
-                            <p style="font-size: 18px !important;">Considering each AVS as an element in the whole ecosystem, the LRT protocol should expect:</p>
+                            <p style="font-size: 18px !important;">Considering each AVS as an interconnected agent in the whole ecosystem, the LRT protocol should expect:</p>
                             <p style="font-size: 19px !important;">
                                 <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
                                 <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
@@ -3803,7 +3803,7 @@ def main():
                 else:  # If the smaller group has more than one AVS
                     recommendation = f"""
                         <div>
-                            <p style="font-size: 18px;">Considering each AVS as an element in the whole ecosystem, the LRT protocol should expect:</p>
+                            <p style="font-size: 18px;">Considering each AVS as an interconnected agent in the whole ecosystem, the LRT protocol should expect:</p>
                             <p style="font-size: 19px;">
                                 <b>&#8226; Greater risk-adjusted return by selecting {greater_avs}</b><br>
                                 <b>&#8226; Smaller risk-adjusted return by selecting {smaller_avs}</b>
@@ -3813,7 +3813,7 @@ def main():
             else:  # If all values are distinct
                     recommendation = f"""
                         <div>
-                            <p style="font-size: 18px;">Considering each AVS as an element in the whole ecosystem, the LRT protocol should expect:</p>
+                            <p style="font-size: 18px;">Considering each AVS as an interconnected agent in the whole ecosystem, the LRT protocol should expect:</p>
                             <p style="font-size: 19px;">
                                 <b>&#8226; Greater risk-adjusted return by selecting {sorted_results[0][0]}</b><br>
                                 <b>&#8226; Milder risk-adjusted return by selecting {sorted_results[1][0]}</b><br>
