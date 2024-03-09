@@ -3052,7 +3052,6 @@ def main():
         st.write("\n")
         st.write("\n")
         st.write("\n")
-        st.write("\n")
 
         with st.expander("Logic"):
             st.markdown("""
@@ -3104,12 +3103,25 @@ def main():
             st.write(f"""&#8226; AVS2 Standard Deviation: **${avs2_st_dev_abs:,.0f}**""")
 
 
+        st.write("--------")
         st.write("\n")
+
+        st.write("**IN-ISOLATION WEIGHTINGS**")
+
+        col91, col92 = st.columns(2, gap="medium")
+
+        with col91:
+            avs2_net_yield_weight = st.slider("**Net Yield Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs2_ny_w")
+
+        with col92:
+            avs2_expected_slash_weight = 100 - avs2_net_yield_weight
+            st.slider("**Expected Slash Weight**", min_value=10, max_value=90, value=avs2_expected_slash_weight, format='%d%%', disabled=True, key="avs2_es_w")
+        
         st.write("\n")
         st.write("\n")
 
         if avs2_st_dev_abs != 0:
-            sharpe_ratio2 = (avs2_net_yield - avs2_expected_slash) / avs2_st_dev_abs
+            sharpe_ratio2 = ((avs2_net_yield_weight*0.01 * avs2_net_yield) - (avs2_expected_slash_weight*0.01 * avs2_expected_slash)) / avs2_st_dev_abs
         else:
             sharpe_ratio2 = 0
 
@@ -3117,7 +3129,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS2 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">${avs2_net_yield:,.0f} - ${avs2_expected_slash:,.0f}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">({avs2_net_yield_weight}% * ${avs2_net_yield:,.0f}) - ({avs2_expected_slash_weight}% * ${avs2_expected_slash:,.0f})</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span style="font-size: 21px; font-weight: bold;">${avs2_st_dev_abs:,.0f}</span>
                 </div>
@@ -3128,21 +3140,37 @@ def main():
         st.markdown(fraction_html22, unsafe_allow_html=True)
 
         st.write("\n")
+        st.write("------")
         st.write("\n")
+
+        st.write("**ECOSYSTEM-AWARE WEIGHTINGS**")
+        col93, col94 = st.columns(2, gap="medium")
+
+        with col93:
+            avs2_comp_loss_weight = st.slider("**Compounded Loss(Ψ AVS2)/Actual Slash(δj) Ratio Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs2_clac_w")
+
+        with col94:
+            avs2_insurance_status_weight = 100 - avs2_comp_loss_weight
+            st.slider("**Insurance Status Weight**", min_value=10, max_value=90, value=avs2_insurance_status_weight, format='%d%%', disabled=True, key="avs2_is_w")
         
-        eco_sharpe_ratio2 = sharpe_ratio2 - avs_comp_vs_actual_slash_adj2 - avs_insurance_adjustment2
+        st.write("\n")
+        st.write("\n")
+
+        eco_sharpe_ratio2 = sharpe_ratio2 - (avs2_comp_loss_weight*0.01 * avs_comp_vs_actual_slash_adj2) - (avs2_insurance_status_weight*0.01 * avs_insurance_adjustment2)
 
         fraction_html222 = f"""
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS2 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio2:.2f} - {avs_comp_vs_actual_slash_adj2:.2f} - {avs_insurance_adjustment2:.2f}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio2:.2f} - ({avs2_comp_loss_weight}% * {avs_comp_vs_actual_slash_adj2:.2f}) - ({avs2_insurance_status_weight}% * {avs_insurance_adjustment2:.2f})</span><br>
                 </div>
                 <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio2:.2f}</span> <!-- replace with actual resulting value -->
             </div>
         """
+
         st.markdown(fraction_html222, unsafe_allow_html=True)
 
+        st.write("\n")
         st.write("\n")
         st.write("\n")
         st.write("\n")
@@ -3194,12 +3222,25 @@ def main():
             avs3_st_dev_abs = avs3_net_yield * (avs3_st_dev/100)
             st.write(f"""&#8226; AVS3 Standard Deviation: **${avs3_st_dev_abs:,.0f}**""")
 
+        st.write("--------")
         st.write("\n")
+
+        st.write("**IN-ISOLATION WEIGHTINGS**")
+
+        col91, col92 = st.columns(2, gap="medium")
+
+        with col91:
+            avs3_net_yield_weight = st.slider("**Net Yield Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs3_ny_w")
+
+        with col92:
+            avs3_expected_slash_weight = 100 - avs3_net_yield_weight
+            st.slider("**Expected Slash Weight**", min_value=10, max_value=90, value=avs3_expected_slash_weight, format='%d%%', disabled=True, key="avs3_es_w")
+        
         st.write("\n")
         st.write("\n")
 
         if avs3_st_dev_abs != 0:
-            sharpe_ratio3 = (avs3_net_yield - avs3_expected_slash) / avs3_st_dev_abs
+            sharpe_ratio3 = ((avs3_net_yield_weight*0.01 * avs3_net_yield) - (avs3_expected_slash_weight*0.01 * avs3_expected_slash)) / avs3_st_dev_abs
         else:
             sharpe_ratio3 = 0
 
@@ -3207,7 +3248,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS3 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">${avs3_net_yield:,.0f} - ${avs3_expected_slash:,.0f}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">({avs3_net_yield_weight}% * ${avs3_net_yield:,.0f}) - ({avs3_expected_slash_weight}% * ${avs3_expected_slash:,.0f})</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span style="font-size: 21px; font-weight: bold;">${avs3_st_dev_abs:,.0f}</span>
                 </div>
@@ -3218,21 +3259,37 @@ def main():
         st.markdown(fraction_html33, unsafe_allow_html=True)
 
         st.write("\n")
+        st.write("------")
         st.write("\n")
 
-        eco_sharpe_ratio3 = sharpe_ratio3 - avs_comp_vs_actual_slash_adj3 - avs_insurance_adjustment3
+        st.write("**ECOSYSTEM-AWARE WEIGHTINGS**")
+        col93, col94 = st.columns(2, gap="medium")
+
+        with col93:
+            avs3_comp_loss_weight = st.slider("**Compounded Loss(Ψ AVS3)/Actual Slash(δj) Ratio Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs3_clac_w")
+
+        with col94:
+            avs3_insurance_status_weight = 100 - avs3_comp_loss_weight
+            st.slider("**Insurance Status Weight**", min_value=10, max_value=90, value=avs3_insurance_status_weight, format='%d%%', disabled=True, key="avs3_is_w")
+        
+        st.write("\n")
+        st.write("\n")
+
+        eco_sharpe_ratio3 = sharpe_ratio3 - (avs3_comp_loss_weight*0.01 * avs_comp_vs_actual_slash_adj3) - (avs3_insurance_status_weight*0.01 * avs_insurance_adjustment3)
 
         fraction_html333 = f"""
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS3 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio3:.2f} - {avs_comp_vs_actual_slash_adj3:.2f} - {avs_insurance_adjustment3:.2f}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio3:.2f} - ({avs3_comp_loss_weight}% * {avs_comp_vs_actual_slash_adj3:.2f}) - ({avs3_insurance_status_weight}% * {avs_insurance_adjustment3:.2f})</span><br>
                 </div>
                 <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio3:.2f}</span> <!-- replace with actual resulting value -->
             </div>
         """
+
         st.markdown(fraction_html333, unsafe_allow_html=True)
 
+        st.write("\n")
         st.write("\n")
         st.write("\n")
         st.write("\n")
@@ -3240,6 +3297,8 @@ def main():
         with st.expander("Logic"):
             st.markdown("""
                         """)
+            
+
 
     st.write("\n")
     st.write("\n")
