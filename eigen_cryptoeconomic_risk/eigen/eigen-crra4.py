@@ -3063,9 +3063,9 @@ def main():
 
 
 
-        avs1_rewards_results = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
+    avs1_rewards_results = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
 
-        fig = go.Figure(go.Sankey(
+    fig = go.Figure(go.Sankey(
             node=dict(
                 pad=15,
                 thickness=20,
@@ -3086,10 +3086,10 @@ def main():
             )
         ))
 
-        fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
+    fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
 
         # Display the figure in Streamlit
-        st.plotly_chart(fig)
+    st.plotly_chart(fig)
 
 
 
