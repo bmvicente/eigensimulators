@@ -3063,34 +3063,68 @@ def main():
 
 
 
-    avs1_rewards_results = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
+    #avs1_rewards_results = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
 
-    fig = go.Figure(go.Sankey(
-            node=dict(
-                pad=15,
-                thickness=20,
-                line=dict(color="black", width=0.5),
-                label=["AVS1 Revenue", "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment", "Staker Reward", "Operator Reward"],
-                color=["blue", "orange", "green", "red", "purple", "grey"]
-            ),
-            link=dict(
-                source=[0, 0, 0, 0, 3, 3],
-                target=[1, 2, 3, 4, 4, 5],
-                value=[
-                    avs1_rewards_results[2],  # dual_staking_adjustment
-                    avs1_rewards_results[3],  # ratio_tvl_totalstaked_adjustment
-                    avs1_rewards_results[4],  # avs1_revenue_adjustment
-                    avs1_rewards_results[0],  # staker_reward
-                    avs1_rewards_results[1]   # operator_reward
-                ]
-            )
-        ))
-
-    fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
+    #fig = go.Figure(go.Sankey(
+    #        node=dict(
+    #            pad=15,
+    #            thickness=20,
+    #            line=dict(color="black", width=0.5),
+    #            label=["AVS1 Revenue", "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment", "Staker Reward", "Operator Reward"],
+    #            color=["blue", "orange", "green", "red", "purple", "grey"]
+    #        ),
+    #        link=dict(
+    #            source=[0, 0, 0, 0, 3, 3],
+    #            target=[1, 2, 3, 4, 4, 5],
+    #            value=[
+    #                avs1_rewards_results[2],  # dual_staking_adjustment
+    #                avs1_rewards_results[3],  # ratio_tvl_totalstaked_adjustment
+    #                avs1_rewards_results[4],  # avs1_revenue_adjustment
+    #                avs1_rewards_results[0],  # staker_reward
+    #                avs1_rewards_results[1]   # operator_reward
+    #            ]
+    #        )
+    #    ))
+    #
+    #fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
 
         # Display the figure in Streamlit
-    st.plotly_chart(fig)
+    #st.plotly_chart(fig)
 
+    # Placeholder for the values returned from the avs1_rewards function
+    avs1_rewards_results = (10000, 5000, 0.02, 0.01, 0.03, 0.04)
+
+    # Ensure these index positions are according to the actual returns of the avs1_rewards function
+    dual_staking_adjustment = avs1_rewards_results[2]
+    ratio_tvl_totalstaked_adjustment = avs1_rewards_results[3]
+    avs1_revenue_adjustment = avs1_rewards_results[4]
+    staker_reward = avs1_rewards_results[0]
+    operator_reward = avs1_rewards_results[1]
+
+    # The 'source' and 'target' arrays should have a matching 'value' element for each flow
+    fig = go.Figure(go.Sankey(
+        node=dict(
+            pad=15,
+            thickness=20,
+            line=dict(color="black", width=0.5),
+            label=["AVS1 Revenue", "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment", "Staker Reward", "Operator Reward"],
+            color=["blue", "orange", "green", "red", "purple", "grey"]
+        ),
+        link=dict(
+            source=[0, 0, 0, 0, 3, 3],  # These indices must correspond to the 'label' indices
+            target=[1, 2, 3, 4, 4, 5],  # These indices must also correspond to the 'label' indices
+            value=[
+                dual_staking_adjustment,  # Make sure this value is positive
+                ratio_tvl_totalstaked_adjustment,  # Make sure this value is positive
+                avs1_revenue_adjustment,  # Make sure this value is positive
+                staker_reward,  # Make sure this value is positive
+                operator_reward  # Make sure this value is positive
+            ]
+        )
+    ))
+
+    fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
+    st.plotly_chart(fig)
 
 
 
