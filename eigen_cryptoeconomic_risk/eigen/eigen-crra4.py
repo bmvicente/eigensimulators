@@ -1922,6 +1922,20 @@ def main():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ###################################
     ###################################
     ############# REWARD ##############
@@ -3063,72 +3077,6 @@ def main():
             """)
 
 
-
-
-    # Placeholder for the values returned from the rewards functions
-    avs1_rewards_results = (10000, 5000, 0.02, 0.07, 0.03, 0.01)
-    avs2_rewards_results = (10400, 4000, 0.04, 0.01, 0.01, 0.04)
-    avs3_rewards_results = (103300, 5000, 0.02, 0.06, 0.09, 0.09)
-
-    # Extract the specific values for each AVS
-    staker_reward1, operator_reward1, dual_staking_adjustment1, ratio_tvl_totalstaked_adjustment1, avs1_revenue_adjustment1, _ = avs1_rewards_results
-    staker_reward2, operator_reward2, dual_staking_adjustment2, ratio_tvl_totalstaked_adjustment2, avs2_revenue_adjustment2, _ = avs2_rewards_results
-    staker_reward3, operator_reward3, dual_staking_adjustment3, ratio_tvl_totalstaked_adjustment3, avs3_revenue_adjustment3, _ = avs3_rewards_results
-
-    # Define the labels for each node in the Sankey diagram
-    labels = [
-        "AVS1 Revenue", "AVS2 Revenue", "AVS3 Revenue",
-        "AVS1 Staker Reward", "AVS2 Staker Reward", "AVS3 Staker Reward",
-        "AVS1 Operator Reward", "AVS2 Operator Reward", "AVS3 Operator Reward",
-        "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment"
-    ]
-
-    # Define the sources and targets for the links between nodes
-    sources = [0, 0, 0, 1, 1, 1, 2, 2, 2, 9, 9, 9]  # Indices correspond to 'labels' above
-    targets = [3, 6, 9, 4, 7, 10, 5, 8, 11, 3, 4, 5]  # Indices for where the flow goes
-    values = [
-        staker_reward1, operator_reward1, dual_staking_adjustment1,
-        staker_reward2, operator_reward2, dual_staking_adjustment2,
-        staker_reward3, operator_reward3, dual_staking_adjustment3,
-        ratio_tvl_totalstaked_adjustment1, ratio_tvl_totalstaked_adjustment2, ratio_tvl_totalstaked_adjustment3
-    ]
-
-    # Define the colors for the nodes and links
-    node_colors = ['blue', 'green', 'red', 'orange', 'yellow', 'purple', 'brown', 'pink', 'gray', 'cyan', 'magenta', 'lime']
-    link_colors = ['rgba(133, 193, 233, 0.8)', 'rgba(93, 173, 226, 0.8)', 'rgba(84, 153, 199, 0.8)', 'rgba(74, 134, 232, 0.8)', 'rgba(125, 60, 152, 0.8)', 'rgba(165, 105, 189, 0.8)']
-
-    # Define the Sankey diagram
-    fig = go.Figure(data=[go.Sankey(
-        node=dict(
-            pad=10,
-            thickness=20,
-            line=dict(color="black", width=0.5),
-            label=labels,
-            color=node_colors
-        ),
-        link=dict(
-            source=sources,
-            target=targets,
-            value=values,
-            color=link_colors  # Apply link colors
-        )
-    )])
-
-    # Update the layout to match the style in the image
-    fig.update_layout(
-        title_text="AVS Rewards Distribution",
-        font_size=10
-    )
-
-    # Show the Sankey diagram
-    st.plotly_chart(fig)
-
-
-
-
-
-
-
     st.write("\n")
     st.write("\n")
     st.write("\n")
@@ -3902,11 +3850,69 @@ def main():
 
     st.markdown("""
     **The standard Sharpe Ratio results represent the amount of net yield (after accounting for expected slashes) AVSs may earn going forward for each unit of risk, as measured by the standard deviation of those net yields over a previous time period.**     
-                
+                    """, unsafe_allow_html=False)
+    
+
+
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+
+    col99, col100 = st.columns(2, gap="large")
+
+    with col99:
+        
+        agg_avs_staker_reward = staker_reward1 + staker_reward2 + staker_reward3
+
+        st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 10px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">Aggregate AVS Staker Reward: <span style="font-size: 1.3em;">{agg_avs_staker_reward:.2f}%</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+    with col100:
+
+        agg_avs_operator_reward = operator_reward1 + operator_reward2 + operator_reward3
+
+        st.markdown(
+                f"""
+                <div style="
+                    border: 2px solid;
+                    border-radius: 5px;
+                    padding: 20px;
+                    text-align: center;
+                    margin: 10px 0;
+                    background-color: white;">
+                    <h2 style="color: black; margin:0; font-size: 1.2em;">Aggregate AVS Operator Reward: <span style="font-size: 1.3em;">{agg_avs_operator_reward:.2f}%</span></h2>
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+
+
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+
+    
+    with st.expander("Logic"):
+        st.markdown("""
     The Sharpe Ratios differ in the types of risks considered. As the namings suggest, the "In-Isolation" ratio only accounts for the AVS risk as an isolated unit in the ecosystem, whereas the "Ecosystem-Aware" ratio accounts for more types of risk that concern to an AVS as an element influenced by its ecosystem, with the distinct risks and dynamics that come with it.
 
     The standard Sharpe Ratio's denominator, representing the standard deviation of excess returns, assesses the AVS's risk. It measures how returns deviate from their average, crucial for assessing risk-adjusted returns. Thus illustrating the excess return per unit of risk. A higher standard deviation implies more risk, indicating that returns vary more from the average and require a higher excess return for the same Sharpe Ratio. This allows investors to compare investments on a risk-adjusted basis, distinguishing those that outperform due to genuine risk management rather than merely higher risk exposure.
-    """, unsafe_allow_html=False)
+            """)
+
+
 
 
 
