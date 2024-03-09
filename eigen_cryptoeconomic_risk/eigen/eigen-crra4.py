@@ -2883,23 +2883,45 @@ def main():
 
     def avs_sr_eco(avs1_compounded_loss, avs2_compounded_loss, avs3_compounded_loss, actual_slash_on_cs):
         
-        def avs_comp_vs_actual_slash(avs1_compounded_loss, avs2_compounded_loss, avs3_compounded_loss, actual_slash_on_cs):
+        def avs1_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs):
             ratio1 = avs1_compounded_loss / actual_slash_on_cs
+
+            if ratio1 > 3:
+                return 1.20
+            elif ratio1 > 2:
+                return 1.10
+            elif ratio1 <= 2:
+                return 1.05
+            else:
+                return 1
+            
+        def avs2_comp_vs_actual_slash(avs2_compounded_loss, actual_slash_on_cs):
             ratio2 = avs2_compounded_loss / actual_slash_on_cs
+
+            if ratio2 > 3:
+                return 1.20
+            elif ratio2 > 2:
+                return 1.10
+            elif ratio2 <= 2:
+                return 1.05
+            else:
+                return 1
+        
+        def avs3_comp_vs_actual_slash(avs3_compounded_loss, actual_slash_on_cs):
             ratio3 = avs3_compounded_loss / actual_slash_on_cs
 
-            if ratio1 or ratio2 or ratio3 > 3:
+            if ratio3 > 3:
                 return 1.20
-            elif ratio1 or ratio2 or ratio3 > 2:
+            elif ratio3 > 2:
                 return 1.10
-            elif ratio1 or ratio2 or ratio3 <= 2:
+            elif ratio3 <= 2:
                 return 1.05
             else:
                 return 1
 
-        avs_comp_vs_actual_slash_adj1 = avs_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs)
-        avs_comp_vs_actual_slash_adj2 = avs_comp_vs_actual_slash(avs2_compounded_loss, actual_slash_on_cs)
-        avs_comp_vs_actual_slash_adj3 = avs_comp_vs_actual_slash(avs3_compounded_loss, actual_slash_on_cs)
+        avs_comp_vs_actual_slash_adj1 = avs1_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs)
+        avs_comp_vs_actual_slash_adj2 = avs2_comp_vs_actual_slash(avs2_compounded_loss, actual_slash_on_cs)
+        avs_comp_vs_actual_slash_adj3 = avs3_comp_vs_actual_slash(avs3_compounded_loss, actual_slash_on_cs)
 
         avs_insurance_adjustment1 = 0.5 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else -0.5
         avs_insurance_adjustment2 = 0.5 if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else -0.5
