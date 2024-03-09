@@ -2984,7 +2984,7 @@ def main():
                 background-color: white;">
                 <h2 style="color: black; margin:6px 0 0 0; padding:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">${avs1_net_yield:,.0f}</span></h2>
                 <p style="color: black; margin:8px 0 0 0; padding:0; font-size: 1em;">
-                    (AVS1 Revenue * AVS1 Profit Percentage(20%) - Staker Reward - Operator Reward)
+                    (AVS1 Revenue * AVS1 Profit Perc. (20%) - Staker Reward - Operator Reward)
                 </p>
             </div>
             """, 
@@ -3107,7 +3107,7 @@ def main():
                 background-color: white;">
                 <h2 style="color: black; margin:6px 0 0 0; padding:0; font-size: 1.2em;">AVS2 Net Yield: <span style="font-size: 1.3em;">${avs2_net_yield:,.0f}</span></h2>
                 <p style="color: black; margin:8px 0 0 0; padding:0; font-size: 1em;">
-                    (AVS2 Revenue * AVS2 Profit Percentage(20%) - Staker Reward - Operator Reward)
+                    (AVS2 Revenue * AVS2 Profit Perc. (20%) - Staker Reward - Operator Reward)
                 </p>
             </div>
             """, 
@@ -3231,7 +3231,7 @@ def main():
                 background-color: white;">
                 <h2 style="color: black; margin:6px 0 0 0; padding:0; font-size: 1.2em;">AVS3 Net Yield: <span style="font-size: 1.3em;">${avs3_net_yield:,.0f}</span></h2>
                 <p style="color: black; margin:8px 0 0 0; padding:0; font-size: 1em;">
-                    (AVS3 Revenue * AVS3 Profit Percentage(20%) - Staker Reward - Operator Reward)
+                    (AVS3 Revenue * AVS3 Profit Perc. (20%) - Staker Reward - Operator Reward)
                 </p>
             </div>
             """, 
