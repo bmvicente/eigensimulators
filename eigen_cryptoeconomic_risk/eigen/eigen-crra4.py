@@ -3405,7 +3405,11 @@ def main():
     # Assuming the updated scenario with possible equal values among formatted_result1, formatted_result2, and formatted_result3.
 
     # Re-organize the results in a dictionary for easier handling
-    results = {"AVS1": sharpe_ratio1, "AVS2": sharpe_ratio2, "AVS3": sharpe_ratio3}
+    results = {
+        "AVS1": f"{sharpe_ratio1:.2f}",
+        "AVS2": f"{sharpe_ratio2:.2f}",
+        "AVS3": f"{sharpe_ratio3:.2f}"
+    }
 
     # Check if all values are the same
     if len(set(results.values())) == 1:
