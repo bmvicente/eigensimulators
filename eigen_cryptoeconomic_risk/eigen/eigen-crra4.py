@@ -2982,7 +2982,7 @@ def main():
             st.write(f"""&#8226; AVS1 Standard Deviation: **${avs1_st_dev_abs:,.0f}**""")
 
         st.write("--------")
-        st.write("**WEIGHTINGS**")
+        st.write("**IN-ISOLATION WEIGHTINGS**")
 
         col91, col92 = st.columns(2, gap="medium")
 
@@ -3020,13 +3020,26 @@ def main():
         st.write("\n")
         st.write("\n")
 
-        eco_sharpe_ratio1 = sharpe_ratio1 - avs_comp_vs_actual_slash_adj1 - avs_insurance_adjustment1
+        st.write("**ECOSYSTEM-AWARE WEIGHTINGS**")
+        col93, col94 = st.columns(2, gap="medium")
+
+        with col93:
+            avs1_comp_loss_weight = st.slider("**AVS1 Compounded Loss/Actual Slash Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs1_ny_w")
+
+        with col94:
+            avs1_insurance_status_weight = 100 - avs1_net_yield_weight
+            st.slider("**AVS1 Insurance Status Weight**", min_value=10, max_value=90, value=avs1_expected_slash_weight, format='%d%%', disabled=True, key="avs1_es_w")
+        
+        st.write("\n")
+        st.write("\n")
+
+        eco_sharpe_ratio1 = sharpe_ratio1 - (avs1_comp_loss_weight*0.01 * avs_comp_vs_actual_slash_adj1) - (avs1_insurance_status_weight*0.01 * avs_insurance_adjustment1)
 
         fraction_html111 = f"""
             <div style="text-align: center;">
                 <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS1 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
-                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - {avs_comp_vs_actual_slash_adj1:.2f} - {avs_insurance_adjustment1:.2f}</span><br>
+                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - ({avs1_comp_loss_weight}% * {avs_comp_vs_actual_slash_adj1:.2f}) - ({avs1_insurance_status_weight}% * {avs_insurance_adjustment1:.2f})</span><br>
                 </div>
                 <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio1:.2f}</span> <!-- replace with actual resulting value -->
             </div>
