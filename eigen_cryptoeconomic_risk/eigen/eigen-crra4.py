@@ -2970,7 +2970,6 @@ def main():
         
         st.write("\n")
 
-
         st.markdown(
             f"""
             <div style="
@@ -2980,15 +2979,14 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">${avs1_net_yield:,.0f}</span></h2>
-                <p style="color: black; margin-top: 10px; font-size: 1em;">
+                <h2 style="color: black; margin:0; padding:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">${avs1_net_yield:,.0f}</span></h2>
+                <p style="color: black; margin:5px 0 0 0; padding:0; font-size: 1em;">
                     (AVS Revenue * Profit Percentage - Staker Reward - Operator Reward)
                 </p>
             </div>
             """, 
             unsafe_allow_html=True
         )
-
 
         st.write("\n")
 
