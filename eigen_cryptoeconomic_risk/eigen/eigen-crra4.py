@@ -3379,21 +3379,11 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    st.markdown('''
+    st.markdown("""
         <div style="font-size: 18px;">
             The Sharpe Ratio results represent the amount of net yield (after accounting for expected slashes) AVSs may earn going forward for each unit of risk, as measured by the standard deviation of those net yields over a previous time period.
         </div>
-        ''', unsafe_allow_html=True)
-
-    st.write("\n")
-    st.write("\n")
-    st.write("\n")
-    st.write("\n")
-    st.write("\n")
-
-
-    with st.expander("Logic"):
-            st.markdown("""
+        
                         The result of 20 represents the amount of net profit (after accounting for expected losses) earned for each unit of risk, as measured by the standard deviation of returns or profit.
 
                         The denominator of the Sharpe Ratio represents the standard deviation of the portfolio's excess returns, which is a measure of the investment's volatility or risk. Specifically, it quantifies how much the returns of the investment deviate from their average over a certain period. This measure is crucial in the context of the Sharpe Ratio because it provides a way to adjust for risk: by dividing the excess return (the return of the investment minus the risk-free rate) by the standard deviation of these excess returns, the Sharpe Ratio essentially tells you how much excess return you are getting for each unit of risk taken.
