@@ -3015,6 +3015,7 @@ def main():
 
         st.markdown(fraction_html11, unsafe_allow_html=True)
 
+        st.write("\n")
         st.write("------")
         st.write("\n")
 
