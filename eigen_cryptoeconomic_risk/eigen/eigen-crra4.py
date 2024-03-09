@@ -87,6 +87,7 @@ def main():
     2. **REWARD**
         - 2.1 Staker/Operator Reward Distribution
         - 2.2 Sharpe Ratios
+        - 2.3 AVS Selection Methodology by LRT Protocol
         """, unsafe_allow_html=True)
 
 
