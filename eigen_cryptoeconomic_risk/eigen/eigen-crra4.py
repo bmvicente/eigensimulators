@@ -3143,7 +3143,7 @@ def main():
     )
 
     # Show the Sankey diagram
-    fig.show()
+    st.plotly_chart(fig)
 
 
 
