@@ -3576,7 +3576,7 @@ def main():
     st.markdown("""
     **The Sharpe Ratio results represent the amount of net yield (after accounting for expected slashes) AVSs may earn going forward for each unit of risk, as measured by the standard deviation of those net yields over a previous time period.**     
                 
-    The Sharpe Ratios differ in the types of risks considered. As the namings suggest, the "In-Isolation" ratio only accounts for the AVS risk as an isolated unit in the ecosystem, whereas the "Ecosystem-Aware" ratio accounts for more types of risk that concern to an AVS as an element entangled in its ecosystem, with the risks and dynamics that come with it.
+    The Sharpe Ratios differ in the types of risks considered. As the namings suggest, the "In-Isolation" ratio only accounts for the AVS risk as an isolated unit in the ecosystem, whereas the "Ecosystem-Aware" ratio accounts for more types of risk that concern to an AVS as an element influenced by its ecosystem, with the distinct risks and dynamics that come with it.
 
     The Sharpe Ratio's denominator, representing the standard deviation of excess returns, assesses the AVS's risk. It measures how returns deviate from their average, crucial for assessing risk-adjusted returns. Thus illustrating the excess return per unit of risk. A higher standard deviation implies more risk, indicating that returns vary more from the average and require a higher excess return for the same Sharpe Ratio. This allows investors to compare investments on a risk-adjusted basis, distinguishing those that outperform due to genuine risk management rather than merely higher risk exposure.
     """, unsafe_allow_html=False)
