@@ -2855,7 +2855,7 @@ def main():
     st.write("\n")
     st.write("\n")
     
-    col95, col96 = st.columns(2, gap="large")
+    col95, col96 = st.columns([1,3], gap="large")
     with col95:
         fraction_html = """
             <div style="text-align: center;">
