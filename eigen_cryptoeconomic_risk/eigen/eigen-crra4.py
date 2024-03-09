@@ -3022,11 +3022,11 @@ def main():
         col93, col94 = st.columns(2, gap="medium")
 
         with col93:
-            avs1_comp_loss_weight = st.slider("**AVS1 Compounded Loss/Actual Slash Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs1_clac_w")
+            avs1_comp_loss_weight = st.slider("**Compounded Loss/Actual Slash Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs1_clac_w")
 
         with col94:
             avs1_insurance_status_weight = 100 - avs1_comp_loss_weight
-            st.slider("**AVS1 Insurance Status Weight**", min_value=10, max_value=90, value=avs1_insurance_status_weight, format='%d%%', disabled=True, key="avs1_is_w")
+            st.slider("**Insurance Status Weight**", min_value=10, max_value=90, value=avs1_insurance_status_weight, format='%d%%', disabled=True, key="avs1_is_w")
         
         st.write("\n")
         st.write("\n")
