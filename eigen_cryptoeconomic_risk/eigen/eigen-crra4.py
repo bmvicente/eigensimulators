@@ -2865,8 +2865,8 @@ def main():
         fraction_html = """
             <div style="text-align: center;">
                 <span style="font-size: 24px; font-weight: bold;">In-Isolation AVS Sharpe Ratio =  </span>
-                <div style="display: inline-block; vertical-align: middle; font-size: 24px; font-weight: bold; text-align: center;">
-                    <span>AVS Net Yield  <span style="font-size: 30px;">-</span>  AVS Expected Slash</span><br>
+                <div style="display: inline-block; vertical-align: middle; font-size: 22px; font-weight: bold; text-align: center;">
+                    <span>AVS Net Yield  <span style="font-size: 28px;">-</span>  AVS Expected Slash</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span>Standard Deviation of Excess Return</span>
                 </div>
