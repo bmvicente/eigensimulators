@@ -2981,7 +2981,7 @@ def main():
                 background-color: white;">
                 <h2 style="color: black; margin:6px 0 0 0; padding:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">${avs1_net_yield:,.0f}</span></h2>
                 <p style="color: black; margin:8px 0 0 0; padding:0; font-size: 1em;">
-                    (AVS Revenue * AVS Profit Percentage - Staker Reward - Operator Reward)
+                    (AVS1 Revenue * AVS1 Profit Percentage - Staker Reward - Operator Reward)
                 </p>
             </div>
             """, 
@@ -3094,19 +3094,22 @@ def main():
         st.write("\n")
 
         st.markdown(
-                f"""
-                <div style="
-                    border: 2px solid;
-                    border-radius: 5px;
-                    padding: 10px;
-                    text-align: center;
-                    margin: 10px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS2 Net Yield: <span style="font-size: 1.3em;">${avs2_net_yield:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 5px;
+                padding: 16px;
+                text-align: center;
+                margin: 10px 0;
+                background-color: white;">
+                <h2 style="color: black; margin:6px 0 0 0; padding:0; font-size: 1.2em;">AVS2 Net Yield: <span style="font-size: 1.3em;">${avs2_net_yield:,.0f}</span></h2>
+                <p style="color: black; margin:8px 0 0 0; padding:0; font-size: 1em;">
+                    (AVS2 Revenue * AVS2 Profit Percentage - Staker Reward - Operator Reward)
+                </p>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
 
         st.write("\n")
@@ -3215,19 +3218,22 @@ def main():
         st.write("\n")
 
         st.markdown(
-                f"""
-                <div style="
-                    border: 2px solid;
-                    border-radius: 5px;
-                    padding: 10px;
-                    text-align: center;
-                    margin: 10px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS3 Net Yield: <span style="font-size: 1.3em;">${avs3_net_yield:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 5px;
+                padding: 16px;
+                text-align: center;
+                margin: 10px 0;
+                background-color: white;">
+                <h2 style="color: black; margin:6px 0 0 0; padding:0; font-size: 1.2em;">AVS3 Net Yield: <span style="font-size: 1.3em;">${avs3_net_yield:,.0f}</span></h2>
+                <p style="color: black; margin:8px 0 0 0; padding:0; font-size: 1em;">
+                    (AVS3 Revenue * AVS3 Profit Percentage - Staker Reward - Operator Reward)
+                </p>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
         
         st.write("\n")
 
