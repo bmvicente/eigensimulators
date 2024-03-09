@@ -2196,8 +2196,12 @@ def main():
         st.write("  \n")
         st.write("  \n")
 
-        staker_reward1, operator_reward1 = avs1_rewards(staker_reward1, operator_reward1, avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
+        results = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
 
+        # Now access the values you need from the dictionary
+        staker_reward1 = results['staker_reward1']
+        operator_reward1 = results['operator_reward1']
+        
         col66, col67 = st.columns(2)
 
         with col66:
