@@ -3078,6 +3078,8 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+        ```python
+        # Compounded Loss/Actual Slash Ratio Factor
         def avs1_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs):
             if actual_slash_on_cs == 0:
                 return 0
@@ -3092,10 +3094,10 @@ def main():
                 return 0.20
             else:
                 return 1
-                        
-        avs_insurance_adjustment1 = 0 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else 1
 
-                        """)
+        # Insurance Status Factor ('Bought Insurance' = 0; 'Didn't Buy Insurance' = 1)
+        avs_insurance_adjustment1 = 0 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else 1
+""", unsafe_allow_html=True)
 
 
 
@@ -3220,24 +3222,26 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-        def avs1_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs):
+        ```python
+        # Compounded Loss/Actual Slash Ratio Factor
+        def avs2_comp_vs_actual_slash(avs2_compounded_loss, actual_slash_on_cs):
             if actual_slash_on_cs == 0:
                 return 0
             else:
-                ratio1 = avs1_compounded_loss / actual_slash_on_cs
+                ratio2 = avs2_compounded_loss / actual_slash_on_cs
             
-            if ratio1 > 3:
+            if ratio2 > 3:
                 return 1
-            elif ratio1 > 2:
+            elif ratio2 > 2:
                 return 0.50
-            elif ratio1 <= 2:
+            elif ratio2 <= 2:
                 return 0.20
             else:
                 return 1
 
-        avs_insurance_adjustment1 = 0 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else 1
-
-                        """)
+        # Insurance Status Factor ('Bought Insurance' = 0; 'Didn't Buy Insurance' = 1)
+        avs_insurance_adjustment2 = 0 if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else 1
+""", unsafe_allow_html=True)
 
 
 
@@ -3360,22 +3364,24 @@ def main():
         with st.expander("Logic"):
             st.markdown("""
         ```python
-        def avs1_comp_vs_actual_slash(avs1_compounded_loss, actual_slash_on_cs):
+        # Compounded Loss/Actual Slash Ratio Factor
+        def avs3_comp_vs_actual_slash(avs3_compounded_loss, actual_slash_on_cs):
             if actual_slash_on_cs == 0:
                 return 0
             else:
-                ratio1 = avs1_compounded_loss / actual_slash_on_cs
+                ratio3 = avs3_compounded_loss / actual_slash_on_cs
             
-            if ratio1 > 3:
+            if ratio3 > 3:
                 return 1
-            elif ratio1 > 2:
+            elif ratio3 > 2:
                 return 0.50
-            elif ratio1 <= 2:
+            elif ratio3 <= 2:
                 return 0.20
             else:
                 return 1
-                            
-        avs_insurance_adjustment1 = 0 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else 1
+
+        # Insurance Status Factor ('Bought Insurance' = 0; 'Didn't Buy Insurance' = 1)
+        avs_insurance_adjustment3 = 0 if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else 1
 """, unsafe_allow_html=True)
 
             
