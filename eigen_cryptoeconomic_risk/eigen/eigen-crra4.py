@@ -3101,6 +3101,23 @@ def main():
         st.write("\n")
         st.write("\n")
         
+        eco_sharpe_ratio2 = sharpe_ratio2 - avs_comp_vs_actual_slash_adj2 - avs_insurance_adjustment2
+
+        fraction_html222 = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS2 Ratio:</span>
+                <div style="display: inline-block; vertical-align: middle; text-align: center;">
+                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio2:.2f} - {avs_comp_vs_actual_slash_adj2} - {avs_insurance_adjustment2}</span><br>
+                </div>
+                <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio2:.2f}</span> <!-- replace with actual resulting value -->
+            </div>
+        """
+        st.markdown(fraction_html222, unsafe_allow_html=True)
+
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+
         with st.expander("Logic"):
             st.markdown("""
                         """)
@@ -3170,6 +3187,23 @@ def main():
 
         st.markdown(fraction_html33, unsafe_allow_html=True)
 
+        st.write("\n")
+        st.write("\n")
+
+        eco_sharpe_ratio3 = sharpe_ratio3 - avs_comp_vs_actual_slash_adj3 - avs_insurance_adjustment3
+
+        fraction_html333 = f"""
+            <div style="text-align: center;">
+                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS3 Ratio:</span>
+                <div style="display: inline-block; vertical-align: middle; text-align: center;">
+                    <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio3:.2f} - {avs_comp_vs_actual_slash_adj3} - {avs_insurance_adjustment3}</span><br>
+                </div>
+                <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio3:.2f}</span> <!-- replace with actual resulting value -->
+            </div>
+        """
+        st.markdown(fraction_html333, unsafe_allow_html=True)
+
+        st.write("\n")
         st.write("\n")
         st.write("\n")
 
