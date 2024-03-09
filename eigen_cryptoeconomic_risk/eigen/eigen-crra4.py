@@ -2445,7 +2445,9 @@ def main():
         staker_reward2 = avs2_revenue * profit_percentage * reward_percentage_adj2 * staker_percentage
         operator_reward2 = avs2_revenue * profit_percentage * reward_percentage_adj2 * operator_percentage
 
-        return staker_reward2, operator_reward2
+        return staker_reward2, operator_reward2, dual_staking_adjustment2, ratio_tvl_totalstaked_adjustment2, avs2_revenue_adjustment, avs2_revenue, tvl2, pre_slash_total_restaked, avs2_token_percentage, xeth2_percentage
+
+
 
     with col64:
          
@@ -2565,7 +2567,7 @@ def main():
         st.write("  \n")
         st.write("\n")
 
-        staker_reward2, operator_reward2 = avs2_rewards(avs2_revenue, tvl2, pre_slash_total_restaked, avs2_token_percentage, xeth2_percentage)
+        staker_reward2, operator_reward2, *_ = avs2_rewards(avs2_revenue, tvl2, pre_slash_total_restaked, avs2_token_percentage, xeth2_percentage)
 
         col68, col69 = st.columns(2)
 
@@ -2807,7 +2809,7 @@ def main():
         staker_reward3 = avs3_revenue * profit_percentage * reward_percentage_adj3 * staker_percentage
         operator_reward3 = avs3_revenue * profit_percentage * reward_percentage_adj3 * operator_percentage
 
-        return staker_reward3, operator_reward3
+        return staker_reward3, operator_reward3, dual_staking_adjustment3, ratio_tvl_totalstaked_adjustment3, avs3_revenue_adjustment, avs3_revenue, tvl3, pre_slash_total_restaked, avs3_token_percentage, xeth3_percentage
 
 
 
@@ -2928,7 +2930,7 @@ def main():
         st.write("  \n")
         st.write("\n")
 
-        staker_reward3, operator_reward3 = avs3_rewards(avs3_revenue, tvl3, pre_slash_total_restaked, avs3_token_percentage, xeth3_percentage)
+        staker_reward3, operator_reward3, *_ = avs3_rewards(avs3_revenue, tvl3, pre_slash_total_restaked, avs3_token_percentage, xeth3_percentage)
 
         col70, col71 = st.columns(2)
 
@@ -3063,62 +3065,37 @@ def main():
 
 
 
-    #avs1_rewards_results = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
+    # Placeholder for the values returned from the rewards functions
+    avs1_rewards_results = (10000, 5000, 0.02, 0.07, 0.03, 0.01)
+    avs2_rewards_results = (10400, 4000, 0.04, 0.01, 0.01, 0.04)
+    avs3_rewards_results = (103300, 5000, 0.02, 0.06, 0.09, 0.09)
 
-    #fig = go.Figure(go.Sankey(
-    #        node=dict(
-    #            pad=15,
-    #            thickness=20,
-    #            line=dict(color="black", width=0.5),
-    #            label=["AVS1 Revenue", "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment", "Staker Reward", "Operator Reward"],
-    #            color=["blue", "orange", "green", "red", "purple", "grey"]
-    #        ),
-    #        link=dict(
-    #            source=[0, 0, 0, 0, 3, 3],
-    #            target=[1, 2, 3, 4, 4, 5],
-    #            value=[
-    #                avs1_rewards_results[2],  # dual_staking_adjustment
-    #                avs1_rewards_results[3],  # ratio_tvl_totalstaked_adjustment
-    #                avs1_rewards_results[4],  # avs1_revenue_adjustment
-    #                avs1_rewards_results[0],  # staker_reward
-    #                avs1_rewards_results[1]   # operator_reward
-    #            ]
-    #        )
-    #    ))
-    #
-    #fig.update_layout(title_text="AVS1 Rewards Distribution", font_size=10)
+    # Extract the specific values for each AVS
+    staker_reward1, operator_reward1, dual_staking_adjustment1, ratio_tvl_totalstaked_adjustment1, avs1_revenue_adjustment1, _ = avs1_rewards_results
+    staker_reward2, operator_reward2, dual_staking_adjustment2, ratio_tvl_totalstaked_adjustment2, avs2_revenue_adjustment2, _ = avs2_rewards_results
+    staker_reward3, operator_reward3, dual_staking_adjustment3, ratio_tvl_totalstaked_adjustment3, avs3_revenue_adjustment3, _ = avs3_rewards_results
 
-        # Display the figure in Streamlit
-    #st.plotly_chart(fig)
-
-
-    # Placeholder for the values returned from the avs1_rewards function
-    avs1_rewards_results = (10000, 5000, 0.02, 0.01, 0.03, 0.04)
-
-    # Unpack the results based on the expected return order from the function
-    staker_reward, operator_reward, dual_staking_adjustment, ratio_tvl_totalstaked_adjustment, avs1_revenue_adjustment, _ = avs1_rewards_results
-
-    # Sankey diagram setup
+    # Define the labels for each node in the Sankey diagram
     labels = [
-        "AVS1 Revenue", "Staker Reward", "Operator Reward",
+        "AVS1 Revenue", "AVS2 Revenue", "AVS3 Revenue",
+        "AVS1 Staker Reward", "AVS2 Staker Reward", "AVS3 Staker Reward",
+        "AVS1 Operator Reward", "AVS2 Operator Reward", "AVS3 Operator Reward",
         "Dual Staking Adjustment", "TVL to Total Staked Adjustment", "Revenue Adjustment"
     ]
 
-    # Mapping the flow of rewards
-    sources = [0, 0, 0, 3, 3, 3]  # Indexes correspond to 'labels' above
-    targets = [1, 2, 3, 4, 4, 5]  # Indexes for where the flow goes
+    # Define the sources and targets for the links between nodes
+    sources = [0, 0, 0, 1, 1, 1, 2, 2, 2, 9, 9, 9]  # Indices correspond to 'labels' above
+    targets = [3, 6, 9, 4, 7, 10, 5, 8, 11, 3, 4, 5]  # Indices for where the flow goes
     values = [
-        staker_reward,  # Flow from AVS1 Revenue to Staker Reward
-        operator_reward,  # Flow from AVS1 Revenue to Operator Reward
-        avs1_revenue_adjustment,  # Flow from AVS1 Revenue to Revenue Adjustment
-        dual_staking_adjustment,  # Flow from Dual Staking Adjustment
-        ratio_tvl_totalstaked_adjustment,  # Flow from TVL to Total Staked Adjustment
-        # You need to ensure these values are correctly calculated
-        # Typically, they would not be static numbers like this.
+        staker_reward1, operator_reward1, dual_staking_adjustment1,
+        staker_reward2, operator_reward2, dual_staking_adjustment2,
+        staker_reward3, operator_reward3, dual_staking_adjustment3,
+        ratio_tvl_totalstaked_adjustment1, ratio_tvl_totalstaked_adjustment2, ratio_tvl_totalstaked_adjustment3
     ]
 
-    # Define the colors for the nodes
-    node_colors = ['blue', 'green', 'red', 'orange', 'yellow', 'purple']
+    # Define the colors for the nodes and links
+    node_colors = ['blue', 'green', 'red', 'orange', 'yellow', 'purple', 'brown', 'pink', 'gray', 'cyan', 'magenta', 'lime']
+    link_colors = ['rgba(133, 193, 233, 0.8)', 'rgba(93, 173, 226, 0.8)', 'rgba(84, 153, 199, 0.8)', 'rgba(74, 134, 232, 0.8)', 'rgba(125, 60, 152, 0.8)', 'rgba(165, 105, 189, 0.8)']
 
     # Define the Sankey diagram
     fig = go.Figure(data=[go.Sankey(
@@ -3127,23 +3104,25 @@ def main():
             thickness=20,
             line=dict(color="black", width=0.5),
             label=labels,
-            color=['rgba(133, 193, 233, 0.8)',  'rgba(93, 173, 226, 0.8)',]   # Color for the second link
+            color=node_colors
         ),
         link=dict(
             source=sources,
             target=targets,
-            value=values
+            value=values,
+            color=link_colors  # Apply link colors
         )
     )])
 
     # Update the layout to match the style in the image
     fig.update_layout(
-        title_text="AVS1 Rewards Distribution",
+        title_text="AVS Rewards Distribution",
         font_size=10
     )
 
     # Show the Sankey diagram
     st.plotly_chart(fig)
+
 
 
 
