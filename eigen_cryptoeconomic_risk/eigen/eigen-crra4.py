@@ -2888,6 +2888,8 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
+
 
 
     def avs_sr_eco(avs1_compounded_loss, avs2_compounded_loss, avs3_compounded_loss, actual_slash_on_cs):
