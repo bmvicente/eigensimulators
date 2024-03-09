@@ -1918,6 +1918,9 @@ def main():
 
 
 
+
+
+
     ###################################
     ###################################
     ############# REWARD ##############
@@ -1934,6 +1937,16 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown("""
+                        **AVS Reward Emission:**
+
+    The AVS Reward Emission simulator percentage-results suggest how much should be distributed among $AVS Stakers, xETH Restakers, and AVS Operators, given the risk and economic security profile of the AVS. To build on the Assumptions explanation on top, this calculation is based on the correlated reward-to-risk sensitivity per variable input -- the Logic below each input parameter helps understand the underlying rationale.
+
+    Operator Reward is naturally being given greater weight than the Staker Reward due to their paramount role in validating modules crucial to the well-function of an AVS. We've assigned 60% of distributable rewards to Operators and 40% to Stakers and Restakers.
+
+    The $AVS’s Tokenomics (while not included in the reward calculation) were deemed useful to include since they provide a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. An important factor that should help AVS developers determine the $AVS minting rate is that of rewarding operators for their capital costs.
+
+                    
+
                     An **AVS's Revenue**, at any given time, is a useful indicator to help assess the level of rewards an AVS might be able to emit. From the revenue inputted by the user, we assume a 20% profit for the AVS, and [10-30]% of that profit to be distributable as rewards (specific value of this range dependent on weighting of all the chosen inputs in our Simulator).
 
                     - Current AVS Revenue: **\${avs_revenue:,}**
@@ -2499,7 +2512,7 @@ def main():
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 21px;
+                    padding: 20px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
@@ -2774,7 +2787,7 @@ def main():
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 21px;
+                    padding: 20px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
@@ -2789,13 +2802,83 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-    **AVS Reward Emission:**
+        ```python
+        def avs3_rewards(avs3_revenue, tvl3, pre_slash_total_restaked, avs3_token_percentage, xeth3_percentage):
+            reward_percentage = 0.20  # Base reward percentage
 
-    The AVS Reward Emission simulator percentage-results suggest how much should be distributed among $AVS Stakers, xETH Restakers, and AVS Operators, given the risk and economic security profile of the AVS. To build on the Assumptions explanation on top, this calculation is based on the correlated reward-to-risk sensitivity per variable input -- the Logic below each input parameter helps understand the underlying rationale.
+            def dual_staking_balance_adjustment3(avs3_token_percentage, xeth3_percentage):
+                ratio3 = avs3_token_percentage / xeth3_percentage
+                if ratio3 > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+                    return 0.020
+                elif ratio3 > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+                    return 0.015
+                elif ratio3 > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                    return 0.010
+                elif ratio3 > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                    return 0.005
+                elif ratio3 == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+                    return 0  # Neutral adjustment for balanced scenario
+                elif ratio3 > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+                    return -0.010
+                elif ratio3 > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+                    return -0.015
+                else:  # Very low AVS compared to ETH
+                    return -0.020
 
-    Operator Reward is naturally being given greater weight than the Staker Reward due to their paramount role in validating modules crucial to the well-function of an AVS. We've assigned 60% of distributable rewards to Operators and 40% to Stakers and Restakers.
+            dual_staking_adjustment3 = dual_staking_balance_adjustment3(avs3_token_percentage, xeth3_percentage)
 
-    The $AVS’s Tokenomics (while not included in the reward calculation) were deemed useful to include since they provide a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. An important factor that should help AVS developers determine the $AVS minting rate is that of rewarding operators for their capital costs.
+            # Check the ratio of Total Staked to TVL
+            def ratio_tvl_totalstaked3(pre_slash_total_restaked, tvl3):
+                if tvl3 == 0:
+                    return 0
+                ratio3 = (pre_slash_total_restaked / 2) / tvl3
+                if ratio3 > 2:
+                    return -0.03
+                elif ratio3 > 1.5:
+                    return -0.02
+                elif ratio3 > 1:
+                    return -0.01
+                elif ratio3 == 1:
+                    return 0
+                elif ratio3 < 1:
+                    return 0.01
+                elif ratio3 < 0.5:
+                    return 0.02
+                elif ratio3 < 0.25:
+                    return 0.03
+                else:
+                    return 0
+
+            ratio_tvl_totalstaked_adjustment3 = ratio_tvl_totalstaked3(pre_slash_total_restaked, tvl3)
+
+            # Revenue-based adjustment
+            if avs3_revenue > 100000000:  # Greater than $100M
+                avs3_revenue_adjustment = 0.01
+            elif avs3_revenue > 50000000:  # Greater than $50M
+                avs3_revenue_adjustment = 0.02
+            elif avs3_revenue > 20000000:  # Greater than $20M
+                avs3_revenue_adjustment = 0.03
+            elif avs3_revenue > 5000000:   # Greater than $5M
+                avs3_revenue_adjustment = 0.04
+            elif avs3_revenue > 1000000:   # Greater than $1M
+                avs3_revenue_adjustment = 0.05
+            else:
+                avs3_revenue_adjustment = 0
+
+            # Combine all adjustments
+            reward_percentage_sum3 = reward_percentage + dual_staking_adjustment3 + avs3_revenue_adjustment + ratio_tvl_totalstaked_adjustment3
+
+            # Ensure the reward percentage is within reasonable bounds
+            reward_percentage_adj3 = max(min(reward_percentage_sum3, 0.30), 0.10)
+
+            # Calculate rewards for stakers and operators
+            profit_percentage = 0.20
+            staker_percentage = 0.40
+            operator_percentage = 0.60
+
+            staker_reward3 = avs3_revenue * profit_percentage * reward_percentage_adj3 * staker_percentage
+            operator_reward3 = avs3_revenue * profit_percentage * reward_percentage_adj3 * operator_percentage
+
             """)
 
 
