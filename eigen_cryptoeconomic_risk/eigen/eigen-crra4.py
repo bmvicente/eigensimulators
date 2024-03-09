@@ -2860,17 +2860,31 @@ def main():
     st.write("\n")
     st.write("\n")
     
-    fraction_html = """
-    <div style="text-align: center;">
-        <span style="font-size: 24px; font-weight: bold;">Generic AVS Sharpe Ratio Calculation =  </span>
-        <div style="display: inline-block; vertical-align: middle; font-size: 24px; font-weight: bold; text-align: center;">
-            <span>AVS Net Yield  <span style="font-size: 30px;">-</span>  AVS Expected Slash</span><br>
-            <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
-            <span>Standard Deviation of Excess Return</span>
-        </div>
-    </div> """
+    col95, col96 = st.columns(2, gap="large")
+    with col95:
+        fraction_html = """
+            <div style="text-align: center;">
+                <span style="font-size: 24px; font-weight: bold;">In-Isolation AVS Sharpe Ratio =  </span>
+                <div style="display: inline-block; vertical-align: middle; font-size: 24px; font-weight: bold; text-align: center;">
+                    <span>AVS Net Yield  <span style="font-size: 30px;">-</span>  AVS Expected Slash</span><br>
+                    <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
+                    <span>Standard Deviation of Excess Return</span>
+                </div>
+            </div> """
 
-    st.markdown(fraction_html, unsafe_allow_html=True)
+        st.markdown(fraction_html, unsafe_allow_html=True)
+
+    with col96:
+        fractiona_html = """
+            <div style="text-align: center;">
+                <span style="font-size: 24px; font-weight: bold;">Ecosystem-Aware AVS Sharpe Ratio =  </span>
+                <div style="display: inline-block; vertical-align: middle; font-size: 24px; font-weight: bold; text-align: center;">
+                    <span>AVS Sharpe Ratio <span style="font-size: 30px;">-</span>AVS Insurance Status</span>
+                </div>
+            </div> """
+
+        st.markdown(fractiona_html, unsafe_allow_html=True)
+
 
 
     st.write("\n")
