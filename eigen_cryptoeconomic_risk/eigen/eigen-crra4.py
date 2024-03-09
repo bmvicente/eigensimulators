@@ -2249,6 +2249,94 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+        ```python
+     def avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage):
+        
+        reward_percentage = 0.20  # Base reward percentage
+
+        # Adjusting the base reward based on the AVS token and xETH balance
+        #dual_staking_balance_adjustment = (avs_token_percentage - xeth_percentage) / 100.0
+
+        def dual_staking_balance_adjustment1(avs1_token_percentage, xeth1_percentage):
+            ratio1 = avs1_token_percentage / xeth1_percentage
+
+            if ratio1 > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+                return 0.020
+            elif ratio1 > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+                return 0.015
+            elif ratio1 > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.010
+            elif ratio1 > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.005
+            elif ratio1 == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+                return 0  # Neutral adjustment for balanced scenario
+            elif ratio1 > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+                return -0.010
+            elif ratio1 > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+                return -0.015
+            else:  # Very low AVS compared to ETH
+                return -0.020
+
+        dual_staking_adjustment1 = dual_staking_balance_adjustment1(avs1_token_percentage, xeth1_percentage)
+
+
+        # Check the ratio of Total Staked to TVL
+        def ratio_tvl_totalstaked1(avs1_compounded_loss, tvl1):
+            
+            if tvl1 == 0:
+                return 0
+            
+            ratio1 = (pre_slash_total_restaked / 2) / tvl1
+
+            if ratio1 > 2:
+                return -0.03
+            elif ratio1 > 1.5:
+                return -0.02
+            elif ratio1 > 1:
+                return -0.01
+            elif ratio1 == 1:
+                return 0
+            elif ratio1 < 1:
+                return 0.01
+            elif ratio1 < 0.5:
+                return 0.02
+            elif ratio1 < 0.25:
+                return 0.03
+            else:
+                return 0
+
+        ratio_tvl_totalstaked_adjustment = ratio_tvl_totalstaked1(pre_slash_total_restaked, tvl1)
+
+
+        # Revenue-based adjustment
+        if avs1_revenue > 100000000:  # Greater than $100M
+            avs1_revenue_adjustment = 0.01
+        elif avs1_revenue > 50000000:  # Greater than $50M
+            avs1_revenue_adjustment = 0.02
+        elif avs1_revenue > 20000000:  # Greater than $20M
+            avs1_revenue_adjustment = 0.03
+        elif avs1_revenue > 5000000:   # Greater than $5M
+            avs1_revenue_adjustment = 0.04
+        elif avs1_revenue > 1000000:   # Greater than $1M
+            avs1_revenue_adjustment = 0.05
+        else:
+            avs1_revenue_adjustment = 0
+
+
+        # Combine all adjustments
+        reward_percentage_sum1 = reward_percentage + dual_staking_adjustment1 + avs1_revenue_adjustment + ratio_tvl_totalstaked_adjustment
+
+        # Ensure the reward percentage is within reasonable bounds
+        reward_percentage_adj1 = max(min(reward_percentage_sum1, 0.30), 0.10)
+
+        # Calculate rewards for stakers and operators
+        profit_percentage = 0.20
+        staker_percentage = 0.40
+        operator_percentage = 0.60
+
+        staker_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * staker_percentage
+        operator_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * operator_percentage
+            ```
             """)
 
 
@@ -2526,6 +2614,94 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
+        ```python
+    def avs2_rewards(avs2_revenue, tvl2, pre_slash_total_restaked, avs2_token_percentage, xeth2_percentage):
+        
+        reward_percentage = 0.20  # Base reward percentage
+
+        # Adjusting the base reward based on the AVS token and xETH balance
+        dual_staking_balance_adjustment2 = (avs2_token_percentage - xeth2_percentage) / 100.0
+
+        def dual_staking_balance_adjustment2(avs2_token_percentage, xeth2_percentage):
+            ratio2 = avs2_token_percentage / xeth2_percentage
+
+            if ratio2 > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
+                return 0.020
+            elif ratio2 > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
+                return 0.015
+            elif ratio2 > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.010
+            elif ratio2 > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
+                return 0.005
+            elif ratio2 == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
+                return 0  # Neutral adjustment for balanced scenario
+            elif ratio2 > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
+                return -0.010
+            elif ratio2 > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
+                return -0.015
+            else:  # Very low AVS compared to ETH
+                return -0.020
+
+        dual_staking_adjustment2 = dual_staking_balance_adjustment2(avs2_token_percentage, xeth2_percentage)
+
+
+        # Check the ratio of Total Staked to TVL
+        def ratio_tvl_totalstaked2(pre_slash_total_restaked, tvl2):
+            
+            if tvl2 == 0:
+                return 0
+            
+            ratio2 = (pre_slash_total_restaked / 2) / tvl2
+
+            if ratio2 > 2:
+                return -0.03
+            elif ratio2 > 1.5:
+                return -0.02
+            elif ratio2 > 1:
+                return -0.01
+            elif ratio2 == 1:
+                return 0
+            elif ratio2 < 1:
+                return 0.01
+            elif ratio2 < 0.5:
+                return 0.02
+            elif ratio2 < 0.25:
+                return 0.03
+            else:
+                return 0
+
+        ratio_tvl_totalstaked_adjustment2 = ratio_tvl_totalstaked2(pre_slash_total_restaked, tvl2)
+
+
+        # Revenue-based adjustment
+        if avs2_revenue > 100000000:  # Greater than $100M
+            avs2_revenue_adjustment = 0.01
+        elif avs2_revenue > 50000000:  # Greater than $50M
+            avs2_revenue_adjustment = 0.02
+        elif avs2_revenue > 20000000:  # Greater than $20M
+            avs2_revenue_adjustment = 0.03
+        elif avs2_revenue > 5000000:   # Greater than $5M
+            avs2_revenue_adjustment = 0.04
+        elif avs2_revenue > 1000000:   # Greater than $1M
+            avs2_revenue_adjustment = 0.05
+        else:
+            avs2_revenue_adjustment = 0
+
+
+        # Combine all adjustments
+        reward_percentage_sum2 = reward_percentage + dual_staking_adjustment2 + avs2_revenue_adjustment + ratio_tvl_totalstaked_adjustment2
+
+        # Ensure the reward percentage is within reasonable bounds
+        reward_percentage_adj2 = max(min(reward_percentage_sum2, 0.30), 0.10)
+
+        # Calculate rewards for stakers and operators
+        profit_percentage = 0.20
+        staker_percentage = 0.40
+        operator_percentage = 0.60
+
+        staker_reward2 = avs2_revenue * profit_percentage * reward_percentage_adj2 * staker_percentage
+        operator_reward2 = avs2_revenue * profit_percentage * reward_percentage_adj2 * operator_percentage
+            ```
             """)
 
 
@@ -2878,7 +3054,7 @@ def main():
 
             staker_reward3 = avs3_revenue * profit_percentage * reward_percentage_adj3 * staker_percentage
             operator_reward3 = avs3_revenue * profit_percentage * reward_percentage_adj3 * operator_percentage
-
+            ```
             """)
 
 
