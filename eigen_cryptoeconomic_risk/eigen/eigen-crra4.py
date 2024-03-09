@@ -3400,6 +3400,7 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
 
 
     # Assuming the updated scenario with possible equal values among formatted_result1, formatted_result2, and formatted_result3.
@@ -3407,7 +3408,7 @@ def main():
     with col97:
         
         st.markdown("""
-            <div style='font-size: 24px; font-weight: bold;'>
+            <div style='font-size: 22px; font-weight: bold;'>
                 IN-ISOLATION SHARPE RATIO
             </div>
             """, unsafe_allow_html=True)
@@ -3480,7 +3481,7 @@ def main():
     with col98: 
 
         st.markdown("""
-            <div style='font-size: 24px; font-weight: bold;'>
+            <div style='font-size: 22px; font-weight: bold;'>
                 ECOSYSTEM-AWARE SHARPE RATIO
             </div>
             """, unsafe_allow_html=True)
