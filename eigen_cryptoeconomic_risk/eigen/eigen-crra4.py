@@ -2887,11 +2887,11 @@ def main():
             ratio1 = avs1_compounded_loss / actual_slash_on_cs
 
             if ratio1 > 3:
-                return 1.20
+                return 1
             elif ratio1 > 2:
-                return 1.10
+                return 0.50
             elif ratio1 <= 2:
-                return 1.05
+                return 0.20
             else:
                 return 1
             
@@ -2899,11 +2899,11 @@ def main():
             ratio2 = avs2_compounded_loss / actual_slash_on_cs
 
             if ratio2 > 3:
-                return 1.20
+                return 1
             elif ratio2 > 2:
-                return 1.10
+                return 0.50
             elif ratio2 <= 2:
-                return 1.05
+                return 0.20
             else:
                 return 1
         
@@ -2911,11 +2911,11 @@ def main():
             ratio3 = avs3_compounded_loss / actual_slash_on_cs
 
             if ratio3 > 3:
-                return 1.20
+                return 1
             elif ratio3 > 2:
-                return 1.10
+                return 0.50
             elif ratio3 <= 2:
-                return 1.05
+                return 0.20
             else:
                 return 1
 
@@ -2923,9 +2923,9 @@ def main():
         avs_comp_vs_actual_slash_adj2 = avs2_comp_vs_actual_slash(avs2_compounded_loss, actual_slash_on_cs)
         avs_comp_vs_actual_slash_adj3 = avs3_comp_vs_actual_slash(avs3_compounded_loss, actual_slash_on_cs)
 
-        avs_insurance_adjustment1 = 0.5 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else -0.5
-        avs_insurance_adjustment2 = 0.5 if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else -0.5
-        avs_insurance_adjustment3 = 0.5 if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else -0.5
+        avs_insurance_adjustment1 = 0 if st.session_state.insurance_statuses['avs1_insurance_status'] == insurance_options[0] else 1
+        avs_insurance_adjustment2 = 0 if st.session_state.insurance_statuses['avs2_insurance_status'] == insurance_options[0] else 1
+        avs_insurance_adjustment3 = 0 if st.session_state.insurance_statuses['avs3_insurance_status'] == insurance_options[0] else 1
 
         return avs_comp_vs_actual_slash_adj1, avs_comp_vs_actual_slash_adj2, avs_comp_vs_actual_slash_adj3, avs_insurance_adjustment1, avs_insurance_adjustment2, avs_insurance_adjustment3
 
