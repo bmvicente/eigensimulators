@@ -2881,7 +2881,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 25px; font-weight: bold;">Ecosystem-Aware AVS Sharpe Ratio =  </span>
                 <div style="display: inline-block; vertical-align: middle; font-size: 22px; font-weight: bold; text-align: center;">
-                    <span>In-Isolation AVS Sharpe Ratio <span style="font-size: 30px;">-</span> Compounded Loss(Ψj)/Actual Slash(δj) Ratio Factor <span style="font-size: 30px;">-</span> AVS Insurance Status Factor</span>
+                    <span>In-Isolation AVS Sharpe Ratio <span style="font-size: 30px;">-</span> Potential Compounded Loss(Ψj)/Actual Slash(δj) Ratio Factor <span style="font-size: 30px;">-</span> AVS Insurance Status Factor</span>
                 </div>
             </div> """
 
@@ -3055,7 +3055,7 @@ def main():
         col93, col94 = st.columns(2, gap="medium")
 
         with col93:
-            avs1_comp_loss_weight = st.slider("**Compounded Loss(Ψ AVS1)/Actual Slash(δj) Ratio Factor Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs1_clac_w")
+            avs1_comp_loss_weight = st.slider("**Potential Compounded Loss(Ψ AVS1)/Actual Slash(δj) Ratio Factor Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs1_clac_w")
 
         with col94:
             avs1_insurance_status_weight = 100 - avs1_comp_loss_weight
@@ -3199,7 +3199,7 @@ def main():
         col93, col94 = st.columns(2, gap="medium")
 
         with col93:
-            avs2_comp_loss_weight = st.slider("**Compounded Loss(Ψ AVS2)/Actual Slash(δj) Ratio Factor Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs2_clac_w")
+            avs2_comp_loss_weight = st.slider("**Potential Compounded Loss(Ψ AVS2)/Actual Slash(δj) Ratio Factor Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs2_clac_w")
 
         with col94:
             avs2_insurance_status_weight = 100 - avs2_comp_loss_weight
@@ -3340,7 +3340,7 @@ def main():
         col93, col94 = st.columns(2, gap="medium")
 
         with col93:
-            avs3_comp_loss_weight = st.slider("**Compounded Loss(Ψ AVS3)/Actual Slash(δj) Ratio Factor Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs3_clac_w")
+            avs3_comp_loss_weight = st.slider("**Potential Compounded Loss(Ψ AVS3)/Actual Slash(δj) Ratio Factor Weight**", min_value=10, max_value=90, value=50, format='%d%%', key="avs3_clac_w")
 
         with col94:
             avs3_insurance_status_weight = 100 - avs3_comp_loss_weight
