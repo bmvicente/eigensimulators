@@ -3196,7 +3196,7 @@ def main():
 
         fraction_html333 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS3 Ratio:</span>
+                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS3 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio3:.2f} - {avs_comp_vs_actual_slash_adj3:.2f} - {avs_insurance_adjustment3:.2f}</span><br>
                 </div>
