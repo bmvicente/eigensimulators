@@ -3011,7 +3011,7 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span style="font-size: 21px; font-weight: bold;">${avs1_st_dev_abs:,.0f}</span>
                 </div>
-                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio1:.2f}</span>
+                <span style="font-size: 24px; font-weight: bold;">= {sharpe_ratio1:.2f}</span>
             </div>
         """
 
@@ -3042,7 +3042,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - ({avs1_comp_loss_weight}% * {avs_comp_vs_actual_slash_adj1:.2f}) - ({avs1_insurance_status_weight}% * {avs_insurance_adjustment1:.2f})</span><br>
                 </div>
-                <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio1:.2f}</span> <!-- replace with actual resulting value -->
+                <span style="font-size: 24px; font-weight: bold;">= {eco_sharpe_ratio1:.2f}</span> <!-- replace with actual resulting value -->
             </div>
         """
 
@@ -3133,7 +3133,7 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span style="font-size: 21px; font-weight: bold;">${avs2_st_dev_abs:,.0f}</span>
                 </div>
-                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio2:.2f}</span>
+                <span style="font-size: 24px; font-weight: bold;">= {sharpe_ratio2:.2f}</span>
             </div>
         """
 
@@ -3164,7 +3164,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio2:.2f} - ({avs2_comp_loss_weight}% * {avs_comp_vs_actual_slash_adj2:.2f}) - ({avs2_insurance_status_weight}% * {avs_insurance_adjustment2:.2f})</span><br>
                 </div>
-                <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio2:.2f}</span> <!-- replace with actual resulting value -->
+                <span style="font-size: 24px; font-weight: bold;">= {eco_sharpe_ratio2:.2f}</span> <!-- replace with actual resulting value -->
             </div>
         """
 
@@ -3252,7 +3252,7 @@ def main():
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
                     <span style="font-size: 21px; font-weight: bold;">${avs3_st_dev_abs:,.0f}</span>
                 </div>
-                <span style="font-size: 22px; font-weight: bold;">= {sharpe_ratio3:.2f}</span>
+                <span style="font-size: 24px; font-weight: bold;">= {sharpe_ratio3:.2f}</span>
             </div>
         """
 
@@ -3283,7 +3283,7 @@ def main():
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio3:.2f} - ({avs3_comp_loss_weight}% * {avs_comp_vs_actual_slash_adj3:.2f}) - ({avs3_insurance_status_weight}% * {avs_insurance_adjustment3:.2f})</span><br>
                 </div>
-                <span style="font-size: 22px; font-weight: bold;">= {eco_sharpe_ratio3:.2f}</span> <!-- replace with actual resulting value -->
+                <span style="font-size: 24px; font-weight: bold;">= {eco_sharpe_ratio3:.2f}</span> <!-- replace with actual resulting value -->
             </div>
         """
 
