@@ -2972,6 +2972,7 @@ def main():
 
         col85, col86 = st.columns(2, gap="medium")
 
+        st.write("--------")
         st.write("**WEIGHT**")
 
         with col85:
