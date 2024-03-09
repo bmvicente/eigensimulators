@@ -3076,11 +3076,11 @@ def main():
                 source=[0, 0, 0, 0, 3, 3],
                 target=[1, 2, 3, 4, 4, 5],
                 value=[
-                    avs1_rewards_results['dual_staking_adjustment'],
-                    avs1_rewards_results['ratio_tvl_totalstaked_adjustment'],
-                    avs1_rewards_results['avs1_revenue_adjustment'],
-                    avs1_rewards_results['staker_reward'],
-                    avs1_rewards_results['operator_reward']
+                    avs1_rewards_results[2],  # dual_staking_adjustment
+                    avs1_rewards_results[3],  # ratio_tvl_totalstaked_adjustment
+                    avs1_rewards_results[4],  # avs1_revenue_adjustment
+                    avs1_rewards_results[0],  # staker_reward
+                    avs1_rewards_results[1]
                 ]
             )
         ))
