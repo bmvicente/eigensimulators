@@ -2993,7 +2993,7 @@ def main():
 
         fraction_html11 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS1 Ratio:</span>
+                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS1 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">${avs1_net_yield:,.0f} - ${avs1_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -3012,7 +3012,7 @@ def main():
 
         fraction_html111 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS1 Ratio:</span>
+                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS1 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - {avs_comp_vs_actual_slash_adj1:.2f} - {avs_insurance_adjustment1:.2f}</span><br>
                 </div>
@@ -3087,7 +3087,7 @@ def main():
 
         fraction_html22 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS2 Ratio:</span>
+                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS2 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">${avs2_net_yield:,.0f} - ${avs2_expected_slash:,.0f}</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -3106,7 +3106,7 @@ def main():
 
         fraction_html222 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS2 Ratio:</span>
+                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS2 Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio2:.2f} - {avs_comp_vs_actual_slash_adj2:.2f} - {avs_insurance_adjustment2:.2f}</span><br>
                 </div>
