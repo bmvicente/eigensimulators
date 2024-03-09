@@ -2972,19 +2972,23 @@ def main():
 
 
         st.markdown(
-                f"""
-                <div style="
-                    border: 2px solid;
-                    border-radius: 5px;
-                    padding: 10px;
-                    text-align: center;
-                    margin: 10px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">${avs1_net_yield:,.0f}</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 5px;
+                padding: 10px;
+                text-align: center;
+                margin: 10px 0;
+                background-color: white;">
+                <h2 style="color: black; margin:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">${avs1_net_yield:,.0f}</span></h2>
+                <p style="color: black; margin-top: 10px; font-size: 0.8em;">
+                    (AVS Revenue * Profit Percentage - Staker Reward - Operator Reward)
+                </p>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
+
 
         st.write("\n")
 
