@@ -2879,7 +2879,7 @@ def main():
             <div style="text-align: center;">
                 <span style="font-size: 24px; font-weight: bold;">Ecosystem-Aware AVS Sharpe Ratio =  </span>
                 <div style="display: inline-block; vertical-align: middle; font-size: 24px; font-weight: bold; text-align: center;">
-                    <span>AVS Sharpe Ratio <span style="font-size: 30px;">-</span>Compounded Loss(Ψ AVS2)/Actual Slash(δj) Ratio <span style="font-size: 30px;">-</span>AVS Insurance Status</span>
+                    <span>AVS Sharpe Ratio <span style="font-size: 30px;">-</span> Compounded Loss(Ψ AVS2)/Actual Slash(δj) Ratio <span style="font-size: 30px;">-</span> AVS Insurance Status</span>
                 </div>
             </div> """
 
