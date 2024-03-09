@@ -2979,7 +2979,7 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: white;">
-                <h2 style="color: black; margin:0; padding:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">${avs1_net_yield:,.0f}</span></h2>
+                <h2 style="color: black; margin:2; padding:0; font-size: 1.2em;">AVS1 Net Yield: <span style="font-size: 1.3em;">${avs1_net_yield:,.0f}</span></h2>
                 <p style="color: black; margin:8px 0 0 0; padding:0; font-size: 1em;">
                     (AVS Revenue * AVS Profit Percentage - Staker Reward - Operator Reward)
                 </p>
