@@ -2849,12 +2849,7 @@ def main():
 
 
     st.subheader("**2.2 Sharpe Ratios**")
-    st.write("\n")
 
-    st.write("Section below on AVS Selection by LRT Protocol")
-    st.write("Multipliers on Sharpe Ratio that were not accounted in in the calcs, and also weightings on specific variables per LRT's will")
-
-    st.write("\n")
     st.write("\n")
     st.write("\n")
     st.write("\n")
@@ -2959,7 +2954,7 @@ def main():
 
         fraction_html1 = f"""
         <div style="text-align: center;">
-        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS1</span> Sharpe Ratio</span><br>
+        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS1</span> Sharpe Ratios</span><br>
         </div>"""
 
         st.markdown(fraction_html1, unsafe_allow_html=True)
