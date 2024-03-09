@@ -3028,7 +3028,7 @@ def main():
 
         fraction_html11 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS1 Ratio:</span><br>
+                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS1 Sharpe Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">({avs1_net_yield_weight}% * ${avs1_net_yield:,.0f}) - ({avs1_expected_slash_weight}% * ${avs1_expected_slash:,.0f})</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -3153,7 +3153,7 @@ def main():
 
         fraction_html22 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS2 Ratio:</span><br>
+                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS2 Sharpe Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">({avs2_net_yield_weight}% * ${avs2_net_yield:,.0f}) - ({avs2_expected_slash_weight}% * ${avs2_expected_slash:,.0f})</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
@@ -3275,7 +3275,7 @@ def main():
 
         fraction_html33 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS3 Ratio:</span><br>
+                <span style="font-size: 20px; font-weight: bold;">In-Isolation AVS3 Sharpe Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">({avs3_net_yield_weight}% * ${avs3_net_yield:,.0f}) - ({avs3_expected_slash_weight}% * ${avs3_expected_slash:,.0f})</span><br>
                     <hr style="margin: 2px 0; width: 100%; border-top: 2px solid black;">
