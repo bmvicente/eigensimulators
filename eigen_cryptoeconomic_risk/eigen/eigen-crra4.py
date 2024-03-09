@@ -3403,6 +3403,14 @@ def main():
     st.write("\n")
 
 
+
+
+
+    st.subheader("**2.3 AVS Selection by LRT Protocol**")
+
+    st.write("\n")
+    st.write("\n")
+
     # Assuming the updated scenario with possible equal values among formatted_result1, formatted_result2, and formatted_result3.
     col97,col98 = st.columns(2, gap="large")
     with col97:
