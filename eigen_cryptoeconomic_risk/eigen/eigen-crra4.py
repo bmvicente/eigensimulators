@@ -3061,7 +3061,7 @@ def main():
 
         fraction_html111 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS1 Ratio:</span><br>
+                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS1 Sharpe Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio1:.2f} - ({avs1_comp_loss_weight}% * {avs_comp_vs_actual_slash_adj1:.2f}) - ({avs1_insurance_status_weight}% * {avs_insurance_adjustment1:.2f})</span><br>
                 </div>
@@ -3186,7 +3186,7 @@ def main():
 
         fraction_html222 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS2 Ratio:</span><br>
+                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS2 Sharpe Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio2:.2f} - ({avs2_comp_loss_weight}% * {avs_comp_vs_actual_slash_adj2:.2f}) - ({avs2_insurance_status_weight}% * {avs_insurance_adjustment2:.2f})</span><br>
                 </div>
@@ -3308,7 +3308,7 @@ def main():
 
         fraction_html333 = f"""
             <div style="text-align: center;">
-                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS3 Ratio:</span><br>
+                <span style="font-size: 20px; font-weight: bold;">Ecosystem-Aware AVS3 Sharpe Ratio:</span><br>
                 <div style="display: inline-block; vertical-align: middle; text-align: center;">
                     <span style="font-size: 21px; font-weight: bold;">{sharpe_ratio3:.2f} - ({avs3_comp_loss_weight}% * {avs_comp_vs_actual_slash_adj3:.2f}) - ({avs3_insurance_status_weight}% * {avs_insurance_adjustment3:.2f})</span><br>
                 </div>
