@@ -2078,7 +2078,7 @@ def main():
         staker_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * staker_percentage
         operator_reward1 = avs1_revenue * profit_percentage * reward_percentage_adj1 * operator_percentage
 
-        return staker_reward1, operator_reward1, dual_staking_adjustment1, ratio_tvl_totalstaked_adjustment1, reward_percentage_sum1, reward_percentage_adj1
+        return staker_reward1, operator_reward1, avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage
 
 
 
@@ -3060,7 +3060,7 @@ def main():
 
 
 
-    avs1_rewards_results = avs1_rewards(avs1_revenue, tvl1, dual_staking_adjustment1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
+    avs1_rewards_results = avs1_rewards(avs1_revenue, tvl1, pre_slash_total_restaked, avs1_token_percentage, xeth1_percentage)
 
 
     fig = go.Figure(go.Sankey(
