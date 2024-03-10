@@ -3908,12 +3908,12 @@ def main():
                 padding: 2px;
                 text-align: center;
                 background-color: white;">
-                <h2 style="color: black; font-size: 1.4em;">Aggregate AVS Staker Reward: <span style="font-size: 1.4em;">{agg_avs_operator_reward:.2f}%</span></h2>
-                <p style="color: black; font-size: 1em;">
+                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate AVS Staker Reward: <span style="font-size: 1.4em;">{agg_avs_operator_reward:.2f}%</span></h2>
+                <p style="color: black; font-size: 1em; line-height: 1.2;">
                     (AVS1 Operator Reward % + AVS2 Operator Reward % + AVS3 Operator Reward %)
                 </p>
             </div>
-            """,
+            """, 
             unsafe_allow_html=True
         )
 
