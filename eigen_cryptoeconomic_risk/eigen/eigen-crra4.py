@@ -2116,6 +2116,7 @@ def main():
 
         st.markdown(avs1_sr_html, unsafe_allow_html=True)
 
+        st.write("\n")
 
         st.markdown("""
                     <style>
@@ -2500,6 +2501,8 @@ def main():
 
         st.markdown(avs2_sr_html, unsafe_allow_html=True)
 
+        st.write("\n")
+
         st.markdown("""
                     <style>
                     .header-style {
@@ -2879,6 +2882,8 @@ def main():
         </div>"""
 
         st.markdown(avs3_sr_html, unsafe_allow_html=True)
+
+        st.write("\n")
 
         st.markdown("""
                     <style>
