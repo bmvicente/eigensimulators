@@ -86,7 +86,7 @@ def main():
     <br>
 
     2. **REWARD**
-        - 2.1 Staker/Operator Reward Distribution by AVS
+        - 2.1 Staker/Operator Reward Distributions by AVS
         - 2.2 AVS Weighted Sharpe Ratios
         - 2.3 AVS Selection Methodology by LRT Protocol
             - 2.3.1 AVS Sharpe Ratios Consideration
@@ -1948,7 +1948,7 @@ def main():
 
 
     st.header("**2. REWARD**")
-    st.subheader("**2.1 Staker/Operator Revenue Distributions**")
+    st.subheader("**2.1 Staker/Operator Reward Distributions by AVS**")
     
     st.write("\n")
 
@@ -3188,7 +3188,7 @@ def main():
 
 
 
-    st.subheader("**2.2 Sharpe Ratios**")
+    st.subheader("**2.2 AVS Weighted Sharpe Ratios**")
 
     st.write("\n")
     st.write("\n")
