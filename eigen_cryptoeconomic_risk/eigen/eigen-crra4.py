@@ -86,9 +86,11 @@ def main():
     <br>
 
     2. **REWARD**
-        - 2.1 Staker/Operator Reward Distribution
-        - 2.2 Sharpe Ratios
+        - 2.1 Staker/Operator Reward Distribution by AVS
+        - 2.2 AVS Weighted Sharpe Ratios
         - 2.3 AVS Selection Methodology by LRT Protocol
+            - 2.3.1 AVS Sharpe Ratios Consideration
+            - 2.3.2 $LRT APY for Stakers and Operators
         """, unsafe_allow_html=True)
 
 
