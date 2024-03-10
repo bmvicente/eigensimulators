@@ -2494,7 +2494,7 @@ def main():
             background-color: dodgerblue;
             padding: 10px;
             text-align: center;">
-            <span style="font-size: 22px; font-weight: bold;">
+            <span style="font-size: 20px; font-weight: bold;">
                 <span style="font-size: 24px;">AVS2</span>
             </span><br>
         </div>"""
@@ -2876,7 +2876,7 @@ def main():
             background-color: dodgerblue;
             padding: 10px;
             text-align: center;">
-            <span style="font-size: 22px; font-weight: bold;">
+            <span style="font-size: 20px; font-weight: bold;">
                 <span style="font-size: 24px;">AVS3</span>
             </span><br>
         </div>"""
