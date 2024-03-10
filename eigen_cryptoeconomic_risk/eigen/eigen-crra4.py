@@ -3989,6 +3989,8 @@ def main():
 
         st.write("\n")
         st.write("\n")
+        st.write("\n")
+        st.write("\n")
 
         st.markdown(
         """
@@ -4039,6 +4041,8 @@ def main():
             unsafe_allow_html=True
         )
         
+        st.write("\n")
+        st.write("\n")
         st.write("\n")
         st.write("\n")
         st.write("\n")
