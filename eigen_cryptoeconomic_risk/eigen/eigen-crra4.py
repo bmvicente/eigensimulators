@@ -3876,19 +3876,20 @@ def main():
         agg_avs_staker_reward = staker_reward1 + staker_reward2 + staker_reward3
 
         st.markdown(
-                f"""
-                <div style="
-                    border: 2px solid;
-                    border-radius: 5px;
-                    padding: 12px;
-                    text-align: center;
-                    margin: 10px 0;
-                    background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.4em;">Aggregate AVS Staker Reward: <span style="font-size: 1.5em;">{agg_avs_staker_reward:.2f}%</span></h2>
-                </div>
-                """, 
-                unsafe_allow_html=True
-            )
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 5px;
+                padding: 12px;
+                text-align: center;
+                margin: 10px 0;
+                background-color: white;">
+                <h2 style="color: black; margin:0; font-size: 1.4em;">Aggregate AVS Staker Reward: <span style="font-size: 1.5em;">{agg_avs_staker_reward:.2f}%</span></h2>
+                (AVS1 Staker Reward % + AVS2 Staker Reward % + AVS3 Staker Reward %)
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
     with col100:
 
@@ -3904,6 +3905,7 @@ def main():
                     margin: 10px 0;
                     background-color: white;">
                     <h2 style="color: black; margin:0; font-size: 1.4em;">Aggregate AVS Operator Reward: <span style="font-size: 1.5em;">{agg_avs_operator_reward:.2f}%</span></h2>
+                    (AVS1 Operator Reward % + AVS2 Operator Reward % + AVS3 Operator Reward %)
                 </div>
                 """, 
                 unsafe_allow_html=True
