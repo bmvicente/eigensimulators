@@ -91,6 +91,7 @@ def main():
         - 2.3 AVS Selection Methodology by LRT Protocol
             - 2.3.1 AVS Sharpe Ratios Consideration
             - 2.3.2 $LRT APY for Stakers and Operators
+            - 2.3.3 LRT Aggregate AVS Portfolio Sharpe Ratios
         """, unsafe_allow_html=True)
 
 
@@ -3995,7 +3996,7 @@ def main():
 
         st.markdown(
         """
-        <h3 style="margin-bottom: -0.25rem; margin-top: 0.5rem; font-size: 25px;">2.3.3 LRT AVS Portfolio Aggregate Sharpe Ratios</h3>
+        <h3 style="margin-bottom: -0.25rem; margin-top: 0.5rem; font-size: 25px;">2.3.3 LRT Aggregate AVS Portfolio Sharpe Ratios</h3>
         """, 
         unsafe_allow_html=True
         )
