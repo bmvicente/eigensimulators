@@ -3848,7 +3848,7 @@ def main():
     st.write("\n")
 
     st.markdown("""
-        <span style="font-size: 19px; font-weight: bold;">
+        <span style="font-size: 20px; font-weight: bold;">
             The standard Sharpe Ratio results represent the amount of net yield (after accounting for expected slashes)
             AVSs may earn going forward for each unit of risk, as measured by the standard deviation of those net yields
             over a previous time period.
@@ -3880,12 +3880,14 @@ def main():
             <div style="
                 border: 2px solid;
                 border-radius: 5px;
-                padding: 12px;
+                padding: 8px 12px;  /* Reduced top/bottom padding */
                 text-align: center;
-                margin: 10px 0;
+                margin: 5px 0;  /* Reduced top/bottom margin */
                 background-color: white;">
-                <h2 style="color: black; margin:0; font-size: 1.4em;">Aggregate AVS Staker Reward: <span style="font-size: 1.5em;">{agg_avs_staker_reward:.2f}%</span></h2>
-                (AVS1 Staker Reward % + AVS2 Staker Reward % + AVS3 Staker Reward %)
+                <h2 style="color: black; margin: 0; padding: 0; font-size: 1.4em; line-height: 1.4;">Aggregate AVS Staker Reward: <span style="font-size: 1.5em;">{agg_avs_staker_reward:.2f}%</span></h2>
+                <p style="color: black; margin: 4px 0; padding: 0; font-size: 1em; line-height: 1.2;">  /* Reduced margin and set line-height */
+                    (AVS1 Staker Reward % + AVS2 Staker Reward % + AVS3 Staker Reward %)
+                </p>
             </div>
             """, 
             unsafe_allow_html=True
