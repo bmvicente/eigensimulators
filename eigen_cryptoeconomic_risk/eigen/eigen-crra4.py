@@ -3881,7 +3881,7 @@ def main():
             <div style="
                 border: 2px solid;
                 border-radius: 5px;
-                padding: 7px;
+                padding: 5px;
                 text-align: center;
                 background-color: white;">
                 <h2 style="color: black; font-size: 1.4em;">Aggregate AVS Staker Reward: <span style="font-size: 1.45em;">{agg_avs_staker_reward:.2f}%</span></h2>
@@ -3903,7 +3903,7 @@ def main():
             <div style="
                 border: 2px solid;
                 border-radius: 5px;
-                padding: 7px;
+                padding: 5px;
                 text-align: center;
                 background-color: white;">
                 <h2 style="color: black; font-size: 1.4em;">Aggregate AVS Staker Reward: <span style="font-size: 1.45em;">{agg_avs_operator_reward:.2f}%</span></h2>
