@@ -3987,6 +3987,14 @@ def main():
             unsafe_allow_html=True
         )
         
+
+        st.markdown(
+        """
+        <h3 style="margin-bottom: -0.25rem; margin-top: 0.5rem; font-size: 25px;">2.3.3 LRT AVS Portfolio Aggregate Sharpe Ratios</h3>
+        """, 
+        unsafe_allow_html=True
+        )
+        
         st.write("\n")
 
         agg_sharpe_ratio = sharpe_ratio1 + sharpe_ratio2 + sharpe_ratio3
