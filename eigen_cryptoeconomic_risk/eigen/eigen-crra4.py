@@ -2607,11 +2607,11 @@ def main():
         col3, col4 = st.columns([3, 3])
 
         with col3:
-                avs2_circ_supply = st.number_input("**$AVS2 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, help="Circulating Supply should never exceed Total Supply", key="avs2_circ")
+                avs2_circ_supply = st.number_input("**$AVS2 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, disabled=True, step=1000000, help="Circulating Supply should never exceed Total Supply", key="avs2_circ")
                 st.write(f"&#8226; Circulating Supply: {avs2_circ_supply:,}")
 
         with col4:
-                avs2_total_supply = st.number_input("**$AVS2 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, key="avs2_total")
+                avs2_total_supply = st.number_input("**$AVS2 Total Supply**", min_value=0, max_value=1000000000000, value=0, disabled=True, step=1000000, key="avs2_total")
                 st.write(f"&#8226; Total Supply: {avs2_total_supply:,}")
 
 
@@ -2990,11 +2990,11 @@ def main():
         col3, col4 = st.columns([3, 3])
 
         with col3:
-                avs3_circ_supply = st.number_input("**$AVS3 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, disabled=True, step=1000000, disabled=True, help="Circulating Supply should never exceed Total Supply", key="avs3_circ")
+                avs3_circ_supply = st.number_input("**$AVS3 Circulating Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, disabled=True, help="Circulating Supply should never exceed Total Supply", key="avs3_circ")
                 st.write(f"&#8226; Circulating Supply: {avs3_circ_supply:,}")
 
         with col4:
-                avs3_total_supply = st.number_input("**$AVS3 Total Supply**", min_value=0, max_value=1000000000000, value=0, disabled=True, step=1000000, disabled=True, key="avs3_total")
+                avs3_total_supply = st.number_input("**$AVS3 Total Supply**", min_value=0, max_value=1000000000000, value=0, step=1000000, disabled=True, key="avs3_total")
                 st.write(f"&#8226; Total Supply: {avs3_total_supply:,}")
 
 
