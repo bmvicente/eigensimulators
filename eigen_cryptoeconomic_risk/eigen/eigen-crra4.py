@@ -3960,7 +3960,7 @@ def main():
                 border-radius: 5px;
                 padding: 2px;
                 text-align: center;
-                background-color: white;">
+                background-color: lightgreen;">
                 <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate AVS Portfolio Staker Reward: <span style="font-size: 1.4em;">{agg_avs_staker_reward:.2f}%</span></h2>
                 <p style="color: black; font-size: 1em; line-height: 1.2;">
                     (AVS1 Staker Reward % + AVS2 Staker Reward % + AVS3 Staker Reward %)
@@ -3982,7 +3982,7 @@ def main():
                 border-radius: 5px;
                 padding: 2px;
                 text-align: center;
-                background-color: white;">
+                background-color: lightgreen;">
                 <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate AVS Portfolio Operator Reward: <span style="font-size: 1.4em;">{agg_avs_operator_reward:.2f}%</span></h2>
                 <p style="color: black; font-size: 1em; line-height: 1.2;">
                     (AVS1 Operator Reward % + AVS2 Operator Reward % + AVS3 Operator Reward %)
