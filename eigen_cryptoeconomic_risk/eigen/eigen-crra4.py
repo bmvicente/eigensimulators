@@ -3696,6 +3696,13 @@ def main():
 
     st.subheader("**2.3 AVS Selection Methodology by LRT Protocol**")
 
+    st.markdown(
+        """
+        <h3 style="margin-bottom: -0.25rem; margin-top: 0.5rem;">2.3.1 AVS Sharpe Ratios Consideration</h3>
+        """, 
+        unsafe_allow_html=True
+    )
+
     st.write("\n")
     st.write("\n")
 
