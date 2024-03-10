@@ -3986,7 +3986,9 @@ def main():
             """, 
             unsafe_allow_html=True
         )
-        
+
+        st.write("\n")
+        st.write("\n")
 
         st.markdown(
         """
@@ -4037,6 +4039,9 @@ def main():
             unsafe_allow_html=True
         )
         
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
         st.write("\n")
 
         agg_eco_sharpe_ratio = eco_sharpe_ratio1 + eco_sharpe_ratio2 + eco_sharpe_ratio3
