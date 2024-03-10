@@ -3999,7 +3999,7 @@ def main():
                 padding: 2px;
                 text-align: center;
                 background-color: white;">
-                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate <i>In-Isolation</i> AVS Sharpe Ratio: <span style="font-size: 1.4em;">{agg_sharpe_ratio:.2f}</span></h2>
+                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate AVS Portfolio <i>In-Isolation</i> Sharpe Ratio: <span style="font-size: 1.4em;">{agg_sharpe_ratio:.2f}</span></h2>
                 <p style="color: black; font-size: 1em; line-height: 1.2;">
                     (In-Isolation AVS1 Sharpe Ratio + In-Isolation AVS2 Sharpe Ratio + In-Isolation AVS3 Sharpe Ratio)
                 </p>
@@ -4041,7 +4041,7 @@ def main():
                 padding: 2px;
                 text-align: center;
                 background-color: white;">
-                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate <i>Ecosystem-Aware</i> AVS Sharpe Ratio: <span style="font-size: 1.4em;">{agg_eco_sharpe_ratio:.2f}</span></h2>
+                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate AVS Portfolio <i>Ecosystem-Aware</i> Sharpe Ratio: <span style="font-size: 1.4em;">{agg_eco_sharpe_ratio:.2f}</span></h2>
                 <p style="color: black; font-size: 1em; line-height: 1.2;">
                     (Ecosystem-Aware AVS1 Sharpe Ratio + Ecosystem-Aware AVS2 Sharpe Ratio + Ecosystem-Aware AVS3 Sharpe Ratio)
                 </p>
