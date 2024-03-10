@@ -3318,7 +3318,7 @@ def main():
         st.markdown(
             f"""
             <div style="
-                border: 2px solid;
+                border: 1px solid;
                 border-radius: 5px;
                 padding: 16px;
                 text-align: center;
@@ -3467,7 +3467,7 @@ def main():
         st.markdown(
             f"""
             <div style="
-                border: 2px solid;
+                border: 1px solid;
                 border-radius: 5px;
                 padding: 16px;
                 text-align: center;
@@ -3617,7 +3617,7 @@ def main():
         st.markdown(
             f"""
             <div style="
-                border: 2px solid;
+                border: 1px solid;
                 border-radius: 5px;
                 padding: 16px;
                 text-align: center;
