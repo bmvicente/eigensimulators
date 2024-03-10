@@ -2100,6 +2100,8 @@ def main():
 
     with col63:
 
+        st.write("\n")
+
         avs1_sr_html = f"""
         <div style="text-align: center;">
         <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS1</span><br>
@@ -2473,6 +2475,7 @@ def main():
 
 
     with col64:
+        st.write("\n")
 
         avs2_sr_html = f"""
         <div style="text-align: center;">
@@ -2844,6 +2847,7 @@ def main():
 
 
     with col65:
+        st.write("\n")
 
         avs3_sr_html = f"""
         <div style="text-align: center;">
