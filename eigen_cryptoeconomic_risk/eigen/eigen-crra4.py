@@ -4004,7 +4004,7 @@ def main():
 
         st.markdown("""
             <span style="font-size: 19px;">
-                    If the LRT were to select all 3 AVSs for its portfolio, the Aggregate Sharpe Ratios for its AVS Portfolio would look like:
+                    If the LRT were to select all 3 AVSs for its portfolio, the Aggregate AVS Sharpe Ratios would look like:
             </span>
             """, unsafe_allow_html=True)
         
@@ -4064,6 +4064,7 @@ def main():
             unsafe_allow_html=True
         )
         
+        st.write("\n")
         st.write("\n")
 
         agg_eco_sharpe_ratio = eco_sharpe_ratio1 + eco_sharpe_ratio2 + eco_sharpe_ratio3
