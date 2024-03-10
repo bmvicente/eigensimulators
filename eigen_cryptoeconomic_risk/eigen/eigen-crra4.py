@@ -3876,7 +3876,7 @@ def main():
 
     with col99:
         
-        agg_avs_staker_reward = staker_reward1 + staker_reward2 + staker_reward3
+        agg_avs_staker_reward = staker_reward1_percentage + staker_reward2_percentage + staker_reward3_percentage
 
         st.markdown(
             f"""
@@ -3898,7 +3898,7 @@ def main():
 
     with col100:
 
-        agg_avs_operator_reward = operator_reward1 + operator_reward2 + operator_reward3
+        agg_avs_operator_reward = operator_reward1_percentage + operator_reward2_percentage + operator_reward3_percentage
 
         st.markdown(
             f"""
