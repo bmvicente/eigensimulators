@@ -2251,7 +2251,7 @@ def main():
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 20px;
+                    padding: 10px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
@@ -2982,7 +2982,7 @@ def main():
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 20px;
+                    padding: 10px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
