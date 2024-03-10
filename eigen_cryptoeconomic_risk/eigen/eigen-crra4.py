@@ -3849,9 +3849,12 @@ def main():
     st.write("\n")
 
     st.markdown("""
-    **The standard Sharpe Ratio results represent the amount of net yield (after accounting for expected slashes) AVSs may earn going forward for each unit of risk, as measured by the standard deviation of those net yields over a previous time period.**     
-                    """, unsafe_allow_html=False)
-    
+        <span style="font-size: 18px; font-weight: bold;">
+            The standard Sharpe Ratio results represent the amount of net yield (after accounting for expected slashes)
+            AVSs may earn going forward for each unit of risk, as measured by the standard deviation of those net yields
+            over a previous time period.
+        </span>
+        """, unsafe_allow_html=True)
 
 
     st.write("\n")
