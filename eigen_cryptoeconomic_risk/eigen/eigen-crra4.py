@@ -2226,8 +2226,6 @@ def main():
                 #st.write(f"&#8226; Total Supply: {avs1_total_supply:,}")
 
 
-
-        st.write("\n")
         st.write("  \n")
         st.write("  \n")
 
@@ -2615,9 +2613,6 @@ def main():
                 #st.write(f"&#8226; Total Supply: {avs2_total_supply:,}")
 
 
-
-
-        st.write("\n")
         st.write("  \n")
         st.write("\n")
 
@@ -2998,8 +2993,6 @@ def main():
                 #st.write(f"&#8226; Total Supply: {avs3_total_supply:,}")
 
 
-
-        st.write("\n")
         st.write("  \n")
         st.write("\n")
 
