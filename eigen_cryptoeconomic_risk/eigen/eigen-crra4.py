@@ -2110,7 +2110,7 @@ def main():
             padding: 10px;
             text-align: center;">
             <span style="font-size: 20px; font-weight: bold;">
-                <span style="font-size: 24px;">AVS1</span>
+                <span style="font-size: 22px;">AVS1</span>
             </span><br>
         </div>"""
 
@@ -2494,7 +2494,7 @@ def main():
             padding: 10px;
             text-align: center;">
             <span style="font-size: 20px; font-weight: bold;">
-                <span style="font-size: 24px;">AVS2</span>
+                <span style="font-size: 22px;">AVS2</span>
             </span><br>
         </div>"""
 
@@ -2874,7 +2874,7 @@ def main():
             padding: 10px;
             text-align: center;">
             <span style="font-size: 20px; font-weight: bold;">
-                <span style="font-size: 24px;">AVS3</span>
+                <span style="font-size: 22px;">AVS3</span>
             </span><br>
         </div>"""
 
@@ -3299,12 +3299,19 @@ def main():
 
         avs1_net_yield = avs1_revenue * profit_percentage - staker_reward1 - operator_reward1
 
-        fraction_html1 = f"""
-        <div style="text-align: center;">
-        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS1</span> Sharpe Ratios</span><br>
+        avs1_sr_htmla = f"""
+        <div style="
+            border: 2px solid;
+            border-radius: 5px;
+            background-color: dodgerblue;
+            padding: 10px;
+            text-align: center;">
+            <span style="font-size: 20px; font-weight: bold;">
+                <span style="font-size: 22px;">AVS1 Sharpe Ratios</span>
+            </span><br>
         </div>"""
 
-        st.markdown(fraction_html1, unsafe_allow_html=True)
+        st.markdown(avs1_sr_htmla, unsafe_allow_html=True)
         
         st.write("\n")
 
@@ -3441,12 +3448,19 @@ def main():
         
         avs2_net_yield = avs2_revenue * profit_percentage - staker_reward2 - operator_reward2
 
-        fraction_html2 = f"""
-        <div style="text-align: center;">
-        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS2</span> Sharpe Ratios</span><br>
+        avs2_sr_htmla = f"""
+        <div style="
+            border: 2px solid;
+            border-radius: 5px;
+            background-color: dodgerblue;
+            padding: 10px;
+            text-align: center;">
+            <span style="font-size: 20px; font-weight: bold;">
+                <span style="font-size: 22px;">AVS2 Sharpe Ratios</span>
+            </span><br>
         </div>"""
 
-        st.markdown(fraction_html2, unsafe_allow_html=True)
+        st.markdown(avs2_sr_htmla, unsafe_allow_html=True)
         
         st.write("\n")
 
@@ -3584,12 +3598,19 @@ def main():
 
         avs3_net_yield = avs3_revenue * profit_percentage - staker_reward3 - operator_reward3
 
-        fraction_html3 = f"""
-        <div style="text-align: center;">
-        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS3</span> Sharpe Ratios</span><br>
+        avs3_sr_htmla = f"""
+        <div style="
+            border: 2px solid;
+            border-radius: 5px;
+            background-color: dodgerblue;
+            padding: 10px;
+            text-align: center;">
+            <span style="font-size: 20px; font-weight: bold;">
+                <span style="font-size: 22px;">AVS3 Sharpe Ratios</span>
+            </span><br>
         </div>"""
 
-        st.markdown(fraction_html3, unsafe_allow_html=True)
+        st.markdown(avs3_sr_htmla, unsafe_allow_html=True)
         
         st.write("\n")
 
