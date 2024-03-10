@@ -3930,7 +3930,6 @@ def main():
 
     st.write("\n")
     st.write("\n")
-    st.write("\n")
 
     st.markdown("""
         <span style="font-size: 20px; font-weight: bold;">
