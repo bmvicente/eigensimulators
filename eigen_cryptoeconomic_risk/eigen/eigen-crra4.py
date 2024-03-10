@@ -4001,7 +4001,6 @@ def main():
         )
         
         st.write("\n")
-        st.write("\n")
 
         st.markdown("""
             <span style="font-size: 19px;">
@@ -4009,6 +4008,8 @@ def main():
             </span>
             """, unsafe_allow_html=True)
         
+        st.write("\n")
+
         agg_sharpe_ratio = sharpe_ratio1 + sharpe_ratio2 + sharpe_ratio3
 
         st.markdown(
@@ -4063,6 +4064,8 @@ def main():
             unsafe_allow_html=True
         )
         
+        st.write("\n")
+
         agg_eco_sharpe_ratio = eco_sharpe_ratio1 + eco_sharpe_ratio2 + eco_sharpe_ratio3
 
         st.markdown(
