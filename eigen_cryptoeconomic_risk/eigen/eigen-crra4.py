@@ -3865,7 +3865,7 @@ def main():
 
     st.markdown("""
         <span style="font-size: 19px;">
-                If the LRT were to select all 3 AVSs for its portfolio, the $LRT APY percentage composition (excluding L1 and EigenLayer Restaking fees[+~10%]) would look like the below values for both Stakers and Operators:
+                If the LRT were to select all 3 AVSs for its portfolio, the $LRT APY percentage composition (excluding L1 and EigenLayer Restaking fees [+~10%]) would look like the below values for both Stakers and Operators:
         </span>
         """, unsafe_allow_html=True)
     
