@@ -3698,7 +3698,7 @@ def main():
 
     st.markdown(
         """
-        <h3 style="margin-bottom: -0.25rem; margin-top: 0.5rem; font-size: 25px;">2.3.1 AVS Sharpe Ratios Consideration</h3>
+        <h3 style="margin-bottom: -0.25rem; margin-top: 0.5rem; font-size: 27px;">2.3.1 AVS Sharpe Ratios Consideration</h3>
         """, 
         unsafe_allow_html=True
     )
