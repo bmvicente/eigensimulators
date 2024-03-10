@@ -3880,7 +3880,7 @@ def main():
             <div style="
                 border: 2px solid;
                 border-radius: 5px;
-                padding: 8px 12px;  /* Reduced top/bottom padding */
+                padding: 12px 12px;  /* Reduced top/bottom padding */
                 text-align: center;
                 margin: 5px 0;  /* Reduced top/bottom margin */
                 background-color: white;">
