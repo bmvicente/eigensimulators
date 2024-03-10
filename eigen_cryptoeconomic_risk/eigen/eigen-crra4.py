@@ -3860,6 +3860,8 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
+    st.write("\n")
 
     st.markdown("""
         <span style="font-size: 19px;">
@@ -3884,8 +3886,8 @@ def main():
                 padding: 2px;
                 text-align: center;
                 background-color: white;">
-                <h2 style="color: black; font-size: 1.4em;">Aggregate AVS Staker Reward: <span style="font-size: 1.4em;">{agg_avs_staker_reward:.2f}%</span></h2>
-                <p style="color: black; font-size: 1em;">
+                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate AVS Staker Reward: <span style="font-size: 1.4em;">{agg_avs_staker_reward:.2f}%</span></h2>
+                <p style="color: black; font-size: 1em; line-height: 1.2;">
                     (AVS1 Staker Reward % + AVS2 Staker Reward % + AVS3 Staker Reward %)
                 </p>
             </div>
