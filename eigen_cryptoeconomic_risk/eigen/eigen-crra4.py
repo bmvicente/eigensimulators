@@ -2099,15 +2099,23 @@ def main():
 
 
     with col63:
-
+        st.write("\n")
         st.write("\n")
 
         avs1_sr_html = f"""
-        <div style="text-align: center;">
-        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS1</span><br>
+        <div style="
+            border: 2px solid;
+            border-radius: 5px;
+            background-color: lightblue;
+            padding: 10px;
+            text-align: center;">
+            <span style="font-size: 22px; font-weight: bold;">
+                <span style="font-size: 24px;">AVS1</span>
+            </span><br>
         </div>"""
 
         st.markdown(avs1_sr_html, unsafe_allow_html=True)
+
 
         st.markdown("""
                     <style>
@@ -2475,6 +2483,7 @@ def main():
 
 
     with col64:
+        st.write("\n")
         st.write("\n")
 
         avs2_sr_html = f"""
@@ -2847,6 +2856,7 @@ def main():
 
 
     with col65:
+        st.write("\n")
         st.write("\n")
 
         avs3_sr_html = f"""
