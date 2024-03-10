@@ -3885,7 +3885,7 @@ def main():
                 margin: 5px 0;  /* Reduced top/bottom margin */
                 background-color: white;">
                 <h2 style="color: black; margin: 0; padding: 0; font-size: 1.4em; line-height: 1.4;">Aggregate AVS Staker Reward: <span style="font-size: 1.5em;">{agg_avs_staker_reward:.2f}%</span></h2>
-                <p style="color: black; margin: 4px 0; padding: 0; font-size: 1em; line-height: 1.2;">  /* Reduced margin and set line-height */
+                <p style="color: black; margin: 4px 0; padding: 0; font-size: 1em; line-height: 1.2;">
                     (AVS1 Staker Reward % + AVS2 Staker Reward % + AVS3 Staker Reward %)
                 </p>
             </div>
