@@ -1990,7 +1990,7 @@ def main():
         font-weight:bold;
     }
     </style>
-    <div class='big-font'>AVSs METRICS</div>
+    <div class='big-font'>AVS METRICS</div>
     """, unsafe_allow_html=True)
 
 
@@ -2099,7 +2099,14 @@ def main():
 
 
     with col63:
-         
+
+        avs1_sr_html = f"""
+        <div style="text-align: center;">
+        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS1</span><br>
+        </div>"""
+
+        st.markdown(avs1_sr_html, unsafe_allow_html=True)
+
         st.markdown("""
                     <style>
                     .header-style {
@@ -2466,7 +2473,14 @@ def main():
 
 
     with col64:
-         
+
+        avs2_sr_html = f"""
+        <div style="text-align: center;">
+        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS2</span><br>
+        </div>"""
+
+        st.markdown(avs2_sr_html, unsafe_allow_html=True)
+
         st.markdown("""
                     <style>
                     .header-style {
@@ -2830,6 +2844,13 @@ def main():
 
 
     with col65:
+
+        avs3_sr_html = f"""
+        <div style="text-align: center;">
+        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS3</span><br>
+        </div>"""
+
+        st.markdown(avs3_sr_html, unsafe_allow_html=True)
 
         st.markdown("""
                     <style>
