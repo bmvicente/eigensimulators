@@ -3846,7 +3846,6 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
-    st.write("\n")
 
     st.markdown("""
         <span style="font-size: 19px; font-weight: bold;">
@@ -3860,12 +3859,15 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
 
     st.markdown("""
         <span style="font-size: 19px;">
                 If the LRT were to select all 3 AVSs the LRT APY percentage composition (excluding L1 fees) would look like the below for both Stakers and Operators:
         </span>
         """, unsafe_allow_html=True)
+    
+    st.write("\n")
 
     col99, col100 = st.columns(2, gap="medium")
 
