@@ -2487,8 +2487,15 @@ def main():
         st.write("\n")
 
         avs2_sr_html = f"""
-        <div style="text-align: center;">
-        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS2</span><br>
+        <div style="
+            border: 2px solid;
+            border-radius: 5px;
+            background-color: dodgerblue;
+            padding: 10px;
+            text-align: center;">
+            <span style="font-size: 22px; font-weight: bold;">
+                <span style="font-size: 24px;">AVS2</span>
+            </span><br>
         </div>"""
 
         st.markdown(avs2_sr_html, unsafe_allow_html=True)
@@ -2860,8 +2867,15 @@ def main():
         st.write("\n")
 
         avs3_sr_html = f"""
-        <div style="text-align: center;">
-        <span style="font-size: 22px; font-weight: bold;"> <span style="font-size: 24px;">AVS3</span><br>
+        <div style="
+            border: 2px solid;
+            border-radius: 5px;
+            background-color: dodgerblue;
+            padding: 10px;
+            text-align: center;">
+            <span style="font-size: 22px; font-weight: bold;">
+                <span style="font-size: 24px;">AVS3</span>
+            </span><br>
         </div>"""
 
         st.markdown(avs3_sr_html, unsafe_allow_html=True)
