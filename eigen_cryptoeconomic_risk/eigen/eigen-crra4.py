@@ -4001,7 +4001,14 @@ def main():
         )
         
         st.write("\n")
+        st.write("\n")
 
+        st.markdown("""
+            <span style="font-size: 19px;">
+                    If the LRT were to select all 3 AVSs for its portfolio, the Aggregate Sharpe Ratios for its AVS Portfolio would look like:
+            </span>
+            """, unsafe_allow_html=True)
+        
         agg_sharpe_ratio = sharpe_ratio1 + sharpe_ratio2 + sharpe_ratio3
 
         st.markdown(
