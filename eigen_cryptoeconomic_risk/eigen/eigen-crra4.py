@@ -3902,16 +3902,15 @@ def main():
             <div style="
                 border: 2px solid;
                 border-radius: 5px;
-                padding: 12px 12px;  /* Reduced top/bottom padding */
+                padding: 12px;
                 text-align: center;
-                margin: 5px 0;  /* Reduced top/bottom margin */
                 background-color: white;">
-                <h2 style="color: black; margin: 0; padding: 0; font-size: 1.4em; line-height: 1.4;">Aggregate AVS Staker Reward: <span style="font-size: 1.45em;">{agg_avs_operator_reward:.2f}%</span></h2>
-                <p style="color: black; margin: 4px 0; padding: 0; font-size: 1em; line-height: 1.2;">
+                <h2 style="color: black; font-size: 1.4em;">Aggregate AVS Staker Reward: <span style="font-size: 1.45em;">{agg_avs_operator_reward:.2f}%</span></h2>
+                <p style="color: black; font-size: 1em;">
                     (AVS1 Operator Reward % + AVS2 Operator Reward % + AVS3 Operator Reward %)
                 </p>
             </div>
-            """, 
+            """,
             unsafe_allow_html=True
         )
 
