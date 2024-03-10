@@ -3858,7 +3858,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    col99, col100 = st.columns(2, gap="large")
+    col99, col100 = st.columns(2, gap="medium")
 
     with col99:
         
@@ -3869,11 +3869,11 @@ def main():
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 10px;
+                    padding: 12px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">Aggregate AVS Staker Reward: <span style="font-size: 1.3em;">{agg_avs_staker_reward:.2f}%</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.4em;">Aggregate AVS Staker Reward: <span style="font-size: 1.5em;">{agg_avs_staker_reward:.2f}%</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
@@ -3888,11 +3888,11 @@ def main():
                 <div style="
                     border: 2px solid;
                     border-radius: 5px;
-                    padding: 20px;
+                    padding: 12px;
                     text-align: center;
                     margin: 10px 0;
                     background-color: white;">
-                    <h2 style="color: black; margin:0; font-size: 1.2em;">Aggregate AVS Operator Reward: <span style="font-size: 1.3em;">{agg_avs_operator_reward:.2f}%</span></h2>
+                    <h2 style="color: black; margin:0; font-size: 1.4em;">Aggregate AVS Operator Reward: <span style="font-size: 1.5em;">{agg_avs_operator_reward:.2f}%</span></h2>
                 </div>
                 """, 
                 unsafe_allow_html=True
