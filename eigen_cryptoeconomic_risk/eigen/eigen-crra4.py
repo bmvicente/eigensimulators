@@ -3863,6 +3863,16 @@ def main():
     st.write("\n")
     st.write("\n")
 
+
+        
+    st.markdown("""
+            <div style='font-size: 22px; font-weight: bold;'>
+                $LRT APY FOR STAKERS AND OPERATORS
+            </div>
+            """, unsafe_allow_html=True)
+
+    st.write("\n")
+
     st.markdown("""
         <span style="font-size: 19px;">
                 If the LRT were to select all 3 AVSs for its portfolio, the $LRT APY percentage composition (excluding L1 and EigenLayer Restaking fees [+~10%]) would look like the below values for both Stakers and Operators:
