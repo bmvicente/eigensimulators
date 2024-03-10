@@ -2115,7 +2115,7 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS1</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS1 Revenue</p>', unsafe_allow_html=True)
 
         st.write("\n")
 
@@ -2482,7 +2482,7 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS2</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS2 Revenue</p>', unsafe_allow_html=True)
 
         st.write("\n")
 
@@ -2846,7 +2846,7 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-        st.markdown('<p class="header-style">AVS3</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS3 Revenue</p>', unsafe_allow_html=True)
 
         st.write("\n")
 
