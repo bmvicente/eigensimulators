@@ -4041,11 +4041,13 @@ def main():
         
         st.write("\n")
         st.write("\n")
-        st.write("\n")
-        st.write("\n")
-        st.write("\n")
-        st.write("\n")
-        st.write("\n")
+
+        st.markdown(
+        """
+        <h3 style="margin-bottom: -0.25rem; margin-top: 0.5rem; font-size: 25px;"></h3>
+        """, 
+        unsafe_allow_html=True
+        )
         
         agg_eco_sharpe_ratio = eco_sharpe_ratio1 + eco_sharpe_ratio2 + eco_sharpe_ratio3
 
