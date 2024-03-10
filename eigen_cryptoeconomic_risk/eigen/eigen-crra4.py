@@ -2106,7 +2106,7 @@ def main():
         <div style="
             border: 2px solid;
             border-radius: 5px;
-            background-color: skyblue;
+            background-color: cornflowerblue;
             padding: 10px;
             text-align: center;">
             <span style="font-size: 22px; font-weight: bold;">
