@@ -3986,7 +3986,27 @@ def main():
             """, 
             unsafe_allow_html=True
         )
+        
+        st.write("\n")
 
+        agg_sharpe_ratio = sharpe_ratio1 + sharpe_ratio2 + sharpe_ratio3
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 5px;
+                padding: 2px;
+                text-align: center;
+                background-color: white;">
+                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate In-Isolation AVS Sharpe Ratio: <span style="font-size: 1.4em;">{agg_sharpe_ratio:.2f}%</span></h2>
+                <p style="color: black; font-size: 1em; line-height: 1.2;">
+                    (In-Isolation AVS1 Sharpe Ratio + In-Isolation AVS2 Sharpe Ratio + In-Isolation AVS3 Sharpe Ratio)
+                </p>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
     with col100:
 
@@ -4008,7 +4028,27 @@ def main():
             """, 
             unsafe_allow_html=True
         )
+        
+        st.write("\n")
 
+        agg_eco_sharpe_ratio = eco_sharpe_ratio1 + eco_sharpe_ratio2 + eco_sharpe_ratio3
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 2px solid;
+                border-radius: 5px;
+                padding: 2px;
+                text-align: center;
+                background-color: white;">
+                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate Ecosystem-Aware AVS Sharpe Ratio: <span style="font-size: 1.4em;">{agg_eco_sharpe_ratio:.2f}%</span></h2>
+                <p style="color: black; font-size: 1em; line-height: 1.2;">
+                    (Ecosystem-Aware AVS1 Sharpe Ratio + Ecosystem-Aware AVS2 Sharpe Ratio + Ecosystem-Aware AVS3 Sharpe Ratio)
+                </p>
+            </div>
+            """, 
+            unsafe_allow_html=True
+        )
 
     st.write("\n")
     st.write("\n")
