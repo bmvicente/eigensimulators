@@ -3865,7 +3865,7 @@ def main():
 
     st.markdown("""
         <span style="font-size: 19px;">
-                If the LRT were to select all 3 AVSs, the $LRT APY percentage composition (excluding L1 fees) would look like the below values for both Stakers and Operators:
+                If the LRT were to select all 3 AVSs for its portfolio, the $LRT APY percentage composition (excluding L1 fees) would look like the below values for both Stakers and Operators:
         </span>
         """, unsafe_allow_html=True)
     
@@ -3908,7 +3908,7 @@ def main():
                 padding: 2px;
                 text-align: center;
                 background-color: white;">
-                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate AVS Staker Reward: <span style="font-size: 1.4em;">{agg_avs_operator_reward:.2f}%</span></h2>
+                <h2 style="color: black; font-size: 1.4em; line-height: 1.2;">Aggregate AVS Operator Reward: <span style="font-size: 1.4em;">{agg_avs_operator_reward:.2f}%</span></h2>
                 <p style="color: black; font-size: 1em; line-height: 1.2;">
                     (AVS1 Operator Reward % + AVS2 Operator Reward % + AVS3 Operator Reward %)
                 </p>
