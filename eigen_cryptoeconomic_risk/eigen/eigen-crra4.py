@@ -1962,20 +1962,20 @@ def main():
     Operator Reward is naturally being given greater weight than the Staker Reward due to their paramount role in validating modules crucial to the well-function of an AVS. We've assigned 60% of distributable rewards to Operators and 40% to Stakers and Restakers.
 
     The $AVS’s Tokenomics (while not included in the reward calculation) were deemed useful to include since they provide a look-ahead perspective of how the native AVS token can influence future rewards. A potential for improved rewards to be emitted in the future exists if a relatively small delta between circulating and total supply and a deflationary token rate exist. Whereas a larger delta and an inflationary token rate indicate the potential for lower rewards to be emitted in the future. An important factor that should help AVS developers determine the $AVS minting rate is that of rewarding operators for their capital costs.
-
-                    
-
-                    An **AVS's Revenue**, at any given time, is a useful indicator to help assess the level of rewards an AVS might be able to emit. From the revenue inputted by the user, we assume a 20% profit for the AVS, and [10-30]% of that profit to be distributable as rewards (specific value of this range dependent on weighting of all the chosen inputs in our Simulator).
-
-                    - Current AVS Revenue: **\${avs_revenue:,}**
-
-                    - Total Distributable Reward Amount, if rewards = *10%* of profit: **\${dist_rewards_10:,}**
-
-                    - Total Distributable Reward Amount, if rewards = *30%* of profit: **\${dist_rewards_30:,}**
-
-                    Such a reward range is necessary to be calculated to account for the underlying riskiness/security of an AVS and subsequent reward emission values. 
-                    We find these percentages reasonable, although would highly appreciate feedback from EigenLayer.
                     """)
+
+
+
+    # An **AVS's Revenue**, at any given time, is a useful indicator to help assess the level of rewards an AVS might be able to emit. From the revenue inputted by the user, we assume a 20% profit for the AVS, and [10-30]% of that profit to be distributable as rewards (specific value of this range dependent on weighting of all the chosen inputs in our Simulator).
+
+    #- Current AVS Revenue: **\${avs_revenue:,}**
+
+    #- Total Distributable Reward Amount, if rewards = *10%* of profit: **\${dist_rewards_10:,}**
+
+    #- Total Distributable Reward Amount, if rewards = *30%* of profit: **\${dist_rewards_30:,}**
+
+    #Such a reward range is necessary to be calculated to account for the underlying riskiness/security of an AVS and subsequent reward emission values. 
+    #We find these percentages reasonable, although would highly appreciate feedback from EigenLayer.
 
 
   
