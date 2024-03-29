@@ -25,19 +25,7 @@ def main():
     st.title("Renzo: AVS Portfolio Risk")
 
     st.write("\n" * 4)
-
-
-    if st.session_state.risk_score >= 7.50:
-            color = "#d32f2f"  # Red color for high risk
-            background_color = "#fde0dc"  # Light red background
-    elif st.session_state.risk_score <= 2.50:
-            color = "#388e3c"  # Green color for low risk
-            background_color = "#ebf5eb"  # Light green background
-    else:
-            color = "black"  # Black color for medium risk
-            background_color = "#ffffff"  # White background
-
-
+    
 
     col1, col2, col3 = st.columns(3, gap="medium")
 
