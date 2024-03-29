@@ -25,14 +25,13 @@ def main():
     st.title("Renzo: AVS Portfolio Risk")
 
     st.write("\n" * 4)
-    
+
 
     col1, col2, col3 = st.columns(3, gap="medium")
 
     with col1:
         avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Medium", "High"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avs1_category_key")
 
-        # Assign color based on selection
         if avs_code_comp == "High":
             background_color = "red"
         elif avs_code_comp == "Medium":
@@ -43,13 +42,13 @@ def main():
         st.markdown(
             f"""
             <div style="
-                border: 2px solid {color};
+                border: 2px solid;
                 border-radius: 5px;
                 padding: 10px;
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
-                <h2 style="color: {color}; margin:0; font-size: 1.4em;">**AVS Code Complexity**: <span style="font-size: 1.5em;">{avs_code_comp}</span></h2>
+                <h2 margin:0; font-size: 1.4em;">**AVS Code Complexity**: <span style="font-size: 1.5em;">{avs_code_comp}</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
@@ -70,13 +69,13 @@ def main():
         st.markdown(
         f"""
         <div style="
-            border: 2px solid {color};
+            border: 2px solid;
             border-radius: 5px;
             padding: 10px;
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Reputation**: <span style="font-size: 1.5em; color: {color};">{avs_op_rep:.0f}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Reputation**: <span style="font-size: 1.5em;">{avs_op_rep:.0f}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
@@ -96,13 +95,13 @@ def main():
         st.markdown(
         f"""
         <div style="
-            border: 2px solid {color};
+            border: 2px solid;
             border-radius: 5px;
             padding: 10px;
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Geographical Distribution**: <span style="font-size: 1.5em; color: {color};">{avs_op_geo:.0f}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Geographical Distribution**: <span style="font-size: 1.5em;">{avs_op_geo:.0f}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
