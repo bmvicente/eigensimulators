@@ -30,7 +30,7 @@ def main():
     col1, col2, col3 = st.columns(3, gap="medium")
 
     with col1:
-        avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Medium", "High"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avs1_category_key")
+        avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Medium", "High"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey1")
 
         if avs_code_comp == "High":
             background_color = "red"
@@ -56,7 +56,7 @@ def main():
 
 
     with col2:
-        avs_op_rep = st.selectbox("**AVS Operator Reputation**", ["High", "Medium", "Low"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avs1_category_key")
+        avs_op_rep = st.selectbox("**AVS Operator Reputation**", ["High", "Medium", "Low"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey2")
 
         # Assign color based on selection
         if avs_op_rep == "High":
@@ -82,7 +82,7 @@ def main():
         )
 
     with col3:
-        avs_op_geo = st.selectbox("**AVS Operator Geographical Distribution**", ["Decentralized", "Semi-Decentralized", "Centralized"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avs1_category_key")
+        avs_op_geo = st.selectbox("**AVS Operator Geographical Distribution**", ["Decentralized", "Semi-Decentralized", "Centralized"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey3")
 
         # Assign color based on selection
         if avs_op_geo == "Decentralized":
