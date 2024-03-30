@@ -164,6 +164,10 @@ def main():
     st.write("\n")
 
 
+
+
+
+
     st.subheader("AVS Return")
 
     st.write("\n")
@@ -178,16 +182,16 @@ def main():
             color = "#FFFF00"  # Standard yellow
             background_color = "#FFFFE0"  # Light yellow
     elif avs_yield == "Profitable":
-            color = "#90EE90"  # Standard yellow
+            color = "#008000"  # Standard yellow
             background_color = "#90ee90"  # Light yellow
     else:  # "Low"
-            color = "#008000"  # Standard green
-            background_color = "#008000"  # Light green
+            color = "#006400"  # Standard green
+            background_color = "#008000"  # Standard green
 
     st.markdown(
         f"""
         <div style="
-            border: 2px solid  {color};
+            border: 3px solid  {color};
             border-radius: 5px;
             padding: 6px;
             text-align: center;
