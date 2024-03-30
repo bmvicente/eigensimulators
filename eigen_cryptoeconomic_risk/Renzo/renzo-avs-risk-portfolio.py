@@ -34,6 +34,7 @@ def main():
 
     st.write("\n")
     st.write("\n")
+    st.write("\n")
 
 
     col1, col2, col3 = st.columns(3, gap="medium")
