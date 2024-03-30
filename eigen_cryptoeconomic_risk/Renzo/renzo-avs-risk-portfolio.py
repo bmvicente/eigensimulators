@@ -254,7 +254,7 @@ def main():
     if sharpe_ratio_performance in ["Sharpe Ratio ≤ 0 (Poor Performance)", "Sharpe Ratio <= 0 (Poor/Average Performance)"]:
         color = "#FF0000"  # red
         background_color = "#FFCCCC"  # light red
-    elif sharpe_ratio_performance == "Sharpe Ratio ≥ 0 -- *Good/Average Performance*":
+    elif sharpe_ratio_performance == "Sharpe Ratio ≥ 0 ― <i>Good/Average Performance</i>":
         color = "#90EE90"  # light green
         background_color = "#FFFFFF"  # white
     elif sharpe_ratio_performance == "Sharpe Ratio ≈ 0 (Average Performance)":
