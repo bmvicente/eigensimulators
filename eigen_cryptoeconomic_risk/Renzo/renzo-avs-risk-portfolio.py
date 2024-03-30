@@ -170,7 +170,7 @@ def main():
 
     st.write("\n")
 
-    avs_yield = st.selectbox("**AVS Yield**", ["Negative", "Neutral", "Positive", "Very Positive"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey4")
+    avs_yield = st.selectbox("**AVS Yield**", ["Negative", "Neutral", "Positive", "Very Positive"], index=2, help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey4")
 
 
     if avs_yield == "Negative":
