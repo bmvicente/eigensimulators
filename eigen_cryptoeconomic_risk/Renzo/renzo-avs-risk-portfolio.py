@@ -211,62 +211,62 @@ def main():
     sharpe_ratio_performance = "Undefined"
     if 0.00 <= risk_score <= 2.50:
         if avs_yield == "Negative":
-            sharpe_ratio_performance = "Sharpe Ratio ≤ 0 ― <i>Poor/Average Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio ≤ 0  ― <i>Poor/Average Performance</i>"
         elif avs_yield == "Neutral":
-            sharpe_ratio_performance = "0 < Sharpe Ratio < 1 ― <i>Good Performance</i>"
+            sharpe_ratio_performance = "0 < Sharpe Ratio < 1  ― <i>Good Performance</i>"
         elif avs_yield == "Positive":
-            sharpe_ratio_performance = "1 < Sharpe Ratio < 2 ― <i>Very Good Performance</i>"
+            sharpe_ratio_performance = "1 < Sharpe Ratio < 2  ― <i>Very Good Performance</i>"
         elif avs_yield == "Very Positive":
-            sharpe_ratio_performance = "Sharpe Ratio > 2 ― <i>Extremely Good Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio > 2  ― <i>Extremely Good Performance</i>"
 
     elif 2.50 < risk_score <= 5.00:
         if avs_yield == "Negative":
-            sharpe_ratio_performance = "Sharpe Ratio ≤ 0 ― <i>Poor Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio ≤ 0  ― <i>Poor Performance</i>"
         elif avs_yield == "Neutral":
-            sharpe_ratio_performance = "Sharpe Ratio ≈ 0 ― <i>Average Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio ≈ 0  ― <i>Average Performance</i>"
         elif avs_yield == "Positive":
-            sharpe_ratio_performance = "0 < Sharpe Ratio < 1 ― <i>Good Performance</i>"
+            sharpe_ratio_performance = "0 < Sharpe Ratio < 1  ― <i>Good Performance</i>"
         elif avs_yield == "Very Positive":
-            sharpe_ratio_performance = "Sharpe Ratio > 1 ― <i>Very Good Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio > 1  ― <i>Very Good Performance</i>"
 
     elif 5.00 < risk_score <= 7.50:
         if avs_yield == "Negative":
-            sharpe_ratio_performance = "Sharpe Ratio ≤ 0 ― <i>Poor Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio ≤ 0  ― <i>Poor Performance</i>"
         elif avs_yield == "Neutral":
-            sharpe_ratio_performance = "Sharpe Ratio ≈ 0 ― <i>Average Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio ≈ 0  ― <i>Average Performance</i>"
         elif avs_yield == "Positive":
-            sharpe_ratio_performance = "0 < Sharpe Ratio < 1 ― <i>Good Performance</i>"
+            sharpe_ratio_performance = "0 < Sharpe Ratio < 1  ― <i>Good Performance</i>"
         elif avs_yield == "Very Positive":
-            sharpe_ratio_performance = "Sharpe Ratio > 1 ― <i>Very Good Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio > 1  ― <i>Very Good Performance</i>"
 
     elif 7.50 < risk_score <= 10.00:
         if avs_yield == "Negative":
-            sharpe_ratio_performance = "Sharpe Ratio ≤ -2 ― <i>Extremely Poor Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio ≤ -2  ― <i>Extremely Poor Performance</i>"
         elif avs_yield == "Neutral":
-            sharpe_ratio_performance = "-2 < Sharpe Ratio < -1 ― <i>Very Poor Performance</i>"
+            sharpe_ratio_performance = "-2 < Sharpe Ratio < -1  ― <i>Very Poor Performance</i>"
         elif avs_yield == "Positive":
-            sharpe_ratio_performance = "-1 < Sharpe Ratio < 0 ― <i>Poor Performance</i>"
+            sharpe_ratio_performance = "-1 < Sharpe Ratio < 0  ― <i>Poor Performance</i>"
         elif avs_yield == "Very Positive":
-            sharpe_ratio_performance = "Sharpe Ratio ≥ 0 ― <i>Good/Average Performance</i>"
+            sharpe_ratio_performance = "Sharpe Ratio ≥ 0  ― <i>Good/Average Performance</i>"
 
 
     # After evaluating Sharpe Ratio performance
-    if sharpe_ratio_performance in ["Sharpe Ratio ≤ 0 ― <i>Poor Performance</i>", "Sharpe Ratio ≤ 0 ― <i>Poor/Average Performance</i>"]:
+    if sharpe_ratio_performance in ["Sharpe Ratio ≤ 0  ― <i>Poor Performance</i>", "Sharpe Ratio ≤ 0  ― <i>Poor/Average Performance</i>"]:
         color = "#FF0000"  # red
         background_color = "#FFCCCC"  # light red
-    elif sharpe_ratio_performance == "Sharpe Ratio ≥ 0 ― <i>Good/Average Performance</i>":
+    elif sharpe_ratio_performance == "Sharpe Ratio ≥ 0  ― <i>Good/Average Performance</i>":
         color = "#90EE90"  # light green
         background_color = "#FFFFFF"  # white
-    elif sharpe_ratio_performance == "Sharpe Ratio ≈ 0 ― <i>Average Performance</i>":
+    elif sharpe_ratio_performance == "Sharpe Ratio ≈ 0  ― <i>Average Performance</i>":
         color = "#000000"  # black
         background_color = "#FFFFFF"  # white
-    elif sharpe_ratio_performance in ["0 < Sharpe Ratio < 1 ― <i>Good Performance</i>", "Sharpe Ratio > 1 ― <i>Very Good Performance</i>", "1 < Sharpe Ratio < 2 ― <i>Very Good Performance</i>"]:
+    elif sharpe_ratio_performance in ["0 < Sharpe Ratio < 1  ― <i>Good Performance</i>", "Sharpe Ratio > 1  ― <i>Very Good Performance</i>", "1 < Sharpe Ratio < 2  ― <i>Very Good Performance</i>"]:
         color = "#008000"  # green
         background_color = "#90EE90"  # light green
-    elif sharpe_ratio_performance == "Sharpe Ratio ≤ -2 ― <i>Extremely Poor Performance</i>":
+    elif sharpe_ratio_performance == "Sharpe Ratio ≤ -2  ― <i>Extremely Poor Performance</i>":
         color = "#000000"  # black
         background_color = "#FF0000"  # red
-    elif sharpe_ratio_performance == "Sharpe Ratio > 2 ― <i>Extremely Good Performance</i>":
+    elif sharpe_ratio_performance == "Sharpe Ratio > 2  ― <i>Extremely Good Performance</i>":
         color = "#000000"  # black
         background_color = "#008000"  # green
 
