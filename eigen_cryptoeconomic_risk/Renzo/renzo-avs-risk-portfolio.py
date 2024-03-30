@@ -7,11 +7,11 @@ def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
 
     avs_code_comp_risk = {"High": 10, "Medium": 5, "Low": 1}
     avs_op_rep_risk = {"High": 10, "Medium": 5, "Low": 1}
-    avs_op_geo = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+    avs_op_geo_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 
     avs_code_comp_score = avs_code_comp_risk[avs_code_comp]
     avs_op_rep_score = avs_op_rep_risk[avs_op_rep]
-    avs_op_geo_score = avs_op_geo[avs_op_geo]
+    avs_op_geo_score = avs_op_geo_risk[avs_op_geo]
 
     normalized_risk_score = avs_code_comp_score + avs_op_rep_score + avs_op_geo_score
     normalized_risk_score = round(normalized_risk_score, 2)
