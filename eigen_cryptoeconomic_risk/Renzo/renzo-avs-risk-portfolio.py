@@ -22,6 +22,10 @@ def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
 
 def main():
 
+    st.image("images/renzo1.png", width=400)
+    
+    st.write("\n")
+
     st.title("Renzo: AVS Portfolio Risk")
 
     st.write("\n")
