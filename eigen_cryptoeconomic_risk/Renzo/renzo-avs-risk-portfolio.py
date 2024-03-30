@@ -5,7 +5,7 @@ import streamlit as st
 
 def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
 
-    avs_code_comp_risk = {"High": 10, "Medium": 5, "Low": 1}
+    avs_code_comp_risk = {"High": 10, "Mid": 5, "Low": 1}
     avs_op_rep_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
     avs_op_geo_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 
@@ -40,12 +40,12 @@ def main():
     col1, col2, col3 = st.columns(3, gap="medium")
 
     with col1:
-        avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Medium", "High"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey1")
+        avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Mid", "High"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey1")
 
         if avs_code_comp == "High":
             color = "#FF0000"  # Standard red
             background_color = "#FFCCCC"  # Light red
-        elif avs_code_comp == "Medium":
+        elif avs_code_comp == "Mid":
             color = "#FFFF00"  # Standard yellow
             background_color = "#FFFFE0"  # Light yellow
         else:  # "Low"
@@ -57,11 +57,11 @@ def main():
             <div style="
                 border: 2px solid {color};
                 border-radius: 5px;
-                padding: 20px;
+                padding: 25px;
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
-                <h2 style="color: black; margin:0; font-size: 1.22em;">AVS Code Complexity: <span style="font-size: 1.28em;">  {avs_code_comp}</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Code Complexity: <span style="font-size: 1.25em;">  {avs_code_comp}</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
