@@ -6,7 +6,7 @@ import streamlit as st
 def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
 
     avs_code_comp_risk = {"High": 10, "Medium": 5, "Low": 1}
-    avs_op_rep_risk = {"Low": 10, "Medium": 5, "High": 1}
+    avs_op_rep_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
     avs_op_geo_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 
     avs_code_comp_score = avs_code_comp_risk[avs_code_comp]
@@ -68,12 +68,12 @@ def main():
 
 
     with col2:
-        avs_op_rep = st.selectbox("**AVS Operator Reputation**", ["High", "Medium", "Low"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey2")
+        avs_op_rep = st.selectbox("**AVS Operator Reputation**", ["Renowned", "Established", "Unknown"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey2")
 
-        if avs_op_rep == "High":
+        if avs_op_rep == "Unknown":
             color = "#FF0000"  # Standard red
             background_color = "#FFCCCC"  # Light red
-        elif avs_op_rep == "Medium":
+        elif avs_op_rep == "Established":
             color = "#FFFF00"  # Standard yellow
             background_color = "#FFFFE0"  # Light yellow
         else:  # "Low"
@@ -99,10 +99,10 @@ def main():
     with col3:
         avs_op_geo = st.selectbox("**AVS Op. Geo Distribution**", ["Decentralized", "Semi-Decentralized", "Centralized"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey3")
 
-        if avs_op_geo == "High":
+        if avs_op_geo == "Centralized":
             color = "#FF0000"  # Standard red
             background_color = "#FFCCCC"  # Light red
-        elif avs_op_geo == "Medium":
+        elif avs_op_geo == "Semi-Decentralized":
             color = "#FFFF00"  # Standard yellow
             background_color = "#FFFFE0"  # Light yellow
         else:  # "Low"
