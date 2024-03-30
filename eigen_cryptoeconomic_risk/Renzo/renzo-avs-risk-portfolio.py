@@ -157,33 +157,6 @@ def main():
     """, 
     unsafe_allow_html=True
     )
-
-    st.write("\n")
-    st.write("\n")
-    st.write("\n")
-
-
-    st.markdown("""
-                <style>
-                .big-font {
-                    font-size: 16px;  /* Adjust font size as needed */
-                }
-                </style>
-                <div class="big-font">
-                The <strong>AVS Risk Score</strong> is normalized to range from 0 to 10 (for easy reading), where 0 indicates the lowest level of risk and 10 represents the highest possible risk.
-                </div>
-                <br>
-
-                <div class="big-font">
-                The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the AVS. 
-                For example, the Likelihood of a Security Audit posing a risk and its Impact on the integrity of the AVS are both greater than the Likelihood and Impact to an AVS of, say, its <em>Average Operator Reputation</em> and the <em>AVS Type</em> chosen. The Simulator takes these nuances into account.            
-                </div>
-                <br>
-
-                <div class="big-font">
-                <em>It's important to bear in mind that this Simulator was built from an AVS perspective alone.</em>
-                </div>
-                """, unsafe_allow_html=True)
     
 
 
