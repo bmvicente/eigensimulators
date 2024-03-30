@@ -206,7 +206,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    st.subheader("AVS Sharpe Ratio")
+    st.subheader("AVS Risk-Adjusted Return")
 
     sharpe_ratio_performance = "Undefined"
     if 0.00 <= risk_score <= 2.50:
