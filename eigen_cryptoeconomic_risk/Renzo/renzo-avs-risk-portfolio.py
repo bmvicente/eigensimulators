@@ -110,7 +110,7 @@ def main():
 
 
 
-    renzo_avs_risk = renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo)
+    risk_score = renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo)
 
     # Determine the color and background color based on the risk score
     if renzo_avs_risk >= 7.50:
@@ -135,7 +135,7 @@ def main():
         text-align: center;
         margin: 10px 0;
         background-color: {renzo_background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.4em;">AVS Risk Score: <span style="font-size: 1.5em; color: {renzo_color};">{renzo_avs_risk}</span></h2>
+        <h2 style="color: black; margin:0; font-size: 1.4em;">AVS Risk Score: <span style="font-size: 1.5em; color: {renzo_color};">{risk_score}</span></h2>
     </div>
     """, 
     unsafe_allow_html=True
