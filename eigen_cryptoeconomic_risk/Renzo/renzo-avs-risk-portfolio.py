@@ -251,21 +251,38 @@ def main():
 
 
     # After evaluating Sharpe Ratio performance
-    if sharpe_ratio_performance in ["Sharpe Ratio ≤ 0  ― <i>Poor Performance</i>", "Sharpe Ratio ≤ 0  ― <i>Poor/Average Performance</i>"]:
+    if sharpe_ratio_performance in ["Sharpe Ratio ≤ 0  ― <i>Poor Performance</i>"]:
         color = "#FF0000"  # red
         background_color = "#FFCCCC"  # light red
+
     elif sharpe_ratio_performance == "Sharpe Ratio ≥ 0  ― <i>Good/Average Performance</i>":
         color = "#90EE90"  # light green
         background_color = "#FFFFFF"  # white
+
+    elif sharpe_ratio_performance == "Sharpe Ratio ≤ 0  ― <i>Poor/Average Performance</i>":
+        color = "#FFCCCC"  # light red
+        background_color = "#FFFFFF"  # white
+
+    elif sharpe_ratio_performance == "0 < Sharpe Ratio < 1  ― <i>Good Performance</i>":
+        color = "#008000"  # light green
+        background_color = "#90EE90"  # white
+
+    elif sharpe_ratio_performance == "-2 < Sharpe Ratio < -1  ― <i>Very Poor Performance</i>":
+        color = "#FF0000"  # light green
+        background_color = "#FFCCCC"  # white
+
     elif sharpe_ratio_performance == "Sharpe Ratio ≈ 0  ― <i>Average Performance</i>":
         color = "#000000"  # black
         background_color = "#FFFFFF"  # white
-    elif sharpe_ratio_performance in ["0 < Sharpe Ratio < 1  ― <i>Good Performance</i>", "Sharpe Ratio > 1  ― <i>Very Good Performance</i>", "1 < Sharpe Ratio < 2  ― <i>Very Good Performance</i>"]:
+
+    elif sharpe_ratio_performance in ["Sharpe Ratio > 1  ― <i>Very Good Performance</i>", "1 < Sharpe Ratio < 2  ― <i>Very Good Performance</i>"]:
         color = "#008000"  # green
         background_color = "#90EE90"  # light green
+
     elif sharpe_ratio_performance == "Sharpe Ratio ≤ -2  ― <i>Extremely Poor Performance</i>":
         color = "#000000"  # black
         background_color = "#FF0000"  # red
+        
     elif sharpe_ratio_performance == "Sharpe Ratio > 2  ― <i>Extremely Good Performance</i>":
         color = "#000000"  # black
         background_color = "#008000"  # green
