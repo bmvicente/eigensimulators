@@ -169,6 +169,15 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+
+    st.subheader("AVS Sharpe Ratio")
+
+
+
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
     st.write("\n")
     st.write("\n")
     st.write("\n")
