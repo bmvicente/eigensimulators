@@ -33,8 +33,10 @@ def main():
     st.title("Renzo: AVS Risk/Return Dashboard")
 
     st.write("\n")
+    st.write("\n")
 
     st.markdown("<h4 style='text-align: center; font-size: 26px'>AVS Risk</h4>", unsafe_allow_html=True)
+    st.write("\n")
 
     col1, col2, col3 = st.columns(3, gap="medium")
 
@@ -157,7 +159,10 @@ def main():
     unsafe_allow_html=True
     )
     
-    st.subheader("AVS Return")
+    st.write("\n")
+    st.write("\n")
+
+    st.markdown("<h4 style='text-align: center; font-size: 26px'>AVS Risk</h4>", unsafe_allow_html=True)
 
 
     st.write("\n")
