@@ -24,7 +24,9 @@ def main():
 
     st.title("Renzo: AVS Portfolio Risk")
 
-    st.write("\n" * 4)
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
 
 
     col1, col2, col3 = st.columns(3, gap="medium")
@@ -108,6 +110,7 @@ def main():
         )
 
 
+    st.write("\n")
 
 
     risk_score = renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo)
