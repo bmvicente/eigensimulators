@@ -71,16 +71,19 @@ def main():
         avs_op_rep = st.selectbox("**AVS Operator Reputation**", ["High", "Medium", "Low"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey2")
 
         if avs_op_rep == "High":
-            background_color = "green"
+            color = "#FF0000"  # Standard red
+            background_color = "#FFCCCC"  # Light red
         elif avs_op_rep == "Medium":
-            background_color = "yellow"
+            color = "#FFFF00"  # Standard yellow
+            background_color = "#FFFFE0"  # Light yellow
         else:  # "Low"
-            background_color = "red"
+            color = "#008000"  # Standard green
+            background_color = "#90EE90"  # Light green
 
         st.markdown(
         f"""
         <div style="
-            border: 2px solid;
+            border: 2px solid {color};
             border-radius: 5px;
             padding: 30px;
             text-align: center;
@@ -96,18 +99,20 @@ def main():
     with col3:
         avs_op_geo = st.selectbox("**AVS Op. Geo Distribution**", ["Decentralized", "Semi-Decentralized", "Centralized"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey3")
 
-        # Assign color based on selection
-        if avs_op_geo == "Decentralized":
-            background_color = "green"
-        elif avs_op_geo == "Semi-Decentralized":
-            background_color = "yellow"
+        if avs_op_geo == "High":
+            color = "#FF0000"  # Standard red
+            background_color = "#FFCCCC"  # Light red
+        elif avs_op_geo == "Medium":
+            color = "#FFFF00"  # Standard yellow
+            background_color = "#FFFFE0"  # Light yellow
         else:  # "Low"
-            background_color = "red"
+            color = "#008000"  # Standard green
+            background_color = "#90EE90"  # Light green
 
         st.markdown(
         f"""
         <div style="
-            border: 2px solid;
+            border: 2px solid  {color};
             border-radius: 5px;
             padding: 18px;
             text-align: center;
