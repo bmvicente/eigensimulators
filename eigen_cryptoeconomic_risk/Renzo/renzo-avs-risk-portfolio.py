@@ -221,7 +221,7 @@ def main():
     link = 'https://twitter.com/tokensightxyz'
     markdown = f"""
     <a href="{link}" target="_blank">
-        <img src="{image_url}" alt="Alt Text" style="display:block; margin-left: auto; margin-right: auto; width: 8%;">
+        <img src="{image_url}" alt="Alt Text" style="display:block; margin-left: auto; margin-right: auto; width: 6%;">
     </a>
     """    
     st.markdown(markdown, unsafe_allow_html=True)
