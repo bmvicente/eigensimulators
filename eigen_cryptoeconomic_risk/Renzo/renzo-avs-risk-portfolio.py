@@ -172,16 +172,16 @@ def main():
 
     st.write("\n")
 
-    avs_yield = st.selectbox("**AVS Yield**", ["Unprofitable", "Break-Even", "Profitable", "Very Profitable"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey4")
+    avs_yield = st.selectbox("**AVS Yield**", ["Negative", "Neutral", "Positive", "Very Positive"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey4")
 
 
-    if avs_yield == "Unprofitable":
+    if avs_yield == "Negative":
             color = "#FF0000"  # Standard red
             background_color = "#FFCCCC"  # Light red
-    elif avs_yield == "Break-Even":
+    elif avs_yield == "Neutral":
             color = "#CC9900"  # Standard yellow
             background_color = "#FFFFE0"  # Light yellow
-    elif avs_yield == "Profitable":
+    elif avs_yield == "Positive":
             color = "#008000"  # Standard yellow
             background_color = "#ebf5eb"  # Light yellow ebf5eb
     else:  # "Low"
@@ -210,7 +210,63 @@ def main():
 
     st.subheader("AVS Sharpe Ratio")
 
+    st.write("\n")
 
+    sharpe_ratio_performance = "Undefined"
+    if 0.00 <= risk_score <= 2.50:
+        if avs_yield == "Negative":
+            sharpe_ratio_performance = "Sharpe Ratio <= 0 (Poor/Average Performance)"
+        elif avs_yield == "Neutral":
+            sharpe_ratio_performance = "0 < Sharpe Ratio < 1 (Good Performance)"
+        elif avs_yield == "Positive":
+            sharpe_ratio_performance = "1 < Sharpe Ratio < 2 (Very Good Performance)"
+        elif avs_yield == "Very Positive":
+            sharpe_ratio_performance = "Sharpe Ratio > 2 (Extremely Good Performance)"
+
+    elif 2.50 < risk_score <= 5.00:
+        if avs_yield == "Negative":
+            sharpe_ratio_performance = "Sharpe Ratio <= 0 (Poor Performance)"
+        elif avs_yield == "Neutral":
+            sharpe_ratio_performance = "Sharpe Ratio ≈ 0 (Average Performance)"
+        elif avs_yield == "Positive":
+            sharpe_ratio_performance = "0 < Sharpe Ratio < 1 (Good Performance)"
+        elif avs_yield == "Very Positive":
+            sharpe_ratio_performance = "Sharpe Ratio > 1 (Very Good Performance)"
+
+    elif 5.00 < risk_score <= 7.50:
+        if avs_yield == "Negative":
+            sharpe_ratio_performance = "Sharpe Ratio <= 0 (Poor Performance)"
+        elif avs_yield == "Neutral":
+            sharpe_ratio_performance = "Sharpe Ratio ≈ 0 (Average Performance)"
+        elif avs_yield == "Positive":
+            sharpe_ratio_performance = "0 < Sharpe Ratio < 1 (Good Performance)"
+        elif avs_yield == "Very Positive":
+            sharpe_ratio_performance = "Sharpe Ratio > 1 (Very Good Performance)"
+
+    elif 7.50 < risk_score <= 10.00:
+        if avs_yield == "Negative":
+            sharpe_ratio_performance = "Sharpe Ratio <= -2 (Extremely Poor Performance)"
+        elif avs_yield == "Neutral":
+            sharpe_ratio_performance = "-2 < Sharpe Ratio < -1 (Very Poor  Performance)"
+        elif avs_yield == "Positive":
+            sharpe_ratio_performance = "-1 < Sharpe Ratio < 0 (Poor Performance)"
+        elif avs_yield == "Very Positive":
+            sharpe_ratio_performance = "Sharpe Ratio >= 0 (Good/Average Performance)"
+
+    st.markdown(
+        f"""
+        <div style="
+            border: 3px solid  {color};
+            border-radius: 5px;
+            padding: 6px;
+            text-align: center;
+            margin: 10px 0;
+            background-color: {background_color};">
+            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Yield: <span style="font-size: 1.25em;">{sharpe_ratio_performance}</span></h2>
+        </div>
+        """, 
+        unsafe_allow_html=True
+        )
 
     st.write("\n")
     st.write("\n")
