@@ -148,7 +148,7 @@ def main():
     <div style="
         border: 3px solid {renzo_color};
         border-radius: 5px;
-        padding: 10px;
+        padding: 8px;
         text-align: center;
         margin: 10px 0;
         background-color: {renzo_background_color};">
