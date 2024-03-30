@@ -92,6 +92,7 @@ def main():
         unsafe_allow_html=True
         )
 
+
     with col3:
         avs_op_geo = st.selectbox("**AVS Op. Geo Distribution**", ["Decentralized", "Semi-Decentralized", "Centralized"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey3")
 
