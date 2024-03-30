@@ -113,10 +113,10 @@ def main():
     renzo_avs_risk = renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo)
 
     # Determine the color and background color based on the risk score
-    if renzo_avs_risk >= 7.5:
+    if renzo_avs_risk >= 7.50:
         renzo_color = "#d32f2f"  # Red color for high risk
         renzo_background_color = "#fde0dc"  # Light red background
-    elif renzo_avs_risk <= 2.5:
+    elif renzo_avs_risk <= 2.50:
         renzo_color = "#388e3c"  # Green color for low risk
         renzo_background_color = "#ebf5eb"  # Light green background
     else:
