@@ -33,6 +33,8 @@ def main():
     with col1:
         avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Medium", "High"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey1")
 
+        st.write("\n")
+
         if avs_code_comp == "High":
             background_color = "red"
         elif avs_code_comp == "Medium":
@@ -59,7 +61,8 @@ def main():
     with col2:
         avs_op_rep = st.selectbox("**AVS Operator Reputation**", ["High", "Medium", "Low"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey2")
 
-        # Assign color based on selection
+        st.write("\n")
+
         if avs_op_rep == "High":
             background_color = "green"
         elif avs_op_rep == "Medium":
@@ -83,7 +86,7 @@ def main():
         )
 
     with col3:
-        avs_op_geo = st.selectbox("**AVS Operator Geographical Distribution**", ["Decentralized", "Semi-Decentralized", "Centralized"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey3")
+        avs_op_geo = st.selectbox("**AVS Op. Geo Distribution**", ["Decentralized", "Semi-Decentralized", "Centralized"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey3")
 
         # Assign color based on selection
         if avs_op_geo == "Decentralized":
