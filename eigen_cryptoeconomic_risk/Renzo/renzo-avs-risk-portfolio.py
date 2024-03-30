@@ -262,7 +262,7 @@ def main():
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Yield: <span style="font-size: 1.25em;">{sharpe_ratio_performance}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.2em;"><span style="font-size: 1.2em;">{sharpe_ratio_performance}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
