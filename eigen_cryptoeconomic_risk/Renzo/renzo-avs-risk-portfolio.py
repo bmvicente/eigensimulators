@@ -247,13 +247,14 @@ def main():
         elif avs_yield == "Positive":
             sharpe_ratio_performance = "-1 < Sharpe Ratio < 0 (Poor Performance)"
         elif avs_yield == "Very Positive":
-            sharpe_ratio_performance = "Sharpe Ratio ≥ 0 (Good/Average Performance)"
+            sharpe_ratio_performance = "Sharpe Ratio ≥ 0 -- *Good/Average Performance*"
+
 
     # After evaluating Sharpe Ratio performance
     if sharpe_ratio_performance in ["Sharpe Ratio ≤ 0 (Poor Performance)", "Sharpe Ratio <= 0 (Poor/Average Performance)"]:
         color = "#FF0000"  # red
         background_color = "#FFCCCC"  # light red
-    elif sharpe_ratio_performance == "Sharpe Ratio ≥ 0 (Good/Average Performance)":
+    elif sharpe_ratio_performance == "Sharpe Ratio ≥ 0 -- *Good/Average Performance*":
         color = "#90EE90"  # light green
         background_color = "#FFFFFF"  # white
     elif sharpe_ratio_performance == "Sharpe Ratio ≈ 0 (Average Performance)":
