@@ -145,7 +145,7 @@ def main():
     st.markdown(
     f"""
     <div style="
-        border: 2px solid {renzo_color};
+        border: 4px solid {renzo_color};
         border-radius: 5px;
         padding: 10px;
         text-align: center;
