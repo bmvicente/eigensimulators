@@ -288,6 +288,20 @@ def main():
         )
 
     st.write("\n")
+
+    st.markdown("""
+                <style>
+                .big-font {
+                    font-size: 18px;  /* Adjust font size as needed */
+                }
+                </style>
+                <div class="big-font">
+                The <strong>Sharpe Ratio</strong> that into account both Risk and Yield statuses of the AVS to compute Risk/Return performance.
+                </div>
+                """, unsafe_allow_html=True)
+
+
+    st.write("\n")
     st.write("\n")
     st.write("\n")
     st.write("\n")
