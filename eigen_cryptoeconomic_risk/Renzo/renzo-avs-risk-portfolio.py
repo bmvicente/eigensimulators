@@ -30,7 +30,7 @@ def main():
 
     st.write("\n")
 
-    st.title("Renzo: AVS Risk")
+    st.title("Renzo: AVS Risk Dashboard")
 
     st.write("\n")
     st.write("\n")
