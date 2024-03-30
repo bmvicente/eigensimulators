@@ -210,8 +210,6 @@ def main():
 
     st.subheader("AVS Sharpe Ratio")
 
-    st.write("\n")
-
     sharpe_ratio_performance = "Undefined"
     if 0.00 <= risk_score <= 2.50:
         if avs_yield == "Negative":
