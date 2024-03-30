@@ -282,7 +282,7 @@ def main():
     elif sharpe_ratio_performance == "Sharpe Ratio ≤ -2  ― <i>Extremely Poor Performance</i>":
         color = "#000000"  # black
         background_color = "#FF0000"  # red
-        
+
     elif sharpe_ratio_performance == "Sharpe Ratio > 2  ― <i>Extremely Good Performance</i>":
         color = "#000000"  # black
         background_color = "#008000"  # green
@@ -292,7 +292,7 @@ def main():
     st.markdown(
         f"""
         <div style="
-            border: 4px solid  {color};
+            border: 5px solid  {color};
             border-radius: 5px;
             padding: 8px;
             text-align: center;
