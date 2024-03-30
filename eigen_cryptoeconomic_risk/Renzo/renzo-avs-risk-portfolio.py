@@ -34,7 +34,7 @@ def main():
 
     st.write("\n")
 
-    st.subheader("AVS Risk")
+    st.markdown("<h4 style='text-align: center'>AVS Risk</h4>", unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3, gap="medium")
 
