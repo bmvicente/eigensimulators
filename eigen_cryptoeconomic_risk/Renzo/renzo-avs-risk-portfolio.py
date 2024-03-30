@@ -179,7 +179,7 @@ def main():
             background_color = "#FFFFE0"  # Light yellow
     elif avs_yield == "Profitable":
             color = "#90EE90"  # Standard yellow
-            background_color = "#008000"  # Light yellow
+            background_color = "#90ee90"  # Light yellow
     else:  # "Low"
             color = "#008000"  # Standard green
             background_color = "#008000"  # Light green
