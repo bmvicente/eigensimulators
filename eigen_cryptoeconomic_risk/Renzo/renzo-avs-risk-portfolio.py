@@ -75,7 +75,7 @@ def main():
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Reputation**: <span style="font-size: 1.5em;">{avs_op_rep:.0f}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Reputation**: <span style="font-size: 1.5em;">{avs_op_rep}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
@@ -101,7 +101,7 @@ def main():
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Geographical Distribution**: <span style="font-size: 1.5em;">{avs_op_geo:.0f}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Geographical Distribution**: <span style="font-size: 1.5em;">{avs_op_geo}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
@@ -135,7 +135,7 @@ def main():
         text-align: center;
         margin: 10px 0;
         background-color: {renzo_background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.4em;">AVS Risk Score: <span style="font-size: 1.5em; color: {renzo_color};">{renzo_avs_risk:.0f}</span></h2>
+        <h2 style="color: black; margin:0; font-size: 1.4em;">AVS Risk Score: <span style="font-size: 1.5em; color: {renzo_color};">{renzo_avs_risk}</span></h2>
     </div>
     """, 
     unsafe_allow_html=True
