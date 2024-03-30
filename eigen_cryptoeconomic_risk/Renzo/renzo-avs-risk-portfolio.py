@@ -168,8 +168,36 @@ def main():
 
     st.write("\n")
 
-    avs_code_comp = st.selectbox("**AVS Yield**", ["Unprofitable", "Break-Even", "Profitable", "Very Profitable"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey4")
+    avs_yield = st.selectbox("**AVS Yield**", ["Unprofitable", "Break-Even", "Profitable", "Very Profitable"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey4")
 
+
+    if avs_yield == "Unprofitable":
+            color = "#FF0000"  # Standard red
+            background_color = "#FFCCCC"  # Light red
+    elif avs_yield == "Break-Even":
+            color = "#FFFF00"  # Standard yellow
+            background_color = "#FFFFE0"  # Light yellow
+    elif avs_yield == "Profitable":
+            color = "#90EE90"  # Standard yellow
+            background_color = "#008000"  # Light yellow
+    else:  # "Low"
+            color = "#008000"  # Standard green
+            background_color = "#008000"  # Light green
+
+    st.markdown(
+        f"""
+        <div style="
+            border: 2px solid  {color};
+            border-radius: 5px;
+            padding: 6px;
+            text-align: center;
+            margin: 10px 0;
+            background-color: {background_color};">
+            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Yield: <span style="font-size: 1.25em;">{avs_yield}</span></h2>
+        </div>
+        """, 
+        unsafe_allow_html=True
+        )
 
     st.write("\n")
     st.write("\n")
