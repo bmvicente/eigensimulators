@@ -31,12 +31,12 @@ def main():
     st.write("\n")
 
     st.title("Renzo: AVS Risk/Return Dashboard")
+
+    st.write("\n")
+
     st.subheader("AVS Risk")
 
     st.write("\n")
-    st.write("\n")
-    st.write("\n")
-
 
     col1, col2, col3 = st.columns(3, gap="medium")
 
