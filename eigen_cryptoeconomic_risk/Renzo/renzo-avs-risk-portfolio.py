@@ -13,7 +13,11 @@ def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
     avs_op_rep_score = avs_op_rep_risk[avs_op_rep]
     avs_op_geo_score = avs_op_geo_risk[avs_op_geo]
 
-    normalized_risk_score = avs_code_comp_score + avs_op_rep_score + avs_op_geo_score
+    total_score = avs_code_comp_score + avs_op_rep_score + avs_op_geo_score
+
+    min_possible_score = 3  # Minimum possible score (all low)
+    max_possible_score = 30  # Maximum possible score (all high)
+    normalized_risk_score = (total_score - min_possible_score) / (max_possible_score - min_possible_score) * 10
     normalized_risk_score = round(normalized_risk_score, 2)
 
     return normalized_risk_score
@@ -23,7 +27,7 @@ def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
 def main():
 
     st.image("images/renzo1.png", width=400)
-    
+
     st.write("\n")
 
     st.title("Renzo: AVS Portfolio Risk")
