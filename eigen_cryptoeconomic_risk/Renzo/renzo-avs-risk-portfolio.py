@@ -45,7 +45,7 @@ def main():
             <div style="
                 border: 2px solid;
                 border-radius: 5px;
-                padding: 31px;
+                padding: 32px;
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
