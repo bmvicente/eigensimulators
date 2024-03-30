@@ -179,14 +179,14 @@ def main():
             color = "#FF0000"  # Standard red
             background_color = "#FFCCCC"  # Light red
     elif avs_yield == "Break-Even":
-            color = "#FFFF00"  # Standard yellow
+            color = "#CC9900"  # Standard yellow
             background_color = "#FFFFE0"  # Light yellow
     elif avs_yield == "Profitable":
             color = "#008000"  # Standard yellow
-            background_color = "#90ee90"  # Light yellow
+            background_color = "#ebf5eb"  # Light yellow ebf5eb
     else:  # "Low"
             color = "#006400"  # Standard green
-            background_color = "#008000"  # Standard green
+            background_color = "#90ee90"  # Standard green
 
     st.markdown(
         f"""
