@@ -314,7 +314,7 @@ def main():
                 }
                 </style>
                 <div class="big-font">
-                The <strong>Sharpe Ratio</strong> calculation takes into account both AVS Risk and Yield statuses to compute Risk-adjusted Return performance of the AVS as a <strong>Renzo</strong> portfolio asset.
+                The <strong>Sharpe Ratio</strong> calculation takes into account both AVS Risk and Yield statuses to compute Risk-adjusted Return performance of the AVS as a <strong>Renzo</strong> portfolio asset. Explain more on < 0, = 0, and > 0 rate.
                 </div>
                 """, unsafe_allow_html=True)
 
