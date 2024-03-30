@@ -30,7 +30,7 @@ def main():
 
     st.write("\n")
 
-    st.title("Renzo: AVS Portfolio Risk")
+    st.title("Renzo: AVS Risk")
 
     st.write("\n")
     st.write("\n")
@@ -42,16 +42,19 @@ def main():
         avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Medium", "High"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey1")
 
         if avs_code_comp == "High":
-            background_color = "red"
+            color = "red"
+            background_color = "light red"
         elif avs_code_comp == "Medium":
-            background_color = "yellow"
+            color = "yellow"
+            background_color = "light yellow"
         else:  # "Low"
-            background_color = "green"
+            color = "green"
+            background_color = "light green"
 
         st.markdown(
             f"""
             <div style="
-                border: 2px solid;
+                border: 2px solid {color};
                 border-radius: 5px;
                 padding: 32px;
                 text-align: center;
@@ -131,8 +134,6 @@ def main():
     else:
         renzo_color = "black"  # Black color for medium risk
         renzo_background_color = "#ffffff"  # White background
-
-
 
 
     st.markdown(
