@@ -6,7 +6,7 @@ import streamlit as st
 def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
 
     avs_code_comp_risk = {"High": 10, "Medium": 5, "Low": 1}
-    avs_op_rep_risk = {"High": 10, "Medium": 5, "Low": 1}
+    avs_op_rep_risk = {"Low": 10, "Medium": 5, "High": 1}
     avs_op_geo_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 
     avs_code_comp_score = avs_code_comp_risk[avs_code_comp]
@@ -48,7 +48,7 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
-                <h2 margin:0; font-size: 1.4em;">**AVS Code Complexity**: <span style="font-size: 1.5em;">{avs_code_comp}</span></h2>
+                <h2 margin:0; font-size: 1.2em;">AVS Code Complexity: <span style="font-size: 1.3em;">{avs_code_comp}</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
@@ -75,7 +75,7 @@ def main():
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Reputation**: <span style="font-size: 1.5em;">{avs_op_rep}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Operator Reputation: <span style="font-size: 1.3em;">{avs_op_rep}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
@@ -101,7 +101,7 @@ def main():
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.4em;">**AVS Operator Geographical Distribution**: <span style="font-size: 1.5em;">{avs_op_geo}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Operator Geographical Distribution: <span style="font-size: 1.3em;">{avs_op_geo}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
