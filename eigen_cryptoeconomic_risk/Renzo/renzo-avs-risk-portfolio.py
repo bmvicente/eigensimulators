@@ -57,11 +57,11 @@ def main():
             <div style="
                 border: 2px solid {color};
                 border-radius: 5px;
-                padding: 25px;
+                padding: 20px;
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
-                <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Code Complexity: <span style="font-size: 1.22em;">  {avs_code_comp}</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1.22em;">AVS Code Complexity: <span style="font-size: 1.28em;">  {avs_code_comp}</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
