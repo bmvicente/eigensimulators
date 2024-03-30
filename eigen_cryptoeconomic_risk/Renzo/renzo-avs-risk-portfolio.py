@@ -26,7 +26,7 @@ def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
 
 def main():
 
-    st.image("images/renzo1.png", width=400)
+    st.image("images/renzo1.png", width=350)
 
     st.write("\n")
 
