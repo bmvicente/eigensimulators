@@ -1,6 +1,17 @@
 
 import streamlit as st 
 
+def set_bg_color():
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-color: black;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True)
+
 
 
 def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
@@ -25,6 +36,8 @@ def renzo_avs_risk(avs_code_comp, avs_op_rep, avs_op_geo):
 
 
 def main():
+
+    set_bg_color()
 
     st.image("images/renzo1.png", width=400)
 
