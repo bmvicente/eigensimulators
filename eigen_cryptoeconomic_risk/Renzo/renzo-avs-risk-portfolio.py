@@ -90,7 +90,7 @@ def main():
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Operator Reputation: <span style="font-size: 1.3em;">{avs_op_rep}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Operator Reputation: <span style="font-size: 1.25em;">{avs_op_rep}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
@@ -119,7 +119,7 @@ def main():
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Operator Geographical Distribution: <span style="font-size: 1.3em;">{avs_op_geo}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Operator Geographical Distribution: <span style="font-size: 1.25em;">{avs_op_geo}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
