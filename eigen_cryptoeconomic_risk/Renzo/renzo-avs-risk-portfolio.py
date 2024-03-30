@@ -197,7 +197,7 @@ def main():
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.2em;">AVS Yield: <span style="font-size: 1.25em;">{avs_yield}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.4em;">AVS Yield: <span style="font-size: 1.5em;">{avs_yield}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
@@ -288,11 +288,12 @@ def main():
         )
 
     st.write("\n")
+    st.write("\n")
 
     st.markdown("""
                 <style>
                 .big-font {
-                    font-size: 18px;  /* Adjust font size as needed */
+                    font-size: 16px;  /* Adjust font size as needed */
                 }
                 </style>
                 <div class="big-font">
