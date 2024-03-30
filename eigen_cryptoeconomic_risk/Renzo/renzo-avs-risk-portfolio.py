@@ -42,14 +42,14 @@ def main():
         avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Medium", "High"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey1")
 
         if avs_code_comp == "High":
-            color = "red"
-            background_color = "light red"
+            color = "#FF0000"  # Standard red
+            background_color = "#FFCCCC"  # Light red
         elif avs_code_comp == "Medium":
-            color = "yellow"
-            background_color = "light yellow"
+            color = "#FFFF00"  # Standard yellow
+            background_color = "#FFFFE0"  # Light yellow
         else:  # "Low"
-            color = "green"
-            background_color = "light green"
+            color = "#008000"  # Standard green
+            background_color = "#90EE90"  # Light green
 
         st.markdown(
             f"""
