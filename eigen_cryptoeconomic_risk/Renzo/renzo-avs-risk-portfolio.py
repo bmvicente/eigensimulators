@@ -163,7 +163,13 @@ def main():
     st.write("\n")
     st.write("\n")
 
+
     st.subheader("AVS Return")
+
+    st.write("\n")
+
+    avs_code_comp = st.selectbox("**AVS Yield**", ["Unprofitable", "Break-Even", "Profitable", "Very Profitable"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey4")
+
 
     st.write("\n")
     st.write("\n")
