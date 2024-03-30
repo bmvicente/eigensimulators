@@ -253,6 +253,27 @@ def main():
         elif avs_yield == "Very Positive":
             sharpe_ratio_performance = "Sharpe Ratio >= 0 (Good/Average Performance)"
 
+    # After evaluating Sharpe Ratio performance
+    if sharpe_ratio_performance in ["Sharpe Ratio <= 0 (Poor Performance)", "Sharpe Ratio <= 0 (Poor/Average Performance)"]:
+        color = "#FF0000"  # red
+        background_color = "#FFCCCC"  # light red
+    elif sharpe_ratio_performance == "Sharpe Ratio >= 0 (Good/Average Performance)":
+        color = "#90EE90"  # light green
+        background_color = "#FFFFFF"  # white
+    elif sharpe_ratio_performance == "Sharpe Ratio ≈ 0 (Average Performance)":
+        color = "#000000"  # black
+        background_color = "#FFFFFF"  # white
+    elif sharpe_ratio_performance in ["0 < Sharpe Ratio < 1 (Good Performance)", "Sharpe Ratio > 1 (Very Good Performance)", "1 < Sharpe Ratio < 2 (Very Good Performance)"]:
+        color = "#008000"  # green
+        background_color = "#90EE90"  # light green
+    elif sharpe_ratio_performance == "Sharpe Ratio <= -2 (Extremely Poor Performance)":
+        color = "#000000"  # black
+        background_color = "#FF0000"  # red
+    elif sharpe_ratio_performance == "Sharpe Ratio > 2 (Extremely Good Performance)":
+        color = "#000000"  # black
+        background_color = "#008000"  # green
+
+
     st.markdown(
         f"""
         <div style="
