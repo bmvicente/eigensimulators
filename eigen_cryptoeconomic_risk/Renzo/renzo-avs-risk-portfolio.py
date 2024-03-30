@@ -49,7 +49,7 @@ def main():
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
-                <h2 margin:0; font-size: 1.2em;">AVS Code Complexity: <span style="font-size: 1.3em;">{avs_code_comp}</span></h2>
+                <h2 style="color: black; margin:0; font-size: 1em;">AVS Code Complexity: <span style="font-size: 1.3em;">{avs_code_comp}</span></h2>
             </div>
             """, 
             unsafe_allow_html=True
