@@ -45,7 +45,7 @@ def main():
             <div style="
                 border: 2px solid;
                 border-radius: 5px;
-                padding: 15px;
+                padding: 35px;
                 text-align: center;
                 margin: 10px 0;
                 background-color: {background_color};">
@@ -71,7 +71,7 @@ def main():
         <div style="
             border: 2px solid;
             border-radius: 5px;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
