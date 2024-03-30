@@ -34,7 +34,7 @@ def main():
 
     st.write("\n")
 
-    st.markdown("<h4 style='text-align: center; font-size: 26px'>AVS Risk</h4>", unsafe_allow_html=True)
+    st.subheader("AVS Risk")
     st.write("\n")
 
     col1, col2, col3 = st.columns(3, gap="medium")
@@ -161,8 +161,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    st.markdown("<h4 style='text-align: center; font-size: 26px'>AVS Return</h4>", unsafe_allow_html=True)
-
+    st.subheader("AVS Return")
 
     st.write("\n")
     st.write("\n")
