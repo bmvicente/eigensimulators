@@ -215,7 +215,7 @@ def main():
     sharpe_ratio_performance = "Undefined"
     if 0.00 <= risk_score <= 2.50:
         if avs_yield == "Negative":
-            sharpe_ratio_performance = "Sharpe Ratio <= 0 (Poor/Average Performance)"
+            sharpe_ratio_performance = "Sharpe Ratio ≤ 0 (Poor/Average Performance)"
         elif avs_yield == "Neutral":
             sharpe_ratio_performance = "0 < Sharpe Ratio < 1 (Good Performance)"
         elif avs_yield == "Positive":
@@ -225,7 +225,7 @@ def main():
 
     elif 2.50 < risk_score <= 5.00:
         if avs_yield == "Negative":
-            sharpe_ratio_performance = "Sharpe Ratio <= 0 (Poor Performance)"
+            sharpe_ratio_performance = "Sharpe Ratio ≤ 0 (Poor Performance)"
         elif avs_yield == "Neutral":
             sharpe_ratio_performance = "Sharpe Ratio ≈ 0 (Average Performance)"
         elif avs_yield == "Positive":
@@ -235,7 +235,7 @@ def main():
 
     elif 5.00 < risk_score <= 7.50:
         if avs_yield == "Negative":
-            sharpe_ratio_performance = "Sharpe Ratio <= 0 (Poor Performance)"
+            sharpe_ratio_performance = "Sharpe Ratio ≤ 0 (Poor Performance)"
         elif avs_yield == "Neutral":
             sharpe_ratio_performance = "Sharpe Ratio ≈ 0 (Average Performance)"
         elif avs_yield == "Positive":
@@ -245,19 +245,19 @@ def main():
 
     elif 7.50 < risk_score <= 10.00:
         if avs_yield == "Negative":
-            sharpe_ratio_performance = "Sharpe Ratio <= -2 (Extremely Poor Performance)"
+            sharpe_ratio_performance = "Sharpe Ratio ≤ -2 (Extremely Poor Performance)"
         elif avs_yield == "Neutral":
             sharpe_ratio_performance = "-2 < Sharpe Ratio < -1 (Very Poor  Performance)"
         elif avs_yield == "Positive":
             sharpe_ratio_performance = "-1 < Sharpe Ratio < 0 (Poor Performance)"
         elif avs_yield == "Very Positive":
-            sharpe_ratio_performance = "Sharpe Ratio >= 0 (Good/Average Performance)"
+            sharpe_ratio_performance = "Sharpe Ratio ≥ 0 (Good/Average Performance)"
 
     # After evaluating Sharpe Ratio performance
-    if sharpe_ratio_performance in ["Sharpe Ratio <= 0 (Poor Performance)", "Sharpe Ratio <= 0 (Poor/Average Performance)"]:
+    if sharpe_ratio_performance in ["Sharpe Ratio ≤ 0 (Poor Performance)", "Sharpe Ratio <= 0 (Poor/Average Performance)"]:
         color = "#FF0000"  # red
         background_color = "#FFCCCC"  # light red
-    elif sharpe_ratio_performance == "Sharpe Ratio >= 0 (Good/Average Performance)":
+    elif sharpe_ratio_performance == "Sharpe Ratio ≥ 0 (Good/Average Performance)":
         color = "#90EE90"  # light green
         background_color = "#FFFFFF"  # white
     elif sharpe_ratio_performance == "Sharpe Ratio ≈ 0 (Average Performance)":
@@ -266,7 +266,7 @@ def main():
     elif sharpe_ratio_performance in ["0 < Sharpe Ratio < 1 (Good Performance)", "Sharpe Ratio > 1 (Very Good Performance)", "1 < Sharpe Ratio < 2 (Very Good Performance)"]:
         color = "#008000"  # green
         background_color = "#90EE90"  # light green
-    elif sharpe_ratio_performance == "Sharpe Ratio <= -2 (Extremely Poor Performance)":
+    elif sharpe_ratio_performance == "Sharpe Ratio ≤ -2 (Extremely Poor Performance)":
         color = "#000000"  # black
         background_color = "#FF0000"  # red
     elif sharpe_ratio_performance == "Sharpe Ratio > 2 (Extremely Good Performance)":
@@ -277,7 +277,7 @@ def main():
     st.markdown(
         f"""
         <div style="
-            border: 3px solid  {color};
+            border: 4px solid  {color};
             border-radius: 5px;
             padding: 6px;
             text-align: center;
