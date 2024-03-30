@@ -31,7 +31,7 @@ def main():
     st.write("\n")
 
     st.title("Renzo: AVS Risk/Return Dashboard")
-    st.subtitle("AVS Risk")
+    st.subheader("AVS Risk")
 
     st.write("\n")
     st.write("\n")
@@ -159,7 +159,7 @@ def main():
     unsafe_allow_html=True
     )
     
-    st.subtitle("AVS Return")
+    st.subheader("AVS Return")
 
 
     st.write("\n")
