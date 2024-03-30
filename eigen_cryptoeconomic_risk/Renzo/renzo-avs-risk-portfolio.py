@@ -36,8 +36,6 @@ def main():
 
     st.subheader("AVS Risk")
 
-    st.write("\n")
-
     col1, col2, col3 = st.columns(3, gap="medium")
 
     with col1:
