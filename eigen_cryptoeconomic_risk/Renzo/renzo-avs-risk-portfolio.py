@@ -33,7 +33,6 @@ def main():
     st.title("Renzo: AVS Risk/Return Dashboard")
 
     st.write("\n")
-    st.write("\n")
 
     st.markdown("<h4 style='text-align: center; font-size: 26px'>AVS Risk</h4>", unsafe_allow_html=True)
     st.write("\n")
@@ -162,7 +161,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    st.markdown("<h4 style='text-align: center; font-size: 26px'>AVS Risk</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='text-align: center; font-size: 26px'>AVS Return</h4>", unsafe_allow_html=True)
 
 
     st.write("\n")
