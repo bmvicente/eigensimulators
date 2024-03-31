@@ -314,7 +314,7 @@ def main():
                 }
                 </style>
                 <div class="big-font">
-                The <strong>AVS Risk-Adjusted Return</strong> calculation takes into account both AVS Risk and Yield statuses to compute the AVS performance as a <strong>Renzo</strong> portfolio asset.
+                The <strong>AVS Risk-Adjusted Return</strong> calculation takes into account both AVS Risk and Yield statuses to compute its performance as a <strong>Renzo</strong> portfolio asset.
                 </div>
                 """, unsafe_allow_html=True)
 
