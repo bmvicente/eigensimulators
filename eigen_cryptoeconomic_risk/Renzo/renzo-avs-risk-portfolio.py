@@ -195,7 +195,7 @@ def main():
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.4em;">AVS Yield: <span style="font-size: 1.2em;">{avs_yield}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.4em; font-weight: bold; ">AVS Yield: <span style="font-size: 1.2em;">{avs_yield}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
