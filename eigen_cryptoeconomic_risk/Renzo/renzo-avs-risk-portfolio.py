@@ -40,7 +40,7 @@ def main():
     col1, col2, col3 = st.columns(3, gap="medium")
 
     with col1:
-        avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Mid", "High"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey1")
+        avs_code_comp = st.selectbox("**AVS Code Complexity**", ["Low", "Mid", "High"], key="avskey1")
 
         if avs_code_comp == "High":
             color = "#FF0000"  # Standard red
@@ -69,7 +69,7 @@ def main():
 
 
     with col2:
-        avs_op_rep = st.selectbox("**AVS Operator Reputation**", ["Renowned", "Established", "Unknown"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey2")
+        avs_op_rep = st.selectbox("**AVS Operator Reputation**", ["Renowned", "Established", "Unknown"], key="avskey2")
 
         if avs_op_rep == "Unknown":
             color = "#FF0000"  # Standard red
@@ -98,7 +98,7 @@ def main():
 
 
     with col3:
-        avs_op_geo = st.selectbox("**AVS Op. Geo Distribution**", ["Decentralized", "Semi-Decentralized", "Centralized"], help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey3")
+        avs_op_geo = st.selectbox("**AVS Op. Geo Distribution**", ["Decentralized", "Semi-Decentralized", "Centralized"], key="avskey3")
 
         if avs_op_geo == "Centralized":
             color = "#FF0000"  # Standard red
@@ -170,7 +170,7 @@ def main():
 
     st.write("\n")
 
-    avs_yield = st.selectbox("**AVS Yield**", ["Negative", "Neutral", "Positive", "Very Positive"], index=1, help="Important to evaluate systemic risk. AVSs in the same categories share a lot of commonalities, such as operating with the same underlying modules.", key="avskey4")
+    avs_yield = st.selectbox("**AVS Yield**", ["Negative", "Neutral", "Positive", "Very Positive"], index=1, key="avskey4")
 
 
     if avs_yield == "Negative":
