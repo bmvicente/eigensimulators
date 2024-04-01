@@ -206,7 +206,7 @@ def main():
     st.write("\n")
     st.write("\n")
 
-    st.markdown("<h3 style='text-align: center; color: black;'><b>AVS Risk-Adjusted Return</b></h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: left; color: black;'><b>AVS Risk-Adjusted Return</b></h3>", unsafe_allow_html=True)
 
     sharpe_ratio_performance = "Undefined"
     if 0.00 <= risk_score <= 2.50:
