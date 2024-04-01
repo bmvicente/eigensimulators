@@ -205,6 +205,7 @@ def main():
     st.write("\n")
     st.write("\n")
     st.write("\n")
+    st.write("\n")
 
     st.markdown("<h3 style='text-align: center; color: black;'><b>AVS Risk-Adjusted Return</b></h3>", unsafe_allow_html=True)
 
