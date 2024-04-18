@@ -992,7 +992,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">SS Operator Centralization Level</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">SS Operator Geographical Centralization Level</p>', unsafe_allow_html=True)
 
             avs_operator_centralization = st.selectbox("", ["Centralized", "Semi-Decentralized", "Decentralized"])
 
@@ -1003,7 +1003,7 @@ def main():
 
             with st.expander("Logic"):
                 st.markdown("""
-                    Although being a purely qualitative metric, the **Centralization Level of the Operator** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
+                    Although being a purely qualitative metric, the **Geographical Centralization Level of the Operator** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
                     
                     ```python
                     avs_operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
