@@ -39,7 +39,7 @@ def main():
     st.image("images/omni.jpeg", width=450)
 
     st.title("Cryptoeconomic Risk Analysis I")
-    st.subheader("**Rollup Interoperability AVS: Omni Underlying Risk Simulator**")
+    st.subheader("**Interoperability Network AVS: Omni Underlying Risk & Slashing Conditions Simulator**")
 
     st.write("  \n")
 
@@ -606,7 +606,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    st.image("images/omni-diagram.jpeg", width=1000)
+    st.image("images/omni-diagram.jpeg", width=800)
 
 
     st.write("  \n")
