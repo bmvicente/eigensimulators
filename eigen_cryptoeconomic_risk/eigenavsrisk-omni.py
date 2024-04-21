@@ -36,7 +36,7 @@ def avs_risk(security_audits, business_model, dual_staking_balance, avs_type, op
 def main():
     st.set_page_config(layout="wide")
 
-    #st.image("images/espresso1.png", width=450)
+    st.image("images/omni.jpeg", width=450)
 
     st.title("Cryptoeconomic Risk Analysis I")
     st.subheader("**Rollup Interoperability AVS: Omni Underlying Risk Simulator**")
@@ -598,7 +598,13 @@ def main():
                             """)
 
 
-        
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+
+    st.image("images/omni-diagram.jpeg", width=450)
+
 
     st.write("  \n")
     st.write("  \n")
