@@ -606,8 +606,11 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    st.image("images/omni-diagram.jpeg", width=1200)
+    col1, col2, col3 = st.columns([1, 8, 1])
 
+    # Placing the image in the middle column effectively centers it
+    with col2:
+        st.image("images/omni-diagram.jpeg", width=1200)
 
     st.write("  \n")
     st.write("  \n")
