@@ -606,7 +606,7 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    st.image("images/omni-diagram.jpeg", width=800)
+    st.image("images/omni-diagram.jpeg", width=1200)
 
 
     st.write("  \n")
