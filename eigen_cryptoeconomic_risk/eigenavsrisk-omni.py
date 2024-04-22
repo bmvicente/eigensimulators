@@ -165,6 +165,30 @@ def main():
 
 
 
+        # Restaked ETH Delegated
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+        st.markdown('<p class="header-style">Total Restaked ETH Delegated to Omni</p>', unsafe_allow_html=True)
+
+            # Dropdown menu
+        restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000)
+
+        st.write("\n")
+        st.write("\n")
+
 
         col24, col25 = st.columns(2, gap="medium")
         with col24:
@@ -459,8 +483,36 @@ def main():
 #############################
 
 
+
+
     with col2:
-        
+
+        # Staked OMNI
+
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+        st.markdown('<p class="header-style">Total Staked $OMNI</p>', unsafe_allow_html=True)
+
+            # Dropdown menu
+        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000)
+
+        st.write("\n")
+        st.write("\n")
+
+
         custom_css = """
             <style>
             .header-style {
@@ -519,7 +571,7 @@ def main():
         
         st.write("  \n")
         st.write("  \n")
-        
+
         validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
 
         col100, col101 = st.columns(2, gap="medium")
