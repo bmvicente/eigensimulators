@@ -604,8 +604,6 @@ def main():
 
         validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
 
-        
-        st.write("  \n")
         st.write("  \n")
 
         validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
