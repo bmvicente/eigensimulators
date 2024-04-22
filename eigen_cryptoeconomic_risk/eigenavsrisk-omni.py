@@ -400,7 +400,7 @@ def main():
         st.write("  \n")
 
 
-            # Operator Metrics
+        # Operator Metrics
         st.markdown("""
                     <style>
                     .header-style {
@@ -426,7 +426,7 @@ def main():
             
         st.write("  \n")
 
-        operator_entrenchment_level = st.slider("**Operator Entrenchment Level**", min_value=0, max_value=100, value=50, format='%d%%')
+        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level**", ["High Entrenchment", "Medium Entrenchment", "Low Entrenchment"])
 
         st.write("  \n")
 
