@@ -164,9 +164,11 @@ def main():
 
 
 
+        col24, col25 = st.columns(2, gap="medium")
+        with col24:
 
-        # Restaked ETH Delegated
-        st.markdown("""
+            # Restaked ETH Delegated
+            st.markdown("""
                 <style>
                 .header-style {
                     font-size: 18px;
@@ -181,19 +183,17 @@ def main():
                 """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-        st.markdown('<p class="header-style">Total Restaked ETH Delegated to Omni</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">Total Restaked ETH Delegated to Omni</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-        restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000)
-        st.write(f"&#8226; Total Restaked ETH to Omni: **${restaked_eth_del:,.0f}**")
-
-        st.write("\n")
-        st.write("\n")
-        st.write("\n")
+            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000)
+            st.write(f"&#8226; Total Restaked ETH to Omni: **${restaked_eth_del:,.0f}**")
 
 
-        col24, col25 = st.columns(2, gap="medium")
-        with col24:
+            st.write("\n")
+            st.write("\n")
+            st.write("\n")
+
 
             # AVS Business Model
             st.markdown("""
@@ -219,7 +219,35 @@ def main():
         
 
         with col25:
-            
+
+            # Restaked TVL
+            st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+            st.markdown('<p class="header-style">Total Restaked TVL on Omni</p>', unsafe_allow_html=True)
+
+            # Dropdown menu
+            restaked_tvl = st.number_input("", min_value=0, max_value=10000000000, step=10000000)
+            st.write(f"&#8226; Total Restaked TVL on Omni: **${restaked_tvl:,.0f}**")
+
+
+            st.write("\n")
+            st.write("\n")
+            st.write("\n")
+
+
             st.markdown("""
             <style>
             .header-style {
