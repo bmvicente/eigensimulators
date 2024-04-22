@@ -441,7 +441,7 @@ def main():
                 operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
             
 
-        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level**", ["High Entrenchment", "Medium Entrenchment", "Low Entrenchment"])
+        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Medium Entrenchment", "Low Entrenchment"])
 
         st.write("  \n")
         st.write("  \n")
@@ -742,6 +742,18 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
+    st.subheader("**Profit from Corruption Scenario Analysis**")
+
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
     def normalize_score(original_score, min_original=17, max_original=17700):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
