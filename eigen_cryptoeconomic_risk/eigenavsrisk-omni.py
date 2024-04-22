@@ -394,54 +394,54 @@ def main():
 
         
 
-        
-        # Operator Metrics
-        st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
-        st.markdown('<p class="header-style">Validator Metrics</p>', unsafe_allow_html=True)
-
-        st.write("  \n")
-
-        validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
-
-        with st.expander("Logic"):
-            st.markdown("""
-    Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.""")
-        
-        st.write("  \n")
-        st.write("  \n")
-
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
             
-            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1)
+            # Operator Metrics
+            st.markdown("""
+                    <style>
+                    .header-style {
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 0px;  /* Adjust the space below the header */
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
 
-        with col101:            
+            st.markdown('<p class="header-style">Validator Metrics</p>', unsafe_allow_html=True)
 
-            validator_centralization = st.selectbox("**Validators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
-        
-        st.write("  \n")
+            st.write("  \n")
 
-        validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
+            validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
 
-        st.write("  \n")
-
-        with st.expander("Logic"):
+            with st.expander("Logic"):
                 st.markdown("""
-                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
-                    
-                    "*Full MEV extraction and implementing censorship on shared sequencers pose a significant challenge for an attacker. To ensure the success of such an attack and to collect the entire MEV generated, an attacker would need control over 100% of the validators. In certain sequencer setups, where leader election is lottery-based, there might be an incentive for validators to collude to maximize the amount of MEV distributed to validators as opposed to the chains.*"
-                    
-                    Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
-                            """)
+        Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.""")
+            
+            st.write("  \n")
+            st.write("  \n")
+
+            col100, col101 = st.columns(2, gap="medium")
+            with col100:
+                
+                validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1)
+
+            with col101:            
+
+                validator_centralization = st.selectbox("**Validators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
+            
+            st.write("  \n")
+
+            validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
+
+            st.write("  \n")
+
+            with st.expander("Logic"):
+                    st.markdown("""
+                        The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
+                        
+                        "*Full MEV extraction and implementing censorship on shared sequencers pose a significant challenge for an attacker. To ensure the success of such an attack and to collect the entire MEV generated, an attacker would need control over 100% of the validators. In certain sequencer setups, where leader election is lottery-based, there might be an incentive for validators to collude to maximize the amount of MEV distributed to validators as opposed to the chains.*"
+                        
+                        Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
+                                """)
                 
 
             result5 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
