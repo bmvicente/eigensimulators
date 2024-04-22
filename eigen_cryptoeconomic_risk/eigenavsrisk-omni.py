@@ -424,7 +424,6 @@ def main():
 
                 operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
             
-        st.write("  \n")
 
         operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level**", ["High Entrenchment", "Medium Entrenchment", "Low Entrenchment"])
 
