@@ -361,7 +361,8 @@ def main():
             # Dropdown menu
             security_audits = st.number_input("", min_value=0, max_value=5, step=1)
 
-            st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
@@ -518,6 +519,8 @@ def main():
         
         st.write("  \n")
         st.write("  \n")
+        
+        validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
@@ -527,10 +530,6 @@ def main():
         with col101:            
 
             validator_centralization = st.selectbox("**Validators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
-        
-        st.write("  \n")
-
-        validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
 
         st.write("  \n")
         st.write("  \n")
