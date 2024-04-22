@@ -153,7 +153,7 @@ def main():
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #324AB2;">
+                background-color: #4169E1;">
                 <h2 class='large-header-style' style="color: white; margin:0;">AVS METRICS</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
