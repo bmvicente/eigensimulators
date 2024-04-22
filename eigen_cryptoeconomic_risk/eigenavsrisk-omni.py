@@ -726,7 +726,7 @@ def main():
 
         with col101:
 
-            evm_client_div = st.slider("**EVM Client Diversity**", min_value=0, max_value=100, value=50, format='%d%%')
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], index=1)
             
 
         st.write("  \n")
