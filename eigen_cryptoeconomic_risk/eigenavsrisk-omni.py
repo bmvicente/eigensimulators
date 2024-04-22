@@ -239,7 +239,7 @@ def main():
             st.markdown('<p class="header-style">Total Restaked TVL on Omni</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            restaked_tvl = st.number_input("", min_value=0, max_value=10000000000, step=10000000)
+            restaked_tvl = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="33")
             st.write(f"&#8226; Total Restaked TVL on Omni: **${restaked_tvl:,.0f}**")
 
 
