@@ -185,6 +185,7 @@ def main():
 
             # Dropdown menu
         restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000)
+        st.write(f"&#8226; Total Restaked ETH to Omni: ${restaked_eth_del:,.0f}")
 
         st.write("\n")
         st.write("\n")
@@ -543,6 +544,7 @@ def main():
 
             # Dropdown menu
         staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000)
+        st.write(f"&#8226; Total Staked $OMNI: ${staked_omni:,.0f}")
 
         st.write("\n")
         st.write("\n")
