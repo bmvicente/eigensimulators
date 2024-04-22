@@ -406,31 +406,22 @@ def main():
                     </style>
                     """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">Validator Metrics</p>', unsafe_allow_html=True)
-
-            st.write("  \n")
-
-            validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
-
-            with st.expander("Logic"):
-                st.markdown("""
-        Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.""")
-            
-            st.write("  \n")
+            st.markdown('<p class="header-style">Operator Metrics</p>', unsafe_allow_html=True)
+ 
             st.write("  \n")
 
             col100, col101 = st.columns(2, gap="medium")
             with col100:
                 
-                validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1)
+                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=1)
 
             with col101:            
 
-                validator_centralization = st.selectbox("**Validators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
+                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
             
             st.write("  \n")
 
-            validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
+            operator_entrenchment_level = st.slider("**Operator Entrenchment Level**", min_value=0, max_value=100, value=50, format='%d%%')
 
             st.write("  \n")
 
