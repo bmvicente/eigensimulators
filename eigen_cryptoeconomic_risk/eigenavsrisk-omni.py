@@ -419,7 +419,6 @@ def main():
             security_audits = st.number_input("", min_value=0, max_value=5, step=1)
 
         st.write("  \n")
-        st.write("  \n")
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
@@ -474,7 +473,6 @@ def main():
 
         operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Medium Entrenchment", "Low Entrenchment"])
 
-        st.write("  \n")
         st.write("  \n")
 
         col33, col34 = st.columns(2, gap="medium")
@@ -618,7 +616,6 @@ def main():
 
             validator_centralization = st.selectbox("**Validators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
 
-        st.write("  \n")
         st.write("  \n")
         
         col33, col34 = st.columns(2, gap="medium")
