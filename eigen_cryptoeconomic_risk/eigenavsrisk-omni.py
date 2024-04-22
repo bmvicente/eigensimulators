@@ -394,9 +394,8 @@ def main():
 
         
 
-            
             # Operator Metrics
-            st.markdown("""
+        st.markdown("""
                     <style>
                     .header-style {
                         font-size: 18px;
@@ -406,26 +405,26 @@ def main():
                     </style>
                     """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">Operator Metrics</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Operator Metrics</p>', unsafe_allow_html=True)
  
-            st.write("  \n")
+        st.write("  \n")
 
-            col100, col101 = st.columns(2, gap="medium")
-            with col100:
+        col100, col101 = st.columns(2, gap="medium")
+        with col100:
                 
                 operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=1)
 
-            with col101:            
+        with col101:            
 
                 operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
             
-            st.write("  \n")
+        st.write("  \n")
 
-            operator_entrenchment_level = st.slider("**Operator Entrenchment Level**", min_value=0, max_value=100, value=50, format='%d%%')
+        operator_entrenchment_level = st.slider("**Operator Entrenchment Level**", min_value=0, max_value=100, value=50, format='%d%%')
 
-            st.write("  \n")
+        st.write("  \n")
 
-            with st.expander("Logic"):
+        with st.expander("Logic"):
                     st.markdown("""
                         The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
                         
@@ -435,9 +434,9 @@ def main():
                                 """)
                 
 
-            result5 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
+        result5 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
 
-            security_audits_calc = f"""
+        security_audits_calc = f"""
                 <div style="text-align: center;">
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -449,7 +448,7 @@ def main():
                 </div>
             """
 
-            st.markdown(security_audits_calc, unsafe_allow_html=True)
+        st.markdown(security_audits_calc, unsafe_allow_html=True)
 
 #############################
 #############################
