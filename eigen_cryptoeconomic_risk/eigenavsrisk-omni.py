@@ -367,6 +367,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+        st.write("  \n")
 
 
         col27,col28 = st.columns(2, gap="medium")
@@ -642,6 +643,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("\n")
+        st.write("  \n")
 
 
 
@@ -730,7 +732,6 @@ def main():
             evm_client_div = st.slider("**EVM Client Diversity**", min_value=0, max_value=100, value=50, format='%d%%')
             
 
-        st.write("  \n")
         st.write("  \n")
         
         col33, col34 = st.columns(2, gap="medium")
