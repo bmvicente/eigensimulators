@@ -487,31 +487,6 @@ def main():
 
     with col2:
 
-        # Staked OMNI
-
-        st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                .stExpander {
-                    border: none !important;
-                    box-shadow: none !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
-            # Displaying the custom styled header
-        st.markdown('<p class="header-style">Total Staked $OMNI</p>', unsafe_allow_html=True)
-
-            # Dropdown menu
-        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000)
-
-        st.write("\n")
-        st.write("\n")
-
 
         custom_css = """
             <style>
@@ -544,6 +519,32 @@ def main():
             unsafe_allow_html=True
         )
 
+        st.write("\n")
+
+
+
+        # Staked OMNI
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+        st.markdown('<p class="header-style">Total Staked $OMNI</p>', unsafe_allow_html=True)
+
+            # Dropdown menu
+        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000)
+
+        st.write("\n")
         st.write("\n")
 
 
