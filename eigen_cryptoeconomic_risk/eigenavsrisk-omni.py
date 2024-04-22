@@ -332,7 +332,7 @@ def main():
                 """, unsafe_allow_html=True)
 
 
-            st.markdown('<p class="header-style">Protocol Architecture/Code Complexity</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">AVS Protocol Architecture/Code Complexity</p>', unsafe_allow_html=True)
 
             code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
 
