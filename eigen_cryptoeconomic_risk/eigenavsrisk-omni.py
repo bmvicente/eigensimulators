@@ -604,9 +604,6 @@ def main():
 
         validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
 
-        with st.expander("Logic"):
-            st.markdown("""
-    Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.""")
         
         st.write("  \n")
         st.write("  \n")
@@ -638,6 +635,8 @@ def main():
                     "*Full MEV extraction and implementing censorship on shared sequencers pose a significant challenge for an attacker. To ensure the success of such an attack and to collect the entire MEV generated, an attacker would need control over 100% of the validators. In certain sequencer setups, where leader election is lottery-based, there might be an incentive for validators to collude to maximize the amount of MEV distributed to validators as opposed to the chains.*"
                     
                     Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
+                            
+                    Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.
                             """)
             
         st.write("  \n")
