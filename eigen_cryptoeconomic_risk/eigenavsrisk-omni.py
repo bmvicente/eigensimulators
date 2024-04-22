@@ -336,20 +336,6 @@ def main():
 
             code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
 
-            st.write("  \n")
-
-            # The expander without a visible outline
-            with st.expander("Logic"):
-                st.markdown("""
-                    Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
-                    
-                    While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
-                    
-                    ```python
-                    security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the least
-                    ```
-                            """)
-
 
 
         with col28:
@@ -377,11 +363,14 @@ def main():
 
             st.write("  \n")
 
+        col35,col36 = st.columns(2, gap="medium")
+        with col35:
             security_audits_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4)
+        with col36:
             security_audits_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8)
 
             # The expander without a visible outline
-            with st.expander("Logic"):
+        with st.expander("Logic"):
                 st.markdown("""
                     Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
                     
@@ -428,6 +417,8 @@ def main():
         operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level**", ["High Entrenchment", "Medium Entrenchment", "Low Entrenchment"])
 
         st.write("  \n")
+        st.write("  \n")
+
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             operator_metrics_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4, key="o0")
@@ -542,6 +533,13 @@ def main():
         validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
 
         st.write("  \n")
+        st.write("  \n")
+        
+        col33, col34 = st.columns(2, gap="medium")
+        with col33:
+            validator_metrics_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4, key="v0")
+        with col34:
+            validator_metrics_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8, key="v1")
 
         with st.expander("Logic"):
                 st.markdown("""
@@ -587,7 +585,13 @@ def main():
             
 
         st.write("  \n")
-
+        st.write("  \n")
+        
+        col33, col34 = st.columns(2, gap="medium")
+        with col33:
+            relayer_metrics_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4, key="r0")
+        with col34:
+            relayer_metrics_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8, key="r1")
 
         with st.expander("Logic"):
                 st.markdown("""
@@ -639,7 +643,13 @@ def main():
             
 
         st.write("  \n")
-
+        st.write("  \n")
+        
+        col33, col34 = st.columns(2, gap="medium")
+        with col33:
+            evm_metrics_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4, key="e0")
+        with col34:
+            evm_metrics_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8, key="e1")
 
         with st.expander("Logic"):
                 st.markdown("""
