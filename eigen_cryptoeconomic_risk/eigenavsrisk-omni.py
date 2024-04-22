@@ -193,6 +193,7 @@ def main():
             st.write("\n")
             st.write("\n")
             st.write("\n")
+            st.write("\n")
 
 
             # AVS Business Model
@@ -243,6 +244,7 @@ def main():
             st.write(f"&#8226; Total Restaked TVL on Omni: **${restaked_tvl:,.0f}**")
 
 
+            st.write("\n")
             st.write("\n")
             st.write("\n")
             st.write("\n")
@@ -508,6 +510,8 @@ def main():
 
         st.markdown(security_audits_calc, unsafe_allow_html=True)
 
+
+
 #############################
 #############################
 #############################
@@ -575,6 +579,8 @@ def main():
         staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000)
         st.write(f"&#8226; Total Staked \$OMNI: **${staked_omni:,.0f}**")
 
+
+        st.write("\n")
         st.write("\n")
         st.write("\n")
         st.write("\n")
@@ -638,6 +644,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+        st.write("\n")
 
 
 
@@ -669,7 +676,6 @@ def main():
             
 
         st.write("  \n")
-        st.write("  \n")
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
@@ -688,6 +694,7 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+        st.write("\n")
 
 
 
