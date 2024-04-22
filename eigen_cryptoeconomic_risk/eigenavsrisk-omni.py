@@ -545,7 +545,7 @@ def main():
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #0000FF;"> <!-- Green background color -->
+                background-color: #4169E1;"> <!-- Green background color -->
                 <h2 class='large-header-style' style="color: white; margin:0;">OMNI-SPECIFIC METRICS</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
