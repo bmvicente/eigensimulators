@@ -428,6 +428,11 @@ def main():
         operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level**", ["High Entrenchment", "Medium Entrenchment", "Low Entrenchment"])
 
         st.write("  \n")
+        
+        operator_metrics_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4, key="o0")
+        operator_metrics_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8, key="o1")
+
+        st.write("  \n")
 
         with st.expander("Logic"):
                     st.markdown("""
