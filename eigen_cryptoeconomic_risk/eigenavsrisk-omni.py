@@ -474,6 +474,8 @@ def main():
         operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Medium Entrenchment", "Low Entrenchment"])
 
         st.write("  \n")
+        st.write("-------")
+        st.write("  \n")
 
         col33, col34 = st.columns(2, gap="medium")
         with col33:
