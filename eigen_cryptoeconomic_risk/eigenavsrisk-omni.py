@@ -601,7 +601,12 @@ def main():
 
         st.write("  \n")
 
-        validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
+        col38,col39 = st.columns(2, gap="medium")
+        with col38:
+            validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
+        with col39:
+            engine_api = st.checkbox('Use **Ethereum Engine API**', value=True)
+
 
         st.write("  \n")
 
@@ -709,11 +714,7 @@ def main():
 
         st.write("  \n")
 
-        col77,col78 = st.columns(2, gap="medium")
-        with col77:
-            avs_engine_api = st.checkbox('Use **Ethereum Engine API**', value=True)
-        with col78:
-            sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True)
+        sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True)
 
         st.write("  \n")
 
@@ -739,11 +740,18 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-                    The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
-                    
-                    "*Full MEV extraction and implementing censorship on shared sequencers pose a significant challenge for an attacker. To ensure the success of such an attack and to collect the entire MEV generated, an attacker would need control over 100% of the validators. In certain sequencer setups, where leader election is lottery-based, there might be an incentive for validators to collude to maximize the amount of MEV distributed to validators as opposed to the chains.*"
-                    
-                    Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
+                    **Engine API**
+
+                    - **Scalability and Efficiency:** By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
+                    - **Flexibility:** Supports the interchangeability and upgrading of execution clients without system disruption, ensuring compatibility with various Ethereum execution clients.
+                            
+                    This fidelity guarantees that opcode compatibility issues are non-existent, and all developer tooling designed for Ethereum seamlessly works with the Omni EVM.
+
+### Advantages of Omni’s EVM Equivalence
+
+- **Seamless Migration:** Developers can port their DApps to Omni without any modifications, significantly reducing the effort and complexity involved in accessing a new blockchain ecosystem.
+- **Developer Tooling Compatibility:** All the tools, libraries, and frameworks designed for Ethereum development are fully compatible with the Omni EVM, streamlining the development process.
+- **Future-Proof:** Omni's alignment with Ethereum's upgrade path ensures that developers can leverage the latest features and improvements without delay.
                             """)
 
 
