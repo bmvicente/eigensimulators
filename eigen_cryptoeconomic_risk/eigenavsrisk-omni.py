@@ -713,7 +713,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.write("  \n")
         
         sybil_mec = st.checkbox('**Anti-Sybil Mechanism** for transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks', value=True)
-        encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for increased privacy and security in transactions', value=True)
+        encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for increased privacy and security in transactions', value=False)
 
         st.write("  \n")
 
