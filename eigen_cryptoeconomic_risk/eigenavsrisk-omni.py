@@ -702,6 +702,70 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
 
 
+        # EVM Metrics
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+        st.markdown('<p class="header-style">EVM Metrics (as a product of Consensus Layer metrics)</p>', unsafe_allow_html=True)
+
+        st.write("  \n")
+
+        col100, col101 = st.columns(2, gap="medium")
+        with col100:
+            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=1)
+        with col101:
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], help="Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=1)
+            
+
+        st.write("-------")
+        
+        col33, col34 = st.columns(2, gap="medium")
+        with col33:
+            evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e0")
+        with col34:
+            evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="e1")
+
+        with st.expander("Logic"):
+                st.markdown("""
+                    OMNI provides an anti-sybil mechanism for transactions submitted to the Omni EVM, deterring spam and malicious activities such as denial-of-service attacks.        
+                    
+                    Developer Accessibility and EVM Equivalence: By ensuring EVM equivalence, Omni offers a seamless transition for Ethereum developers, making it a more accessible platform for deploying decentralized applications (DApps) without modifications.
+                    
+                    **Engine API**
+
+                    - **Scalability and Efficiency:** By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
+                    - **Flexibility:** Supports the interchangeability and upgrading of execution clients without system disruption, ensuring compatibility with various Ethereum execution clients.
+                            
+                    This fidelity guarantees that opcode compatibility issues are non-existent, and all developer tooling designed for Ethereum seamlessly works with the Omni EVM.
+
+### Advantages of Omni’s EVM Equivalence
+
+- **Seamless Migration:** Developers can port their DApps to Omni without any modifications, significantly reducing the effort and complexity involved in accessing a new blockchain ecosystem.
+- **Developer Tooling Compatibility:** All the tools, libraries, and frameworks designed for Ethereum development are fully compatible with the Omni EVM, streamlining the development process.
+- **Future-Proof:** Omni's alignment with Ethereum's upgrade path ensures that developers can leverage the latest features and improvements without delay.
+                            
+                    Client Diversity and EVM Equivalence: Omni emphasizes running an unmodified version of the Ethereum Virtual Machine (EVM), which guarantees that Ethereum smart contracts and developer tooling work seamlessly. This focus on EVM equivalence and support for diverse client implementations enhances developer accessibility and network resilience.
+                            """)
+
+
+
+
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("\n")
+        st.write("  \n")
+
+
+
 
         # Relayer Metrics
         st.markdown("""
@@ -765,66 +829,6 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                             """)
 
 
-            
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("\n")
-
-
-
-        # EVM Metrics
-        st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
-        st.markdown('<p class="header-style">EVM Metrics (as a product of Consensus Layer metrics)</p>', unsafe_allow_html=True)
-
-        st.write("  \n")
-
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
-            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=1)
-        with col101:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], help="Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=1)
-            
-
-        st.write("-------")
-        
-        col33, col34 = st.columns(2, gap="medium")
-        with col33:
-            evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e0")
-        with col34:
-            evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="e1")
-
-        with st.expander("Logic"):
-                st.markdown("""
-                    OMNI provides an anti-sybil mechanism for transactions submitted to the Omni EVM, deterring spam and malicious activities such as denial-of-service attacks.        
-                    
-                    Developer Accessibility and EVM Equivalence: By ensuring EVM equivalence, Omni offers a seamless transition for Ethereum developers, making it a more accessible platform for deploying decentralized applications (DApps) without modifications.
-                    
-                    **Engine API**
-
-                    - **Scalability and Efficiency:** By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
-                    - **Flexibility:** Supports the interchangeability and upgrading of execution clients without system disruption, ensuring compatibility with various Ethereum execution clients.
-                            
-                    This fidelity guarantees that opcode compatibility issues are non-existent, and all developer tooling designed for Ethereum seamlessly works with the Omni EVM.
-
-### Advantages of Omni’s EVM Equivalence
-
-- **Seamless Migration:** Developers can port their DApps to Omni without any modifications, significantly reducing the effort and complexity involved in accessing a new blockchain ecosystem.
-- **Developer Tooling Compatibility:** All the tools, libraries, and frameworks designed for Ethereum development are fully compatible with the Omni EVM, streamlining the development process.
-- **Future-Proof:** Omni's alignment with Ethereum's upgrade path ensures that developers can leverage the latest features and improvements without delay.
-                            
-                    Client Diversity and EVM Equivalence: Omni emphasizes running an unmodified version of the Ethereum Virtual Machine (EVM), which guarantees that Ethereum smart contracts and developer tooling work seamlessly. This focus on EVM equivalence and support for diverse client implementations enhances developer accessibility and network resilience.
-                            """)
 
 
     st.write("  \n")
