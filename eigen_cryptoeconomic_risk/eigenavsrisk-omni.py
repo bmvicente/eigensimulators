@@ -686,7 +686,7 @@ def main():
         with col38:
             relayer_merkle = st.checkbox('Use **Merkle Multi-Proofs**', value=True)
         with col39:
-            relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification At Scale', value=True)
+            relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification At Scale', value=False)
 
         st.write("  \n")
 
