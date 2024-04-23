@@ -617,7 +617,7 @@ def main():
 
         col38,col39 = st.columns(2, gap="medium")
         with col38:
-            engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (halo) with the EVM Execution Client', value=True)
+            engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (Halo) with the EVM Execution Client', value=True)
         with col39:
             validator_abci_usage = st.checkbox('Use **ABCI++**', help="**HANDLING TRANSACTION REQUESTS**: Previous approaches relied on the CometBFT mempool to manage transaction requests, leading to network congestion and compromised consensus speed as activity increased. Omni addresses this challenge by utilizing the Engine API, alongside ABCI++, to move the transaction mempool to the execution layer. This strategic move ensures the CometBFT consensus process remains lightweight and efficient. **STATE TRANSLATION**: One of the major challenges in previous designs was translating the EVM state to a format compatible with CometBFT. Omni overcomes this hurdle by incorporating an ABCI++ wrapper around the CometBFT engine, enabling seamless state translation and ensuring that Omni EVM blocks are efficiently converted into CometBFT transactions.", value=True)
 
