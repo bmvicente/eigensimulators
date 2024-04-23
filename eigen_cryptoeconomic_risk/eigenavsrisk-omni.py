@@ -641,7 +641,7 @@ def main():
 
         st.write("  \n")
 
-        validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
+        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
@@ -713,6 +713,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.write("  \n")
         
         sybil_mec = st.checkbox('**Anti-Sybil Mechanism** for transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks', value=True)
+        encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for increased privacy and security in transactions', value=True)
 
         st.write("  \n")
 
@@ -733,6 +734,13 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         with st.expander("Logic"):
                 st.markdown("""
+**Execution Consensus**
+1. When it is a validator's turn to propose a block, its halo client requests the latest Omni EVM block from its execution client using the Engine API.
+2. The execution client builds a block from the transactions in its mempool and returns the block header to the halo client through the Engine API.
+3. The halo client packages the new block proposal as a single CometBFT transaction and includes it in the consensus layer block.
+4. The block is proposed to the rest of the validator network through the consensus layer’s P2P network.
+5. Non-proposing validators use the Engine API and their execution clients to run the state transition function on the proposed block header to verify the block’s validity.
+                        
                     OMNI provides an anti-sybil mechanism for transactions submitted to the Omni EVM, deterring spam and malicious activities such as denial-of-service attacks.        
                     
                     Developer Accessibility and EVM Equivalence: By ensuring EVM equivalence, Omni offers a seamless transition for Ethereum developers, making it a more accessible platform for deploying decentralized applications (DApps) without modifications.
@@ -781,7 +789,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         st.write("  \n")
 
-        relayer_merkle = st.checkbox('Use **Merkle Multi-Proofs**', value=True)
+        relayer_merkle = st.checkbox('Use of **Merkle Multi-Proofs** for efficient XBlock Submission', value=True)
         relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
 
         st.write("  \n")
