@@ -633,7 +633,11 @@ def main():
         with col51:
             lockup_mec = st.checkbox('**Lock-Up Periods** for Security Guarantees', value=False)
 
-        da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions', value=False)
+        col52,col53 = st.columns(2, gap="medium")
+        with col52:
+            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions', value=False)
+        with col53:
+            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for XMsg Fast Finality', value=False)
 
         st.write("  \n")
 
