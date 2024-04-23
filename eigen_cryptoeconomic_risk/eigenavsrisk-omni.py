@@ -286,9 +286,9 @@ def main():
 
         col44,col45 = st.columns(2, gap="medium")
         with col44:
-            business_model_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3)
+            business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3)
         with col45:
-            business_model_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7)
+            business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7)
 
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
@@ -343,23 +343,23 @@ def main():
 
 
 
-        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
+        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood * business_dual_impact
         
-        business_model_calc = f"""
+        business_dual_calc = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
             </div>"""
 
-        st.markdown(business_model_calc, unsafe_allow_html=True)
+        st.markdown(business_dual_calc, unsafe_allow_html=True)
 
 
 
@@ -446,23 +446,23 @@ def main():
 
 
 
-        result2 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
+        result2 = st.session_state.business_model_score * st.session_state.dual_staking_balance * security_audits_likelihood * security_audits_impact
 
-        business_model_calc = f"""
+        security_calc = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
             </div>"""
 
-        st.markdown(business_model_calc, unsafe_allow_html=True)
+        st.markdown(security_calc, unsafe_allow_html=True)
 
 
 
@@ -522,9 +522,9 @@ def main():
                                 """)
                 
 
-        result3 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
+        result3 = st.session_state.security_audit_score * operator_metrics_likelihood * operator_metrics_impact
 
-        security_audits_calc = f"""
+        operator_calc = f"""
                 <div style="text-align: center;">
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -532,15 +532,15 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result3}</span>
                 </div>
             """
 
-        st.markdown(security_audits_calc, unsafe_allow_html=True)
+        st.markdown(operator_calc, unsafe_allow_html=True)
 
 
 
@@ -715,10 +715,10 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                             """)
 
 
-        result4 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
+        result4 = st.session_state.business_model_score * st.session_state.dual_staking_balance * validator_metrics_likelihood * validator_metrics_impact
 
         
-        business_model_calc = f"""
+        validator_calc = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
@@ -743,14 +743,14 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result4}</span>
             </div>"""
 
-        st.markdown(business_model_calc, unsafe_allow_html=True)
+        st.markdown(validator_calc, unsafe_allow_html=True)
 
 
         st.write("  \n")
@@ -831,10 +831,10 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                             """)
 
 
-        result5 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
+        result5 = st.session_state.business_model_score * st.session_state.dual_staking_balance * evm_metrics_likelihood * evm_metrics_impact
 
         
-        business_model_calc = f"""
+        evm_calc = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
@@ -845,14 +845,14 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5}</span>
             </div>"""
 
-        st.markdown(business_model_calc, unsafe_allow_html=True)
+        st.markdown(evm_calc, unsafe_allow_html=True)
 
 
 
@@ -929,10 +929,10 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                             """)
 
 
-        result6 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
+        result6 = st.session_state.business_model_score * st.session_state.dual_staking_balance * relayer_metrics_likelihood * relayer_metrics_impact
 
         
-        business_model_calc = f"""
+        relayer_calc = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
@@ -943,14 +943,14 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
             </div>"""
 
-        st.markdown(business_model_calc, unsafe_allow_html=True)
+        st.markdown(relayer_calc, unsafe_allow_html=True)
 
 
 
@@ -1024,16 +1024,6 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result6}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result7}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result8}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result10}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result11}</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
                 <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
             </div>
