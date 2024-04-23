@@ -625,7 +625,7 @@ def main():
         with col42:
             tee_mec = st.checkbox('**TEE** Implementation for Effective Key Management', value=False)
         with col43:
-            dvt_mec = st.checkbox('**DVT** Implementation', value=False)
+            dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False)
 
         col50,col51 = st.columns(2, gap="medium")
         with col50:
