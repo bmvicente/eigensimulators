@@ -603,6 +603,8 @@ def main():
 
         st.markdown('<p class="header-style">Consensus Mechanism Metrics through Halo Client</p>', unsafe_allow_html=True)
 
+
+
         # Validator Metrics
         st.markdown("""
                 <style>
@@ -791,7 +793,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
         with col100:
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=1)
         with col101:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], index=1)
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], help="Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=1)
             
 
         st.write("-------")
