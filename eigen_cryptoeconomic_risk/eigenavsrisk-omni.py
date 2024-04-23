@@ -764,9 +764,9 @@ def main():
 
         col50,col51 = st.columns(2, gap="medium")
         with col50:
-            dvt_mec = st.checkbox('**DVT** (Distributed Validator Technology', value=False)
+            dvt_mec = st.checkbox('**DVT** (Distributed Validator Technology)', value=False)
         with col51:
-            oracle_bridge_mec = st.checkbox('**Oracle or Bridge Solution or AVS** to Restrict PfC Extracted / **Lock-Up Periods** for Security Guarantees', value=False)
+            oracle_bridge_mec = st.checkbox('**Oracle or Bridge Solution or AVS** to Restrict PfC Extracted', value=False)
 
         col53,col54 = st.columns(2, gap="medium")
         with col53:
