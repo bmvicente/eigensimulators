@@ -768,7 +768,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                 </style>
                 """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">EVM Metrics</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">EVM Metrics (as a product of Consensus Layer metrics)</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
