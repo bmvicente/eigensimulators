@@ -45,6 +45,8 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""
+                    The consensus layer is implemented by the Omni consensus client, halo, and uses CometBFT for consensus on XMsgs and Omni EVM blocks.
+
             The Simulator takes six of the AVS-generic parameters to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Espresso. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
             A good deal of the logic behind the right side of the Simulator (ESPRESSO-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581), specifically for Espresso.
                     
@@ -609,7 +611,7 @@ def main():
         with col38:
             validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
         with col39:
-            engine_api = st.checkbox('Use **Ethereum Engine API**', value=True)
+            engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (halo) with the EVM Execution Client', value=True)
         
         col42,col43 = st.columns(2, gap="medium")
         with col42:
@@ -649,6 +651,8 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
+Using the Engine API, Omni nodes pair existing high performance Ethereum execution clients with a new consensus client, referred to as halo, that implements CometBFT consensus.The Engine API allows clients to be substituted or upgraded without breaking the system. This allows the protocol to maintain flexibility on Ethereum and Cosmos technology while promoting client diversity within its execution layer and consensus layer. We consider this new network framework to be a public good that future projects may leverage for their own network designs.
+                            
                             ABCI++  while introducing benefits at the application layer particularly, also introduce complexity in application design, multi-faceted security vulnerabilities, and performance overhead to the whole process. It is paramount to consider the deterministic design and logic of integrated applications.
 
                             Application BlockChain Interface (ABCI++): Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.
@@ -722,6 +726,8 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
+                            Relayer responsible for delivering attested cross-network messages from the Omni network to destination rollup VMs. Monitors the Omni Consensus Layer until ⅔ (>66%) of the validator set attested to the “next” block on each source chain, then proceeds to forwarding the respective XMsg list included in the block.
+Relayers are responsible for delivering confirmed cross-network messages from Omni to destination rollups. When 2/3 (>66%) of Omni validators attest to a given XBlock, relayers forward the XBlock’s corresponding XMsg list to destination rollup networks.
                             
                             While Merkle multi-proofs provide a powerful tool for efficient data verification across blockchain networks, careful consideration of these risks and appropriate mitigations are essential to maintaining the security, efficiency, and robustness of blockchain protocols that utilize them.
         
