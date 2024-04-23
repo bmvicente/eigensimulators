@@ -769,7 +769,6 @@ def main():
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=1)
-            
         with col101:
             evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], index=1)
             
