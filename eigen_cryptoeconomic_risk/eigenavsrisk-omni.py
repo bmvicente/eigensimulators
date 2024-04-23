@@ -696,11 +696,8 @@ def main():
 
         st.write("  \n")
 
-        col38,col39 = st.columns(2, gap="medium")
-        with col38:
-            relayer_merkle = st.checkbox('Use **Merkle Multi-Proofs**', value=True)
-        with col39:
-            relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification At Scale', value=False)
+        relayer_merkle = st.checkbox('Use **Merkle Multi-Proofs**', value=True)
+        relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
 
         st.write("  \n")
 
