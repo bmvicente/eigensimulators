@@ -629,7 +629,7 @@ def main():
 
         col50,col51 = st.columns(2, gap="medium")
         with col50:
-            oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict PfC Extracted', value=False)
+            oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False)
         with col51:
             lockup_mec = st.checkbox('**Lock-Up Periods** for Security Guarantees', value=False)
 
