@@ -342,8 +342,8 @@ def main():
                         """)
 
 
-        result2 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
 
+        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
         
         business_model_calc = f"""
             <div style="text-align: center;">
@@ -364,6 +364,7 @@ def main():
             </div>"""
 
         st.markdown(business_model_calc, unsafe_allow_html=True)
+
 
 
         st.write("  \n")
@@ -443,6 +444,33 @@ def main():
                     ```
                             """)
 
+
+
+        result2 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
+
+        business_model_calc = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                    <span style="font-size: 24px; font-weight: bold;"> = </span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
+                </div>
+            </div>"""
+
+        st.markdown(business_model_calc, unsafe_allow_html=True)
+
+
+
+
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
@@ -498,7 +526,7 @@ def main():
                                 """)
                 
 
-        result5 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
+        result3 = st.session_state.security_audit_score * security_audits_likelihood * security_audits_impact
 
         security_audits_calc = f"""
                 <div style="text-align: center;">
@@ -685,13 +713,40 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 - **Attestation Monitoring and XBlock Cache Management**: Relayers monitor the Omni Consensus Chain for attested XBlocks, maintaining a cache of these blocks for efficient processing and submission readiness.
 - **Decision Making for Message Submission**: Relayers decide on the number of XMsgs to submit, balancing transaction cost considerations like data size and gas limits.
                             """)
-            
+
+
+        result4 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
+
+        
+        business_model_calc = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                    <span style="font-size: 24px; font-weight: bold;"> = </span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
+                </div>
+            </div>"""
+
+        st.markdown(business_model_calc, unsafe_allow_html=True)
+
+
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
         st.write("\n")
         st.write("  \n")
+
+
 
 
 
@@ -762,6 +817,29 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                             """)
 
 
+        result5 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
+
+        
+        business_model_calc = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                    <span style="font-size: 24px; font-weight: bold;"> = </span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
+                </div>
+            </div>"""
+
+        st.markdown(business_model_calc, unsafe_allow_html=True)
+
 
 
         st.write("  \n")
@@ -770,6 +848,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.write("  \n")
         st.write("\n")
         st.write("  \n")
+
 
 
 
@@ -834,6 +913,30 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                 After validators' attestation, relayers submit XBlocks and their messages to destination chains, employing merkle-multi-proofs for verification.
                     Relayer Role Security: While the permissionless relayer mechanism is a strength for interoperability, it also introduces a potential vector for attacks if relayers behave maliciously or if the reputation system is not robust enough to incentivize honest participation.
                             """)
+
+
+        result6 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_model_likelihood * business_model_impact
+
+        
+        business_model_calc = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
+                    <span style="font-size: 24px; font-weight: bold;"> = </span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
+                </div>
+            </div>"""
+
+        st.markdown(business_model_calc, unsafe_allow_html=True)
 
 
 
