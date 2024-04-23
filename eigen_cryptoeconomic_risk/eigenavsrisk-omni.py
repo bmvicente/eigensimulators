@@ -194,6 +194,7 @@ def main():
             st.write("\n")
             st.write("\n")
             st.write("\n")
+            st.write("\n")
 
 
             # AVS Business Model
@@ -579,6 +580,7 @@ def main():
         st.write(f"&#8226; Total Staked \$OMNI: **${staked_omni:,.0f}**")
 
 
+        st.write("\n")
         st.write("\n")
         st.write("\n")
         st.write("\n")
