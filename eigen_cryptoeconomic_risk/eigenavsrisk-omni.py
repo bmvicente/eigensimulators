@@ -772,7 +772,7 @@ def main():
         with col53:
             lockup_mec = st.checkbox('**Lock-Up Periods** for Security Guarantees', value=False)
         with col54:
-            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes Mitigating Potential State Explosions', value=False)
+            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions', value=False)
 
 
         st.write("  \n")
