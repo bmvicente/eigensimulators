@@ -631,7 +631,7 @@ def main():
         with col50:
             oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False)
         with col51:
-            lockup_mec = st.checkbox('**Lock-Up Periods** for Security Guarantees', value=False)
+            lockup_mec = st.checkbox('**Lock-Up Periods** Applied to Validators for Security Guarantees', value=False)
 
         col52,col53 = st.columns(2, gap="medium")
         with col52:
