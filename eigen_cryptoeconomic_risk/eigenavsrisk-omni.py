@@ -828,6 +828,9 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     with col2:
         st.image("images/omni-diagram1.jpg", width=1200)
 
+    col1, col2, col3 = st.columns([1, 5, 1])
+    with col2:
+        st.image("images/omni-diagram2.jpg", width=1200)
 
     st.write("  \n")
     st.write("  \n")
