@@ -357,10 +357,6 @@ def main():
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
-                </div>
-                <div style="margin-top: 10px;">
-                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
-                </div>
             </div>"""
 
         st.markdown(business_model_calc, unsafe_allow_html=True)
@@ -464,10 +460,6 @@ def main():
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
-                </div>
-                <div style="margin-top: 10px;">
-                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
-                </div>
             </div>"""
 
         st.markdown(business_model_calc, unsafe_allow_html=True)
@@ -734,10 +726,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result4}</span>
-                </div>
-                <div style="margin-top: 10px;">
-                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
-                </div>
             </div>"""
 
         st.markdown(business_model_calc, unsafe_allow_html=True)
@@ -836,10 +824,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5}</span>
-                </div>
-                <div style="margin-top: 10px;">
-                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
-                </div>
             </div>"""
 
         st.markdown(business_model_calc, unsafe_allow_html=True)
@@ -934,10 +918,6 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
-                </div>
-                <div style="margin-top: 10px;">
-                    <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
-                </div>
             </div>"""
 
         st.markdown(business_model_calc, unsafe_allow_html=True)
