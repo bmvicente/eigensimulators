@@ -622,6 +622,7 @@ def main():
         da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions', value=False)
 
         st.write("  \n")
+        st.write("  \n")
 
         validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
 
