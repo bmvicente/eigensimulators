@@ -620,7 +620,7 @@ def main():
         with col101:            
 
             validator_centralization = st.selectbox("**Validators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
-
+        
         st.write("  \n")
         
         col33, col34 = st.columns(2, gap="medium")
@@ -755,7 +755,25 @@ def main():
 
         st.write("  \n")
 
-        sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True)
+        
+        col42,col43 = st.columns(2, gap="medium")
+        with col42:
+            sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True)
+        with col43:
+            tee_mec = st.checkbox('**TEE** for Effective Key Management', value=False)
+
+        col50,col51 = st.columns(2, gap="medium")
+        with col50:
+            dvt_mec = st.checkbox('**DVT** (Distributed Validator Technology', value=False)
+        with col51:
+            oracle_bridge_mec = st.checkbox('**Oracle or Bridge Solution or AVS** to Restrict PfC Extracted / **Lock-Up Periods** for Security Guarantees', value=False)
+
+        col53,col54 = st.columns(2, gap="medium")
+        with col53:
+            lockup_mec = st.checkbox('**Lock-Up Periods** for Security Guarantees', value=False)
+        with col54:
+            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes Mitigating Potential State Explosions', value=False)
+
 
         st.write("  \n")
 
