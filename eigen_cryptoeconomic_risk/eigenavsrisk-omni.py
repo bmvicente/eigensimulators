@@ -594,7 +594,7 @@ def main():
         st.markdown("""
                 <style>
                 .header-style {
-                    font-size: 20px;
+                    font-size: 25px;
                     font-weight: bold;
                     margin-bottom: 0px;  /* Adjust the space below the header */
                 }
