@@ -635,11 +635,8 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            
             validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1)
-
-        with col101:            
-
+        with col101:           
             validator_centralization = st.selectbox("**Validators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
         
         st.write("-------")
@@ -712,12 +709,8 @@ def main():
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1)
-            
-            st.write("  \n")
-
         with col101:
             relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
-            
 
         st.write("-------")
         
@@ -775,13 +768,9 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=1)
             
-            st.write("  \n")
-
         with col101:
-
             evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], index=1)
             
 
