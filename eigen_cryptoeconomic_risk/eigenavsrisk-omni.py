@@ -281,9 +281,9 @@ def main():
 
         col44,col45 = st.columns(2, gap="medium")
         with col44:
-            business_model_likelihood = st.slider("**Likelihood** ", min_value=1, max_value=10, value=3)
+            business_model_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3)
         with col45:
-            business_model_impact = st.slider("**Impact** ", min_value=1, max_value=10, value=7)
+            business_model_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7)
 
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
@@ -422,9 +422,9 @@ def main():
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
-            security_audits_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4)
+            security_audits_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
         with col36:
-            security_audits_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8)
+            security_audits_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
 
             # The expander without a visible outline
         with st.expander("Logic"):
@@ -477,9 +477,9 @@ def main():
 
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            operator_metrics_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4, key="o0")
+            operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="o0")
         with col34:
-            operator_metrics_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8, key="o1")
+            operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="o1")
 
         st.write("  \n")
 
@@ -639,9 +639,9 @@ def main():
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            validator_metrics_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4, key="v0")
+            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="v0")
         with col34:
-            validator_metrics_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8, key="v1")
+            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v1")
 
         with st.expander("Logic"):
                 st.markdown("""
@@ -716,9 +716,9 @@ def main():
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            relayer_metrics_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4, key="r0")
+            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="r0")
         with col34:
-            relayer_metrics_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8, key="r1")
+            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="r1")
 
         with st.expander("Logic"):
                 st.markdown("""
@@ -786,9 +786,9 @@ def main():
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            evm_metrics_likelihood = st.slider("**Likelihood**  ", min_value=1, max_value=10, value=4, key="e0")
+            evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e0")
         with col34:
-            evm_metrics_impact = st.slider("**Impact**  ", min_value=1, max_value=10, value=8, key="e1")
+            evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="e1")
 
         with st.expander("Logic"):
                 st.markdown("""
