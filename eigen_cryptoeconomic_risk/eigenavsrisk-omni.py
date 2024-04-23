@@ -631,6 +631,13 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
+                            ABCI++  while introducing benefits at the application layer particularly, also introduce complexity in application design, multi-faceted security vulnerabilities, and performance overhead to the whole process. It is paramount to consider the deterministic design and logic of integrated applications.
+
+                            Application BlockChain Interface (ABCI++): Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.
+                Validators compile XMsg into XBlocks, which include metadata for efficient verification and attestation, streamlining the relaying process.
+                            
+                Engine API Conversion: An ABCI++ adapter wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.
+                    During the consensus, validators utilize ABCI++ to attest to the state of Rollup VMs, running state transition functions for accurate and secure external VM interactions.
                     The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
                     
                     "*Full MEV extraction and implementing censorship on shared sequencers pose a significant challenge for an attacker. To ensure the success of such an attack and to collect the entire MEV generated, an attacker would need control over 100% of the validators. In certain sequencer setups, where leader election is lottery-based, there might be an incentive for validators to collude to maximize the amount of MEV distributed to validators as opposed to the chains.*"
@@ -638,6 +645,15 @@ def main():
                     Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
                             
                     Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.
+                    
+                            
+                    Decoupled Consensus and Application Logic: The separation of the consensus engine and application logic via ABCI facilitates the creation of diverse applications, from cryptocurrencies to e-voting systems, without being limited to a specific blockchain's capabilities or language.
+                            
+
+                    **PERFORMANCE ACCURACY RATE**
+                    - **Submission of Cross-Chain Messages**: Relayers wait for more than two-thirds of the validators to attest to a source chain block. They then submit the validated XMsgs to the destination chains, along with necessary validator signatures and multi-merkle-proof.
+- **Attestation Monitoring and XBlock Cache Management**: Relayers monitor the Omni Consensus Chain for attested XBlocks, maintaining a cache of these blocks for efficient processing and submission readiness.
+- **Decision Making for Message Submission**: Relayers decide on the number of XMsgs to submit, balancing transaction cost considerations like data size and gas limits.
                             """)
             
         st.write("  \n")
@@ -666,6 +682,15 @@ def main():
 
         st.write("  \n")
 
+        col38,col39 = st.columns(2, gap="medium")
+        with col38:
+            relayer_merkle = st.checkbox('Use **Merkle Multi-Proofs**', value=True)
+        with col39:
+            relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification At Scale', value=True)
+
+        st.write("  \n")
+
+
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1)
@@ -686,6 +711,22 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
+                            
+                            While Merkle multi-proofs provide a powerful tool for efficient data verification across blockchain networks, careful consideration of these risks and appropriate mitigations are essential to maintaining the security, efficiency, and robustness of blockchain protocols that utilize them.
+        
+                            - **Decision Making for Message Submission**: A key decision that Relayers face is determining the number of **`XMsg`**s to submit to each destination chain. This decision directly influences the cost of transactions due to factors like data size, gas limits, and the computational overhead required for portal contract verification and message processing. (**PERFORMANCE ACCURACY RATE**)
+- **Submission** **Transaction**: For the actual submission to a destination chain, Relayers generate a merkle-multi-proof for the **`XMsg`**s that are to be included, based on the **`XBlock`** attestations root that has reached a quorum. They then craft an EVM transaction containing this data, aiming to ensure its swift inclusion on the destination chain.        
+                    At scale, Merkle multi-proofs introduce data availability concerns, complexity in verification, and increased computational cost.
+                            
+                            Resource Intensiveness: The need for signature and merkle proof verification for each message can be resource-intensive, especially on high-traffic networks.
+        Permissionless third-party Relayer (Permissionless — reduces single point of failure likelihood | decentralized): The Relayer plays a pivotal role in the Omni protocol as a permissionless entity that bridges cross-chain messages between source and destination chains. It performs critical functions that ensure the smooth and secure transmission of messages across the network.
+
+        Relayer Submits XBlocks: Relayers construct submissions for each finalized XBlock hash, including validator signatures and merkle proofs of each XMsg's inclusion. (DA CONSTRAINTS AT SCALE)
+                Relayer Role Security: While the permissionless relayer mechanism is a strength for interoperability, it also introduces a potential vector for attacks if relayers behave maliciously or if the reputation system is not robust enough to incentivize honest participation.
+                            
+                To submit XMsgs to a destination chain, Relayers generate a merkle-multi-proof for the XMsgs tied to an attested XBlock. They package this information into an EVM transaction aimed at the destination chain, encapsulating the core of their role in cross-chain communication.
+                
+                After validators' attestation, relayers submit XBlocks and their messages to destination chains, employing merkle-multi-proofs for verification.
                     Relayer Role Security: While the permissionless relayer mechanism is a strength for interoperability, it also introduces a potential vector for attacks if relayers behave maliciously or if the reputation system is not robust enough to incentivize honest participation.
                             """)
 
@@ -740,6 +781,10 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
+                    OMNI provides an anti-sybil mechanism for transactions submitted to the Omni EVM, deterring spam and malicious activities such as denial-of-service attacks.        
+                    
+                    Developer Accessibility and EVM Equivalence: By ensuring EVM equivalence, Omni offers a seamless transition for Ethereum developers, making it a more accessible platform for deploying decentralized applications (DApps) without modifications.
+                    
                     **Engine API**
 
                     - **Scalability and Efficiency:** By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
@@ -752,6 +797,8 @@ def main():
 - **Seamless Migration:** Developers can port their DApps to Omni without any modifications, significantly reducing the effort and complexity involved in accessing a new blockchain ecosystem.
 - **Developer Tooling Compatibility:** All the tools, libraries, and frameworks designed for Ethereum development are fully compatible with the Omni EVM, streamlining the development process.
 - **Future-Proof:** Omni's alignment with Ethereum's upgrade path ensures that developers can leverage the latest features and improvements without delay.
+                            
+                    Client Diversity and EVM Equivalence: Omni emphasizes running an unmodified version of the Ethereum Virtual Machine (EVM), which guarantees that Ethereum smart contracts and developer tooling work seamlessly. This focus on EVM equivalence and support for diverse client implementations enhances developer accessibility and network resilience.
                             """)
 
 
