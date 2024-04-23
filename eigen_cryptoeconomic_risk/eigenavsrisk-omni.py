@@ -704,7 +704,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                 </style>
                 """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">EVM Metrics (as a product of Consensus Layer metrics)</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">EVM Metrics</p>', unsafe_allow_html=True)
 
         st.write("  \n")
         
@@ -712,9 +712,9 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=1)
+            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], help="**As a product of...", index=1)
         with col101:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], help="Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=1)
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], help="**As a product of...** Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=1)
             
 
         st.write("-------")
