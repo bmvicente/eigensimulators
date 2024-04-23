@@ -601,7 +601,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">Consensus Layer Metrics through Halo Client</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Consensus Mechanism Metrics through Halo Client</p>', unsafe_allow_html=True)
 
         # Validator Metrics
         st.markdown("""
@@ -620,10 +620,10 @@ def main():
 
         col38,col39 = st.columns(2, gap="medium")
         with col38:
-            validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
-        with col39:
             engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (halo) with the EVM Execution Client', value=True)
-        
+        with col39:
+            validator_abci_usage = st.checkbox('Use **ABCI++**', value=True)
+
         col42,col43 = st.columns(2, gap="medium")
         with col42:
             sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True)
@@ -700,6 +700,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
 
 
+
         # Relayer Metrics
         st.markdown("""
                 <style>
@@ -737,6 +738,9 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         with st.expander("Logic"):
                 st.markdown("""
+                            
+                            Decision Making for Message Submission
+A key decision that Relayers face is determining the number of XMsgs to submit to each destination chain. This decision directly influences the cost of transactions due to factors like data size, gas limits, and the computational overhead required for portal contract verification and message processing.
                             Relayer responsible for delivering attested cross-network messages from the Omni network to destination rollup VMs. Monitors the Omni Consensus Layer until ⅔ (>66%) of the validator set attested to the “next” block on each source chain, then proceeds to forwarding the respective XMsg list included in the block.
 Relayers are responsible for delivering confirmed cross-network messages from Omni to destination rollups. When 2/3 (>66%) of Omni validators attest to a given XBlock, relayers forward the XBlock’s corresponding XMsg list to destination rollup networks.
                             
