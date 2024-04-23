@@ -277,7 +277,7 @@ def main():
 
             st.write("&#8226; **Native Dual Staking Balance**: {}% $OMNI : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
-        st.write("\n")
+        st.write("-------")
 
         col44,col45 = st.columns(2, gap="medium")
         with col44:
@@ -418,7 +418,7 @@ def main():
             # Dropdown menu
             security_audits = st.number_input("", min_value=0, max_value=5, step=1)
 
-        st.write("  \n")
+        st.write("-------")
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
@@ -635,7 +635,7 @@ def main():
 
             validator_centralization = st.selectbox("**Validators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
         
-        st.write("  \n")
+        st.write("-------")
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
@@ -712,7 +712,7 @@ def main():
             relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
             
 
-        st.write("  \n")
+        st.write("-------")
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
@@ -782,7 +782,7 @@ def main():
             evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], index=1)
             
 
-        st.write("  \n")
+        st.write("-------")
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
