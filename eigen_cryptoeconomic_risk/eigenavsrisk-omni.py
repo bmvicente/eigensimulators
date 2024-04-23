@@ -710,6 +710,8 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         
         sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True)
 
+        st.write("  \n")
+
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], help="**As a product of...", index=1)
