@@ -356,7 +356,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
                 </div>
                 <div style="margin-top: 10px;">
                     <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
@@ -374,6 +374,10 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+
+
+
+
 
 
         col27,col28 = st.columns(2, gap="medium")
@@ -536,7 +540,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result3}</span>
                 </div>
             """
 
@@ -729,7 +733,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result4}</span>
                 </div>
                 <div style="margin-top: 10px;">
                     <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
@@ -831,7 +835,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5}</span>
                 </div>
                 <div style="margin-top: 10px;">
                     <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
@@ -929,7 +933,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
                 </div>
                 <div style="margin-top: 10px;">
                     <span style="font-size: 16px; font-weight: bold;">(Parameter Risk based on Input * Dual Staking Balance Risk * Likelihood * Impact)</span>
