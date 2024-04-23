@@ -590,7 +590,18 @@ def main():
         st.write("\n")
         st.write("\n")
 
+        # Validator Metrics
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                </style>
+                """, unsafe_allow_html=True)
 
+        st.markdown('<p class="header-style">Consensus Layer Metrics through Halo Client</p>', unsafe_allow_html=True)
 
         # Validator Metrics
         st.markdown("""
