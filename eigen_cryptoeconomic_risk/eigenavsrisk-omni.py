@@ -647,7 +647,7 @@ def main():
         with col100:
             validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1)
         with col101:           
-            validator_centralization = st.selectbox("**Validators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
+            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
         
         st.write("-------")
         
@@ -712,7 +712,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         st.write("  \n")
         
-        sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True)
+        sybil_mec = st.checkbox('**Anti-Sybil Mechanism** for transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks', value=True)
 
         st.write("  \n")
 
