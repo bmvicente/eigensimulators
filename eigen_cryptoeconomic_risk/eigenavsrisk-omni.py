@@ -708,7 +708,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                 </style>
                 """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">EVM Metrics</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">EVM Metrics through Execution Client</p>', unsafe_allow_html=True)
 
         st.write("  \n")
         
