@@ -284,7 +284,7 @@ def main():
             st.markdown('<p class="header-style">Business Model</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
+            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
 
         
 
@@ -407,7 +407,6 @@ def main():
                         """)
 
 
-
         result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood * business_dual_impact
         
         business_dual_calc = f"""
@@ -487,7 +486,7 @@ def main():
             st.markdown('<p class="header-style">Number of Security Audits</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2)
+            security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
 
         st.write("-------")
 
@@ -508,7 +507,6 @@ def main():
                     security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the least
                     ```
                             """)
-
 
 
         result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
@@ -558,14 +556,14 @@ def main():
         col100, col101 = st.columns(2, gap="medium")
         with col100:
                 
-                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=1)
+                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="6783")
 
         with col101:            
 
-                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
+                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="674")
             
 
-        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"])
+        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], key="09111")
 
         st.write("-------")
 
@@ -674,7 +672,7 @@ def main():
         st.markdown('<p class="header-style">Total Staked $OMNI</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000)
+        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212")
         st.write(f"&#8226; Total Staked \$OMNI: **${staked_omni:,.0f}**")
 
 
@@ -741,9 +739,9 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1)
+            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990")
         with col101:           
-            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
+            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232")
         
         st.write("-------")
         
@@ -861,9 +859,9 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], help="**As a product of...", index=2)
+            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], help="**As a product of...", index=2, key="09'")
         with col101:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], help="**As a product of...** Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=2)
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", help="**As a product of...** Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=2)
             
         st.write("-------")
         
@@ -962,7 +960,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1)
+            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421")
         with col101:
             relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
 
