@@ -463,8 +463,6 @@ def main():
 
             code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
 
-            st.session_state.code_complexity = code_complexity
-            st.write("Current Code Complexity:", st.session_state.code_complexity)  
 
         with col28:
             # Number of Security Audits
@@ -509,6 +507,8 @@ def main():
                                 """)
 
         result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
+        
+        st.write("Current Code Complexity:", st.session_state.code_complexity)  
 
         security_calc = f"""
                 <div style="text-align: center;">
