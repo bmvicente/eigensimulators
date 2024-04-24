@@ -284,7 +284,8 @@ def main():
             # Dropdown menu
             business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
 
-        
+            dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
+            st.session_state.dual_staking_balance = dual_staking_balance
 
         with col25:
 
@@ -485,8 +486,29 @@ def main():
 
             # Dropdown menu
             security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
+        with col28:
+            # Number of Security Audits
+            st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+            st.markdown('<p class="header-style">Number of Security Audits</p>', unsafe_allow_html=True)
+            # Dropdown menu
+            if 'security_audits' not in st.session_state:
+                st.session_state.security_audits = 2  # default value
+            st.session_state.security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=st.session_state.security_audits, key="00")
         
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
+        # Calculate the security audit score outside the column
+        security_audit_score = security_audits_risk[st.session_state.security_audits]  # Assuming security_audits_risk dict is defined globally
 
 
         st.write("-------")
@@ -509,6 +531,7 @@ def main():
                     ```
                             """)
 
+        result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
         security_calc = f"""
             <div style="text-align: center;">
@@ -1122,12 +1145,12 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
              da_sol_mec, validator_centralization)
     
-    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
-     st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
-     st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
-     st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
-     st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, st.session_state.da_sol_mec_score, 
-     st.session_state.validator_centralization_score) = risk_score
+    st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
+    st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
+    st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
+    st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
+    st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, st.session_state.da_sol_mec_score, 
+    st.session_state.validator_centralization_score = risk_score
 
 
     # Determine the color and background color based on the risk score
