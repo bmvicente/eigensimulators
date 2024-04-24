@@ -180,8 +180,15 @@ def main():
             st.session_state.relayer_merkle_score = 0
     if 'oracle_bridge_mec_score' not in st.session_state:
             st.session_state.oracle_bridge_mec_score = 0
+    if 'business_dual_likelihood' not in st.session_state:
+            st.session_state.business_dual_likelihood = 0
+    if 'business_dual_impact' not in st.session_state:
+            st.session_state.business_dual_impact = 0
     if 'risk_score' not in st.session_state:
                 st.session_state.risk_score = 0
+
+
+
 
     st.write("\n")
     
@@ -344,7 +351,7 @@ def main():
 
             st.write("&#8226; **Native Dual Staking Balance**: {}% $OMNI : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
-            result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood * business_dual_impact
+            result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * st.session_state.business_dual_likelihood * st.session_state.business_dual_impact
 
         st.write("-------")
 
@@ -413,9 +420,9 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_dual_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_dual_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
             </div>"""
