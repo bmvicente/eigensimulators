@@ -507,8 +507,6 @@ def main():
 
         result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
         
-        st.write("Current Code Complexity:", st.session_state.code_complexity)  
-
         security_calc = f"""
                 <div style="text-align: center;">
                     <div>
@@ -1117,7 +1115,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
     
     
-    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, st.session_state.code_complexity,
              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
              da_sol_mec, validator_centralization)
     
