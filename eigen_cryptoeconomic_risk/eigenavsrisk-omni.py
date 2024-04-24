@@ -43,6 +43,9 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
     encrypted_mempool_mec_score = 1 if encrypted_mempool_mec else 2
     relayer_merkle_score = 1 if relayer_merkle else 2
     oracle_bridge_mec_score = 1 if oracle_bridge_mec else 2
+    
+    print("Code complexity selected:", code_complexity)
+    print("Code complexity score:", code_complexity_score)
 
     return (security_audit_score, business_model_score, relayer_reputation_score, 
                 operator_reputation_score, code_complexity_score, evm_equivalence_score,
