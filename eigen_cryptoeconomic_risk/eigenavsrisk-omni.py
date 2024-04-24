@@ -1,35 +1,56 @@
 
+
 import streamlit as st
 
-def avs_risk(security_audits, business_model, dual_staking_balance, avs_type, operator_attack_risk, restaking_mods, avs_operator_reputation, avs_operator_centralization, mev_extraction, liveness_deg, censorship, validator_collusion):
-    # Define the risk scores for each metric (0-10 scale, 10 being riskiest)
+def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
+             relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+             tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
+             validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
+             da_sol_mec, validator_centralization):
 
     security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
     business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
-    avs_type_risk = {"Lightweight": 7, "Hyperscale": 3}
-    restaking_mods_risk = {"LST LP Restaking": 10, "ETH LP Restaking": 7, "LST Restaking": 4, "Native Restaking": 1}
-    avs_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-    avs_operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-    mev_extraction_risk = {"High": 10, "Medium": 5, "Low": 2}
-    liveness_deg_risk = {"High": 10, "Medium": 5, "Low": 2}
-    censorship_risk = {"High": 10, "Medium": 5, "Low": 2}
-    validator_collusion_risk = {"High": 10, "Medium": 5, "Low": 2}
-
-
+    relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+    operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+    validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+    code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
+    operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+    evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 1}
+    validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+    evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
+    operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
 
     security_audit_score = security_audits_risk[security_audits]
     business_model_score = business_model_risk[business_model]
-    avs_type_score = avs_type_risk[avs_type]
-    restaking_mod_score = restaking_mods_risk[restaking_mods]
-    avs_operator_reputation_score = avs_operator_reputation_risk[avs_operator_reputation]
-    avs_operator_centralization_score = avs_operator_centralization_risk[avs_operator_centralization]
-    mev_extraction_score = mev_extraction_risk[mev_extraction]
-    liveness_deg_score = liveness_deg_risk[liveness_deg]
-    censorship_score = censorship_risk[censorship]
-    validator_collusion_score = validator_collusion_risk[validator_collusion]
+    relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
+    operator_reputation_score = operator_reputation_risk[operator_reputation]
+    code_complexity_score = code_complexity_risk[code_complexity]
+    operator_centralization_score = operator_centralization_risk[operator_centralization]
+    validator_centralization_score = validator_centralization_risk[validator_centralization]
+    evm_equivalence_score = evm_equivalence_risk[evm_equivalence]
+    validator_reputation_score = validator_reputation_risk[validator_reputation]
+    evm_client_div_score = evm_client_div_risk[evm_client_div]
+    operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
+    dvt_mec_score = 1 if dvt_mec else 5
+    sybil_mec_score = 1 if sybil_mec else 5
+    relayer_da_solution_score = 1 if relayer_da_solution else 5
+    validator_abci_usage_score = 1 if validator_abci_usage else 5
+    da_sol_mec_score = 1 if da_sol_mec else 5
+    engine_api_score = 1 if engine_api else 5
+    lockup_mec_score = 1 if lockup_mec else 5
+    fast_fin_ss_mec_score = 1 if fast_fin_ss_mec else 5
+    tee_mec_score = 1 if tee_mec else 5
+    encrypted_mempool_mec_score = 1 if encrypted_mempool_mec else 5
+    relayer_merkle_score = 1 if relayer_merkle else 5
+    oracle_bridge_mec_score = 1 if oracle_bridge_mec else 5
 
-
-    return security_audit_score, business_model_score, dual_staking_balance, avs_type_score, restaking_mod_score, avs_operator_reputation_score, avs_operator_centralization_score, operator_attack_risk, mev_extraction_score, liveness_deg_score, censorship_score, validator_collusion_score
+    return (security_audit_score, business_model_score, relayer_reputation_score, 
+                operator_reputation_score, code_complexity_score, evm_equivalence_score,
+                operator_centralization_score, validator_centralization_score, validator_reputation_score, 
+                dvt_mec_score, evm_client_div_score, operator_entrenchment_level_score, da_sol_mec_score,
+                sybil_mec_score, relayer_da_solution_score, validator_abci_usage_score, engine_api_score,
+                lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
+                relayer_merkle_score, oracle_bridge_mec_score)
 
 
 
@@ -59,25 +80,6 @@ def main():
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-
-
-
-    def calculate_operator_attack_risk(total_restaked, tvl):
-        if tvl < 100000 or total_restaked < 100000:
-            return 10
-        elif total_restaked >= 10000000000:
-            return 1
-        
-        ratio = (total_restaked / 2) / tvl
-
-        if ratio > 1.5:
-            return 1  # Significantly greater than TVL, lowest risk
-        elif ratio > 1:
-            return 3  # Greater than TVL, low risk
-        elif ratio > 0.5:
-            return 7  # Less than TVL, increased risk
-        else:
-            return 9 # < 0.5 Greatest risk
     
 
     def dual_staking_balance_calc(avs_token_percentage, xeth_percentage):
@@ -99,29 +101,88 @@ def main():
             return 3
         else:  # Very low AVS compared to ETH
             return 2
+        
+    def relayer_performance_acc_rate_calc(relayer_performance_acc_rate):
+        if 0 <= relayer_performance_acc_rate <= 10:
+            return 10
+        elif 11 <= relayer_performance_acc_rate <= 33:
+            return 7.5
+        elif 34 <= relayer_performance_acc_rate <= 50:
+            return 7
+        elif 51 <= relayer_performance_acc_rate <= 66:
+            return 4
+        elif 67 <= relayer_performance_acc_rate <= 90:
+            return 3
+        elif 91 <= relayer_performance_acc_rate <= 100:
+            return 2
+        else:
+            return None
+
+    def validator_performance_acc_rate_calc(validator_performance_acc_rate):
+        if 0 <= validator_performance_acc_rate <= 10:
+            return 10
+        elif 11 <= validator_performance_acc_rate <= 33:
+            return 7.5
+        elif 34 <= validator_performance_acc_rate <= 50:
+            return 7
+        elif 51 <= validator_performance_acc_rate <= 66:
+            return 4
+        elif 67 <= validator_performance_acc_rate <= 90:
+            return 3
+        elif 91 <= validator_performance_acc_rate <= 100:
+            return 2
+        else:
+            return None
 
     if 'security_audit_score' not in st.session_state:
         st.session_state.security_audit_score = 0
     if 'business_model_score' not in st.session_state:
         st.session_state.business_model_score = 0
-    if 'avs_type_score' not in st.session_state:
-        st.session_state.avs_type_score = 0
-    if 'restaking_mod_score' not in st.session_state:
-        st.session_state.restaking_mod_score = 0
-    if 'avs_operator_reputation_score' not in st.session_state:
-        st.session_state.avs_operator_reputation_score = 0
-    if 'avs_operator_centralization_score' not in st.session_state:
-        st.session_state.avs_operator_centralization_score = 0
-    if 'mev_extraction_score' not in st.session_state:
-        st.session_state.mev_extraction_score = 0
-    if 'liveness_deg_score' not in st.session_state:
-        st.session_state.liveness_deg_score = 0
-    if 'censorship_score' not in st.session_state:
-        st.session_state.censorship_score = 0
-    if 'validator_collusion_score' not in st.session_state:
-        st.session_state.validator_collusion_score = 0
+    if 'relayer_reputation_score' not in st.session_state:
+        st.session_state.relayer_reputation_score = 0
+    if 'operator_reputation_score' not in st.session_state:
+        st.session_state.operator_reputation_score = 0
+    if 'code_complexity_score' not in st.session_state:
+        st.session_state.code_complexity_score = 0
+    if 'evm_equivalence_score' not in st.session_state:
+        st.session_state.evm_equivalence_score = 0
+    if 'operator_centralization_score' not in st.session_state:
+        st.session_state.operator_centralization_score = 0
+    if 'validator_centralization_score' not in st.session_state:
+        st.session_state.validator_centralization_score = 0
+    if 'validator_reputation_score' not in st.session_state:
+        st.session_state.validator_reputation_score = 0
+    if 'dvt_mec_score' not in st.session_state:
+        st.session_state.dvt_mec_score = 0
+    if 'evm_client_div_score' not in st.session_state:
+        st.session_state.evm_client_div_score = 0
+    if 'operator_entrenchment_level_score' not in st.session_state:
+        st.session_state.operator_entrenchment_level_score = 0
+    if 'da_sol_mec_score' not in st.session_state:
+        st.session_state.da_sol_mec_score = 0
+    if 'sybil_mec_score' not in st.session_state:
+        st.session_state.sybil_mec_score = 0
+    if 'relayer_da_solution_score' not in st.session_state:
+        st.session_state.relayer_da_solution_score = 0
+    if 'validator_abci_usage_score' not in st.session_state:
+        st.session_state.validator_abci_usage_score = 0
+    if 'engine_api_score' not in st.session_state:
+        st.session_state.engine_api_score = 0
+    if 'lockup_mec_score' not in st.session_state:
+        st.session_state.lockup_mec_score = 0
+    if 'fast_fin_ss_mec_score' not in st.session_state:
+        st.session_state.fast_fin_ss_mec_score = 0
+    if 'tee_mec_score' not in st.session_state:
+        st.session_state.tee_mec_score = 0
+    if 'encrypted_mempool_mec_score' not in st.session_state:
+        st.session_state.encrypted_mempool_mec_score = 0
+    if 'relayer_merkle_score' not in st.session_state:
+        st.session_state.relayer_merkle_score = 0
+    if 'oracle_bridge_mec_score' not in st.session_state:
+        st.session_state.oracle_bridge_mec_score = 0
     if 'risk_score' not in st.session_state:
             st.session_state.risk_score = 0
+
 
 
     st.write("\n")
@@ -500,7 +561,7 @@ def main():
                 operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"])
             
 
-        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Medium Entrenchment", "Low Entrenchment"])
+        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"])
 
         st.write("-------")
 
@@ -670,6 +731,8 @@ def main():
         st.write("  \n")
 
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
+        validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
+        st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
@@ -893,6 +956,9 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
             relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1)
         with col101:
             relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
+
+        relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
+        st.session_state.relayer_performance_acc_rate_var = relayer_performance_acc_rate_var
 
         st.write("-------")
         
