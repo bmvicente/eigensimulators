@@ -142,8 +142,8 @@ def main():
             st.session_state.relayer_reputation_score = 0
     if 'operator_reputation_score' not in st.session_state:
             st.session_state.operator_reputation_score = 0
-    if 'code_complexity_score' not in st.session_state:
-            st.session_state.code_complexity_score = 0
+    #if 'code_complexity_score' not in st.session_state:
+    #        st.session_state.code_complexity_score = 0
     if 'evm_equivalence_score' not in st.session_state:
             st.session_state.evm_equivalence_score = 0
     if 'operator_centralization_score' not in st.session_state:
