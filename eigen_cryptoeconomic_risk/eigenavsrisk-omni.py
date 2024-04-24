@@ -68,14 +68,14 @@ def main():
         st.markdown(f"""
                     The consensus layer is implemented by the Omni consensus client, halo, and uses CometBFT for consensus on XMsgs and Omni EVM blocks.
 
-            The Simulator takes six of the AVS-generic parameters to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Espresso. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
-            A good deal of the logic behind the right side of the Simulator (ESPRESSO-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581), specifically for Espresso.
+            The Simulator takes six of the AVS-generic parameters to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Omni. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
+            A good deal of the logic behind the right side of the Simulator (OMNI-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581), specifically for Omni.
                     
             The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being corrupted or cryptoeconomically secure. 
         """)
 
         
-    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for Espresso as a Shared-Sequencer AVS.")
+    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for Omni as a Interoperability AVS.")
 
     st.write("  \n")
     st.write("  \n")
@@ -1082,7 +1082,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
 
     st.session_state.risk_score = normalized_risk_score
 
-    st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Espresso</i> Risk Score</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Omni</i> Risk Score</div>", unsafe_allow_html=True)
     final_result_html = f"""
             <div style="text-align: center;">
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1}</span> 
@@ -1148,7 +1148,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
         text-align: center;
         margin: 10px 0;
         background-color: {background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Espresso</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
+        <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
     </div>
     """, 
     unsafe_allow_html=True
@@ -1166,7 +1166,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                 }
                 </style>
                 <div class="big-font">
-                The <strong>Espresso Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the AVS. 
+                The <strong>Omni Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the AVS. 
                 </div>
                 </div>
                 """, unsafe_allow_html=True)
