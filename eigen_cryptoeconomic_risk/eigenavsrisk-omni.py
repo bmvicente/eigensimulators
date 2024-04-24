@@ -587,8 +587,8 @@ def main():
                                 """)
                 
 
-        result3 = (st.session_state.operator_reputation_score * st.session_state.operator_centralization_score * st.session_state.operator_entrenchment_level_score * 
-                        operator_metrics_likelihood * operator_metrics_impact)
+        result3 = (st.session_state.operator_reputation_score * st.session_state.operator_centralization_score * 
+                   st.session_state.operator_entrenchment_level_score * operator_metrics_likelihood * operator_metrics_impact)
 
         operator_calc = f"""
                 <div style="text-align: center;">
@@ -783,34 +783,38 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                             """)
 
 
-        result4 = (st.session_state.business_model_score * st.session_state.dual_staking_balance * 
+        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score *
+                   st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
+                   st.session_state.lockup_mec_score * st.session_state.da_sol_mec_score * st.session_state.fast_fin_ss_mec_score *
+                   st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
+                   st.session_state.validator_centralization_score *
                     validator_metrics_likelihood * validator_metrics_impact)
 
         
         validator_calc = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.oracle_bridge_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.lockup_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -861,7 +865,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         with col101:
             evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], help="**As a product of...** Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=2)
             
-
         st.write("-------")
         
         col33, col34 = st.columns(2, gap="medium")
@@ -899,20 +902,20 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     Client Diversity and EVM Equivalence: Omni emphasizes running an unmodified version of the Ethereum Virtual Machine (EVM), which guarantees that Ethereum smart contracts and developer tooling work seamlessly. This focus on EVM equivalence and support for diverse client implementations enhances developer accessibility and network resilience.
                             """)
 
+        result5 = (st.session_state.sybil_mec_score * st.session_state.encrypted_mempool_mec_score * 
+                   st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score * 
+                   evm_metrics_likelihood * evm_metrics_impact)
 
-        result5 = st.session_state.business_model_score * st.session_state.dual_staking_balance * evm_metrics_likelihood * evm_metrics_impact
-
-        
         evm_calc = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.sybil_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.encrypted_mempool_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -1001,19 +1004,21 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                             """)
 
 
-        result6 = st.session_state.business_model_score * st.session_state.dual_staking_balance * relayer_metrics_likelihood * relayer_metrics_impact
+        result6 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score * 
+                   st.session_state.relayer_reputation_score * st.session_state.relayer_performance_acc_rate_var * 
+                   relayer_metrics_likelihood * relayer_metrics_impact)
 
         
         relayer_calc = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_merkle_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #FF6666; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{business_model_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
