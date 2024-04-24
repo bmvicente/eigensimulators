@@ -31,18 +31,18 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
     validator_reputation_score = validator_reputation_risk[validator_reputation]
     evm_client_div_score = evm_client_div_risk[evm_client_div]
     operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
-    dvt_mec_score = 1 if dvt_mec else 5
-    sybil_mec_score = 1 if sybil_mec else 5
-    relayer_da_solution_score = 1 if relayer_da_solution else 5
-    validator_abci_usage_score = 1 if validator_abci_usage else 5
-    da_sol_mec_score = 1 if da_sol_mec else 5
-    engine_api_score = 1 if engine_api else 5
-    lockup_mec_score = 1 if lockup_mec else 5
-    fast_fin_ss_mec_score = 1 if fast_fin_ss_mec else 5
-    tee_mec_score = 1 if tee_mec else 5
-    encrypted_mempool_mec_score = 1 if encrypted_mempool_mec else 5
-    relayer_merkle_score = 1 if relayer_merkle else 5
-    oracle_bridge_mec_score = 1 if oracle_bridge_mec else 5
+    dvt_mec_score = 1 if dvt_mec else 2
+    sybil_mec_score = 1 if sybil_mec else 2
+    relayer_da_solution_score = 1 if relayer_da_solution else 2
+    validator_abci_usage_score = 1 if validator_abci_usage else 2
+    da_sol_mec_score = 1 if da_sol_mec else 2
+    engine_api_score = 1 if engine_api else 2
+    lockup_mec_score = 1 if lockup_mec else 2
+    fast_fin_ss_mec_score = 1 if fast_fin_ss_mec else 2
+    tee_mec_score = 1 if tee_mec else 2
+    encrypted_mempool_mec_score = 1 if encrypted_mempool_mec else 2
+    relayer_merkle_score = 1 if relayer_merkle else 2
+    oracle_bridge_mec_score = 1 if oracle_bridge_mec else 2
 
     return (security_audit_score, business_model_score, relayer_reputation_score, 
                 operator_reputation_score, code_complexity_score, evm_equivalence_score,
@@ -104,11 +104,11 @@ def main():
         
     def relayer_performance_acc_rate_calc(relayer_performance_acc_rate):
         if 0 <= relayer_performance_acc_rate <= 10:
-            return 10
+            return 9
         elif 11 <= relayer_performance_acc_rate <= 33:
             return 7.5
         elif 34 <= relayer_performance_acc_rate <= 50:
-            return 7
+            return 6
         elif 51 <= relayer_performance_acc_rate <= 66:
             return 4
         elif 67 <= relayer_performance_acc_rate <= 90:
@@ -120,11 +120,11 @@ def main():
 
     def validator_performance_acc_rate_calc(validator_performance_acc_rate):
         if 0 <= validator_performance_acc_rate <= 10:
-            return 10
+            return 9
         elif 11 <= validator_performance_acc_rate <= 33:
             return 7.5
         elif 34 <= validator_performance_acc_rate <= 50:
-            return 7
+            return 6
         elif 51 <= validator_performance_acc_rate <= 66:
             return 4
         elif 67 <= validator_performance_acc_rate <= 90:
@@ -224,6 +224,10 @@ def main():
         )
 
         st.write("\n")
+
+
+
+
 
 
 
@@ -489,9 +493,9 @@ def main():
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
-            security_audits_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
+            security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
         with col36:
-            security_audits_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
+            security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
 
             # The expander without a visible outline
         with st.expander("Logic"):
@@ -507,18 +511,18 @@ def main():
 
 
 
-        result2 = st.session_state.business_model_score * st.session_state.dual_staking_balance * security_audits_likelihood * security_audits_impact
+        result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
         security_calc = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_audits_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
             </div>"""
@@ -583,15 +587,16 @@ def main():
                                 """)
                 
 
-        result3 = st.session_state.security_audit_score * operator_metrics_likelihood * operator_metrics_impact
+        result3 = (st.session_state.operator_reputation_score * st.session_state.operator_centralization_score * st.session_state.operator_entrenchment_level_score * 
+                        operator_metrics_likelihood * operator_metrics_impact)
 
         operator_calc = f"""
                 <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_reputation_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_centralization_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_entrenchment_level_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -778,7 +783,8 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                             """)
 
 
-        result4 = st.session_state.business_model_score * st.session_state.dual_staking_balance * validator_metrics_likelihood * validator_metrics_impact
+        result4 = (st.session_state.business_model_score * st.session_state.dual_staking_balance * 
+                    validator_metrics_likelihood * validator_metrics_impact)
 
         
         validator_calc = f"""
@@ -1071,7 +1077,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
 
-    final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9 + result10 + result11
+    final_result = result1 + result2 + result3 + result4 + result5 + result6
     normalized_risk_score = normalize_score(final_result)
 
     st.session_state.risk_score = normalized_risk_score
@@ -1110,8 +1116,16 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
     
     
-    risk_score = avs_risk(security_audits, business_model, st.session_state.dual_staking_balance, avs_type, st.session_state.operator_attack_risk, restaking_mods, avs_operator_reputation, avs_operator_centralization, mev_extraction, liveness_deg, censorship, validator_collusion)
-    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_operator_reputation_score, st.session_state.avs_operator_centralization_score, st.session_state.operator_attack_risk, st.session_state.mev_extraction_score, st.session_state.liveness_deg_score, st.session_state.censorship_score, st.session_state.validator_collusion_score) = risk_score
+    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+             tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
+             da_sol_mec, validator_centralization)
+    
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
+     st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
+     st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
+     st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
+     st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, st.session_state.da_sol_mec_score, 
+     st.session_state.validator_centralization_score) = risk_score
 
 
     # Determine the color and background color based on the risk score
