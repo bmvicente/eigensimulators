@@ -463,6 +463,7 @@ def main():
 
             code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
 
+            st.session_state.code_complexity = code_complexity
 
         with col28:
             # Number of Security Audits
