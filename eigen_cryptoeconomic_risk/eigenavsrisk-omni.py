@@ -284,8 +284,6 @@ def main():
             # Dropdown menu
             business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
 
-            dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
-            st.session_state.dual_staking_balance = dual_staking_balance
 
         with col25:
 
@@ -345,6 +343,8 @@ def main():
             st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, format='%d%%')
 
             st.write("&#8226; **Native Dual Staking Balance**: {}% $OMNI : {}% xETH".format(avs_token_percentage, xeth_percentage))
+
+            result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood * business_dual_impact
 
         st.write("-------")
 
@@ -406,8 +406,6 @@ def main():
                         """)
 
 
-        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood * business_dual_impact
-        
         business_dual_calc = f"""
             <div style="text-align: center;">
                 <div>
@@ -1145,12 +1143,12 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
              da_sol_mec, validator_centralization)
     
-    st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
-    st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
-    st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
-    st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
-    st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, st.session_state.da_sol_mec_score, 
-    st.session_state.validator_centralization_score = risk_score
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
+     st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
+     st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
+     st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
+     st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, st.session_state.da_sol_mec_score, 
+     st.session_state.validator_centralization_score) = risk_score
 
 
     # Determine the color and background color based on the risk score
