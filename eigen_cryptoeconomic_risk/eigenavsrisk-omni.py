@@ -486,16 +486,16 @@ def main():
             # Dropdown menu
             security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
 
-        st.write("-------")
+            st.write("-------")
 
-        col35,col36 = st.columns(2, gap="medium")
-        with col35:
-            security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
-        with col36:
-            security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
+            col35,col36 = st.columns(2, gap="medium")
+            with col35:
+                security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
+            with col36:
+                security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
 
             # The expander without a visible outline
-        with st.expander("Logic"):
+            with st.expander("Logic"):
                 st.markdown("""
                     Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
                     
@@ -507,9 +507,9 @@ def main():
                             """)
 
 
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
+            result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
-        security_calc = f"""
+            security_calc = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
@@ -523,7 +523,7 @@ def main():
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
             </div>"""
 
-        st.markdown(security_calc, unsafe_allow_html=True)
+            st.markdown(security_calc, unsafe_allow_html=True)
 
 
 
