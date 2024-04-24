@@ -185,7 +185,7 @@ def main():
     if 'business_dual_impact' not in st.session_state:
             st.session_state.business_dual_impact = 0
     if 'risk_score' not in st.session_state:
-                st.session_state.risk_score = 0
+            st.session_state.risk_score = 0
 
 
 
@@ -470,7 +470,6 @@ def main():
 
 
         with col28:
-            
             # Number of Security Audits
             st.markdown("""
                 <style>
@@ -491,30 +490,6 @@ def main():
 
             # Dropdown menu
             security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
-        with col28:
-            # Number of Security Audits
-            st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                .stExpander {
-                    border: none !important;
-                    box-shadow: none !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
-            st.markdown('<p class="header-style">Number of Security Audits</p>', unsafe_allow_html=True)
-            # Dropdown menu
-            if 'security_audits' not in st.session_state:
-                st.session_state.security_audits = 2  # default value
-            st.session_state.security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=st.session_state.security_audits, key="00")
-        
-        # Calculate the security audit score outside the column
-        security_audit_score = security_audits_risk[st.session_state.security_audits]  # Assuming security_audits_risk dict is defined globally
-
 
         st.write("-------")
 
