@@ -1095,8 +1095,16 @@ def main():
     st.write("  \n")
     
     
-    risk_score = avs_risk(security_audits, business_model, st.session_state.dual_staking_balance, avs_type, st.session_state.operator_attack_risk, restaking_mods, avs_operator_reputation, avs_operator_centralization, mev_extraction, liveness_deg, censorship, validator_collusion)
-    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_operator_reputation_score, st.session_state.avs_operator_centralization_score, st.session_state.operator_attack_risk, st.session_state.mev_extraction_score, st.session_state.liveness_deg_score, st.session_state.censorship_score, st.session_state.validator_collusion_score) = risk_score
+    risk_score = avs_risk(security_audits, business_model, st.session_state.dual_staking_balance, avs_type, 
+                          st.session_state.operator_attack_risk, restaking_mods, avs_operator_reputation, 
+                          avs_operator_centralization, mev_extraction, liveness_deg, censorship, validator_collusion)
+    
+    
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, 
+     st.session_state.avs_type_score, st.session_state.restaking_mod_score, st.session_state.avs_operator_reputation_score, 
+     st.session_state.avs_operator_centralization_score, st.session_state.operator_attack_risk, 
+     st.session_state.mev_extraction_score, st.session_state.liveness_deg_score, st.session_state.censorship_score, 
+     st.session_state.validator_collusion_score) = risk_score
 
 
     # Determine the color and background color based on the risk score
