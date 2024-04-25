@@ -604,9 +604,32 @@ def main():
                         ```
                                 """)
 
-        risk_score = omni_risk(security_audits, business_model, st.session_state.relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, st.session_state.code_complexity,
-                            tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation,
-                            da_sol_mec, validator_centralization)
+        risk_score = omni_risk(
+            st.session_state.security_audits, 
+            st.session_state.business_model, 
+            st.session_state.relayer_reputation, 
+            st.session_state.relayer_da_solution, 
+            st.session_state.relayer_merkle, 
+            st.session_state.evm_client_div, 
+            st.session_state.evm_equivalence, 
+            st.session_state.sybil_mec, 
+            st.session_state.encrypted_mempool_mec, 
+            st.session_state.code_complexity,
+            st.session_state.tee_mec, 
+            st.session_state.operator_reputation, 
+            st.session_state.operator_centralization, 
+            st.session_state.operator_entrenchment_level, 
+            st.session_state.engine_api, 
+            st.session_state.validator_abci_usage, 
+            st.session_state.dvt_mec, 
+            st.session_state.oracle_bridge_mec, 
+            st.session_state.lockup_mec, 
+            st.session_state.fast_fin_ss_mec, 
+            st.session_state.validator_reputation,
+            st.session_state.da_sol_mec, 
+            st.session_state.validator_centralization
+        )
+
 
         update_session_state(risk_score)
 
