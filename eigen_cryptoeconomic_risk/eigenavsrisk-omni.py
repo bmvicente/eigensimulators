@@ -384,7 +384,7 @@ def main():
             st.markdown('<p class="header-style">Business Model</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            st.session_state.business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
+            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
 
 
         with col25:
@@ -504,35 +504,7 @@ def main():
 
                     A greater xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a *% \$AVS* **>** *% xETH* pool balance makes sense to be a higher-reward event.
                         """)
-        
-        risk_score = omni_risk(
-            st.session_state.security_audits, 
-            st.session_state.business_model, 
-            st.session_state.relayer_reputation, 
-            st.session_state.relayer_da_solution, 
-            st.session_state.relayer_merkle, 
-            st.session_state.evm_client_div, 
-            st.session_state.evm_equivalence, 
-            st.session_state.sybil_mec, 
-            st.session_state.encrypted_mempool_mec, 
-            st.session_state.code_complexity,
-            st.session_state.tee_mec, 
-            st.session_state.operator_reputation, 
-            st.session_state.operator_centralization, 
-            st.session_state.operator_entrenchment_level, 
-            st.session_state.engine_api, 
-            st.session_state.validator_abci_usage, 
-            st.session_state.dvt_mec, 
-            st.session_state.oracle_bridge_mec, 
-            st.session_state.lockup_mec, 
-            st.session_state.fast_fin_ss_mec, 
-            st.session_state.validator_reputation,
-            st.session_state.da_sol_mec, 
-            st.session_state.validator_centralization
-        )
-
-
-        update_session_state(risk_score)
+    
         
         result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood * business_dual_impact
 
@@ -610,7 +582,7 @@ def main():
             st.markdown('<p class="header-style">Number of Security Audits</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            st.session_state.security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
+            security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
 
         st.write("-------")
 
@@ -632,34 +604,6 @@ def main():
                         ```
                                 """)
 
-        risk_score = omni_risk(
-            st.session_state.security_audits, 
-            st.session_state.business_model, 
-            st.session_state.relayer_reputation, 
-            st.session_state.relayer_da_solution, 
-            st.session_state.relayer_merkle, 
-            st.session_state.evm_client_div, 
-            st.session_state.evm_equivalence, 
-            st.session_state.sybil_mec, 
-            st.session_state.encrypted_mempool_mec, 
-            st.session_state.code_complexity,
-            st.session_state.tee_mec, 
-            st.session_state.operator_reputation, 
-            st.session_state.operator_centralization, 
-            st.session_state.operator_entrenchment_level, 
-            st.session_state.engine_api, 
-            st.session_state.validator_abci_usage, 
-            st.session_state.dvt_mec, 
-            st.session_state.oracle_bridge_mec, 
-            st.session_state.lockup_mec, 
-            st.session_state.fast_fin_ss_mec, 
-            st.session_state.validator_reputation,
-            st.session_state.da_sol_mec, 
-            st.session_state.validator_centralization
-        )
-
-
-        update_session_state(risk_score)
 
         result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
@@ -711,13 +655,13 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-                st.session_state.operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="6783")
+                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="6783")
 
         with col101:            
-                st.session_state.operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="674")
+                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="674")
             
 
-        st.session_state.operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], key="09111")
+        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], key="09111")
 
         st.write("-------")
 
@@ -737,34 +681,7 @@ def main():
                         
                         Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
                                 """)
-        
-        risk_score = omni_risk(
-            st.session_state.security_audits, 
-            st.session_state.business_model, 
-            st.session_state.relayer_reputation, 
-            st.session_state.relayer_da_solution, 
-            st.session_state.relayer_merkle, 
-            st.session_state.evm_client_div, 
-            st.session_state.evm_equivalence, 
-            st.session_state.sybil_mec, 
-            st.session_state.encrypted_mempool_mec, 
-            st.session_state.code_complexity,
-            st.session_state.tee_mec, 
-            st.session_state.operator_reputation, 
-            st.session_state.operator_centralization, 
-            st.session_state.operator_entrenchment_level, 
-            st.session_state.engine_api, 
-            st.session_state.validator_abci_usage, 
-            st.session_state.dvt_mec, 
-            st.session_state.oracle_bridge_mec, 
-            st.session_state.lockup_mec, 
-            st.session_state.fast_fin_ss_mec, 
-            st.session_state.validator_reputation,
-            st.session_state.da_sol_mec, 
-            st.session_state.validator_centralization
-        )
 
-        update_session_state(risk_score)
 
         result3 = (st.session_state.operator_reputation_score * st.session_state.operator_centralization_score * 
                    st.session_state.operator_entrenchment_level_score * operator_metrics_likelihood * operator_metrics_impact)
@@ -890,27 +807,27 @@ def main():
 
         col38,col39 = st.columns(2, gap="medium")
         with col38:
-            st.session_state.engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (Halo) with the EVM Execution Client', value=True)
+            engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (Halo) with the EVM Execution Client', value=True)
         with col39:
-            st.session_state.validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', help="**HANDLING TRANSACTION REQUESTS**: Previous approaches relied on the CometBFT mempool to manage transaction requests, leading to network congestion and compromised consensus speed as activity increased. Omni addresses this challenge by utilizing the Engine API, alongside ABCI++, to move the transaction mempool to the execution layer. This strategic move ensures the CometBFT consensus process remains lightweight and efficient. **STATE TRANSLATION**: One of the major challenges in previous designs was translating the EVM state to a format compatible with CometBFT. Omni overcomes this hurdle by incorporating an ABCI++ wrapper around the CometBFT engine, enabling seamless state translation and ensuring that Omni EVM blocks are efficiently converted into CometBFT transactions.", value=True)
+            validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', help="**HANDLING TRANSACTION REQUESTS**: Previous approaches relied on the CometBFT mempool to manage transaction requests, leading to network congestion and compromised consensus speed as activity increased. Omni addresses this challenge by utilizing the Engine API, alongside ABCI++, to move the transaction mempool to the execution layer. This strategic move ensures the CometBFT consensus process remains lightweight and efficient. **STATE TRANSLATION**: One of the major challenges in previous designs was translating the EVM state to a format compatible with CometBFT. Omni overcomes this hurdle by incorporating an ABCI++ wrapper around the CometBFT engine, enabling seamless state translation and ensuring that Omni EVM blocks are efficiently converted into CometBFT transactions.", value=True)
 
         col42,col43 = st.columns(2, gap="medium")
         with col42:
-            st.session_state.tee_mec = st.checkbox('**TEE** Implementation for Effective Key Management', value=False)
+            tee_mec = st.checkbox('**TEE** Implementation for Effective Key Management', value=False)
         with col43:
-            st.session_state.dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False)
+            dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False)
 
         col50,col51 = st.columns(2, gap="medium")
         with col50:
-            st.session_state.oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False)
+            oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False)
         with col51:
-            st.session_state.lockup_mec = st.checkbox('**Lock-Up Periods** Applied to Validators for Security Guarantees', value=False)
+            lockup_mec = st.checkbox('**Lock-Up Periods** Applied to Validators for Security Guarantees', value=False)
 
         col52,col53 = st.columns(2, gap="medium")
         with col52:
-            st.session_state.da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions', value=False)
+            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions', value=False)
         with col53:
-            st.session_state.fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False)
+            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False)
 
         st.write("  \n")
 
@@ -920,9 +837,9 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            st.session_state.validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990")
+            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990")
         with col101:           
-            st.session_state.validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232")
+            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232")
         
         st.write("-------")
         
@@ -961,33 +878,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 - **Decision Making for Message Submission**: Relayers decide on the number of XMsgs to submit, balancing transaction cost considerations like data size and gas limits.
                             """)
 
-        risk_score = omni_risk(
-            st.session_state.security_audits, 
-            st.session_state.business_model, 
-            st.session_state.relayer_reputation, 
-            st.session_state.relayer_da_solution, 
-            st.session_state.relayer_merkle, 
-            st.session_state.evm_client_div, 
-            st.session_state.evm_equivalence, 
-            st.session_state.sybil_mec, 
-            st.session_state.encrypted_mempool_mec, 
-            st.session_state.code_complexity,
-            st.session_state.tee_mec, 
-            st.session_state.operator_reputation, 
-            st.session_state.operator_centralization, 
-            st.session_state.operator_entrenchment_level, 
-            st.session_state.engine_api, 
-            st.session_state.validator_abci_usage, 
-            st.session_state.dvt_mec, 
-            st.session_state.oracle_bridge_mec, 
-            st.session_state.lockup_mec, 
-            st.session_state.fast_fin_ss_mec, 
-            st.session_state.validator_reputation,
-            st.session_state.da_sol_mec, 
-            st.session_state.validator_centralization
-        )
-
-        update_session_state(risk_score)
 
         result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score *
                    st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
@@ -1060,16 +950,16 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         st.write("  \n")
         
-        st.session_state.sybil_mec = st.checkbox('**Anti-Sybil Mechanism** for transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks', value=True)
-        st.session_state.encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for increased privacy and security in transactions', value=False)
+        sybil_mec = st.checkbox('**Anti-Sybil Mechanism** for transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks', value=True)
+        encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for increased privacy and security in transactions', value=False)
 
         st.write("  \n")
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            st.session_state.evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], help="**As a product of...", index=2, key="09'")
+            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], help="**As a product of...", index=2, key="09'")
         with col101:
-            st.session_state.evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", help="**As a product of...** Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=2)
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", help="**As a product of...** Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=2)
             
         st.write("-------")
         
@@ -1108,34 +998,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     Client Diversity and EVM Equivalence: Omni emphasizes running an unmodified version of the Ethereum Virtual Machine (EVM), which guarantees that Ethereum smart contracts and developer tooling work seamlessly. This focus on EVM equivalence and support for diverse client implementations enhances developer accessibility and network resilience.
                             """)
 
-
-        risk_score = omni_risk(
-            st.session_state.security_audits, 
-            st.session_state.business_model, 
-            st.session_state.relayer_reputation, 
-            st.session_state.relayer_da_solution, 
-            st.session_state.relayer_merkle, 
-            st.session_state.evm_client_div, 
-            st.session_state.evm_equivalence, 
-            st.session_state.sybil_mec, 
-            st.session_state.encrypted_mempool_mec, 
-            st.session_state.code_complexity,
-            st.session_state.tee_mec, 
-            st.session_state.operator_reputation, 
-            st.session_state.operator_centralization, 
-            st.session_state.operator_entrenchment_level, 
-            st.session_state.engine_api, 
-            st.session_state.validator_abci_usage, 
-            st.session_state.dvt_mec, 
-            st.session_state.oracle_bridge_mec, 
-            st.session_state.lockup_mec, 
-            st.session_state.fast_fin_ss_mec, 
-            st.session_state.validator_reputation,
-            st.session_state.da_sol_mec, 
-            st.session_state.validator_centralization
-        )
-
-        update_session_state(risk_score)
 
         result5 = (st.session_state.sybil_mec_score * st.session_state.encrypted_mempool_mec_score * 
                    st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score * 
@@ -1189,15 +1051,15 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         st.write("  \n")
 
-        st.session_state.relayer_merkle = st.checkbox('Use of **Merkle Multi-Proofs** for efficient XBlock Submission', value=True)
-        st.session_state.relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
+        relayer_merkle = st.checkbox('Use of **Merkle Multi-Proofs** for efficient XBlock Submission', value=True)
+        relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
 
         st.write("  \n")
 
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            st.session_state.relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421")
+            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421")
         with col101:
             relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
 
@@ -1238,33 +1100,6 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                     Relayer Role Security: While the permissionless relayer mechanism is a strength for interoperability, it also introduces a potential vector for attacks if relayers behave maliciously or if the reputation system is not robust enough to incentivize honest participation.
                             """)
 
-        risk_score = omni_risk(
-            st.session_state.security_audits, 
-            st.session_state.business_model, 
-            st.session_state.relayer_reputation, 
-            st.session_state.relayer_da_solution, 
-            st.session_state.relayer_merkle, 
-            st.session_state.evm_client_div, 
-            st.session_state.evm_equivalence, 
-            st.session_state.sybil_mec, 
-            st.session_state.encrypted_mempool_mec, 
-            st.session_state.code_complexity,
-            st.session_state.tee_mec, 
-            st.session_state.operator_reputation, 
-            st.session_state.operator_centralization, 
-            st.session_state.operator_entrenchment_level, 
-            st.session_state.engine_api, 
-            st.session_state.validator_abci_usage, 
-            st.session_state.dvt_mec, 
-            st.session_state.oracle_bridge_mec, 
-            st.session_state.lockup_mec, 
-            st.session_state.fast_fin_ss_mec, 
-            st.session_state.validator_reputation,
-            st.session_state.da_sol_mec, 
-            st.session_state.validator_centralization
-        )
-
-        update_session_state(risk_score)
 
         result6 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score * 
                    st.session_state.relayer_reputation_score * st.session_state.relayer_performance_acc_rate_var * 
@@ -1383,9 +1218,9 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
     
     
-    risk_score = omni_risk(st.session_state.security_audits, st.session_state.business_model, st.session_state.relayer_reputation, st.session_state.relayer_da_solution, st.session_state.relayer_merkle, st.session_state.evm_client_div, st.session_state.evm_equivalence, st.session_state.sybil_mec, st.session_state.encrypted_mempool_mec, st.session_state.code_complexity,
-             st.session_state.tee_mec, st.session_state.operator_reputation, st.session_state.operator_centralization, st.session_state.operator_entrenchment_level, st.session_state.engine_api, st.session_state.validator_abci_usage, st.session_state.dvt_mec, st.session_state.oracle_bridge_mec, st.session_state.lockup_mec, st.session_state.fast_fin_ss_mec, st.session_state.validator_reputation, 
-             st.session_state.da_sol_mec, st.session_state.validator_centralization)
+    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+             tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
+             da_sol_mec, validator_centralization)
     
     (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
      st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
