@@ -529,12 +529,13 @@ def main():
                         ```
                                 """)
 
+        code_complexity_score = omni_risk(st.session_state.code_complexity_score)
 
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
+        result2 = code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
         st.write("Current Code Complexity:", code_complexity)
 
-        st.write("Current Code Complexity Score:", st.session_state.code_complexity_score) 
+        st.write("Current Code Complexity Score:", code_complexity_score) 
 
         security_calc = f"""
                 <div style="text-align: center;">
@@ -607,8 +608,9 @@ def main():
                         Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
                                 """)
 
+        operator_reputation_score = omni_risk(st.session_state.operator_reputation_score)
 
-        result3 = (st.session_state.operator_reputation_score * st.session_state.operator_centralization_score * 
+        result3 = (operator_reputation_score * st.session_state.operator_centralization_score * 
                    st.session_state.operator_entrenchment_level_score * operator_metrics_likelihood * operator_metrics_impact)
 
         operator_calc = f"""
