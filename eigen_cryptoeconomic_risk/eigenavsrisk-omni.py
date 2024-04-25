@@ -384,7 +384,7 @@ def main():
             st.markdown('<p class="header-style">Business Model</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
+            st.session_state.business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
 
 
         with col25:
@@ -504,7 +504,35 @@ def main():
 
                     A greater xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a *% \$AVS* **>** *% xETH* pool balance makes sense to be a higher-reward event.
                         """)
+        
+        risk_score = omni_risk(
+            st.session_state.security_audits, 
+            st.session_state.business_model, 
+            st.session_state.relayer_reputation, 
+            st.session_state.relayer_da_solution, 
+            st.session_state.relayer_merkle, 
+            st.session_state.evm_client_div, 
+            st.session_state.evm_equivalence, 
+            st.session_state.sybil_mec, 
+            st.session_state.encrypted_mempool_mec, 
+            st.session_state.code_complexity,
+            st.session_state.tee_mec, 
+            st.session_state.operator_reputation, 
+            st.session_state.operator_centralization, 
+            st.session_state.operator_entrenchment_level, 
+            st.session_state.engine_api, 
+            st.session_state.validator_abci_usage, 
+            st.session_state.dvt_mec, 
+            st.session_state.oracle_bridge_mec, 
+            st.session_state.lockup_mec, 
+            st.session_state.fast_fin_ss_mec, 
+            st.session_state.validator_reputation,
+            st.session_state.da_sol_mec, 
+            st.session_state.validator_centralization
+        )
 
+
+        update_session_state(risk_score)
         
         result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood * business_dual_impact
 
