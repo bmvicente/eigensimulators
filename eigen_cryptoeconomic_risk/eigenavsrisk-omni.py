@@ -162,54 +162,125 @@ def main():
         else:
             return None
 
+
     if 'security_audit_score' not in st.session_state:
-            st.session_state.security_audit_score = 0
+        st.session_state.security_audit_score = 0
+    if 'security_audit' not in st.session_state:
+        st.session_state.security_audit = "Unknown"
+
     if 'business_model_score' not in st.session_state:
-            st.session_state.business_model_score = 0
+        st.session_state.business_model_score = 0
+    if 'business_model' not in st.session_state:
+        st.session_state.business_model = "Unknown"
+
     if 'relayer_reputation_score' not in st.session_state:
-            st.session_state.relayer_reputation_score = 0
+        st.session_state.relayer_reputation_score = 0
+    if 'relayer_reputation' not in st.session_state:
+        st.session_state.relayer_reputation = "Unknown"
+
     if 'operator_reputation_score' not in st.session_state:
-            st.session_state.operator_reputation_score = 0
+        st.session_state.operator_reputation_score = 0
+    if 'operator_reputation' not in st.session_state:
+        st.session_state.operator_reputation = "Unknown"
+
     if 'code_complexity_score' not in st.session_state:
-            st.session_state.code_complexity_score = 0
+        st.session_state.code_complexity_score = 0
+    if 'code_complexity' not in st.session_state:
+        st.session_state.code_complexity = "Unknown"
+
     if 'evm_equivalence_score' not in st.session_state:
-            st.session_state.evm_equivalence_score = 0
+        st.session_state.evm_equivalence_score = 0
+    if 'evm_equivalence' not in st.session_state:
+        st.session_state.evm_equivalence = "Unknown"
+
     if 'operator_centralization_score' not in st.session_state:
-            st.session_state.operator_centralization_score = 0
+        st.session_state.operator_centralization_score = 0
+    if 'operator_centralization' not in st.session_state:
+        st.session_state.operator_centralization = "Unknown"
+
     if 'validator_centralization_score' not in st.session_state:
-            st.session_state.validator_centralization_score = 0
+        st.session_state.validator_centralization_score = 0
+    if 'validator_centralization' not in st.session_state:
+        st.session_state.validator_centralization = "Unknown"
+
     if 'validator_reputation_score' not in st.session_state:
-            st.session_state.validator_reputation_score = 0
+        st.session_state.validator_reputation_score = 0
+    if 'validator_reputation' not in st.session_state:
+        st.session_state.validator_reputation = "Unknown"
+
     if 'dvt_mec_score' not in st.session_state:
-            st.session_state.dvt_mec_score = 0
+        st.session_state.dvt_mec_score = 0
+    if 'dvt_mec' not in st.session_state:
+        st.session_state.dvt_mec = False
+
     if 'evm_client_div_score' not in st.session_state:
-            st.session_state.evm_client_div_score = 0
+        st.session_state.evm_client_div_score = 0
+    if 'evm_client_div' not in st.session_state:
+        st.session_state.evm_client_div = "Unknown"
+
     if 'operator_entrenchment_level_score' not in st.session_state:
-            st.session_state.operator_entrenchment_level_score = 0
+        st.session_state.operator_entrenchment_level_score = 0
+    if 'operator_entrenchment_level' not in st.session_state:
+        st.session_state.operator_entrenchment_level = "Unknown"
+
     if 'da_sol_mec_score' not in st.session_state:
-            st.session_state.da_sol_mec_score = 0
+        st.session_state.da_sol_mec_score = 0
+    if 'da_sol_mec' not in st.session_state:
+        st.session_state.da_sol_mec = False
+
     if 'sybil_mec_score' not in st.session_state:
-            st.session_state.sybil_mec_score = 0
+        st.session_state.sybil_mec_score = 0
+    if 'sybil_mec' not in st.session_state:
+        st.session_state.sybil_mec = False
+
     if 'relayer_da_solution_score' not in st.session_state:
-            st.session_state.relayer_da_solution_score = 0
+        st.session_state.relayer_da_solution_score = 0
+    if 'relayer_da_solution' not in st.session_state:
+        st.session_state.relayer_da_solution = False
+
     if 'validator_abci_usage_score' not in st.session_state:
-            st.session_state.validator_abci_usage_score = 0
+        st.session_state.validator_abci_usage_score = 0
+    if 'validator_abci_usage' not in st.session_state:
+        st.session_state.validator_abci_usage = False
+
     if 'engine_api_score' not in st.session_state:
-            st.session_state.engine_api_score = 0
+        st.session_state.engine_api_score = 0
+    if 'engine_api' not in st.session_state:
+        st.session_state.engine_api = False
+
     if 'lockup_mec_score' not in st.session_state:
-            st.session_state.lockup_mec_score = 0
+        st.session_state.lockup_mec_score = 0
+    if 'lockup_mec' not in st.session_state:
+        st.session_state.lockup_mec = False
+
     if 'fast_fin_ss_mec_score' not in st.session_state:
-            st.session_state.fast_fin_ss_mec_score = 0
+        st.session_state.fast_fin_ss_mec_score = 0
+    if 'fast_fin_ss_mec' not in st.session_state:
+        st.session_state.fast_fin_ss_mec = False
+
     if 'tee_mec_score' not in st.session_state:
-            st.session_state.tee_mec_score = 0
+        st.session_state.tee_mec_score = 0
+    if 'tee_mec' not in st.session_state:
+        st.session_state.tee_mec = False
+
     if 'encrypted_mempool_mec_score' not in st.session_state:
-            st.session_state.encrypted_mempool_mec_score = 0
+        st.session_state.encrypted_mempool_mec_score = 0
+    if 'encrypted_mempool_mec' not in st.session_state:
+        st.session_state.encrypted_mempool_mec = False
+
     if 'relayer_merkle_score' not in st.session_state:
-            st.session_state.relayer_merkle_score = 0
+        st.session_state.relayer_merkle_score = 0
+    if 'relayer_merkle' not in st.session_state:
+        st.session_state.relayer_merkle = False
+
     if 'oracle_bridge_mec_score' not in st.session_state:
-            st.session_state.oracle_bridge_mec_score = 0
+        st.session_state.oracle_bridge_mec_score = 0
+    if 'oracle_bridge_mec' not in st.session_state:
+        st.session_state.oracle_bridge_mec = False
+
     if 'risk_score' not in st.session_state:
-            st.session_state.risk_score = 0
+        st.session_state.risk_score = 0
+
 
 
 
