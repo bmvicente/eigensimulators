@@ -582,7 +582,7 @@ def main():
             st.markdown('<p class="header-style">Number of Security Audits</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
+            st.session_state.security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
 
         st.write("-------")
 
