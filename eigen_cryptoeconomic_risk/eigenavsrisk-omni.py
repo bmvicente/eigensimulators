@@ -205,19 +205,8 @@ def main():
     if 'oracle_bridge_mec_score' not in st.session_state:
         st.session_state.oracle_bridge_mec_score = 0
 
-    if 'risk_score' not in st.session_state:
-        st.session_state.risk_score = 0
-
-    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
-             tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-             da_sol_mec, validator_centralization)
-    
-    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
-     st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
-     st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
-     st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
-     st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, st.session_state.da_sol_mec_score, 
-     st.session_state.validator_centralization_score) = risk_score
+    if 'omni_risk_score' not in st.session_state:
+        st.session_state.omni_risk_score = 0
 
 
 
@@ -1153,7 +1142,17 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
     st.write("  \n")
     
+    omni_risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+             tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
+             da_sol_mec, validator_centralization)
     
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
+     st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
+     st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
+     st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
+     st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, st.session_state.da_sol_mec_score, 
+     st.session_state.validator_centralization_score) = omni_risk_score    
+
     # Determine the color and background color based on the risk score
     if st.session_state.risk_score >= 75:
         color = "#d32f2f"  # Red color for high risk
@@ -1174,7 +1173,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
         text-align: center;
         margin: 10px 0;
         background-color: {background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
+        <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.omni_risk_score:.0f}</span></h2>
     </div>
     """, 
     unsafe_allow_html=True
