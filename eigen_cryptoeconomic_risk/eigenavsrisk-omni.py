@@ -534,7 +534,7 @@ def main():
 
         result2 = code_complexity1 * st.session_state.security_audit_score * security_likelihood * security_impact
 
-        st.write("Current Code Complexity:", st.session_state.code_complexity)
+        st.write("Current Code Complexity:", code_complexity)
 
         st.write("Current Code Complexity Score:", code_complexity1) 
 
