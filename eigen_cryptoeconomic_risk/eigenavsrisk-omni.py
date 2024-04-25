@@ -53,33 +53,33 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
                 lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
                 relayer_merkle_score, oracle_bridge_mec_score)
 
-def update_session_state(risk_score):
-    (
-        st.session_state.security_audit_score,
-        st.session_state.business_model_score,
-        st.session_state.dual_staking_balance,
-        st.session_state.relayer_reputation_score,
-        st.session_state.relayer_da_solution_score,
-        st.session_state.relayer_merkle_score,
-        st.session_state.evm_client_div_score,
-        st.session_state.evm_equivalence_score,
-        st.session_state.sybil_mec_score,
-        st.session_state.encrypted_mempool_mec_score,
-        st.session_state.code_complexity_score,
-        st.session_state.tee_mec_score,
-        st.session_state.operator_reputation_score,
-        st.session_state.operator_centralization_score,
-        st.session_state.operator_entrenchment_level_score,
-        st.session_state.engine_api_score,
-        st.session_state.validator_abci_usage_score,
-        st.session_state.dvt_mec_score,
-        st.session_state.oracle_bridge_mec_score,
-        st.session_state.lockup_mec_score,
-        st.session_state.fast_fin_ss_mec_score,
-        st.session_state.validator_reputation_score,
-        st.session_state.da_sol_mec_score,
-        st.session_state.validator_centralization_score,
-    ) = risk_score
+#def update_session_state(risk_score):
+#    (
+#        st.session_state.security_audit_score,
+#        st.session_state.business_model_score,
+#        st.session_state.dual_staking_balance,
+#        st.session_state.relayer_reputation_score,
+#        st.session_state.relayer_da_solution_score,
+#        st.session_state.relayer_merkle_score,
+#        st.session_state.evm_client_div_score,
+#        st.session_state.evm_equivalence_score,
+#        st.session_state.sybil_mec_score,
+#        st.session_state.encrypted_mempool_mec_score,
+#        st.session_state.code_complexity_score,
+#        st.session_state.tee_mec_score,
+#        st.session_state.operator_reputation_score,
+#        st.session_state.operator_centralization_score,
+#        st.session_state.operator_entrenchment_level_score,
+#        st.session_state.engine_api_score,
+#        st.session_state.validator_abci_usage_score,
+#        st.session_state.dvt_mec_score,
+#        st.session_state.oracle_bridge_mec_score,
+#        st.session_state.lockup_mec_score,
+#        st.session_state.fast_fin_ss_mec_score,
+#        st.session_state.validator_reputation_score,
+#        st.session_state.da_sol_mec_score,
+#        st.session_state.validator_centralization_score,
+#    ) = risk_score
 
 
 def main():
@@ -588,7 +588,7 @@ def main():
 
             st.markdown('<p class="header-style">AVS Protocol Architecture/Code Complexity</p>', unsafe_allow_html=True)
 
-            st.session_state.code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
+            code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
 
         with col28:
             # Number of Security Audits
