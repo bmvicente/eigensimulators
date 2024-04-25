@@ -44,8 +44,6 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
     relayer_merkle_score = 1 if relayer_merkle else 2
     oracle_bridge_mec_score = 1 if oracle_bridge_mec else 2
 
-    print("Code complexity selected:", code_complexity)
-    print("Code complexity score:", code_complexity_score)
 
     return (security_audit_score, business_model_score, relayer_reputation_score, 
                 operator_reputation_score, code_complexity_score, evm_equivalence_score,
@@ -55,6 +53,33 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
                 lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
                 relayer_merkle_score, oracle_bridge_mec_score)
 
+def update_session_state(risk_score):
+    (
+        st.session_state.security_audit_score,
+        st.session_state.business_model_score,
+        st.session_state.dual_staking_balance,
+        st.session_state.relayer_reputation_score,
+        st.session_state.relayer_da_solution_score,
+        st.session_state.relayer_merkle_score,
+        st.session_state.evm_client_div_score,
+        st.session_state.evm_equivalence_score,
+        st.session_state.sybil_mec_score,
+        st.session_state.encrypted_mempool_mec_score,
+        st.session_state.code_complexity_score,
+        st.session_state.tee_mec_score,
+        st.session_state.operator_reputation_score,
+        st.session_state.operator_centralization_score,
+        st.session_state.operator_entrenchment_level_score,
+        st.session_state.engine_api_score,
+        st.session_state.validator_abci_usage_score,
+        st.session_state.dvt_mec_score,
+        st.session_state.oracle_bridge_mec_score,
+        st.session_state.lockup_mec_score,
+        st.session_state.fast_fin_ss_mec_score,
+        st.session_state.validator_reputation_score,
+        st.session_state.da_sol_mec_score,
+        st.session_state.validator_centralization_score,
+    ) = risk_score
 
 
 def main():
@@ -508,11 +533,17 @@ def main():
                         ```
                                 """)
 
+        risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, st.session_state.code_complexity,
+                            tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation,
+                            da_sol_mec, validator_centralization)
+
+        update_session_state(risk_score)
+
         result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
-        
+
         st.write("Current Code Complexity:", st.session_state.code_complexity)  # Display the current value
 
-        st.write("Current Code Complexity Score:", st.session_state.code_complexity_score)  # Display the current value
+        st.write("Current Code Complexity Score:", st.session_state.code_complexity_score) 
 
         security_calc = f"""
                 <div style="text-align: center;">
