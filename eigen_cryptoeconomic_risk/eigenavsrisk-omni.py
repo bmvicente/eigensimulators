@@ -485,7 +485,7 @@ def main():
 
             st.markdown('<p class="header-style">AVS Protocol Architecture/Code Complexity</p>', unsafe_allow_html=True)
 
-            code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
+            st.session_state.code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
 
         with col28:
             # Number of Security Audits
@@ -529,12 +529,13 @@ def main():
                         ```
                                 """)
 
+        code_complexity1 = omni_risk(st.session_state.code_complexity)
 
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
+        result2 = code_complexity1 * st.session_state.security_audit_score * security_likelihood * security_impact
 
-        st.write("Current Code Complexity:", code_complexity)
+        st.write("Current Code Complexity:", st.session_state.code_complexity)
 
-        st.write("Current Code Complexity Score:", st.session_state.code_complexity_score) 
+        st.write("Current Code Complexity Score:", code_complexity1) 
 
         security_calc = f"""
                 <div style="text-align: center;">
