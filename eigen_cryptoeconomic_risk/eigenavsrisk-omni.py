@@ -205,8 +205,8 @@ def main():
     if 'oracle_bridge_mec_score' not in st.session_state:
         st.session_state.oracle_bridge_mec_score = 0
 
-    if 'omni_risk_score' not in st.session_state:
-        st.session_state.omni_risk_score = 0
+    if 'risk_score' not in st.session_state:
+        st.session_state.risk_score = 0
 
 
 
@@ -503,21 +503,17 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            # Displaying the custom styled header
             st.markdown('<p class="header-style">Number of Security Audits</p>', unsafe_allow_html=True)
 
-            # Dropdown menu
             security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
 
-        st.write("-------")
 
-        col35,col36 = st.columns(2, gap="medium")
-        with col35:
-                security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
-        with col36:
-                security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
+            col35,col36 = st.columns(2, gap="medium")
+            with col35:
+                    security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
+            with col36:
+                    security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
 
-                # The expander without a visible outline
         with st.expander("Logic"):
                     st.markdown("""
                         Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
@@ -984,7 +980,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         st.write("  \n")
 
-
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421")
@@ -1145,7 +1140,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
     st.write("  \n")
     
-    omni_risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
              da_sol_mec, validator_centralization)
     
@@ -1154,9 +1149,8 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
      st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
      st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
      st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, st.session_state.da_sol_mec_score, 
-     st.session_state.validator_centralization_score) = omni_risk_score    
+     st.session_state.validator_centralization_score) = risk_score    
 
-    # Determine the color and background color based on the risk score
     if st.session_state.risk_score >= 75:
         color = "#d32f2f"  # Red color for high risk
         background_color = "#fde0dc"  # Light red background
@@ -1176,7 +1170,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
         text-align: center;
         margin: 10px 0;
         background-color: {background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.omni_risk_score:.0f}</span></h2>
+        <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
     </div>
     """, 
     unsafe_allow_html=True
