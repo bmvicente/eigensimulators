@@ -529,7 +529,7 @@ def main():
                         ```
                                 """)
 
-        code_complexity_score = omni_risk(st.session_state.code_complexity_score)
+        code_complexity_score = omni_risk(code_complexity_score)
 
         result2 = code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
