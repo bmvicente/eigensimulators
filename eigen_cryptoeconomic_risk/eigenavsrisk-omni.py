@@ -82,7 +82,24 @@ def main():
     st.write("  \n")
     st.write("  \n")
     
-
+    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, 
+    st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, st.session_state.relayer_merkle_score, 
+    st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, 
+    st.session_state.encrypted_mempool_mec_score, st.session_state.code_complexity_score, st.session_state.tee_mec_score, 
+    st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
+    st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, 
+    st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
+    st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, 
+    st.session_state.da_sol_mec_score, st.session_state.validator_centralization_score, 
+    st.session_state.business_model_score) = omni_risk(security_audits, st.session_state.business_model, relayer_reputation, 
+                                                         relayer_da_solution, relayer_merkle, evm_client_div, 
+                                                         evm_equivalence, sybil_mec, encrypted_mempool_mec, 
+                                                         code_complexity, tee_mec, operator_reputation, 
+                                                         operator_centralization, operator_entrenchment_level, 
+                                                         engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, 
+                                                         lockup_mec, fast_fin_ss_mec, validator_reputation, 
+                                                         da_sol_mec, validator_centralization)
+    
     def dual_staking_balance_calc(avs_token_percentage, xeth_percentage):
         ratio = avs_token_percentage / xeth_percentage
 
@@ -346,7 +363,7 @@ def main():
             st.markdown('<p class="header-style">Business Model</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            st.session_state.business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
+            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
 
         with col48:
             st.markdown("""
@@ -386,7 +403,6 @@ def main():
 
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
-        business_model = st.session_state.business_model
 
         with st.expander("Logic"):
                 st.markdown("""
