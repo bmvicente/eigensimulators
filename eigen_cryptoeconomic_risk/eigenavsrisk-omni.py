@@ -388,14 +388,6 @@ def main():
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
         
-        st.session_state.business_model_score = omni_risk(st.session_state.security_audits, business_model, relayer_reputation, 
-                                                            relayer_da_solution, relayer_merkle, evm_client_div, 
-                                                            evm_equivalence, sybil_mec, encrypted_mempool_mec, 
-                                                            code_complexity, tee_mec, operator_reputation, 
-                                                            operator_centralization, operator_entrenchment_level, 
-                                                            engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, 
-                                                            lockup_mec, fast_fin_ss_mec, validator_reputation, 
-                                                            da_sol_mec, validator_centralization)[1]
         with st.expander("Logic"):
                 st.markdown("""
                     Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) by risk: 
