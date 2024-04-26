@@ -2,6 +2,7 @@
 
 import streamlit as st
 
+
 security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
 business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
 relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
@@ -13,6 +14,21 @@ evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 1}
 validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
 operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
+engine_api_risk = {True: 1, False: 2}
+dvt_mec_risk = {True: 1, False: 2}
+sybil_mec_risk = {True: 1, False: 2}
+relayer_da_solution_risk = {True: 1, False: 2}
+validator_abci_usage_risk = {True: 1, False: 2}
+da_sol_mec_risk = {True: 1, False: 2}
+lockup_mec_risk = {True: 1, False: 2}
+fast_fin_ss_mec_risk = {True: 1, False: 2}
+tee_mec_risk = {True: 1, False: 2}
+encrypted_mempool_mec_risk = {True: 1, False: 2}
+relayer_merkle_risk = {True: 1, False: 2}
+oracle_bridge_mec_risk = {True: 1, False: 2}
+
+
+
 
 def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
                 relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
@@ -20,8 +36,7 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
                 validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
                 da_sol_mec, validator_centralization):
 
-
-        security_audit_score = security_audits_risk[security_audits]
+        security_audits_score = security_audits_risk[security_audits]
         business_model_score = business_model_risk[business_model]
         relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
         operator_reputation_score = operator_reputation_risk[operator_reputation]
@@ -32,21 +47,20 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
         validator_reputation_score = validator_reputation_risk[validator_reputation]
         evm_client_div_score = evm_client_div_risk[evm_client_div]
         operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
-        dvt_mec_score = 1 if dvt_mec else 2
-        sybil_mec_score = 1 if sybil_mec else 2
-        relayer_da_solution_score = 1 if relayer_da_solution else 2
-        validator_abci_usage_score = 1 if validator_abci_usage else 2
-        da_sol_mec_score = 1 if da_sol_mec else 2
-        engine_api_score = 1 if engine_api else 2
-        lockup_mec_score = 1 if lockup_mec else 2
-        fast_fin_ss_mec_score = 1 if fast_fin_ss_mec else 2
-        tee_mec_score = 1 if tee_mec else 2
-        encrypted_mempool_mec_score = 1 if encrypted_mempool_mec else 2
-        relayer_merkle_score = 1 if relayer_merkle else 2
-        oracle_bridge_mec_score = 1 if oracle_bridge_mec else 2
+        dvt_mec_score = dvt_mec_risk[dvt_mec]
+        sybil_mec_score = sybil_mec_risk[sybil_mec]
+        relayer_da_solution_score = relayer_da_solution_risk[relayer_da_solution]
+        engine_api_score = engine_api_risk[engine_api]
+        validator_abci_usage_score = validator_abci_usage_risk[validator_abci_usage]
+        da_sol_mec_score = da_sol_mec_risk[da_sol_mec]
+        lockup_mec_score = lockup_mec_risk[lockup_mec]
+        fast_fin_ss_mec_score = fast_fin_ss_mec_risk[fast_fin_ss_mec]
+        tee_mec_score = tee_mec_risk[tee_mec]
+        encrypted_mempool_mec_score = encrypted_mempool_mec_risk[encrypted_mempool_mec]
+        relayer_merkle_score = relayer_merkle_risk[relayer_merkle]
+        oracle_bridge_mec_score = oracle_bridge_mec_risk[oracle_bridge_mec]
 
-
-        return (security_audit_score, business_model_score, relayer_reputation_score, 
+        return (security_audits_score, business_model_score, relayer_reputation_score, 
                     operator_reputation_score, code_complexity_score, evm_equivalence_score,
                     operator_centralization_score, validator_centralization_score, validator_reputation_score, 
                     dvt_mec_score, evm_client_div_score, operator_entrenchment_level_score, da_sol_mec_score,
@@ -538,13 +552,17 @@ def main():
                             security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the least
                             ```
                                     """)
-
+            
+            if st.session_state.code_complexity != code_complexity:
+                st.session_state.code_complexity = code_complexity
+                st.session_state.code_complexity_score = code_complexity_risk.get(code_complexity, 0)
+            
+            if st.session_state.security_audits != security_audits:
+                st.session_state.security_audits = security_audits
+                st.session_state.security_audits_score = security_audits_risk.get(security_audits, 0)
 
             result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
-            st.write("Current Code Complexity:", st.session_state.code_complexity)
-
-            st.write("Current Code Complexity Score:", st.session_state.code_complexity_score) 
 
             security_calc = f"""
                     <div style="text-align: center;">
@@ -617,9 +635,17 @@ def main():
                         Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
                                 """)
 
-        operator_reputation_score = omni_risk(st.session_state.operator_reputation_score)
+        if st.session_state.operator_reputation != operator_reputation:
+                st.session_state.operator_reputation = operator_reputation
+                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+        if st.session_state.operator_centralization != operator_centralization:
+                st.session_state.operator_centralization = operator_centralization
+                st.session_state.operator_centralization_score = operator_centralization_risk.get(operator_centralization, 0)
+        if st.session_state.operator_entrenchment_level != operator_entrenchment_level:
+                st.session_state.operator_entrenchment_level = operator_entrenchment_level
+                st.session_state.operator_entrenchment_level_score = operator_entrenchment_level_risk.get(operator_entrenchment_level, 0)
 
-        result3 = (operator_reputation_score * st.session_state.operator_centralization_score * 
+        result3 = (st.session_state.operator_reputation_score * st.session_state.operator_centralization_score * 
                    st.session_state.operator_entrenchment_level_score * operator_metrics_likelihood * operator_metrics_impact)
 
         operator_calc = f"""
@@ -814,6 +840,34 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 - **Decision Making for Message Submission**: Relayers decide on the number of XMsgs to submit, balancing transaction cost considerations like data size and gas limits.
                             """)
 
+
+        if st.session_state.engine_api != engine_api:
+            st.session_state.engine_api = engine_api
+            st.session_state.engine_api_score = engine_api_risk.get(engine_api, 0)
+
+        if st.session_state.operator_reputation != operator_reputation:
+                st.session_state.operator_reputation = operator_reputation
+                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+
+        if st.session_state.operator_reputation != operator_reputation:
+                st.session_state.operator_reputation = operator_reputation
+                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+
+        if st.session_state.operator_reputation != operator_reputation:
+                st.session_state.operator_reputation = operator_reputation
+                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+
+        if st.session_state.operator_reputation != operator_reputation:
+                st.session_state.operator_reputation = operator_reputation
+                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+
+        if st.session_state.operator_reputation != operator_reputation:
+                st.session_state.operator_reputation = operator_reputation
+                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+
+        if st.session_state.operator_reputation != operator_reputation:
+                st.session_state.operator_reputation = operator_reputation
+                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
 
         result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score *
                    st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
@@ -1160,7 +1214,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
              da_sol_mec, validator_centralization)
     
-    (st.session_state.security_audit_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
+    (st.session_state.security_audits_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
      st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
      st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
      st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
