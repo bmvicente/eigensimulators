@@ -140,13 +140,15 @@ def main():
     if 'security_audit_score' not in st.session_state:
         st.session_state.security_audit_score = 0
 
-    #if 'business_model_score' not in st.session_state:
-    #    st.session_state.business_model_score = 0
 
     if 'business_model' not in st.session_state:
-        st.session_state.business_model = "Dual Staking Utility"  # Set default business model
+        st.session_state.business_model = "Dual Staking Utility"
     if 'business_model_score' not in st.session_state:
-        st.session_state.business_model_score = business_model_risk[st.session_state.business_model]
+        if st.session_state.business_model in business_model_risk:  # Check if business model exists in the dictionary
+            st.session_state.business_model_score = business_model_risk[st.session_state.business_model]
+        else:
+            st.session_state.business_model_score = 0  # Set a default score if business model is not found
+
 
     if 'relayer_reputation_score' not in st.session_state:
         st.session_state.relayer_reputation_score = 0
