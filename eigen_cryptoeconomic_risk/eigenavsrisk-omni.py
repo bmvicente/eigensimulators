@@ -150,7 +150,9 @@ def main():
 
     if 'code_complexity_score' not in st.session_state:
         st.session_state.code_complexity_score = 0
-
+    if 'code_complexity1' not in st.session_state:
+        st.session_state.code_complexity1 = 0
+        
     if 'evm_equivalence_score' not in st.session_state:
         st.session_state.evm_equivalence_score = 0
 
@@ -485,8 +487,8 @@ def main():
 
             st.markdown('<p class="header-style">AVS Protocol Architecture/Code Complexity</p>', unsafe_allow_html=True)
 
-            st.session_state.code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
-
+            st.session_state.code_complexity1 = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
+            
         with col28:
             # Number of Security Audits
             st.markdown("""
@@ -507,6 +509,7 @@ def main():
 
             security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
 
+            code_complexity = st.session_state.code_complexity1
 
             col35,col36 = st.columns(2, gap="medium")
             with col35:
@@ -525,14 +528,12 @@ def main():
                         ```
                                 """)
 
-        code_complexity = st.session_state.code_complexity
-        code_complexity1 = omni_risk(code_complexity)
 
-        result2 = code_complexity1 * st.session_state.security_audit_score * security_likelihood * security_impact
+        result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
         st.write("Current Code Complexity:", code_complexity)
 
-        st.write("Current Code Complexity Score:", code_complexity1) 
+        st.write("Current Code Complexity Score:", st.session_state.code_complexity_score) 
 
         security_calc = f"""
                 <div style="text-align: center;">
