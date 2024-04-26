@@ -845,29 +845,43 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
             st.session_state.engine_api = engine_api
             st.session_state.engine_api_score = engine_api_risk.get(engine_api, 0)
 
-        if st.session_state.operator_reputation != operator_reputation:
-                st.session_state.operator_reputation = operator_reputation
-                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+        if st.session_state.validator_abci_usage != validator_abci_usage:
+            st.session_state.validator_abci_usage = validator_abci_usage
+            st.session_state.validator_abci_usage_score = validator_abci_usage_risk.get(validator_abci_usage, 0)
 
-        if st.session_state.operator_reputation != operator_reputation:
-                st.session_state.operator_reputation = operator_reputation
-                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+        if st.session_state.tee_mec != tee_mec:
+            st.session_state.tee_mec = tee_mec
+            st.session_state.tee_mec_score = tee_mec_risk.get(tee_mec, 0)
 
-        if st.session_state.operator_reputation != operator_reputation:
-                st.session_state.operator_reputation = operator_reputation
-                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+        if st.session_state.dvt_mec != dvt_mec:
+            st.session_state.dvt_mec = dvt_mec
+            st.session_state.dvt_mec_score = dvt_mec_risk.get(dvt_mec, 0)
 
-        if st.session_state.operator_reputation != operator_reputation:
-                st.session_state.operator_reputation = operator_reputation
-                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+        if st.session_state.oracle_bridge_mec != oracle_bridge_mec:
+            st.session_state.oracle_bridge_mec = oracle_bridge_mec
+            st.session_state.oracle_bridge_mec_score = oracle_bridge_mec_risk.get(oracle_bridge_mec, 0)
 
-        if st.session_state.operator_reputation != operator_reputation:
-                st.session_state.operator_reputation = operator_reputation
-                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+        if st.session_state.lockup_mec != lockup_mec:
+            st.session_state.lockup_mec = lockup_mec
+            st.session_state.lockup_mec_score = lockup_mec_risk.get(lockup_mec, 0)
 
-        if st.session_state.operator_reputation != operator_reputation:
-                st.session_state.operator_reputation = operator_reputation
-                st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+        if st.session_state.da_sol_mec != da_sol_mec:
+            st.session_state.da_sol_mec = da_sol_mec
+            st.session_state.da_sol_mec_score = da_sol_mec_risk.get(da_sol_mec, 0)
+
+        if st.session_state.fast_fin_ss_mec != fast_fin_ss_mec:
+            st.session_state.fast_fin_ss_mec = fast_fin_ss_mec
+            st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk.get(fast_fin_ss_mec, 0)
+
+        if st.session_state.validator_reputation != validator_reputation:
+            st.session_state.validator_reputation = validator_reputation
+            st.session_state.validator_reputation_score = validator_reputation_risk.get(validator_reputation, 0)
+
+        if st.session_state.validator_centralization != validator_centralization:
+            st.session_state.validator_centralization = validator_centralization
+            st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
+
+
 
         result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score *
                    st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
@@ -918,7 +932,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.write("  \n")
         st.write("\n")
         st.write("  \n")
-
 
 
 
@@ -988,6 +1001,22 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     Client Diversity and EVM Equivalence: Omni emphasizes running an unmodified version of the Ethereum Virtual Machine (EVM), which guarantees that Ethereum smart contracts and developer tooling work seamlessly. This focus on EVM equivalence and support for diverse client implementations enhances developer accessibility and network resilience.
                             """)
 
+        if st.session_state.encrypted_mempool_mec != encrypted_mempool_mec:
+            st.session_state.encrypted_mempool_mec = encrypted_mempool_mec
+            st.session_state.encrypted_mempool_mec_score = encrypted_mempool_mec_risk.get(encrypted_mempool_mec, 0)
+
+        if st.session_state.sybil_mec != sybil_mec:
+            st.session_state.sybil_mec = sybil_mec
+            st.session_state.sybil_mec_score = sybil_mec_risk.get(sybil_mec, 0)
+
+        if st.session_state.evm_equivalence != evm_equivalence:
+            st.session_state.evm_equivalence = evm_equivalence
+            st.session_state.evm_equivalence_score = evm_equivalence_risk.get(evm_equivalence, 0)
+
+        if st.session_state.evm_client_div != evm_client_div:
+            st.session_state.evm_client_div = evm_client_div
+            st.session_state.evm_client_div_score = evm_client_div_risk.get(evm_client_div, 0)
+
 
         result5 = (st.session_state.sybil_mec_score * st.session_state.encrypted_mempool_mec_score * 
                    st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score * 
@@ -1021,6 +1050,8 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.write("  \n")
         st.write("\n")
         st.write("  \n")
+
+
 
 
 
@@ -1088,6 +1119,19 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                 After validators' attestation, relayers submit XBlocks and their messages to destination chains, employing merkle-multi-proofs for verification.
                     Relayer Role Security: While the permissionless relayer mechanism is a strength for interoperability, it also introduces a potential vector for attacks if relayers behave maliciously or if the reputation system is not robust enough to incentivize honest participation.
                             """)
+
+
+        if st.session_state.relayer_merkle != relayer_merkle:
+            st.session_state.relayer_merkle = relayer_merkle
+            st.session_state.relayer_merkle_score = relayer_merkle_risk.get(relayer_merkle, 0)
+
+        if st.session_state.relayer_da_solution != relayer_da_solution:
+            st.session_state.relayer_da_solution = relayer_da_solution
+            st.session_state.relayer_da_solution_score = relayer_da_solution_risk.get(relayer_da_solution, 0)
+
+        if st.session_state.relayer_reputation != relayer_reputation:
+            st.session_state.relayer_reputation = relayer_reputation
+            st.session_state.relayer_reputation_score = relayer_reputation_risk.get(relayer_reputation, 0)
 
 
         result6 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score * 
