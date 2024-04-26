@@ -2,6 +2,17 @@
 
 import streamlit as st
 
+security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
+business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
+relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
+operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 1}
+validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
+operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
 
 def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
                 relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
@@ -9,17 +20,6 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
                 validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
                 da_sol_mec, validator_centralization):
 
-        security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
-        business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
-        relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-        operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-        validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-        code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
-        operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-        evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 1}
-        validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-        evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
-        operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
 
         security_audit_score = security_audits_risk[security_audits]
         business_model_score = business_model_risk[business_model]
@@ -140,8 +140,13 @@ def main():
     if 'security_audit_score' not in st.session_state:
         st.session_state.security_audit_score = 0
 
+    #if 'business_model_score' not in st.session_state:
+    #    st.session_state.business_model_score = 0
+
+    if 'business_model' not in st.session_state:
+        st.session_state.business_model = "Dual Staking Utility"  # Set default business model
     if 'business_model_score' not in st.session_state:
-        st.session_state.business_model_score = 0
+        st.session_state.business_model_score = business_model_risk[st.session_state.business_model]
 
     if 'relayer_reputation_score' not in st.session_state:
         st.session_state.relayer_reputation_score = 0
