@@ -346,7 +346,7 @@ def main():
             st.markdown('<p class="header-style">Business Model</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
+            st.session_state.business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
 
         with col48:
             st.markdown("""
@@ -386,6 +386,7 @@ def main():
 
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
+        business_model = st.session_state.business_model
 
         with st.expander("Logic"):
                 st.markdown("""
