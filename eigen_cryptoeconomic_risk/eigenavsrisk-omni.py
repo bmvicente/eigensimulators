@@ -517,39 +517,39 @@ def main():
             with col36:
                     security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
 
-        with st.expander("Logic"):
-                    st.markdown("""
-                        Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
-                        
-                        While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
-                        
-                        ```python
-                        security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the least
-                        ```
-                                """)
+            with st.expander("Logic"):
+                        st.markdown("""
+                            Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
+                            
+                            While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
+                            
+                            ```python
+                            security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the least
+                            ```
+                                    """)
 
 
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
+            result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
-        st.write("Current Code Complexity:", st.session_state.code_complexity1)
+            st.write("Current Code Complexity:", st.session_state.code_complexity1)
 
-        st.write("Current Code Complexity Score:", st.session_state.code_complexity_score) 
+            st.write("Current Code Complexity Score:", st.session_state.code_complexity_score) 
 
-        security_calc = f"""
-                <div style="text-align: center;">
-                    <div>
-                        <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
-                        <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                        <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
-                        <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                        <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood}</span> 
-                        <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                        <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact}</span> 
-                        <span style="font-size: 24px; font-weight: bold;"> = </span>
-                        <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
-                </div>"""
+            security_calc = f"""
+                    <div style="text-align: center;">
+                        <div>
+                            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
+                            <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                            <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
+                            <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                            <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood}</span> 
+                            <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                            <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact}</span> 
+                            <span style="font-size: 24px; font-weight: bold;"> = </span>
+                            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                    </div>"""
 
-        st.markdown(security_calc, unsafe_allow_html=True)
+            st.markdown(security_calc, unsafe_allow_html=True)
 
 
 
