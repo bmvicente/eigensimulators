@@ -380,9 +380,9 @@ def main():
 
         col44,col45 = st.columns(2, gap="medium")
         with col44:
-            business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3)
+            business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3, key='afa')
         with col45:
-            business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7)
+            business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7, key='ewe')
 
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
