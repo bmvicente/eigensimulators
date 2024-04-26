@@ -393,6 +393,10 @@ def main():
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
         
+        if st.session_state.business_model != business_model:
+            st.session_state.business_model = business_model
+            st.session_state.business_model_score = business_model_risk.get(business_model, 0)
+
         with st.expander("Logic"):
                 st.markdown("""
                     Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) by risk: 
