@@ -3,7 +3,7 @@
 import streamlit as st
 
 def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
-             relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+             relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity1,
              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
              validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
              da_sol_mec, validator_centralization):
@@ -24,7 +24,7 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
     business_model_score = business_model_risk[business_model]
     relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
     operator_reputation_score = operator_reputation_risk[operator_reputation]
-    code_complexity_score = code_complexity_risk[code_complexity]
+    code_complexity_score = code_complexity_risk[code_complexity1]
     operator_centralization_score = operator_centralization_risk[operator_centralization]
     validator_centralization_score = validator_centralization_risk[validator_centralization]
     evm_equivalence_score = evm_equivalence_risk[evm_equivalence]
@@ -152,7 +152,7 @@ def main():
         st.session_state.code_complexity_score = 0
     if 'code_complexity1' not in st.session_state:
         st.session_state.code_complexity1 = 0
-        
+
     if 'evm_equivalence_score' not in st.session_state:
         st.session_state.evm_equivalence_score = 0
 
@@ -531,7 +531,7 @@ def main():
 
         result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
-        st.write("Current Code Complexity:", code_complexity)
+        st.write("Current Code Complexity:", st.session_state.code_complexity1)
 
         st.write("Current Code Complexity Score:", st.session_state.code_complexity_score) 
 
