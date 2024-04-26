@@ -292,28 +292,6 @@ def main():
             st.write("\n")
 
 
-            # AVS Business Model
-            st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                .stExpander {
-                    border: none !important;
-                    box-shadow: none !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
-            # Displaying the custom styled header
-            st.markdown('<p class="header-style">Business Model</p>', unsafe_allow_html=True)
-
-            # Dropdown menu
-            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
-
-
         with col25:
 
             # Restaked TVL
@@ -346,6 +324,31 @@ def main():
             st.write("\n")
 
 
+
+        col47,col48 = st.columns(2, gap="medium")
+        with col47:
+            # AVS Business Model
+            st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Displaying the custom styled header
+            st.markdown('<p class="header-style">Business Model</p>', unsafe_allow_html=True)
+
+            # Dropdown menu
+            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1, key="543")
+
+        with col48:
             st.markdown("""
             <style>
             .header-style {
