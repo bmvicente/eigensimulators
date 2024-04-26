@@ -3,35 +3,8 @@
 import streamlit as st
 
 
-def main():
-    st.set_page_config(layout="wide")
-
-    st.image("images/omni.jpeg", width=450)
-
-    st.title("Cryptoeconomic Risk Analysis I")
-    st.subheader("**Interoperability Network AVS: Omni Underlying Risk & Slashing Conditions Simulator**")
-
-    st.write("  \n")
-
-    with st.expander("How this Simulator Works & Basic Assumptions"):
-        st.markdown(f"""
-                    The consensus layer is implemented by the Omni consensus client, halo, and uses CometBFT for consensus on XMsgs and Omni EVM blocks.
-
-            The Simulator takes six of the AVS-generic parameters to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Omni. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
-            A good deal of the logic behind the right side of the Simulator (OMNI-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581), specifically for Omni.
-                    
-            The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being corrupted or cryptoeconomically secure. 
-        """)
-
-        
-    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for Omni as a Interoperability AVS.")
-
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-
-    def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
-                relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity1,
+def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
+                relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
                 tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
                 validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
                 da_sol_mec, validator_centralization):
@@ -52,7 +25,7 @@ def main():
         business_model_score = business_model_risk[business_model]
         relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
         operator_reputation_score = operator_reputation_risk[operator_reputation]
-        code_complexity_score = code_complexity_risk[code_complexity1]
+        code_complexity_score = code_complexity_risk[code_complexity]
         operator_centralization_score = operator_centralization_risk[operator_centralization]
         validator_centralization_score = validator_centralization_risk[validator_centralization]
         evm_equivalence_score = evm_equivalence_risk[evm_equivalence]
@@ -80,6 +53,36 @@ def main():
                     sybil_mec_score, relayer_da_solution_score, validator_abci_usage_score, engine_api_score,
                     lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
                     relayer_merkle_score, oracle_bridge_mec_score)
+
+
+def main():
+    st.set_page_config(layout="wide")
+
+    st.image("images/omni.jpeg", width=450)
+
+    st.title("Cryptoeconomic Risk Analysis I")
+    st.subheader("**Interoperability Network AVS: Omni Underlying Risk & Slashing Conditions Simulator**")
+
+    st.write("  \n")
+
+    with st.expander("How this Simulator Works & Basic Assumptions"):
+        st.markdown(f"""
+                    The consensus layer is implemented by the Omni consensus client, halo, and uses CometBFT for consensus on XMsgs and Omni EVM blocks.
+
+            The Simulator takes six of the AVS-generic parameters to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Omni. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
+            A good deal of the logic behind the right side of the Simulator (OMNI-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581), specifically for Omni.
+                    
+            The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being corrupted or cryptoeconomically secure. 
+        """)
+
+        
+    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for Omni as a Interoperability AVS.")
+
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+
+
 
     def dual_staking_balance_calc(avs_token_percentage, xeth_percentage):
         ratio = avs_token_percentage / xeth_percentage
@@ -148,8 +151,6 @@ def main():
 
     if 'code_complexity_score' not in st.session_state:
         st.session_state.code_complexity_score = 0
-    if 'code_complexity1' not in st.session_state:
-        st.session_state.code_complexity1 = 0
 
     if 'evm_equivalence_score' not in st.session_state:
         st.session_state.evm_equivalence_score = 0
@@ -488,7 +489,7 @@ def main():
 
             st.markdown('<p class="header-style">AVS Protocol Architecture/Code Complexity</p>', unsafe_allow_html=True)
 
-            st.session_state.code_complexity1 = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
+            code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
             
         with col28:
             # Number of Security Audits
@@ -510,8 +511,6 @@ def main():
 
             security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
 
-            code_complexity = st.session_state.code_complexity1
-
             col35,col36 = st.columns(2, gap="medium")
             with col35:
                     security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
@@ -532,7 +531,7 @@ def main():
 
             result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
 
-            st.write("Current Code Complexity:", st.session_state.code_complexity1)
+            st.write("Current Code Complexity:", st.session_state.code_complexity)
 
             st.write("Current Code Complexity Score:", st.session_state.code_complexity_score) 
 
