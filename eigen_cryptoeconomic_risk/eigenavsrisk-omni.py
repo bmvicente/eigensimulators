@@ -388,7 +388,7 @@ def main():
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
         
-        st.session_state.business_model_score = omni_risk(security_audits, business_model, relayer_reputation, 
+        st.session_state.business_model_score = omni_risk(st.session_state.security_audits, business_model, relayer_reputation, 
                                                             relayer_da_solution, relayer_merkle, evm_client_div, 
                                                             evm_equivalence, sybil_mec, encrypted_mempool_mec, 
                                                             code_complexity, tee_mec, operator_reputation, 
