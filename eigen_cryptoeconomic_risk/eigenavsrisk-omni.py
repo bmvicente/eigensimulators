@@ -2,58 +2,6 @@
 
 import streamlit as st
 
-def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
-             relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity1,
-             tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
-             validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-             da_sol_mec, validator_centralization):
-
-    security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
-    business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
-    relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-    operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-    validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-    code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
-    operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-    evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 1}
-    validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-    evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
-    operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
-
-    security_audit_score = security_audits_risk[security_audits]
-    business_model_score = business_model_risk[business_model]
-    relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
-    operator_reputation_score = operator_reputation_risk[operator_reputation]
-    code_complexity_score = code_complexity_risk[code_complexity1]
-    operator_centralization_score = operator_centralization_risk[operator_centralization]
-    validator_centralization_score = validator_centralization_risk[validator_centralization]
-    evm_equivalence_score = evm_equivalence_risk[evm_equivalence]
-    validator_reputation_score = validator_reputation_risk[validator_reputation]
-    evm_client_div_score = evm_client_div_risk[evm_client_div]
-    operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
-    dvt_mec_score = 1 if dvt_mec else 2
-    sybil_mec_score = 1 if sybil_mec else 2
-    relayer_da_solution_score = 1 if relayer_da_solution else 2
-    validator_abci_usage_score = 1 if validator_abci_usage else 2
-    da_sol_mec_score = 1 if da_sol_mec else 2
-    engine_api_score = 1 if engine_api else 2
-    lockup_mec_score = 1 if lockup_mec else 2
-    fast_fin_ss_mec_score = 1 if fast_fin_ss_mec else 2
-    tee_mec_score = 1 if tee_mec else 2
-    encrypted_mempool_mec_score = 1 if encrypted_mempool_mec else 2
-    relayer_merkle_score = 1 if relayer_merkle else 2
-    oracle_bridge_mec_score = 1 if oracle_bridge_mec else 2
-
-
-    return (security_audit_score, business_model_score, relayer_reputation_score, 
-                operator_reputation_score, code_complexity_score, evm_equivalence_score,
-                operator_centralization_score, validator_centralization_score, validator_reputation_score, 
-                dvt_mec_score, evm_client_div_score, operator_entrenchment_level_score, da_sol_mec_score,
-                sybil_mec_score, relayer_da_solution_score, validator_abci_usage_score, engine_api_score,
-                lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
-                relayer_merkle_score, oracle_bridge_mec_score)
-
-
 
 def main():
     st.set_page_config(layout="wide")
@@ -82,7 +30,56 @@ def main():
     st.write("  \n")
     st.write("  \n")
 
-    
+    def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
+                relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity1,
+                tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
+                validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
+                da_sol_mec, validator_centralization):
+
+        security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
+        business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
+        relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+        operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+        validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+        code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
+        operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+        evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 1}
+        validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+        evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
+        operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
+
+        security_audit_score = security_audits_risk[security_audits]
+        business_model_score = business_model_risk[business_model]
+        relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
+        operator_reputation_score = operator_reputation_risk[operator_reputation]
+        code_complexity_score = code_complexity_risk[code_complexity1]
+        operator_centralization_score = operator_centralization_risk[operator_centralization]
+        validator_centralization_score = validator_centralization_risk[validator_centralization]
+        evm_equivalence_score = evm_equivalence_risk[evm_equivalence]
+        validator_reputation_score = validator_reputation_risk[validator_reputation]
+        evm_client_div_score = evm_client_div_risk[evm_client_div]
+        operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
+        dvt_mec_score = 1 if dvt_mec else 2
+        sybil_mec_score = 1 if sybil_mec else 2
+        relayer_da_solution_score = 1 if relayer_da_solution else 2
+        validator_abci_usage_score = 1 if validator_abci_usage else 2
+        da_sol_mec_score = 1 if da_sol_mec else 2
+        engine_api_score = 1 if engine_api else 2
+        lockup_mec_score = 1 if lockup_mec else 2
+        fast_fin_ss_mec_score = 1 if fast_fin_ss_mec else 2
+        tee_mec_score = 1 if tee_mec else 2
+        encrypted_mempool_mec_score = 1 if encrypted_mempool_mec else 2
+        relayer_merkle_score = 1 if relayer_merkle else 2
+        oracle_bridge_mec_score = 1 if oracle_bridge_mec else 2
+
+
+        return (security_audit_score, business_model_score, relayer_reputation_score, 
+                    operator_reputation_score, code_complexity_score, evm_equivalence_score,
+                    operator_centralization_score, validator_centralization_score, validator_reputation_score, 
+                    dvt_mec_score, evm_client_div_score, operator_entrenchment_level_score, da_sol_mec_score,
+                    sybil_mec_score, relayer_da_solution_score, validator_abci_usage_score, engine_api_score,
+                    lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
+                    relayer_merkle_score, oracle_bridge_mec_score)
 
     def dual_staking_balance_calc(avs_token_percentage, xeth_percentage):
         ratio = avs_token_percentage / xeth_percentage
