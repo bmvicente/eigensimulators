@@ -151,8 +151,7 @@ def main():
             return None
 
 
-    if 'security_audit_score' not in st.session_state:
-        st.session_state.security_audit_score = 0
+
 
 
     if 'business_model' not in st.session_state:
@@ -163,15 +162,30 @@ def main():
         else:
             st.session_state.business_model_score = 0  # Set a default score if business model is not found
 
+    if 'code_complexity' not in st.session_state:
+        st.session_state.code_complexity = "High"  # Set default value
+    if 'code_complexity_score' not in st.session_state:
+        if st.session_state.code_complexity in code_complexity_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.code_complexity_score = code_complexity_risk[st.session_state.code_complexity]
+        else:
+            st.session_state.code_complexity_score = 0
+
+    if 'security_audit' not in st.session_state:
+        st.session_state.security_audit = "High"  # Set default value
+    if 'code_complexity_score' not in st.session_state:
+        if st.session_state.code_complexity in code_complexity_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.code_complexity_score = code_complexity_risk[st.session_state.code_complexity]
+        else:
+            st.session_state.code_complexity_score = 0
+
+    if 'security_audit_score' not in st.session_state:
+        st.session_state.security_audit_score = 0
 
     if 'relayer_reputation_score' not in st.session_state:
         st.session_state.relayer_reputation_score = 0
 
     if 'operator_reputation_score' not in st.session_state:
         st.session_state.operator_reputation_score = 0
-
-    if 'code_complexity_score' not in st.session_state:
-        st.session_state.code_complexity_score = 0
 
     if 'evm_equivalence_score' not in st.session_state:
         st.session_state.evm_equivalence_score = 0
