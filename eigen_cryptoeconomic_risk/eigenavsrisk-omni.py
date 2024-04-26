@@ -91,7 +91,7 @@ def main():
     st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
     st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, 
     st.session_state.da_sol_mec_score, st.session_state.validator_centralization_score, 
-    st.session_state.business_model_score) = omni_risk(security_audits, st.session_state.business_model, relayer_reputation, 
+    st.session_state.business_model_score) = omni_risk(security_audits, business_model, relayer_reputation, 
                                                          relayer_da_solution, relayer_merkle, evm_client_div, 
                                                          evm_equivalence, sybil_mec, encrypted_mempool_mec, 
                                                          code_complexity, tee_mec, operator_reputation, 
