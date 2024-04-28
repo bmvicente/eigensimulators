@@ -965,7 +965,7 @@ def main():
             validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v1")
 
         with st.expander("Logic"):
-                st.image("images/omni-val-diagram.jpeg", width=750)
+                st.image("images/omni-val-diagram.jpg", width=750)
 
                 st.markdown("""
 Using the Engine API, Omni nodes pair existing high performance Ethereum execution clients with a new consensus client, referred to as halo, that implements CometBFT consensus.The Engine API allows clients to be substituted or upgraded without breaking the system. This allows the protocol to maintain flexibility on Ethereum and Cosmos technology while promoting client diversity within its execution layer and consensus layer. We consider this new network framework to be a public good that future projects may leverage for their own network designs.
@@ -1264,7 +1264,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
             relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="r1")
 
         with st.expander("Logic"):
-                st.image("images/omni-relayer-diagram.jpeg", width=750)
+                st.image("images/omni-relayer-diagram.jpg", width=750)
 
                 st.markdown("""
                             
@@ -1344,7 +1344,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
 
     # Placing the image in the middle column effectively centers it
     with col2:
-        st.image("images/omni-main-diagram.jpeg", width=1200)
+        st.image("images/omni-main-diagram.jpg", width=1200)
 
     st.write("  \n")
     st.write("  \n")
