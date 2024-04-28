@@ -590,7 +590,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result1)}</span>
             </div>"""
 
         st.markdown(business_dual_calc, unsafe_allow_html=True)
@@ -685,7 +685,7 @@ def main():
                             <span style="font-size: 24px; font-weight: bold;">&times;</span>
                             <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact}</span> 
                             <span style="font-size: 24px; font-weight: bold;"> = </span>
-                            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2}</span>
+                            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result2)}</span>
                     </div>"""
 
         st.markdown(security_calc, unsafe_allow_html=True)
@@ -770,7 +770,7 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result3}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result3)}</span>
                 </div>
             """
 
@@ -1030,7 +1030,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result4}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4)}</span>
             </div>"""
 
         st.markdown(validator_calc, unsafe_allow_html=True)
@@ -1147,7 +1147,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result5)}</span>
             </div>"""
 
         st.markdown(evm_calc, unsafe_allow_html=True)
@@ -1264,7 +1264,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result6}</span>
+                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result6)}</span>
             </div>"""
 
         st.markdown(relayer_calc, unsafe_allow_html=True)
@@ -1342,7 +1342,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result6}</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
-                <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
+                <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(final_result)}</span>
             </div>
         """
 
