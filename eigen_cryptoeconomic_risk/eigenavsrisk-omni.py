@@ -922,27 +922,35 @@ def main():
 
         col38,col39 = st.columns(2, gap="medium")
         with col38:
-            engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (Halo) with the EVM Execution Client', value=True)
+            engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (Halo) with the EVM Execution Client', 
+                                     value=True, help="ff")
         with col39:
-            validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', help="**HANDLING TRANSACTION REQUESTS**: Previous approaches relied on the CometBFT mempool to manage transaction requests, leading to network congestion and compromised consensus speed as activity increased. Omni addresses this challenge by utilizing the Engine API, alongside ABCI++, to move the transaction mempool to the execution layer. This strategic move ensures the CometBFT consensus process remains lightweight and efficient. **STATE TRANSLATION**: One of the major challenges in previous designs was translating the EVM state to a format compatible with CometBFT. Omni overcomes this hurdle by incorporating an ABCI++ wrapper around the CometBFT engine, enabling seamless state translation and ensuring that Omni EVM blocks are efficiently converted into CometBFT transactions.", value=True)
+            validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', value=True,
+                                               help="**HANDLING TRANSACTION REQUESTS**: Previous approaches relied on the CometBFT mempool to manage transaction requests, leading to network congestion and compromised consensus speed as activity increased. Omni addresses this challenge by utilizing the Engine API, alongside ABCI++, to move the transaction mempool to the execution layer. This strategic move ensures the CometBFT consensus process remains lightweight and efficient. **STATE TRANSLATION**: One of the major challenges in previous designs was translating the EVM state to a format compatible with CometBFT. Omni overcomes this hurdle by incorporating an ABCI++ wrapper around the CometBFT engine, enabling seamless state translation and ensuring that Omni EVM blocks are efficiently converted into CometBFT transactions.")
 
         col42,col43 = st.columns(2, gap="medium")
         with col42:
-            tee_mec = st.checkbox('**TEE** Implementation for Effective Key Management', value=False)
+            tee_mec = st.checkbox('**TEE** Implementation for Effective Key Management', value=False,
+                                  help="ff")
         with col43:
-            dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False)
+            dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False,
+                                  help="ff")
 
         col50,col51 = st.columns(2, gap="medium")
         with col50:
-            oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False)
+            oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False,
+                                            help="ff")
         with col51:
-            lockup_mec = st.checkbox('**Lock-Up Periods** Applied to Validators for Security Guarantees', value=False)
+            lockup_mec = st.checkbox('**Lock-Up Periods** Applied to Validators for Security Guarantees', value=False,
+                                     help="ff")
 
         col52,col53 = st.columns(2, gap="medium")
         with col52:
-            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions', value=False)
+            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions', value=False,
+                                     help="ff")
         with col53:
-            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False)
+            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False,
+                                          help="ff")
 
         st.write("-------")
 
@@ -952,9 +960,11 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990")
+            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990",
+                                                help="ff")
         with col101:           
-            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232")
+            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232",
+                                                    help="ff")
         
         st.write("-------")
         
@@ -1121,9 +1131,11 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], help="**As a product of...", index=2, key="09'")
+            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="09",
+                                           help="**As a product of...")
         with col101:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", help="**As a product of...** Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.", index=2)
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", index=2,
+                                          help="**As a product of...** Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.")
             
         st.write("-------")
         
@@ -1241,16 +1253,20 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         
         st.write("  \n")
 
-        relayer_merkle = st.checkbox('Use of **Merkle Multi-Proofs** for efficient XBlock Submission', value=True)
-        relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
+        relayer_merkle = st.checkbox('Use of **Merkle Multi-Proofs** for efficient XBlock Submission', value=True,
+                                     help="ss")
+        relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False,
+                                          help="fe")
 
         st.write("-------")
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421")
+            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421",
+                                              help="hh")
         with col101:
-            relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
+            relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                     help="s")
 
         relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
         st.session_state.relayer_performance_acc_rate_var = relayer_performance_acc_rate_var
