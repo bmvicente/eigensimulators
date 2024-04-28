@@ -954,7 +954,9 @@ def main():
 
         st.write("-------")
 
-        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
+        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                   help="vrfvf")
+        
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
 
@@ -1124,8 +1126,11 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         st.write("  \n")
         
-        sybil_mec = st.checkbox('**Anti-Sybil Mechanism** for transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks', value=True)
-        encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for increased privacy and security in transactions', value=False)
+        sybil_mec = st.checkbox('**Anti-Sybil Mechanism** for transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks', value=True,
+                                help="sss")
+        
+        encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for increased privacy and security in transactions', value=False,
+                                            help="eeee")
 
         st.write("-------")
 
