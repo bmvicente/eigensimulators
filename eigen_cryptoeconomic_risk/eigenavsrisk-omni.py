@@ -867,7 +867,7 @@ def main():
 
 
 
-        st.markdown('<p style="font-size: 22px; font-weight: bold; margin-bottom: 0px;">Consensus Mechanism Metrics through Halo Client</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size: 22px; font-weight: bold; margin-bottom: 0px;">Consensus Architecture Metrics through Halo Client</p>', unsafe_allow_html=True)
 
         # Validator Metrics
         st.markdown("""
