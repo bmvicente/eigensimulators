@@ -586,9 +586,9 @@ def main():
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #D3D3D3; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #D3D3D3; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result1):,}</span>
             </div>"""
