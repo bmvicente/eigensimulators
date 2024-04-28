@@ -963,7 +963,7 @@ def main():
         st.write("-------")
 
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                   help="The Performance Accuracy Rate of Validators attesting for XBlocks consists of the timely submission of cross-chain messages, XBlock cache management, and the overall decision-making in including XMsgs in an XBlock.")
+                                                   help="**The Performance Accuracy Rate of Validators attesting for XBlocks consists of the timely submission of cross-chain messages, XBlock cache management, and the overall decision-making in including XMsgs in an XBlock.**")
         
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
@@ -974,7 +974,7 @@ def main():
                                                 help="Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to XBlocks before being submitted on-chain.")
         with col101:           
             validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232",
-                                                    help="Attests for a set of validators' robustness and stability in dealing with local regulations or targeted attacks .")
+                                                    help="Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.")
         
         st.write("-------")
         
