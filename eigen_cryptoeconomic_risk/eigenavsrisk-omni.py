@@ -873,7 +873,6 @@ def main():
         st.write("\n")
         st.write("\n")
         st.write("\n")
-        st.write("\n")
 
 
 
@@ -882,8 +881,6 @@ def main():
 
 
 
-
-        st.markdown('<p style="font-size: 22px; font-weight: bold; margin-bottom: 0px;">Consensus Architecture Metrics through Halo Client</p>', unsafe_allow_html=True)
 
         # Validator Metrics
         st.markdown("""
@@ -896,7 +893,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">CometBFT: Validator Metrics</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">CometBFT Consensus Architecture Metrics through Halo Client</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
