@@ -684,13 +684,13 @@ def main():
         security_calc = f"""
                     <div style="text-align: center;">
                         <div>
-                            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
+                            <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
                             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audits_score}</span> 
+                            <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audits_score}</span> 
                             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood}</span> 
+                            <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood}</span> 
                             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact}</span> 
+                            <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact}</span> 
                             <span style="font-size: 24px; font-weight: bold;"> = </span>
                             <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result2):,}</span>
                     </div>"""
@@ -767,15 +767,15 @@ def main():
 
         operator_calc = f"""
                 <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_reputation_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_centralization_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_entrenchment_level_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_entrenchment_level_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result3):,}</span>
                 </div>
@@ -1027,15 +1027,15 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
             </div>"""
@@ -1146,13 +1146,13 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.encrypted_mempool_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result5):,}</span>
             </div>"""
@@ -1263,13 +1263,13 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_impact}</span> 
                     <span style="font-size: 24px; font-weight: bold;"> = </span>
                     <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result6):,}</span>
             </div>"""
