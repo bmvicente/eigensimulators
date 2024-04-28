@@ -480,7 +480,7 @@ def main():
                 """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-            st.markdown('<p class="header-style">Business Model</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">AVS Business Model</p>', unsafe_allow_html=True)
 
             # Dropdown menu
             business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
@@ -501,7 +501,7 @@ def main():
             """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-            st.markdown('<p class="header-style">Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
             
             st.write("  \n")
 
@@ -664,7 +664,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">Number of Security Audits</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">AVS Number of Security Audits</p>', unsafe_allow_html=True)
 
             security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
 
