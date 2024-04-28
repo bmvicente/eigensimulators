@@ -669,7 +669,14 @@ def main():
                             security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the least
                             ```
                                     """)
+
+        if st.session_state.code_complexity != code_complexity:
+                st.session_state.code_complexity = code_complexity
+                st.session_state.code_complexity_score = code_complexity_risk.get(code_complexity, 0)
             
+        if st.session_state.security_audits != security_audits:
+                st.session_state.security_audits = security_audits
+                st.session_state.security_audits_score = security_audits_risk.get(security_audits, 0)
 
         result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * security_likelihood * security_impact
 
