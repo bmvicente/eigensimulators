@@ -671,7 +671,7 @@ def main():
                                     """)
             
 
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audit_score * security_likelihood * security_impact
+        result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * security_likelihood * security_impact
 
 
         security_calc = f"""
@@ -679,7 +679,7 @@ def main():
                         <div>
                             <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
                             <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audit_score}</span> 
+                            <span style="font-size: 22px; font-weight: bold; background-color: yellow; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audits_score}</span> 
                             <span style="font-size: 24px; font-weight: bold;">&times;</span>
                             <span style="font-size: 22px; font-weight: bold; background-color: lightgreen; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood}</span> 
                             <span style="font-size: 24px; font-weight: bold;">&times;</span>
