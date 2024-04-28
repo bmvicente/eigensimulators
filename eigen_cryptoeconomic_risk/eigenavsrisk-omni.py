@@ -933,35 +933,32 @@ def main():
 
         col38,col39 = st.columns(2, gap="medium")
         with col38:
-            engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (Halo) with the EVM Execution Client', 
-                                     value=True, help="The Ethereum EngineAPI pairs an existing Ethereum Execution Client with a Consensus Client (like halo) that implements CometBFT consensus.")
+            engine_api = st.checkbox('**Ethereum Engine API** used by Nodes to pair the Consensus Client (Halo) with the EVM Execution Client', 
+                                     value=True, help="The Ethereum Engine API pairs an existing Ethereum Execution Client with a Consensus Client (like halo) that implements CometBFT consensus.")
         with col39:
             validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', value=True,
-                                               help="**HANDLING TRANSACTION REQUESTS**: Previous approaches relied on the CometBFT mempool to manage transaction requests, leading to network congestion and compromised consensus speed as activity increased. Omni addresses this challenge by utilizing the Engine API, alongside ABCI++, to move the transaction mempool to the execution layer. This strategic move ensures the CometBFT consensus process remains lightweight and efficient. **STATE TRANSLATION**: One of the major challenges in previous designs was translating the EVM state to a format compatible with CometBFT. Omni overcomes this hurdle by incorporating an ABCI++ wrapper around the CometBFT engine, enabling seamless state translation and ensuring that Omni EVM blocks are efficiently converted into CometBFT transactions.")
+                                               help="ABCI++ is an adapter that wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.")
 
         col42,col43 = st.columns(2, gap="medium")
         with col42:
             tee_mec = st.checkbox('**TEE** Implementation for Effective Key Management', value=False,
-                                  help="ff")
+                                  help="TEEs consist of secure portions of hardware that generate and securely store validator keys and databases of previously signed data. By design, they enhance security without comprimising scalability, and through increased trust, encourage stake delegation.")
         with col43:
             dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False,
-                                  help="ff")
+                                  help="DVT is a technology that incentivizes client diversity through the distribution of the validation process across multiple operators. It reduces the risk of single points of failure or malicious actions.")
 
         col50,col51 = st.columns(2, gap="medium")
         with col50:
             oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False,
-                                            help="ff")
+                                            help="To restrict the potential PfC extracted from Omni, a bridge can be set-up to restrict the value flow within the period of slashing, or an oracle can have bounds on the total value transacted within a given period.")
         with col51:
-            lockup_mec = st.checkbox('**Lock-Up Periods** Applied to Validators for Security Guarantees', value=False,
-                                     help="ff")
+            lockup_mec = st.checkbox('**Withdrawal Lock-Up Periods** Applied to Validators for Security Against Corruption', value=False)
 
         col52,col53 = st.columns(2, gap="medium")
         with col52:
-            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions', value=False,
-                                     help="ff")
+            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions and Low Latency', value=False)
         with col53:
-            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False,
-                                          help="ff")
+            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False)
 
         st.write("-------")
 
@@ -974,10 +971,10 @@ def main():
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990",
-                                                help="ff")
+                                                help="Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to XBlocks before being submitted on-chain.")
         with col101:           
             validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232",
-                                                    help="ff")
+                                                    help="Attests for a set of validators' robustness and stability in dealing with local regulations or targeted attacks .")
         
         st.write("-------")
         
