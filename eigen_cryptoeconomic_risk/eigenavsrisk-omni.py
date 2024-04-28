@@ -171,7 +171,7 @@ def main():
             st.session_state.code_complexity_score = 0
 
     if 'security_audits' not in st.session_state:
-        st.session_state.security_audit = "2"  # Set default value
+        st.session_state.security_audits = "2"  # Set default value
     if 'security_audits_score' not in st.session_state:
         if st.session_state.security_audits in security_audits_risk:  # Check if code complexity exists in the dictionary
             st.session_state.security_audits_score = security_audits_risk[st.session_state.security_audits]
