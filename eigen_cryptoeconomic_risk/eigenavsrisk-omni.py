@@ -963,7 +963,7 @@ def main():
         st.write("-------")
 
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                   help="The Performance Accuracy Rate of Validators attesting for XBlocks consist of the timely submission of cross-chain messages, XBlock cache management, and the decision-making in invluding XMsgs in an XBlock.")
+                                                   help="The Performance Accuracy Rate of Validators attesting for XBlocks consists of the timely submission of cross-chain messages, XBlock cache management, and the overall decision-making in including XMsgs in an XBlock.")
         
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
