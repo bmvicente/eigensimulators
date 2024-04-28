@@ -582,9 +582,9 @@ def main():
         business_dual_calc = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #ADD8E6; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: lightblue; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 22px; font-weight: bold; background-color: #ADD8E6; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: lightgrey; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -1428,22 +1428,6 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
 
 
 
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-
-    st.write("-----------------------")
-
-    st.write("\n")
-
-    st.markdown('<p style="font-weight: bold; font-size: 1.2em;">NEXT...</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-weight: bold;"><s>&#8226; Operator Centralization Risk Level</s></p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-weight: bold;">&#8226; Proposed Minimum AVS TVL and TVL caps</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-weight: bold; display: inline;"><s>&#8226; Risks Based on AVS Nature</s></p><span style="font-weight: normal; display: inline;"><s> (data availability, keeper networks, oracles, bridges, etc.)</s></span>', unsafe_allow_html=True)
 
     st.write("  \n")
     st.write("  \n")
