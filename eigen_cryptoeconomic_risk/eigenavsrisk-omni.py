@@ -1353,7 +1353,8 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-
+    st.write("  \n")
+    st.write("  \n")
 
 
     def normalize_score(original_score, min_original=17, max_original=17700):
@@ -1393,7 +1394,6 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
 #########################################
 
 
-    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
