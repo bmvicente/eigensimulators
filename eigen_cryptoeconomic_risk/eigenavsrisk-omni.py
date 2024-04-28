@@ -909,6 +909,7 @@ def main():
             fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False)
 
         st.write("  \n")
+        st.write("  \n")
 
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
