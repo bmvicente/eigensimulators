@@ -912,7 +912,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">CometBFT Consensus Architecture Metrics through Consensus Client (Halo)</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">&#9312; CometBFT Consensus Architecture Metrics through Consensus Client (Halo)</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
@@ -1309,8 +1309,6 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
             </div>"""
 
         st.markdown(relayer_calc, unsafe_allow_html=True)
-
-        st.image("images/omni-diagram.jpeg", width=400)
 
 
 
