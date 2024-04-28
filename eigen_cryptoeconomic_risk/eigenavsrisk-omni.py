@@ -529,11 +529,9 @@ def main():
             st.session_state.business_model_score = business_model_risk.get(business_model, 0)
 
         with st.expander("Logic"):
-                st.image("images/omni-diagram.jpeg", width=200)
+                st.image("images/omni-diagram.jpeg", width=1200)
 
                 st.markdown("""
-                                st.image("images/omni-diagram.jpeg", width=1200)
-
                     Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) by risk: 
                     
                     - ***Pay in the Native Token of the AVS*** is the most risky, as the entire fee structure is dependent on the AVS's native token (\$AVS), tying closely to its market performance and the AVS's ongoing profitability;
