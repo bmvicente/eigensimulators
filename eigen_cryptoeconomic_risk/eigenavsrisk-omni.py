@@ -910,7 +910,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">CometBFT Consensus Architecture Metrics through Halo Client</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">CometBFT Consensus Architecture Metrics through Consensus Client (Halo)</p>', unsafe_allow_html=True)
 
         st.write("  \n")
 
