@@ -12,6 +12,7 @@ code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
 operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 1}
 validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+relayer_centralization_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
 operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
 engine_api_risk = {True: 1, False: 2}
@@ -34,11 +35,12 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
                 relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
                 tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
                 validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-                da_sol_mec, validator_centralization):
+                da_sol_mec, validator_centralization, relayer_centralization):
 
         security_audits_score = security_audits_risk[security_audits]
         business_model_score = business_model_risk[business_model]
         relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
+        relayer_centralization_score = relayer_centralization_risk[relayer_centralization]
         operator_reputation_score = operator_reputation_risk[operator_reputation]
         code_complexity_score = code_complexity_risk[code_complexity]
         operator_centralization_score = operator_centralization_risk[operator_centralization]
@@ -66,7 +68,7 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
                     dvt_mec_score, evm_client_div_score, operator_entrenchment_level_score, da_sol_mec_score,
                     sybil_mec_score, relayer_da_solution_score, validator_abci_usage_score, engine_api_score,
                     lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
-                    relayer_merkle_score, oracle_bridge_mec_score)
+                    relayer_merkle_score, oracle_bridge_mec_score, relayer_centralization_score)
 
 
 def main():
@@ -217,6 +219,14 @@ def main():
             st.session_state.validator_centralization_score = validator_centralization_risk[st.session_state.validator_centralization]
         else:
             st.session_state.validator_centralization_score = 0
+
+    if 'relayer_centralization' not in st.session_state:
+        st.session_state.relayer_centralization = "Decentralized"  # Set default value
+    if 'relayer_centralization_score' not in st.session_state:
+        if st.session_state.relayer_centralization in relayer_centralization_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.relayer_centralization_score = relayer_centralization_risk[st.session_state.relayer_centralization]
+        else:
+            st.session_state.relayer_centralization_score = 0
 
     if 'validator_reputation' not in st.session_state:
         st.session_state.validator_reputation = "Renowned"  # Set default value
@@ -1289,13 +1299,16 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         st.write("-------")
 
+        relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                     help="**suiiu**")
+        
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421",
-                                                help="**Attests for a relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups.**")
+                                                help="**Attests for a relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
         with col101:
-            relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                     help="**suiiu**")
+            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="321132",
+                                                    help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
 
         relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
         st.session_state.relayer_performance_acc_rate_var = relayer_performance_acc_rate_var
@@ -1348,9 +1361,13 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
             st.session_state.relayer_reputation = relayer_reputation
             st.session_state.relayer_reputation_score = relayer_reputation_risk.get(relayer_reputation, 0)
 
+        if st.session_state.relayer_centralization != relayer_centralization:
+            st.session_state.relayer_centralization = relayer_centralization
+            st.session_state.relayer_centralization_score = relayer_centralization_risk.get(relayer_centralization, 0)
 
         result6 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score * 
-                   st.session_state.relayer_reputation_score * st.session_state.relayer_performance_acc_rate_var * 
+                   st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
+                   st.session_state.relayer_performance_acc_rate_var * 
                    relayer_metrics_likelihood * relayer_metrics_impact)
 
         
@@ -1362,6 +1379,8 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
@@ -1467,7 +1486,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
 
     risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-             da_sol_mec, validator_centralization)
+             da_sol_mec, validator_centralization, relayer_centralization)
     
     (st.session_state.security_audits_score, st.session_state.business_model_score,
     st.session_state.relayer_reputation_score, st.session_state.operator_reputation_score,
@@ -1480,7 +1499,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.session_state.da_sol_mec_score, st.session_state.lockup_mec_score,
     st.session_state.fast_fin_ss_mec_score, st.session_state.tee_mec_score,
     st.session_state.encrypted_mempool_mec_score, st.session_state.relayer_merkle_score,
-    st.session_state.oracle_bridge_mec_score) = risk_score
+    st.session_state.oracle_bridge_mec_score, st.session_state.relayer_centralization_score) = risk_score
     
 
 
