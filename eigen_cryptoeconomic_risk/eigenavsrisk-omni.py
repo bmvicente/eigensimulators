@@ -1340,7 +1340,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
     st.write("  \n")
 
-    col1, col2, col3 = st.columns([1, 5, 1])
+    col1, col2, col3 = st.columns([1, 3, 1])
 
     # Placing the image in the middle column effectively centers it
     with col2:
