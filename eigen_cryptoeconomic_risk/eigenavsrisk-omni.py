@@ -934,7 +934,7 @@ def main():
         col38,col39 = st.columns(2, gap="medium")
         with col38:
             engine_api = st.checkbox('**Ethereum Engine API** used by Nodes to pair the Consensus Client (Halo) with the EVM Execution Client', 
-                                     value=True, help="The Ethereum Engine API pairs an existing Ethereum Execution Client with a Consensus Client (like halo) that implements CometBFT consensus.")
+                                     value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with a Consensus Client (like halo) that implements CometBFT consensus.**")
         with col39:
             validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', value=True,
                                                help="ABCI++ is an adapter that wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.")
