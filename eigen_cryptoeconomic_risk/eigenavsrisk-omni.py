@@ -1345,7 +1345,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     # Placing the image in the middle column effectively centers it
     with col2:
         st.image("images/omni-main-diagram.jpg", width=1500)
-    st.write("Image from ([https://docs.omni.network/protocol/evmengine/dual])")
+    st.write("Image from (Omni's docs)[https://docs.omni.network/protocol/evmengine/dual])")
 
     st.write("  \n")
     st.write("  \n")
