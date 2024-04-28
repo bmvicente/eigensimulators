@@ -1283,16 +1283,16 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         
         st.write("  \n")
 
-        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient XBlock Submission', value=True,
-                                     help="**ss**")
-        relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
+        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient XBlock Submission and Verification', value=True)
+        
+        relayer_da_solution = st.checkbox('**DA Solution** to address Complex Verification and Increased Computational Cost of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
 
         st.write("-------")
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421",
-                                              help="**hh**")
+                                                help="**Attests for a relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups.**")
         with col101:
             relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
                                                      help="**suiiu**")
