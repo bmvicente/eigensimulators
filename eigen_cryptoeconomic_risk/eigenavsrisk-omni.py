@@ -1310,7 +1310,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
 
         st.markdown(relayer_calc, unsafe_allow_html=True)
 
-        st.image("images/omni-diagram.jpeg", width=1200)
+        st.image("images/omni-diagram.jpeg", width=400)
 
 
 
