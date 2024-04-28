@@ -1344,18 +1344,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
     st.write("  \n")
 
-    st.subheader("**Profit from Corruption Scenario Analysis**")
 
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
 
     def normalize_score(original_score, min_original=17, max_original=17700):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
