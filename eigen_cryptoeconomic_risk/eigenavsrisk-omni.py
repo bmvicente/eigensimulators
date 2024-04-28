@@ -529,7 +529,7 @@ def main():
             st.session_state.business_model_score = business_model_risk.get(business_model, 0)
 
         with st.expander("Logic"):
-                st.image("images/omni-diagram.jpeg", use_column_width=True, max_width="100%")
+                st.image("images/omni-diagram.jpeg", max_width="100%")
 
                 st.markdown("""
                     Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) by risk: 
