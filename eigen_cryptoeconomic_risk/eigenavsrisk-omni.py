@@ -1337,17 +1337,17 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Omni</i> Risk Score</div>", unsafe_allow_html=True)
     final_result_html = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1}</span> 
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result1):,}</span> 
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result2):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result3}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result3):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result4}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result4):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result5):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result6}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result6):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
                 <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(final_result):,}</span>
             </div>
