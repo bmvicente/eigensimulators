@@ -934,7 +934,7 @@ def main():
         col38,col39 = st.columns(2, gap="medium")
         with col38:
             engine_api = st.checkbox('Nodes use **Ethereum Engine API** to pair the Consensus Client (Halo) with the EVM Execution Client', 
-                                     value=True, help="ff")
+                                     value=True, help="The Ethereum EngineAPI pairs an existing Ethereum Execution Client with a Consensus Client (like halo) that implements CometBFT consensus.")
         with col39:
             validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', value=True,
                                                help="**HANDLING TRANSACTION REQUESTS**: Previous approaches relied on the CometBFT mempool to manage transaction requests, leading to network congestion and compromised consensus speed as activity increased. Omni addresses this challenge by utilizing the Engine API, alongside ABCI++, to move the transaction mempool to the execution layer. This strategic move ensures the CometBFT consensus process remains lightweight and efficient. **STATE TRANSLATION**: One of the major challenges in previous designs was translating the EVM state to a format compatible with CometBFT. Omni overcomes this hurdle by incorporating an ABCI++ wrapper around the CometBFT engine, enabling seamless state translation and ensuring that Omni EVM blocks are efficiently converted into CometBFT transactions.")
@@ -966,7 +966,7 @@ def main():
         st.write("-------")
 
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                   help="vrfvf")
+                                                   help="The Performance Accuracy Rate of Validators attesting for XBlocks consist of the timely submission of cross-chain messages, XBlock cache management, and the decision-making in invluding XMsgs in an XBlock.")
         
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
@@ -1006,7 +1006,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     Decoupled Consensus and Application Logic: The separation of the consensus engine and application logic via ABCI facilitates the creation of diverse applications, from cryptocurrencies to e-voting systems, without being limited to a specific blockchain's capabilities or language.
                             
 
-                    **PERFORMANCE ACCURACY RATE**
+                    The Performance Accuracy Rate of Validators attesting for XBlocks consist of:
                     - **Submission of Cross-Chain Messages**: Relayers wait for more than two-thirds of the validators to attest to a source chain block. They then submit the validated XMsgs to the destination chains, along with necessary validator signatures and multi-merkle-proof.
 - **Attestation Monitoring and XBlock Cache Management**: Relayers monitor the Omni Consensus Chain for attested XBlocks, maintaining a cache of these blocks for efficient processing and submission readiness.
 - **Decision Making for Message Submission**: Relayers decide on the number of XMsgs to submit, balancing transaction cost considerations like data size and gas limits.
@@ -1315,8 +1315,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         with st.expander("Logic"):
                 st.image("images/omni-relayer-diagram.jpg", width=750)
 
-                st.markdown("""
-                            
+                st.markdown("""                        
                             Decision Making for Message Submission
 A key decision that Relayers face is determining the number of XMsgs to submit to each destination chain. This decision directly influences the cost of transactions due to factors like data size, gas limits, and the computational overhead required for portal contract verification and message processing.
                             Relayer responsible for delivering attested cross-network messages from the Omni network to destination rollup VMs. Monitors the Omni Consensus Layer until ⅔ (>66%) of the validator set attested to the “next” block on each source chain, then proceeds to forwarding the respective XMsg list included in the block.
