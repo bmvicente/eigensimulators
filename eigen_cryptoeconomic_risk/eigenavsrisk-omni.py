@@ -530,6 +530,8 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
+                                st.image("images/omni-diagram.jpeg", width=1200)
+
                     Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) by risk: 
                     
                     - ***Pay in the Native Token of the AVS*** is the most risky, as the entire fee structure is dependent on the AVS's native token (\$AVS), tying closely to its market performance and the AVS's ongoing profitability;
@@ -1308,6 +1310,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
 
         st.markdown(relayer_calc, unsafe_allow_html=True)
 
+        st.image("images/omni-diagram.jpeg", width=1200)
 
 
 
