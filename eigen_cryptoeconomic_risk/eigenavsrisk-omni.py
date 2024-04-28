@@ -899,7 +899,17 @@ def main():
 
 
 
-        # Validator Metrics
+
+
+
+
+
+
+
+
+
+        # CometBFT: Validator Metrics
+
         st.markdown("""
                 <style>
                 .header-style {
@@ -1105,7 +1115,19 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
 
 
+
+
+
+
+
+
+
+
+
+
+
         # EVM Metrics
+
         st.markdown("""
                 <style>
                 .header-style {
@@ -1237,7 +1259,18 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
 
 
+
+
+
+
+
+
+
+
+
+
         # Relayer Metrics
+
         st.markdown("""
                 <style>
                 .header-style {
