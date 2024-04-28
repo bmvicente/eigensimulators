@@ -1140,11 +1140,10 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         st.write("  \n")
         
-        sybil_mec = st.checkbox('**Anti-Sybil Mechanism** for transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks', value=True,
-                                help="**sss**")
+        sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True,
+                                help="**Mechanism used in the context of transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks.**")
         
-        encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for increased privacy and security in transactions', value=False,
-                                            help="**eeee**")
+        encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for Increased Privacy and Security of Transactions', value=False)
 
         st.write("-------")
 
@@ -1283,10 +1282,9 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         
         st.write("  \n")
 
-        relayer_merkle = st.checkbox('Use of **Merkle Multi-Proofs** for efficient XBlock Submission', value=True,
+        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient XBlock Submission', value=True,
                                      help="**ss**")
-        relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False,
-                                          help="**fe**")
+        relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
 
         st.write("-------")
 
