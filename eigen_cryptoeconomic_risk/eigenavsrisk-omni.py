@@ -915,7 +915,7 @@ def main():
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em;">1</span>
-                CometBFT Consensus Architecture Metrics through Consensus Client (Halo)
+                   CometBFT Consensus Architecture Metrics through Consensus Client (Halo)
             </p>
             """, unsafe_allow_html=True)
 
