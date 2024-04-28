@@ -1141,7 +1141,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.write("  \n")
         
         sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True,
-                                help="**Mechanism used in the context of transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks.**")
+                                help="**Mechanism used in the context of transactions submitted to the Omni EVM, to deter spam and malicious activities such as DoS attacks.**")
         
         encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for Increased Privacy and Security of Transactions', value=False)
 
@@ -1150,10 +1150,10 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="09",
-                                           help="**As a product of...**")
+                                           help="**Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
         with col101:
             evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", index=2,
-                                          help="**As a product of... Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.**")
+                                          help="**Correlated (but not causal) relationship with the level of Equivalence or Compatible of the EVM. EVM Equivalence likely leads to greater Client Diversity.**")
             
         st.write("-------")
         
@@ -1191,6 +1191,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                             
                     Client Diversity and EVM Equivalence: Omni emphasizes running an unmodified version of the Ethereum Virtual Machine (EVM), which guarantees that Ethereum smart contracts and developer tooling work seamlessly. This focus on EVM equivalence and support for diverse client implementations enhances developer accessibility and network resilience.
                             """)
+
 
         if st.session_state.encrypted_mempool_mec != encrypted_mempool_mec:
             st.session_state.encrypted_mempool_mec = encrypted_mempool_mec
