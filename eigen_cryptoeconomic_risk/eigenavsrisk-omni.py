@@ -1407,12 +1407,19 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
              da_sol_mec, validator_centralization)
     
-    (st.session_state.security_audits_score, st.session_state.business_model_score, st.session_state.dual_staking_balance, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score, 
-     st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score,  st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score, 
-     st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, 
-     st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score, st.session_state.oracle_bridge_mec_score, 
-     st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score, st.session_state.da_sol_mec_score, 
-     st.session_state.validator_centralization_score) = risk_score    
+    (st.session_state.security_audits_score, st.session_state.business_model_score,
+    st.session_state.relayer_reputation_score, st.session_state.operator_reputation_score,
+    st.session_state.code_complexity_score, st.session_state.evm_equivalence_score,
+    st.session_state.operator_centralization_score, st.session_state.validator_centralization_score,
+    st.session_state.validator_reputation_score, st.session_state.dvt_mec_score,
+    st.session_state.evm_client_div_score, st.session_state.operator_entrenchment_level_score,
+    st.session_state.sybil_mec_score, st.session_state.relayer_da_solution_score,
+    st.session_state.engine_api_score, st.session_state.validator_abci_usage_score,
+    st.session_state.da_sol_mec_score, st.session_state.lockup_mec_score,
+    st.session_state.fast_fin_ss_mec_score, st.session_state.tee_mec_score,
+    st.session_state.encrypted_mempool_mec_score, st.session_state.relayer_merkle_score,
+    st.session_state.oracle_bridge_mec_score) = risk_score
+    
 
 
 
