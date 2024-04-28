@@ -1141,20 +1141,20 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.write("  \n")
         
         sybil_mec = st.checkbox('**Anti-Sybil Mechanism** for transactions submitted to the Omni EVM, deterring spam and malicious activities such as DoS attacks', value=True,
-                                help="sss")
+                                help="**sss**")
         
         encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for increased privacy and security in transactions', value=False,
-                                            help="eeee")
+                                            help="**eeee**")
 
         st.write("-------")
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="09",
-                                           help="**As a product of...")
+                                           help="**As a product of...**")
         with col101:
             evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", index=2,
-                                          help="**As a product of...** Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.")
+                                          help="**As a product of... Omni adheres to the Engine API, a standard that all EVM clients also comply with. This adherence ensures that any EVM client, such as Geth, Besu, Erigon, and others, can be seamlessly integrated into the Omni network without the need for specialized modifications. This approach allows the Omni ecosystem to leverage the unique features and optimizations that different clients provide.**")
             
         st.write("-------")
         
@@ -1284,19 +1284,19 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.write("  \n")
 
         relayer_merkle = st.checkbox('Use of **Merkle Multi-Proofs** for efficient XBlock Submission', value=True,
-                                     help="ss")
+                                     help="**ss**")
         relayer_da_solution = st.checkbox('**DA Solution** for Complex Verification of Validator Signatures and Merkle Multi-Proofs At Scale', value=False,
-                                          help="fe")
+                                          help="**fe**")
 
         st.write("-------")
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421",
-                                              help="hh")
+                                              help="**hh**")
         with col101:
             relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                     help="s")
+                                                     help="**suiiu**")
 
         relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
         st.session_state.relayer_performance_acc_rate_var = relayer_performance_acc_rate_var
@@ -1374,6 +1374,18 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
             </div>"""
 
         st.markdown(relayer_calc, unsafe_allow_html=True)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
