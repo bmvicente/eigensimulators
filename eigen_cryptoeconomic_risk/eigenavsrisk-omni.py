@@ -529,6 +529,8 @@ def main():
             st.session_state.business_model_score = business_model_risk.get(business_model, 0)
 
         with st.expander("Logic"):
+                st.image("images/omni-diagram.jpeg", width=200)
+
                 st.markdown("""
                                 st.image("images/omni-diagram.jpeg", width=1200)
 
