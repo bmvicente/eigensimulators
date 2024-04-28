@@ -912,7 +912,12 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">&#9312; CometBFT Consensus Architecture Metrics through Consensus Client (Halo)</p>', unsafe_allow_html=True)
+        st.markdown("""
+            <p class="header-style">
+                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.2em 0.4em; font-size: 1em;">1</span>
+                CometBFT Consensus Architecture Metrics through Consensus Client (Halo)
+            </p>
+            """, unsafe_allow_html=True)
 
         st.write("  \n")
 
