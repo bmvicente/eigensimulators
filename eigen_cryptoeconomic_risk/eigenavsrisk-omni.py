@@ -30,7 +30,6 @@ oracle_bridge_mec_risk = {True: 1, False: 5}
 
 
 
-
 def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
                 relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
                 tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
