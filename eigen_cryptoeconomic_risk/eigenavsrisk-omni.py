@@ -4,7 +4,7 @@ import streamlit as st
 
 
 security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
-business_model_risk = {"Pay in the Native Token of the AVS": 9, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
+business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
 relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
