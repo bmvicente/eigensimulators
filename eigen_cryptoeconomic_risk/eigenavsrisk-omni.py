@@ -1060,25 +1060,17 @@ def main():
                 st.image("images/omni-comet-diagram.jpg", width=750)
 
                 st.markdown("""
-Using the Engine API, Omni nodes pair existing high performance Ethereum execution clients with a new consensus client, referred to as halo, that implements CometBFT consensus.The Engine API allows clients to be substituted or upgraded without breaking the system. This allows the protocol to maintain flexibility on Ethereum and Cosmos technology while promoting client diversity within its execution layer and consensus layer. We consider this new network framework to be a public good that future projects may leverage for their own network designs.
-                            
-        ABCI++  while introducing benefits at the application layer particularly, also introduce complexity in application design, multi-faceted security vulnerabilities, and performance overhead to the whole process. It is paramount to consider the deterministic design and logic of integrated applications.
+The **Engine API** is a critical component of the Omni protocol, connecting high-performance Ethereum execution clients with a new consensus client for the CometBFT system, enhancing system modularity and upgradability.**
 
-        Application BlockChain Interface (ABCI++): Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.
-                Validators compile XMsg into XBlocks, which include metadata for efficient verification and attestation, streamlining the relaying process.
+- **Scalability and Efficiency: The Engine API improves the blockchain's ability to scale by managing the transaction mempool separately and enabling efficient state translations, thus contributing to rapid transaction finality.**
+- **Flexibility: It offers the capability to interchange or upgrade execution clients seamlessly, preserving system integrity and compatibility with a range of Ethereum execution clients.
                             
-                Engine API Conversion: An ABCI++ adapter wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.
-                    During the consensus, validators utilize ABCI++ to attest to the state of Rollup VMs, running state transition functions for accurate and secure external VM interactions.
                             
-                    Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.
-                    
-                    Decoupled Consensus and Application Logic: The separation of the consensus engine and application logic via ABCI facilitates the creation of diverse applications, from cryptocurrencies to e-voting systems, without being limited to a specific blockchain's capabilities or language.
-                            
+**ABCI++** is an enhanced blockchain interface protocol designed to improve upon its predecessor ABCI by introducing more sophisticated and flexible interaction layers between blockchain consensus engines and applications.**
 
-                    The Performance Accuracy Rate of Validators attesting for XBlocks consist of:
-                    - **Submission of Cross-Chain Messages**: Relayers wait for more than two-thirds of the validators to attest to a source chain block. They then submit the validated XMsgs to the destination chains, along with necessary validator signatures and multi-merkle-proof.
-- **Attestation Monitoring and XBlock Cache Management**: Relayers monitor the Omni Consensus Chain for attested XBlocks, maintaining a cache of these blocks for efficient processing and submission readiness.
-- **Decision Making for Message Submission**: Relayers decide on the number of XMsgs to submit, balancing transaction cost considerations like data size and gas limits.
+- **It facilitates complex state transitions for blockchain applications, including the Omni EVM, allowing for secure and accurate processing without mutual interference.**
+- **ABCI++ streamlines the validation and attestation processes by providing validators with detailed metadata through XBlocks, improving efficiency and reliability.**
+- **By decoupling consensus from transaction management and utilizing the Engine API, ABCI++ reduces network congestion and maintains a lightweight consensus mechanism, thereby ensuring quick blockchain finality.
                             """)
 
 
@@ -1214,31 +1206,11 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         with st.expander("Logic"):
                 st.markdown("""
-**Execution Consensus**
-1. When it is a validator's turn to propose a block, its halo client requests the latest Omni EVM block from its execution client using the Engine API.
-2. The execution client builds a block from the transactions in its mempool and returns the block header to the halo client through the Engine API.
-3. The halo client packages the new block proposal as a single CometBFT transaction and includes it in the consensus layer block.
-4. The block is proposed to the rest of the validator network through the consensus layer’s P2P network.
-5. Non-proposing validators use the Engine API and their execution clients to run the state transition function on the proposed block header to verify the block’s validity.
-                        
-                    OMNI provides an anti-sybil mechanism for transactions submitted to the Omni EVM, deterring spam and malicious activities such as denial-of-service attacks.        
-                    
-                    Developer Accessibility and EVM Equivalence: By ensuring EVM equivalence, Omni offers a seamless transition for Ethereum developers, making it a more accessible platform for deploying decentralized applications (DApps) without modifications.
-                    
-                    **Engine API**
+**Omni's EVM** on the Omni network ensures execution consensus through a streamlined process involving the halo client and execution clients, all facilitated by the Engine API, and provides strong anti-sybil mechanisms and EVM equivalence for developer accessibility.**
 
-                    - **Scalability and Efficiency:** By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
-                    - **Flexibility:** Supports the interchangeability and upgrading of execution clients without system disruption, ensuring compatibility with various Ethereum execution clients.
-                            
-                    This fidelity guarantees that opcode compatibility issues are non-existent, and all developer tooling designed for Ethereum seamlessly works with the Omni EVM.
-
-### Advantages of Omni’s EVM Equivalence
-
-- **Seamless Migration:** Developers can port their DApps to Omni without any modifications, significantly reducing the effort and complexity involved in accessing a new blockchain ecosystem.
-- **Developer Tooling Compatibility:** All the tools, libraries, and frameworks designed for Ethereum development are fully compatible with the Omni EVM, streamlining the development process.
-- **Future-Proof:** Omni's alignment with Ethereum's upgrade path ensures that developers can leverage the latest features and improvements without delay.
-                            
-                    Client Diversity and EVM Equivalence: Omni emphasizes running an unmodified version of the Ethereum Virtual Machine (EVM), which guarantees that Ethereum smart contracts and developer tooling work seamlessly. This focus on EVM equivalence and support for diverse client implementations enhances developer accessibility and network resilience.
+- **Seamless Migration: Developers can effortlessly migrate existing DApps to the Omni EVM without any need for changes, enabling easy access to Omni's ecosystem.**
+- **Developer Tooling Compatibility: The Omni EVM maintains full compatibility with Ethereum's development tools, ensuring that existing Ethereum developer tooling works without issues.**
+- **Future-Proof: By adhering to Ethereum's standards and upgrade paths, the Omni EVM ensures that it remains up-to-date, allowing developers to utilize the latest features as they become available.
                             """)
 
 
@@ -1379,27 +1351,11 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                 st.image("images/omni-relayer-diagram.jpg", width=750)
 
                 st.markdown("""                        
-                            Decision Making for Message Submission
-A key decision that Relayers face is determining the number of XMsgs to submit to each destination chain. This decision directly influences the cost of transactions due to factors like data size, gas limits, and the computational overhead required for portal contract verification and message processing.
-                            Relayer responsible for delivering attested cross-network messages from the Omni network to destination rollup VMs. Monitors the Omni Consensus Layer until ⅔ (>66%) of the validator set attested to the “next” block on each source chain, then proceeds to forwarding the respective XMsg list included in the block.
-Relayers are responsible for delivering confirmed cross-network messages from Omni to destination rollups. When 2/3 (>66%) of Omni validators attest to a given XBlock, relayers forward the XBlock’s corresponding XMsg list to destination rollup networks.
-                            
-                            While Merkle multi-proofs provide a powerful tool for efficient data verification across blockchain networks, careful consideration of these risks and appropriate mitigations are essential to maintaining the security, efficiency, and robustness of blockchain protocols that utilize them.
-        
-                            - **Decision Making for Message Submission**: A key decision that Relayers face is determining the number of **`XMsg`**s to submit to each destination chain. This decision directly influences the cost of transactions due to factors like data size, gas limits, and the computational overhead required for portal contract verification and message processing. (**PERFORMANCE ACCURACY RATE**)
-- **Submission** **Transaction**: For the actual submission to a destination chain, Relayers generate a merkle-multi-proof for the **`XMsg`**s that are to be included, based on the **`XBlock`** attestations root that has reached a quorum. They then craft an EVM transaction containing this data, aiming to ensure its swift inclusion on the destination chain.        
-                    At scale, Merkle multi-proofs introduce data availability concerns, complexity in verification, and increased computational cost.
-                            
-                            Resource Intensiveness: The need for signature and merkle proof verification for each message can be resource-intensive, especially on high-traffic networks.
-        Permissionless third-party Relayer (Permissionless — reduces single point of failure likelihood | decentralized): The Relayer plays a pivotal role in the Omni protocol as a permissionless entity that bridges cross-chain messages between source and destination chains. It performs critical functions that ensure the smooth and secure transmission of messages across the network.
+The **Relayer** in the Omni network acts as a critical intermediary, handling the transfer of attested cross-network messages between the Omni network and various destination rollup VMs, with performance and security implications.**
 
-        Relayer Submits XBlocks: Relayers construct submissions for each finalized XBlock hash, including validator signatures and merkle proofs of each XMsg's inclusion. (DA CONSTRAINTS AT SCALE)
-                Relayer Role Security: While the permissionless relayer mechanism is a strength for interoperability, it also introduces a potential vector for attacks if relayers behave maliciously or if the reputation system is not robust enough to incentivize honest participation.
-                            
-                To submit XMsgs to a destination chain, Relayers generate a merkle-multi-proof for the XMsgs tied to an attested XBlock. They package this information into an EVM transaction aimed at the destination chain, encapsulating the core of their role in cross-chain communication.
-                
-                After validators' attestation, relayers submit XBlocks and their messages to destination chains, employing merkle-multi-proofs for verification.
-                    Relayer Role Security: While the permissionless relayer mechanism is a strength for interoperability, it also introduces a potential vector for attacks if relayers behave maliciously or if the reputation system is not robust enough to incentivize honest participation.
+- **Decision Making for Message Submission: Relayers determine the number of `XMsg`s to include in submissions, balancing the costs associated with transaction size, computational requirements, and gas limits.**
+- **Relayer Performance: They create and submit transactions with merkle multi-proofs to destination chains based on attested `XBlock` data, ensuring secure and efficient message delivery.**
+- **Security and Scalability: As a permissionless service, Relayers reduce central points of failure and uphold the network's decentralized ethos, while managing security risks and computational intensiveness, especially as the network scales.
                             """)
 
 
