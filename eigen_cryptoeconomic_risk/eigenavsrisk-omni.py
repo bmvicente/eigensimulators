@@ -1497,17 +1497,23 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result3):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold;">(</span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result4):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result5):,}</span>
+                <span style="font-size: 22px; font-weight: bold;">)</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold;">(</span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result6):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result7):,}</span>
+                <span style="font-size: 22px; font-weight: bold;">)</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold;">(</span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result8):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result9):,}</span>
+                <span style="font-size: 22px; font-weight: bold;">)</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
                 <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(final_result):,}</span>
             </div>
