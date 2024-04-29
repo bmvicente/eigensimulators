@@ -1430,7 +1430,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
 
 
-    def normalize_score(original_score, min_original=14, max_original=811691):
+    def normalize_score(original_score, min_original=13, max_original=811691):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
 
