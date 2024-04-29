@@ -1300,12 +1300,12 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.write("-------")
 
         relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                     help="**suiiu**")
+                                                     help="**The Performance Accuracy Rate of the Relayer in the overall XMsg submission process and on the generation of Merkle-multi proofs and signatures.**")
         
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421",
-                                                help="**Attests for a relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
+                                                help="**Attests for a Relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
         with col101:
             relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="321132",
                                                     help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
