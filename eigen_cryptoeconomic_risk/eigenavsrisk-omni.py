@@ -181,7 +181,7 @@ def main():
             st.session_state.security_audits_score = 0
 
     if 'relayer_reputation' not in st.session_state:
-        st.session_state.relayer_reputation = "Renowned"  # Set default value
+        st.session_state.relayer_reputation = "Unknown"  # Set default value
     if 'relayer_reputation_score' not in st.session_state:
         if st.session_state.relayer_reputation in relayer_reputation_risk:  # Check if code complexity exists in the dictionary
             st.session_state.relayer_reputation_score = relayer_reputation_risk[st.session_state.relayer_reputation]
@@ -189,7 +189,7 @@ def main():
             st.session_state.relayer_reputation_score = 0
 
     if 'operator_reputation' not in st.session_state:
-        st.session_state.operator_reputation = "Renowned"  # Set default value
+        st.session_state.operator_reputation = "Unknown"  # Set default value
     if 'operator_reputation_score' not in st.session_state:
         if st.session_state.operator_reputation in operator_reputation_risk:  # Check if code complexity exists in the dictionary
             st.session_state.operator_reputation_score = operator_reputation_risk[st.session_state.operator_reputation]
@@ -205,7 +205,7 @@ def main():
             st.session_state.evm_equivalence_score = 0
 
     if 'operator_centralization' not in st.session_state:
-        st.session_state.operator_centralization = "Decentralized"  # Set default value
+        st.session_state.operator_centralization = "Centralized"  # Set default value
     if 'operator_centralization_score' not in st.session_state:
         if st.session_state.operator_centralization in operator_centralization_risk:  # Check if code complexity exists in the dictionary
             st.session_state.operator_centralization_score = operator_centralization_risk[st.session_state.operator_centralization]
@@ -213,7 +213,7 @@ def main():
             st.session_state.operator_centralization_score = 0
 
     if 'validator_centralization' not in st.session_state:
-        st.session_state.validator_centralization = "Decentralized"  # Set default value
+        st.session_state.validator_centralization = "Centralized"  # Set default value
     if 'validator_centralization_score' not in st.session_state:
         if st.session_state.validator_centralization in validator_centralization_risk:  # Check if code complexity exists in the dictionary
             st.session_state.validator_centralization_score = validator_centralization_risk[st.session_state.validator_centralization]
@@ -229,7 +229,7 @@ def main():
             st.session_state.relayer_centralization_score = 0
 
     if 'validator_reputation' not in st.session_state:
-        st.session_state.validator_reputation = "Renowned"  # Set default value
+        st.session_state.validator_reputation = "Unknown"  # Set default value
     if 'validator_reputation_score' not in st.session_state:
         if st.session_state.validator_reputation in validator_reputation_risk:  # Check if code complexity exists in the dictionary
             st.session_state.validator_reputation_score = validator_reputation_risk[st.session_state.validator_reputation]
@@ -245,7 +245,7 @@ def main():
             st.session_state.dvt_mec_score = 0
 
     if 'evm_client_div' not in st.session_state:
-        st.session_state.evm_client_div = "Highly Diverse"  # Set default value
+        st.session_state.evm_client_div = "Moderately Diverse"  # Set default value
     if 'evm_client_div_score' not in st.session_state:
         if st.session_state.evm_client_div in evm_client_div_risk:  # Check if code complexity exists in the dictionary
             st.session_state.evm_client_div_score = evm_client_div_risk[st.session_state.evm_client_div]
@@ -253,7 +253,7 @@ def main():
             st.session_state.evm_client_div_score = 0
 
     if 'operator_entrenchment_level' not in st.session_state:
-        st.session_state.operator_entrenchment_level = "Low Entrenchment"  # Set default value
+        st.session_state.operator_entrenchment_level = "High Entrenchment"  # Set default value
     if 'operator_entrenchment_level_score' not in st.session_state:
         if st.session_state.operator_entrenchment_level in operator_entrenchment_level_risk:  # Check if code complexity exists in the dictionary
             st.session_state.operator_entrenchment_level_score = operator_entrenchment_level_risk[st.session_state.operator_entrenchment_level]
@@ -285,7 +285,7 @@ def main():
             st.session_state.relayer_da_solution_score = 0
 
     if 'validator_abci_usage_score' not in st.session_state:
-        st.session_state.validator_abci_usage = "False"  # Set default value
+        st.session_state.validator_abci_usage = "True"  # Set default value
     if 'validator_abci_usage_score' not in st.session_state:
         if st.session_state.validator_abci_usage in validator_abci_usage_risk:  # Check if code complexity exists in the dictionary
             st.session_state.validator_abci_usage_score = validator_abci_usage_risk[st.session_state.validator_abci_usage]
@@ -293,7 +293,7 @@ def main():
             st.session_state.validator_abci_usage_score = 0
 
     if 'engine_api_score' not in st.session_state:
-        st.session_state.engine_api = "False"  # Set default value
+        st.session_state.engine_api = "True"  # Set default value
     if 'engine_api_score' not in st.session_state:
         if st.session_state.engine_api in engine_api_risk:  # Check if code complexity exists in the dictionary
             st.session_state.engine_api_score = engine_api_risk[st.session_state.engine_api]
@@ -333,7 +333,7 @@ def main():
             st.session_state.encrypted_mempool_mec_score = 0
 
     if 'relayer_merkle_score' not in st.session_state:
-        st.session_state.relayer_merkle = "False"  # Set default value
+        st.session_state.relayer_merkle = "True"  # Set default value
     if 'relayer_merkle_score' not in st.session_state:
         if st.session_state.relayer_merkle in relayer_merkle_risk:  # Check if code complexity exists in the dictionary
             st.session_state.relayer_merkle_score = relayer_merkle_risk[st.session_state.relayer_merkle]
