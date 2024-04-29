@@ -999,7 +999,8 @@ def main():
                         st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
                         st.session_state.lockup_mec_score * st.session_state.da_sol_mec_score * st.session_state.fast_fin_ss_mec_score)
 
-        
+        st.write("  \n")
+
         validator_calc1 = f"""
             <div style="text-align: center;">
                 <div>
@@ -1169,6 +1170,8 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
             st.session_state.sybil_mec_score = sybil_mec_risk.get(sybil_mec, 0)
 
         result6 = (st.session_state.sybil_mec_score * st.session_state.encrypted_mempool_mec_score)
+        
+        st.write("  \n")
 
         evm_calc1 = f"""
             <div style="text-align: center;">
@@ -1325,6 +1328,8 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
 
         result8 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score)
         
+        st.write("  \n")
+
         relayer_calc1 = f"""
             <div style="text-align: center;">
                 <div>
@@ -1401,8 +1406,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
             st.session_state.relayer_centralization = relayer_centralization
             st.session_state.relayer_centralization_score = relayer_centralization_risk.get(relayer_centralization, 0)
 
-        result9 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score * 
-                   st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
+        result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
                    st.session_state.relayer_performance_acc_rate_var * 
                    relayer_metrics_likelihood * relayer_metrics_impact)
 
@@ -1475,7 +1479,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
 
-    final_result = result1 + result2 + result3 + result4 + result5 + result6
+    final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9
     normalized_risk_score = normalize_score(final_result)
 
     st.session_state.risk_score = normalized_risk_score
@@ -1494,6 +1498,12 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result5):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result6):,}</span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result7):,}</span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result8):,}</span>
+                <span style="font-size: 22px; font-weight: bold;"> + </span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result9):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
                 <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(final_result):,}</span>
             </div>
