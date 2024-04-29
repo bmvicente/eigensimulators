@@ -1073,6 +1073,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         validator_calc = f"""
             <div style="text-align: center;">
                 <div>
+                    <span style="font-size: 24px; font-weight: bold;">(</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
@@ -1087,6 +1088,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 24px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 24px; font-weight: bold;">)</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
