@@ -10,17 +10,17 @@ operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
 operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 1}
+evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 2}
 validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 relayer_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
+evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 2}
 operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
-engine_api_risk = {True: 1, False: 1.25}
-dvt_mec_risk = {True: 1, False: 1.25}
+engine_api_risk = {True: 1, False: 1.2}
+dvt_mec_risk = {True: 1, False: 1.2}
 sybil_mec_risk = {True: 1, False: 1.25}
 relayer_da_solution_risk = {True: 1, False: 1.25}
-validator_abci_usage_risk = {True: 1, False: 1.25}
-da_sol_mec_risk = {True: 1, False: 1.25}
+validator_abci_usage_risk = {True: 1, False: 1.2}
+da_sol_mec_risk = {True: 1, False: 1.2}
 lockup_mec_risk = {True: 1, False: 1.25}
 fast_fin_ss_mec_risk = {True: 1, False: 1.25}
 tee_mec_risk = {True: 1, False: 1.25}
@@ -259,14 +259,6 @@ def main():
             st.session_state.operator_entrenchment_level_score = operator_entrenchment_level_risk[st.session_state.operator_entrenchment_level]
         else:
             st.session_state.operator_entrenchment_level_score = 0
-
-    if 'da_sol_mec' not in st.session_state:
-        st.session_state.da_sol_mec = "False"  # Set default value
-    if 'da_sol_mec_score' not in st.session_state:
-        if st.session_state.da_sol_mec in da_sol_mec_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.da_sol_mec_score = da_sol_mec_risk[st.session_state.da_sol_mec]
-        else:
-            st.session_state.da_sol_mec_score = 0
 
     if 'da_sol_mec' not in st.session_state:
         st.session_state.da_sol_mec = "False"  # Set default value
@@ -1438,7 +1430,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
 
 
-    def normalize_score(original_score, min_original=17, max_original=17700):
+    def normalize_score(original_score, min_original=14, max_original=811691):
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
         return normalized_score
 
