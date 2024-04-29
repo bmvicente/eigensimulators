@@ -15,18 +15,18 @@ validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "De
 relayer_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 2}
 operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
-engine_api_risk = {True: 1, False: 2}
-dvt_mec_risk = {True: 1, False: 2}
-sybil_mec_risk = {True: 1, False: 2}
-relayer_da_solution_risk = {True: 1, False: 2}
-validator_abci_usage_risk = {True: 1, False: 2}
-da_sol_mec_risk = {True: 1, False: 2}
-lockup_mec_risk = {True: 1, False: 2}
-fast_fin_ss_mec_risk = {True: 1, False: 2}
-tee_mec_risk = {True: 1, False: 2}
-encrypted_mempool_mec_risk = {True: 1, False: 2}
-relayer_merkle_risk = {True: 1, False: 2}
-oracle_bridge_mec_risk = {True: 1, False: 2}
+engine_api_risk = {True: 1, False: 5}
+dvt_mec_risk = {True: 1, False: 5}
+sybil_mec_risk = {True: 1, False: 5}
+relayer_da_solution_risk = {True: 1, False: 5}
+validator_abci_usage_risk = {True: 1, False: 5}
+da_sol_mec_risk = {True: 1, False: 5}
+lockup_mec_risk = {True: 1, False: 5}
+fast_fin_ss_mec_risk = {True: 1, False: 5}
+tee_mec_risk = {True: 1, False: 5}
+encrypted_mempool_mec_risk = {True: 1, False: 5}
+relayer_merkle_risk = {True: 1, False: 5}
+oracle_bridge_mec_risk = {True: 1, False: 5}
 
 
 
