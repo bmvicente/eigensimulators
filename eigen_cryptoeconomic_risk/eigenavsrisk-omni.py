@@ -962,6 +962,72 @@ def main():
         with col53:
             fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False)
 
+
+        if st.session_state.engine_api != engine_api:
+            st.session_state.engine_api = engine_api
+            st.session_state.engine_api_score = engine_api_risk.get(engine_api, 0)
+
+        if st.session_state.validator_abci_usage != validator_abci_usage:
+            st.session_state.validator_abci_usage = validator_abci_usage
+            st.session_state.validator_abci_usage_score = validator_abci_usage_risk.get(validator_abci_usage, 0)
+
+        if st.session_state.tee_mec != tee_mec:
+            st.session_state.tee_mec = tee_mec
+            st.session_state.tee_mec_score = tee_mec_risk.get(tee_mec, 0)
+
+        if st.session_state.dvt_mec != dvt_mec:
+            st.session_state.dvt_mec = dvt_mec
+            st.session_state.dvt_mec_score = dvt_mec_risk.get(dvt_mec, 0)
+
+        if st.session_state.oracle_bridge_mec != oracle_bridge_mec:
+            st.session_state.oracle_bridge_mec = oracle_bridge_mec
+            st.session_state.oracle_bridge_mec_score = oracle_bridge_mec_risk.get(oracle_bridge_mec, 0)
+
+        if st.session_state.lockup_mec != lockup_mec:
+            st.session_state.lockup_mec = lockup_mec
+            st.session_state.lockup_mec_score = lockup_mec_risk.get(lockup_mec, 0)
+
+        if st.session_state.da_sol_mec != da_sol_mec:
+            st.session_state.da_sol_mec = da_sol_mec
+            st.session_state.da_sol_mec_score = da_sol_mec_risk.get(da_sol_mec, 0)
+
+        if st.session_state.fast_fin_ss_mec != fast_fin_ss_mec:
+            st.session_state.fast_fin_ss_mec = fast_fin_ss_mec
+            st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk.get(fast_fin_ss_mec, 0)
+
+        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score *
+                        st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
+                        st.session_state.lockup_mec_score * st.session_state.da_sol_mec_score * st.session_state.fast_fin_ss_mec_score)
+
+        
+        validator_calc1 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.oracle_bridge_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.lockup_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
+            </div>"""
+
+        st.markdown(validator_calc1, unsafe_allow_html=True)
+
+
+############################################
+
+
         st.write("-------")
 
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
@@ -1012,38 +1078,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                             """)
 
 
-        if st.session_state.engine_api != engine_api:
-            st.session_state.engine_api = engine_api
-            st.session_state.engine_api_score = engine_api_risk.get(engine_api, 0)
-
-        if st.session_state.validator_abci_usage != validator_abci_usage:
-            st.session_state.validator_abci_usage = validator_abci_usage
-            st.session_state.validator_abci_usage_score = validator_abci_usage_risk.get(validator_abci_usage, 0)
-
-        if st.session_state.tee_mec != tee_mec:
-            st.session_state.tee_mec = tee_mec
-            st.session_state.tee_mec_score = tee_mec_risk.get(tee_mec, 0)
-
-        if st.session_state.dvt_mec != dvt_mec:
-            st.session_state.dvt_mec = dvt_mec
-            st.session_state.dvt_mec_score = dvt_mec_risk.get(dvt_mec, 0)
-
-        if st.session_state.oracle_bridge_mec != oracle_bridge_mec:
-            st.session_state.oracle_bridge_mec = oracle_bridge_mec
-            st.session_state.oracle_bridge_mec_score = oracle_bridge_mec_risk.get(oracle_bridge_mec, 0)
-
-        if st.session_state.lockup_mec != lockup_mec:
-            st.session_state.lockup_mec = lockup_mec
-            st.session_state.lockup_mec_score = lockup_mec_risk.get(lockup_mec, 0)
-
-        if st.session_state.da_sol_mec != da_sol_mec:
-            st.session_state.da_sol_mec = da_sol_mec
-            st.session_state.da_sol_mec_score = da_sol_mec_risk.get(da_sol_mec, 0)
-
-        if st.session_state.fast_fin_ss_mec != fast_fin_ss_mec:
-            st.session_state.fast_fin_ss_mec = fast_fin_ss_mec
-            st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk.get(fast_fin_ss_mec, 0)
-
         if st.session_state.validator_reputation != validator_reputation:
             st.session_state.validator_reputation = validator_reputation
             st.session_state.validator_reputation_score = validator_reputation_risk.get(validator_reputation, 0)
@@ -1053,57 +1087,34 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
             st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
 
 
-
-        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score *
-                   st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
-                   st.session_state.lockup_mec_score * st.session_state.da_sol_mec_score * st.session_state.fast_fin_ss_mec_score *
-                   st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
+        result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
                    st.session_state.validator_centralization_score * validator_metrics_likelihood * validator_metrics_impact)
 
         
-        validator_calc = f"""
+        validator_calc2 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.oracle_bridge_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.lockup_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-
-
-
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_likelihood}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_impact}</span> 
-                    <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result5):,}</span>
             </div>"""
 
-        st.markdown(validator_calc, unsafe_allow_html=True)
+        st.markdown(validator_calc2, unsafe_allow_html=True)
 
 
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
-        st.write("\n")
+        st.write("  \n")
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
@@ -1148,6 +1159,32 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                                 help="**Mechanism used in the context of transactions submitted to the Omni EVM, to deter spam and malicious activities such as DoS attacks.**")
         
         encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for Increased Privacy and Security of Transactions', value=False)
+
+        if st.session_state.encrypted_mempool_mec != encrypted_mempool_mec:
+            st.session_state.encrypted_mempool_mec = encrypted_mempool_mec
+            st.session_state.encrypted_mempool_mec_score = encrypted_mempool_mec_risk.get(encrypted_mempool_mec, 0)
+
+        if st.session_state.sybil_mec != sybil_mec:
+            st.session_state.sybil_mec = sybil_mec
+            st.session_state.sybil_mec_score = sybil_mec_risk.get(sybil_mec, 0)
+
+        result6 = (st.session_state.sybil_mec_score * st.session_state.encrypted_mempool_mec_score)
+
+        evm_calc1 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.sybil_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.encrypted_mempool_mec_score}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result6):,}</span>
+            </div>"""
+
+        st.markdown(evm_calc1, unsafe_allow_html=True)
+
+
+##################################################
+
 
         st.write("-------")
 
@@ -1197,14 +1234,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                             """)
 
 
-        if st.session_state.encrypted_mempool_mec != encrypted_mempool_mec:
-            st.session_state.encrypted_mempool_mec = encrypted_mempool_mec
-            st.session_state.encrypted_mempool_mec_score = encrypted_mempool_mec_risk.get(encrypted_mempool_mec, 0)
-
-        if st.session_state.sybil_mec != sybil_mec:
-            st.session_state.sybil_mec = sybil_mec
-            st.session_state.sybil_mec_score = sybil_mec_risk.get(sybil_mec, 0)
-
         if st.session_state.evm_equivalence != evm_equivalence:
             st.session_state.evm_equivalence = evm_equivalence
             st.session_state.evm_equivalence_score = evm_equivalence_risk.get(evm_equivalence, 0)
@@ -1214,31 +1243,24 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
             st.session_state.evm_client_div_score = evm_client_div_risk.get(evm_client_div, 0)
 
 
-        result5 = (st.session_state.sybil_mec_score * st.session_state.encrypted_mempool_mec_score * 
-                   st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score * 
+        result7 = (st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score * 
                    evm_metrics_likelihood * evm_metrics_impact)
 
-        evm_calc = f"""
+        evm_calc2 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.sybil_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.encrypted_mempool_mec_score}</span>
-
-
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_likelihood}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_impact}</span> 
-                    <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result5):,}</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result7):,}</span>
             </div>"""
 
-        st.markdown(evm_calc, unsafe_allow_html=True)
+        st.markdown(evm_calc2, unsafe_allow_html=True)
 
 
 
@@ -1293,6 +1315,32 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         
         relayer_da_solution = st.checkbox('**DA Solution** to address Complex Verification and Increased Computational Cost of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
 
+        if st.session_state.relayer_merkle != relayer_merkle:
+            st.session_state.relayer_merkle = relayer_merkle
+            st.session_state.relayer_merkle_score = relayer_merkle_risk.get(relayer_merkle, 0)
+
+        if st.session_state.relayer_da_solution != relayer_da_solution:
+            st.session_state.relayer_da_solution = relayer_da_solution
+            st.session_state.relayer_da_solution_score = relayer_da_solution_risk.get(relayer_da_solution, 0)
+
+        result8 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score)
+        
+        relayer_calc1 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_merkle_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result8):,}</span>
+            </div>"""
+
+        st.markdown(relayer_calc1, unsafe_allow_html=True)
+
+
+########################################################
+
+
         st.write("-------")
 
         relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
@@ -1345,14 +1393,6 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
                             """)
 
 
-        if st.session_state.relayer_merkle != relayer_merkle:
-            st.session_state.relayer_merkle = relayer_merkle
-            st.session_state.relayer_merkle_score = relayer_merkle_risk.get(relayer_merkle, 0)
-
-        if st.session_state.relayer_da_solution != relayer_da_solution:
-            st.session_state.relayer_da_solution = relayer_da_solution
-            st.session_state.relayer_da_solution_score = relayer_da_solution_risk.get(relayer_da_solution, 0)
-
         if st.session_state.relayer_reputation != relayer_reputation:
             st.session_state.relayer_reputation = relayer_reputation
             st.session_state.relayer_reputation_score = relayer_reputation_risk.get(relayer_reputation, 0)
@@ -1361,35 +1401,29 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
             st.session_state.relayer_centralization = relayer_centralization
             st.session_state.relayer_centralization_score = relayer_centralization_risk.get(relayer_centralization, 0)
 
-        result6 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score * 
+        result9 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score * 
                    st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
                    st.session_state.relayer_performance_acc_rate_var * 
                    relayer_metrics_likelihood * relayer_metrics_impact)
 
         
-        relayer_calc = f"""
+        relayer_calc2 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_merkle_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
-
-                    
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span>
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span> 
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_likelihood}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_impact}</span> 
-                    <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result6):,}</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span>
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_likelihood}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_impact}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result9):,}</span>
             </div>"""
 
-        st.markdown(relayer_calc, unsafe_allow_html=True)
+        st.markdown(relayer_calc2, unsafe_allow_html=True)
 
 
 
