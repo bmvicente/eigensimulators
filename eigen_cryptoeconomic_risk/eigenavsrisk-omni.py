@@ -15,18 +15,18 @@ validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "De
 relayer_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
 operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
-engine_api_risk = {True: 0, False: 0.5}
-dvt_mec_risk = {True: 0, False: 0.5}
-sybil_mec_risk = {True: 0, False: 0.5}
-relayer_da_solution_risk = {True: 0, False: 0.5}
-validator_abci_usage_risk = {True: 0, False: 0.5}
-da_sol_mec_risk = {True: 0, False: 0.5}
-lockup_mec_risk = {True: 0, False: 0.5}
-fast_fin_ss_mec_risk = {True: 0, False: 0.5}
-tee_mec_risk = {True: 0, False: 0.5}
-encrypted_mempool_mec_risk = {True: 0, False: 0.5}
-relayer_merkle_risk = {True: 0, False: 0.5}
-oracle_bridge_mec_risk = {True: 0, False: 0.5}
+engine_api_risk = {True: 0, False: 0.2}
+dvt_mec_risk = {True: 0, False: 0.2}
+sybil_mec_risk = {True: 0, False: 0.2}
+relayer_da_solution_risk = {True: 0, False: 0.2}
+validator_abci_usage_risk = {True: 0, False: 0.2}
+da_sol_mec_risk = {True: 0, False: 0.2}
+lockup_mec_risk = {True: 0, False: 0.2}
+fast_fin_ss_mec_risk = {True: 0, False: 0.2}
+tee_mec_risk = {True: 0, False: 0.2}
+encrypted_mempool_mec_risk = {True: 0, False: 0.2}
+relayer_merkle_risk = {True: 0, False: 0.2}
+oracle_bridge_mec_risk = {True: 0, False: 0.2}
 
 
 
@@ -1088,7 +1088,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
                     <span style="font-size: 24px; font-weight: bold;">&times;</span>
                     <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
