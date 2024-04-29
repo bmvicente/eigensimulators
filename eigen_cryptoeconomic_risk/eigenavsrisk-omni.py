@@ -1066,8 +1066,7 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
                    st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
                    st.session_state.lockup_mec_score * st.session_state.da_sol_mec_score * st.session_state.fast_fin_ss_mec_score *
                    st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
-                   st.session_state.validator_centralization_score *
-                    validator_metrics_likelihood * validator_metrics_impact)
+                   st.session_state.validator_centralization_score * validator_metrics_likelihood * validator_metrics_impact)
 
         
         validator_calc = f"""
