@@ -351,6 +351,21 @@ def main():
         st.session_state.risk_score = 0
 
 
+    def format_number(num):
+            if num.is_integer():
+                return f"{int(num)}"
+            else:
+                return f"{num:.1f}"
+            
+    def format_result(num):
+            # Check if the number is an integer
+            if num.is_integer():
+                # Format integer with comma for thousands
+                return f"{int(num):,}"
+            else:
+                # Format float with comma for thousands and period for decimals
+                return f"{num:,.2f}"
+
 
     st.write("\n")
     
@@ -519,8 +534,15 @@ def main():
         col44,col45 = st.columns(2, gap="medium")
         with col44:
             business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3, key='afa')
+            business_dual_likelihood2 = business_dual_likelihood / 2
         with col45:
             business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7, key='ewe')
+            business_dual_impact2 = business_dual_impact / 2
+
+
+        business_dual_likelihood_formatted = format_number(business_dual_likelihood2)
+        business_dual_impact_formatted = format_number(business_dual_impact2)
+
 
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
@@ -578,7 +600,9 @@ def main():
                         """)
     
         
-        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood * business_dual_impact
+        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood2 * business_dual_impact2)
+        
+        result1_formatted = format_result(float(result1))
 
         business_dual_calc = f"""
             <div style="text-align: center;">
@@ -587,11 +611,11 @@ def main():
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
                     <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood}</span> 
+                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood_formatted}</span> 
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_impact}</span> 
+                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_impact_formatted}</span> 
                     <span style="font-size: 23px; font-weight: bold;"> = </span>
-                    <span style="font-size: 21px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result1):,}</span>
+                    <span style="font-size: 21px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1_formatted}</span>
             </div>"""
 
         st.markdown(business_dual_calc, unsafe_allow_html=True)
@@ -675,8 +699,14 @@ def main():
         col35,col36 = st.columns(2, gap="medium")
         with col35:
                     security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
+                    security_likelihood2 = security_likelihood/2
         with col36:
                     security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
+                    security_impact2 = security_impact/2
+
+        security_likelihood_formatted = format_number(security_likelihood2)
+        security_impact_formatted = format_number(security_impact2)
+
 
         with st.expander("Logic"):
                         st.markdown("""
@@ -697,8 +727,9 @@ def main():
                 st.session_state.security_audits = security_audits
                 st.session_state.security_audits_score = security_audits_risk.get(security_audits, 0)
 
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * security_likelihood * security_impact
-
+        result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * security_likelihood2 * security_impact2)
+        
+        result2_formatted = format_result(float(result2))
 
         security_calc = f"""
                     <div style="text-align: center;">
@@ -707,11 +738,11 @@ def main():
                             <span style="font-size: 23px; font-weight: bold;">&times;</span>
                             <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audits_score}</span> 
                             <span style="font-size: 23px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood}</span> 
+                            <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood_formatted}</span> 
                             <span style="font-size: 23px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact}</span> 
+                            <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact_formatted}</span> 
                             <span style="font-size: 23px; font-weight: bold;"> = </span>
-                            <span style="font-size: 21px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result2):,}</span>
+                            <span style="font-size: 21px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2_formatted}</span>
                     </div>"""
 
         st.markdown(security_calc, unsafe_allow_html=True)
@@ -775,8 +806,14 @@ def main():
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="o0")
+            operator_likelihood2 = operator_metrics_likelihood/2
         with col34:
             operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="o1")
+            operator_impact2 = operator_metrics_impact/2
+
+        operator_likelihood_formatted = format_number(operator_likelihood2)
+        operator_impact_formatted = format_number(operator_impact2)
+
 
         st.write("  \n")
 
@@ -806,7 +843,10 @@ def main():
                 st.session_state.operator_entrenchment_level_score = operator_entrenchment_level_risk.get(operator_entrenchment_level, 0)
 
         result3 = (st.session_state.operator_reputation_score * st.session_state.operator_centralization_score * 
-                   st.session_state.operator_entrenchment_level_score * operator_metrics_likelihood * operator_metrics_impact)
+                   st.session_state.operator_entrenchment_level_score * operator_likelihood2 * operator_impact2)
+        
+        result3_formatted = format_result(float(result3))
+
 
         operator_calc = f"""
                 <div style="text-align: center;">
@@ -816,11 +856,11 @@ def main():
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
                     <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_entrenchment_level_score}</span> 
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_likelihood}</span> 
+                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_likelihood_formatted}</span> 
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_impact}</span> 
+                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_impact_formatted}</span> 
                     <span style="font-size: 23px; font-weight: bold;"> = </span>
-                    <span style="font-size: 21px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result3):,}</span>
+                    <span style="font-size: 21px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result3_formatted}</span>
                 </div>
             """
 
@@ -1065,11 +1105,7 @@ def main():
             validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v1")
             validator_metrics_impact2 = validator_metrics_impact / 2
 
-        def format_number(num):
-            if num.is_integer():
-                return f"{int(num)}"
-            else:
-                return f"{num:.1f}"
+
 
         # Directly use the calculated variables
         val_likelihood_formatted = format_number(validator_metrics_likelihood2)
@@ -1101,15 +1137,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         if st.session_state.validator_centralization != validator_centralization:
             st.session_state.validator_centralization = validator_centralization
             st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
-        
-        def format_result(num):
-            # Check if the number is an integer
-            if num.is_integer():
-                # Format integer with comma for thousands
-                return f"{int(num):,}"
-            else:
-                # Format float with comma for thousands and period for decimals
-                return f"{num:,.2f}"
+    
 
         result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
                    st.session_state.validator_centralization_score * validator_metrics_likelihood2 * validator_metrics_impact2)
@@ -1500,11 +1528,11 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Omni</i> Risk Score</div>", unsafe_allow_html=True)
     final_result_html = f"""
             <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result1):,}</span> 
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1_formatted}</span> 
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result2):,}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2_formatted}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result3):,}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result3_formatted}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold;">(</span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result4):,}</span>
