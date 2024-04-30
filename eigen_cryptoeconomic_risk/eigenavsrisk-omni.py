@@ -1129,11 +1129,11 @@ def main():
         st.write("-------")
 
 
-        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="090888",
-                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
-
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
                                                    help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
+        
+        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="090888",
+                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
         
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
@@ -1206,7 +1206,7 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
     
 
-        result5 = (st.session_state.halo_reputation * st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
+        result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.halo_reputation_score * st.session_state.validator_reputation_score *
                    st.session_state.validator_centralization_score * validator_metrics_likelihood2 * validator_metrics_impact2)
         
         result5_formatted = format_result(float(result5))
@@ -1215,9 +1215,9 @@ The summation or multiplication of variables revolves around their independence 
         validator_calc2 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.halo_reputation_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.halo_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
@@ -1396,7 +1396,7 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.evm_client_div_score = evm_client_div_risk.get(evm_client_div, 0)
 
 
-        result7 = (st.session_state.evm_client_reputation_score * st.session_state.evm_validator_reputation_score *
+        result7 = (st.session_state.evm_val_performance_acc_rate_var * st.session_state.evm_client_reputation_score * st.session_state.evm_validator_reputation_score *
                    st.session_state.evm_validator_centralization_score * st.session_state.evm_equivalence_score * 
                    st.session_state.evm_client_div_score * evm_metrics_likelihood2 * evm_metrics_impact2)
         
@@ -1406,6 +1406,8 @@ The summation or multiplication of variables revolves around their independence 
         evm_calc2 = f"""
             <div style="text-align: center;">
                 <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_val_performance_acc_rate_var}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_reputation_score}</span> 
