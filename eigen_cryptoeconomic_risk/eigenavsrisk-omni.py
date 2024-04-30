@@ -1241,9 +1241,9 @@ The summation or multiplication of variables revolves around their independence 
         validator_calc2 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.halo_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
@@ -1436,9 +1436,9 @@ The summation or multiplication of variables revolves around their independence 
         evm_calc2 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_val_performance_acc_rate_var}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_val_performance_acc_rate_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
