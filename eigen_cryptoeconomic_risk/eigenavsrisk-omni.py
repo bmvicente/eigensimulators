@@ -1059,11 +1059,11 @@ def main():
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="v0")
-            validator_metrics_likelihood2 = validator_metrics_likelihood/2
+            validator_metrics_likelihood2 = validator_metrics_likelihood / 2
+
         with col34:
             validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v1")
-            validator_metrics_impact2 = validator_metrics_impact/2
-
+            validator_metrics_impact2 = validator_metrics_impact / 2
 
         def format_number(num):
             if num.is_integer():
@@ -1071,9 +1071,9 @@ def main():
             else:
                 return f"{num:.1f}"
 
-        # Assuming st.session_state.validator_metrics_likelihood2 and st.session_state.validator_metrics_impact2 are defined:
-        likelihood_formatted = format_number(validator_metrics_likelihood2 / 2)
-        impact_formatted = format_number(validator_metrics_impact2 / 2)
+        # Directly use the calculated variables
+        likelihood_formatted = format_number(validator_metrics_likelihood2)
+        impact_formatted = format_number(validator_metrics_impact2)
 
 
         with st.expander("Logic"):
