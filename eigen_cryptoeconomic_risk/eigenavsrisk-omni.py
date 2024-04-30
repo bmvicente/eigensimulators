@@ -1072,8 +1072,8 @@ def main():
                 return f"{num:.1f}"
 
         # Assuming st.session_state.validator_metrics_likelihood2 and st.session_state.validator_metrics_impact2 are defined:
-        likelihood_formatted = format_number(st.session_state.validator_metrics_likelihood2 / 2)
-        impact_formatted = format_number(st.session_state.validator_metrics_impact2 / 2)
+        likelihood_formatted = format_number(validator_metrics_likelihood2 / 2)
+        impact_formatted = format_number(validator_metrics_impact2 / 2)
 
 
         with st.expander("Logic"):
@@ -1104,7 +1104,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
 
 
         result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
-                   st.session_state.validator_centralization_score * validator_metrics_likelihood2 * validator_metrics_impact2)
+                   st.session_state.validator_centralization_score * likelihood_formatted * impact_formatted)
 
         
         validator_calc2 = f"""
