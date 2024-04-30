@@ -1615,8 +1615,16 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
+        col111, col121, col131 = st.columns([2,1,2])
 
-        st.image("images/omni-matrix.jpg", width=500)
+        with col111:
+            st.write("")
+
+        with col121:
+            st.image("images/omni-matrix.jpg", width=600)
+
+        with col131:
+            st.write("")
 
 
 
