@@ -1078,7 +1078,7 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="0990",
+            validator_reputation = st.selectbox("**Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="0990",
                                                 help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
         with col101:           
             validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232", index=0,
@@ -1125,7 +1125,7 @@ Consensus-level Validators package `XMsgs` into `XBlocks` and attest to those `X
 - Streamlines transaction requests by moving the transaction mempool to the execution layer, alleviating network congestion and latency at the CometBFT consensus level;
 - Facilitates state translations by wrapping around CometBFT ensuring Omni EVM blocks are efficiently converted into CometBFT transactions.
                             
-As per the above checkboxes, we suggest a few features/mechanism that could contribute to the overall efficiency and security of Omni as a protocol and as an AVS.
+As per the above checkboxes, we suggest a few features/mechanism that could contribute to the overall efficiency and security of Omni as a protocol and as an AVS. Consideration for `Halo`'s reputation can be added on a later version.
                             
 The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
                             """)
@@ -1288,7 +1288,7 @@ To attest to the EVM's security and versatility, it employs an Anti-Sybil mechan
 - **Developer Tooling Compatibility**: The Omni EVM maintains full compatibility with Ethereum's development tools, ensuring that existing Ethereum developer tooling works without issues;
 - **Future-Proof**: By adhering to Ethereum's standards and upgrade paths, the Omni EVM ensures that it remains up-to-date, allowing developers to utilize the latest features as they become available.
 
-We do suggest considering an encrypted mempool for increased privacy and security in transactions processing.                          
+We do suggest considering an encrypted mempool for increased privacy and security in transactions processing. Consideration for the different Execution Clients' reputations, nodes' level of centralization, and performance accuracy rates can be added on a later version.                         
                         
 The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
                             """)
