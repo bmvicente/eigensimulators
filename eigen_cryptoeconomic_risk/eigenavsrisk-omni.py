@@ -1318,11 +1318,13 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        evm_client_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="877w6")
+        evm_client_reputation = st.selectbox("**EVM Client Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="877w6", help="Docs: 'The execution layer is implemented by standard Ethereum execution clients, like  `geth`, `erigon`, etc, to provide the Omni EVM.'")
         evm_val_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="6782")
 
         evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_calc(evm_val_performance_acc_rate)
         st.session_state.evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_var
+
+        st.write("  \n")
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
