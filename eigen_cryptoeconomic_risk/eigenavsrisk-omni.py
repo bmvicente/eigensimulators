@@ -1366,7 +1366,7 @@ The summation or multiplication of variables revolves around their independence 
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="lk09",
                                            help="**Runs an unmodified version of the original EVM. Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
         with col101:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="78kmkl77", index=0,
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="78kmkl77", index=1,
                                           help="**Correlated (but not causal) relationship with the level of Equivalence or Compatible of the EVM. EVM Equivalence likely leads to greater Client Diversity.**")
             
         st.write("-------")
