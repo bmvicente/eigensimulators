@@ -1520,47 +1520,6 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     st.write("  \n")
 
 
-    def normalize_score(original_score, min_original=14.25, max_original=77325):
-        normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
-        return normalized_score
-
-    final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9
-    normalized_risk_score = normalize_score(final_result)
-
-    st.session_state.risk_score = normalized_risk_score
-
-    st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Omni</i> Risk Score</div>", unsafe_allow_html=True)
-    final_result_html = f"""
-            <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1_formatted}</span> 
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2_formatted}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result3_formatted}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold;">(</span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result4):,}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5_formatted}</span>
-                <span style="font-size: 22px; font-weight: bold;">)</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold;">(</span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result6):,}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result7_formatted}</span>
-                <span style="font-size: 22px; font-weight: bold;">)</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold;">(</span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result8):,}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9_formatted}</span>
-                <span style="font-size: 22px; font-weight: bold;">)</span>
-                <span style="font-size: 22px; font-weight: bold;"> = </span>
-                <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result:,.2f}</span>
-            </div>
-        """
-
-    st.markdown(final_result_html, unsafe_allow_html=True)
 
 
 
@@ -1598,6 +1557,49 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     col56,col57 = st.columns([8,6], gap="medium")
     with col56:
+
+        def normalize_score(original_score, min_original=14.25, max_original=77325):
+            normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
+            return normalized_score
+
+        final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9
+        normalized_risk_score = normalize_score(final_result)
+
+        st.session_state.risk_score = normalized_risk_score
+
+        st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Omni</i> Risk Score</div>", unsafe_allow_html=True)
+        final_result_html = f"""
+                <div style="text-align: center;">
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1_formatted}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result3_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result4):,}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result6):,}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result7_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result8):,}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result:,.2f}</span>
+                </div>
+            """
+
+        st.markdown(final_result_html, unsafe_allow_html=True)
+
         if st.session_state.risk_score >= 75:
             color = "#d32f2f"  # Red color for high risk
             background_color = "#fde0dc"  # Light red background
@@ -1647,7 +1649,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
         fig, ax = plt.subplots()
 
-        # Define the labels and colors (order adjusted for visual layout)
+        # Define the labels and colors
         labels = [
             'CONSENSUS CLIENT PROFILE', 'AVS BUSINESS MODEL',
             'AVS PROTOCOL SECURITY', 'AVS OPERATOR PROFILE',
@@ -1659,21 +1661,22 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         positions = [(0, 1), (0, 0), (1, 1), (1, 0), (2, 1), (2, 0)]
 
         # Create colored squares
-        for (i, ((x, y), label, color)) in enumerate(zip(positions, labels, colors)):
+        for ((x, y), label, color) in zip(positions, labels, colors):
             ax.add_patch(patches.Rectangle((y, -x), 1, 1, color=color))
             ax.text(y + 0.5, -x - 0.5, label, color='black', weight='bold', fontsize=12,
                     ha='center', va='center', wrap=True)
 
-        # Set limits and aspect
+        # Set limits and aspect to make sure the figure looks good
         ax.set_xlim(0, 2)
         ax.set_ylim(-3, 0)
         ax.set_aspect('equal')
 
-        # Hide axes
+        # Hide axes for a cleaner look
         ax.axis('off')
 
-        # Show plot
-        fig.show()
+        # Display the plot in Streamlit
+        st.pyplot(fig)
+
 
 
 
