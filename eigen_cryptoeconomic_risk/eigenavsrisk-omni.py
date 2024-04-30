@@ -1072,8 +1072,8 @@ def main():
                 return f"{num:.1f}"
 
         # Directly use the calculated variables
-        likelihood_formatted = format_number(validator_metrics_likelihood2)
-        impact_formatted = format_number(validator_metrics_impact2)
+        val_likelihood_formatted = format_number(validator_metrics_likelihood2)
+        val_impact_formatted = format_number(validator_metrics_impact2)
 
 
         with st.expander("Logic"):
@@ -1126,9 +1126,9 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{likelihood_formatted}</span>         
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_likelihood_formatted}</span>         
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{impact_formatted}</span>         
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_impact_formatted}</span>         
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5_formatted}</span>
                 </div>
@@ -1233,8 +1233,15 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e0")
+            evm_metrics_likelihood2 = evm_metrics_likelihood / 2
+
         with col34:
             evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="e1")
+            evm_metrics_impact2 = evm_metrics_impact / 2
+
+        # Directly use the calculated variables
+        evm_likelihood_formatted = format_number(evm_metrics_likelihood2)
+        evm_impact_formatted = format_number(evm_metrics_impact2)
 
         with st.expander("Logic"):
                 st.markdown("""
@@ -1255,8 +1262,11 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
             st.session_state.evm_client_div_score = evm_client_div_risk.get(evm_client_div, 0)
 
 
-        result7 = (st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score * 
-                   ((evm_metrics_likelihood * evm_metrics_impact)/2))
+        result7 = (st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score *
+                   evm_metrics_likelihood2 * evm_metrics_impact2)
+        
+        result7_formatted = format_result(float(result7))
+
 
         evm_calc2 = f"""
             <div style="text-align: center;">
@@ -1265,11 +1275,11 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(evm_metrics_likelihood/2)}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_likelihood_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(evm_metrics_impact/2)}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_impact_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result7):,}</span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result7_formatted}</span>
             </div>"""
 
         st.markdown(evm_calc2, unsafe_allow_html=True)
@@ -1376,8 +1386,15 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="r0")
+            relayer_metrics_likelihood2 = relayer_metrics_likelihood / 2
+
         with col34:
             relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="r1")
+            relayer_metrics_impact2 = relayer_metrics_impact / 2
+
+        relayer_likelihood_formatted = format_number(relayer_metrics_likelihood2)
+        relayer_impact_formatted = format_number(relayer_metrics_impact2)
+
 
         with st.expander("Logic"):
                 st.image("images/omni-relayer-diagram.jpg", width=750)
@@ -1399,11 +1416,14 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
             st.session_state.relayer_centralization = relayer_centralization
             st.session_state.relayer_centralization_score = relayer_centralization_risk.get(relayer_centralization, 0)
 
-        result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
-                   st.session_state.relayer_performance_acc_rate_var * 
-                   ((relayer_metrics_likelihood * relayer_metrics_impact)/2))
 
+
+        result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
+                   st.session_state.relayer_performance_acc_rate_var * relayer_metrics_likelihood2 * relayer_metrics_impact2)
         
+        result9_formatted = format_result(float(result9))
+
+
         relayer_calc2 = f"""
             <div style="text-align: center;">
                 <div>
@@ -1413,11 +1433,11 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(relayer_metrics_likelihood/2)}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_likelihood_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(relayer_metrics_impact/2)}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_impact_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result9):,}</span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9_formatted}</span>
             </div>"""
 
         st.markdown(relayer_calc2, unsafe_allow_html=True)
@@ -1489,22 +1509,22 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                 <span style="font-size: 22px; font-weight: bold;">(</span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result4):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result5):,}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5_formatted}</span>
                 <span style="font-size: 22px; font-weight: bold;">)</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold;">(</span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result6):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result7):,}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result7_formatted}</span>
                 <span style="font-size: 22px; font-weight: bold;">)</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
                 <span style="font-size: 22px; font-weight: bold;">(</span>
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result8):,}</span>
                 <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result9):,}</span>
+                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9_formatted}</span>
                 <span style="font-size: 22px; font-weight: bold;">)</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
-                <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(final_result):,}</span>
+                <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
             </div>
         """
 
