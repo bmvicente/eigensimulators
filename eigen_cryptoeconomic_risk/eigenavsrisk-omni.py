@@ -90,7 +90,7 @@ def main():
                             """)
 
         
-    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for Omni as a Interoperability Network AVS. **It is important to bear in mind that since we are at the early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.")
+    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for Omni as a Interoperability Network AVS. *It is important to bear in mind that since we are at the early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
 
     st.write("  \n")
     st.write("  \n")
