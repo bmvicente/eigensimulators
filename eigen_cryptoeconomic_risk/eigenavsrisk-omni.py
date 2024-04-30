@@ -1627,8 +1627,8 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         fig = go.Figure()
 
         # Define the dimensions of each rectangle
-        rect_width = 0.4
-        rect_height = 0.4
+        rect_width = 0.2
+        rect_height = 0.2
 
         for i, (label, color) in enumerate(zip(labels, colors)):
             row = i // 2 + 1
