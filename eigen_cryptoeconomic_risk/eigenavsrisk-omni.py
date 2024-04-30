@@ -523,13 +523,13 @@ def main():
         col44,col45 = st.columns(2, gap="medium")
         with col44:
             business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3, key='afa', help=f"""
-                                                          Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
-                                                          1 == Unlikely | 10 == Very Likely""")
+                                                          1 == Unlikely | 10 == Very Likely**""")
             business_dual_likelihood2 = business_dual_likelihood / 2
         with col45:
             business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7, key='ewe', help=f"""
-                                                      Assesses the impact that risk would have on the security of the AVS.
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
             business_dual_impact2 = business_dual_impact / 2
@@ -691,13 +691,13 @@ def main():
         col35,col36 = st.columns(2, gap="medium")
         with col35:
                     security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, help=f"""
-                                                          Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
                     security_likelihood2 = security_likelihood/2
         with col36:
                     security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, help=f"""
-                                                      Assesses the impact that risk would have on the security of the AVS.
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
                     security_impact2 = security_impact/2
@@ -791,13 +791,13 @@ def main():
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="o0", help=f"""
-                                                          Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             operator_likelihood2 = operator_metrics_likelihood/2
         with col34:
             operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="o1", help=f"""
-                                                      Assesses the impact that risk would have on the security of the AVS.
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
             operator_impact2 = operator_metrics_impact/2
@@ -1089,14 +1089,14 @@ def main():
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="v0", help=f"""
-                                                          Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             validator_metrics_likelihood2 = validator_metrics_likelihood / 2
 
         with col34:
             validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="v1", help=f"""
-                                                      Assesses the impact that risk would have on the security of the AVS.
+                                                     **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
             validator_metrics_impact2 = validator_metrics_impact / 2
@@ -1258,14 +1258,14 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e0", help=f"""
-                                                          Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             evm_metrics_likelihood2 = evm_metrics_likelihood / 2
 
         with col34:
             evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="e1", help=f"""
-                                                      Assesses the impact that risk would have on the security of the AVS.
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
             evm_metrics_impact2 = evm_metrics_impact / 2
@@ -1417,14 +1417,14 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="r0", help=f"""
-                                                          Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             relayer_metrics_likelihood2 = relayer_metrics_likelihood / 2
 
         with col34:
             relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="r1", help=f"""
-                                                      Assesses the impact that risk would have on the security of the AVS.
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
             relayer_metrics_impact2 = relayer_metrics_impact / 2
