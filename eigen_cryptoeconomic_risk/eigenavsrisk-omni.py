@@ -1,8 +1,8 @@
 
 
 import streamlit as st
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+import plotly.graph_objects as go
+
 
 security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
 business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
@@ -1646,10 +1646,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
-
-        fig, ax = plt.subplots()
-
-        # Define the labels and colors
+        # Define the labels and corresponding colors
         labels = [
             'CONSENSUS CLIENT PROFILE', 'AVS BUSINESS MODEL',
             'AVS PROTOCOL SECURITY', 'AVS OPERATOR PROFILE',
@@ -1657,25 +1654,48 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         ]
         colors = ['green', 'red', 'yellow', 'red', 'yellow', 'red']
 
-        # Grid layout positions
-        positions = [(0, 1), (0, 0), (1, 1), (1, 0), (2, 1), (2, 0)]
+        # Create a Figure with subplots in a 3x2 grid
+        fig = go.Figure()
 
-        # Create colored squares
-        for ((x, y), label, color) in zip(positions, labels, colors):
-            ax.add_patch(patches.Rectangle((y, -x), 1, 1, color=color))
-            ax.text(y + 0.5, -x - 0.5, label, color='black', weight='bold', fontsize=5,
-                    ha='center', va='center', wrap=True)
+        for i, (label, color) in enumerate(zip(labels, colors)):
+            row = i // 2 + 1
+            col = i % 2 + 1
+            
+            fig.add_trace(
+                go.Scatter(
+                    x=[0.5], y=[0.5], text=[label],
+                    mode="text",
+                    textfont=dict(size=16, color="black"),
+                    showlegend=False,
+                    hoverinfo="skip",
+                    subplot=f'xy{row}{col}'
+                )
+            )
 
-        # Set limits and aspect to make sure the figure looks good
-        ax.set_xlim(0, 2)
-        ax.set_ylim(-3, 0)
-        ax.set_aspect('equal')
+            # Add shapes for colored boxes
+            fig.add_shape(
+                type="rect",
+                x0=0, y0=0, x1=1, y1=1,
+                line=dict(width=2),
+                fillcolor=color,
+                row=row, col=col
+            )
 
-        # Hide axes for a cleaner look
-        ax.axis('off')
+        # Update layout for the grid
+        fig.update_layout(
+            height=600, width=800,
+            margin=dict(t=50, b=50, l=0, r=0),  # Tighten the margins
+            grid=dict(rows=3, columns=2, pattern="independent"),  # Define the grid
+            plot_bgcolor="white"
+        )
 
-        # Display the plot in Streamlit
-        st.pyplot(fig)
+        # Hide x and y axes lines, ticks and labels
+        fig.update_xaxes(visible=False)
+        fig.update_yaxes(visible=False)
+
+        # Display the figure in Streamlit
+        st.plotly_chart(fig)
+
 
 
 
