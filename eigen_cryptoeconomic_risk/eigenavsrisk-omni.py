@@ -727,7 +727,7 @@ def main():
                 st.session_state.security_audits = security_audits
                 st.session_state.security_audits_score = security_audits_risk.get(security_audits, 0)
 
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * security_likelihood2 * security_impact2)
+        result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * security_likelihood2 * security_impact2
         
         result2_formatted = format_result(float(result2))
 
