@@ -2,6 +2,7 @@
 
 import streamlit as st
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
