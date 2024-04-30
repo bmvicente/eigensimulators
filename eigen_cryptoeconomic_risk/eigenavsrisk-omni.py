@@ -1134,8 +1134,6 @@ def main():
 
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
                                                    help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
-        st.write("  \n")
-
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
 
@@ -1319,7 +1317,7 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        evm_client_reputation = st.selectbox("**EVM Client Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="877w6", help="Docs: 'The execution layer is implemented by standard Ethereum execution clients, like  `geth`, `erigon`, etc, to provide the Omni EVM.'")
+        evm_client_reputation = st.selectbox("**EVM Client Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="877w6", help="**Docs: 'The execution layer is implemented by standard Ethereum execution clients, like  `geth`, `erigon`, etc, to provide the Omni EVM.'**")
         
         st.write("  \n")
 
