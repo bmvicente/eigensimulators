@@ -1259,7 +1259,7 @@ The summation or multiplication of variables revolves around their independence 
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="976", index=1)        
+            evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="976")        
         with col101:           
             evm_validator_centralization = st.selectbox("**EVM Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="2116", index=1)
 
