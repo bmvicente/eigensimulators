@@ -1111,7 +1111,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
                    st.session_state.validator_centralization_score * validator_metrics_likelihood2 * validator_metrics_impact2)
         
-        result5_formatted = format_result(result5)
+        result5_formatted = format_result(float(result5))
 
         
         validator_calc2 = f"""
