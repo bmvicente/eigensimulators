@@ -1644,47 +1644,51 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
+        data = {
+            'Components': [
+                'CONSENSUS CLIENT\nPROFILE', 
+                'AVS BUSINESS\nMODEL', 
+                'AVS PROTOCOL\nSECURITY', 
+                'AVS OPERATOR\nPROFILE', 
+                'RELAYER\nPROFILE', 
+                'EXECUTION CLIENT\nPROFILE'
+            ],
+            'Values': [16.67, 16.67, 16.67, 16.67, 16.67, 16.67],  # Each slice represents approximately 16.67%
+            'Colors': ['green', 'yellow', 'red', 'green', 'yellow', 'red']
+        }
 
-            # Data for the segments
-            data = {
-                'Components': ['Business Model', 'Consensus Client', 'Security', 'Executor Profile', 'Curator Profile', 'Relayer Profile'],
-                'Values': [16.67, 16.67, 16.67, 16.67, 16.67, 16.67],  # Each slice represents approximately 16.67%
-                'Colors': ['green', 'yellow', 'red', 'green', 'yellow', 'red']
+        # Create a pie chart using Plotly Express
+        fig = px.pie(
+            data, 
+            names='Components', 
+            values='Values', 
+            color='Components',
+            color_discrete_map={  # Assigns specific colors
+                'AVS BUSINESS\nMODEL': 'green',
+                'AVS PROTOCOL\nSECURITY': 'yellow',
+                'AVS OPERATOR\nPROFILE': 'red',
+                'CONSENSUS CLIENT\nPROFILE': 'green',
+                'EXECUTION CLIENT\nPROFILE': 'yellow',
+                'RELAYER\nPROFILE': 'red'
             }
+        )
 
-            # Create a pie chart using Plotly Express
-            fig = px.pie(
-                data, 
-                names='Components', 
-                values='Values', 
-                color='Components',
-                color_discrete_map={  # Assigns specific colors
-                    'Business Model': 'green',
-                    'Consensus Client': 'yellow',
-                    'Security': 'red',
-                    'Executor Profile': 'green',
-                    'Curator Profile': 'yellow',
-                    'Relayer Profile': 'red'
-                }
-            )
+        # Customize the layout
+        fig.update_traces(
+            textposition='outside',
+            textinfo='label',
+            marker=dict(line=dict(color='#000000', width=2)),  # Set borders
+            textfont=dict(size=18, family='Arial, bold')  # Increase font size and make it bold
+        )
+        fig.update_layout(
+            showlegend=False,  # Ensure the legend is not displayed
+            autosize=False, 
+            width=500, 
+            height=500
+        )
 
-            # Customize the layout
-            fig.update_traces(
-                textposition='outside',
-                textinfo='label+percent',
-                marker=dict(line=dict(color='#000000', width=2)),  # Set borders
-                textfont=dict(size=12, family='Arial, bold')  # Adjust font size and make it bold
-            )
-            fig.update_layout(
-                showlegend=True,  # Optionally add a legend if it makes the plot clearer
-                autosize=False, 
-                width=800,  # Increase width to provide more space for text
-                height=800  # Increase height to match width
-            )
-
-            # Display the figure in Streamlit
-            st.plotly_chart(fig)
-
+        # Display the figure in Streamlit
+        st.plotly_chart(fig)
 
 
 
