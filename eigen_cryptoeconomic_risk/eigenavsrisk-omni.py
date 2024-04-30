@@ -655,7 +655,7 @@ def main():
 
 
         
-        st.markdown('<p class="header-style" style="font-size: 24px;">AVS Protocol Security</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style" style="font-size: 22px;">AVS Protocol Security</p>', unsafe_allow_html=True)
 
 
         col27,col28 = st.columns(2, gap="medium")
