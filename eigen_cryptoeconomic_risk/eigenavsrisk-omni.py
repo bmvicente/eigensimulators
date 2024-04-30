@@ -785,13 +785,15 @@ def main():
  
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="6783")
+                st.markdown('<p class="header-style">Operator Reputation</p>', unsafe_allow_html=True)
+                operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"], index=0, key="6783")
 
-        with col101:            
-                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=0, key="674")
+        with col101:
+                st.markdown('<p class="header-style">Operators\' Geographical Centralization</p>', unsafe_allow_html=True)
+                operator_centralization = st.selectbox("", ["Centralized", "Semi-Decentralized", "Decentralized"], index=0, key="674")
             
-
-        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], index=0, key="09111")
+        st.markdown('<p class="header-style">Operators\' Entrenchment Level** (on other AVSs)</p>', unsafe_allow_html=True)
+        operator_entrenchment_level = st.selectbox("", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], index=0, key="09111")
 
         st.write("-------")
 
