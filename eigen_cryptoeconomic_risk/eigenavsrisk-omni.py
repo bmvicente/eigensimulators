@@ -684,7 +684,7 @@ def main():
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
-                    security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
+                    security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5)
                     security_likelihood2 = security_likelihood/2
         with col36:
                     security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
@@ -778,10 +778,10 @@ def main():
 
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="o0")
+            operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="o0")
             operator_likelihood2 = operator_metrics_likelihood/2
         with col34:
-            operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="o1")
+            operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="o1")
             operator_impact2 = operator_metrics_impact/2
 
         operator_likelihood_formatted = format_number(operator_likelihood2)
@@ -1070,11 +1070,11 @@ def main():
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="v0")
+            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="v0")
             validator_metrics_likelihood2 = validator_metrics_likelihood / 2
 
         with col34:
-            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v1")
+            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="v1")
             validator_metrics_impact2 = validator_metrics_impact / 2
 
 
@@ -1386,11 +1386,11 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="r0")
+            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="r0")
             relayer_metrics_likelihood2 = relayer_metrics_likelihood / 2
 
         with col34:
-            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="r1")
+            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="r1")
             relayer_metrics_impact2 = relayer_metrics_impact / 2
 
         relayer_likelihood_formatted = format_number(relayer_metrics_likelihood2)
@@ -1583,7 +1583,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         
         st.write("  \n")
         st.write("  \n")
-        
+
         st.markdown(
         f"""
         <div style="
