@@ -1101,10 +1101,17 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         if st.session_state.validator_centralization != validator_centralization:
             st.session_state.validator_centralization = validator_centralization
             st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
-
-
+        
+        def format_result(num):
+            if num.is_integer():
+                return f"{int(num)}"
+            else:
+                return f"{num:.2f}"
+            
         result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
                    st.session_state.validator_centralization_score * validator_metrics_likelihood2 * validator_metrics_impact2)
+        
+        result5_formatted = format_result(result5)
 
         
         validator_calc2 = f"""
@@ -1120,7 +1127,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{impact_formatted}</span>         
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result5):,}</span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5_formatted:,}</span>
                 </div>
             </div>"""
 
