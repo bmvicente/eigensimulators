@@ -82,13 +82,10 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""
-                    The consensus layer is implemented by the Omni consensus client, halo, and uses CometBFT for consensus on XMsgs and Omni EVM blocks.
-
-            The Simulator takes six of the AVS-generic parameters to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Omni. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
-            A good deal of the logic behind the right side of the Simulator (OMNI-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581), specifically for Omni.
-                    
-            The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being corrupted or cryptoeconomically secure. 
-        """)
+            The Simulator takes 9 of the AVS-generic parameters to simulate Omni's Risk Score and 21 parameters that specifically compose an Interoperability Network protocol. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
+            
+            Most of the research to build this Simulator was derived from (Omni's Docs)[https://docs.omni.network/] and (CometBFT's Docs)[https://docs.cometbft.com/v0.37/].
+                            """)
 
         
     st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for Omni as a Interoperability AVS.")
@@ -1630,7 +1627,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                 }
                 </style>
                 <div class="big-font">
-                The <strong>Omni Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the AVS. 
+                The <strong>Omni Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the protocol as an AVS. 
                 </div>
                 </div>
                 """, unsafe_allow_html=True)
