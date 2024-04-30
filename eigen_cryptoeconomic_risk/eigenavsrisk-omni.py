@@ -965,7 +965,7 @@ def main():
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">1</span>
-                <span style="font-size: 21px;">CometBFT & Consensus Client Profile</span>
+                <span style="font-size: 21px;">CONSENSUS LAYER: CometBFT & Consensus Client Profile</span>
             </p>
                 """, unsafe_allow_html=True)
 
@@ -1205,7 +1205,7 @@ The summation or multiplication of variables revolves around their independence 
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">2</span>
-                <span style="font-size: 21px;">Execution Client Profile</span>
+                <span style="font-size: 21px;">EXECUTION LAYER: Execution ClientS Profile</span>
             </p>
         """, unsafe_allow_html=True)
 
@@ -1367,7 +1367,7 @@ The summation or multiplication of variables revolves around their independence 
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">3</span>
-                <span style="font-size: 21px;">Relayer Profile</span>
+                <span style="font-size: 21px;">RELAYER</span>
             </p>
                 """, unsafe_allow_html=True)
         
