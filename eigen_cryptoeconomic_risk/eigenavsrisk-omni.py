@@ -1353,19 +1353,19 @@ The summation or multiplication of variables revolves around their independence 
         evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_calc(evm_val_performance_acc_rate)
         st.session_state.evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_var
 
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
+        col87, col88 = st.columns(2, gap="medium")
+        with col87:
             evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="97h6")        
-        with col101:           
-            evm_validator_centralization = st.selectbox("**EVM Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="2kpp116", index=1)
+        with col88:           
+            evm_validator_centralization = st.selectbox("**EVM Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
 
         st.write("  \n")
 
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
+        col108, col109 = st.columns(2, gap="medium")
+        with col108:
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="lk09",
                                            help="**Runs an unmodified version of the original EVM. Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
-        with col101:
+        with col109:
             evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="78kmkl77", index=1,
                                           help="**Correlated (but not causal) relationship with the level of Equivalence or Compatible of the EVM. EVM Equivalence likely leads to greater Client Diversity.**")
             
