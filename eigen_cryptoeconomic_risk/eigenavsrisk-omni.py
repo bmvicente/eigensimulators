@@ -1680,6 +1680,16 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
             marker=dict(line=dict(color='#000000', width=5)),  # Set borders
             textfont=dict(size=14, family='Arial, bold')  # Increase font size and make it bold
         )
+
+        annotations = [
+            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
+            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
+            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
+            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
+            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
+            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
+        ]
+
         fig.update_layout(
             showlegend=False,  # Ensure the legend is not displayed
             autosize=False, 
