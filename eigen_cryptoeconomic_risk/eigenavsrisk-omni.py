@@ -1659,12 +1659,12 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
             values='Values', 
             color='Components',
             color_discrete_map={  # Assigns specific colors
-                'Data Processing': 'green',
-                'User Interface': 'yellow',
-                'Security': 'red',
-                'Data Storage': 'green',
-                'Networking': 'yellow',
-                'Compliance': 'red'
+                'AVS BUSINESS MODEL': 'green',
+                'AVS PROTOCOL SECURITY': 'yellow',
+                'AVS OPERATOR PROFILE': 'red',
+                'CONSENSUS CLIENT PROFILE': 'green',
+                'EXECUTION CLIENT PROFILE': 'yellow',
+                'RELAYER PROFILE': 'red'
             }
         )
 
