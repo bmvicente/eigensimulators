@@ -1644,14 +1644,16 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
+
+        # Data for the segments
         data = {
             'Components': [
-                'CONSENSUS CLIENT\nPROFILE', 
-                'AVS BUSINESS\nMODEL', 
-                'AVS PROTOCOL\nSECURITY', 
-                'AVS OPERATOR\nPROFILE', 
-                'RELAYER\nPROFILE', 
-                'EXECUTION CLIENT\nPROFILE'
+                'CONSENSUS CLIENT PROFILE', 
+                'AVS BUSINESS MODEL', 
+                'AVS PROTOCOL SECURITY', 
+                'AVS OPERATOR PROFILE', 
+                'RELAYER PROFILE', 
+                'EXECUTION CLIENT PROFILE'
             ],
             'Values': [16.67, 16.67, 16.67, 16.67, 16.67, 16.67],  # Each slice represents approximately 16.67%
             'Colors': ['green', 'yellow', 'red', 'green', 'yellow', 'red']
@@ -1664,42 +1666,33 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
             values='Values', 
             color='Components',
             color_discrete_map={  # Assigns specific colors
-                'AVS BUSINESS\nMODEL': 'green',
-                'AVS PROTOCOL\nSECURITY': 'yellow',
-                'AVS OPERATOR\nPROFILE': 'red',
-                'CONSENSUS CLIENT\nPROFILE': 'green',
-                'EXECUTION CLIENT\nPROFILE': 'yellow',
-                'RELAYER\nPROFILE': 'red'
+                'AVS BUSINESS MODEL': 'green',
+                'AVS PROTOCOL SECURITY': 'yellow',
+                'AVS OPERATOR PROFILE': 'red',
+                'CONSENSUS CLIENT PROFILE': 'green',
+                'EXECUTION CLIENT PROFILE': 'yellow',
+                'RELAYER PROFILE': 'red'
             }
         )
 
         # Customize the layout
         fig.update_traces(
-            textposition='inside',
+            textposition='outside',
             textinfo='label',
-            marker=dict(line=dict(color='#000000', width=5)),  # Set borders
+            marker=dict(line=dict(color='#000000', width=2)),  # Set borders
             textfont=dict(size=14, family='Arial, bold')  # Increase font size and make it bold
         )
-
-        annotations = [
-            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
-            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
-            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
-            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
-            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
-            dict(x=0.8, y=0.8, text='Relayer<br>Profile', showarrow=False, font=dict(size=18, color='black', family='Arial, bold')),
-        ]
-
         fig.update_layout(
             showlegend=False,  # Ensure the legend is not displayed
             autosize=False, 
             width=600, 
-            height=600,
-            annotations=annotations  # Apply custom annotations
+            height=600
         )
 
         # Display the figure in Streamlit
         st.plotly_chart(fig)
+
+
 
 
 
