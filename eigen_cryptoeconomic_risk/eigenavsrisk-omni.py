@@ -503,7 +503,7 @@ def main():
             st.markdown("""
             <style>
             .header-style {
-                font-size: 12px;
+                font-size: 10px;
                 font-weight: bold;
                 margin-bottom: 0px;  /* Adjust the space below the header */
             }
