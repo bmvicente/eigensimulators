@@ -1524,7 +1524,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     
 
 
-    col56,col57 = st.columns([8,6], gap="large")
+    col56,col57 = st.columns([9,6], gap="large")
     with col56:
 
         def normalize_score(original_score, min_original=14.25, max_original=77325):
