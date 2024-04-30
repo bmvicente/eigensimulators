@@ -523,7 +523,7 @@ def main():
             st.markdown('<p class="header-style">Total Restaked TVL on Omni</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            restaked_tvl = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="33")
+            restaked_tvl = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="3387678")
             st.write(f"&#8226; Total Restaked TVL on Omni: **{restaked_tvl:,.0f} ETH**")
 
 
@@ -581,13 +581,13 @@ def main():
 
         col44,col45 = st.columns(2, gap="medium")
         with col44:
-            business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3, key='afa', help=f"""
+            business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3, key='afyya', help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             business_dual_likelihood2 = business_dual_likelihood / 2
         with col45:
-            business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7, key='ewe', help=f"""
+            business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7, key='eywe', help=f"""
                                                       **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
@@ -732,7 +732,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            code_complexity = st.selectbox("**AVS Protocol Architecture & Code Complexity**", ["High", "Medium", "Low"], index=0, key="ertr")
+            code_complexity = st.selectbox("**AVS Protocol Architecture & Code Complexity**", ["High", "Medium", "Low"], index=0, key="er7tr")
             
         with col28:
             # Number of Security Audits
@@ -750,7 +750,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            security_audits = st.number_input("**AVS Number of Security Audits**", min_value=0, max_value=5, step=1, value=2, key="00")
+            security_audits = st.number_input("**AVS Number of Security Audits**", min_value=0, max_value=5, step=1, value=2, key="0890")
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
@@ -862,25 +862,25 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="6783")
+                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="678893")
 
         with col101:            
-                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=0, key="674")
+                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=0, key="61174")
             
 
-        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], index=0, key="09111")
+        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], index=0, key="0933111")
 
         st.write("-------")
 
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="o0", help=f"""
+            operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="o09", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             operator_likelihood2 = operator_metrics_likelihood/2
         with col34:
-            operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="o1", help=f"""
+            operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="o1r", help=f"""
                                                       **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
@@ -1005,7 +1005,7 @@ def main():
         st.markdown('<p class="header-style">Total Staked $OMNI</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212")
+        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
         st.write(f"&#8226; Total Staked \$OMNI: **{staked_omni:,.0f} ETH**")
 
 
@@ -1155,7 +1155,7 @@ def main():
 
         st.write("-------")
 
-        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="090888",
+        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0904888",
                                                 help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
         st.write("  \n")
 
@@ -1166,24 +1166,24 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            validator_reputation = st.selectbox("**CometBFT Validators' Reputation**", ["Unknown", "Established", "Renowned"], key="0990", index=1,
+            validator_reputation = st.selectbox("**CometBFT Validators' Reputation**", ["Unknown", "Established", "Renowned"], key="0977790", index=1,
                                                 help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
         with col101:           
-            validator_centralization = st.selectbox("**CometBFT Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232", index=1,
+            validator_centralization = st.selectbox("**CometBFT Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="30'232", index=1,
                                                     help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
         
         st.write("-------")
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="v0", help=f"""
+            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="v660", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             validator_metrics_likelihood2 = validator_metrics_likelihood / 2
 
         with col34:
-            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="v1", help=f"""
+            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="v90901", help=f"""
                                                      **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
@@ -1344,43 +1344,43 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        evm_client_reputation = st.selectbox("**EVM Client Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="877w6", help="**Docs: 'The execution layer is implemented by standard Ethereum execution clients, like  `geth`, `erigon`, etc, to provide the Omni EVM.'**")
+        evm_client_reputation = st.selectbox("**EVM Client Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="87667w6", help="**Docs: 'The execution layer is implemented by standard Ethereum execution clients, like  `geth`, `erigon`, etc, to provide the Omni EVM.'**")
         
         st.write("  \n")
 
-        evm_val_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="6782")
+        evm_val_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
 
         evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_calc(evm_val_performance_acc_rate)
         st.session_state.evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_var
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="976")        
+            evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="97h6")        
         with col101:           
-            evm_validator_centralization = st.selectbox("**EVM Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="2116", index=1)
+            evm_validator_centralization = st.selectbox("**EVM Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="2kpp116", index=1)
 
         st.write("  \n")
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="09",
+            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="lk09",
                                            help="**Runs an unmodified version of the original EVM. Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
         with col101:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", index=0,
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="78kmkl77", index=0,
                                           help="**Correlated (but not causal) relationship with the level of Equivalence or Compatible of the EVM. EVM Equivalence likely leads to greater Client Diversity.**")
             
         st.write("-------")
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e0", help=f"""
+            evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e09u890", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             evm_metrics_likelihood2 = evm_metrics_likelihood / 2
 
         with col34:
-            evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="e1", help=f"""
+            evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="ejin1", help=f"""
                                                       **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
@@ -1545,10 +1545,10 @@ The summation or multiplication of variables revolves around their independence 
         
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="43421",
+            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="43yugu421",
                                                 help="**Attests for a Relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
         with col101:
-            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="321132", index=0,
+            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="32uih1132", index=0,
                                                     help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
 
         relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
@@ -1558,14 +1558,14 @@ The summation or multiplication of variables revolves around their independence 
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="r0", help=f"""
+            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="ruih0", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             relayer_metrics_likelihood2 = relayer_metrics_likelihood / 2
 
         with col34:
-            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="r1", help=f"""
+            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="r7y91", help=f"""
                                                       **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
