@@ -503,7 +503,7 @@ def main():
             st.write("  \n")
 
             # Displaying the custom styled header
-            st.markdown('<p class="header-style" style="font-size: 14px;">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style" style="font-size: 13px;">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
 
             st.write("  \n")
 
