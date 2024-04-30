@@ -1683,8 +1683,8 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         fig.update_layout(
             showlegend=False,  # Ensure the legend is not displayed
             autosize=False, 
-            width=500, 
-            height=500
+            width=600, 
+            height=600
         )
 
         # Display the figure in Streamlit
