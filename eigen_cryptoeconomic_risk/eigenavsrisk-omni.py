@@ -1615,61 +1615,38 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
-        # Define the labels and corresponding colors
-        labels = [
-            'CONSENSUS CLIENT PROFILE', 'AVS BUSINESS MODEL',
-            'AVS PROTOCOL SECURITY', 'AVS OPERATOR PROFILE',
-            'RELAYER PROFILE', 'EXECUTION CLIENT PROFILE'
-        ]
-        colors = ['green', 'red', 'yellow', 'red', 'yellow', 'red']
-
         # Create a Figure with subplots in a 3x2 grid
         fig = go.Figure()
 
-        # Define the dimensions of each rectangle
-        rect_width = 0.2
-        rect_height = 0.2
-
-        for i, (label, color) in enumerate(zip(labels, colors)):
-            row = i // 2 + 1
-            col = i % 2 + 1
-
-            # Calculate the position of the rectangle
-            x0 = (col - 1) * 0.5
-            y0 = 1 - row * 0.5
-            x1 = x0 + rect_width
-            y1 = y0 - rect_height
-
-            # Add the rectangle shape
-            fig.add_shape(
-                type="rect",
-                x0=x0, y0=y0, x1=x1, y1=y1,
-                fillcolor=color,
-                line=dict(color='black', width=2),
-                layer="below"
-            )
-
-            # Add the label inside the rectangle
-            fig.add_annotation(
-                x=(x0 + x1) / 2,
-                y=(y0 + y1) / 2,
-                text=label,
-                showarrow=False,
-                font=dict(size=16, color='black'),
-            )
+        # Add rectangles for each cell in the grid
+        for row in range(3):
+            for col in range(2):
+                x0 = col
+                y0 = row
+                x1 = col + 1
+                y1 = row + 1
+                
+                fig.add_shape(
+                    type="rect",
+                    x0=x0, y0=y0, x1=x1, y1=y1,
+                    fillcolor="blue",
+                    line=dict(color='black', width=2),
+                    layer="below"
+                )
 
         # Update layout for the grid
         fig.update_layout(
-            width=800,
-            height=600,
-            xaxis=dict(range=[0, 1], visible=False),
-            yaxis=dict(range=[0, 1], visible=False),
+            width=400,
+            height=300,
+            xaxis=dict(range=[0, 2], visible=False),
+            yaxis=dict(range=[0, 3], visible=False),
             plot_bgcolor="white",
             showlegend=False
         )
 
         # Display the figure in Streamlit
         st.plotly_chart(fig)
+
 
 
 
