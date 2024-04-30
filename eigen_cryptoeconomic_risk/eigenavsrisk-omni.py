@@ -661,7 +661,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            code_complexity = st.selectbox("AVS Protocol Architecture & Code Complexity", ["High", "Medium", "Low"], index=0, key="ertr")
+            code_complexity = st.selectbox("**AVS Protocol Architecture & Code Complexity**", ["High", "Medium", "Low"], index=0, key="ertr")
             
         with col28:
             # Number of Security Audits
@@ -679,7 +679,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            security_audits = st.number_input("AVS Number of Security Audits", min_value=0, max_value=5, step=1, value=2, key="00")
+            security_audits = st.number_input("**AVS Number of Security Audits**", min_value=0, max_value=5, step=1, value=2, key="00")
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
