@@ -1694,7 +1694,8 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
             showlegend=False,  # Ensure the legend is not displayed
             autosize=False, 
             width=600, 
-            height=600
+            height=600,
+            annotations=annotations  # Apply custom annotations
         )
 
         # Display the figure in Streamlit
