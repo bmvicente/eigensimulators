@@ -1654,7 +1654,8 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     st.write("  \n")
     st.write("  \n")
-    
+    st.write("  \n")
+
     st.write("**Note**: *It is important to bear in mind that since we are at the early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
 
     with col57:
