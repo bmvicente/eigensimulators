@@ -1052,7 +1052,7 @@ def main():
 
         st.write("-------")
 
-        validator_performance_acc_rate = st.slider("**Validator `XBlock`s Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
                                                    help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
         
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
@@ -1334,7 +1334,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         
         st.write("  \n")
 
-        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient `XBlock` Submission and Verification', value=True)
+        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient XBlock Submission and Verification', value=True)
         
         relayer_da_solution = st.checkbox('**DA Solution** to address Complex Verification and Increased Computational Cost of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
 
