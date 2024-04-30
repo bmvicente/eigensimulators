@@ -757,7 +757,6 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
-        st.write("  \n")
 
 
         st.markdown('<p class="header-style" style="font-size: 21px;">AVS Operator Profile</p>', unsafe_allow_html=True)
