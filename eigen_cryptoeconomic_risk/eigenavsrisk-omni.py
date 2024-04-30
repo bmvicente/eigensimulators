@@ -1644,28 +1644,26 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
-            st.header('Omni Protocol System Components')
+        # Labels for each segment
+        labels = ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance']
 
-            # Labels for each segment
-            labels = ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance']
+        # Values for each segment, making all slices equal
+        sizes = [16.67, 16.67, 16.67, 16.67, 16.67, 16.67]  # Each slice represents approximately 16.67%
 
-            # Values for each segment, making all slices equal
-            sizes = [16.67, 16.67, 16.67, 16.67, 16.67, 16.67]  # Each slice represents approximately 16.67%
+        # Colors for each segment
+        colors = ['green', 'yellow', 'red', 'green', 'yellow', 'red']
 
-            # Colors for each segment
-            colors = ['green', 'yellow', 'red', 'green', 'yellow', 'red']
+        fig1, ax1 = plt.subplots()
+        ax1.pie(sizes, labels=labels, colors=colors, startangle=90)
 
-            fig1, ax1 = plt.subplots()
-            ax1.pie(sizes=False, labels=labels, colors=colors, autopct='%1.1f%%', shadow=False, startangle=90)
+        # Setting the aspect ratio to be equal, to ensure the pie chart is circular
+        ax1.axis('equal')
 
-            # Removing the 3D effect by not using the shadow and explode parameters
-            ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+        # Resize the figure to be smaller
+        fig1.set_size_inches(2, 2)  # Sets the figure size to 2x2 inches
 
-            # Resize the figure to be smaller
-            fig1.set_size_inches(2, 2)  # Sets the figure size to 4x4 inches
-
-            # Use Streamlit to display the figure
-            st.pyplot(fig1)
+        # Use Streamlit to display the figure
+        st.pyplot(fig1)
 
 
 
