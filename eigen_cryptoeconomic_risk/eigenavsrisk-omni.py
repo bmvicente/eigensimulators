@@ -1615,7 +1615,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
 
     with col57:
-        
+
         labels = [
             'CONSENSUS CLIENT PROFILE', 'AVS BUSINESS MODEL',
             'AVS PROTOCOL SECURITY', 'AVS OPERATOR PROFILE',
@@ -1627,7 +1627,11 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         fig = go.Figure()
 
         for i, (label, color) in enumerate(zip(labels, colors)):
-            subplot = f'xy{i // 2 + 1}{i % 2 + 1}'
+            row = i // 2 + 1
+            col = i % 2 + 1
+            
+            # Calculate the subplot number
+            subplot_num = row * 10 + col
             
             fig.add_trace(
                 go.Scatter(
@@ -1636,7 +1640,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                     textfont=dict(size=16, color="black"),
                     showlegend=False,
                     hoverinfo="skip",
-                    subplot=subplot  # Specify the subplot
+                    subplot=f"{'3' if subplot_num == 6 else ''}{subplot_num}"  # Adjust subplot number for last row
                 )
             )
 
@@ -1646,7 +1650,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                 x0=0, y0=0, x1=1, y1=1,
                 line=dict(width=2),
                 fillcolor=color,
-                subplot=subplot  # Specify the subplot
+                row=row, col=col
             )
 
         # Update layout for the grid
@@ -1663,6 +1667,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
         # Display the figure in Streamlit
         st.plotly_chart(fig)
+
 
 
 
