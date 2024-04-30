@@ -476,7 +476,7 @@ def main():
 
 
         
-        st.markdown('<p class="header-style" style="font-size: 22px;">AVS BUSINESS MODEL</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style" style="font-size: 21px;">AVS Business Model</p>', unsafe_allow_html=True)
 
 
         col47,col48 = st.columns(2, gap="medium")
@@ -655,7 +655,7 @@ def main():
 
 
         
-        st.markdown('<p class="header-style" style="font-size: 22px;">AVS Protocol Security</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style" style="font-size: 21px;">AVS Protocol Security</p>', unsafe_allow_html=True)
 
 
         col27,col28 = st.columns(2, gap="medium")
@@ -780,7 +780,7 @@ def main():
         st.write("  \n")
 
 
-        st.markdown('<p class="header-style" style="font-size: 22px;">AVS OPERATOR PROFILE</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style" style="font-size: 21px;">AVS Operator Profile</p>', unsafe_allow_html=True)
 
  
         col100, col101 = st.columns(2, gap="medium")
@@ -966,7 +966,7 @@ def main():
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">1</span>
-                <span style="font-size: 22px;">CometBFT & Consensus Client Profile</span>
+                <span style="font-size: 21px;">CometBFT & Consensus Client Profile</span>
             </p>
                 """, unsafe_allow_html=True)
 
@@ -1195,7 +1195,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">2</span>
-                <span style="font-size: 22px;">EVM Metrics through Execution Client</span>
+                <span style="font-size: 21px;">EVM Metrics through Execution Client</span>
             </p>
         """, unsafe_allow_html=True)
 
@@ -1346,7 +1346,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">3</span>
-                <span style="font-size: 22px;">Relayer Profile</span>
+                <span style="font-size: 21px;">Relayer Profile</span>
             </p>
                 """, unsafe_allow_html=True)
         
