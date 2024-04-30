@@ -1668,8 +1668,8 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         )
 
         # Customize the layout
-        fig.update_traces(textposition='inside', textinfo='label')
-        fig.update_layout(showlegend=False, autosize=False, width=400, height=400)
+        fig.update_traces(textposition='outside', textinfo='label')
+        fig.update_layout(showlegend=False, autosize=False, width=800, height=800)
 
         # Display the figure in Streamlit
         st.plotly_chart(fig)
