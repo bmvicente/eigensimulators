@@ -1090,7 +1090,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
 
 
         result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
-                   st.session_state.validator_centralization_score * validator_metrics_likelihood * validator_metrics_impact)
+                   st.session_state.validator_centralization_score * ((validator_metrics_likelihood * validator_metrics_impact)/2))
 
         
         validator_calc2 = f"""
@@ -1102,9 +1102,9 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_likelihood}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(validator_metrics_likelihood/2)}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_impact}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(validator_metrics_impact/2)}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result5):,}</span>
             </div>"""
@@ -1230,7 +1230,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
 
 
         result7 = (st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score * 
-                   evm_metrics_likelihood * evm_metrics_impact)
+                   ((evm_metrics_likelihood * evm_metrics_impact)/2))
 
         evm_calc2 = f"""
             <div style="text-align: center;">
@@ -1239,9 +1239,9 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_likelihood}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(evm_metrics_likelihood/2)}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_impact}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(evm_metrics_impact/2)}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result7):,}</span>
             </div>"""
@@ -1375,7 +1375,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
         result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
                    st.session_state.relayer_performance_acc_rate_var * 
-                   relayer_metrics_likelihood * relayer_metrics_impact)
+                   ((relayer_metrics_likelihood * relayer_metrics_impact)/2))
 
         
         relayer_calc2 = f"""
@@ -1387,9 +1387,9 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_likelihood}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(relayer_metrics_likelihood/2)}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_impact}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(relayer_metrics_impact/2)}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result9):,}</span>
             </div>"""
