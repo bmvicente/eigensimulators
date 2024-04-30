@@ -693,7 +693,7 @@ def main():
                     security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, help=f"""
                                                           Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
 
-                                                          1 == Unlikely | 10 == Very Likely"""))
+                                                          1 == Unlikely | 10 == Very Likely""")
                     security_likelihood2 = security_likelihood/2
         with col36:
                     security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, help=f"""
@@ -793,7 +793,7 @@ def main():
             operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="o0", help=f"""
                                                           Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
 
-                                                          1 == Unlikely | 10 == Very Likely"""))
+                                                          1 == Unlikely | 10 == Very Likely""")
             operator_likelihood2 = operator_metrics_likelihood/2
         with col34:
             operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="o1", help=f"""
@@ -1091,7 +1091,7 @@ def main():
             validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="v0", help=f"""
                                                           Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
 
-                                                          1 == Unlikely | 10 == Very Likely"""))
+                                                          1 == Unlikely | 10 == Very Likely""")
             validator_metrics_likelihood2 = validator_metrics_likelihood / 2
 
         with col34:
@@ -1260,7 +1260,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
             evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e0", help=f"""
                                                           Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
 
-                                                          1 == Unlikely | 10 == Very Likely"""))
+                                                          1 == Unlikely | 10 == Very Likely""")
             evm_metrics_likelihood2 = evm_metrics_likelihood / 2
 
         with col34:
@@ -1419,7 +1419,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
             relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="r0", help=f"""
                                                           Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.
 
-                                                          1 == Unlikely | 10 == Very Likely"""))
+                                                          1 == Unlikely | 10 == Very Likely""")
             relayer_metrics_likelihood2 = relayer_metrics_likelihood / 2
 
         with col34:
