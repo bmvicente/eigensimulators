@@ -1673,7 +1673,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         ax.axis('off')
 
         # Show plot
-        plt.show()
+        fig.show()
 
 
 
