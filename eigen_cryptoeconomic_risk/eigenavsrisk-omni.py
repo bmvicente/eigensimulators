@@ -1643,7 +1643,8 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
 
     with col57:
-
+        
+        # Data for the segments
         data = {
             'Components': ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance'],
             'Values': [16.67, 16.67, 16.67, 16.67, 16.67, 16.67],  # Each slice represents approximately 16.67%
@@ -1670,7 +1671,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         fig.update_traces(
             textposition='outside',
             textinfo='label',
-            marker=dict(lines=dict(color='#000000', width=2)),  # Add borders to each slice
+            marker=dict(line=dict(color='#000000', width=2)),  # Correct marker syntax for borders
             textfont=dict(size=14)  # Increase the font size of the labels
         )
         fig.update_layout(
