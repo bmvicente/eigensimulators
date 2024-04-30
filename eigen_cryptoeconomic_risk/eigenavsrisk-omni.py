@@ -425,7 +425,6 @@ def main():
 
 
     st.write("\n")
-    st.write("\n")
 
 
     col1, col2 = st.columns([1, 1], gap="large")
@@ -528,6 +527,7 @@ def main():
             st.write(f"&#8226; Total Restaked TVL on Omni: **{restaked_tvl:,.0f} ETH**")
 
 
+            st.write("\n")
             st.write("\n")
             st.write("\n")
             st.write("\n")
