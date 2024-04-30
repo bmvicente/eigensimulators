@@ -1409,7 +1409,7 @@ The summation or multiplication of variables revolves around their independence 
         st.write("-------")
 
         relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                     help="**The Performance Accuracy Rate of the Relayer in the overall `XMsg` submission process and on the generation of Merkle-multi proofs and signatures.**")
+                                                     help="**The Performance Accuracy Rate of the Relayer in the overall `XMsg` submission process to the rollup destination chains with the respective generation of Merkle-multi proofs and signatures.**")
         
         col100, col101 = st.columns(2, gap="medium")
         with col100:
