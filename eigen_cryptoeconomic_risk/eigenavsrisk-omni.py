@@ -1,6 +1,7 @@
 
 
 import streamlit as st
+import matplotlib.pyplot as plt
 
 
 security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
@@ -84,7 +85,7 @@ def main():
         st.markdown(f"""
             The Simulator takes 9 AVS-generic parameters and 21 parameters that specifically compose an Interoperability Network protocol with a CometBFT consensus architecture to calculate Omni's Risk Score as an EigenLayer AVS. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
             
-            Most of the research to build this Simulator was derived from [Omni's Docs](https://docs.omni.network/) and [CometBFT's Docs](https://docs.cometbft.com/v0.37/).
+            Most of the research to build this Simulator was derived from [Omni's Docs](https://docs.omni.network/) and [CometBFT's Docs](https://docs.cometbft.com/v0.37/), as well as the images in the "Logic" dropdowns.
                             """)
 
         
@@ -474,6 +475,9 @@ def main():
             st.write("\n")
 
 
+        
+        st.markdown('<p class="header-style">AVS Business Model</p>', unsafe_allow_html=True)
+
 
         col47,col48 = st.columns(2, gap="medium")
         with col47:
@@ -493,7 +497,7 @@ def main():
                 """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-            st.markdown('<p class="header-style">AVS Business Model</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">AVS Business Model Type</p>', unsafe_allow_html=True)
 
             # Dropdown menu
             business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
@@ -649,6 +653,8 @@ def main():
         st.write("  \n")
         st.write("  \n")
 
+        
+        st.markdown('<p class="header-style">AVS Protocol Security</p>', unsafe_allow_html=True)
 
         col27,col28 = st.columns(2, gap="medium")
         with col27:
@@ -772,12 +778,15 @@ def main():
         st.write("  \n")
 
 
+        st.markdown('<p class="header-style">AVS Operator Profile</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Consensus Client Profile</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Execution Client Profile</p>', unsafe_allow_html=True)
 
         # Operator Metrics
         st.markdown("""
                     <style>
                     .header-style {
-                        font-size: 18px;
+                        font-size: 20px;
                         font-weight: bold;
                         margin-bottom: 0px;  /* Adjust the space below the header */
                     }
@@ -816,14 +825,12 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                    Although being a purely qualitative metric, the **Reputation Level of the Operator** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
+                    Although being a purely qualitative metrics, the **Reputation Level of the Operator** and the **Geographical Centralization Level of the Operator**  that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions. [Rated Network](https://www.rated.network/) constitutes a good tool to assess this.                     
                     
                     ```python
                     avs_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
                     ```
-                        
-                    Although being a purely qualitative metric, the **Geographical Centralization Level of the Operator** that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions.                        
-                    
+                                            
                     ```python
                     avs_operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
                     ```
@@ -982,7 +989,7 @@ def main():
         col38,col39 = st.columns(2, gap="medium")
         with col38:
             engine_api = st.checkbox('**Ethereum Engine API** used by Nodes to pair the Consensus Client (Halo) with the EVM Execution Client', 
-                                     value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with a Consensus Client (like halo) that implements CometBFT consensus.**")
+                                     value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with Halo Consensus Client that implements CometBFT consensus.**")
         with col39:
             validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', value=True,
                                                help="**ABCI++ is an adapter that wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.**")
@@ -1006,7 +1013,7 @@ def main():
         with col52:
             da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions and Low Latency', value=False)
         with col53:
-            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False)
+            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for `XMsg` Fast Finality', value=False)
 
 
         if st.session_state.engine_api != engine_api:
@@ -1077,8 +1084,8 @@ def main():
 
         st.write("-------")
 
-        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                   help="**The Performance Accuracy Rate of Validators attesting for XBlocks consists of the timely submission of cross-chain messages, XBlock cache management, and the overall decision-making in including XMsgs in an XBlock.**")
+        validator_performance_acc_rate = st.slider("**Validator `XBlock`s Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                   help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
         
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
@@ -1086,7 +1093,7 @@ def main():
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="0990",
-                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to XBlocks before being submitted on-chain.**")
+                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
         with col101:           
             validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232", index=0,
                                                     help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
@@ -1113,17 +1120,17 @@ def main():
                 st.image("images/omni-comet-diagram.jpg", width=750)
 
                 st.markdown("""
-The **Engine API** is a critical component of the Omni protocol, connecting high-performance Ethereum execution clients with a new consensus client for the CometBFT system, enhancing system modularity and upgradability.**
+The **Engine API** is a critical component of the Omni protocol, connecting high-performance Ethereum Execution Clients with Halo (Consensus Client) for the CometBFT system, enhancing system modularity and upgradability.
 
-- **Scalability and Efficiency: The Engine API improves the blockchain's ability to scale by managing the transaction mempool separately and enabling efficient state translations, thus contributing to rapid transaction finality.**
-- **Flexibility: It offers the capability to interchange or upgrade execution clients seamlessly, preserving system integrity and compatibility with a range of Ethereum execution clients.
+- **Scalability and Efficiency**: The Engine API improves ???the blockchain's ability??? to scale by managing the transaction mempool separately and enabling efficient state translations, thus contributing to rapid transaction finality.
+- **Flexibility**: It offers the capability to interchange or upgrade execution clients seamlessly, preserving system integrity and compatibility with a range of Ethereum execution clients.
                             
                             
-**ABCI++** is an enhanced blockchain interface protocol designed to improve upon its predecessor ABCI by introducing more sophisticated and flexible interaction layers between blockchain consensus engines and applications.**
+**ABCI++** is an enhanced Application Interface Protocol designed to improve upon its predecessor ABCI by introducing more sophisticated and flexible interaction layers between Consensus Engines and Applications.**
 
-- **It facilitates complex state transitions for blockchain applications, including the Omni EVM, allowing for secure and accurate processing without mutual interference.**
-- **ABCI++ streamlines the validation and attestation processes by providing validators with detailed metadata through XBlocks, improving efficiency and reliability.**
-- **By decoupling consensus from transaction management and utilizing the Engine API, ABCI++ reduces network congestion and maintains a lightweight consensus mechanism, thereby ensuring quick blockchain finality.
+- Facilitates complex state transitions for blockchain applications, including the Omni EVM, allowing for secure and accurate processing without mutual interference;
+- Streamlines the validation and attestation processes by providing validators with detailed metadata through `XBlock`s, improving efficiency and reliability;
+- Reduces network congestion and maintains a lightweight consensus mechanism by decoupling consensus from transaction management and utilizing the Engine API, thereby ensuring quick blockchain finality.
                             """)
 
 
@@ -1269,12 +1276,12 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         evm_impact_formatted = format_number(evm_metrics_impact2)
 
         with st.expander("Logic"):
-                st.markdown("""
-**Omni's EVM** on the Omni network ensures execution consensus through a streamlined process involving the halo client and execution clients, all facilitated by the Engine API, and provides strong anti-sybil mechanisms and EVM equivalence for developer accessibility.**
+               st.markdown("""
+**Omni's EVM Client** on the Omni Network ensures execution consensus through a streamlined process involving the Halo Client and Execution Clients, all facilitated by the Engine API, and provides strong Anti-Sybil mechanisms and EVM equivalence for developer accessibility.
 
-- **Seamless Migration: Developers can effortlessly migrate existing DApps to the Omni EVM without any need for changes, enabling easy access to Omni's ecosystem.**
-- **Developer Tooling Compatibility: The Omni EVM maintains full compatibility with Ethereum's development tools, ensuring that existing Ethereum developer tooling works without issues.**
-- **Future-Proof: By adhering to Ethereum's standards and upgrade paths, the Omni EVM ensures that it remains up-to-date, allowing developers to utilize the latest features as they become available.
+- **Seamless Migration**: Developers can effortlessly migrate existing DApps to the Omni EVM without any need for changes, enabling easy access to Omni's ecosystem;
+- **Developer Tooling Compatibility**: The Omni EVM maintains full compatibility with Ethereum's development tools, ensuring that existing Ethereum developer tooling works without issues;
+- **Future-Proof**: By adhering to Ethereum's standards and upgrade paths, the Omni EVM ensures that it remains up-to-date, allowing developers to utilize the latest features as they become available.
                             """)
 
 
@@ -1358,7 +1365,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         
         st.write("  \n")
 
-        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient XBlock Submission and Verification', value=True)
+        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient `XBlock` Submission and Verification', value=True)
         
         relayer_da_solution = st.checkbox('**DA Solution** to address Complex Verification and Increased Computational Cost of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
 
@@ -1393,7 +1400,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         st.write("-------")
 
         relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                     help="**The Performance Accuracy Rate of the Relayer in the overall XMsg submission process and on the generation of Merkle-multi proofs and signatures.**")
+                                                     help="**The Performance Accuracy Rate of the Relayer in the overall `XMsg` submission process and on the generation of Merkle-multi proofs and signatures.**")
         
         col100, col101 = st.columns(2, gap="medium")
         with col100:
@@ -1425,11 +1432,11 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
                 st.image("images/omni-relayer-diagram.jpg", width=750)
 
                 st.markdown("""                        
-The **Relayer** in the Omni network acts as a critical intermediary, handling the transfer of attested cross-network messages between the Omni network and various destination rollup VMs, with performance and security implications.**
+The **Relayer** in the Omni network acts as a critical intermediary, handling the transfer of attested cross-network messages between the Omni network and various destination rollup VMs, with performance and security implications. 
 
-- **Decision Making for Message Submission: Relayers determine the number of `XMsg`s to include in submissions, balancing the costs associated with transaction size, computational requirements, and gas limits.**
-- **Relayer Performance: They create and submit transactions with merkle multi-proofs to destination chains based on attested `XBlock` data, ensuring secure and efficient message delivery.**
-- **Security and Scalability: As a permissionless service, Relayers reduce central points of failure and uphold the network's decentralized ethos, while managing security risks and computational intensiveness, especially as the network scales.
+- **Decision Making for Message Submission**: Relayers determine the number of `XMsg`s to include in submissions, balancing the costs associated with transaction size, computational requirements, and gas limits.
+- **Relayer Performance**: They create and submit transactions with merkle multi-proofs to destination chains based on attested `XBlock` data, ensuring secure and efficient message delivery.
+- **Security and Scalability**: As a permissionless service, Relayers reduce central points of failure and uphold the network's decentralized ethos, while managing security risks and computational intensiveness, especially as the network scales.
                             """)
 
 
@@ -1589,49 +1596,76 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     
 
 
+    col56,col57 = st.columns(2, gap="medium")
+    with col56:
+        if st.session_state.risk_score >= 75:
+            color = "#d32f2f"  # Red color for high risk
+            background_color = "#fde0dc"  # Light red background
+        elif st.session_state.risk_score <= 25:
+            color = "#388e3c"  # Green color for low risk
+            background_color = "#ebf5eb"  # Light green background
+        else:
+            color = "black"  # Black color for medium risk
+            background_color = "#ffffff"  # White background
 
-    if st.session_state.risk_score >= 75:
-        color = "#d32f2f"  # Red color for high risk
-        background_color = "#fde0dc"  # Light red background
-    elif st.session_state.risk_score <= 25:
-        color = "#388e3c"  # Green color for low risk
-        background_color = "#ebf5eb"  # Light green background
-    else:
-        color = "black"  # Black color for medium risk
-        background_color = "#ffffff"  # White background
+        st.markdown(
+        f"""
+        <div style="
+            border: 2px solid {color};
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            margin: 10px 0;
+            background-color: {background_color};">
+            <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
+        </div>
+        """, 
+        unsafe_allow_html=True
+        )
 
-    st.markdown(
-    f"""
-    <div style="
-        border: 2px solid {color};
-        border-radius: 5px;
-        padding: 10px;
-        text-align: center;
-        margin: 10px 0;
-        background-color: {background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
-    </div>
-    """, 
-    unsafe_allow_html=True
-    )
-
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
 
-    st.markdown("""
-                <style>
-                .big-font {
-                    font-size: 18px;  /* Adjust font size as needed */
-                }
-                </style>
-                <div class="big-font">
-                The <strong>Omni Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the protocol as an AVS. 
-                </div>
-                </div>
-                """, unsafe_allow_html=True)
+        st.markdown("""
+                    <style>
+                    .big-font {
+                        font-size: 18px;  /* Adjust font size as needed */
+                    }
+                    </style>
+                    <div class="big-font">
+                    The <strong>Omni Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the protocol as an AVS. 
+                    </div>
+                    </div>
+                    """, unsafe_allow_html=True)
 
+
+
+    with col57:
+
+        st.title('Omni Protocol System Components')
+
+        # Labels for each segment
+        labels = ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance']
+
+        # Values for each segment
+        sizes = [15, 15, 15, 15, 20, 20]  # Adjust these values as necessary
+
+        # Colors for each segment
+        colors = ['green', 'yellow', 'red', 'green', 'yellow', 'red']
+
+        # Explode to offset a segment slightly. All set to 0 here for no offset.
+        explode = (0, 0, 0, 0, 0, 0)
+
+        fig1, ax1 = plt.subplots()
+        ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=90)
+
+        # Equal aspect ratio ensures that pie is drawn as a circle.
+        ax1.axis('equal')  
+
+        # Use Streamlit to display the figure
+        st.pyplot(fig1)
 
 
 
