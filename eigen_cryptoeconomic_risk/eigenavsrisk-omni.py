@@ -650,7 +650,7 @@ def main():
 
             st.markdown('<p class="header-style">AVS Protocol Architecture & Code Complexity</p>', unsafe_allow_html=True)
 
-            code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
+            code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=0, key="ertr")
             
         with col28:
             # Number of Security Audits
@@ -762,13 +762,13 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="6783")
+                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="6783")
 
         with col101:            
-                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="674")
+                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=0, key="674")
             
 
-        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], key="09111")
+        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], index=0, key="09111")
 
         st.write("-------")
 
@@ -1048,10 +1048,10 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990",
+            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="0990",
                                                 help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to XBlocks before being submitted on-chain.**")
         with col101:           
-            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232",
+            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232", index=0,
                                                     help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
         
         st.write("-------")
@@ -1199,7 +1199,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="09",
                                            help="**Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
         with col101:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", index=2,
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", index=0,
                                           help="**Correlated (but not causal) relationship with the level of Equivalence or Compatible of the EVM. EVM Equivalence likely leads to greater Client Diversity.**")
             
         st.write("-------")
@@ -1336,10 +1336,10 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421",
+            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="43421",
                                                 help="**Attests for a Relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
         with col101:
-            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="321132",
+            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="321132", index=0,
                                                     help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
 
         relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
