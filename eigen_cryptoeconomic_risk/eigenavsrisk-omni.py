@@ -1109,8 +1109,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
                         </script>
                     </span>
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{(st.session_state.validator_metrics_impact/2)}</span>
-                   <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">
                         <script>
                             var number = ({(st.session_state.validator_metrics_impact)/2} / 2);  // Adjust if this should be dynamic
                             document.write(Number.isInteger(number) ? number : number.toFixed(1));
