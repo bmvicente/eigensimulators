@@ -500,6 +500,7 @@ def main():
             business_model = st.selectbox("**AVS Business Model Type**", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
 
         with col48:
+            st.write("  \n")
 
             # Displaying the custom styled header
             st.markdown('<p class="header-style" style="font-size: 16px;">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
