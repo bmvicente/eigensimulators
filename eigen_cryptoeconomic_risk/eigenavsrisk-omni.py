@@ -1082,7 +1082,7 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            validator_reputation = st.selectbox("**Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="0990", index=1,
+            validator_reputation = st.selectbox("**Validators' Reputation**", ["Unknown", "Established", "Renowned"], key="0990", index=1,
                                                 help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
         with col101:           
             validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232", index=1,
