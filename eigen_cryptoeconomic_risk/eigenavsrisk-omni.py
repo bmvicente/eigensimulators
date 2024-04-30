@@ -1596,7 +1596,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     
 
 
-    col56,col57 = st.columns([3,1], gap="medium")
+    col56,col57 = st.columns([6,2], gap="medium")
     with col56:
         if st.session_state.risk_score >= 75:
             color = "#d32f2f"  # Red color for high risk
