@@ -1566,9 +1566,6 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                     <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result:,.2f}</span>
                 </div>
             """
-        
-        st.write("  \n")
-        st.write("  \n")
 
 
         st.markdown(final_result_html, unsafe_allow_html=True)
@@ -1583,6 +1580,10 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
             color = "black"  # Black color for medium risk
             background_color = "#ffffff"  # White background
 
+        
+        st.write("  \n")
+        st.write("  \n")
+        
         st.markdown(
         f"""
         <div style="
