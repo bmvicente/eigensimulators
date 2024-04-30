@@ -1524,7 +1524,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     
 
 
-    col56,col57 = st.columns([9,6], gap="large")
+    col56,col57 = st.columns([10,6], gap="large")
     with col56:
 
         def normalize_score(original_score, min_original=14.25, max_original=77325):
@@ -1566,6 +1566,10 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                     <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result:,.2f}</span>
                 </div>
             """
+        
+        st.write("  \n")
+        st.write("  \n")
+
 
         st.markdown(final_result_html, unsafe_allow_html=True)
 
