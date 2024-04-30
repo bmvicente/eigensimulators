@@ -1616,56 +1616,8 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     with col57:
 
 
-        # Labels for each cell
-        labels = [
-            'CONSENSUS CLIENT PROFILE', 'AVS BUSINESS MODEL',
-            'AVS PROTOCOL SECURITY', 'AVS OPERATOR PROFILE',
-            'RELAYER PROFILE', 'EXECUTION CLIENT PROFILE'
-        ]
+        st.image("images/omni-matrix.png", width=250)
 
-        # Create a Figure with subplots in a 3x2 grid
-        fig = go.Figure()
-
-        # Add rectangles and labels for each cell in the grid
-        for i, label in enumerate(labels):
-            row = i // 2
-            col = i % 2
-            
-            x0 = col
-            y0 = row
-            x1 = col + 1
-            y1 = row + 1
-            
-            # Add rectangle
-            fig.add_shape(
-                type="rect",
-                x0=x0, y0=y0, x1=x1, y1=y1,
-                fillcolor="blue",
-                line=dict(color='black', width=2),
-                layer="below"
-            )
-            
-            # Add label
-            fig.add_annotation(
-                x=(x0 + x1) / 2,
-                y=(y0 + y1) / 2,
-                text=label,
-                showarrow=False,
-                font=dict(size=10, color='white'),
-            )
-
-        # Update layout for the grid
-        fig.update_layout(
-            width=400,
-            height=300,
-            xaxis=dict(range=[-0.5, 1.5], visible=False),
-            yaxis=dict(range=[-0.5, 2.5], visible=False),
-            plot_bgcolor="white",
-            showlegend=False
-        )
-
-        # Display the figure in Streamlit
-        st.plotly_chart(fig)
 
 
 
