@@ -600,7 +600,7 @@ def main():
                         """)
     
         
-        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood2 * business_dual_impact2)
+        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood2 * business_dual_impact2
         
         result1_formatted = format_result(float(result1))
 
