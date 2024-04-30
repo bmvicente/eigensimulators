@@ -1064,6 +1064,18 @@ def main():
             validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v1")
             validator_metrics_impact2 = validator_metrics_impact/2
 
+
+        def format_number(num):
+            if num.is_integer():
+                return f"{int(num)}"
+            else:
+                return f"{num:.1f}"
+
+        # Assuming st.session_state.validator_metrics_likelihood2 and st.session_state.validator_metrics_impact2 are defined:
+        likelihood_formatted = format_number(st.session_state.validator_metrics_likelihood2 / 2)
+        impact_formatted = format_number(st.session_state.validator_metrics_impact2 / 2)
+
+
         with st.expander("Logic"):
                 st.image("images/omni-comet-diagram.jpg", width=750)
 
@@ -1104,19 +1116,9 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">
-                        <script>
-                            var number = ({validator_metrics_likelihood2};  // Adjust if this should be dynamic
-                            document.write(Number.isInteger(number) ? number : number.toFixed(1));
-                        </script>
-                    </span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{likelihood_formatted}</span>         
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">
-                        <script>
-                            var number = ({validator_metrics_impact2};  // Adjust if this should be dynamic
-                            document.write(Number.isInteger(number) ? number : number.toFixed(1));
-                        </script>
-                    </span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{impact_formatted}</span>         
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result5):,}</span>
                 </div>
