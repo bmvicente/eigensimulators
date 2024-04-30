@@ -1644,7 +1644,6 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
-        # Labels for each segment
         labels = ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance']
 
         # Values for each segment, making all slices equal
@@ -1654,7 +1653,9 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         colors = ['green', 'yellow', 'red', 'green', 'yellow', 'red']
 
         fig1, ax1 = plt.subplots()
-        ax1.pie(sizes, labels=labels, colors=colors, startangle=90)
+        # Set text properties for smaller font size
+        textprops = {'fontsize': 8}  # You can adjust the size as needed
+        ax1.pie(sizes, labels=labels, colors=colors, startangle=90, textprops=textprops)
 
         # Setting the aspect ratio to be equal, to ensure the pie chart is circular
         ax1.axis('equal')
