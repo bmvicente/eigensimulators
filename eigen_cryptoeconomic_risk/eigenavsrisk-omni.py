@@ -1596,7 +1596,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     
 
 
-    col56,col57 = st.columns([7,6], gap="medium")
+    col56,col57 = st.columns([8,6], gap="medium")
     with col56:
         if st.session_state.risk_score >= 75:
             color = "#d32f2f"  # Red color for high risk
@@ -1647,7 +1647,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
         # Data for the segments
         data = {
-            'Components': ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance'],
+            'Components': ['CONSENSUS CLIENT PROFILE', 'AVS BUSINESS MODEL', 'AVS PROTOCOL SECURITY', 'AVS OPERATOR PROFILE', 'RELAYER PROFILE', 'EXECUTION CLIENT PROFILE'],
             'Values': [16.67, 16.67, 16.67, 16.67, 16.67, 16.67],  # Each slice represents approximately 16.67%
             'Colors': ['green', 'yellow', 'red', 'green', 'yellow', 'red']
         }
@@ -1673,7 +1673,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
             textposition='outside',
             textinfo='label',
             marker=dict(line=dict(color='#000000', width=2)),  # Set borders
-            textfont=dict(size=20, family='Arial, bold')  # Increase font size and make it bold
+            textfont=dict(size=18, family='Arial, bold')  # Increase font size and make it bold
         )
         fig.update_layout(
             showlegend=False, 
