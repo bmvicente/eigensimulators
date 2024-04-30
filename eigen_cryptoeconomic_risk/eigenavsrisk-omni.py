@@ -496,11 +496,8 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            # Displaying the custom styled header
-            st.markdown('<p class="header-style">AVS Business Model Type</p>', unsafe_allow_html=True)
-
             # Dropdown menu
-            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
+            business_model = st.selectbox("AVS Business Model Type", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
 
         with col48:
             st.markdown("""
@@ -676,10 +673,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-
-            st.markdown('<p class="header-style">AVS Protocol Architecture & Code Complexity</p>', unsafe_allow_html=True)
-
-            code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=0, key="ertr")
+            code_complexity = st.selectbox("AVS Protocol Architecture & Code Complexity", ["High", "Medium", "Low"], index=0, key="ertr")
             
         with col28:
             # Number of Security Audits
@@ -697,9 +691,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">AVS Number of Security Audits</p>', unsafe_allow_html=True)
-
-            security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
+            security_audits = st.number_input("AVS Number of Security Audits", min_value=0, max_value=5, step=1, value=2, key="00")
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
