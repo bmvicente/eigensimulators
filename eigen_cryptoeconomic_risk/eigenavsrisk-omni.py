@@ -786,7 +786,7 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-                operator_reputation = st.selectbox("", ["Unknown", "Established", "Renowned"], index=0, key="6783")
+                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="6783")
 
         with col101:            
                 operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=0, key="674")
