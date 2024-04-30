@@ -285,7 +285,7 @@ def main():
             st.session_state.evm_validator_reputation_score = 0
 
     if 'evm_validator_centralization' not in st.session_state:
-        st.session_state.evm_validator_centralization = "Centralized"  # Set default value
+        st.session_state.evm_validator_centralization = "Decentralized"  # Set default value
     if 'evm_validator_centralization_score' not in st.session_state:
         if st.session_state.evm_validator_centralization in evm_validator_centralization_risk:  # Check if code complexity exists in the dictionary
             st.session_state.evm_validator_centralization_score = evm_validator_centralization_risk[st.session_state.evm_validator_centralization]
@@ -1599,7 +1599,6 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.relayer_centralization_score = relayer_centralization_risk.get(relayer_centralization, 0)
 
 
-
         result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
                    st.session_state.relayer_performance_acc_rate_var * relayer_metrics_likelihood2 * relayer_metrics_impact2)
         
@@ -1683,8 +1682,10 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
 
 
-    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
-             tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
+    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, 
+                           evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+             tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, 
+             oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
              da_sol_mec, validator_centralization, relayer_centralization, evm_client_reputation, evm_validator_centralization, halo_reputation,
              evm_validator_reputation)
     
