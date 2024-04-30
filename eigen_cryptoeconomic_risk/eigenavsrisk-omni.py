@@ -1044,9 +1044,9 @@ def main():
             st.session_state.fast_fin_ss_mec = fast_fin_ss_mec
             st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk.get(fast_fin_ss_mec, 0)
 
-        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score *
-                        st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
-                        st.session_state.lockup_mec_score * st.session_state.da_sol_mec_score * st.session_state.fast_fin_ss_mec_score)
+        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score +
+                        st.session_state.tee_mec_score + st.session_state.dvt_mec_score + st.session_state.oracle_bridge_mec_score +
+                        st.session_state.lockup_mec_score + st.session_state.da_sol_mec_score + st.session_state.fast_fin_ss_mec_score)
 
         st.write("  \n")
 
@@ -1056,17 +1056,17 @@ def main():
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.oracle_bridge_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.lockup_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
@@ -1226,7 +1226,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
             st.session_state.sybil_mec = sybil_mec
             st.session_state.sybil_mec_score = sybil_mec_risk.get(sybil_mec, 0)
 
-        result6 = (st.session_state.sybil_mec_score * st.session_state.encrypted_mempool_mec_score)
+        result6 = (st.session_state.sybil_mec_score + st.session_state.encrypted_mempool_mec_score)
         
         st.write("  \n")
 
@@ -1234,7 +1234,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.sybil_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.encrypted_mempool_mec_score}</span>
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result6):,}</span>
@@ -1373,7 +1373,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
             st.session_state.relayer_da_solution = relayer_da_solution
             st.session_state.relayer_da_solution_score = relayer_da_solution_risk.get(relayer_da_solution, 0)
 
-        result8 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score)
+        result8 = (st.session_state.relayer_merkle_score + st.session_state.relayer_da_solution_score)
         
         st.write("  \n")
 
@@ -1381,7 +1381,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_merkle_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result8):,}</span>
