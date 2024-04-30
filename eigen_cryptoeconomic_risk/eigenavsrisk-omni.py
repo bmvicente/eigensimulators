@@ -1596,7 +1596,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     
 
 
-    col56,col57 = st.columns([7,5], gap="medium")
+    col56,col57 = st.columns([7,4], gap="medium")
     with col56:
         if st.session_state.risk_score >= 75:
             color = "#d32f2f"  # Red color for high risk
@@ -1671,7 +1671,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         fig.update_traces(
             textposition='outside',
             textinfo='label',
-            marker=dict(line=dict(color='#000000', width=10)),  # Correct marker syntax for borders
+            marker=dict(line=dict(color='#000000', width=5)),  # Correct marker syntax for borders
             textfont=dict(size=14)  # Increase the font size of the labels
         )
         fig.update_layout(
