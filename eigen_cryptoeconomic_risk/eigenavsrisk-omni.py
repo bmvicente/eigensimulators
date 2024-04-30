@@ -10,6 +10,10 @@ business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking U
 relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+evm_client_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+evm_validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+evm_validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+halo_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
 operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 2}
@@ -32,12 +36,18 @@ oracle_bridge_mec_risk = {True: 1, False: 5}
 
 
 
-def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
+def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, halo_reputation,
                 relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
                 tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
                 validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-                da_sol_mec, validator_centralization, relayer_centralization):
+                da_sol_mec, validator_centralization, relayer_centralization, evm_validator_reputation,
+                evm_validator_centralization, evm_client_reputation):
 
+
+        evm_client_reputation_score = evm_client_reputation_risk[evm_client_reputation]
+        evm_validator_centralization_score = evm_validator_centralization_risk[evm_validator_centralization]
+        halo_reputation_score = halo_reputation_risk[halo_reputation]
+        evm_validator_reputation_score = evm_validator_reputation_risk[evm_validator_reputation]
         security_audits_score = security_audits_risk[security_audits]
         business_model_score = business_model_risk[business_model]
         relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
@@ -63,13 +73,14 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
         relayer_merkle_score = relayer_merkle_risk[relayer_merkle]
         oracle_bridge_mec_score = oracle_bridge_mec_risk[oracle_bridge_mec]
 
-        return (security_audits_score, business_model_score, relayer_reputation_score, 
-                    operator_reputation_score, code_complexity_score, evm_equivalence_score,
+        return (security_audits_score, business_model_score, relayer_reputation_score, evm_client_reputation_score,
+                    operator_reputation_score, code_complexity_score, evm_equivalence_score, halo_reputation_score,
                     operator_centralization_score, validator_centralization_score, validator_reputation_score, 
                     dvt_mec_score, evm_client_div_score, operator_entrenchment_level_score, da_sol_mec_score,
                     sybil_mec_score, relayer_da_solution_score, validator_abci_usage_score, engine_api_score,
                     lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
-                    relayer_merkle_score, oracle_bridge_mec_score, relayer_centralization_score)
+                    relayer_merkle_score, oracle_bridge_mec_score, relayer_centralization_score, 
+                    evm_validator_reputation_score, evm_validator_centralization_score)
 
 
 def main():
@@ -150,6 +161,21 @@ def main():
         else:
             return None
 
+    def evm_val_performance_acc_rate_calc(evm_val_performance_acc_rate):
+        if 0 <= evm_val_performance_acc_rate <= 10:
+            return 9
+        elif 11 <= evm_val_performance_acc_rate <= 33:
+            return 7.5
+        elif 34 <= evm_val_performance_acc_rate <= 50:
+            return 6
+        elif 51 <= evm_val_performance_acc_rate <= 66:
+            return 4
+        elif 67 <= evm_val_performance_acc_rate <= 90:
+            return 3
+        elif 91 <= evm_val_performance_acc_rate <= 100:
+            return 2
+        else:
+            return None
 
 
 
@@ -233,6 +259,38 @@ def main():
             st.session_state.validator_reputation_score = validator_reputation_risk[st.session_state.validator_reputation]
         else:
             st.session_state.validator_reputation_score = 0
+
+    if 'halo_reputation' not in st.session_state:
+        st.session_state.halo_reputation = "Unknown"  # Set default value
+    if 'halo_reputation_score' not in st.session_state:
+        if st.session_state.halo_reputation in halo_reputation_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.halo_reputation_score = halo_reputation_risk[st.session_state.halo_reputation]
+        else:
+            st.session_state.halo_reputation_score = 0
+
+    if 'evm_client_reputation' not in st.session_state:
+        st.session_state.evm_client_reputation = "Unknown"  # Set default value
+    if 'evm_client_reputation_score' not in st.session_state:
+        if st.session_state.evm_client_reputation in evm_client_reputation_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.evm_client_reputation_score = evm_client_reputation_risk[st.session_state.evm_client_reputation]
+        else:
+            st.session_state.evm_client_reputation_score = 0
+
+    if 'evm_validator_reputation' not in st.session_state:
+        st.session_state.evm_validator_reputation = "Unknown"  # Set default value
+    if 'evm_validator_reputation_score' not in st.session_state:
+        if st.session_state.evm_validator_reputation in evm_validator_reputation_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.evm_validator_reputation_score = evm_validator_reputation_risk[st.session_state.evm_validator_reputation]
+        else:
+            st.session_state.evm_validator_reputation_score = 0
+
+    if 'evm_validator_centralization' not in st.session_state:
+        st.session_state.evm_validator_centralization = "Unknown"  # Set default value
+    if 'evm_validator_centralization_score' not in st.session_state:
+        if st.session_state.evm_validator_centralization in evm_validator_centralization_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.evm_validator_centralization_score = evm_validator_centralization_risk[st.session_state.evm_validator_centralization]
+        else:
+            st.session_state.evm_validator_centralization_score = 0
 
     if 'dvt_mec' not in st.session_state:
         st.session_state.dvt_mec = "False"  # Set default value
@@ -1071,7 +1129,7 @@ def main():
         st.write("-------")
 
 
-        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990",
+        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="090888",
                                                 help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
 
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
@@ -1135,6 +1193,10 @@ The summation or multiplication of variables revolves around their independence 
                             """)
 
 
+        if st.session_state.halo_reputation != halo_reputation:
+            st.session_state.halo_reputation = halo_reputation
+            st.session_state.halo_reputation_score = halo_reputation_risk.get(halo_reputation, 0)
+
         if st.session_state.validator_reputation != validator_reputation:
             st.session_state.validator_reputation = validator_reputation
             st.session_state.validator_reputation_score = validator_reputation_risk.get(validator_reputation, 0)
@@ -1144,7 +1206,7 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
     
 
-        result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
+        result5 = (st.session_state.halo_reputation * st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
                    st.session_state.validator_centralization_score * validator_metrics_likelihood2 * validator_metrics_impact2)
         
         result5_formatted = format_result(float(result5))
@@ -1153,6 +1215,8 @@ The summation or multiplication of variables revolves around their independence 
         validator_calc2 = f"""
             <div style="text-align: center;">
                 <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.halo_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
@@ -1257,6 +1321,9 @@ The summation or multiplication of variables revolves around their independence 
         evm_client_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="877w6")
         evm_val_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="6782")
 
+        evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_calc(evm_val_performance_acc_rate)
+        st.session_state.evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_var
+
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="976")        
@@ -1308,6 +1375,18 @@ The summation or multiplication of variables revolves around their independence 
                             """)
 
 
+        if st.session_state.evm_client_reputation != evm_client_reputation:
+            st.session_state.evm_client_reputation = evm_client_reputation
+            st.session_state.evm_client_reputation_score = evm_client_reputation_risk.get(evm_client_reputation, 0)
+
+        if st.session_state.evm_validator_reputation != evm_validator_reputation:
+            st.session_state.evm_validator_reputation = evm_validator_reputation
+            st.session_state.evm_validator_reputation_score = evm_validator_reputation_risk.get(evm_validator_reputation, 0)
+
+        if st.session_state.evm_validator_centralization != evm_validator_centralization:
+            st.session_state.evm_validator_centralization = evm_validator_centralization
+            st.session_state.evm_validator_centralization_score = evm_validator_centralization_risk.get(evm_validator_centralization, 0)
+
         if st.session_state.evm_equivalence != evm_equivalence:
             st.session_state.evm_equivalence = evm_equivalence
             st.session_state.evm_equivalence_score = evm_equivalence_risk.get(evm_equivalence, 0)
@@ -1317,8 +1396,9 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.evm_client_div_score = evm_client_div_risk.get(evm_client_div, 0)
 
 
-        result7 = (st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score *
-                   evm_metrics_likelihood2 * evm_metrics_impact2)
+        result7 = (st.session_state.evm_client_reputation_score * st.session_state.evm_validator_reputation_score *
+                   st.session_state.evm_validator_centralization_score * st.session_state.evm_equivalence_score * 
+                   st.session_state.evm_client_div_score * evm_metrics_likelihood2 * evm_metrics_impact2)
         
         result7_formatted = format_result(float(result7))
 
@@ -1326,6 +1406,12 @@ The summation or multiplication of variables revolves around their independence 
         evm_calc2 = f"""
             <div style="text-align: center;">
                 <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
@@ -1562,19 +1648,17 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    
-
-
 
 
     risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-             da_sol_mec, validator_centralization, relayer_centralization)
+             da_sol_mec, validator_centralization, relayer_centralization, evm_client_reputation, evm_validator_centralization, halo_reputation,
+             evm_validator_reputation)
     
-    (st.session_state.security_audits_score, st.session_state.business_model_score,
-    st.session_state.relayer_reputation_score, st.session_state.operator_reputation_score,
-    st.session_state.code_complexity_score, st.session_state.evm_equivalence_score,
-    st.session_state.operator_centralization_score, st.session_state.validator_centralization_score,
+    (st.session_state.security_audits_score, st.session_state.business_model_score, st.session_state.evm_client_reputation_score,
+    st.session_state.relayer_reputation_score, st.session_state.operator_reputation_score, st.session_state.evm_validator_centralization_score,
+    st.session_state.code_complexity_score, st.session_state.evm_equivalence_score, st.session_state.halo_reputation_score,
+    st.session_state.operator_centralization_score, st.session_state.validator_centralization_score, st.session_state.evm_validator_reputation_score,
     st.session_state.validator_reputation_score, st.session_state.dvt_mec_score,
     st.session_state.evm_client_div_score, st.session_state.operator_entrenchment_level_score,
     st.session_state.sybil_mec_score, st.session_state.relayer_da_solution_score,
