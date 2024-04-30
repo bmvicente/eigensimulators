@@ -1678,7 +1678,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
             textposition='outside',
             textinfo='label',
             marker=dict(line=dict(color='#000000', width=2)),  # Set borders
-            textfont=dict(size=18, family='Arial, bold')  # Increase font size and make it bold
+            textfont=dict(size=14, family='Arial, bold')  # Increase font size and make it bold
         )
         fig.update_layout(
             showlegend=False,  # Ensure the legend is not displayed
