@@ -1426,7 +1426,8 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.evm_client_div_score = evm_client_div_risk.get(evm_client_div, 0)
 
 
-        result7 = (st.session_state.evm_val_performance_acc_rate_var * st.session_state.evm_client_reputation_score * st.session_state.evm_validator_reputation_score *
+        result7 = (st.session_state.evm_client_reputation_score * st.session_state.evm_val_performance_acc_rate_var * 
+                   st.session_state.evm_validator_reputation_score *
                    st.session_state.evm_validator_centralization_score * st.session_state.evm_equivalence_score * 
                    st.session_state.evm_client_div_score * evm_metrics_likelihood2 * evm_metrics_impact2)
         
