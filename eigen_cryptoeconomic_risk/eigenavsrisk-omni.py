@@ -1596,7 +1596,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     
 
 
-    col56,col57 = st.columns(2, gap="medium")
+    col56,col57 = st.columns([3,1], gap="medium")
     with col56:
         if st.session_state.risk_score >= 75:
             color = "#d32f2f"  # Red color for high risk
@@ -1644,7 +1644,6 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
-        # Data for the segments
         data = {
             'Components': ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance'],
             'Values': [16.67, 16.67, 16.67, 16.67, 16.67, 16.67],  # Each slice represents approximately 16.67%
@@ -1668,8 +1667,18 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         )
 
         # Customize the layout
-        fig.update_traces(textposition='outside', textinfo='label')
-        fig.update_layout(showlegend=False, autosize=False, width=500, height=500)
+        fig.update_traces(
+            textposition='outside',
+            textinfo='label',
+            marker=dict(lines=dict(color='#000000', width=2)),  # Add borders to each slice
+            textfont=dict(size=14)  # Increase the font size of the labels
+        )
+        fig.update_layout(
+            showlegend=False, 
+            autosize=False, 
+            width=500, 
+            height=500
+        )
 
         # Display the figure in Streamlit
         st.plotly_chart(fig)
