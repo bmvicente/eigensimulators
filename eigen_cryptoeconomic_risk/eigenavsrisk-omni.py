@@ -1,7 +1,7 @@
 
 
 import streamlit as st
-import matplotlib.pyplot as plt
+import plotly.express as px
 
 
 security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
@@ -1644,27 +1644,35 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
-        labels = ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance']
+        # Data for the segments
+        data = {
+            'Components': ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance'],
+            'Values': [16.67, 16.67, 16.67, 16.67, 16.67, 16.67],  # Each slice represents approximately 16.67%
+            'Colors': ['green', 'yellow', 'red', 'green', 'yellow', 'red']
+        }
 
-        # Values for each segment, making all slices equal
-        sizes = [16.67, 16.67, 16.67, 16.67, 16.67, 16.67]  # Each slice represents approximately 16.67%
+        # Create a pie chart using Plotly Express
+        fig = px.pie(
+            data, 
+            names='Components', 
+            values='Values', 
+            color='Components',
+            color_discrete_map={  # Assigns specific colors
+                'Data Processing': 'green',
+                'User Interface': 'yellow',
+                'Security': 'red',
+                'Data Storage': 'green',
+                'Networking': 'yellow',
+                'Compliance': 'red'
+            }
+        )
 
-        # Colors for each segment
-        colors = ['green', 'yellow', 'red', 'green', 'yellow', 'red']
+        # Customize the layout
+        fig.update_traces(textposition='inside', textinfo='label')
+        fig.update_layout(showlegend=False, autosize=False, width=400, height=400)
 
-        fig1, ax1 = plt.subplots()
-        # Set text properties for smaller font size
-        textprops = {'fontsize': 4}  # You can adjust the size as needed
-        ax1.pie(sizes, labels=labels, colors=colors, startangle=90, textprops=textprops)
-
-        # Setting the aspect ratio to be equal, to ensure the pie chart is circular
-        ax1.axis('equal')
-
-        # Resize the figure to be smaller
-        fig1.set_size_inches(2, 2)  # Sets the figure size to 2x2 inches
-
-        # Use Streamlit to display the figure
-        st.pyplot(fig1)
+        # Display the figure in Streamlit
+        st.plotly_chart(fig)
 
 
 
