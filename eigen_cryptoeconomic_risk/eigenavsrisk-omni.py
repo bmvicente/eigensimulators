@@ -782,7 +782,7 @@ def main():
 
         st.markdown('<p class="header-style" style="font-size: 21px;">AVS Operator Profile</p>', unsafe_allow_html=True)
 
-         st.write("  \n")
+        st.write("  \n")
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
