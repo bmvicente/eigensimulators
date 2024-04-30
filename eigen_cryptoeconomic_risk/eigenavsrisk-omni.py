@@ -1615,6 +1615,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
+        # Define the labels and corresponding colors
         labels = [
             'CONSENSUS CLIENT PROFILE', 'AVS BUSINESS MODEL',
             'AVS PROTOCOL SECURITY', 'AVS OPERATOR PROFILE',
@@ -1623,25 +1624,49 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         colors = ['green', 'red', 'yellow', 'red', 'yellow', 'red']
 
         # Create a Figure with subplots in a 3x2 grid
-        fig = make_subplots(rows=3, cols=2, specs=[[{}, {}], [{}, {}], [{}, {}]], subplot_titles=labels)
+        fig = go.Figure()
 
-        for i, color in enumerate(colors, start=1):
-            row = (i - 1) // 2 + 1
-            col = (i - 1) % 2 + 1
-            
-            # Add colored box
-            fig.add_shape(type="rect", x0=0, y0=0, x1=1, y1=1, line=dict(width=2), fillcolor=color, row=row, col=col)
-            
-            # Update subplot title font
-            fig.update_xaxes(title_font=dict(size=16), row=row, col=col)
-            fig.update_yaxes(title_font=dict(size=16), row=row, col=col)
+        # Define the dimensions of each rectangle
+        rect_width = 0.4
+        rect_height = 0.4
+
+        for i, (label, color) in enumerate(zip(labels, colors)):
+            row = i // 2 + 1
+            col = i % 2 + 1
+
+            # Calculate the position of the rectangle
+            x0 = (col - 1) * 0.5
+            y0 = 1 - row * 0.5
+            x1 = x0 + rect_width
+            y1 = y0 - rect_height
+
+            # Add the rectangle shape
+            fig.add_shape(
+                type="rect",
+                x0=x0, y0=y0, x1=x1, y1=y1,
+                fillcolor=color,
+                line=dict(color='black', width=2),
+                layer="below"
+            )
+
+            # Add the label inside the rectangle
+            fig.add_annotation(
+                x=(x0 + x1) / 2,
+                y=(y0 + y1) / 2,
+                text=label,
+                showarrow=False,
+                font=dict(size=16, color='black'),
+            )
 
         # Update layout for the grid
-        fig.update_layout(height=600, width=800, margin=dict(t=50, b=50, l=0, r=0), plot_bgcolor="white")
-
-        # Hide x and y axes lines, ticks, and labels
-        fig.update_xaxes(visible=False)
-        fig.update_yaxes(visible=False)
+        fig.update_layout(
+            width=800,
+            height=600,
+            xaxis=dict(range=[0, 1], visible=False),
+            yaxis=dict(range=[0, 1], visible=False),
+            plot_bgcolor="white",
+            showlegend=False
+        )
 
         # Display the figure in Streamlit
         st.plotly_chart(fig)
