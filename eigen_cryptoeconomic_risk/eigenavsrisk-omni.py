@@ -1644,6 +1644,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
+
         # Data for the segments
         data = {
             'Components': ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance'],
@@ -1671,8 +1672,8 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         fig.update_traces(
             textposition='outside',
             textinfo='label',
-            marker=dict(line=dict(color='#000000', width=5)),  # Correct marker syntax for borders
-            textfont=dict(size=14)  # Increase the font size of the labels
+            marker=dict(line=dict(color='#000000', width=2)),  # Set borders
+            textfont=dict(size=16, family='Arial, bold')  # Increase font size and make it bold
         )
         fig.update_layout(
             showlegend=False, 
