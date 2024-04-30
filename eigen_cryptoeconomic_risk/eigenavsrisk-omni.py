@@ -1123,6 +1123,8 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
 - Facilitates complex state transitions for blockchain applications, including the Omni EVM, allowing for secure and accurate processing without mutual interference;
 - Streamlines the validation and attestation processes by providing validators with detailed metadata through `XBlock`s, improving efficiency and reliability;
 - Reduces network congestion and maintains a lightweight consensus mechanism by decoupling consensus from transaction management and utilizing the Engine API, thereby ensuring quick blockchain finality.
+                            
+The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
                             """)
 
 
@@ -1281,6 +1283,8 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
 - **Seamless Migration**: Developers can effortlessly migrate existing DApps to the Omni EVM without any need for changes, enabling easy access to Omni's ecosystem;
 - **Developer Tooling Compatibility**: The Omni EVM maintains full compatibility with Ethereum's development tools, ensuring that existing Ethereum developer tooling works without issues;
 - **Future-Proof**: By adhering to Ethereum's standards and upgrade paths, the Omni EVM ensures that it remains up-to-date, allowing developers to utilize the latest features as they become available.
+                           
+The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
                             """)
 
 
@@ -1442,6 +1446,8 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 - **Decision Making for Message Submission**: Relayers determine the number of `XMsg`s to include in submissions, balancing the costs associated with transaction size, computational requirements, and gas limits.
 - **Relayer Performance**: They create and submit transactions with merkle multi-proofs to destination chains based on attested `XBlock` data, ensuring secure and efficient message delivery.
 - **Security and Scalability**: As a permissionless service, Relayers reduce central points of failure and uphold the network's decentralized ethos, while managing security risks and computational intensiveness, especially as the network scales.
+                            
+The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
                             """)
 
 
