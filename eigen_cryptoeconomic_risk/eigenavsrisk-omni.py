@@ -1059,8 +1059,10 @@ def main():
         col33, col34 = st.columns(2, gap="medium")
         with col33:
             validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="v0")
+            validator_metrics_likelihood2 = validator_metrics_likelihood/2
         with col34:
             validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v1")
+            validator_metrics_impact2 = validator_metrics_impact/2
 
         with st.expander("Logic"):
                 st.image("images/omni-comet-diagram.jpg", width=750)
@@ -1090,7 +1092,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
 
 
         result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
-                   st.session_state.validator_centralization_score * ((validator_metrics_likelihood * validator_metrics_impact)/2))
+                   st.session_state.validator_centralization_score * validator_metrics_likelihood2 * validator_metrics_impact2)
 
         
         validator_calc2 = f"""
@@ -1104,14 +1106,14 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">
                         <script>
-                            var number = ({(st.session_state.validator_metrics_likelihood)/2} / 2);  // Adjust if this should be dynamic
+                            var number = ({validator_metrics_likelihood2};  // Adjust if this should be dynamic
                             document.write(Number.isInteger(number) ? number : number.toFixed(1));
                         </script>
                     </span>
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">
                         <script>
-                            var number = ({(st.session_state.validator_metrics_impact)/2} / 2);  // Adjust if this should be dynamic
+                            var number = ({validator_metrics_impact2};  // Adjust if this should be dynamic
                             document.write(Number.isInteger(number) ? number : number.toFixed(1));
                         </script>
                     </span> 
