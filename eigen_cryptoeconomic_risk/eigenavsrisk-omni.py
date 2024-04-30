@@ -1623,44 +1623,23 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         colors = ['green', 'red', 'yellow', 'red', 'yellow', 'red']
 
         # Create a Figure with subplots in a 3x2 grid
-        fig = go.Figure()
+        fig = make_subplots(rows=3, cols=2, specs=[[{}, {}], [{}, {}], [{}, {}]], subplot_titles=labels)
 
-        for i, (label, color) in enumerate(zip(labels, colors)):
-            row = i // 2 + 1
-            col = i % 2 + 1
+        for i, color in enumerate(colors, start=1):
+            row = (i - 1) // 2 + 1
+            col = (i - 1) % 2 + 1
             
-            # Calculate the subplot number
-            subplot_num = row * 10 + col
+            # Add colored box
+            fig.add_shape(type="rect", x0=0, y0=0, x1=1, y1=1, line=dict(width=2), fillcolor=color, row=row, col=col)
             
-            fig.add_trace(
-                go.Scatter(
-                    x=[0.5], y=[0.5], text=[label],
-                    mode="text",
-                    textfont=dict(size=16, color="black"),
-                    showlegend=False,
-                    hoverinfo="skip",
-                    subplot=f"{'3' if subplot_num == 6 else ''}{subplot_num}"  # Adjust subplot number for last row
-                )
-            )
-
-            # Add shapes for colored boxes
-            fig.add_shape(
-                type="rect",
-                x0=0, y0=0, x1=1, y1=1,
-                line=dict(width=2),
-                fillcolor=color,
-                row=row, col=col
-            )
+            # Update subplot title font
+            fig.update_xaxes(title_font=dict(size=16), row=row, col=col)
+            fig.update_yaxes(title_font=dict(size=16), row=row, col=col)
 
         # Update layout for the grid
-        fig.update_layout(
-            height=600, width=800,
-            margin=dict(t=50, b=50, l=0, r=0),  # Tighten the margins
-            grid=dict(rows=3, columns=2, pattern="independent"),  # Define the grid
-            plot_bgcolor="white"
-        )
+        fig.update_layout(height=600, width=800, margin=dict(t=50, b=50, l=0, r=0), plot_bgcolor="white")
 
-        # Hide x and y axes lines, ticks and labels
+        # Hide x and y axes lines, ticks, and labels
         fig.update_xaxes(visible=False)
         fig.update_yaxes(visible=False)
 
