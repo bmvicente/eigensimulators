@@ -525,7 +525,7 @@ def main():
             business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3, key='afa', help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
-                                                          1 == Unlikely | 10 == Very Likely**""")
+                                                          1 == Unlikely | 10 == Very Likely""")
             business_dual_likelihood2 = business_dual_likelihood / 2
         with col45:
             business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7, key='ewe', help=f"""
