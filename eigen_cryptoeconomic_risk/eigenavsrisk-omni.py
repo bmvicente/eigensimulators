@@ -510,7 +510,7 @@ def main():
 
             st.write("  \n")
 
-            avs_token_percentage = st.slider("**% $OMNI**", min_value=10, max_value=90, value=50, format='%d%%', value=10)
+            avs_token_percentage = st.slider("**% $OMNI**", min_value=10, max_value=90, value=10, format='%d%%')
 
             xeth_percentage = 100 - avs_token_percentage
             
