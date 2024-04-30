@@ -1524,7 +1524,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                 <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9_formatted}</span>
                 <span style="font-size: 22px; font-weight: bold;">)</span>
                 <span style="font-size: 22px; font-weight: bold;"> = </span>
-                <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result}</span>
+                <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result:,.2f}</span>
             </div>
         """
 
