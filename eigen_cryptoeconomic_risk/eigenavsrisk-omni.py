@@ -1616,7 +1616,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     with col57:
 
 
-        st.image("images/omni-matrix.jpg", width=1000)
+        st.image("images/omni-matrix.jpg", width=700)
 
 
 
