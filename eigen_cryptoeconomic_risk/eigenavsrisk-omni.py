@@ -502,8 +502,8 @@ def main():
         with col48:
 
             # Displaying the custom styled header
-            st.markdown('<p class="header-style">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
-            
+            st.markdown('<p class="header-style" style="font-size: 10px;">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
+
             st.write("  \n")
 
             avs_token_percentage = st.slider("**% $OMNI**", min_value=10, max_value=90, value=50, format='%d%%')
