@@ -510,7 +510,7 @@ def main():
 
             st.write("  \n")
 
-            avs_token_percentage = st.slider("**% $OMNI**", min_value=10, max_value=90, value=50, format='%d%%')
+            avs_token_percentage = st.slider("**% $OMNI**", min_value=10, max_value=90, value=50, format='%d%%', value=10)
 
             xeth_percentage = 100 - avs_token_percentage
             
@@ -1070,6 +1070,10 @@ def main():
 
         st.write("-------")
 
+
+        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990",
+                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
+
         validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
                                                    help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
         
@@ -1078,10 +1082,10 @@ def main():
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            validator_reputation = st.selectbox("**Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="0990",
+            validator_reputation = st.selectbox("**Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="0990", index=1,
                                                 help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
         with col101:           
-            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232", index=0,
+            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232", index=1,
                                                     help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
         
         st.write("-------")
@@ -1250,10 +1254,20 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
+        evm_client_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="877w6")
+        evm_val_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="6782")
+
+        col100, col101 = st.columns(2, gap="medium")
+        with col100:
+            evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="976", index=1)        
+        with col101:           
+            evm_validator_centralization = st.selectbox("**EVM Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="2116", index=1)
+
+
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="09",
-                                           help="**Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
+                                           help="**Runs an unmodified version of the original EVM. Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
         with col101:
             evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", index=0,
                                           help="**Correlated (but not causal) relationship with the level of Equivalence or Compatible of the EVM. EVM Equivalence likely leads to greater Client Diversity.**")
