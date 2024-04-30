@@ -1644,7 +1644,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
-            st.title('Omni Protocol System Components')
+            st.header('Omni Protocol System Components')
 
             # Labels for each segment
             labels = ['Data Processing', 'User Interface', 'Security', 'Data Storage', 'Networking', 'Compliance']
@@ -1656,13 +1656,13 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
             colors = ['green', 'yellow', 'red', 'green', 'yellow', 'red']
 
             fig1, ax1 = plt.subplots()
-            ax1.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', shadow=False, startangle=90)
+            ax1.pie(sizes=False, labels=labels, colors=colors, autopct='%1.1f%%', shadow=False, startangle=90)
 
             # Removing the 3D effect by not using the shadow and explode parameters
             ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
             # Resize the figure to be smaller
-            fig1.set_size_inches(4, 4)  # Sets the figure size to 4x4 inches
+            fig1.set_size_inches(2, 2)  # Sets the figure size to 4x4 inches
 
             # Use Streamlit to display the figure
             st.pyplot(fig1)
