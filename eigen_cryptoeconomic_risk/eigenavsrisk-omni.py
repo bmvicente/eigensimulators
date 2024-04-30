@@ -1,8 +1,8 @@
 
 
 import streamlit as st
-import plotly.express as px
-
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 
 security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
 business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
@@ -1645,53 +1645,35 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
     with col57:
 
 
-        # Data for the segments
-        data = {
-            'Components': [
-                'CONSENSUS CLIENT PROFILE', 
-                'AVS BUSINESS MODEL', 
-                'AVS PROTOCOL SECURITY', 
-                'AVS OPERATOR PROFILE', 
-                'RELAYER PROFILE', 
-                'EXECUTION CLIENT PROFILE'
-            ],
-            'Values': [16.67, 16.67, 16.67, 16.67, 16.67, 16.67],  # Each slice represents approximately 16.67%
-            'Colors': ['green', 'yellow', 'red', 'green', 'yellow', 'red']
-        }
+        fig, ax = plt.subplots()
 
-        # Create a pie chart using Plotly Express
-        fig = px.pie(
-            data, 
-            names='Components', 
-            values='Values', 
-            color='Components',
-            color_discrete_map={  # Assigns specific colors
-                'AVS BUSINESS MODEL': 'green',
-                'AVS PROTOCOL SECURITY': 'yellow',
-                'AVS OPERATOR PROFILE': 'red',
-                'CONSENSUS CLIENT PROFILE': 'green',
-                'EXECUTION CLIENT PROFILE': 'yellow',
-                'RELAYER PROFILE': 'red'
-            }
-        )
+        # Define the labels and colors (order adjusted for visual layout)
+        labels = [
+            'CONSENSUS CLIENT PROFILE', 'AVS BUSINESS MODEL',
+            'AVS PROTOCOL SECURITY', 'AVS OPERATOR PROFILE',
+            'RELAYER PROFILE', 'EXECUTION CLIENT PROFILE'
+        ]
+        colors = ['green', 'red', 'yellow', 'red', 'yellow', 'red']
 
-        # Customize the layout
-        fig.update_traces(
-            textposition='inside',
-            textinfo='label',
-            marker=dict(line=dict(color='#000000', width=2)),  # Set borders
-            textfont=dict(size=14, family='Arial, bold')  # Increase font size and make it bold
-        )
-        fig.update_layout(
-            showlegend=False,  # Ensure the legend is not displayed
-            autosize=False, 
-            width=600, 
-            height=600
-        )
+        # Grid layout positions
+        positions = [(0, 1), (0, 0), (1, 1), (1, 0), (2, 1), (2, 0)]
 
-        # Display the figure in Streamlit
-        st.plotly_chart(fig)
+        # Create colored squares
+        for (i, ((x, y), label, color)) in enumerate(zip(positions, labels, colors)):
+            ax.add_patch(patches.Rectangle((y, -x), 1, 1, color=color))
+            ax.text(y + 0.5, -x - 0.5, label, color='black', weight='bold', fontsize=12,
+                    ha='center', va='center', wrap=True)
 
+        # Set limits and aspect
+        ax.set_xlim(0, 2)
+        ax.set_ylim(-3, 0)
+        ax.set_aspect('equal')
+
+        # Hide axes
+        ax.axis('off')
+
+        # Show plot
+        plt.show()
 
 
 
