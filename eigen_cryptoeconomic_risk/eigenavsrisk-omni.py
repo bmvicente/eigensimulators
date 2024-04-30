@@ -84,7 +84,7 @@ def main():
         st.markdown(f"""
             The Simulator takes 9 of the AVS-generic parameters to simulate Omni's Risk Score and 21 parameters that specifically compose an Interoperability Network protocol. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
             
-            Most of the research to build this Simulator was derived from (Omni's Docs)[https://docs.omni.network/] and (CometBFT's Docs)[https://docs.cometbft.com/v0.37/].
+            Most of the research to build this Simulator was derived from [Omni's Docs](https://docs.omni.network/) and [CometBFT's Docs](https://docs.cometbft.com/v0.37/).
                             """)
 
         
