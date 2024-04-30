@@ -1176,7 +1176,7 @@ The **Engine API** is a critical component of the Omni protocol, connecting high
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">2</span>
-                <span style="font-size: 21px;">EVM Metrics through Execution Client</span>
+                <span style="font-size: 21px;">Execution Client Profile</span>
             </p>
         """, unsafe_allow_html=True)
 
