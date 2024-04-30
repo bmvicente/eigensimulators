@@ -1663,7 +1663,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
         # Create colored squares
         for ((x, y), label, color) in zip(positions, labels, colors):
             ax.add_patch(patches.Rectangle((y, -x), 1, 1, color=color))
-            ax.text(y + 0.5, -x - 0.5, label, color='black', weight='bold', fontsize=12,
+            ax.text(y + 0.5, -x - 0.5, label, color='black', weight='bold', fontsize=5,
                     ha='center', va='center', wrap=True)
 
         # Set limits and aspect to make sure the figure looks good
