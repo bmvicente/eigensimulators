@@ -653,8 +653,23 @@ def main():
         st.write("  \n")
         st.write("  \n")
 
+
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 22px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                .stExpander {
+                    border: none !important;
+                    box-shadow: none !important;
+                }
+                </style>
+                """, unsafe_allow_html=True)
         
         st.markdown('<p class="header-style">AVS Protocol Security</p>', unsafe_allow_html=True)
+
 
         col27,col28 = st.columns(2, gap="medium")
         with col27:
