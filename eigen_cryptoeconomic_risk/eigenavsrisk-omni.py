@@ -1615,7 +1615,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
-        col111, col121, col131 = st.columns([3,5,4])
+        col111, col121, col131 = st.columns([1,5,4])
 
         with col111:
             st.write("")
