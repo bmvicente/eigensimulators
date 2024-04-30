@@ -793,25 +793,18 @@ def main():
         st.write("  \n")
 
 
-        st.markdown('<p class="header-style">AVS Operator Profile</p>', unsafe_allow_html=True)
-        st.markdown('<p class="header-style">Consensus Client Profile</p>', unsafe_allow_html=True)
-        st.markdown('<p class="header-style">Execution Client Profile</p>', unsafe_allow_html=True)
-
-        # Operator Metrics
         st.markdown("""
                     <style>
                     .header-style {
-                        font-size: 20px;
+                        font-size: 22px;
                         font-weight: bold;
                         margin-bottom: 0px;  /* Adjust the space below the header */
                     }
                     </style>
                     """, unsafe_allow_html=True)
+        st.markdown('<p class="header-style">AVS Operator Profile</p>', unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">AVS Operator Metrics</p>', unsafe_allow_html=True)
  
-        st.write("  \n")
-
         col100, col101 = st.columns(2, gap="medium")
         with col100:
                 operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="6783")
@@ -994,7 +987,7 @@ def main():
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">1</span>
-                CometBFT Consensus Architecture Metrics through Consensus Client (Halo)
+                CometBFT Consensus Architecture Metrics through Consensus Client (Halo) ### MAKE THIS FONT SIZE 22
             </p>
             """, unsafe_allow_html=True)
 
@@ -1661,7 +1654,6 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
     with col57:
 
-        # Define the labels and corresponding colors
         labels = [
             'CONSENSUS CLIENT PROFILE', 'AVS BUSINESS MODEL',
             'AVS PROTOCOL SECURITY', 'AVS OPERATOR PROFILE',
@@ -1680,7 +1672,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
                 go.Scatter(
                     x=[0.5], y=[0.5], text=[label],
                     mode="text",
-                    textfont=dict(size=16, color="black"),
+                    textfont=dict(size=22, color="black"),  # Font size set to 22
                     showlegend=False,
                     hoverinfo="skip",
                     subplot=f'xy{row}{col}'
@@ -1710,6 +1702,7 @@ The **Relayer** in the Omni network acts as a critical intermediary, handling th
 
         # Display the figure in Streamlit
         st.plotly_chart(fig)
+
 
 
 
