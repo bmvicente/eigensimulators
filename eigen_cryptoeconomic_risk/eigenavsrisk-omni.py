@@ -491,7 +491,7 @@ def main():
             st.markdown('<p class="header-style">Total Restaked ETH Delegated to Omni</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=1300000)
+            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=1200000)
             st.write(f"&#8226; Total Restaked ETH to Omni: **{restaked_eth_del:,.0f} ETH**")
 
 
