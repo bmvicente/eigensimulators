@@ -1721,20 +1721,19 @@ The summation or multiplication of variables revolves around their independence 
                         font-size: 30px; /* Adjust font size for bullet points */
                     }
                     ul.big-font li {
-                        font-size: 30px; /* Adjust font size for bullet points */
+                        font-size: 25px; /* Adjust font size for bullet points */
                         font-weight: normal; /* Reset font weight for bullet points */
                     }
                     </style>
                     <div class="big-font">
                     Potential Risk Attack Vectors Toward Omni:
                     <ul class="big-font">
-                        <li><strong>Cross-Message Tampering or Stalling:</strong> Risks arising from malicious actors or faulty processes that alter or delay the transmission of messages across chains, potentially disrupting operations and trust.</li>
-                        <li><strong>Cross-Chain MEV Extraction Risk:</strong> The potential for miners or validators to manipulate transaction order or inclusion across different chains for profit, undermining fair transaction processing.</li>
-                        <li><strong>Cross-Chain Double-Spend Attack Risk:</strong> The threat of an asset being spent more than once as it moves between chains due to discrepancies in transaction finality or synchronization issues.</li>
-                        <li><strong>Liveness Degradation Risk:</strong> Situations where network performance degrades significantly, potentially leading to downtimes or delays in transaction processing across interconnected chains.</li>
-                        <li><strong>Validator Collusion Risk:</strong> The danger of validators conspiring to act dishonestly or manipulatively, which could lead to compromised security and integrity of cross-chain operations.</li>
+                        <li><strong>Cross-Message Tampering or Stalling</strong></li>
+                        <li><strong>Cross-Chain MEV Extraction Risk</strong></li>
+                        <li><strong>Cross-Chain Double-Spend Attack Risk</strong></li>
+                        <li><strong>Liveness Degradation Risk</strong></li>
+                        <li><strong>Validator Collusion Risk</strong></li>
                     </ul>
-                    These risks require vigilant monitoring, advanced cryptographic measures, and cooperative protocol design to ensure the secure and efficient function of interoperability networks.
                     </div>
                     """, unsafe_allow_html=True)
 
