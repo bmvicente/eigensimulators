@@ -1701,7 +1701,7 @@ The summation or multiplication of variables revolves around their independence 
     col56,col57 = st.columns(2, gap="large")
     with col56:
 
-        col111, col121, col131 = st.columns([1,4,3])
+        col111, col121, col131 = st.columns([3,4,1])
 
         with col111:
             st.write("")
