@@ -1718,7 +1718,7 @@ The summation or multiplication of variables revolves around their independence 
         st.markdown("""
                     <style>
                     .big-font {
-                        font-size: 300px;  /* Adjust font size as needed */
+                        font-size: 30px !important;  /* Adjust font size as needed */
                         font-weight: bold; /* Makes the text bold */
                         margin-left: 100px; /* Expands the left margin */
                         margin-right: 100px; /* Expands the right margin */
@@ -1733,17 +1733,21 @@ The summation or multiplication of variables revolves around their independence 
                         <li><strong>Liveness Degradation Risk:</strong> Situations where network performance degrades significantly, potentially leading to downtimes or delays in transaction processing across interconnected chains.</li>
                         <li><strong>Validator Collusion Risk:</strong> The danger of validators conspiring to act dishonestly or manipulatively, which could lead to compromised security and integrity of cross-chain operations.</li>
                     </ul>
+                    These risks require vigilant monitoring, advanced cryptographic measures, and cooperative protocol design to ensure the secure and efficient function of interoperability networks.
                     </div>
                     """, unsafe_allow_html=True)
 
 
 
 
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
 
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
 
 
