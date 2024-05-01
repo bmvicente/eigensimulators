@@ -44,7 +44,8 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
                 validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
                 da_sol_mec, validator_centralization, relayer_centralization, evm_validator_reputation,
                 evm_client_reputation):
-
+        
+        print("Halo Reputation value before accessing dictionary:", halo_reputation)
 
 
 #evm_validator_centralization
