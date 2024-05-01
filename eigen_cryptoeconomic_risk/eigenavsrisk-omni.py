@@ -494,7 +494,9 @@ def main():
         st.write("\n")
         st.write("\n")
         st.write("\n")
-
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
 
         
         st.markdown('<p class="header-style" style="font-size: 21px;">AVS Business Model</p>', unsafe_allow_html=True)
