@@ -775,7 +775,7 @@ def main():
                         st.markdown("""
                             Accounting for the **number of Security Audits** performed onto an AVS and its underlying **Protocol and Code complexities** provides a good insight into its reliability and robustness.
                             
-                            While these input is purely qualitative and quantitative, respectively, a strong correlation exists with its underlying smart contract risks (and the risk of honest nodes getting slashed). 
+                            While these input is purely qualitative and quantitative, respectively, a strong correlation exists with its underlying smart contract risks and the risk of honest nodes getting potentially slashed. 
                             
                             ```python
                             security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the lowest
