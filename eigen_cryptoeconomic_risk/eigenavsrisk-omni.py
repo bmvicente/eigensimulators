@@ -1718,12 +1718,14 @@ The summation or multiplication of variables revolves around their independence 
         st.markdown("""
                     <style>
                     .big-font {
-                        font-size: 18px;  /* Adjust font size as needed */
+                        font-size: 20px;  /* Adjust font size as needed */
                         font-weight: bold; /* Makes the text bold */
+                        margin-left: 100px; /* Expands the left margin */
+                        margin-right: 100px; /* Expands the right margin */
                     }
                     </style>
                     <div class="big-font">
-                    The <strong>Interoperability Risk Assessment</strong> highlights critical vulnerabilities within cross-chain operations. Understanding and mitigating these risks are essential for maintaining robust and secure interoperability networks:
+                    Potential Risk Attack Vectors Toward Omni:
                     <ul>
                         <li><strong>Cross-Message Tampering or Stalling:</strong> Risks arising from malicious actors or faulty processes that alter or delay the transmission of messages across chains, potentially disrupting operations and trust.</li>
                         <li><strong>Cross-Chain MEV Extraction Risk:</strong> The potential for miners or validators to manipulate transaction order or inclusion across different chains for profit, undermining fair transaction processing.</li>
@@ -1734,6 +1736,7 @@ The summation or multiplication of variables revolves around their independence 
                     These risks require vigilant monitoring, advanced cryptographic measures, and cooperative protocol design to ensure the secure and efficient function of interoperability networks.
                     </div>
                     """, unsafe_allow_html=True)
+
 
 
 
