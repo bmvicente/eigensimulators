@@ -1233,8 +1233,8 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
     
 
-        result5 = (st.session_state.validator_performance_acc_rate_var * st.session_state.halo_reputation_score * st.session_state.validator_reputation_score *
-                   st.session_state.validator_centralization_score * validator_metrics_likelihood2 * validator_metrics_impact2)
+        result5 = ((st.session_state.halo_reputation_score + st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
+                   st.session_state.validator_centralization_score) * validator_metrics_likelihood2 * validator_metrics_impact2)
         
         result5_formatted = format_result(float(result5))
 
@@ -1242,13 +1242,15 @@ The summation or multiplication of variables revolves around their independence 
         validator_calc2 = f"""
             <div style="text-align: center;">
                 <div>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.halo_reputation_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_likelihood_formatted}</span>         
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
@@ -1427,10 +1429,9 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.evm_client_div_score = evm_client_div_risk.get(evm_client_div, 0)
 
 
-        result7 = (st.session_state.evm_client_reputation_score * st.session_state.evm_val_performance_acc_rate_var * 
-                   st.session_state.evm_validator_reputation_score * st.session_state.evm_equivalence_score * 
-                   st.session_state.evm_validator_centralization_score *
-                   st.session_state.evm_client_div_score * evm_metrics_likelihood2 * evm_metrics_impact2)
+        result7 = ((st.session_state.evm_client_reputation_score + st.session_state.evm_val_performance_acc_rate_var * 
+                   st.session_state.evm_validator_reputation_score * st.session_state.evm_validator_centralization_score + 
+                   (st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score)) * evm_metrics_likelihood2 * evm_metrics_impact2)
         
 
         result7_formatted = format_result(float(result7))
@@ -1439,17 +1440,21 @@ The summation or multiplication of variables revolves around their independence 
         evm_calc2 = f"""
             <div style="text-align: center;">
                 <div>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_reputation_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_val_performance_acc_rate_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_centralization_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_likelihood_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
