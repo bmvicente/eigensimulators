@@ -1717,16 +1717,17 @@ The summation or multiplication of variables revolves around their independence 
 
         st.markdown("""
                     <style>
-                    .big-font {
-                        font-size: 30px !important;  /* Adjust font size as needed */
-                        font-weight: bold; /* Makes the text bold */
-                        margin-left: 100px; /* Expands the left margin */
-                        margin-right: 100px; /* Expands the right margin */
+                    ul.big-font {
+                        font-size: 30px; /* Adjust font size for bullet points */
+                    }
+                    ul.big-font li {
+                        font-size: 30px; /* Adjust font size for bullet points */
+                        font-weight: normal; /* Reset font weight for bullet points */
                     }
                     </style>
                     <div class="big-font">
                     Potential Risk Attack Vectors Toward Omni:
-                    <ul>
+                    <ul class="big-font">
                         <li><strong>Cross-Message Tampering or Stalling:</strong> Risks arising from malicious actors or faulty processes that alter or delay the transmission of messages across chains, potentially disrupting operations and trust.</li>
                         <li><strong>Cross-Chain MEV Extraction Risk:</strong> The potential for miners or validators to manipulate transaction order or inclusion across different chains for profit, undermining fair transaction processing.</li>
                         <li><strong>Cross-Chain Double-Spend Attack Risk:</strong> The threat of an asset being spent more than once as it moves between chains due to discrepancies in transaction finality or synchronization issues.</li>
@@ -1736,6 +1737,7 @@ The summation or multiplication of variables revolves around their independence 
                     These risks require vigilant monitoring, advanced cryptographic measures, and cooperative protocol design to ensure the secure and efficient function of interoperability networks.
                     </div>
                     """, unsafe_allow_html=True)
+
 
 
 
