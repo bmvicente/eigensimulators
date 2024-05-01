@@ -1771,7 +1771,7 @@ The summation or multiplication of variables revolves around their independence 
 
 
 
-    def normalize_score(original_score, min_original=15.25, max_original=22777450):
+    def normalize_score(original_score, min_original=15.25, max_original=100450):
             normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
             return normalized_score
 
