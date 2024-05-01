@@ -1717,7 +1717,7 @@ The summation or multiplication of variables revolves around their independence 
         st.markdown("""
                     <style>
                     ul.big-font {
-                        font-size: 30px; /* Adjust font size for bullet points */
+                        font-size: 35px; /* Adjust font size for bullet points */
                     }
                     ul.big-font li {
                         font-size: 22px; /* Adjust font size for bullet points */
