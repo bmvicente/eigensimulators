@@ -1680,7 +1680,6 @@ The summation or multiplication of variables revolves around their independence 
 
     st.write("  \n")
     st.write("  \n")
-    st.write("  \n")
 
 
     risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, 
@@ -1721,7 +1720,7 @@ The summation or multiplication of variables revolves around their independence 
                         font-size: 30px; /* Adjust font size for bullet points */
                     }
                     ul.big-font li {
-                        font-size: 25px; /* Adjust font size for bullet points */
+                        font-size: 22px; /* Adjust font size for bullet points */
                         font-weight: normal; /* Reset font weight for bullet points */
                     }
                     </style>
