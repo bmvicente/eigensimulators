@@ -1177,14 +1177,14 @@ def main():
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="v660", help=f"""
+            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, key="v660", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             validator_metrics_likelihood2 = validator_metrics_likelihood / 2
 
         with col34:
-            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="v90901", help=f"""
+            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v90901", help=f"""
                                                      **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
@@ -1550,7 +1550,7 @@ The summation or multiplication of variables revolves around their independence 
             relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="43yugu421",
                                                 help="**Attests for a Relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
         with col101:
-            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="32uih1132", index=0,
+            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="32uih1132", index=1,
                                                     help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
 
         relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
@@ -1702,17 +1702,57 @@ The summation or multiplication of variables revolves around their independence 
     col56,col57 = st.columns([10,6], gap="large")
     with col56:
 
-        def normalize_score(original_score, min_original=14.25, max_original=77325):
+        col111, col121, col131 = st.columns([1,5,4])
+
+        with col111:
+            st.write("")
+
+        with col121:
+            st.image("images/omni-matrix.jpg", width=600)
+
+        with col131:
+            st.write("")
+
+    with col57:
+
+        st.markdown("""
+                    <style>
+                    .big-font {
+                        font-size: 18px;  /* Adjust font size as needed */
+                        font-weight: bold; /* Makes the text bold */
+                    }
+                    </style>
+                    <div class="big-font">
+                    The <strong>Interoperability Risk Assessment</strong> highlights critical vulnerabilities within cross-chain operations. Understanding and mitigating these risks are essential for maintaining robust and secure interoperability networks:
+                    <ul>
+                        <li><strong>Cross-Message Tampering or Stalling:</strong> Risks arising from malicious actors or faulty processes that alter or delay the transmission of messages across chains, potentially disrupting operations and trust.</li>
+                        <li><strong>Cross-Chain MEV Extraction Risk:</strong> The potential for miners or validators to manipulate transaction order or inclusion across different chains for profit, undermining fair transaction processing.</li>
+                        <li><strong>Cross-Chain Double-Spend Attack Risk:</strong> The threat of an asset being spent more than once as it moves between chains due to discrepancies in transaction finality or synchronization issues.</li>
+                        <li><strong>Liveness Degradation Risk:</strong> Situations where network performance degrades significantly, potentially leading to downtimes or delays in transaction processing across interconnected chains.</li>
+                        <li><strong>Validator Collusion Risk:</strong> The danger of validators conspiring to act dishonestly or manipulatively, which could lead to compromised security and integrity of cross-chain operations.</li>
+                    </ul>
+                    These risks require vigilant monitoring, advanced cryptographic measures, and cooperative protocol design to ensure the secure and efficient function of interoperability networks.
+                    </div>
+                    """, unsafe_allow_html=True)
+
+
+
+
+
+
+
+
+    def normalize_score(original_score, min_original=14.25, max_original=77325):
             normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
             return normalized_score
 
-        final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9
-        normalized_risk_score = normalize_score(final_result)
+    final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9
+    normalized_risk_score = normalize_score(final_result)
 
-        st.session_state.risk_score = normalized_risk_score
+    st.session_state.risk_score = normalized_risk_score
 
-        st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Omni</i> Risk Score</div>", unsafe_allow_html=True)
-        final_result_html = f"""
+    st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Omni</i> Risk Score</div>", unsafe_allow_html=True)
+    final_result_html = f"""
                 <div style="text-align: center;">
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> + </span>
@@ -1743,23 +1783,23 @@ The summation or multiplication of variables revolves around their independence 
             """
 
 
-        st.markdown(final_result_html, unsafe_allow_html=True)
+    st.markdown(final_result_html, unsafe_allow_html=True)
 
-        if st.session_state.risk_score >= 75:
+    if st.session_state.risk_score >= 75:
             color = "#d32f2f"  # Red color for high risk
             background_color = "#fde0dc"  # Light red background
-        elif st.session_state.risk_score <= 25:
+    elif st.session_state.risk_score <= 25:
             color = "#388e3c"  # Green color for low risk
             background_color = "#ebf5eb"  # Light green background
-        else:
+    else:
             color = "black"  # Black color for medium risk
             background_color = "#ffffff"  # White background
 
         
-        st.write("  \n")
-        st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
-        st.markdown(
+    st.markdown(
         f"""
         <div style="
             border: 2px solid {color};
@@ -1774,12 +1814,12 @@ The summation or multiplication of variables revolves around their independence 
         unsafe_allow_html=True
         )
 
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
 
-        st.markdown("""
+    st.markdown("""
                     <style>
                     .big-font {
                         font-size: 18px;  /* Adjust font size as needed */
@@ -1796,20 +1836,6 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
 
     st.write("**Note**: *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
-
-    with col57:
-
-        col111, col121, col131 = st.columns([1,5,4])
-
-        with col111:
-            st.write("")
-
-        with col121:
-            st.image("images/omni-matrix.jpg", width=600)
-
-        with col131:
-            st.write("")
-
 
 
 
