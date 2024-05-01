@@ -733,7 +733,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            code_complexity = st.selectbox("**AVS Protocol Architecture & Code Complexity**", ["High", "Medium", "Low"], index=0, key="er7tr")
+            code_complexity = st.selectbox("**AVS Protocol Architecture & Code Complexity**", ["High", "Medium", "Low"], index=1, key="er7tr")
             
         with col28:
             # Number of Security Audits
