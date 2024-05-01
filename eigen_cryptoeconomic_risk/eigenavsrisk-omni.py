@@ -45,6 +45,8 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
                 da_sol_mec, validator_centralization, relayer_centralization, evm_validator_reputation,
                 evm_client_reputation):
 
+
+
 #evm_validator_centralization
         evm_client_reputation_score = evm_client_reputation_risk[evm_client_reputation]
         #evm_validator_centralization_score = evm_validator_centralization_risk[evm_validator_centralization]
@@ -82,7 +84,7 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
                     sybil_mec_score, relayer_da_solution_score, validator_abci_usage_score, engine_api_score,
                     lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
                     relayer_merkle_score, oracle_bridge_mec_score, relayer_centralization_score, 
-                    evm_validator_reputation_score, )
+                    evm_validator_reputation_score)
 #evm_validator_centralization_score
 
 
