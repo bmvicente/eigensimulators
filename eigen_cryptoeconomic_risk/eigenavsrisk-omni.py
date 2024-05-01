@@ -1767,6 +1767,8 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
 
 
