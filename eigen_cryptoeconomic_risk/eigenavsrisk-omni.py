@@ -1720,7 +1720,7 @@ The summation or multiplication of variables revolves around their independence 
                         font-size: 35px; /* Adjust font size for bullet points */
                     }
                     ul.big-font li {
-                        font-size: 22px; /* Adjust font size for bullet points */
+                        font-size: 20px; /* Adjust font size for bullet points */
                         font-weight: normal; /* Reset font weight for bullet points */
                     }
                     </style>
