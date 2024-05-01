@@ -1699,7 +1699,7 @@ The summation or multiplication of variables revolves around their independence 
     st.session_state.evm_validator_reputation_score, st.session_state.evm_client_reputation_score, st.session_state.evm_validator_centralization_score) = risk_score
 
 
-    col56,col57 = st.columns([10,6], gap="large")
+    col56,col57 = st.columns(2, gap="large")
     with col56:
 
         col111, col121, col131 = st.columns([1,5,4])
