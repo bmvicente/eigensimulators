@@ -1720,6 +1720,9 @@ The summation or multiplication of variables revolves around their independence 
             st.write("")
 
         with col121:
+            st.write("")
+            st.write("")
+
             st.markdown("""
                     <style>
                     ul.big-font {
