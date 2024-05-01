@@ -1869,6 +1869,7 @@ The summation or multiplication of variables revolves around their independence 
     """    
     st.markdown(markdown, unsafe_allow_html=True)
 
+    st.write("  \n")
 
 if __name__ == "__main__":
     main()
