@@ -285,7 +285,7 @@ def main():
             st.session_state.evm_validator_reputation_score = 0
 
     if 'evm_validator_centralization' not in st.session_state:
-        st.session_state.evm_validator_centralization = "Decentralized"  # Set default value
+        st.session_state.evm_validator_centralization = "Centralized"  # Set default value
     if 'evm_validator_centralization_score' not in st.session_state:
         if st.session_state.evm_validator_centralization in evm_validator_centralization_risk:  # Check if code complexity exists in the dictionary
             st.session_state.evm_validator_centralization_score = evm_validator_centralization_risk[st.session_state.evm_validator_centralization]
@@ -1358,6 +1358,7 @@ The summation or multiplication of variables revolves around their independence 
             evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="97h6")        
         with col88:           
             evm_validator_centralization = st.selectbox("**EVM Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
+            print("EVM Validator Centralization value:", evm_validator_centralization)
 
         st.write("  \n")
 
