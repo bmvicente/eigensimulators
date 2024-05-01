@@ -1701,7 +1701,7 @@ The summation or multiplication of variables revolves around their independence 
     col56,col57 = st.columns(2, gap="large")
     with col56:
 
-        col111, col121, col131 = st.columns(3)
+        col111, col121, col131 = st.columns([1,4,3])
 
         with col111:
             st.write("")
@@ -1714,7 +1714,13 @@ The summation or multiplication of variables revolves around their independence 
 
     with col57:
 
-        st.markdown("""
+        col111, col121, col131 = st.columns([1,4,3])
+
+        with col111:
+            st.write("")
+
+        with col121:
+            st.markdown("""
                     <style>
                     ul.big-font {
                         font-size: 35px; /* Adjust font size for bullet points */
@@ -1735,6 +1741,11 @@ The summation or multiplication of variables revolves around their independence 
                     </ul>
                     </div>
                     """, unsafe_allow_html=True)
+
+        with col131:
+            st.write("")
+
+
 
 
 
