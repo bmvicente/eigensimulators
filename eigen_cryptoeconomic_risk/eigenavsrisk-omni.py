@@ -1827,7 +1827,7 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
     st.write("  \n")
 
-    st.write("**Note**: *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
+    st.write("**Note**: *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements above are prone to being faulty.*")
 
 
 
