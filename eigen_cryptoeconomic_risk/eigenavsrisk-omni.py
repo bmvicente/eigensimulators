@@ -1700,7 +1700,7 @@ The summation or multiplication of variables revolves around their independence 
                     }
                     </style>
                     <div class="big-font">
-                    Most Prevalent Risk Attack Vectors Toward Omni:
+                    Most Pressing Risk Attack Vectors Toward Omni:
                     <ul class="big-font">
                         <li><strong>Cross-Message Tampering or Stalling</strong></li>
                         <li><strong>Cross-Chain MEV Extraction Risk</strong></li>
