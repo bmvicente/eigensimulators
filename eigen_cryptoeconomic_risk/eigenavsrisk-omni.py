@@ -1028,7 +1028,7 @@ def main():
 
         col42,col43 = st.columns(2, gap="medium")
         with col42:
-            tee_mec = st.checkbox('**TEE** Implementation for Effective Key Management', value=False,
+            tee_mec = st.checkbox('**TEE** Implementation for Effective Management of Validator Keys', value=False,
                                   help="**TEEs consist of secure portions of hardware that generate and securely store validator keys and databases of previously signed data. By design, they enhance security without comprimising scalability, and through increased trust, encourage stake delegation.**")
         with col43:
             dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False,
