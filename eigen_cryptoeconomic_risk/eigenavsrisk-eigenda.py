@@ -1,6 +1,8 @@
 
 
 import streamlit as st
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
@@ -8,91 +10,99 @@ business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking U
 relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+evm_client_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+evm_validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+evm_validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+halo_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
 operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 1}
+evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 2}
 validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 relayer_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 1}
+evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 2}
 operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
-engine_api_risk = {True: 1, False: 2}
-dvt_mec_risk = {True: 1, False: 2}
-sybil_mec_risk = {True: 1, False: 2}
-relayer_da_solution_risk = {True: 1, False: 2}
-validator_abci_usage_risk = {True: 1, False: 2}
-da_sol_mec_risk = {True: 1, False: 2}
-lockup_mec_risk = {True: 1, False: 2}
-fast_fin_ss_mec_risk = {True: 1, False: 2}
-tee_mec_risk = {True: 1, False: 2}
-encrypted_mempool_mec_risk = {True: 1, False: 2}
-relayer_merkle_risk = {True: 1, False: 2}
-oracle_bridge_mec_risk = {True: 1, False: 2}
-
+engine_api_risk = {True: 1, False: 10}
+dvt_mec_risk = {True: 1, False: 10}
+sybil_mec_risk = {True: 1, False: 10}
+relayer_da_solution_risk = {True: 1, False: 10}
+validator_abci_usage_risk = {True: 1, False: 10}
+da_sol_mec_risk = {True: 1, False: 10}
+lockup_mec_risk = {True: 1, False: 10}
+fast_fin_ss_mec_risk = {True: 1, False: 10}
+tee_mec_risk = {True: 1, False: 10}
+encrypted_mempool_mec_risk = {True: 1, False: 10}
+relayer_merkle_risk = {True: 1, False: 10}
+oracle_bridge_mec_risk = {True: 1, False: 10}
 
 
 
 def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
-                relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
-                tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
-                validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-                da_sol_mec, validator_centralization, relayer_centralization):
+              relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
+              validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
+              da_sol_mec, validator_centralization, relayer_centralization, halo_reputation, evm_validator_reputation,
+              evm_client_reputation, evm_validator_centralization):
 
-        security_audits_score = security_audits_risk[security_audits]
-        business_model_score = business_model_risk[business_model]
-        relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
-        relayer_centralization_score = relayer_centralization_risk[relayer_centralization]
-        operator_reputation_score = operator_reputation_risk[operator_reputation]
-        code_complexity_score = code_complexity_risk[code_complexity]
-        operator_centralization_score = operator_centralization_risk[operator_centralization]
-        validator_centralization_score = validator_centralization_risk[validator_centralization]
-        evm_equivalence_score = evm_equivalence_risk[evm_equivalence]
-        validator_reputation_score = validator_reputation_risk[validator_reputation]
-        evm_client_div_score = evm_client_div_risk[evm_client_div]
-        operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
-        dvt_mec_score = dvt_mec_risk[dvt_mec]
-        sybil_mec_score = sybil_mec_risk[sybil_mec]
-        relayer_da_solution_score = relayer_da_solution_risk[relayer_da_solution]
-        engine_api_score = engine_api_risk[engine_api]
-        validator_abci_usage_score = validator_abci_usage_risk[validator_abci_usage]
-        da_sol_mec_score = da_sol_mec_risk[da_sol_mec]
-        lockup_mec_score = lockup_mec_risk[lockup_mec]
-        fast_fin_ss_mec_score = fast_fin_ss_mec_risk[fast_fin_ss_mec]
-        tee_mec_score = tee_mec_risk[tee_mec]
-        encrypted_mempool_mec_score = encrypted_mempool_mec_risk[encrypted_mempool_mec]
-        relayer_merkle_score = relayer_merkle_risk[relayer_merkle]
-        oracle_bridge_mec_score = oracle_bridge_mec_risk[oracle_bridge_mec]
+    security_audits_score = security_audits_risk[security_audits]
+    business_model_score = business_model_risk[business_model]
+    relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
+    relayer_da_solution_score = relayer_da_solution_risk[relayer_da_solution]
+    relayer_merkle_score = relayer_merkle_risk[relayer_merkle]
+    evm_client_div_score = evm_client_div_risk[evm_client_div]
+    evm_equivalence_score = evm_equivalence_risk[evm_equivalence]
+    sybil_mec_score = sybil_mec_risk[sybil_mec]
+    encrypted_mempool_mec_score = encrypted_mempool_mec_risk[encrypted_mempool_mec]
+    code_complexity_score = code_complexity_risk[code_complexity]
+    tee_mec_score = tee_mec_risk[tee_mec]
+    operator_reputation_score = operator_reputation_risk[operator_reputation]
+    operator_centralization_score = operator_centralization_risk[operator_centralization]
+    operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
+    engine_api_score = engine_api_risk[engine_api]
+    validator_abci_usage_score = validator_abci_usage_risk[validator_abci_usage]
+    dvt_mec_score = dvt_mec_risk[dvt_mec]
+    oracle_bridge_mec_score = oracle_bridge_mec_risk[oracle_bridge_mec]
+    lockup_mec_score = lockup_mec_risk[lockup_mec]
+    fast_fin_ss_mec_score = fast_fin_ss_mec_risk[fast_fin_ss_mec]
+    validator_reputation_score = validator_reputation_risk[validator_reputation]
+    da_sol_mec_score = da_sol_mec_risk[da_sol_mec]
+    validator_centralization_score = validator_centralization_risk[validator_centralization]
+    relayer_centralization_score = relayer_centralization_risk[relayer_centralization]
+    halo_reputation_score = halo_reputation_risk[halo_reputation]
+    evm_validator_reputation_score = evm_validator_reputation_risk[evm_validator_reputation]
+    evm_client_reputation_score = evm_client_reputation_risk[evm_client_reputation]
+    evm_validator_centralization_score = evm_validator_centralization_risk[evm_validator_centralization]
 
-        return (security_audits_score, business_model_score, relayer_reputation_score, 
-                    operator_reputation_score, code_complexity_score, evm_equivalence_score,
-                    operator_centralization_score, validator_centralization_score, validator_reputation_score, 
-                    dvt_mec_score, evm_client_div_score, operator_entrenchment_level_score, da_sol_mec_score,
-                    sybil_mec_score, relayer_da_solution_score, validator_abci_usage_score, engine_api_score,
-                    lockup_mec_score, fast_fin_ss_mec_score, tee_mec_score, encrypted_mempool_mec_score,
-                    relayer_merkle_score, oracle_bridge_mec_score, relayer_centralization_score)
+    # Return all scores in the correct order
+    return (security_audits_score, business_model_score, relayer_reputation_score, relayer_da_solution_score,
+            relayer_merkle_score, evm_client_div_score, evm_equivalence_score, sybil_mec_score, encrypted_mempool_mec_score,
+            code_complexity_score, tee_mec_score, operator_reputation_score, operator_centralization_score,
+            operator_entrenchment_level_score, engine_api_score, validator_abci_usage_score, dvt_mec_score,
+            oracle_bridge_mec_score, lockup_mec_score, fast_fin_ss_mec_score, validator_reputation_score,
+            da_sol_mec_score, validator_centralization_score, relayer_centralization_score, halo_reputation_score,
+            evm_validator_reputation_score, evm_client_reputation_score, evm_validator_centralization_score)
+
+
 
 
 def main():
     st.set_page_config(layout="wide")
 
-    st.image("images/eigenda.jpeg", width=450)
+    st.image("images/omni.jpeg", width=450)
 
     st.title("Cryptoeconomic Risk Analysis I")
-    st.subheader("**Data Availability AVS: EigenDA Underlying Risk & Slashing Conditions Simulator**")
+    st.subheader("**Interoperability Network AVS: Omni Underlying Risk & Slashing Conditions Simulator**")
 
     st.write("  \n")
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""
-                    The consensus layer is implemented by the Omni consensus client, halo, and uses CometBFT for consensus on XMsgs and Omni EVM blocks.
-
-            The Simulator takes six of the AVS-generic parameters to simulate their Risk Score and four parameters that specifically compose a Shared Sequencer AVS like Omni. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
-            A good deal of the logic behind the right side of the Simulator (OMNI-SPECIFIC METRICS) was researched on Nethermind's recent whitepaper [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581), specifically for Omni.
-                    
-            The most significant parameter is the first: Cost-of-Corruption/Profit-from-Corruption relationship, since it poses the greatest weight on an AVS being corrupted or cryptoeconomically secure. 
-        """)
+            The Simulator takes 9 AVS-generic parameters and 21 parameters that specifically compose an Interoperability Network protocol with a CometBFT consensus architecture to calculate Omni's Risk Score as an EigenLayer AVS. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
+            
+            Most of the research to build this Simulator was derived from [Omni's Docs](https://docs.omni.network/) and [CometBFT's Docs](https://docs.cometbft.com/v0.37/), as well as the images in the "Logic" dropdowns.
+                            """)
 
         
-    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate utility or scenario for Omni as a Interoperability AVS.")
+    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate Risk Profile for Omni as a Interoperability Network AVS. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
 
     st.write("  \n")
     st.write("  \n")
@@ -152,6 +162,21 @@ def main():
         else:
             return None
 
+    def evm_val_performance_acc_rate_calc(evm_val_performance_acc_rate):
+        if 0 <= evm_val_performance_acc_rate <= 10:
+            return 9
+        elif 11 <= evm_val_performance_acc_rate <= 33:
+            return 7.5
+        elif 34 <= evm_val_performance_acc_rate <= 50:
+            return 6
+        elif 51 <= evm_val_performance_acc_rate <= 66:
+            return 4
+        elif 67 <= evm_val_performance_acc_rate <= 90:
+            return 3
+        elif 91 <= evm_val_performance_acc_rate <= 100:
+            return 2
+        else:
+            return None
 
 
 
@@ -181,7 +206,7 @@ def main():
             st.session_state.security_audits_score = 0
 
     if 'relayer_reputation' not in st.session_state:
-        st.session_state.relayer_reputation = "Renowned"  # Set default value
+        st.session_state.relayer_reputation = "Unknown"  # Set default value
     if 'relayer_reputation_score' not in st.session_state:
         if st.session_state.relayer_reputation in relayer_reputation_risk:  # Check if code complexity exists in the dictionary
             st.session_state.relayer_reputation_score = relayer_reputation_risk[st.session_state.relayer_reputation]
@@ -189,7 +214,7 @@ def main():
             st.session_state.relayer_reputation_score = 0
 
     if 'operator_reputation' not in st.session_state:
-        st.session_state.operator_reputation = "Renowned"  # Set default value
+        st.session_state.operator_reputation = "Unknown"  # Set default value
     if 'operator_reputation_score' not in st.session_state:
         if st.session_state.operator_reputation in operator_reputation_risk:  # Check if code complexity exists in the dictionary
             st.session_state.operator_reputation_score = operator_reputation_risk[st.session_state.operator_reputation]
@@ -205,7 +230,7 @@ def main():
             st.session_state.evm_equivalence_score = 0
 
     if 'operator_centralization' not in st.session_state:
-        st.session_state.operator_centralization = "Decentralized"  # Set default value
+        st.session_state.operator_centralization = "Centralized"  # Set default value
     if 'operator_centralization_score' not in st.session_state:
         if st.session_state.operator_centralization in operator_centralization_risk:  # Check if code complexity exists in the dictionary
             st.session_state.operator_centralization_score = operator_centralization_risk[st.session_state.operator_centralization]
@@ -213,7 +238,7 @@ def main():
             st.session_state.operator_centralization_score = 0
 
     if 'validator_centralization' not in st.session_state:
-        st.session_state.validator_centralization = "Decentralized"  # Set default value
+        st.session_state.validator_centralization = "Centralized"  # Set default value
     if 'validator_centralization_score' not in st.session_state:
         if st.session_state.validator_centralization in validator_centralization_risk:  # Check if code complexity exists in the dictionary
             st.session_state.validator_centralization_score = validator_centralization_risk[st.session_state.validator_centralization]
@@ -229,12 +254,44 @@ def main():
             st.session_state.relayer_centralization_score = 0
 
     if 'validator_reputation' not in st.session_state:
-        st.session_state.validator_reputation = "Renowned"  # Set default value
+        st.session_state.validator_reputation = "Unknown"  # Set default value
     if 'validator_reputation_score' not in st.session_state:
         if st.session_state.validator_reputation in validator_reputation_risk:  # Check if code complexity exists in the dictionary
             st.session_state.validator_reputation_score = validator_reputation_risk[st.session_state.validator_reputation]
         else:
             st.session_state.validator_reputation_score = 0
+
+    if 'halo_reputation' not in st.session_state:
+        st.session_state.halo_reputation = "Unknown"  # Set default value
+    if 'halo_reputation_score' not in st.session_state:
+        if st.session_state.halo_reputation in halo_reputation_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.halo_reputation_score = halo_reputation_risk[st.session_state.halo_reputation]
+        else:
+            st.session_state.halo_reputation_score = 0
+
+    if 'evm_client_reputation' not in st.session_state:
+        st.session_state.evm_client_reputation = "Unknown"  # Set default value
+    if 'evm_client_reputation_score' not in st.session_state:
+        if st.session_state.evm_client_reputation in evm_client_reputation_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.evm_client_reputation_score = evm_client_reputation_risk[st.session_state.evm_client_reputation]
+        else:
+            st.session_state.evm_client_reputation_score = 0
+
+    if 'evm_validator_reputation' not in st.session_state:
+        st.session_state.evm_validator_reputation = "Unknown"  # Set default value
+    if 'evm_validator_reputation_score' not in st.session_state:
+        if st.session_state.evm_validator_reputation in evm_validator_reputation_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.evm_validator_reputation_score = evm_validator_reputation_risk[st.session_state.evm_validator_reputation]
+        else:
+            st.session_state.evm_validator_reputation_score = 0
+
+    if 'evm_validator_centralization' not in st.session_state:
+        st.session_state.evm_validator_centralization = "Centralized"  # Set default value
+    if 'evm_validator_centralization_score' not in st.session_state:
+        if st.session_state.evm_validator_centralization in evm_validator_centralization_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.evm_validator_centralization_score = evm_validator_centralization_risk[st.session_state.evm_validator_centralization]
+        else:
+            st.session_state.evm_validator_centralization_score = 0
 
     if 'dvt_mec' not in st.session_state:
         st.session_state.dvt_mec = "False"  # Set default value
@@ -245,7 +302,7 @@ def main():
             st.session_state.dvt_mec_score = 0
 
     if 'evm_client_div' not in st.session_state:
-        st.session_state.evm_client_div = "Highly Diverse"  # Set default value
+        st.session_state.evm_client_div = "Moderately Diverse"  # Set default value
     if 'evm_client_div_score' not in st.session_state:
         if st.session_state.evm_client_div in evm_client_div_risk:  # Check if code complexity exists in the dictionary
             st.session_state.evm_client_div_score = evm_client_div_risk[st.session_state.evm_client_div]
@@ -253,20 +310,12 @@ def main():
             st.session_state.evm_client_div_score = 0
 
     if 'operator_entrenchment_level' not in st.session_state:
-        st.session_state.operator_entrenchment_level = "Low Entrenchment"  # Set default value
+        st.session_state.operator_entrenchment_level = "High Entrenchment"  # Set default value
     if 'operator_entrenchment_level_score' not in st.session_state:
         if st.session_state.operator_entrenchment_level in operator_entrenchment_level_risk:  # Check if code complexity exists in the dictionary
             st.session_state.operator_entrenchment_level_score = operator_entrenchment_level_risk[st.session_state.operator_entrenchment_level]
         else:
             st.session_state.operator_entrenchment_level_score = 0
-
-    if 'da_sol_mec' not in st.session_state:
-        st.session_state.da_sol_mec = "False"  # Set default value
-    if 'da_sol_mec_score' not in st.session_state:
-        if st.session_state.da_sol_mec in da_sol_mec_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.da_sol_mec_score = da_sol_mec_risk[st.session_state.da_sol_mec]
-        else:
-            st.session_state.da_sol_mec_score = 0
 
     if 'da_sol_mec' not in st.session_state:
         st.session_state.da_sol_mec = "False"  # Set default value
@@ -293,7 +342,7 @@ def main():
             st.session_state.relayer_da_solution_score = 0
 
     if 'validator_abci_usage_score' not in st.session_state:
-        st.session_state.validator_abci_usage = "False"  # Set default value
+        st.session_state.validator_abci_usage = "True"  # Set default value
     if 'validator_abci_usage_score' not in st.session_state:
         if st.session_state.validator_abci_usage in validator_abci_usage_risk:  # Check if code complexity exists in the dictionary
             st.session_state.validator_abci_usage_score = validator_abci_usage_risk[st.session_state.validator_abci_usage]
@@ -301,7 +350,7 @@ def main():
             st.session_state.validator_abci_usage_score = 0
 
     if 'engine_api_score' not in st.session_state:
-        st.session_state.engine_api = "False"  # Set default value
+        st.session_state.engine_api = "True"  # Set default value
     if 'engine_api_score' not in st.session_state:
         if st.session_state.engine_api in engine_api_risk:  # Check if code complexity exists in the dictionary
             st.session_state.engine_api_score = engine_api_risk[st.session_state.engine_api]
@@ -341,7 +390,7 @@ def main():
             st.session_state.encrypted_mempool_mec_score = 0
 
     if 'relayer_merkle_score' not in st.session_state:
-        st.session_state.relayer_merkle = "False"  # Set default value
+        st.session_state.relayer_merkle = "True"  # Set default value
     if 'relayer_merkle_score' not in st.session_state:
         if st.session_state.relayer_merkle in relayer_merkle_risk:  # Check if code complexity exists in the dictionary
             st.session_state.relayer_merkle_score = relayer_merkle_risk[st.session_state.relayer_merkle]
@@ -360,9 +409,24 @@ def main():
         st.session_state.risk_score = 0
 
 
+    def format_number(num):
+            if num.is_integer():
+                return f"{int(num)}"
+            else:
+                return f"{num:.1f}"
+            
+    def format_result(num):
+            # Check if the number is an integer
+            if num.is_integer():
+                # Format integer with comma for thousands
+                return f"{int(num):,}"
+            else:
+                # Format float with comma for thousands and period for decimals
+                return f"{num:,.2f}"
+
 
     st.write("\n")
-    
+
 
     col1, col2 = st.columns([1, 1], gap="large")
     with col1:
@@ -400,76 +464,65 @@ def main():
         st.write("\n")
 
 
-
-
-
-
-
-        col24, col25 = st.columns(2, gap="medium")
-        with col24:
-
+        col59, col60 = st.columns(2)
+        with col59:
             # Restaked ETH Delegated
             st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                .stExpander {
-                    border: none !important;
-                    box-shadow: none !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
+                    <style>
+                    .header-style {
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 0px;  /* Adjust the space below the header */
+                    }
+                    .stExpander {
+                        border: none !important;
+                        box-shadow: none !important;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
 
-            # Displaying the custom styled header
-            st.markdown('<p class="header-style">Total Restaked ETH Delegated to Omni</p>', unsafe_allow_html=True)
+                # Displaying the custom styled header
+            st.markdown('<p class="header-style">Total ETH Restaked on EigenDA</p>', unsafe_allow_html=True)
 
-            # Dropdown menu
-            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000)
-            st.write(f"&#8226; Total Restaked ETH to Omni: **${restaked_eth_del:,.0f}**")
+                # Dropdown menu
+            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=1200000)
+            st.write(f"&#8226; Total Restaked ETH to Omni: **{restaked_eth_del:,.0f} ETH**")
 
-
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-
-
-        with col25:
-
-            # Restaked TVL
+        with col60:
+            # Restaked ETH Delegated
             st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                .stExpander {
-                    border: none !important;
-                    box-shadow: none !important;
-                }
-                </style>
-                """, unsafe_allow_html=True)
+                    <style>
+                    .header-style {
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 0px;  /* Adjust the space below the header */
+                    }
+                    .stExpander {
+                        border: none !important;
+                        box-shadow: none !important;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
 
-            # Displaying the custom styled header
-            st.markdown('<p class="header-style">Total Restaked TVL on Omni</p>', unsafe_allow_html=True)
+                # Displaying the custom styled header
+            st.markdown('<p class="header-style">Total Staked on $EIGEN</p>', unsafe_allow_html=True)
 
-            # Dropdown menu
-            restaked_tvl = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="33")
-            st.write(f"&#8226; Total Restaked TVL on Omni: **${restaked_tvl:,.0f}**")
+                # Dropdown menu
+            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=1200000, key="1111ee")
+            st.write(f"&#8226; Total Restaked ETH to Omni: **{restaked_eth_del:,.0f} ETH**")
 
 
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
-            st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
 
+        
+        st.markdown('<p class="header-style" style="font-size: 21px;">AVS Business Model</p>', unsafe_allow_html=True)
 
 
         col47,col48 = st.columns(2, gap="medium")
@@ -489,33 +542,18 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            # Displaying the custom styled header
-            st.markdown('<p class="header-style">AVS Business Model</p>', unsafe_allow_html=True)
-
             # Dropdown menu
-            business_model = st.selectbox("", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
+            business_model = st.selectbox("**AVS Business Model Type**", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
 
         with col48:
-            st.markdown("""
-            <style>
-            .header-style {
-                font-size: 18px;
-                font-weight: bold;
-                margin-bottom: 0px;  /* Adjust the space below the header */
-            }
-            .stExpander {
-                border: none !important;
-                box-shadow: none !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-
-            # Displaying the custom styled header
-            st.markdown('<p class="header-style">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
-            
             st.write("  \n")
 
-            avs_token_percentage = st.slider("**% $OMNI**", min_value=10, max_value=90, value=50, format='%d%%')
+            # Displaying the custom styled header
+            st.markdown('<p class="header-style" style="font-size: 14px;">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
+
+            st.write("  \n")
+
+            avs_token_percentage = st.slider("**% $OMNI**", min_value=10, max_value=90, value=10, format='%d%%')
 
             xeth_percentage = 100 - avs_token_percentage
             
@@ -527,9 +565,22 @@ def main():
 
         col44,col45 = st.columns(2, gap="medium")
         with col44:
-            business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3, key='afa')
+            business_dual_likelihood = st.slider("*Likelihood* ", min_value=1, max_value=10, value=3, key='afyya', help=f"""
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
+
+                                                          1 == Unlikely | 10 == Very Likely""")
+            business_dual_likelihood2 = business_dual_likelihood / 2
         with col45:
-            business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7, key='ewe')
+            business_dual_impact = st.slider("*Impact* ", min_value=1, max_value=10, value=7, key='eywe', help=f"""
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
+
+                                                      1 == Unimpactful | 10 == Very Impactful""")
+            business_dual_impact2 = business_dual_impact / 2
+
+
+        business_dual_likelihood_formatted = format_number(business_dual_likelihood2)
+        business_dual_impact_formatted = format_number(business_dual_impact2)
+
 
         dual_staking_balance = dual_staking_balance_calc(avs_token_percentage, xeth_percentage)
         st.session_state.dual_staking_balance = dual_staking_balance
@@ -542,8 +593,8 @@ def main():
                 st.markdown("""
                     Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) by risk: 
                     
-                    - ***Pay in the Native Token of the AVS*** is the most risky, as the entire fee structure is dependent on the AVS's native token (\$AVS), tying closely to its market performance and the AVS's ongoing profitability;
-                    - ***Dual Staking Utility***, with a high risk too because it depends on both ETH restakers and $AVS stakers, which introduces complexities in security and token value dynamics;
+                    - ***Pay in the Native Token of the AVS*** is the most risky, as the entire fee structure is dependent on the AVS's native token (\$OMNI), tying closely to its market performance and the AVS's ongoing profitability;
+                    - ***Dual Staking Utility***, with a high risk too because it depends on both ETH restakers and $OMNI stakers, which introduces complexities in security and token value dynamics;
                     - ***Tokenize the Fee*** model comes with moderate risk involving payments in a neutral denomination (like ETH) and distributing a portion of fees to holders of the AVS's token, thus partly dependent on the AVS token's value;
                     - ***Pure Wallet*** represents the lowest risk, relying on straightforward service fees paid in a neutral denomination, like ETH.
 
@@ -577,30 +628,32 @@ def main():
                     The Native Dual Staking model was chosen as the default one because it guarantees the highest Cost to Violate Liveness.
                     Particularly in the beginning, too much weight on the $OMNI native token increases the likelihood of the tokens of the dual staking model being toxic. And thus negatively impact liveness, an essential condition for a Shared Sequencer.
                             
-                    Following and based on the restaking modality (**LST Restaking**), business model (**Dual Staking Utility**), and dual staking method (**Veto Dual Staking**) assumptions made for our Simulator, we found it useful to set an $AVS/xETH balance scale to assess AVS risks and potential reward emissions, as well as providing an improved insight into what their token configuration should be.
+                    Following and based on the restaking modality (**LST Restaking**), business model (**Dual Staking Utility**), and dual staking method (**Veto Dual Staking**) assumptions made for our Simulator, we found it useful to set an $OMNI/xETH balance scale to assess AVS risks and potential reward emissions, as well as providing an improved insight into what their token configuration should be.
 
-                    **\$AVS** is the AVS native token. **xETH** is any ETH-backed LST, such as stETH, rETH or cbETH.
+                    **\$OMNI** is the AVS native token. **xETH** is any ETH-backed LST, such as stETH, rETH or cbETH.
 
                     **Dual Staking**, by allowing the staking of a more stable and widely-used token like an ETH-LST alongside the AVS's native token, simplifies the bootstrapping process and provides baseline economic security, thereby mitigating these challenges.
 
-                    A greater xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a *% \$AVS* **>** *% xETH* pool balance makes sense to be a higher-reward event.
+                    A greater xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a *% \$OMNI* **>** *% xETH* pool balance makes sense to be a higher-reward event.
                         """)
     
         
-        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood * business_dual_impact
+        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood2 * business_dual_impact2
+        
+        result1_formatted = format_result(float(result1))
 
         business_dual_calc = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_impact}</span> 
-                    <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result1):,}</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
+                    <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood_formatted}</span> 
+                    <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_impact_formatted}</span> 
+                    <span style="font-size: 23px; font-weight: bold;"> = </span>
+                    <span style="font-size: 21px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result1_formatted}</span>
             </div>"""
 
         st.markdown(business_dual_calc, unsafe_allow_html=True)
@@ -633,7 +686,17 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
+        
+        st.markdown('<p class="header-style" style="font-size: 21px;">AVS Protocol Security</p>', unsafe_allow_html=True)
 
 
         col27,col28 = st.columns(2, gap="medium")
@@ -654,10 +717,7 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-
-            st.markdown('<p class="header-style">AVS Protocol Architecture & Code Complexity</p>', unsafe_allow_html=True)
-
-            code_complexity = st.selectbox("", ["High", "Medium", "Low"], index=1, key="ertr")
+            code_complexity = st.selectbox("**AVS Protocol Architecture & Code Complexity**", ["High", "Medium", "Low"], index=1, key="er7tr")
             
         with col28:
             # Number of Security Audits
@@ -675,24 +735,34 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            st.markdown('<p class="header-style">AVS Number of Security Audits</p>', unsafe_allow_html=True)
-
-            security_audits = st.number_input("", min_value=0, max_value=5, step=1, value=2, key="00")
+            security_audits = st.number_input("**AVS Number of Security Audits**", min_value=0, max_value=5, step=1, value=2, key="0890")
 
         col35,col36 = st.columns(2, gap="medium")
         with col35:
-                    security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4)
+                    security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, help=f"""
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
+
+                                                          1 == Unlikely | 10 == Very Likely""")
+                    security_likelihood2 = security_likelihood/2
         with col36:
-                    security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8)
+                    security_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, help=f"""
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
+
+                                                      1 == Unimpactful | 10 == Very Impactful""")
+                    security_impact2 = security_impact/2
+
+        security_likelihood_formatted = format_number(security_likelihood2)
+        security_impact_formatted = format_number(security_impact2)
+
 
         with st.expander("Logic"):
                         st.markdown("""
-                            Accounting for the **number of Security Audits** performed onto an AVS provides a good insight into the reliability and robustness of their code structure.
+                            Accounting for the **number of Security Audits** performed onto an AVS and its underlying **Protocol and Code complexities** provides a good insight into its reliability and robustness.
                             
-                            While this input is purely quantitative, in terms of the number of audits performed, a strong correlation exists with its underlying smart contract risks (and the risk of honest nodes getting slashed), and, as a result, rewards an AVS is confident to emit and Restakers and Operators to opt into it. 
+                            While these input is purely qualitative and quantitative, respectively, a strong correlation exists with its underlying smart contract risks and the risk of honest nodes getting potentially slashed. 
                             
                             ```python
-                            security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the least
+                            security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the lowest
                             ```
                                     """)
 
@@ -704,21 +774,22 @@ def main():
                 st.session_state.security_audits = security_audits
                 st.session_state.security_audits_score = security_audits_risk.get(security_audits, 0)
 
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * security_likelihood * security_impact
-
+        result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * security_likelihood2 * security_impact2
+        
+        result2_formatted = format_result(float(result2))
 
         security_calc = f"""
                     <div style="text-align: center;">
                         <div>
-                            <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
-                            <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audits_score}</span> 
-                            <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood}</span> 
-                            <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact}</span> 
-                            <span style="font-size: 24px; font-weight: bold;"> = </span>
-                            <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result2):,}</span>
+                            <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
+                            <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                            <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audits_score}</span> 
+                            <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                            <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood_formatted}</span> 
+                            <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                            <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_impact_formatted}</span> 
+                            <span style="font-size: 23px; font-weight: bold;"> = </span>
+                            <span style="font-size: 21px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result2_formatted}</span>
                     </div>"""
 
         st.markdown(security_calc, unsafe_allow_html=True)
@@ -749,49 +820,74 @@ def main():
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
-        # Operator Metrics
-        st.markdown("""
-                    <style>
-                    .header-style {
-                        font-size: 18px;
-                        font-weight: bold;
-                        margin-bottom: 0px;  /* Adjust the space below the header */
-                    }
-                    </style>
-                    """, unsafe_allow_html=True)
 
-        st.markdown('<p class="header-style">AVS Operator Metrics</p>', unsafe_allow_html=True)
- 
+
+        st.markdown('<p class="header-style" style="font-size: 21px;">AVS Operator Profile</p>', unsafe_allow_html=True)
+
         st.write("  \n")
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="6783")
+                operator_reputation = st.selectbox("**Operator Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="678893")
 
         with col101:            
-                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="674")
+                operator_centralization = st.selectbox("**Operators' Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=0, key="61174")
             
 
-        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], key="09111")
+        operator_entrenchment_level = st.selectbox("**Operators' Entrenchment Level** (on other AVSs)", ["High Entrenchment", "Moderate Entrenchment", "Low Entrenchment"], index=0, key="0933111")
 
         st.write("-------")
 
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="o0")
+            operator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=8, key="o09", help=f"""
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
+
+                                                          1 == Unlikely | 10 == Very Likely""")
+            operator_likelihood2 = operator_metrics_likelihood/2
         with col34:
-            operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="o1")
+            operator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="o1r", help=f"""
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
+
+                                                      1 == Unimpactful | 10 == Very Impactful""")
+            operator_impact2 = operator_metrics_impact/2
+
+        operator_likelihood_formatted = format_number(operator_likelihood2)
+        operator_impact_formatted = format_number(operator_impact2)
+
 
         st.write("  \n")
 
         with st.expander("Logic"):
             st.markdown("""
-                        The rationale behind the Impact and Likelihood default values in the sliders of this metric was taken from Nethermind's whitepaper on [*Restaking in Shared Sequencers*](https://assets.adobe.com/public/8fca5797-3914-4966-4bbe-24c1d0e10581):
-                        
-                        "*Full MEV extraction and implementing censorship on shared sequencers pose a significant challenge for an attacker. To ensure the success of such an attack and to collect the entire MEV generated, an attacker would need control over 100% of the validators. In certain sequencer setups, where leader election is lottery-based, there might be an incentive for validators to collude to maximize the amount of MEV distributed to validators as opposed to the chains.*"
-                        
-                        Given the significant challenge MEV extraction poses to an attacker, it was assigned a somewhat low Likelihood, but still a considerable Impact were the attack to happen.
+                    Although being purely qualitative metrics, the **Reputation Level of the Operator** and the **Geographical Centralization Level of the Operator**  that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions. [Rated Network](https://www.rated.network/) constitutes a good tool to assess this.                     
+                    
+                    ```python
+                    avs_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
+                    ```
+                                            
+                    ```python
+                    avs_operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+                    ```
                                 """)
 
         if st.session_state.operator_reputation != operator_reputation:
@@ -805,21 +901,24 @@ def main():
                 st.session_state.operator_entrenchment_level_score = operator_entrenchment_level_risk.get(operator_entrenchment_level, 0)
 
         result3 = (st.session_state.operator_reputation_score * st.session_state.operator_centralization_score * 
-                   st.session_state.operator_entrenchment_level_score * operator_metrics_likelihood * operator_metrics_impact)
+                   st.session_state.operator_entrenchment_level_score * operator_likelihood2 * operator_impact2)
+        
+        result3_formatted = format_result(float(result3))
+
 
         operator_calc = f"""
                 <div style="text-align: center;">
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_reputation_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_centralization_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_entrenchment_level_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_likelihood}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_metrics_impact}</span> 
-                    <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result3):,}</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_reputation_score}</span> 
+                    <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_centralization_score}</span> 
+                    <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_entrenchment_level_score}</span> 
+                    <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_likelihood_formatted}</span> 
+                    <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_impact_formatted}</span> 
+                    <span style="font-size: 23px; font-weight: bold;"> = </span>
+                    <span style="font-size: 21px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result3_formatted}</span>
                 </div>
             """
 
@@ -888,13 +987,14 @@ def main():
                 """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-        st.markdown('<p class="header-style">Total Staked $OMNI</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Total Staked $ROLLUP</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212")
-        st.write(f"&#8226; Total Staked \$OMNI: **${staked_omni:,.0f}**")
+        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
+        st.write(f"&#8226; Total Staked \$OMNI: **{staked_omni:,.0f} ETH**")
 
 
+        st.write("\n")
         st.write("\n")
         st.write("\n")
         st.write("\n")
@@ -931,12 +1031,13 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
+        
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">1</span>
-                CometBFT Consensus Architecture Metrics through Consensus Client (Halo)
+                <span style="font-size: 21px;">CONSENSUS LAYER: CometBFT & Consensus Client Profile</span>
             </p>
-            """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
 
 
         st.write("  \n")
@@ -944,14 +1045,14 @@ def main():
         col38,col39 = st.columns(2, gap="medium")
         with col38:
             engine_api = st.checkbox('**Ethereum Engine API** used by Nodes to pair the Consensus Client (Halo) with the EVM Execution Client', 
-                                     value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with a Consensus Client (like halo) that implements CometBFT consensus.**")
+                                     value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with Halo Consensus Client that implements CometBFT consensus.**")
         with col39:
             validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', value=True,
                                                help="**ABCI++ is an adapter that wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.**")
 
         col42,col43 = st.columns(2, gap="medium")
         with col42:
-            tee_mec = st.checkbox('**TEE** Implementation for Effective Key Management', value=False,
+            tee_mec = st.checkbox('**TEE** Implementation for Secure Management of Validator Keys', value=False,
                                   help="**TEEs consist of secure portions of hardware that generate and securely store validator keys and databases of previously signed data. By design, they enhance security without comprimising scalability, and through increased trust, encourage stake delegation.**")
         with col43:
             dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False,
@@ -968,56 +1069,7 @@ def main():
         with col52:
             da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions and Low Latency', value=False)
         with col53:
-            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for *XMsg* Fast Finality', value=False)
-
-        st.write("-------")
-
-        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                   help="**The Performance Accuracy Rate of Validators attesting for XBlocks consists of the timely submission of cross-chain messages, XBlock cache management, and the overall decision-making in including XMsgs in an XBlock.**")
-        
-        validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
-        st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
-
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
-            validator_reputation = st.selectbox("**Validator Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0990",
-                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to XBlocks before being submitted on-chain.**")
-        with col101:           
-            validator_centralization = st.selectbox("**Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="3232",
-                                                    help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
-        
-        st.write("-------")
-        
-        col33, col34 = st.columns(2, gap="medium")
-        with col33:
-            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="v0")
-        with col34:
-            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v1")
-
-        with st.expander("Logic"):
-                st.image("images/omni-comet-diagram.jpg", width=750)
-
-                st.markdown("""
-Using the Engine API, Omni nodes pair existing high performance Ethereum execution clients with a new consensus client, referred to as halo, that implements CometBFT consensus.The Engine API allows clients to be substituted or upgraded without breaking the system. This allows the protocol to maintain flexibility on Ethereum and Cosmos technology while promoting client diversity within its execution layer and consensus layer. We consider this new network framework to be a public good that future projects may leverage for their own network designs.
-                            
-        ABCI++  while introducing benefits at the application layer particularly, also introduce complexity in application design, multi-faceted security vulnerabilities, and performance overhead to the whole process. It is paramount to consider the deterministic design and logic of integrated applications.
-
-        Application BlockChain Interface (ABCI++): Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.
-                Validators compile XMsg into XBlocks, which include metadata for efficient verification and attestation, streamlining the relaying process.
-                            
-                Engine API Conversion: An ABCI++ adapter wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.
-                    During the consensus, validators utilize ABCI++ to attest to the state of Rollup VMs, running state transition functions for accurate and secure external VM interactions.
-                            
-                    Leveraging CometBFT's ABCI, Omni introduces enhancements (potentially hinted at by the name ABCI++) that allow for more complex and flexible application interactions. This includes processing state transitions for the Omni EVM and external VMs without interference.
-                    
-                    Decoupled Consensus and Application Logic: The separation of the consensus engine and application logic via ABCI facilitates the creation of diverse applications, from cryptocurrencies to e-voting systems, without being limited to a specific blockchain's capabilities or language.
-                            
-
-                    The Performance Accuracy Rate of Validators attesting for XBlocks consist of:
-                    - **Submission of Cross-Chain Messages**: Relayers wait for more than two-thirds of the validators to attest to a source chain block. They then submit the validated XMsgs to the destination chains, along with necessary validator signatures and multi-merkle-proof.
-- **Attestation Monitoring and XBlock Cache Management**: Relayers monitor the Omni Consensus Chain for attested XBlocks, maintaining a cache of these blocks for efficient processing and submission readiness.
-- **Decision Making for Message Submission**: Relayers decide on the number of XMsgs to submit, balancing transaction cost considerations like data size and gas limits.
-                            """)
+            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for `XMsg` Fast Finality', value=False)
 
 
         if st.session_state.engine_api != engine_api:
@@ -1052,6 +1104,110 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
             st.session_state.fast_fin_ss_mec = fast_fin_ss_mec
             st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk.get(fast_fin_ss_mec, 0)
 
+        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score +
+                        st.session_state.tee_mec_score + st.session_state.dvt_mec_score + st.session_state.oracle_bridge_mec_score +
+                        st.session_state.lockup_mec_score + st.session_state.da_sol_mec_score + st.session_state.fast_fin_ss_mec_score)
+
+        st.write("  \n")
+
+        validator_calc1 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.oracle_bridge_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.lockup_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
+            </div>"""
+
+        st.markdown(validator_calc1, unsafe_allow_html=True)
+
+
+############################################
+
+
+        st.write("-------")
+
+        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0904888",
+                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
+        st.write("  \n")
+
+        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                   help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
+        validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
+        st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
+
+        col100, col101 = st.columns(2, gap="medium")
+        with col100:
+            validator_reputation = st.selectbox("**CometBFT Validators' Reputation**", ["Unknown", "Established", "Renowned"], key="0977790", index=1,
+                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
+        with col101:           
+            validator_centralization = st.selectbox("**CometBFT Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="30'232", index=1,
+                                                    help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
+        
+        st.write("-------")
+        
+        col33, col34 = st.columns(2, gap="medium")
+        with col33:
+            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, key="v660", help=f"""
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
+
+                                                          1 == Unlikely | 10 == Very Likely""")
+            validator_metrics_likelihood2 = validator_metrics_likelihood / 2
+
+        with col34:
+            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v90901", help=f"""
+                                                     **Assesses the impact that risk would have on the security of the AVS.**
+
+                                                      1 == Unimpactful | 10 == Very Impactful""")
+            validator_metrics_impact2 = validator_metrics_impact / 2
+
+
+
+        # Directly use the calculated variables
+        val_likelihood_formatted = format_number(validator_metrics_likelihood2)
+        val_impact_formatted = format_number(validator_metrics_impact2)
+
+
+        with st.expander("Logic"):
+                st.image("images/omni-comet-diagram.jpg", width=750)
+
+                st.markdown("""
+Consensus-level Validators package `XMsgs` into `XBlocks` and attest to those `XBlock` hashes during CometBFT consensus. For a more detailed overview check the visualization at the bottom of this Simulator.
+            
+**Engine API** is a critical component of the Omni protocol, connecting Ethereum execution clients with a consensus client (Halo) for the CometBFT system. It allows clients to be substituted or upgraded without perturbing the system. It offers:
+
+- Scalability and Efficiency: By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
+- Flexibility: Supports the interchangeability and upgradability of execution clients without system disruption, ensuring compatibility with various Ethereum execution clients.
+                            
+                            
+**ABCI++** is an adapter that wraps around the CometBFT engine, that enables seamless state translation and efficient conversion of Omni EVM blocks into CometBFT transactions. This feature:
+
+- Streamlines transaction requests by moving the transaction mempool to the execution layer, alleviating network congestion and latency at the CometBFT consensus level;
+- Facilitates state translations by wrapping around CometBFT ensuring Omni EVM blocks are efficiently converted into CometBFT transactions.
+                            
+As per the above checkboxes, we suggest a few features/mechanism that could contribute to the overall efficiency and security of Omni as a protocol and as an AVS. Consideration for `Halo`'s reputation can be added on a later version.
+                            
+The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
+                            """)
+
+
+        if st.session_state.halo_reputation != halo_reputation:
+            st.session_state.halo_reputation = halo_reputation
+            st.session_state.halo_reputation_score = halo_reputation_risk.get(halo_reputation, 0)
+
         if st.session_state.validator_reputation != validator_reputation:
             st.session_state.validator_reputation = validator_reputation
             st.session_state.validator_reputation_score = validator_reputation_risk.get(validator_reputation, 0)
@@ -1059,57 +1215,45 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         if st.session_state.validator_centralization != validator_centralization:
             st.session_state.validator_centralization = validator_centralization
             st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
+    
 
-
-
-        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score *
-                   st.session_state.tee_mec_score * st.session_state.dvt_mec_score * st.session_state.oracle_bridge_mec_score *
-                   st.session_state.lockup_mec_score * st.session_state.da_sol_mec_score * st.session_state.fast_fin_ss_mec_score *
-                   st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
-                   st.session_state.validator_centralization_score *
-                    validator_metrics_likelihood * validator_metrics_impact)
+        result5 = ((st.session_state.halo_reputation_score + st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
+                   st.session_state.validator_centralization_score) * validator_metrics_likelihood2 * validator_metrics_impact2)
+        
+        result5_formatted = format_result(float(result5))
 
         
-        validator_calc = f"""
+        validator_calc2 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.oracle_bridge_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.lockup_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_likelihood}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{validator_metrics_impact}</span> 
-                    <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.halo_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_likelihood_formatted}</span>         
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_impact_formatted}</span>         
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5_formatted}</span>
+                </div>
             </div>"""
 
-        st.markdown(validator_calc, unsafe_allow_html=True)
+
+        st.markdown(validator_calc2, unsafe_allow_html=True)
 
 
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
-        st.write("\n")
+        st.write("  \n")
+        st.write("  \n")
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
@@ -1143,65 +1287,20 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">2</span>
-                EVM Metrics through Execution Client
+                <span style="font-size: 21px;">EXECUTION LAYER: Execution Client Profile</span>
             </p>
-            """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
+
         
 
         st.write("  \n")
         
-        sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True,
+        col65,col66 = st.columns(2, gap="medium")
+        with col65:
+            sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True,
                                 help="**Mechanism used in the context of transactions submitted to the Omni EVM, to deter spam and malicious activities such as DoS attacks.**")
-        
-        encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for Increased Privacy and Security of Transactions', value=False)
-
-        st.write("-------")
-
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
-            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="09",
-                                           help="**Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
-        with col101:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="7877", index=2,
-                                          help="**Correlated (but not causal) relationship with the level of Equivalence or Compatible of the EVM. EVM Equivalence likely leads to greater Client Diversity.**")
-            
-        st.write("-------")
-        
-        col33, col34 = st.columns(2, gap="medium")
-        with col33:
-            evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e0")
-        with col34:
-            evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="e1")
-
-        with st.expander("Logic"):
-                st.markdown("""
-**Execution Consensus**
-1. When it is a validator's turn to propose a block, its halo client requests the latest Omni EVM block from its execution client using the Engine API.
-2. The execution client builds a block from the transactions in its mempool and returns the block header to the halo client through the Engine API.
-3. The halo client packages the new block proposal as a single CometBFT transaction and includes it in the consensus layer block.
-4. The block is proposed to the rest of the validator network through the consensus layer’s P2P network.
-5. Non-proposing validators use the Engine API and their execution clients to run the state transition function on the proposed block header to verify the block’s validity.
-                        
-                    OMNI provides an anti-sybil mechanism for transactions submitted to the Omni EVM, deterring spam and malicious activities such as denial-of-service attacks.        
-                    
-                    Developer Accessibility and EVM Equivalence: By ensuring EVM equivalence, Omni offers a seamless transition for Ethereum developers, making it a more accessible platform for deploying decentralized applications (DApps) without modifications.
-                    
-                    **Engine API**
-
-                    - **Scalability and Efficiency:** By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
-                    - **Flexibility:** Supports the interchangeability and upgrading of execution clients without system disruption, ensuring compatibility with various Ethereum execution clients.
-                            
-                    This fidelity guarantees that opcode compatibility issues are non-existent, and all developer tooling designed for Ethereum seamlessly works with the Omni EVM.
-
-### Advantages of Omni’s EVM Equivalence
-
-- **Seamless Migration:** Developers can port their DApps to Omni without any modifications, significantly reducing the effort and complexity involved in accessing a new blockchain ecosystem.
-- **Developer Tooling Compatibility:** All the tools, libraries, and frameworks designed for Ethereum development are fully compatible with the Omni EVM, streamlining the development process.
-- **Future-Proof:** Omni's alignment with Ethereum's upgrade path ensures that developers can leverage the latest features and improvements without delay.
-                            
-                    Client Diversity and EVM Equivalence: Omni emphasizes running an unmodified version of the Ethereum Virtual Machine (EVM), which guarantees that Ethereum smart contracts and developer tooling work seamlessly. This focus on EVM equivalence and support for diverse client implementations enhances developer accessibility and network resilience.
-                            """)
-
+        with col66:
+            encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for Increased Privacy and Security', value=False)
 
         if st.session_state.encrypted_mempool_mec != encrypted_mempool_mec:
             st.session_state.encrypted_mempool_mec = encrypted_mempool_mec
@@ -1210,6 +1309,101 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         if st.session_state.sybil_mec != sybil_mec:
             st.session_state.sybil_mec = sybil_mec
             st.session_state.sybil_mec_score = sybil_mec_risk.get(sybil_mec, 0)
+
+        result6 = (st.session_state.sybil_mec_score + st.session_state.encrypted_mempool_mec_score)
+        
+        st.write("  \n")
+
+        evm_calc1 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.sybil_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.encrypted_mempool_mec_score}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result6):,}</span>
+            </div>"""
+
+        st.markdown(evm_calc1, unsafe_allow_html=True)
+
+
+##################################################
+
+
+        st.write("-------")
+
+        evm_client_reputation = st.selectbox("**EVM Client Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="87667w6", help="**Docs: 'The execution layer is implemented by standard Ethereum execution clients, like  `geth`, `erigon`, etc, to provide the Omni EVM.'**")
+        
+        st.write("  \n")
+
+        evm_val_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
+
+        evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_calc(evm_val_performance_acc_rate)
+        st.session_state.evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_var
+
+        col87, col88 = st.columns(2, gap="medium")
+        with col87:
+            evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="97h6")        
+        with col88:           
+            evm_validator_centralization = st.selectbox("**EVM Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
+
+        st.write("  \n")
+
+        col108, col109 = st.columns(2, gap="medium")
+        with col108:
+            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="lk09",
+                                           help="**Runs an unmodified version of the original EVM. Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
+        with col109:
+            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="78kmkl77", index=1,
+                                          help="**Correlated (but not causal) relationship with the level of Equivalence or Compatible of the EVM. EVM Equivalence likely leads to greater Client Diversity.**")
+            
+        st.write("-------")
+        
+        col33, col34 = st.columns(2, gap="medium")
+        with col33:
+            evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e09u890", help=f"""
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
+
+                                                          1 == Unlikely | 10 == Very Likely""")
+            evm_metrics_likelihood2 = evm_metrics_likelihood / 2
+
+        with col34:
+            evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="ejin1", help=f"""
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
+
+                                                      1 == Unimpactful | 10 == Very Impactful""")
+            evm_metrics_impact2 = evm_metrics_impact / 2
+
+        # Directly use the calculated variables
+        evm_likelihood_formatted = format_number(evm_metrics_likelihood2)
+        evm_impact_formatted = format_number(evm_metrics_impact2)
+
+        with st.expander("Logic"):
+               st.markdown("""
+The several steps at the Omni EVM level include block proposal preparation, payload generation, and consensus-reaching at the Consensus Layer. Upon reaching consensus, the block is finalized and state transitions are applied to the blockchain.
+To attest to the EVM's security and versatility, it employs an Anti-Sybil mechanism and EVM equivalence for developer accessibility and compatibility.
+                           
+- **Seamless Migration**: Developers can effortlessly migrate existing DApps to the Omni EVM without need for changes, enabling easy access to Omni's ecosystem;
+- **Developer Tooling Compatibility**: The Omni EVM maintains full compatibility with Ethereum's development tools, ensuring that existing Ethereum developer tooling works without issues;
+- **Future-Proof**: By adhering to Ethereum's standards and upgrade paths, the Omni EVM ensures that it remains up-to-date, allowing developers to utilize the latest features as they become available.
+
+We do suggest considering an encrypted mempool for increased privacy and security in transactions processing. Consideration for the different Execution Clients' reputations, nodes' level of centralization, and performance accuracy rates can be added on a later version.                         
+                        
+The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
+                            """)
+
+
+        if st.session_state.evm_client_reputation != evm_client_reputation:
+            st.session_state.evm_client_reputation = evm_client_reputation
+            st.session_state.evm_client_reputation_score = evm_client_reputation_risk.get(evm_client_reputation, 0)
+
+        if st.session_state.evm_validator_reputation != evm_validator_reputation:
+            st.session_state.evm_validator_reputation = evm_validator_reputation
+            st.session_state.evm_validator_reputation_score = evm_validator_reputation_risk.get(evm_validator_reputation, 0)
+
+        if st.session_state.evm_validator_centralization != evm_validator_centralization:
+            st.session_state.evm_validator_centralization = evm_validator_centralization
+            st.session_state.evm_validator_centralization_score = evm_validator_centralization_risk.get(evm_validator_centralization, 0)
 
         if st.session_state.evm_equivalence != evm_equivalence:
             st.session_state.evm_equivalence = evm_equivalence
@@ -1220,30 +1414,41 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
             st.session_state.evm_client_div_score = evm_client_div_risk.get(evm_client_div, 0)
 
 
-        result5 = (st.session_state.sybil_mec_score * st.session_state.encrypted_mempool_mec_score * 
-                   st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score * 
-                   evm_metrics_likelihood * evm_metrics_impact)
+        result7 = ((st.session_state.evm_client_reputation_score + st.session_state.evm_val_performance_acc_rate_var * 
+                   st.session_state.evm_validator_reputation_score * st.session_state.evm_validator_centralization_score + 
+                   (st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score)) * evm_metrics_likelihood2 * evm_metrics_impact2)
+        
 
-        evm_calc = f"""
+        result7_formatted = format_result(float(result7))
+
+
+        evm_calc2 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.sybil_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.encrypted_mempool_mec_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_likelihood}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_metrics_impact}</span> 
-                    <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result5):,}</span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_val_performance_acc_rate_var}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_likelihood_formatted}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_impact_formatted}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result7_formatted}</span>
             </div>"""
 
-        st.markdown(evm_calc, unsafe_allow_html=True)
-
+        st.markdown(evm_calc2, unsafe_allow_html=True)
 
 
         st.write("  \n")
@@ -1286,9 +1491,9 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">3</span>
-                Relayer Metrics
+                <span style="font-size: 21px;">RELAYER</span>
             </p>
-            """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
         
         
         st.write("  \n")
@@ -1296,58 +1501,6 @@ Using the Engine API, Omni nodes pair existing high performance Ethereum executi
         relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient XBlock Submission and Verification', value=True)
         
         relayer_da_solution = st.checkbox('**DA Solution** to address Complex Verification and Increased Computational Cost of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
-
-        st.write("-------")
-
-        relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                     help="**The Performance Accuracy Rate of the Relayer in the overall XMsg submission process and on the generation of Merkle-multi proofs and signatures.**")
-        
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
-            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="43421",
-                                                help="**Attests for a Relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
-        with col101:
-            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="321132",
-                                                    help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
-
-        relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
-        st.session_state.relayer_performance_acc_rate_var = relayer_performance_acc_rate_var
-
-        st.write("-------")
-        
-        col33, col34 = st.columns(2, gap="medium")
-        with col33:
-            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="r0")
-        with col34:
-            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="r1")
-
-        with st.expander("Logic"):
-                st.image("images/omni-relayer-diagram.jpg", width=750)
-
-                st.markdown("""                        
-                            Decision Making for Message Submission
-A key decision that Relayers face is determining the number of XMsgs to submit to each destination chain. This decision directly influences the cost of transactions due to factors like data size, gas limits, and the computational overhead required for portal contract verification and message processing.
-                            Relayer responsible for delivering attested cross-network messages from the Omni network to destination rollup VMs. Monitors the Omni Consensus Layer until ⅔ (>66%) of the validator set attested to the “next” block on each source chain, then proceeds to forwarding the respective XMsg list included in the block.
-Relayers are responsible for delivering confirmed cross-network messages from Omni to destination rollups. When 2/3 (>66%) of Omni validators attest to a given XBlock, relayers forward the XBlock’s corresponding XMsg list to destination rollup networks.
-                            
-                            While Merkle multi-proofs provide a powerful tool for efficient data verification across blockchain networks, careful consideration of these risks and appropriate mitigations are essential to maintaining the security, efficiency, and robustness of blockchain protocols that utilize them.
-        
-                            - **Decision Making for Message Submission**: A key decision that Relayers face is determining the number of **`XMsg`**s to submit to each destination chain. This decision directly influences the cost of transactions due to factors like data size, gas limits, and the computational overhead required for portal contract verification and message processing. (**PERFORMANCE ACCURACY RATE**)
-- **Submission** **Transaction**: For the actual submission to a destination chain, Relayers generate a merkle-multi-proof for the **`XMsg`**s that are to be included, based on the **`XBlock`** attestations root that has reached a quorum. They then craft an EVM transaction containing this data, aiming to ensure its swift inclusion on the destination chain.        
-                    At scale, Merkle multi-proofs introduce data availability concerns, complexity in verification, and increased computational cost.
-                            
-                            Resource Intensiveness: The need for signature and merkle proof verification for each message can be resource-intensive, especially on high-traffic networks.
-        Permissionless third-party Relayer (Permissionless — reduces single point of failure likelihood | decentralized): The Relayer plays a pivotal role in the Omni protocol as a permissionless entity that bridges cross-chain messages between source and destination chains. It performs critical functions that ensure the smooth and secure transmission of messages across the network.
-
-        Relayer Submits XBlocks: Relayers construct submissions for each finalized XBlock hash, including validator signatures and merkle proofs of each XMsg's inclusion. (DA CONSTRAINTS AT SCALE)
-                Relayer Role Security: While the permissionless relayer mechanism is a strength for interoperability, it also introduces a potential vector for attacks if relayers behave maliciously or if the reputation system is not robust enough to incentivize honest participation.
-                            
-                To submit XMsgs to a destination chain, Relayers generate a merkle-multi-proof for the XMsgs tied to an attested XBlock. They package this information into an EVM transaction aimed at the destination chain, encapsulating the core of their role in cross-chain communication.
-                
-                After validators' attestation, relayers submit XBlocks and their messages to destination chains, employing merkle-multi-proofs for verification.
-                    Relayer Role Security: While the permissionless relayer mechanism is a strength for interoperability, it also introduces a potential vector for attacks if relayers behave maliciously or if the reputation system is not robust enough to incentivize honest participation.
-                            """)
-
 
         if st.session_state.relayer_merkle != relayer_merkle:
             st.session_state.relayer_merkle = relayer_merkle
@@ -1357,6 +1510,77 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
             st.session_state.relayer_da_solution = relayer_da_solution
             st.session_state.relayer_da_solution_score = relayer_da_solution_risk.get(relayer_da_solution, 0)
 
+        result8 = (st.session_state.relayer_merkle_score + st.session_state.relayer_da_solution_score)
+        
+        st.write("  \n")
+
+        relayer_calc1 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_merkle_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result8):,}</span>
+            </div>"""
+
+        st.markdown(relayer_calc1, unsafe_allow_html=True)
+
+
+########################################################
+
+
+        st.write("-------")
+
+        relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                     help="**The Performance Accuracy Rate of the Relayer in the overall `XMsg` submission process to the rollup destination chains with the respective generation of Merkle-multi proofs and signatures.**")
+        
+        col100, col101 = st.columns(2, gap="medium")
+        with col100:
+            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="43yugu421",
+                                                help="**Attests for a Relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
+        with col101:
+            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="32uih1132", index=1,
+                                                    help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
+
+        relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
+        st.session_state.relayer_performance_acc_rate_var = relayer_performance_acc_rate_var
+
+        st.write("-------")
+        
+        col33, col34 = st.columns(2, gap="medium")
+        with col33:
+            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="ruih0", help=f"""
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
+
+                                                          1 == Unlikely | 10 == Very Likely""")
+            relayer_metrics_likelihood2 = relayer_metrics_likelihood / 2
+
+        with col34:
+            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="r7y91", help=f"""
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
+
+                                                      1 == Unimpactful | 10 == Very Impactful""")
+            relayer_metrics_impact2 = relayer_metrics_impact / 2
+
+        relayer_likelihood_formatted = format_number(relayer_metrics_likelihood2)
+        relayer_impact_formatted = format_number(relayer_metrics_impact2)
+
+
+        with st.expander("Logic"):
+                st.image("images/omni-relayer-diagram.jpg", width=750)
+
+                st.markdown("""                        
+The **Relayer** in the Omni network acts as a critical intermediary, handling the transfer of attested cross-network messages (`XMsgs`) between the Omni network and the various destination rollup VMs.Things to consider: 
+
+- **Decision Making for Message Submission**: Post collecting `XBlocks` and `XMsgs`, Relayers determine the number of `XMsg`s to include in their submissions, balancing the costs associated with transaction size, computational requirements, and gas limits.
+- **Relayer Performance**: Relayers create and submit transactions with Merkle multi-proofs to destination chains based on attested `XBlock` data, ensuring secure and efficient message delivery.
+- **Security and Scalability**: As a permissionless service, Relayers reduce central points of failure and uphold the network's decentralized ethos, while managing security risks and computational intensiveness, especially as the network scales.
+                            
+The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
+                            """)
+
+
         if st.session_state.relayer_reputation != relayer_reputation:
             st.session_state.relayer_reputation = relayer_reputation
             st.session_state.relayer_reputation_score = relayer_reputation_risk.get(relayer_reputation, 0)
@@ -1365,33 +1589,30 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
             st.session_state.relayer_centralization = relayer_centralization
             st.session_state.relayer_centralization_score = relayer_centralization_risk.get(relayer_centralization, 0)
 
-        result6 = (st.session_state.relayer_merkle_score * st.session_state.relayer_da_solution_score * 
-                   st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
-                   st.session_state.relayer_performance_acc_rate_var * 
-                   relayer_metrics_likelihood * relayer_metrics_impact)
 
+        result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
+                   st.session_state.relayer_performance_acc_rate_var * relayer_metrics_likelihood2 * relayer_metrics_impact2)
         
-        relayer_calc = f"""
+        result9_formatted = format_result(float(result9))
+
+
+        relayer_calc2 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_merkle_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span>
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span> 
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_likelihood}</span> 
-                    <span style="font-size: 24px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 22px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_metrics_impact}</span> 
-                    <span style="font-size: 24px; font-weight: bold;"> = </span>
-                    <span style="font-size: 22px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result6):,}</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span>
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_likelihood_formatted}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_impact_formatted}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9_formatted}</span>
             </div>"""
 
-        st.markdown(relayer_calc, unsafe_allow_html=True)
+        st.markdown(relayer_calc2, unsafe_allow_html=True)
 
 
 
@@ -1439,95 +1660,175 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
 
 
-    def normalize_score(original_score, min_original=17, max_original=17700):
-        normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
-        return normalized_score
 
-    final_result = result1 + result2 + result3 + result4 + result5 + result6
+
+
+#########################################
+#########################################
+#########################################
+
+
+    st.write("  \n")
+    st.write("  \n")
+
+
+    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, 
+                        evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+                        tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, 
+                        oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
+                        da_sol_mec, validator_centralization, relayer_centralization, halo_reputation, evm_validator_reputation,
+                        evm_client_reputation, evm_validator_centralization)
+
+    (st.session_state.security_audits_score, st.session_state.business_model_score, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score,
+    st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score, st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score,
+    st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score,
+    st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score,
+    st.session_state.oracle_bridge_mec_score, st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score,
+    st.session_state.da_sol_mec_score, st.session_state.validator_centralization_score, st.session_state.relayer_centralization_score, st.session_state.halo_reputation_score,
+    st.session_state.evm_validator_reputation_score, st.session_state.evm_client_reputation_score, st.session_state.evm_validator_centralization_score) = risk_score
+
+
+    col56,col57 = st.columns(2, gap="large")
+    with col56:
+
+        col111, col121, col131 = st.columns([3,4,1])
+
+        with col111:
+            st.write("")
+
+        with col121:
+            st.image("images/omni-matrix.jpg", width=600)
+
+        with col131:
+            st.write("")
+
+    with col57:
+
+        col111, col121, col131 = st.columns([1,4,3])
+
+        with col111:
+            st.write("")
+
+        with col121:
+            st.write("")
+
+            st.markdown("""
+                    <style>
+                    ul.big-font {
+                        font-size: 35px; /* Adjust font size for bullet points */
+                    }
+                    ul.big-font li {
+                        font-size: 20px; /* Adjust font size for bullet points */
+                        font-weight: normal; /* Reset font weight for bullet points */
+                    }
+                    </style>
+                    <div class="big-font">
+                    Most Pressing Risk Attack Vectors Toward Omni:
+                    <ul class="big-font">
+                        <li><strong>Cross-Message Tampering or Stalling</strong></li>
+                        <li><strong>Cross-Chain MEV Extraction Risk</strong></li>
+                        <li><strong>Cross-Chain Double-Spend Attack Risk</strong></li>
+                        <li><strong>Double-Signing Attack Risk</strong></li>
+                        <li><strong>State Liveness Degradation Risk</strong></li>
+                        <li><strong>Validator Collusion Risk</strong></li>
+                    </ul>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+        with col131:
+            st.write("")
+
+
+
+
+
+
+
+
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+
+
+
+
+    def normalize_score(original_score, min_original=15.25, max_original=100450):
+            normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
+            return normalized_score
+
+    final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9
     normalized_risk_score = normalize_score(final_result)
 
     st.session_state.risk_score = normalized_risk_score
 
     st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Omni</i> Risk Score</div>", unsafe_allow_html=True)
     final_result_html = f"""
-            <div style="text-align: center;">
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result1):,}</span> 
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result2):,}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result3):,}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result4):,}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result5):,}</span>
-                <span style="font-size: 22px; font-weight: bold;"> + </span>
-                <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result6):,}</span>
-                <span style="font-size: 22px; font-weight: bold;"> = </span>
-                <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(final_result):,}</span>
-            </div>
-        """
+                <div style="text-align: center;">
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1_formatted}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result3_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result4):,}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result6):,}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result7_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result8):,}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result:,.2f}</span>
+                </div>
+            """
+
 
     st.markdown(final_result_html, unsafe_allow_html=True)
 
-
-
-#########################################
-#########################################
-#########################################
-
-
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    
-
-
-
-
-    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
-             tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-             da_sol_mec, validator_centralization, relayer_centralization)
-    
-    (st.session_state.security_audits_score, st.session_state.business_model_score,
-    st.session_state.relayer_reputation_score, st.session_state.operator_reputation_score,
-    st.session_state.code_complexity_score, st.session_state.evm_equivalence_score,
-    st.session_state.operator_centralization_score, st.session_state.validator_centralization_score,
-    st.session_state.validator_reputation_score, st.session_state.dvt_mec_score,
-    st.session_state.evm_client_div_score, st.session_state.operator_entrenchment_level_score,
-    st.session_state.sybil_mec_score, st.session_state.relayer_da_solution_score,
-    st.session_state.engine_api_score, st.session_state.validator_abci_usage_score,
-    st.session_state.da_sol_mec_score, st.session_state.lockup_mec_score,
-    st.session_state.fast_fin_ss_mec_score, st.session_state.tee_mec_score,
-    st.session_state.encrypted_mempool_mec_score, st.session_state.relayer_merkle_score,
-    st.session_state.oracle_bridge_mec_score, st.session_state.relayer_centralization_score) = risk_score
-    
-
-
-
     if st.session_state.risk_score >= 75:
-        color = "#d32f2f"  # Red color for high risk
-        background_color = "#fde0dc"  # Light red background
+            color = "#d32f2f"  # Red color for high risk
+            background_color = "#fde0dc"  # Light red background
     elif st.session_state.risk_score <= 25:
-        color = "#388e3c"  # Green color for low risk
-        background_color = "#ebf5eb"  # Light green background
+            color = "#388e3c"  # Green color for low risk
+            background_color = "#ebf5eb"  # Light green background
     else:
-        color = "black"  # Black color for medium risk
-        background_color = "#ffffff"  # White background
+            color = "black"  # Black color for medium risk
+            background_color = "#ffffff"  # White background
+
+        
+    st.write("  \n")
+    st.write("  \n")
 
     st.markdown(
-    f"""
-    <div style="
-        border: 2px solid {color};
-        border-radius: 5px;
-        padding: 10px;
-        text-align: center;
-        margin: 10px 0;
-        background-color: {background_color};">
-        <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
-    </div>
-    """, 
-    unsafe_allow_html=True
-    )
+        f"""
+        <div style="
+            border: 2px solid {color};
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            margin: 10px 0;
+            background-color: {background_color};">
+            <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
+        </div>
+        """, 
+        unsafe_allow_html=True
+        )
 
     st.write("  \n")
     st.write("  \n")
@@ -1535,23 +1836,42 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
 
 
     st.markdown("""
-                <style>
-                .big-font {
-                    font-size: 18px;  /* Adjust font size as needed */
-                }
-                </style>
-                <div class="big-font">
-                The <strong>Omni Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the AVS. 
-                </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-
-
+                    <style>
+                    .big-font {
+                        font-size: 18px;  /* Adjust font size as needed */
+                    }
+                    </style>
+                    <div class="big-font">
+                    The <strong>Omni Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the protocol as an AVS. 
+                    </div>
+                    </div>
+                    """, unsafe_allow_html=True)
 
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+
+    st.write("**Note**: *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements above are prone to being faulty.*")
+
+
+
+
+
+
+
+
+
+
+
+
+
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
@@ -1564,7 +1884,8 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     st.write("  \n")
     st.write("  \n")
 
-    col11, col12, col13 = st.columns([2,1,2])
+
+    col11, col12, col13 = st.columns([6,3,5])
 
     with col11:
         st.write("")
@@ -1585,6 +1906,7 @@ Relayers are responsible for delivering confirmed cross-network messages from Om
     """    
     st.markdown(markdown, unsafe_allow_html=True)
 
+    st.write("  \n")
 
 if __name__ == "__main__":
     main()
