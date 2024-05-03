@@ -102,7 +102,7 @@ def main():
                             """)
 
         
-    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate Risk Profile for EigenDA as a Interoperability Network AVS. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
+    #st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate Risk Profile for EigenDA as a Interoperability Network AVS. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
 
     st.write("  \n")
     st.write("  \n")
@@ -1038,7 +1038,7 @@ def main():
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">1</span>
-                <span style="font-size: 21px;">CONSENSUS LAYER: CometBFT & Consensus Client Profile</span>
+                <span style="font-size: 21px;">CONSENSUS LAYER: BFT & Consensus Client Profile</span>
             </p>
                 """, unsafe_allow_html=True)
 
