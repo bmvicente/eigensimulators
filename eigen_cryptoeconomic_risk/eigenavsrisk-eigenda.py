@@ -960,8 +960,8 @@ def main():
                 padding: 4px;
                 text-align: center;
                 margin: 5px 0;
-                background-color: #4169E1;"> <!-- Green background color -->
-                <h2 class='large-header-style' style="color: white; margin:0;">ROLLUP-SPECIFIC METRICS</h2> <!-- Larger font for AVSs -->
+                background-color: #000080;"> <!-- Green background color -->
+                <h2 class='large-header-style' style="color: white; margin:0;">EIGENDA-SPECIFIC METRICS</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
             unsafe_allow_html=True
