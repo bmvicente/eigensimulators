@@ -505,7 +505,7 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-            st.markdown('<p class="header-style">INTERSUBJECTIVE SECURITY: Total Staked on $EIGEN</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">INTERSUBJECTIVE SECURITY: Total $EIGEN Staked</p>', unsafe_allow_html=True)
 
                 # Dropdown menu
             restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=1200000, key="1111ee")
@@ -987,7 +987,7 @@ def main():
                 """, unsafe_allow_html=True)
 
             # Displaying the custom styled header
-        st.markdown('<p class="header-style">Total Staked on $ROLLUP</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Total $ROLLUP Staked</p>', unsafe_allow_html=True)
 
             # Dropdown menu
         staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
