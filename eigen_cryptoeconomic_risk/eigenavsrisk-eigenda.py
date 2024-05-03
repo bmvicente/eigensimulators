@@ -994,7 +994,7 @@ def main():
 
                 # Dropdown menu
             staked_eigenda = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
-            st.write(f"&#8226; Total Staked \$ROLLUP: **{staked_eigenda:,.0f} ETH**")
+            st.write(f"&#8226; Total \$ROLLUP Staked: **{staked_eigenda:,.0f} ETH**")
 
         
         st.write("\n")
