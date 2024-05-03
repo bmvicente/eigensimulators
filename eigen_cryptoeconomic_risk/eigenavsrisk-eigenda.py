@@ -36,7 +36,7 @@ oracle_bridge_mec_risk = {True: 1, False: 10}
 
 
 
-def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
+def eigenda_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
               relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
               tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
               validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
@@ -96,13 +96,13 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""
-            The Simulator takes 9 AVS-generic parameters and 21 parameters that specifically compose an Interoperability Network protocol with a CometBFT consensus architecture to calculate Omni's Risk Score as an EigenLayer AVS. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
+            The Simulator takes 9 AVS-generic parameters and 21 parameters that specifically compose an Interoperability Network protocol with a CometBFT consensus architecture to calculate EigenDA's Risk Score as an EigenLayer AVS. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
             
-            Most of the research to build this Simulator was derived from [Omni's Docs](https://docs.omni.network/) and [CometBFT's Docs](https://docs.cometbft.com/v0.37/), as well as the images in the "Logic" dropdowns.
+            Most of the research to build this Simulator was derived from [EigenDA's Docs](https://docs.omni.network/) and [CometBFT's Docs](https://docs.cometbft.com/v0.37/), as well as the images in the "Logic" dropdowns.
                             """)
 
         
-    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate Risk Profile for Omni as a Interoperability Network AVS. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
+    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate Risk Profile for EigenDA as a Interoperability Network AVS. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
 
     st.write("  \n")
     st.write("  \n")
@@ -485,8 +485,8 @@ def main():
             st.markdown('<p class="header-style">OBJECTIVE SECURITY: Total ETH Restaked on EigenDA</p>', unsafe_allow_html=True)
 
                 # Dropdown menu
-            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=1200000)
-            st.write(f"&#8226; Total Restaked ETH to Omni: **{restaked_eth_del:,.0f} ETH**")
+            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=0)
+            st.write(f"&#8226; Total ETH Restaked on EigenDA: **{restaked_eth_del:,.0f} ETH**")
 
         with col60:
             # Restaked ETH Delegated
@@ -508,8 +508,8 @@ def main():
             st.markdown('<p class="header-style">INTERSUBJECTIVE SECURITY: Total $EIGEN Staked</p>', unsafe_allow_html=True)
 
                 # Dropdown menu
-            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=1200000, key="1111ee")
-            st.write(f"&#8226; Total Restaked ETH to Omni: **{restaked_eth_del:,.0f} ETH**")
+            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=0, key="1111ee")
+            st.write(f"&#8226; Total $EIGEN Staked: **{restaked_eth_del:,.0f} ETH**")
 
 
         st.write("\n")
@@ -553,13 +553,13 @@ def main():
 
             st.write("  \n")
 
-            avs_token_percentage = st.slider("**% $OMNI**", min_value=10, max_value=90, value=10, format='%d%%')
+            avs_token_percentage = st.slider("**% $ROLLUP**", min_value=10, max_value=90, value=10, format='%d%%')
 
             xeth_percentage = 100 - avs_token_percentage
             
             st.slider("**% xETH**", min_value=10, max_value=90, value=xeth_percentage, disabled=True, format='%d%%')
 
-            st.write("&#8226; **Native Dual Staking Balance**: {}% $OMNI : {}% xETH".format(avs_token_percentage, xeth_percentage))
+            st.write("&#8226; **Native Dual Staking Balance**: {}% $ROLLUP : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
         st.write("-------")
 
@@ -593,8 +593,8 @@ def main():
                 st.markdown("""
                     Ordering the **Business Models** from EigenLayer [(Section 4.6 of EigenLayer's Whitepaper)](https://docs.eigenlayer.xyz/overview/intro/whitepaper) by risk: 
                     
-                    - ***Pay in the Native Token of the AVS*** is the most risky, as the entire fee structure is dependent on the AVS's native token (\$OMNI), tying closely to its market performance and the AVS's ongoing profitability;
-                    - ***Dual Staking Utility***, with a high risk too because it depends on both ETH restakers and $OMNI stakers, which introduces complexities in security and token value dynamics;
+                    - ***Pay in the Native Token of the AVS*** is the most risky, as the entire fee structure is dependent on the AVS's native token (\$ROLLUP), tying closely to its market performance and the AVS's ongoing profitability;
+                    - ***Dual Staking Utility***, with a high risk too because it depends on both ETH restakers and $ROLLUP stakers, which introduces complexities in security and token value dynamics;
                     - ***Tokenize the Fee*** model comes with moderate risk involving payments in a neutral denomination (like ETH) and distributing a portion of fees to holders of the AVS's token, thus partly dependent on the AVS token's value;
                     - ***Pure Wallet*** represents the lowest risk, relying on straightforward service fees paid in a neutral denomination, like ETH.
 
@@ -626,15 +626,15 @@ def main():
                             
 
                     The Native Dual Staking model was chosen as the default one because it guarantees the highest Cost to Violate Liveness.
-                    Particularly in the beginning, too much weight on the $OMNI native token increases the likelihood of the tokens of the dual staking model being toxic. And thus negatively impact liveness, an essential condition for a Shared Sequencer.
+                    Particularly in the beginning, too much weight on the $ROLLUP native token increases the likelihood of the tokens of the dual staking model being toxic. And thus negatively impact liveness, an essential condition for a Shared Sequencer.
                             
-                    Following and based on the restaking modality (**LST Restaking**), business model (**Dual Staking Utility**), and dual staking method (**Veto Dual Staking**) assumptions made for our Simulator, we found it useful to set an $OMNI/xETH balance scale to assess AVS risks and potential reward emissions, as well as providing an improved insight into what their token configuration should be.
+                    Following and based on the restaking modality (**LST Restaking**), business model (**Dual Staking Utility**), and dual staking method (**Veto Dual Staking**) assumptions made for our Simulator, we found it useful to set an $ROLLUP/xETH balance scale to assess AVS risks and potential reward emissions, as well as providing an improved insight into what their token configuration should be.
 
                     **\$OMNI** is the AVS native token. **xETH** is any ETH-backed LST, such as stETH, rETH or cbETH.
 
                     **Dual Staking**, by allowing the staking of a more stable and widely-used token like an ETH-LST alongside the AVS's native token, simplifies the bootstrapping process and provides baseline economic security, thereby mitigating these challenges.
 
-                    A greater xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a *% \$OMNI* **>** *% xETH* pool balance makes sense to be a higher-reward event.
+                    A greater xETH balance assures greater security and stability for the dual-token pool, whereas the opposite exposes the volatilities and likely “death spiral” problem inherent in newly-issued native AVS tokens. Therefore, a *% \$ROLLUP* **>** *% xETH* pool balance makes sense to be a higher-reward event.
                         """)
     
         
@@ -961,7 +961,7 @@ def main():
                 text-align: center;
                 margin: 5px 0;
                 background-color: #4169E1;"> <!-- Green background color -->
-                <h2 class='large-header-style' style="color: white; margin:0;">OMNI-SPECIFIC METRICS</h2> <!-- Larger font for AVSs -->
+                <h2 class='large-header-style' style="color: white; margin:0;">ROLLUP-SPECIFIC METRICS</h2> <!-- Larger font for AVSs -->
             </div>
             """, 
             unsafe_allow_html=True
@@ -971,7 +971,7 @@ def main():
 
 
 
-        # Staked OMNI
+        # Staked ROLLUP
         st.markdown("""
                 <style>
                 .header-style {
@@ -990,8 +990,8 @@ def main():
         st.markdown('<p class="header-style">Total $ROLLUP Staked</p>', unsafe_allow_html=True)
 
             # Dropdown menu
-        staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
-        st.write(f"&#8226; Total Staked \$OMNI: **{staked_omni:,.0f} ETH**")
+        staked_eigenda = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
+        st.write(f"&#8226; Total Staked \$ROLLUP: **{staked_eigenda:,.0f} ETH**")
 
 
         st.write("\n")
@@ -1672,7 +1672,7 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
 
 
-    risk_score = omni_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, 
+    risk_score = eigenda_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, 
                         evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
                         tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, 
                         oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
@@ -1723,7 +1723,7 @@ The summation or multiplication of variables revolves around their independence 
                     }
                     </style>
                     <div class="big-font">
-                    Most Pressing Risk Attack Vectors Toward Omni:
+                    Most Pressing Risk Attack Vectors Toward EigenDA:
                     <ul class="big-font">
                         <li><strong>Cross-Message Tampering or Stalling</strong></li>
                         <li><strong>Cross-Chain MEV Extraction Risk</strong></li>
@@ -1767,7 +1767,7 @@ The summation or multiplication of variables revolves around their independence 
 
     st.session_state.risk_score = normalized_risk_score
 
-    st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>Omni</i> Risk Score</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>EigenDA</i> Risk Score</div>", unsafe_allow_html=True)
     final_result_html = f"""
                 <div style="text-align: center;">
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1_formatted}</span> 
@@ -1824,7 +1824,7 @@ The summation or multiplication of variables revolves around their independence 
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>Omni</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.4em;">Normalized <i>EigenDA</i> Risk Score: <span style="font-size: 1.5em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
@@ -1842,7 +1842,7 @@ The summation or multiplication of variables revolves around their independence 
                     }
                     </style>
                     <div class="big-font">
-                    The <strong>Omni Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the protocol as an AVS. 
+                    The <strong>EigenDA Risk Score</strong> is normalized to range from 0 to 100 (for easy reading), where 0 indicates the lowest level of risk and 100 represents the highest possible risk. The Risk Score is calculated based on the risk level of each input parameter as well as their weighting, which is determined by the <strong>Likelihood</strong> and <strong>Impact</strong> of that risk to the protocol as an AVS. 
                     </div>
                     </div>
                     """, unsafe_allow_html=True)
