@@ -90,7 +90,7 @@ def main():
     st.image("images/eigenda.jpeg", width=250)
 
     st.title("Cryptoeconomic Risk Analysis I")
-    st.subheader("**Data Availability AVS: EigenDA Underlying Risk & Slashing Conditions Simulator**")
+    st.subheader("**Data Availability AVS: EigenDA Underlying Risk & Slashing/Forkable Conditions Simulator**")
 
     st.write("  \n")
 
