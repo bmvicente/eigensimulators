@@ -464,8 +464,35 @@ def main():
         st.write("\n")
 
 
-            # Restaked ETH Delegated
-        st.markdown("""
+
+
+        col59, col60 = st.columns(2)
+        with col59:
+            st.markdown("""
+                        <style>
+                        .header-style {
+                            font-size: 18px;
+                            font-weight: bold;
+                            margin-bottom: 0px;  /* Adjust the space below the header */
+                        }
+                        .stExpander {
+                            border: none !important;
+                            box-shadow: none !important;
+                        }
+                        </style>
+                        """, unsafe_allow_html=True)
+
+                    # Displaying the custom styled header
+            st.markdown('<p class="header-style">OBJECTIVE SECURITY: Total ETH Restaked on EigenDA</p>', unsafe_allow_html=True)
+
+                    # Dropdown menu
+            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=2900000)
+            st.write(f"&#8226; Total ETH Restaked on EigenDA: **{restaked_eth_del:,.0f} ETH**")
+
+
+        with col60:
+
+            st.markdown("""
                     <style>
                     .header-style {
                         font-size: 18px;
@@ -480,13 +507,11 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-        st.markdown('<p class="header-style">OBJECTIVE SECURITY: Total ETH Restaked on EigenDA</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">INTERSUBJECTIVE SECURITY: Total $bEIGEN Staked</p>', unsafe_allow_html=True)
 
                 # Dropdown menu
-        restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=2900000)
-        st.write(f"&#8226; Total ETH Restaked on EigenDA: **{restaked_eth_del:,.0f} ETH**")
-
-
+            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=0, key="1111ee")
+            st.write(f"&#8226; Total $bEIGEN Staked: **{restaked_eth_del:,.0f} ETH**")
 
         st.write("\n")
         st.write("\n")
@@ -948,12 +973,7 @@ def main():
 
 
 
-
-
-        col59, col60 = st.columns(2)
-        with col59:
-
-            st.markdown("""
+        st.markdown("""
                     <style>
                     .header-style {
                         font-size: 18px;
@@ -968,33 +988,11 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-            st.markdown('<p class="header-style">INTERSUBJECTIVE SECURITY: Total $bEIGEN Staked</p>', unsafe_allow_html=True)
+        st.markdown('<p class="header-style">Total $ROLLUP Staked</p>', unsafe_allow_html=True)
 
                 # Dropdown menu
-            restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=0, key="1111ee")
-            st.write(f"&#8226; Total $bEIGEN Staked: **{restaked_eth_del:,.0f} ETH**")
-
-        with col60:
-            st.markdown("""
-                    <style>
-                    .header-style {
-                        font-size: 18px;
-                        font-weight: bold;
-                        margin-bottom: 0px;  /* Adjust the space below the header */
-                    }
-                    .stExpander {
-                        border: none !important;
-                        box-shadow: none !important;
-                    }
-                    </style>
-                    """, unsafe_allow_html=True)
-
-                # Displaying the custom styled header
-            st.markdown('<p class="header-style">Total $ROLLUP Staked</p>', unsafe_allow_html=True)
-
-                # Dropdown menu
-            staked_eigenda = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
-            st.write(f"&#8226; Total \$ROLLUP Staked: **{staked_eigenda:,.0f} ETH**")
+        staked_eigenda = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
+        st.write(f"&#8226; Total \$ROLLUP Staked: **{staked_eigenda:,.0f} ETH**")
 
         
         st.write("\n")
