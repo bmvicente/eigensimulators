@@ -505,11 +505,11 @@ def main():
                     """, unsafe_allow_html=True)
 
                 # Displaying the custom styled header
-            st.markdown('<p class="header-style">INTERSUBJECTIVE SECURITY: Total $EIGEN Staked</p>', unsafe_allow_html=True)
+            st.markdown('<p class="header-style">INTERSUBJECTIVE SECURITY: Total $bEIGEN Staked</p>', unsafe_allow_html=True)
 
                 # Dropdown menu
             restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=0, key="1111ee")
-            st.write(f"&#8226; Total $EIGEN Staked: **{restaked_eth_del:,.0f} ETH**")
+            st.write(f"&#8226; Total $bEIGEN Staked: **{restaked_eth_del:,.0f} ETH**")
 
 
         st.write("\n")
