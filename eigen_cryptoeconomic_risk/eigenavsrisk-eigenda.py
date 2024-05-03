@@ -87,7 +87,7 @@ def omni_risk(security_audits, business_model, relayer_reputation, relayer_da_so
 def main():
     st.set_page_config(layout="wide")
 
-    st.image("images/eigenda.jpeg", width=200)
+    st.image("images/eigenda.jpeg", width=225)
 
     st.title("Cryptoeconomic Risk Analysis I")
     st.subheader("**Data Availability AVS: EigenDA Underlying Risk & Slashing Conditions Simulator**")
