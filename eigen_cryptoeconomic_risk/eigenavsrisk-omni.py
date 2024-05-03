@@ -1687,7 +1687,6 @@ The summation or multiplication of variables revolves around their independence 
 
         with col121:
             st.write("")
-            st.write("")
 
             st.markdown("""
                     <style>
@@ -1705,7 +1704,8 @@ The summation or multiplication of variables revolves around their independence 
                         <li><strong>Cross-Message Tampering or Stalling</strong></li>
                         <li><strong>Cross-Chain MEV Extraction Risk</strong></li>
                         <li><strong>Cross-Chain Double-Spend Attack Risk</strong></li>
-                        <li><strong>Liveness Degradation Risk</strong></li>
+                        <li><strong>Double-Signing Attack Risk</strong></li>
+                        <li><strong>State Liveness Degradation Risk</strong></li>
                         <li><strong>Validator Collusion Risk</strong></li>
                     </ul>
                     </div>
