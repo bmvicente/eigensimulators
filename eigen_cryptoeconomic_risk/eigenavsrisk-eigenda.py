@@ -1023,6 +1023,169 @@ def main():
 
 
 
+  
+
+
+        # ROLLUP Metrics
+
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+        st.markdown("""
+            <p class="header-style">
+                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">3</span>
+                <span style="font-size: 21px;">ROLLUPS</span>
+            </p>
+                """, unsafe_allow_html=True)
+        
+        
+        st.write("  \n")
+
+        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient XBlock Submission and Verification', value=True)
+        
+        relayer_da_solution = st.checkbox('**DA Solution** to address Complex Verification and Increased Computational Cost of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
+
+        if st.session_state.relayer_merkle != relayer_merkle:
+            st.session_state.relayer_merkle = relayer_merkle
+            st.session_state.relayer_merkle_score = relayer_merkle_risk.get(relayer_merkle, 0)
+
+        if st.session_state.relayer_da_solution != relayer_da_solution:
+            st.session_state.relayer_da_solution = relayer_da_solution
+            st.session_state.relayer_da_solution_score = relayer_da_solution_risk.get(relayer_da_solution, 0)
+
+        result8 = (st.session_state.relayer_merkle_score + st.session_state.relayer_da_solution_score)
+        
+        st.write("  \n")
+
+        relayer_calc1 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_merkle_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result8):,}</span>
+            </div>"""
+
+        st.markdown(relayer_calc1, unsafe_allow_html=True)
+
+
+########################################################
+
+
+        st.write("-------")
+
+        relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                     help="**The Performance Accuracy Rate of the Relayer in the overall `XMsg` submission process to the rollup destination chains with the respective generation of Merkle-multi proofs and signatures.**")
+        
+        col100, col101 = st.columns(2, gap="medium")
+        with col100:
+            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="43yugu421",
+                                                help="**Attests for a Relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
+        with col101:
+            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="32uih1132", index=1,
+                                                    help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
+
+        relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
+        st.session_state.relayer_performance_acc_rate_var = relayer_performance_acc_rate_var
+
+        st.write("-------")
+        
+        col33, col34 = st.columns(2, gap="medium")
+        with col33:
+            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="ruih0", help=f"""
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
+
+                                                          1 == Unlikely | 10 == Very Likely""")
+            relayer_metrics_likelihood2 = relayer_metrics_likelihood / 2
+
+        with col34:
+            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="r7y91", help=f"""
+                                                      **Assesses the impact that risk would have on the security of the AVS.**
+
+                                                      1 == Unimpactful | 10 == Very Impactful""")
+            relayer_metrics_impact2 = relayer_metrics_impact / 2
+
+        relayer_likelihood_formatted = format_number(relayer_metrics_likelihood2)
+        relayer_impact_formatted = format_number(relayer_metrics_impact2)
+
+
+        with st.expander("Logic"):
+                st.image("images/omni-relayer-diagram.jpg", width=750)
+
+                st.markdown("""                        
+The **Relayer** in the Omni network acts as a critical intermediary, handling the transfer of attested cross-network messages (`XMsgs`) between the Omni network and the various destination rollup VMs.Things to consider: 
+
+- **Decision Making for Message Submission**: Post collecting `XBlocks` and `XMsgs`, Relayers determine the number of `XMsg`s to include in their submissions, balancing the costs associated with transaction size, computational requirements, and gas limits.
+- **Relayer Performance**: Relayers create and submit transactions with Merkle multi-proofs to destination chains based on attested `XBlock` data, ensuring secure and efficient message delivery.
+- **Security and Scalability**: As a permissionless service, Relayers reduce central points of failure and uphold the network's decentralized ethos, while managing security risks and computational intensiveness, especially as the network scales.
+                            
+The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
+                            """)
+
+
+        if st.session_state.relayer_reputation != relayer_reputation:
+            st.session_state.relayer_reputation = relayer_reputation
+            st.session_state.relayer_reputation_score = relayer_reputation_risk.get(relayer_reputation, 0)
+
+        if st.session_state.relayer_centralization != relayer_centralization:
+            st.session_state.relayer_centralization = relayer_centralization
+            st.session_state.relayer_centralization_score = relayer_centralization_risk.get(relayer_centralization, 0)
+
+
+        result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
+                   st.session_state.relayer_performance_acc_rate_var * relayer_metrics_likelihood2 * relayer_metrics_impact2)
+        
+        result9_formatted = format_result(float(result9))
+
+
+        relayer_calc2 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span>
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_likelihood_formatted}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_impact_formatted}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9_formatted}</span>
+            </div>"""
+
+        st.markdown(relayer_calc2, unsafe_allow_html=True)
+
+
+
+
+
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+
+
+
+
+
 
 
 
@@ -1471,176 +1634,6 @@ The summation or multiplication of variables revolves around their independence 
 
 
         st.markdown(validator_calc2, unsafe_allow_html=True)
-
-
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-        # Retriever Metrics
-
-        st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
-        st.markdown("""
-            <p class="header-style">
-                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">3</span>
-                <span style="font-size: 21px;">RETRIEVER</span>
-            </p>
-                """, unsafe_allow_html=True)
-        
-        
-        st.write("  \n")
-
-        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient XBlock Submission and Verification', value=True)
-        
-        relayer_da_solution = st.checkbox('**DA Solution** to address Complex Verification and Increased Computational Cost of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
-
-        if st.session_state.relayer_merkle != relayer_merkle:
-            st.session_state.relayer_merkle = relayer_merkle
-            st.session_state.relayer_merkle_score = relayer_merkle_risk.get(relayer_merkle, 0)
-
-        if st.session_state.relayer_da_solution != relayer_da_solution:
-            st.session_state.relayer_da_solution = relayer_da_solution
-            st.session_state.relayer_da_solution_score = relayer_da_solution_risk.get(relayer_da_solution, 0)
-
-        result8 = (st.session_state.relayer_merkle_score + st.session_state.relayer_da_solution_score)
-        
-        st.write("  \n")
-
-        relayer_calc1 = f"""
-            <div style="text-align: center;">
-                <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_merkle_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result8):,}</span>
-            </div>"""
-
-        st.markdown(relayer_calc1, unsafe_allow_html=True)
-
-
-########################################################
-
-
-        st.write("-------")
-
-        relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                     help="**The Performance Accuracy Rate of the Relayer in the overall `XMsg` submission process to the rollup destination chains with the respective generation of Merkle-multi proofs and signatures.**")
-        
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
-            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="43yugu421",
-                                                help="**Attests for a Relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
-        with col101:
-            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="32uih1132", index=1,
-                                                    help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
-
-        relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
-        st.session_state.relayer_performance_acc_rate_var = relayer_performance_acc_rate_var
-
-        st.write("-------")
-        
-        col33, col34 = st.columns(2, gap="medium")
-        with col33:
-            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="ruih0", help=f"""
-                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
-
-                                                          1 == Unlikely | 10 == Very Likely""")
-            relayer_metrics_likelihood2 = relayer_metrics_likelihood / 2
-
-        with col34:
-            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="r7y91", help=f"""
-                                                      **Assesses the impact that risk would have on the security of the AVS.**
-
-                                                      1 == Unimpactful | 10 == Very Impactful""")
-            relayer_metrics_impact2 = relayer_metrics_impact / 2
-
-        relayer_likelihood_formatted = format_number(relayer_metrics_likelihood2)
-        relayer_impact_formatted = format_number(relayer_metrics_impact2)
-
-
-        with st.expander("Logic"):
-                st.image("images/omni-relayer-diagram.jpg", width=750)
-
-                st.markdown("""                        
-The **Relayer** in the Omni network acts as a critical intermediary, handling the transfer of attested cross-network messages (`XMsgs`) between the Omni network and the various destination rollup VMs.Things to consider: 
-
-- **Decision Making for Message Submission**: Post collecting `XBlocks` and `XMsgs`, Relayers determine the number of `XMsg`s to include in their submissions, balancing the costs associated with transaction size, computational requirements, and gas limits.
-- **Relayer Performance**: Relayers create and submit transactions with Merkle multi-proofs to destination chains based on attested `XBlock` data, ensuring secure and efficient message delivery.
-- **Security and Scalability**: As a permissionless service, Relayers reduce central points of failure and uphold the network's decentralized ethos, while managing security risks and computational intensiveness, especially as the network scales.
-                            
-The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
-                            """)
-
-
-        if st.session_state.relayer_reputation != relayer_reputation:
-            st.session_state.relayer_reputation = relayer_reputation
-            st.session_state.relayer_reputation_score = relayer_reputation_risk.get(relayer_reputation, 0)
-
-        if st.session_state.relayer_centralization != relayer_centralization:
-            st.session_state.relayer_centralization = relayer_centralization
-            st.session_state.relayer_centralization_score = relayer_centralization_risk.get(relayer_centralization, 0)
-
-
-        result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
-                   st.session_state.relayer_performance_acc_rate_var * relayer_metrics_likelihood2 * relayer_metrics_impact2)
-        
-        result9_formatted = format_result(float(result9))
-
-
-        relayer_calc2 = f"""
-            <div style="text-align: center;">
-                <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span>
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span> 
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_reputation_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_likelihood_formatted}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_impact_formatted}</span> 
-                    <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9_formatted}</span>
-            </div>"""
-
-        st.markdown(relayer_calc2, unsafe_allow_html=True)
-
-
-
-
-
 
 
 
