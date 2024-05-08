@@ -1048,33 +1048,23 @@ def main():
         
         st.write("  \n")
 
-        relayer_merkle = st.checkbox('**Merkle Multi-Proofs** used for Efficient XBlock Submission and Verification', value=True)
+        rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=True)
         
-        relayer_da_solution = st.checkbox('**DA Solution** to address Complex Verification and Increased Computational Cost of Validator Signatures and Merkle Multi-Proofs At Scale', value=False)
+        if st.session_state.rollup_fast_proof != rollup_fast_proof:
+            st.session_state.rollup_fast_proof = rollup_fast_proof
+            st.session_state.rollup_fast_proof_score = rollup_fast_proof_risk.get(rollup_fast_proof, 0)
 
-        if st.session_state.relayer_merkle != relayer_merkle:
-            st.session_state.relayer_merkle = relayer_merkle
-            st.session_state.relayer_merkle_score = relayer_merkle_risk.get(relayer_merkle, 0)
-
-        if st.session_state.relayer_da_solution != relayer_da_solution:
-            st.session_state.relayer_da_solution = relayer_da_solution
-            st.session_state.relayer_da_solution_score = relayer_da_solution_risk.get(relayer_da_solution, 0)
-
-        result8 = (st.session_state.relayer_merkle_score + st.session_state.relayer_da_solution_score)
+        result8 = (st.session_state.relayer_merkle_score)
         
         st.write("  \n")
 
-        relayer_calc1 = f"""
+        rollup_calc1 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_merkle_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_da_solution_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result8):,}</span>
             </div>"""
 
-        st.markdown(relayer_calc1, unsafe_allow_html=True)
+        st.markdown(rollup_calc1, unsafe_allow_html=True)
 
 
 ########################################################
@@ -1082,39 +1072,32 @@ def main():
 
         st.write("-------")
 
-        relayer_performance_acc_rate = st.slider("**Relayer Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                     help="**The Performance Accuracy Rate of the Relayer in the overall `XMsg` submission process to the rollup destination chains with the respective generation of Merkle-multi proofs and signatures.**")
+        rollup_bandwidth = st.slider("**Percentage of Rollups Reserving Additional Bandwidth**", min_value=0, max_value=100, value=0, format='%d%%')
         
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
-            relayer_reputation = st.selectbox("**Relayer Reputation**", ["Unknown", "Established", "Renowned"], index=0, key="43yugu421",
-                                                help="**Attests for a Relayer's trustworthiness in their role of delivering confirmed cross-network messages from Omni to destination rollups. This metric is particularly important for Omni as the Relayer constitutes a permissionless third-party.**")
-        with col101:
-            relayer_centralization = st.selectbox("**Relayer's Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="32uih1132", index=1,
-                                                    help="**Attests for the Relayer's robustness and stability in dealing with local regulations or targeted international attacks, as a permissionless, third-party entity.**")
+        rollup_blob_rate = st.slider("**Rollup Blob Dispatching Accuracy Rate**", min_value=0, max_value=100, value=0, format='%d%%')
 
-        relayer_performance_acc_rate_var = relayer_performance_acc_rate_calc(relayer_performance_acc_rate)
-        st.session_state.relayer_performance_acc_rate_var = relayer_performance_acc_rate_var
+        rollup_blob_rate_var = rollup_blob_rate_calc(rollup_blob_rate)
+        st.session_state.rollup_blob_rate_var = rollup_blob_rate_var
 
         st.write("-------")
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            relayer_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="ruih0", help=f"""
+            rollup_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="ruih0", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
-            relayer_metrics_likelihood2 = relayer_metrics_likelihood / 2
+            rollup_metrics_likelihood2 = rollup_metrics_likelihood / 2
 
         with col34:
-            relayer_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="r7y91", help=f"""
+            rollup_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="r7y91", help=f"""
                                                       **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
-            relayer_metrics_impact2 = relayer_metrics_impact / 2
+            rollup_metrics_impact2 = rollup_metrics_impact / 2
 
-        relayer_likelihood_formatted = format_number(relayer_metrics_likelihood2)
-        relayer_impact_formatted = format_number(relayer_metrics_impact2)
+        rollup_likelihood_formatted = format_number(rollup_metrics_likelihood2)
+        rollup_impact_formatted = format_number(rollup_metrics_impact2)
 
 
         with st.expander("Logic"):
@@ -1131,22 +1114,13 @@ The summation or multiplication of variables revolves around their independence 
                             """)
 
 
-        if st.session_state.relayer_reputation != relayer_reputation:
-            st.session_state.relayer_reputation = relayer_reputation
-            st.session_state.relayer_reputation_score = relayer_reputation_risk.get(relayer_reputation, 0)
-
-        if st.session_state.relayer_centralization != relayer_centralization:
-            st.session_state.relayer_centralization = relayer_centralization
-            st.session_state.relayer_centralization_score = relayer_centralization_risk.get(relayer_centralization, 0)
-
-
         result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
-                   st.session_state.relayer_performance_acc_rate_var * relayer_metrics_likelihood2 * relayer_metrics_impact2)
+                   st.session_state.relayer_performance_acc_rate_var * rollup_metrics_likelihood2 * rollup_metrics_impact2)
         
         result9_formatted = format_result(float(result9))
 
 
-        relayer_calc2 = f"""
+        rollup_calc2 = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_performance_acc_rate_var}</span>
@@ -1155,14 +1129,14 @@ The summation or multiplication of variables revolves around their independence 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.relayer_centralization_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_likelihood_formatted}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{rollup_likelihood_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{relayer_impact_formatted}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{rollup_impact_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9_formatted}</span>
             </div>"""
 
-        st.markdown(relayer_calc2, unsafe_allow_html=True)
+        st.markdown(rollup_calc2, unsafe_allow_html=True)
 
 
 
@@ -1215,34 +1189,34 @@ The summation or multiplication of variables revolves around their independence 
         
         col65,col66 = st.columns(2, gap="medium")
         with col65:
-            sybil_mec = st.checkbox('**Anti-Sybil Mechanism**', value=True,
-                                help="**Mechanism used in the context of transactions submitted to the Omni EVM, to deter spam and malicious activities such as DoS attacks.**")
+            kzg_erasure_encoding = st.checkbox('**KZG Erasure Encoding Rate**', value=True,
+                                help="**ddd**")
         with col66:
-            encrypted_mempool_mec = st.checkbox('**Encrypted Mempool** for Increased Privacy and Security', value=False)
+            kzg_multi_proofs = st.checkbox('**KZG Multi-Reveal Proofs', value=False)
 
-        if st.session_state.encrypted_mempool_mec != encrypted_mempool_mec:
-            st.session_state.encrypted_mempool_mec = encrypted_mempool_mec
-            st.session_state.encrypted_mempool_mec_score = encrypted_mempool_mec_risk.get(encrypted_mempool_mec, 0)
+        if st.session_state.kzg_erasure_encoding != kzg_erasure_encoding:
+            st.session_state.kzg_erasure_encoding = kzg_erasure_encoding
+            st.session_state.kzg_erasure_encoding_score = kzg_erasure_encoding_risk.get(kzg_erasure_encoding, 0)
 
-        if st.session_state.sybil_mec != sybil_mec:
-            st.session_state.sybil_mec = sybil_mec
-            st.session_state.sybil_mec_score = sybil_mec_risk.get(sybil_mec, 0)
+        if st.session_state.kzg_multi_proofs != kzg_multi_proofs:
+            st.session_state.kzg_multi_proofs = kzg_multi_proofs
+            st.session_state.kzg_multi_proofs_score = kzg_multi_proofs_risk.get(kzg_multi_proofs, 0)
 
-        result6 = (st.session_state.sybil_mec_score + st.session_state.encrypted_mempool_mec_score)
+        result6 = (st.session_state.kzg_erasure_encoding_score + st.session_state.kzg_multi_proofs_score)
         
         st.write("  \n")
 
-        evm_calc1 = f"""
+        disperser_calc1 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.sybil_mec_score}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.kzg_erasure_encoding_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.encrypted_mempool_mec_score}</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.kzg_multi_proofs_score}</span>
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result6):,}</span>
             </div>"""
 
-        st.markdown(evm_calc1, unsafe_allow_html=True)
+        st.markdown(disperser_calc1, unsafe_allow_html=True)
 
 
 ##################################################
@@ -1340,7 +1314,7 @@ The summation or multiplication of variables revolves around their independence 
         result7_formatted = format_result(float(result7))
 
 
-        evm_calc2 = f"""
+        disperser_calc2 = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold;">(</span>
@@ -1366,7 +1340,7 @@ The summation or multiplication of variables revolves around their independence 
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result7_formatted}</span>
             </div>"""
 
-        st.markdown(evm_calc2, unsafe_allow_html=True)
+        st.markdown(disperser_calc2, unsafe_allow_html=True)
 
 
 
@@ -1493,7 +1467,7 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("  \n")
 
-        validator_calc1 = f"""
+        bft_calc1 = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.bls_alt_score}</span> 
@@ -1515,7 +1489,7 @@ The summation or multiplication of variables revolves around their independence 
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
             </div>"""
 
-        st.markdown(validator_calc1, unsafe_allow_html=True)
+        st.markdown(bft_calc1, unsafe_allow_html=True)
 
 
 ############################################
@@ -1611,7 +1585,7 @@ The summation or multiplication of variables revolves around their independence 
         result5_formatted = format_result(float(result5))
 
         
-        validator_calc2 = f"""
+        bft_calc2 = f"""
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold;">(</span>
@@ -1633,7 +1607,7 @@ The summation or multiplication of variables revolves around their independence 
             </div>"""
 
 
-        st.markdown(validator_calc2, unsafe_allow_html=True)
+        st.markdown(bft_calc2, unsafe_allow_html=True)
 
 
 
