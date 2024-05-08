@@ -1020,260 +1020,7 @@ def main():
 
 
 
-        # CometBFT: Validator Metrics
-
-        st.markdown("""
-                <style>
-                .header-style {
-                    font-size: 18px;
-                    font-weight: bold;
-                    margin-bottom: 0px;  /* Adjust the space below the header */
-                }
-                </style>
-                """, unsafe_allow_html=True)
-
-        
-        st.markdown("""
-            <p class="header-style">
-                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">1</span>
-                <span style="font-size: 21px;">CONSENSUS LAYER: BFT & Consensus Client Profile</span>
-            </p>
-                """, unsafe_allow_html=True)
-
-
-        st.write("  \n")
-
-        col38,col39 = st.columns(2, gap="medium")
-        with col38:
-            engine_api = st.checkbox('**Ethereum Engine API** used by Nodes to pair the Consensus Client (Halo) with the EVM Execution Client', 
-                                     value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with Halo Consensus Client that implements CometBFT consensus.**")
-        with col39:
-            validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', value=True,
-                                               help="**ABCI++ is an adapter that wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.**")
-
-        col42,col43 = st.columns(2, gap="medium")
-        with col42:
-            tee_mec = st.checkbox('**TEE** Implementation for Secure Management of Validator Keys', value=False,
-                                  help="**TEEs consist of secure portions of hardware that generate and securely store validator keys and databases of previously signed data. By design, they enhance security without comprimising scalability, and through increased trust, encourage stake delegation.**")
-        with col43:
-            dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False,
-                                  help="**DVT is a technology that incentivizes client diversity through the distribution of the validation process across multiple operators. It reduces the risk of single points of failure or malicious actions.**")
-
-        col50,col51 = st.columns(2, gap="medium")
-        with col50:
-            oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False,
-                                            help="**To restrict the potential PfC extracted from Omni, a bridge can be set-up to restrict the value flow within the period of slashing, or an oracle can have bounds on the total value transacted within a given period.**")
-        with col51:
-            lockup_mec = st.checkbox('**Withdrawal Lock-Up Periods** Applied to Validators for Security Against Corruption', value=False)
-
-        col52,col53 = st.columns(2, gap="medium")
-        with col52:
-            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions and Low Latency', value=False)
-        with col53:
-            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for `XMsg` Fast Finality', value=False)
-
-
-        if st.session_state.engine_api != engine_api:
-            st.session_state.engine_api = engine_api
-            st.session_state.engine_api_score = engine_api_risk.get(engine_api, 0)
-
-        if st.session_state.validator_abci_usage != validator_abci_usage:
-            st.session_state.validator_abci_usage = validator_abci_usage
-            st.session_state.validator_abci_usage_score = validator_abci_usage_risk.get(validator_abci_usage, 0)
-
-        if st.session_state.tee_mec != tee_mec:
-            st.session_state.tee_mec = tee_mec
-            st.session_state.tee_mec_score = tee_mec_risk.get(tee_mec, 0)
-
-        if st.session_state.dvt_mec != dvt_mec:
-            st.session_state.dvt_mec = dvt_mec
-            st.session_state.dvt_mec_score = dvt_mec_risk.get(dvt_mec, 0)
-
-        if st.session_state.oracle_bridge_mec != oracle_bridge_mec:
-            st.session_state.oracle_bridge_mec = oracle_bridge_mec
-            st.session_state.oracle_bridge_mec_score = oracle_bridge_mec_risk.get(oracle_bridge_mec, 0)
-
-        if st.session_state.lockup_mec != lockup_mec:
-            st.session_state.lockup_mec = lockup_mec
-            st.session_state.lockup_mec_score = lockup_mec_risk.get(lockup_mec, 0)
-
-        if st.session_state.da_sol_mec != da_sol_mec:
-            st.session_state.da_sol_mec = da_sol_mec
-            st.session_state.da_sol_mec_score = da_sol_mec_risk.get(da_sol_mec, 0)
-
-        if st.session_state.fast_fin_ss_mec != fast_fin_ss_mec:
-            st.session_state.fast_fin_ss_mec = fast_fin_ss_mec
-            st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk.get(fast_fin_ss_mec, 0)
-
-        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score +
-                        st.session_state.tee_mec_score + st.session_state.dvt_mec_score + st.session_state.oracle_bridge_mec_score +
-                        st.session_state.lockup_mec_score + st.session_state.da_sol_mec_score + st.session_state.fast_fin_ss_mec_score)
-
-        st.write("  \n")
-
-        validator_calc1 = f"""
-            <div style="text-align: center;">
-                <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.oracle_bridge_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.lockup_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
-            </div>"""
-
-        st.markdown(validator_calc1, unsafe_allow_html=True)
-
-
-############################################
-
-
-        st.write("-------")
-
-        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0904888",
-                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
-        st.write("  \n")
-
-        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                   help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
-        validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
-        st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
-
-        col100, col101 = st.columns(2, gap="medium")
-        with col100:
-            validator_reputation = st.selectbox("**CometBFT Validators' Reputation**", ["Unknown", "Established", "Renowned"], key="0977790", index=1,
-                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
-        with col101:           
-            validator_centralization = st.selectbox("**CometBFT Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="30'232", index=1,
-                                                    help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
-        
-        st.write("-------")
-        
-        col33, col34 = st.columns(2, gap="medium")
-        with col33:
-            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, key="v660", help=f"""
-                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
-
-                                                          1 == Unlikely | 10 == Very Likely""")
-            validator_metrics_likelihood2 = validator_metrics_likelihood / 2
-
-        with col34:
-            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v90901", help=f"""
-                                                     **Assesses the impact that risk would have on the security of the AVS.**
-
-                                                      1 == Unimpactful | 10 == Very Impactful""")
-            validator_metrics_impact2 = validator_metrics_impact / 2
-
-
-
-        # Directly use the calculated variables
-        val_likelihood_formatted = format_number(validator_metrics_likelihood2)
-        val_impact_formatted = format_number(validator_metrics_impact2)
-
-
-        with st.expander("Logic"):
-                st.image("images/omni-comet-diagram.jpg", width=750)
-
-                st.markdown("""
-Consensus-level Validators package `XMsgs` into `XBlocks` and attest to those `XBlock` hashes during CometBFT consensus. For a more detailed overview check the visualization at the bottom of this Simulator.
-            
-**Engine API** is a critical component of the Omni protocol, connecting Ethereum execution clients with a consensus client (Halo) for the CometBFT system. It allows clients to be substituted or upgraded without perturbing the system. It offers:
-
-- Scalability and Efficiency: By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
-- Flexibility: Supports the interchangeability and upgradability of execution clients without system disruption, ensuring compatibility with various Ethereum execution clients.
-                            
-                            
-**ABCI++** is an adapter that wraps around the CometBFT engine, that enables seamless state translation and efficient conversion of Omni EVM blocks into CometBFT transactions. This feature:
-
-- Streamlines transaction requests by moving the transaction mempool to the execution layer, alleviating network congestion and latency at the CometBFT consensus level;
-- Facilitates state translations by wrapping around CometBFT ensuring Omni EVM blocks are efficiently converted into CometBFT transactions.
-                            
-As per the above checkboxes, we suggest a few features/mechanism that could contribute to the overall efficiency and security of Omni as a protocol and as an AVS. Consideration for `Halo`'s reputation can be added on a later version.
-                            
-The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
-                            """)
-
-
-        if st.session_state.halo_reputation != halo_reputation:
-            st.session_state.halo_reputation = halo_reputation
-            st.session_state.halo_reputation_score = halo_reputation_risk.get(halo_reputation, 0)
-
-        if st.session_state.validator_reputation != validator_reputation:
-            st.session_state.validator_reputation = validator_reputation
-            st.session_state.validator_reputation_score = validator_reputation_risk.get(validator_reputation, 0)
-
-        if st.session_state.validator_centralization != validator_centralization:
-            st.session_state.validator_centralization = validator_centralization
-            st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
-    
-
-        result5 = ((st.session_state.halo_reputation_score + st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
-                   st.session_state.validator_centralization_score) * validator_metrics_likelihood2 * validator_metrics_impact2)
-        
-        result5_formatted = format_result(float(result5))
-
-        
-        validator_calc2 = f"""
-            <div style="text-align: center;">
-                <div>
-                    <span style="font-size: 22px; font-weight: bold;">(</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.halo_reputation_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">)</span>
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_likelihood_formatted}</span>         
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_impact_formatted}</span>         
-                    <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5_formatted}</span>
-                </div>
-            </div>"""
-
-
-        st.markdown(validator_calc2, unsafe_allow_html=True)
-
-
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        # EVM Metrics
+        # DISPERSER Metrics
 
         st.markdown("""
                 <style>
@@ -1288,7 +1035,7 @@ The summation or multiplication of variables revolves around their independence 
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">2</span>
-                <span style="font-size: 21px;">EXECUTION LAYER: Execution Client Profile</span>
+                <span style="font-size: 21px;">DISPERSER</span>
             </p>
         """, unsafe_allow_html=True)
 
@@ -1452,18 +1199,282 @@ The summation or multiplication of variables revolves around their independence 
         st.markdown(evm_calc2, unsafe_allow_html=True)
 
 
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
-        st.write("  \n")
 
 
 
 
+
+
+        
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")        
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+        st.write("\n")
+
+
+
+
+
+
+
+
+
+
+
+
+        # BFT: Validator Metrics
+
+        st.markdown("""
+                <style>
+                .header-style {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 0px;  /* Adjust the space below the header */
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+        
+        st.markdown("""
+            <p class="header-style">
+                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">1</span>
+                <span style="font-size: 21px;">CONSENSUS LAYER: BFT</span>
+            </p>
+                """, unsafe_allow_html=True)
+
+
+        st.write("  \n")
+
+        col38,col39 = st.columns(2, gap="medium")
+        with col38:
+            bls_alt = st.checkbox('**BLS-Like Alternative** for Operator Signature Batching at Scale', 
+                                     value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with Halo Consensus Client that implements CometBFT consensus.**")
+        with col39:
+            validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', value=True,
+                                               help="**ABCI++ is an adapter that wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.**")
+
+        col42,col43 = st.columns(2, gap="medium")
+        with col42:
+            tee_mec = st.checkbox('**TEE** Implementation for Secure Management of Validator Keys', value=False,
+                                  help="**TEEs consist of secure portions of hardware that generate and securely store validator keys and databases of previously signed data. By design, they enhance security without comprimising scalability, and through increased trust, encourage stake delegation.**")
+        with col43:
+            dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False,
+                                  help="**DVT is a technology that incentivizes client diversity through the distribution of the validation process across multiple operators. It reduces the risk of single points of failure or malicious actions.**")
+
+        col50,col51 = st.columns(2, gap="medium")
+        with col50:
+            oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False,
+                                            help="**To restrict the potential PfC extracted from Omni, a bridge can be set-up to restrict the value flow within the period of slashing, or an oracle can have bounds on the total value transacted within a given period.**")
+        with col51:
+            lockup_mec = st.checkbox('**Withdrawal Lock-Up Periods** Applied to Validators for Security Against Corruption', value=False)
+
+        col52,col53 = st.columns(2, gap="medium")
+        with col52:
+            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions and Low Latency', value=False)
+        with col53:
+            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for `XMsg` Fast Finality', value=False)
+
+
+        if st.session_state.engine_api != engine_api:
+            st.session_state.engine_api = engine_api
+            st.session_state.engine_api_score = engine_api_risk.get(engine_api, 0)
+
+        if st.session_state.validator_abci_usage != validator_abci_usage:
+            st.session_state.validator_abci_usage = validator_abci_usage
+            st.session_state.validator_abci_usage_score = validator_abci_usage_risk.get(validator_abci_usage, 0)
+
+        if st.session_state.tee_mec != tee_mec:
+            st.session_state.tee_mec = tee_mec
+            st.session_state.tee_mec_score = tee_mec_risk.get(tee_mec, 0)
+
+        if st.session_state.dvt_mec != dvt_mec:
+            st.session_state.dvt_mec = dvt_mec
+            st.session_state.dvt_mec_score = dvt_mec_risk.get(dvt_mec, 0)
+
+        if st.session_state.oracle_bridge_mec != oracle_bridge_mec:
+            st.session_state.oracle_bridge_mec = oracle_bridge_mec
+            st.session_state.oracle_bridge_mec_score = oracle_bridge_mec_risk.get(oracle_bridge_mec, 0)
+
+        if st.session_state.lockup_mec != lockup_mec:
+            st.session_state.lockup_mec = lockup_mec
+            st.session_state.lockup_mec_score = lockup_mec_risk.get(lockup_mec, 0)
+
+        if st.session_state.da_sol_mec != da_sol_mec:
+            st.session_state.da_sol_mec = da_sol_mec
+            st.session_state.da_sol_mec_score = da_sol_mec_risk.get(da_sol_mec, 0)
+
+        if st.session_state.fast_fin_ss_mec != fast_fin_ss_mec:
+            st.session_state.fast_fin_ss_mec = fast_fin_ss_mec
+            st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk.get(fast_fin_ss_mec, 0)
+
+        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score +
+                        st.session_state.tee_mec_score + st.session_state.dvt_mec_score + st.session_state.oracle_bridge_mec_score +
+                        st.session_state.lockup_mec_score + st.session_state.da_sol_mec_score + st.session_state.fast_fin_ss_mec_score)
+
+        st.write("  \n")
+
+        validator_calc1 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.oracle_bridge_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.lockup_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
+            </div>"""
+
+        st.markdown(validator_calc1, unsafe_allow_html=True)
+
+
+############################################
+
+
+        st.write("-------")
+
+        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0904888",
+                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
+        st.write("  \n")
+
+        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                   help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
+        validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
+        st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
+
+        perc_light_nodes = st.slider("**% of Light Client Nodes**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                   help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
+        perc_light_nodes_var = perc_light_nodes_calc(perc_light_nodes)
+        st.session_state.perc_light_nodes_var = perc_light_nodes_var
+
+        col100, col101 = st.columns(2, gap="medium")
+        with col100:
+            validator_reputation = st.selectbox("**CometBFT Validators' Reputation**", ["Unknown", "Established", "Renowned"], key="0977790", index=1,
+                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
+        with col101:           
+            validator_centralization = st.selectbox("**CometBFT Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="30'232", index=1,
+                                                    help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
+        
+        st.write("-------")
+        
+        col33, col34 = st.columns(2, gap="medium")
+        with col33:
+            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, key="v660", help=f"""
+                                                          **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
+
+                                                          1 == Unlikely | 10 == Very Likely""")
+            validator_metrics_likelihood2 = validator_metrics_likelihood / 2
+
+        with col34:
+            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v90901", help=f"""
+                                                     **Assesses the impact that risk would have on the security of the AVS.**
+
+                                                      1 == Unimpactful | 10 == Very Impactful""")
+            validator_metrics_impact2 = validator_metrics_impact / 2
+
+
+
+        # Directly use the calculated variables
+        val_likelihood_formatted = format_number(validator_metrics_likelihood2)
+        val_impact_formatted = format_number(validator_metrics_impact2)
+
+
+        with st.expander("Logic"):
+                st.image("images/omni-comet-diagram.jpg", width=750)
+
+                st.markdown("""
+Consensus-level Validators package `XMsgs` into `XBlocks` and attest to those `XBlock` hashes during CometBFT consensus. For a more detailed overview check the visualization at the bottom of this Simulator.
+            
+**Engine API** is a critical component of the Omni protocol, connecting Ethereum execution clients with a consensus client (Halo) for the CometBFT system. It allows clients to be substituted or upgraded without perturbing the system. It offers:
+
+- Scalability and Efficiency: By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
+- Flexibility: Supports the interchangeability and upgradability of execution clients without system disruption, ensuring compatibility with various Ethereum execution clients.
+                            
+                            
+**ABCI++** is an adapter that wraps around the CometBFT engine, that enables seamless state translation and efficient conversion of Omni EVM blocks into CometBFT transactions. This feature:
+
+- Streamlines transaction requests by moving the transaction mempool to the execution layer, alleviating network congestion and latency at the CometBFT consensus level;
+- Facilitates state translations by wrapping around CometBFT ensuring Omni EVM blocks are efficiently converted into CometBFT transactions.
+                            
+As per the above checkboxes, we suggest a few features/mechanism that could contribute to the overall efficiency and security of Omni as a protocol and as an AVS. Consideration for `Halo`'s reputation can be added on a later version.
+                            
+The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
+                            """)
+
+
+        if st.session_state.halo_reputation != halo_reputation:
+            st.session_state.halo_reputation = halo_reputation
+            st.session_state.halo_reputation_score = halo_reputation_risk.get(halo_reputation, 0)
+
+        if st.session_state.validator_reputation != validator_reputation:
+            st.session_state.validator_reputation = validator_reputation
+            st.session_state.validator_reputation_score = validator_reputation_risk.get(validator_reputation, 0)
+
+        if st.session_state.validator_centralization != validator_centralization:
+            st.session_state.validator_centralization = validator_centralization
+            st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
+    
+
+        result5 = ((st.session_state.halo_reputation_score + st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
+                   st.session_state.validator_centralization_score) * validator_metrics_likelihood2 * validator_metrics_impact2)
+        
+        result5_formatted = format_result(float(result5))
+
+        
+        validator_calc2 = f"""
+            <div style="text-align: center;">
+                <div>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.halo_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_likelihood_formatted}</span>         
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_impact_formatted}</span>         
+                    <span style="font-size: 22px; font-weight: bold;"> = </span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5_formatted}</span>
+                </div>
+            </div>"""
+
+
+        st.markdown(validator_calc2, unsafe_allow_html=True)
+
+
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
 
 
@@ -1477,7 +1488,7 @@ The summation or multiplication of variables revolves around their independence 
   
 
 
-        # Relayer Metrics
+        # Retriever Metrics
 
         st.markdown("""
                 <style>
@@ -1492,7 +1503,7 @@ The summation or multiplication of variables revolves around their independence 
         st.markdown("""
             <p class="header-style">
                 <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">3</span>
-                <span style="font-size: 21px;">RELAYER</span>
+                <span style="font-size: 21px;">RETRIEVER</span>
             </p>
                 """, unsafe_allow_html=True)
         
