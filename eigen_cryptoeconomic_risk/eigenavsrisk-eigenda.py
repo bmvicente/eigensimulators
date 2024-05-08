@@ -21,7 +21,7 @@ validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "De
 relayer_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 2}
 operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
-engine_api_risk = {True: 1, False: 10}
+bls_alt_risk = {True: 1, False: 10}
 dvt_mec_risk = {True: 1, False: 10}
 sybil_mec_risk = {True: 1, False: 10}
 relayer_da_solution_risk = {True: 1, False: 10}
@@ -38,7 +38,7 @@ oracle_bridge_mec_risk = {True: 1, False: 10}
 
 def eigenda_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
               relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
-              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api,
+              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, bls_alt,
               validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
               da_sol_mec, validator_centralization, relayer_centralization, halo_reputation, evm_validator_reputation,
               evm_client_reputation, evm_validator_centralization):
@@ -57,7 +57,7 @@ def eigenda_risk(security_audits, business_model, relayer_reputation, relayer_da
     operator_reputation_score = operator_reputation_risk[operator_reputation]
     operator_centralization_score = operator_centralization_risk[operator_centralization]
     operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
-    engine_api_score = engine_api_risk[engine_api]
+    bls_alt_score = bls_alt_risk[bls_alt]
     validator_abci_usage_score = validator_abci_usage_risk[validator_abci_usage]
     dvt_mec_score = dvt_mec_risk[dvt_mec]
     oracle_bridge_mec_score = oracle_bridge_mec_risk[oracle_bridge_mec]
@@ -76,7 +76,7 @@ def eigenda_risk(security_audits, business_model, relayer_reputation, relayer_da
     return (security_audits_score, business_model_score, relayer_reputation_score, relayer_da_solution_score,
             relayer_merkle_score, evm_client_div_score, evm_equivalence_score, sybil_mec_score, encrypted_mempool_mec_score,
             code_complexity_score, tee_mec_score, operator_reputation_score, operator_centralization_score,
-            operator_entrenchment_level_score, engine_api_score, validator_abci_usage_score, dvt_mec_score,
+            operator_entrenchment_level_score, bls_alt_score, validator_abci_usage_score, dvt_mec_score,
             oracle_bridge_mec_score, lockup_mec_score, fast_fin_ss_mec_score, validator_reputation_score,
             da_sol_mec_score, validator_centralization_score, relayer_centralization_score, halo_reputation_score,
             evm_validator_reputation_score, evm_client_reputation_score, evm_validator_centralization_score)
@@ -349,13 +349,13 @@ def main():
         else:
             st.session_state.validator_abci_usage_score = 0
 
-    if 'engine_api_score' not in st.session_state:
-        st.session_state.engine_api = "True"  # Set default value
-    if 'engine_api_score' not in st.session_state:
-        if st.session_state.engine_api in engine_api_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.engine_api_score = engine_api_risk[st.session_state.engine_api]
+    if 'bls_alt_score' not in st.session_state:
+        st.session_state.bls_alt = "True"  # Set default value
+    if 'bls_alt_score' not in st.session_state:
+        if st.session_state.bls_alt in bls_alt_risk:  # Check if code complexity exists in the dictionary
+            st.session_state.bls_alt_score = bls_alt_risk[st.session_state.bls_alt]
         else:
-            st.session_state.engine_api_score = 0
+            st.session_state.bls_alt_score = 0
 
     if 'lockup_mec_score' not in st.session_state:
         st.session_state.lockup_mec = "False"  # Set default value
@@ -1285,9 +1285,9 @@ The summation or multiplication of variables revolves around their independence 
             fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for `XMsg` Fast Finality', value=False)
 
 
-        if st.session_state.engine_api != engine_api:
-            st.session_state.engine_api = engine_api
-            st.session_state.engine_api_score = engine_api_risk.get(engine_api, 0)
+        if st.session_state.bls_alt != bls_alt:
+            st.session_state.bls_alt = bls_alt
+            st.session_state.bls_alt_score = bls_alt_risk.get(bls_alt, 0)
 
         if st.session_state.validator_abci_usage != validator_abci_usage:
             st.session_state.validator_abci_usage = validator_abci_usage
@@ -1317,7 +1317,7 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.fast_fin_ss_mec = fast_fin_ss_mec
             st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk.get(fast_fin_ss_mec, 0)
 
-        result4 = (st.session_state.engine_api_score * st.session_state.validator_abci_usage_score +
+        result4 = (st.session_state.bls_alt_score * st.session_state.validator_abci_usage_score +
                         st.session_state.tee_mec_score + st.session_state.dvt_mec_score + st.session_state.oracle_bridge_mec_score +
                         st.session_state.lockup_mec_score + st.session_state.da_sol_mec_score + st.session_state.fast_fin_ss_mec_score)
 
@@ -1326,7 +1326,7 @@ The summation or multiplication of variables revolves around their independence 
         validator_calc1 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.engine_api_score}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.bls_alt_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&plus;</span>
@@ -1690,7 +1690,7 @@ The summation or multiplication of variables revolves around their independence 
 
     risk_score = eigenda_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, 
                         evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
-                        tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, engine_api, validator_abci_usage, dvt_mec, 
+                        tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, bls_alt, validator_abci_usage, dvt_mec, 
                         oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
                         da_sol_mec, validator_centralization, relayer_centralization, halo_reputation, evm_validator_reputation,
                         evm_client_reputation, evm_validator_centralization)
@@ -1698,7 +1698,7 @@ The summation or multiplication of variables revolves around their independence 
     (st.session_state.security_audits_score, st.session_state.business_model_score, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score,
     st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score, st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score,
     st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score,
-    st.session_state.operator_entrenchment_level_score, st.session_state.engine_api_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score,
+    st.session_state.operator_entrenchment_level_score, st.session_state.bls_alt_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score,
     st.session_state.oracle_bridge_mec_score, st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score,
     st.session_state.da_sol_mec_score, st.session_state.validator_centralization_score, st.session_state.relayer_centralization_score, st.session_state.halo_reputation_score,
     st.session_state.evm_validator_reputation_score, st.session_state.evm_client_reputation_score, st.session_state.evm_validator_centralization_score) = risk_score
