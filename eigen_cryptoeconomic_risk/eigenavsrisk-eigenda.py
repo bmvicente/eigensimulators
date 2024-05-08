@@ -738,6 +738,13 @@ def main():
 
             security_audits = st.number_input("**AVS Number of Security Audits**", min_value=0, max_value=5, step=1, value=2, key="0890")
 
+
+        coverage_perc = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, help="Coverage percentage refers to the proportion of code that is tested by automated tests, typically measured by the number of lines or branches of code executed during testing compared to the total number of lines or branches in the codebase. It indicates how thoroughly the codebase is tested, with higher coverage percentages indicating greater test coverage and potentially lower risk of undetected bugs or issues.")
+
+        st.write("------")
+
+
+
         col35,col36 = st.columns(2, gap="medium")
         with col35:
                     security_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, help=f"""
