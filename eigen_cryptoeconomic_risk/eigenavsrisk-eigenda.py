@@ -1523,24 +1523,24 @@ The summation or multiplication of variables revolves around their independence 
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            validator_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, key="v660", help=f"""
+            bft_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, key="v660", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
-            validator_metrics_likelihood2 = validator_metrics_likelihood / 2
+            bft_metrics_likelihood2 = bft_metrics_likelihood / 2
 
         with col34:
-            validator_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v90901", help=f"""
+            bft_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v90901", help=f"""
                                                      **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
-            validator_metrics_impact2 = validator_metrics_impact / 2
+            bft_metrics_impact2 = bft_metrics_impact / 2
 
 
 
         # Directly use the calculated variables
-        val_likelihood_formatted = format_number(validator_metrics_likelihood2)
-        val_impact_formatted = format_number(validator_metrics_impact2)
+        bft_likelihood_formatted = format_number(bft_metrics_likelihood2)
+        bft_impact_formatted = format_number(bft_metrics_impact2)
 
 
         with st.expander("Logic"):
@@ -1580,7 +1580,7 @@ The summation or multiplication of variables revolves around their independence 
     
 
         result5 = ((st.session_state.halo_reputation_score + st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
-                   st.session_state.validator_centralization_score) * validator_metrics_likelihood2 * validator_metrics_impact2)
+                   st.session_state.validator_centralization_score) * bft_metrics_likelihood2 * bft_metrics_impact2)
         
         result5_formatted = format_result(float(result5))
 
