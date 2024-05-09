@@ -494,6 +494,8 @@ def main():
 
             st.write("&#8226; **Native Dual Staking Balance**: {}% $ROLLUP : {}% xETH".format(avs_token_percentage, xeth_percentage))
 
+        dual_quorum = st.checkbox("**Dual Quorum**: ETH Quorum & ROLLUP Quorum")
+
         st.write("-------")
 
         col44,col45 = st.columns(2, gap="medium")
