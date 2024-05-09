@@ -1319,6 +1319,10 @@ The summation or multiplication of variables revolves around their independence 
         bls_alt = st.checkbox('**BLS-Like Alternative** for Operator Signature Batching at Scale', 
                                      value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with Halo Consensus Client that implements CometBFT consensus.**")
 
+
+        proof_custody = st.checkbox('**BLS-Like Alternative** for Operator Signature Batching at Scale', value = True)
+
+
         col42,col43 = st.columns(2, gap="medium")
         with col42:
             tee_mec = st.checkbox('**TEE** Implementation for Secure Management of Validator Keys', value=False,
