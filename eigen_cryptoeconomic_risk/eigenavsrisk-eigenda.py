@@ -1242,7 +1242,7 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.disperser_operator_score = disperser_operator_risk.get(disperser_operator, 0)
 
 
-        result7 = (st.session_state.disperser_performance_acc_rate_var * st.session_state.disperser_centralization_score * 
+        result7 = (int(st.session_state.disperser_performance_acc_rate_var) * int(st.session_state.disperser_centralization_score) * 
                    st.session_state.disperser_operator_score * disperser_likelihood_formatted * disperser_impact_formatted)
         
 
