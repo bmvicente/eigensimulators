@@ -1185,7 +1185,7 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        disperser_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
+        disperser_performance_acc_rate = st.slider("**Disperser Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
 
         disperser_performance_acc_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
         st.session_state.disperser_performance_acc_rate_var = disperser_performance_acc_rate_var
