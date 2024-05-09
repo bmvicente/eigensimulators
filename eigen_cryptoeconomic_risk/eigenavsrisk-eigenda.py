@@ -496,7 +496,7 @@ def main():
 
         st.write("\n")
 
-        dual_quorum = st.checkbox("**Dual Quorum**: ETH Quorum & ROLLUP Quorum")
+        dual_quorum = st.checkbox("**Dual Quorum**: ETH Quorum & ROLLUP Quorum", value=True, help="ff")
 
         st.write("-------")
 
@@ -991,6 +991,9 @@ def main():
         rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=False)
 
         rollup_backup_disperser = st.checkbox('**Backup Disperser**', value=False)
+
+        rollup_censorship_res = st.checkbox('**Effective Censorship Resistance through Single Leader/Block Proposer Decentralization**', value=False)
+
 
         if st.session_state.rollup_backup_disperser != rollup_backup_disperser:
             st.session_state.rollup_backup_disperser = rollup_backup_disperser
