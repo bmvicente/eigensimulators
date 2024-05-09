@@ -1159,8 +1159,8 @@ The summation or multiplication of variables revolves around their independence 
 
         kzg_encoding_rate = st.slider("**KZG Erasure Encoding Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="6212782")
 
-        disperser_performance_acc_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
-        st.session_state.disperser_performance_acc_rate_var = disperser_performance_acc_rate_var
+        kzg_encoding_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
+        st.session_state.kzg_encoding_rate_var = disperser_performance_acc_rate_var
 
 
         if st.session_state.kzg_erasure_coding != kzg_erasure_coding:
@@ -1193,7 +1193,7 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        disperser_performance_acc_rate = st.slider("**Disperser Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
+        disperser_performance_acc_rate = st.slider("**Disperser Blob-to-Chunk & Dispatching Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
 
         disperser_performance_acc_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
         st.session_state.disperser_performance_acc_rate_var = disperser_performance_acc_rate_var
