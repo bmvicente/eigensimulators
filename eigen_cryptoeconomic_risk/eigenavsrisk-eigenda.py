@@ -1152,7 +1152,8 @@ The summation or multiplication of variables revolves around their independence 
             kzg_erasure_coding = st.checkbox("**KZG Erasure Coding Rate**", value=True,
                                 help="**ddd**")
         with col66:
-            kzg_multi_proofs = st.checkbox("**KZG Multi-Reveal Proofs**", value=False)
+            kzg_multi_proofs = st.checkbox("**KZG Multi-Reveal Proofs**", value=True,
+                                           help="**ddd**")
 
         if st.session_state.kzg_erasure_coding != kzg_erasure_coding:
             st.session_state.kzg_erasure_coding = kzg_erasure_coding
