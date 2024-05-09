@@ -13,41 +13,45 @@ code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
 operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
-bls_alt_risk = {True: 1, False: 10}
 dvt_mec_risk = {True: 1, False: 10}
 tee_mec_risk = {True: 1, False: 10}
+
+bls_alt_risk = {True: 1, False: 10}
 rollup_fast_proof_risk = {True: 1, False: 10}
 kzg_erasure_encoding_risk = {True: 1, False: 10}
 kzg_multi_proofs_risk = {True: 1, False: 10}
 disperser_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
+rollup_backup_disperser_risk = {True: 1, False: 10}
 
 
-def eigenda_risk(security_audits, business_model, rollup_fast_proof, disperser_centralization,
-              code_complexity, kzg_erasure_encoding, kzg_multi_proofs,
-              tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, bls_alt,
-              dvt_mec, validator_reputation, validator_centralization):
+def eigenda_risk(security_audits, business_model, code_complexity, operator_reputation, operator_centralization, 
+                 operator_entrenchment_level, tee_mec, dvt_mec, validator_reputation, validator_centralization,
+                 bls_alt, rollup_fast_proof, disperser_centralization, kzg_erasure_encoding, 
+                 kzg_multi_proofs, rollup_backup_disperser):
 
     security_audits_score = security_audits_risk[security_audits]
     business_model_score = business_model_risk[business_model]
     code_complexity_score = code_complexity_risk[code_complexity]
-    tee_mec_score = tee_mec_risk[tee_mec]
     operator_reputation_score = operator_reputation_risk[operator_reputation]
     operator_centralization_score = operator_centralization_risk[operator_centralization]
     operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
-    bls_alt_score = bls_alt_risk[bls_alt]
+    tee_mec_score = tee_mec_risk[tee_mec]
     dvt_mec_score = dvt_mec_risk[dvt_mec]
     validator_reputation_score = validator_reputation_risk[validator_reputation]
     validator_centralization_score = validator_centralization_risk[validator_centralization]
+
+    bls_alt_score = bls_alt_risk[bls_alt]
     rollup_fast_proof_score = rollup_fast_proof_risk[rollup_fast_proof]
     disperser_centralization_score = disperser_centralization_risk[disperser_centralization]
     kzg_erasure_encoding_score = kzg_erasure_encoding_risk[kzg_erasure_encoding]
     kzg_multi_proofs_score = kzg_multi_proofs_risk[kzg_multi_proofs]
+    rollup_backup_disperser_score = rollup_backup_disperser_risk[rollup_backup_disperser]
 
-    return (security_audits_score, business_model_score, rollup_fast_proof_score, disperser_centralization_score, validator_reputation_score,
-            code_complexity_score, tee_mec_score, operator_reputation_score, operator_centralization_score, validator_centralization_score,
-            operator_entrenchment_level_score, bls_alt_score, dvt_mec_score, kzg_erasure_encoding_score, kzg_multi_proofs_score,
-            validator_reputation_score, validator_centralization_score, validator_centralization_score)
 
+    return (security_audits_score, business_model_score, code_complexity_score, operator_reputation_score, operator_centralization_score,
+            operator_entrenchment_level_score, tee_mec_score, dvt_mec_score, validator_reputation_score, validator_centralization_score, 
+            bls_alt_score, rollup_fast_proof_score, disperser_centralization_score, kzg_erasure_encoding_score, kzg_multi_proofs_score, 
+            rollup_backup_disperser_score)
 
 
 
@@ -317,6 +321,15 @@ def main():
             st.session_state.kzg_multi_proofs_score = kzg_multi_proofs_risk[st.session_state.kzg_multi_proofs]
         else:
             st.session_state.kzg_multi_proofs_score = 0
+
+    if 'rollup_backup_disperser' not in st.session_state:
+        st.session_state.rollup_backup_disperser = "True"
+    if 'rollup_backup_disperser_score' not in st.session_state:
+        if st.session_state.rollup_backup_disperser in rollup_backup_disperser_risk:
+            st.session_state.rollup_backup_disperser_score = rollup_backup_disperser_risk[st.session_state.rollup_backup_disperser]
+        else:
+            st.session_state.rollup_backup_disperser_score = 0
+
 
     if 'risk_score' not in st.session_state:
         st.session_state.risk_score = 0
@@ -951,7 +964,7 @@ def main():
 
         st.markdown("""
             <p class="header-style">
-                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">3</span>
+                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">1</span>
                 <span style="font-size: 21px;">ROLLUPS</span>
             </p>
                 """, unsafe_allow_html=True)
@@ -960,12 +973,18 @@ def main():
         st.write("  \n")
 
         rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=False)
-        
+
+        rollup_backup_disperser = st.checkbox('**Backup Disperser**', value=False)
+
+        if st.session_state.rollup_backup_disperser != rollup_backup_disperser:
+            st.session_state.rollup_backup_disperser = rollup_backup_disperser
+            st.session_state.rollup_backup_disperser_score = rollup_backup_disperser_risk.get(rollup_backup_disperser, 0)
+
         if st.session_state.rollup_fast_proof != rollup_fast_proof:
             st.session_state.rollup_fast_proof = rollup_fast_proof
             st.session_state.rollup_fast_proof_score = rollup_fast_proof_risk.get(rollup_fast_proof, 0)
 
-        result8 = (st.session_state.rollup_fast_proof_score)
+        result8 = (st.session_state.rollup_fast_proof_score + st.session_state.rollup_backup_disperser_score)
         
         st.write("  \n")
 
@@ -1080,6 +1099,9 @@ The summation or multiplication of variables revolves around their independence 
 
 
 
+
+
+
         # DISPERSER Metrics
 
         st.markdown("""
@@ -1094,7 +1116,7 @@ The summation or multiplication of variables revolves around their independence 
 
         st.markdown("""
             <p class="header-style">
-                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">1</span>
+                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">2</span>
                 <span style="font-size: 21px;">DISPERSER</span>
             </p>
         """, unsafe_allow_html=True)
@@ -1260,7 +1282,7 @@ The summation or multiplication of variables revolves around their independence 
         
         st.markdown("""
             <p class="header-style">
-                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">2</span>
+                <span style="color: white; background-color: black; border-radius: 50%; padding: 0.5em; font-family: monospace; display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; font-size: 0.85em; margin-right: 0.5em;">3</span>
                 <span style="font-size: 21px;">CONSENSUS LAYER: BFT</span>
             </p>
                 """, unsafe_allow_html=True)
@@ -1475,20 +1497,20 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
 
 
+
     risk_score = eigenda_risk(security_audits, business_model, code_complexity,
-                            tee_mec, operator_reputation, operator_centralization,
-                            operator_entrenchment_level, bls_alt, validator_reputation,
-                            validator_centralization, rollup_fast_proof,
-                            disperser_centralization, kzg_erasure_encoding,
-                            kzg_multi_proofs)
+                            operator_reputation, operator_centralization, operator_entrenchment_level,
+                            tee_mec, dvt_mec, validator_reputation, validator_centralization, bls_alt, rollup_fast_proof,
+                            disperser_centralization, kzg_erasure_encoding, 
+                            kzg_multi_proofs, rollup_backup_disperser)
 
     (st.session_state.security_audits_score, st.session_state.business_model_score,
-    st.session_state.code_complexity_score, st.session_state.tee_mec_score,
+    st.session_state.code_complexity_score, 
     st.session_state.operator_reputation_score, st.session_state.operator_centralization_score,
-    st.session_state.operator_entrenchment_level_score, st.session_state.bls_alt_score,
+    st.session_state.operator_entrenchment_level_score, st.session_state.tee_mec_score, st.session_state.dvt_mec,
     st.session_state.validator_reputation_score, st.session_state.validator_centralization_score,
-    st.session_state.rollup_fast_proof_score, st.session_state.disperser_centralization_score,
-    st.session_state.kzg_erasure_encoding_score, st.session_state.kzg_multi_proofs_score) = risk_score
+    st.session_state.bls_alt_score, st.session_state.rollup_fast_proof_score, st.session_state.disperser_centralization_score,
+    st.session_state.kzg_erasure_encoding_score, st.session_state.kzg_multi_proofs_score, st.session_state.rollup_backup_disperser_score) = risk_score
 
 
 
