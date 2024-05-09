@@ -1155,6 +1155,7 @@ The summation or multiplication of variables revolves around their independence 
             kzg_multi_proofs = st.checkbox("**KZG Multi-Reveal Proofs**", value=True,
                                            help="**ddd**")
 
+        st.write("  \n")
 
         kzg_encoding_rate = st.slider("**KZG Erasure Encoding Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="6212782")
 
