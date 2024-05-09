@@ -22,12 +22,13 @@ kzg_erasure_encoding_risk = {True: 1, False: 10}
 kzg_multi_proofs_risk = {True: 1, False: 10}
 disperser_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 rollup_backup_disperser_risk = {True: 1, False: 10}
+disperser_operator_risk = {"Disperser Run by Rollup": 8, "Disperser Run by Third-Party (like EigenLabs)": 2}
 
 
 def eigenda_risk(security_audits, business_model, code_complexity, operator_reputation, operator_centralization, 
                  operator_entrenchment_level, tee_mec, dvt_mec, validator_reputation, validator_centralization,
                  bls_alt, rollup_fast_proof, disperser_centralization, kzg_erasure_encoding, 
-                 kzg_multi_proofs, rollup_backup_disperser):
+                 kzg_multi_proofs, rollup_backup_disperser, disperser_operator):
 
     security_audits_score = security_audits_risk[security_audits]
     business_model_score = business_model_risk[business_model]
@@ -46,12 +47,13 @@ def eigenda_risk(security_audits, business_model, code_complexity, operator_repu
     kzg_erasure_encoding_score = kzg_erasure_encoding_risk[kzg_erasure_encoding]
     kzg_multi_proofs_score = kzg_multi_proofs_risk[kzg_multi_proofs]
     rollup_backup_disperser_score = rollup_backup_disperser_risk[rollup_backup_disperser]
+    disperser_operator_score = disperser_operator_risk[disperser_operator]
 
 
     return (security_audits_score, business_model_score, code_complexity_score, operator_reputation_score, operator_centralization_score,
             operator_entrenchment_level_score, tee_mec_score, dvt_mec_score, validator_reputation_score, validator_centralization_score, 
             bls_alt_score, rollup_fast_proof_score, disperser_centralization_score, kzg_erasure_encoding_score, kzg_multi_proofs_score, 
-            rollup_backup_disperser_score)
+            rollup_backup_disperser_score, disperser_operator_score)
 
 
 
@@ -330,9 +332,19 @@ def main():
         else:
             st.session_state.rollup_backup_disperser_score = 0
 
+    if 'disperser_operator' not in st.session_state:
+        st.session_state.disperser_operator = "True"
+    if 'disperser_operator_score' not in st.session_state:
+        if st.session_state.disperser_operator in disperser_operator_risk:
+            st.session_state.disperser_operator_score = disperser_operator_risk[st.session_state.disperser_operator]
+        else:
+            st.session_state.disperser_operator_score = 0
 
+    
     if 'risk_score' not in st.session_state:
         st.session_state.risk_score = 0
+
+
 
 
     def format_number(num):
@@ -1167,7 +1179,13 @@ The summation or multiplication of variables revolves around their independence 
         disperser_performance_acc_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
         st.session_state.disperser_performance_acc_rate_var = disperser_performance_acc_rate_var
         
-        disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
+        col20,col21 = st.columns(2)
+        with col20:
+            disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
+        
+        with col21:
+            disperser_operator = st.selectbox("**Disperser Operator**", ["Disperser Run by Rollup", "Disperser Run by Third-Party (like EigenLabs)"], index=0, key="285816")
+
 
         st.write("-------")
         
@@ -1209,8 +1227,13 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.disperser_centralization = disperser_centralization
             st.session_state.disperser_centralization_score = disperser_centralization_risk.get(disperser_centralization, 0)
 
+        if st.session_state.disperser_operator != disperser_operator:
+            st.session_state.disperser_operator = disperser_operator
+            st.session_state.disperser_operator_score = disperser_operator_risk.get(disperser_operator, 0)
 
-        result7 = (st.session_state.disperser_performance_acc_rate_var * st.session_state.disperser_centralization_score * disperser_likelihood_formatted * disperser_impact_formatted)
+
+        result7 = (st.session_state.disperser_performance_acc_rate_var * st.session_state.disperser_centralization_score * 
+                   st.session_state.disperser_operator_score * disperser_likelihood_formatted * disperser_impact_formatted)
         
 
         result7_formatted = format_result(float(result7))
@@ -1223,6 +1246,8 @@ The summation or multiplication of variables revolves around their independence 
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.disperser_performance_acc_rate_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.disperser_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.disperser_operator_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{disperser_likelihood_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
@@ -1340,8 +1365,8 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                                   help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
+        validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate in sending signatures back to Disperser**", min_value=0, max_value=100, value=50, format='%d%%',
+                                                   help="**The EigenDA nodes verify the chunks they receive against the KZG commitment using the multireveal proofs, persist the data, then generate and return a signature back to the Disperser for aggregation.**")
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
 
@@ -1502,7 +1527,7 @@ The summation or multiplication of variables revolves around their independence 
                             operator_reputation, operator_centralization, operator_entrenchment_level,
                             tee_mec, dvt_mec, validator_reputation, validator_centralization, bls_alt, rollup_fast_proof,
                             disperser_centralization, kzg_erasure_encoding, 
-                            kzg_multi_proofs, rollup_backup_disperser)
+                            kzg_multi_proofs, rollup_backup_disperser, disperser_operator)
 
     (st.session_state.security_audits_score, st.session_state.business_model_score,
     st.session_state.code_complexity_score, 
@@ -1510,7 +1535,8 @@ The summation or multiplication of variables revolves around their independence 
     st.session_state.operator_entrenchment_level_score, st.session_state.tee_mec_score, st.session_state.dvt_mec,
     st.session_state.validator_reputation_score, st.session_state.validator_centralization_score,
     st.session_state.bls_alt_score, st.session_state.rollup_fast_proof_score, st.session_state.disperser_centralization_score,
-    st.session_state.kzg_erasure_encoding_score, st.session_state.kzg_multi_proofs_score, st.session_state.rollup_backup_disperser_score) = risk_score
+    st.session_state.kzg_erasure_encoding_score, st.session_state.kzg_multi_proofs_score, st.session_state.rollup_backup_disperser_score,
+    st.session_state.disperser_operator_score) = risk_score
 
 
 
@@ -1678,6 +1704,14 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
 
     st.write("**Note**: *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements above are prone to being faulty.*")
+
+
+
+    st.write("**ALGORITHMIC GAME-THEORY**")
+    st.write("**HOW TO VISUALIZE GAME-THEORY**")
+    st.write("**HOW TO COLOURIZE SLASHING CONDITIOS PER FAULT**")
+    st.write("**HOW TO VISUALIZE OPERATOR ENTRENCHMENT**")
+    st.write("**SEND OPERATOR NETWORK GRAPH TO GEORGE**")
 
 
 
