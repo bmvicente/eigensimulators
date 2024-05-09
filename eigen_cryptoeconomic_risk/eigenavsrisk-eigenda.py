@@ -18,7 +18,7 @@ tee_mec_risk = {True: 1, False: 10}
 
 bls_alt_risk = {True: 1, False: 10}
 rollup_fast_proof_risk = {True: 1, False: 10}
-kzg_erasure_encoding_risk = {True: 1, False: 10}
+kzg_erasure_coding_risk = {True: 1, False: 10}
 kzg_multi_proofs_risk = {True: 1, False: 10}
 disperser_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 rollup_backup_disperser_risk = {True: 1, False: 10}
@@ -27,7 +27,7 @@ disperser_operator_risk = {"Disperser Run by Rollup": 8, "Disperser Run by Third
 
 def eigenda_risk(security_audits, business_model, code_complexity, operator_reputation, operator_centralization, 
                  operator_entrenchment_level, tee_mec, dvt_mec, validator_reputation, validator_centralization,
-                 bls_alt, rollup_fast_proof, disperser_centralization, kzg_erasure_encoding, 
+                 bls_alt, rollup_fast_proof, disperser_centralization, kzg_erasure_coding, 
                  kzg_multi_proofs, rollup_backup_disperser, disperser_operator):
 
     security_audits_score = security_audits_risk[security_audits]
@@ -44,7 +44,7 @@ def eigenda_risk(security_audits, business_model, code_complexity, operator_repu
     bls_alt_score = bls_alt_risk[bls_alt]
     rollup_fast_proof_score = rollup_fast_proof_risk[rollup_fast_proof]
     disperser_centralization_score = disperser_centralization_risk[disperser_centralization]
-    kzg_erasure_encoding_score = kzg_erasure_encoding_risk[kzg_erasure_encoding]
+    kzg_erasure_coding_score = kzg_erasure_coding_risk[kzg_erasure_coding]
     kzg_multi_proofs_score = kzg_multi_proofs_risk[kzg_multi_proofs]
     rollup_backup_disperser_score = rollup_backup_disperser_risk[rollup_backup_disperser]
     disperser_operator_score = disperser_operator_risk[disperser_operator]
@@ -52,7 +52,7 @@ def eigenda_risk(security_audits, business_model, code_complexity, operator_repu
 
     return (security_audits_score, business_model_score, code_complexity_score, operator_reputation_score, operator_centralization_score,
             operator_entrenchment_level_score, tee_mec_score, dvt_mec_score, validator_reputation_score, validator_centralization_score, 
-            bls_alt_score, rollup_fast_proof_score, disperser_centralization_score, kzg_erasure_encoding_score, kzg_multi_proofs_score, 
+            bls_alt_score, rollup_fast_proof_score, disperser_centralization_score, kzg_erasure_coding_score, kzg_multi_proofs_score, 
             rollup_backup_disperser_score, disperser_operator_score)
 
 
@@ -308,13 +308,13 @@ def main():
         else:
             st.session_state.disperser_centralization_score = 0
 
-    if 'kzg_erasure_encoding' not in st.session_state:
-        st.session_state.kzg_erasure_encoding = "True"
-    if 'kzg_erasure_encoding_score' not in st.session_state:
-        if st.session_state.kzg_erasure_encoding in kzg_erasure_encoding_risk:
-            st.session_state.kzg_erasure_encoding_score = kzg_erasure_encoding_risk[st.session_state.kzg_erasure_encoding]
+    if 'kzg_erasure_coding' not in st.session_state:
+        st.session_state.kzg_erasure_coding = "True"
+    if 'kzg_erasure_coding_score' not in st.session_state:
+        if st.session_state.kzg_erasure_coding in kzg_erasure_coding_risk:
+            st.session_state.kzg_erasure_coding_score = kzg_erasure_coding_risk[st.session_state.kzg_erasure_coding]
         else:
-            st.session_state.kzg_erasure_encoding_score = 0
+            st.session_state.kzg_erasure_coding_score = 0
 
     if 'kzg_multi_proofs' not in st.session_state:
         st.session_state.kzg_multi_proofs = "True"
@@ -1149,27 +1149,27 @@ The summation or multiplication of variables revolves around their independence 
         
         col65,col66 = st.columns(2, gap="medium")
         with col65:
-            kzg_erasure_encoding = st.checkbox("**KZG Erasure Encoding Rate**", value=True,
+            kzg_erasure_coding = st.checkbox("**KZG Erasure Coding Rate**", value=True,
                                 help="**ddd**")
         with col66:
             kzg_multi_proofs = st.checkbox("**KZG Multi-Reveal Proofs**", value=False)
 
-        if st.session_state.kzg_erasure_encoding != kzg_erasure_encoding:
-            st.session_state.kzg_erasure_encoding = kzg_erasure_encoding
-            st.session_state.kzg_erasure_encoding_score = kzg_erasure_encoding_risk.get(kzg_erasure_encoding, 0)
+        if st.session_state.kzg_erasure_coding != kzg_erasure_coding:
+            st.session_state.kzg_erasure_coding = kzg_erasure_coding
+            st.session_state.kzg_erasure_coding_score = kzg_erasure_coding_risk.get(kzg_erasure_coding, 0)
 
         if st.session_state.kzg_multi_proofs != kzg_multi_proofs:
             st.session_state.kzg_multi_proofs = kzg_multi_proofs
             st.session_state.kzg_multi_proofs_score = kzg_multi_proofs_risk.get(kzg_multi_proofs, 0)
 
-        result6 = (st.session_state.kzg_erasure_encoding_score + st.session_state.kzg_multi_proofs_score)
+        result6 = (st.session_state.kzg_erasure_coding_score + st.session_state.kzg_multi_proofs_score)
         
         st.write("  \n")
 
         disperser_calc1 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.kzg_erasure_encoding_score}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.kzg_erasure_coding_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.kzg_multi_proofs_score}</span>
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
@@ -1542,7 +1542,7 @@ The summation or multiplication of variables revolves around their independence 
     risk_score = eigenda_risk(security_audits, business_model, code_complexity,
                             operator_reputation, operator_centralization, operator_entrenchment_level,
                             tee_mec, dvt_mec, validator_reputation, validator_centralization, bls_alt, rollup_fast_proof,
-                            disperser_centralization, kzg_erasure_encoding, 
+                            disperser_centralization, kzg_erasure_coding, 
                             kzg_multi_proofs, rollup_backup_disperser, disperser_operator)
 
     (st.session_state.security_audits_score, st.session_state.business_model_score,
@@ -1551,7 +1551,7 @@ The summation or multiplication of variables revolves around their independence 
     st.session_state.operator_entrenchment_level_score, st.session_state.tee_mec_score, st.session_state.dvt_mec,
     st.session_state.validator_reputation_score, st.session_state.validator_centralization_score,
     st.session_state.bls_alt_score, st.session_state.rollup_fast_proof_score, st.session_state.disperser_centralization_score,
-    st.session_state.kzg_erasure_encoding_score, st.session_state.kzg_multi_proofs_score, st.session_state.rollup_backup_disperser_score,
+    st.session_state.kzg_erasure_coding_score, st.session_state.kzg_multi_proofs_score, st.session_state.rollup_backup_disperser_score,
     st.session_state.disperser_operator_score) = risk_score
 
 
