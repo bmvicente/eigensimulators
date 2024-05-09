@@ -1269,7 +1269,7 @@ The summation or multiplication of variables revolves around their independence 
 
 
         result7 = (st.session_state.disperser_performance_acc_rate_var * st.session_state.disperser_centralization_score * 
-                   st.session_state.disperser_operator_score * disperser_likelihood_formatted * disperser_impact_formatted)
+                   st.session_state.disperser_operator_score * disperser_likelihood2 * disperser_impact2)
         
 
         result7_formatted = format_result(float(result7))
