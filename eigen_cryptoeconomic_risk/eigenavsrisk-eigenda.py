@@ -7,79 +7,40 @@ from plotly.subplots import make_subplots
 
 security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1}
 business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
-relayer_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-evm_client_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-evm_validator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-evm_validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-halo_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
 code_complexity_risk = {"High": 10, "Medium": 5, "Low": 2}
 operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-evm_equivalence_risk = {"Incompatible": 10, "Compatible": 5, "Equivalent": 2}
 validator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-relayer_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-evm_client_div_risk = {"Poorly Diverse": 10, "Moderately Diverse": 5, "Highly Diverse": 2}
 operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchment": 5, "Low Entrenchment": 1}
 bls_alt_risk = {True: 1, False: 10}
 dvt_mec_risk = {True: 1, False: 10}
-sybil_mec_risk = {True: 1, False: 10}
-relayer_da_solution_risk = {True: 1, False: 10}
-validator_abci_usage_risk = {True: 1, False: 10}
-da_sol_mec_risk = {True: 1, False: 10}
-lockup_mec_risk = {True: 1, False: 10}
-fast_fin_ss_mec_risk = {True: 1, False: 10}
 tee_mec_risk = {True: 1, False: 10}
-encrypted_mempool_mec_risk = {True: 1, False: 10}
-relayer_merkle_risk = {True: 1, False: 10}
-oracle_bridge_mec_risk = {True: 1, False: 10}
 
 
-
-def eigenda_risk(security_audits, business_model, relayer_reputation, relayer_da_solution,
-              relayer_merkle, evm_client_div, evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
+def eigenda_risk(security_audits, business_model, , ,
+              , , , , , code_complexity,
               tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, bls_alt,
-              validator_abci_usage, dvt_mec, oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-              da_sol_mec, validator_centralization, relayer_centralization, halo_reputation, evm_validator_reputation,
-              evm_client_reputation, evm_validator_centralization):
+              , dvt_mec, , , , validator_reputation, 
+              , validator_centralization, , , ,
+              , ):
 
     security_audits_score = security_audits_risk[security_audits]
     business_model_score = business_model_risk[business_model]
-    relayer_reputation_score = relayer_reputation_risk[relayer_reputation]
-    relayer_da_solution_score = relayer_da_solution_risk[relayer_da_solution]
-    relayer_merkle_score = relayer_merkle_risk[relayer_merkle]
-    evm_client_div_score = evm_client_div_risk[evm_client_div]
-    evm_equivalence_score = evm_equivalence_risk[evm_equivalence]
-    sybil_mec_score = sybil_mec_risk[sybil_mec]
-    encrypted_mempool_mec_score = encrypted_mempool_mec_risk[encrypted_mempool_mec]
     code_complexity_score = code_complexity_risk[code_complexity]
     tee_mec_score = tee_mec_risk[tee_mec]
     operator_reputation_score = operator_reputation_risk[operator_reputation]
     operator_centralization_score = operator_centralization_risk[operator_centralization]
     operator_entrenchment_level_score = operator_entrenchment_level_risk[operator_entrenchment_level]
     bls_alt_score = bls_alt_risk[bls_alt]
-    validator_abci_usage_score = validator_abci_usage_risk[validator_abci_usage]
     dvt_mec_score = dvt_mec_risk[dvt_mec]
-    oracle_bridge_mec_score = oracle_bridge_mec_risk[oracle_bridge_mec]
-    lockup_mec_score = lockup_mec_risk[lockup_mec]
-    fast_fin_ss_mec_score = fast_fin_ss_mec_risk[fast_fin_ss_mec]
     validator_reputation_score = validator_reputation_risk[validator_reputation]
-    da_sol_mec_score = da_sol_mec_risk[da_sol_mec]
     validator_centralization_score = validator_centralization_risk[validator_centralization]
-    relayer_centralization_score = relayer_centralization_risk[relayer_centralization]
-    halo_reputation_score = halo_reputation_risk[halo_reputation]
-    evm_validator_reputation_score = evm_validator_reputation_risk[evm_validator_reputation]
-    evm_client_reputation_score = evm_client_reputation_risk[evm_client_reputation]
-    evm_validator_centralization_score = evm_validator_centralization_risk[evm_validator_centralization]
 
-    # Return all scores in the correct order
-    return (security_audits_score, business_model_score, relayer_reputation_score, relayer_da_solution_score,
-            relayer_merkle_score, evm_client_div_score, evm_equivalence_score, sybil_mec_score, encrypted_mempool_mec_score,
+    return (security_audits_score, business_model_score,
             code_complexity_score, tee_mec_score, operator_reputation_score, operator_centralization_score,
-            operator_entrenchment_level_score, bls_alt_score, validator_abci_usage_score, dvt_mec_score,
-            oracle_bridge_mec_score, lockup_mec_score, fast_fin_ss_mec_score, validator_reputation_score,
-            da_sol_mec_score, validator_centralization_score, relayer_centralization_score, halo_reputation_score,
-            evm_validator_reputation_score, evm_client_reputation_score, evm_validator_centralization_score)
+            operator_entrenchment_level_score, bls_alt_score, dvt_mec_score,
+            validator_reputation_score, validator_centralization_score)
 
 
 
@@ -90,7 +51,7 @@ def main():
     st.image("images/eigenda.jpeg", width=250)
 
     st.title("Cryptoeconomic Risk Analysis I")
-    st.subheader("**Data Availability AVS: EigenDA Underlying Risk & Slashing/Forkable Conditions Simulator**")
+    st.subheader("**Data Availability AVS: EigenDA Underlying Risk & Slashing Conditions Simulator**")
 
     st.write("  \n")
 
@@ -102,9 +63,8 @@ def main():
                             """)
 
         
-    #st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate Risk Profile for EigenDA as a Interoperability Network AVS. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
+    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate Risk Profile for EigenDA as a Interoperability Network AVS. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
 
-    #st.write("  \n")
     st.write("  \n")
     st.write("  \n")
 
@@ -129,22 +89,6 @@ def main():
             return 3
         else:  # Very low AVS compared to ETH
             return 2
-        
-    def relayer_performance_acc_rate_calc(relayer_performance_acc_rate):
-        if 0 <= relayer_performance_acc_rate <= 10:
-            return 9
-        elif 11 <= relayer_performance_acc_rate <= 33:
-            return 7.5
-        elif 34 <= relayer_performance_acc_rate <= 50:
-            return 6
-        elif 51 <= relayer_performance_acc_rate <= 66:
-            return 4
-        elif 67 <= relayer_performance_acc_rate <= 90:
-            return 3
-        elif 91 <= relayer_performance_acc_rate <= 100:
-            return 2
-        else:
-            return None
 
     def validator_performance_acc_rate_calc(validator_performance_acc_rate):
         if 0 <= validator_performance_acc_rate <= 10:
@@ -162,72 +106,104 @@ def main():
         else:
             return None
 
-    def evm_val_performance_acc_rate_calc(evm_val_performance_acc_rate):
-        if 0 <= evm_val_performance_acc_rate <= 10:
+
+    def disperser_performance_acc_rate_calc(disperser_performance_acc_rate):
+        if 0 <= disperser_performance_acc_rate <= 10:
             return 9
-        elif 11 <= evm_val_performance_acc_rate <= 33:
+        elif 11 <= disperser_performance_acc_rate <= 33:
             return 7.5
-        elif 34 <= evm_val_performance_acc_rate <= 50:
+        elif 34 <= disperser_performance_acc_rate <= 50:
             return 6
-        elif 51 <= evm_val_performance_acc_rate <= 66:
+        elif 51 <= disperser_performance_acc_rate <= 66:
             return 4
-        elif 67 <= evm_val_performance_acc_rate <= 90:
+        elif 67 <= disperser_performance_acc_rate <= 90:
             return 3
-        elif 91 <= evm_val_performance_acc_rate <= 100:
+        elif 91 <= disperser_performance_acc_rate <= 100:
+            return 2
+        else:
+            return None
+
+    def coverage_perc_calc(coverage_perc):
+        if 0 <= coverage_perc <= 10:
+            return 9
+        elif 11 <= coverage_perc <= 33:
+            return 7.5
+        elif 34 <= coverage_perc <= 50:
+            return 6
+        elif 51 <= coverage_perc <= 66:
+            return 4
+        elif 67 <= coverage_perc <= 90:
+            return 3
+        elif 91 <= coverage_perc <= 100:
+            return 2
+        else:
+            return None
+        
+    def perc_light_nodes_calc(perc_light_nodes):
+        if 0 <= perc_light_nodes <= 10:
+            return 9
+        elif 11 <= perc_light_nodes <= 33:
+            return 7.5
+        elif 34 <= perc_light_nodes <= 50:
+            return 6
+        elif 51 <= perc_light_nodes <= 66:
+            return 4
+        elif 67 <= perc_light_nodes <= 90:
+            return 3
+        elif 91 <= perc_light_nodes <= 100:
+            return 2
+        else:
+            return None
+    
+    def rollup_blob_rate_calc(rollup_blob_rate):
+        if 0 <= rollup_blob_rate <= 10:
+            return 9
+        elif 11 <= rollup_blob_rate <= 33:
+            return 7.5
+        elif 34 <= rollup_blob_rate <= 50:
+            return 6
+        elif 51 <= rollup_blob_rate <= 66:
+            return 4
+        elif 67 <= rollup_blob_rate <= 90:
+            return 3
+        elif 91 <= rollup_blob_rate <= 100:
             return 2
         else:
             return None
 
 
-
-
     if 'business_model' not in st.session_state:
         st.session_state.business_model = "Dual Staking Utility"
     if 'business_model_score' not in st.session_state:
-        if st.session_state.business_model in business_model_risk:  # Check if business model exists in the dictionary
+        if st.session_state.business_model in business_model_risk:
             st.session_state.business_model_score = business_model_risk[st.session_state.business_model]
         else:
-            st.session_state.business_model_score = 0  # Set a default score if business model is not found
+            st.session_state.business_model_score = 0
 
     if 'code_complexity' not in st.session_state:
-        st.session_state.code_complexity = "High"  # Set default value
+        st.session_state.code_complexity = "High"
     if 'code_complexity_score' not in st.session_state:
-        if st.session_state.code_complexity in code_complexity_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.code_complexity in code_complexity_risk:
             st.session_state.code_complexity_score = code_complexity_risk[st.session_state.code_complexity]
         else:
             st.session_state.code_complexity_score = 0
 
     if 'security_audits' not in st.session_state:
-        st.session_state.security_audits = "2"  # Set default value
+        st.session_state.security_audits = "2"
     if 'security_audits_score' not in st.session_state:
-        if st.session_state.security_audits in security_audits_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.security_audits in security_audits_risk:
             st.session_state.security_audits_score = security_audits_risk[st.session_state.security_audits]
         else:
             st.session_state.security_audits_score = 0
 
-    if 'relayer_reputation' not in st.session_state:
-        st.session_state.relayer_reputation = "Unknown"  # Set default value
-    if 'relayer_reputation_score' not in st.session_state:
-        if st.session_state.relayer_reputation in relayer_reputation_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.relayer_reputation_score = relayer_reputation_risk[st.session_state.relayer_reputation]
-        else:
-            st.session_state.relayer_reputation_score = 0
-
     if 'operator_reputation' not in st.session_state:
-        st.session_state.operator_reputation = "Unknown"  # Set default value
+        st.session_state.operator_reputation = "Unknown"
     if 'operator_reputation_score' not in st.session_state:
-        if st.session_state.operator_reputation in operator_reputation_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.operator_reputation in operator_reputation_risk:
             st.session_state.operator_reputation_score = operator_reputation_risk[st.session_state.operator_reputation]
         else:
             st.session_state.operator_reputation_score = 0
 
-    if 'evm_equivalence' not in st.session_state:
-        st.session_state.evm_equivalence = "Equivalent"  # Set default value
-    if 'evm_equivalence_score' not in st.session_state:
-        if st.session_state.evm_equivalence in evm_equivalence_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.evm_equivalence_score = evm_equivalence_risk[st.session_state.evm_equivalence]
-        else:
-            st.session_state.evm_equivalence_score = 0
 
     if 'operator_centralization' not in st.session_state:
         st.session_state.operator_centralization = "Centralized"  # Set default value
@@ -245,13 +221,6 @@ def main():
         else:
             st.session_state.validator_centralization_score = 0
 
-    if 'relayer_centralization' not in st.session_state:
-        st.session_state.relayer_centralization = "Decentralized"  # Set default value
-    if 'relayer_centralization_score' not in st.session_state:
-        if st.session_state.relayer_centralization in relayer_centralization_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.relayer_centralization_score = relayer_centralization_risk[st.session_state.relayer_centralization]
-        else:
-            st.session_state.relayer_centralization_score = 0
 
     if 'validator_reputation' not in st.session_state:
         st.session_state.validator_reputation = "Unknown"  # Set default value
@@ -261,38 +230,6 @@ def main():
         else:
             st.session_state.validator_reputation_score = 0
 
-    if 'halo_reputation' not in st.session_state:
-        st.session_state.halo_reputation = "Unknown"  # Set default value
-    if 'halo_reputation_score' not in st.session_state:
-        if st.session_state.halo_reputation in halo_reputation_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.halo_reputation_score = halo_reputation_risk[st.session_state.halo_reputation]
-        else:
-            st.session_state.halo_reputation_score = 0
-
-    if 'evm_client_reputation' not in st.session_state:
-        st.session_state.evm_client_reputation = "Unknown"  # Set default value
-    if 'evm_client_reputation_score' not in st.session_state:
-        if st.session_state.evm_client_reputation in evm_client_reputation_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.evm_client_reputation_score = evm_client_reputation_risk[st.session_state.evm_client_reputation]
-        else:
-            st.session_state.evm_client_reputation_score = 0
-
-    if 'evm_validator_reputation' not in st.session_state:
-        st.session_state.evm_validator_reputation = "Unknown"  # Set default value
-    if 'evm_validator_reputation_score' not in st.session_state:
-        if st.session_state.evm_validator_reputation in evm_validator_reputation_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.evm_validator_reputation_score = evm_validator_reputation_risk[st.session_state.evm_validator_reputation]
-        else:
-            st.session_state.evm_validator_reputation_score = 0
-
-    if 'evm_validator_centralization' not in st.session_state:
-        st.session_state.evm_validator_centralization = "Centralized"  # Set default value
-    if 'evm_validator_centralization_score' not in st.session_state:
-        if st.session_state.evm_validator_centralization in evm_validator_centralization_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.evm_validator_centralization_score = evm_validator_centralization_risk[st.session_state.evm_validator_centralization]
-        else:
-            st.session_state.evm_validator_centralization_score = 0
-
     if 'dvt_mec' not in st.session_state:
         st.session_state.dvt_mec = "False"  # Set default value
     if 'dvt_mec_score' not in st.session_state:
@@ -300,14 +237,6 @@ def main():
             st.session_state.dvt_mec_score = dvt_mec_risk[st.session_state.dvt_mec]
         else:
             st.session_state.dvt_mec_score = 0
-
-    if 'evm_client_div' not in st.session_state:
-        st.session_state.evm_client_div = "Moderately Diverse"  # Set default value
-    if 'evm_client_div_score' not in st.session_state:
-        if st.session_state.evm_client_div in evm_client_div_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.evm_client_div_score = evm_client_div_risk[st.session_state.evm_client_div]
-        else:
-            st.session_state.evm_client_div_score = 0
 
     if 'operator_entrenchment_level' not in st.session_state:
         st.session_state.operator_entrenchment_level = "High Entrenchment"  # Set default value
@@ -317,38 +246,6 @@ def main():
         else:
             st.session_state.operator_entrenchment_level_score = 0
 
-    if 'da_sol_mec' not in st.session_state:
-        st.session_state.da_sol_mec = "False"  # Set default value
-    if 'da_sol_mec_score' not in st.session_state:
-        if st.session_state.da_sol_mec in da_sol_mec_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.da_sol_mec_score = da_sol_mec_risk[st.session_state.da_sol_mec]
-        else:
-            st.session_state.da_sol_mec_score = 0
-
-    if 'sybil_mec_score' not in st.session_state:
-        st.session_state.sybil_mec = "False"  # Set default value
-    if 'sybil_mec_score' not in st.session_state:
-        if st.session_state.sybil_mec in sybil_mec_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.sybil_mec_score = sybil_mec_risk[st.session_state.sybil_mec]
-        else:
-            st.session_state.sybil_mec_score = 0
-
-    if 'relayer_da_solution_score' not in st.session_state:
-        st.session_state.relayer_da_solution = "False"  # Set default value
-    if 'relayer_da_solution_score' not in st.session_state:
-        if st.session_state.relayer_da_solution in relayer_da_solution_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.relayer_da_solution_score = relayer_da_solution_risk[st.session_state.relayer_da_solution]
-        else:
-            st.session_state.relayer_da_solution_score = 0
-
-    if 'validator_abci_usage_score' not in st.session_state:
-        st.session_state.validator_abci_usage = "True"  # Set default value
-    if 'validator_abci_usage_score' not in st.session_state:
-        if st.session_state.validator_abci_usage in validator_abci_usage_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.validator_abci_usage_score = validator_abci_usage_risk[st.session_state.validator_abci_usage]
-        else:
-            st.session_state.validator_abci_usage_score = 0
-
     if 'bls_alt_score' not in st.session_state:
         st.session_state.bls_alt = "True"  # Set default value
     if 'bls_alt_score' not in st.session_state:
@@ -357,22 +254,6 @@ def main():
         else:
             st.session_state.bls_alt_score = 0
 
-    if 'lockup_mec_score' not in st.session_state:
-        st.session_state.lockup_mec = "False"  # Set default value
-    if 'lockup_mec_score' not in st.session_state:
-        if st.session_state.lockup_mec in lockup_mec_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.lockup_mec_score = lockup_mec_risk[st.session_state.lockup_mec]
-        else:
-            st.session_state.lockup_mec_score = 0
-
-    if 'fast_fin_ss_mec_score' not in st.session_state:
-        st.session_state.fast_fin_ss_mec = "False"  # Set default value
-    if 'fast_fin_ss_mec_score' not in st.session_state:
-        if st.session_state.fast_fin_ss_mec in fast_fin_ss_mec_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk[st.session_state.fast_fin_ss_mec]
-        else:
-            st.session_state.fast_fin_ss_mec_score = 0
-
     if 'tee_mec_score' not in st.session_state:
         st.session_state.tee_mec = "False"  # Set default value
     if 'tee_mec_score' not in st.session_state:
@@ -380,30 +261,6 @@ def main():
             st.session_state.tee_mec_score = tee_mec_risk[st.session_state.tee_mec]
         else:
             st.session_state.tee_mec_score = 0
-
-    if 'encrypted_mempool_mec_score' not in st.session_state:
-        st.session_state.encrypted_mempool_mec = "False"  # Set default value
-    if 'encrypted_mempool_mec_score' not in st.session_state:
-        if st.session_state.encrypted_mempool_mec in encrypted_mempool_mec_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.encrypted_mempool_mec_score = encrypted_mempool_mec_risk[st.session_state.encrypted_mempool_mec]
-        else:
-            st.session_state.encrypted_mempool_mec_score = 0
-
-    if 'relayer_merkle_score' not in st.session_state:
-        st.session_state.relayer_merkle = "True"  # Set default value
-    if 'relayer_merkle_score' not in st.session_state:
-        if st.session_state.relayer_merkle in relayer_merkle_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.relayer_merkle_score = relayer_merkle_risk[st.session_state.relayer_merkle]
-        else:
-            st.session_state.relayer_merkle_score = 0
-
-    if 'oracle_bridge_mec_score' not in st.session_state:
-        st.session_state.oracle_bridge_mec = "False"  # Set default value
-    if 'oracle_bridge_mec_score' not in st.session_state:
-        if st.session_state.oracle_bridge_mec in oracle_bridge_mec_risk:  # Check if code complexity exists in the dictionary
-            st.session_state.oracle_bridge_mec_score = oracle_bridge_mec_risk[st.session_state.oracle_bridge_mec]
-        else:
-            st.session_state.oracle_bridge_mec_score = 0
 
     if 'risk_score' not in st.session_state:
         st.session_state.risk_score = 0
@@ -543,13 +400,11 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            # Dropdown menu
             business_model = st.selectbox("**AVS Business Model Type**", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
 
         with col48:
             st.write("  \n")
 
-            # Displaying the custom styled header
             st.markdown('<p class="header-style" style="font-size: 14px;">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
 
             st.write("  \n")
@@ -740,6 +595,10 @@ def main():
 
 
         coverage_perc = st.slider("**GitHub Code Coverage Percentage**", min_value=0, max_value=100, value=50, format='%d%%', help="**Coverage percentage refers to the proportion of code that is tested by automated tests, typically measured by the number of lines or branches of code executed during testing compared to the total number of lines or branches in the codebase. It indicates how thoroughly the codebase is tested, with higher coverage percentages indicating greater test coverage and potentially lower risk of undetected bugs or issues.**")
+
+        coverage_perc_var = coverage_perc_calc(coverage_perc)
+        st.session_state.coverage_perc_var = coverage_perc_var
+
 
         st.write("------")
 
@@ -1079,6 +938,7 @@ def main():
         rollup_blob_rate_var = rollup_blob_rate_calc(rollup_blob_rate)
         st.session_state.rollup_blob_rate_var = rollup_blob_rate_var
 
+
         st.write("-------")
         
         col33, col34 = st.columns(2, gap="medium")
@@ -1164,6 +1024,9 @@ The summation or multiplication of variables revolves around their independence 
 
 
 
+
+
+
         # DISPERSER Metrics
 
         st.markdown("""
@@ -1228,47 +1091,37 @@ The summation or multiplication of variables revolves around their independence 
         
         st.write("  \n")
 
-        evm_val_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
+        disperser_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
 
-        evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_calc(evm_val_performance_acc_rate)
-        st.session_state.evm_val_performance_acc_rate_var = evm_val_performance_acc_rate_var
+        disperser_performance_acc_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
+        st.session_state.disperser_performance_acc_rate_var = disperser_performance_acc_rate_var
 
         col87, col88 = st.columns(2, gap="medium")
         with col87:
             evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="97h6")        
         with col88:           
-            evm_validator_centralization = st.selectbox("**EVM Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
+            disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
 
-        st.write("  \n")
-
-        col108, col109 = st.columns(2, gap="medium")
-        with col108:
-            evm_equivalence = st.selectbox("**EVM Compatibility**", ["Incompatible", "Compatible", "Equivalent"], index=2, key="lk09",
-                                           help="**Runs an unmodified version of the original EVM. Since Omni adheres to the Engine API, a standard that all EVM clients also comply with, enabling the seamless integration of any EVM client into the Omni network, without the need for modifications. This approach allows it to leverage the unique advantages that different clients provide.**")
-        with col109:
-            evm_client_div = st.selectbox("**EVM Client Diversity**", ["Poorly Diverse", "Moderately Diverse", "Highly Diverse"], key="78kmkl77", index=1,
-                                          help="**Correlated (but not causal) relationship with the level of Equivalence or Compatible of the EVM. EVM Equivalence likely leads to greater Client Diversity.**")
-            
         st.write("-------")
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            evm_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e09u890", help=f"""
+            disperser_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e09u890", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
-            evm_metrics_likelihood2 = evm_metrics_likelihood / 2
+            disperser_likelihood2 = disperser_likelihood / 2
 
         with col34:
-            evm_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="ejin1", help=f"""
+            disperser_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="ejin1", help=f"""
                                                       **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
-            evm_metrics_impact2 = evm_metrics_impact / 2
+            disperser_impact2 = disperser_impact / 2
 
         # Directly use the calculated variables
-        evm_likelihood_formatted = format_number(evm_metrics_likelihood2)
-        evm_impact_formatted = format_number(evm_metrics_impact2)
+        disperser_likelihood_formatted = format_number(disperser_likelihood2)
+        disperser_impact_formatted = format_number(disperser_impact2)
 
         with st.expander("Logic"):
                st.markdown("""
@@ -1399,13 +1252,9 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("  \n")
 
-        col38,col39 = st.columns(2, gap="medium")
-        with col38:
-            bls_alt = st.checkbox('**BLS-Like Alternative** for Operator Signature Batching at Scale', 
+
+        bls_alt = st.checkbox('**BLS-Like Alternative** for Operator Signature Batching at Scale', 
                                      value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with Halo Consensus Client that implements CometBFT consensus.**")
-        with col39:
-            validator_abci_usage = st.checkbox('**Engine API uses ABCI++** for seamless state transitions between Omni EVM and CometBFT', value=True,
-                                               help="**ABCI++ is an adapter that wraps around the CometBFT engine, translating Engine API messages for consensus processing, ensuring Omni's lightweight consensus and quick finality.**")
 
         col42,col43 = st.columns(2, gap="medium")
         with col42:
@@ -1414,19 +1263,6 @@ The summation or multiplication of variables revolves around their independence 
         with col43:
             dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False,
                                   help="**DVT is a technology that incentivizes client diversity through the distribution of the validation process across multiple operators. It reduces the risk of single points of failure or malicious actions.**")
-
-        col50,col51 = st.columns(2, gap="medium")
-        with col50:
-            oracle_bridge_mec = st.checkbox('**Oracle/Bridge Solution** to Restrict Potential PfC', value=False,
-                                            help="**To restrict the potential PfC extracted from Omni, a bridge can be set-up to restrict the value flow within the period of slashing, or an oracle can have bounds on the total value transacted within a given period.**")
-        with col51:
-            lockup_mec = st.checkbox('**Withdrawal Lock-Up Periods** Applied to Validators for Security Against Corruption', value=False)
-
-        col52,col53 = st.columns(2, gap="medium")
-        with col52:
-            da_sol_mec = st.checkbox('**DA Solution** for Horizontal Scaling of Nodes, Mitigating Potential State Explosions and Low Latency', value=False)
-        with col53:
-            fast_fin_ss_mec = st.checkbox('**Shared Sequencer Pre-Confirmation Solution** for `XMsg` Fast Finality', value=False)
 
 
         if st.session_state.bls_alt != bls_alt:
@@ -1497,11 +1333,7 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        halo_reputation = st.selectbox("**Halo (Consensus Client) Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="0904888",
-                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
-        st.write("  \n")
-
-        validator_performance_acc_rate = st.slider("**Validator XBlocks Attestation Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+        validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
                                                    help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
@@ -1566,10 +1398,6 @@ The summation or multiplication of variables revolves around their independence 
                             """)
 
 
-        if st.session_state.halo_reputation != halo_reputation:
-            st.session_state.halo_reputation = halo_reputation
-            st.session_state.halo_reputation_score = halo_reputation_risk.get(halo_reputation, 0)
-
         if st.session_state.validator_reputation != validator_reputation:
             st.session_state.validator_reputation = validator_reputation
             st.session_state.validator_reputation_score = validator_reputation_risk.get(validator_reputation, 0)
@@ -1630,7 +1458,7 @@ The summation or multiplication of variables revolves around their independence 
 
     # Placing the image in the middle column effectively centers it
     with col2:
-        st.image("images/omni-main-diagram.jpg", width=1500)
+        st.image("images/eigenda-diagram.jpg", width=1500)
     
     st.markdown("""
         <div style="text-align: center">
