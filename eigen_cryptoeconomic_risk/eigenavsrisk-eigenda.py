@@ -287,7 +287,7 @@ def main():
             st.session_state.tee_mec_score = 0
 
     if 'rollup_fast_proof' not in st.session_state:
-        st.session_state.rollup_fast_proof = "Some value"
+        st.session_state.rollup_fast_proof = "True"
     if 'rollup_fast_proof_score' not in st.session_state:
         if st.session_state.rollup_fast_proof in rollup_fast_proof_risk:
             st.session_state.rollup_fast_proof_score = rollup_fast_proof_risk[st.session_state.rollup_fast_proof]
@@ -295,7 +295,7 @@ def main():
             st.session_state.rollup_fast_proof_score = 0
 
     if 'disperser_centralization' not in st.session_state:
-        st.session_state.disperser_centralization = "Some value"
+        st.session_state.disperser_centralization = "True"
     if 'disperser_centralization_score' not in st.session_state:
         if st.session_state.disperser_centralization in disperser_centralization_risk:
             st.session_state.disperser_centralization_score = disperser_centralization_risk[st.session_state.disperser_centralization]
@@ -303,7 +303,7 @@ def main():
             st.session_state.disperser_centralization_score = 0
 
     if 'kzg_erasure_encoding' not in st.session_state:
-        st.session_state.kzg_erasure_encoding = "Some value"
+        st.session_state.kzg_erasure_encoding = "True"
     if 'kzg_erasure_encoding_score' not in st.session_state:
         if st.session_state.kzg_erasure_encoding in kzg_erasure_encoding_risk:
             st.session_state.kzg_erasure_encoding_score = kzg_erasure_encoding_risk[st.session_state.kzg_erasure_encoding]
@@ -311,13 +311,12 @@ def main():
             st.session_state.kzg_erasure_encoding_score = 0
 
     if 'kzg_multi_proofs' not in st.session_state:
-        st.session_state.kzg_multi_proofs = "Some value"
+        st.session_state.kzg_multi_proofs = "True"
     if 'kzg_multi_proofs_score' not in st.session_state:
         if st.session_state.kzg_multi_proofs in kzg_multi_proofs_risk:
             st.session_state.kzg_multi_proofs_score = kzg_multi_proofs_risk[st.session_state.kzg_multi_proofs]
         else:
             st.session_state.kzg_multi_proofs_score = 0
-
 
     if 'risk_score' not in st.session_state:
         st.session_state.risk_score = 0
