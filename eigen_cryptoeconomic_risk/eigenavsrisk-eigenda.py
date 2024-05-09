@@ -1192,7 +1192,7 @@ The summation or multiplication of variables revolves around their independence 
 
 
 
-        result7 = ((st.session_state.disperser_performance_acc_rate_var + st.session_state.disperser_performance_acc_rate)) * disperser_likelihood_formatted * disperser_impact_formatted)
+        result7 = ((st.session_state.disperser_performance_acc_rate_var) * disperser_likelihood_formatted * disperser_impact_formatted)
         
 
         result7_formatted = format_result(float(result7))
