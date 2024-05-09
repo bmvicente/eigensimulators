@@ -992,7 +992,7 @@ def main():
 
         rollup_backup_disperser = st.checkbox('**Backup Disperser**', value=False, help="ee")
 
-        rollup_censorship_res = st.checkbox('**Effective Censorship Resistance through Single Leader/Block Proposer Decentralization**', value=False, help="ee")
+        rollup_censorship_res = st.checkbox('**Effective Censorship Resistance through Single Leader/Block Proposer Decentralization**', value=True, help="ee")
 
 
         if st.session_state.rollup_backup_disperser != rollup_backup_disperser:
@@ -1021,16 +1021,19 @@ def main():
 
         st.write("-------")
 
-        rollup_bandwidth_rate = st.slider("**Percentage of Rollups Reserving Additional Bandwidth**", min_value=0, max_value=100, value=0, format='%d%%')
-
-        rollup_bandwidth_rate_var = rollup_bandwidth_rate_calc(rollup_bandwidth_rate)
-        st.session_state.rollup_bandwidth_rate_var = rollup_bandwidth_rate_var
-        
 
         rollup_blob_rate = st.slider("**Rollup Blob Dispatching Accuracy Rate**", min_value=0, max_value=100, value=0, format='%d%%')
 
         rollup_blob_rate_var = rollup_blob_rate_calc(rollup_blob_rate)
         st.session_state.rollup_blob_rate_var = rollup_blob_rate_var
+
+
+
+        rollup_bandwidth_rate = st.slider("**Percentage of Rollups Reserving Additional Bandwidth**", min_value=0, max_value=100, value=0, format='%d%%')
+
+        rollup_bandwidth_rate_var = rollup_bandwidth_rate_calc(rollup_bandwidth_rate)
+        st.session_state.rollup_bandwidth_rate_var = rollup_bandwidth_rate_var
+        
 
 
         st.write("-------")
