@@ -318,7 +318,7 @@ def main():
             st.session_state.rollup_fast_proof_score = 0
 
     if 'disperser_centralization' not in st.session_state:
-        st.session_state.disperser_centralization = "True"
+        st.session_state.disperser_centralization = "Centralized"
     if 'disperser_centralization_score' not in st.session_state:
         if st.session_state.disperser_centralization in disperser_centralization_risk:
             st.session_state.disperser_centralization_score = disperser_centralization_risk[st.session_state.disperser_centralization]
