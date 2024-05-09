@@ -988,11 +988,11 @@ def main():
         
         st.write("  \n")
 
-        rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=False)
+        rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=False, help="ee")
 
-        rollup_backup_disperser = st.checkbox('**Backup Disperser**', value=False)
+        rollup_backup_disperser = st.checkbox('**Backup Disperser**', value=False, help="ee")
 
-        rollup_censorship_res = st.checkbox('**Effective Censorship Resistance through Single Leader/Block Proposer Decentralization**', value=False)
+        rollup_censorship_res = st.checkbox('**Effective Censorship Resistance through Single Leader/Block Proposer Decentralization**', value=False, help="ee")
 
 
         if st.session_state.rollup_backup_disperser != rollup_backup_disperser:
