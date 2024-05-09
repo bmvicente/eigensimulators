@@ -136,6 +136,23 @@ def main():
         else:
             return None
 
+    def kzg_encoding_rate_calc(kzg_encoding_rate):
+        if 0 <= kzg_encoding_rate <= 10:
+            return 9
+        elif 11 <= kzg_encoding_rate <= 33:
+            return 7.5
+        elif 34 <= kzg_encoding_rate <= 50:
+            return 6
+        elif 51 <= kzg_encoding_rate <= 66:
+            return 4
+        elif 67 <= kzg_encoding_rate <= 90:
+            return 3
+        elif 91 <= kzg_encoding_rate <= 100:
+            return 2
+        else:
+            return None
+
+
     def coverage_perc_calc(coverage_perc):
         if 0 <= coverage_perc <= 10:
             return 9
@@ -1159,8 +1176,8 @@ The summation or multiplication of variables revolves around their independence 
 
         kzg_encoding_rate = st.slider("**KZG Erasure Encoding Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="6212782")
 
-        kzg_encoding_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
-        st.session_state.kzg_encoding_rate_var = disperser_performance_acc_rate_var
+        kzg_encoding_rate_var = kzg_encoding_rate_calc(kzg_encoding_rate)
+        st.session_state.kzg_encoding_rate_var = kzg_encoding_rate_var
 
 
         if st.session_state.kzg_erasure_coding != kzg_erasure_coding:
