@@ -959,13 +959,13 @@ def main():
         
         st.write("  \n")
 
-        rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=True)
+        rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=False)
         
         if st.session_state.rollup_fast_proof != rollup_fast_proof:
             st.session_state.rollup_fast_proof = rollup_fast_proof
             st.session_state.rollup_fast_proof_score = rollup_fast_proof_risk.get(rollup_fast_proof, 0)
 
-        result8 = (st.session_state.relayer_merkle_score)
+        result8 = (st.session_state.rollup_fast_proof_score)
         
         st.write("  \n")
 
@@ -1030,8 +1030,7 @@ The summation or multiplication of variables revolves around their independence 
                             """)
 
 
-        result9 = (st.session_state.relayer_reputation_score * st.session_state.relayer_centralization_score *
-                   st.session_state.relayer_performance_acc_rate_var * rollup_metrics_likelihood2 * rollup_metrics_impact2)
+        result9 = (st.session_state.rollup_bandwidth_rate_var * st.session_state.rollup_blob_rate_var * rollup_metrics_likelihood2 * rollup_metrics_impact2)
         
         result9_formatted = format_result(float(result9))
 
@@ -1191,8 +1190,7 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.disperser_centralization_score = disperser_centralization_risk.get(disperser_centralization, 0)
 
 
-
-        result7 = ((st.session_state.disperser_performance_acc_rate_var) * disperser_likelihood_formatted * disperser_impact_formatted)
+        result7 = (st.session_state.disperser_performance_acc_rate_var * st.session_state.disperser_centralization_score * disperser_likelihood_formatted * disperser_impact_formatted)
         
 
         result7_formatted = format_result(float(result7))
@@ -1202,20 +1200,9 @@ The summation or multiplication of variables revolves around their independence 
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold;">(</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_reputation_score}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.disperser_performance_acc_rate_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_val_performance_acc_rate_var}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_reputation_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_validator_centralization_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 22px; font-weight: bold;">(</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_equivalence_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.evm_client_div_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">)</span>
-                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.disperser_centralization_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{disperser_likelihood_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
@@ -1308,9 +1295,8 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.dvt_mec = dvt_mec
             st.session_state.dvt_mec_score = dvt_mec_risk.get(dvt_mec, 0)
 
-        result4 = (st.session_state.bls_alt_score * st.session_state.validator_abci_usage_score +
-                        st.session_state.tee_mec_score + st.session_state.dvt_mec_score + st.session_state.oracle_bridge_mec_score +
-                        st.session_state.lockup_mec_score + st.session_state.da_sol_mec_score + st.session_state.fast_fin_ss_mec_score)
+        result4 = (st.session_state.bls_alt_score +
+                        st.session_state.tee_mec_score + st.session_state.dvt_mec_score)
 
         st.write("  \n")
 
@@ -1319,19 +1305,9 @@ The summation or multiplication of variables revolves around their independence 
                 <div>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.bls_alt_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_abci_usage_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.oracle_bridge_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.lockup_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.da_sol_mec_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fast_fin_ss_mec_score}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span>
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
             </div>"""
@@ -1349,10 +1325,12 @@ The summation or multiplication of variables revolves around their independence 
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
 
+
         perc_light_nodes = st.slider("**% of Light Client Nodes**", min_value=0, max_value=100, value=50, format='%d%%',
                                                    help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
         perc_light_nodes_var = perc_light_nodes_calc(perc_light_nodes)
         st.session_state.perc_light_nodes_var = perc_light_nodes_var
+
 
         col100, col101 = st.columns(2, gap="medium")
         with col100:
@@ -1380,8 +1358,6 @@ The summation or multiplication of variables revolves around their independence 
             bft_metrics_impact2 = bft_metrics_impact / 2
 
 
-
-        # Directly use the calculated variables
         bft_likelihood_formatted = format_number(bft_metrics_likelihood2)
         bft_impact_formatted = format_number(bft_metrics_impact2)
 
@@ -1418,7 +1394,7 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
     
 
-        result5 = ((st.session_state.halo_reputation_score + st.session_state.validator_performance_acc_rate_var * st.session_state.validator_reputation_score *
+        result5 = ((st.session_state.validator_performance_acc_rate_var * st.session_state.perc_light_nodes_var * st.session_state.validator_reputation_score *
                    st.session_state.validator_centralization_score) * bft_metrics_likelihood2 * bft_metrics_impact2)
         
         result5_formatted = format_result(float(result5))
@@ -1428,9 +1404,9 @@ The summation or multiplication of variables revolves around their independence 
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 22px; font-weight: bold;">(</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.halo_reputation_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_performance_acc_rate_var}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.perc_light_nodes_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
