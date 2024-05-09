@@ -1022,7 +1022,7 @@ def main():
         st.write("-------")
 
 
-        rollup_blob_rate = st.slider("**Rollup Blob Dispatching Accuracy Rate**", min_value=0, max_value=100, value=0, format='%d%%')
+        rollup_blob_rate = st.slider("**Rollup Blob Dispatching Accuracy Rate**", min_value=0, max_value=100, value=100, format='%d%%')
 
         rollup_blob_rate_var = rollup_blob_rate_calc(rollup_blob_rate)
         st.session_state.rollup_blob_rate_var = rollup_blob_rate_var
