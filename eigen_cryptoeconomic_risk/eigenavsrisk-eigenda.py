@@ -16,14 +16,16 @@ operator_entrenchment_level_risk = {"High Entrenchment": 10, "Moderate Entrenchm
 bls_alt_risk = {True: 1, False: 10}
 dvt_mec_risk = {True: 1, False: 10}
 tee_mec_risk = {True: 1, False: 10}
+rollup_fast_proof_risk = {True: 1, False: 10}
+kzg_erasure_encoding_risk = {True: 1, False: 10}
+kzg_multi_proofs_risk = {True: 1, False: 10}
+disperser_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
 
 
-def eigenda_risk(security_audits, business_model, , ,
-              , , , , , code_complexity,
+def eigenda_risk(security_audits, business_model, rollup_fast_proof, disperser_centralization,
+              code_complexity, kzg_erasure_encoding, kzg_multi_proofs,
               tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, bls_alt,
-              , dvt_mec, , , , validator_reputation, 
-              , validator_centralization, , , ,
-              , ):
+              dvt_mec, validator_reputation, validator_centralization):
 
     security_audits_score = security_audits_risk[security_audits]
     business_model_score = business_model_risk[business_model]
@@ -36,11 +38,16 @@ def eigenda_risk(security_audits, business_model, , ,
     dvt_mec_score = dvt_mec_risk[dvt_mec]
     validator_reputation_score = validator_reputation_risk[validator_reputation]
     validator_centralization_score = validator_centralization_risk[validator_centralization]
+    rollup_fast_proof_score = rollup_fast_proof_risk[rollup_fast_proof]
+    disperser_centralization_score = disperser_centralization_risk[disperser_centralization]
+    kzg_erasure_encoding_score = kzg_erasure_encoding_risk[kzg_erasure_encoding]
+    kzg_multi_proofs_score = kzg_multi_proofs_risk[kzg_multi_proofs]
 
-    return (security_audits_score, business_model_score,
-            code_complexity_score, tee_mec_score, operator_reputation_score, operator_centralization_score,
-            operator_entrenchment_level_score, bls_alt_score, dvt_mec_score,
-            validator_reputation_score, validator_centralization_score)
+    return (security_audits_score, business_model_score, rollup_fast_proof_score, disperser_centralization_score, validator_reputation_score,
+            code_complexity_score, tee_mec_score, operator_reputation_score, operator_centralization_score, validator_centralization_score,
+            operator_entrenchment_level_score, bls_alt_score, dvt_mec_score, kzg_erasure_encoding_score, kzg_multi_proofs_score,
+            validator_reputation_score, validator_centralization_score, validator_centralization_score)
+
 
 
 
@@ -171,6 +178,23 @@ def main():
         else:
             return None
 
+    def rollup_bandwidth_rate_calc(rollup_bandwidth_rate):
+        if 0 <= rollup_bandwidth_rate <= 10:
+            return 2
+        elif 11 <= rollup_bandwidth_rate <= 33:
+            return 3
+        elif 34 <= rollup_bandwidth_rate <= 50:
+            return 4
+        elif 51 <= rollup_bandwidth_rate <= 66:
+            return 6
+        elif 67 <= rollup_bandwidth_rate <= 90:
+            return 7.5
+        elif 91 <= rollup_bandwidth_rate <= 100:
+            return 9
+        else:
+            return None
+        
+
 
     if 'business_model' not in st.session_state:
         st.session_state.business_model = "Dual Staking Utility"
@@ -262,6 +286,39 @@ def main():
         else:
             st.session_state.tee_mec_score = 0
 
+    if 'rollup_fast_proof' not in st.session_state:
+        st.session_state.rollup_fast_proof = "Some value"
+    if 'rollup_fast_proof_score' not in st.session_state:
+        if st.session_state.rollup_fast_proof in rollup_fast_proof_risk:
+            st.session_state.rollup_fast_proof_score = rollup_fast_proof_risk[st.session_state.rollup_fast_proof]
+        else:
+            st.session_state.rollup_fast_proof_score = 0
+
+    if 'disperser_centralization' not in st.session_state:
+        st.session_state.disperser_centralization = "Some value"
+    if 'disperser_centralization_score' not in st.session_state:
+        if st.session_state.disperser_centralization in disperser_centralization_risk:
+            st.session_state.disperser_centralization_score = disperser_centralization_risk[st.session_state.disperser_centralization]
+        else:
+            st.session_state.disperser_centralization_score = 0
+
+    if 'kzg_erasure_encoding' not in st.session_state:
+        st.session_state.kzg_erasure_encoding = "Some value"
+    if 'kzg_erasure_encoding_score' not in st.session_state:
+        if st.session_state.kzg_erasure_encoding in kzg_erasure_encoding_risk:
+            st.session_state.kzg_erasure_encoding_score = kzg_erasure_encoding_risk[st.session_state.kzg_erasure_encoding]
+        else:
+            st.session_state.kzg_erasure_encoding_score = 0
+
+    if 'kzg_multi_proofs' not in st.session_state:
+        st.session_state.kzg_multi_proofs = "Some value"
+    if 'kzg_multi_proofs_score' not in st.session_state:
+        if st.session_state.kzg_multi_proofs in kzg_multi_proofs_risk:
+            st.session_state.kzg_multi_proofs_score = kzg_multi_proofs_risk[st.session_state.kzg_multi_proofs]
+        else:
+            st.session_state.kzg_multi_proofs_score = 0
+
+
     if 'risk_score' not in st.session_state:
         st.session_state.risk_score = 0
 
@@ -339,10 +396,8 @@ def main():
                         </style>
                         """, unsafe_allow_html=True)
 
-                    # Displaying the custom styled header
             st.markdown('<p class="header-style">OBJECTIVE SECURITY: Total ETH Restaked on EigenDA</p>', unsafe_allow_html=True)
 
-                    # Dropdown menu
             restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=2900000)
             st.write(f"&#8226; Total ETH Restaked on EigenDA: **{restaked_eth_del:,.0f} ETH**")
 
@@ -363,10 +418,8 @@ def main():
                     </style>
                     """, unsafe_allow_html=True)
 
-                # Displaying the custom styled header
             st.markdown('<p class="header-style">INTERSUBJECTIVE SECURITY: Total $bEIGEN Staked</p>', unsafe_allow_html=True)
 
-                # Dropdown menu
             restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=0, key="1111ee")
             st.write(f"&#8226; Total $bEIGEN Staked: **{restaked_eth_del:,.0f} ETH**")
 
@@ -931,8 +984,12 @@ def main():
 
         st.write("-------")
 
-        rollup_bandwidth = st.slider("**Percentage of Rollups Reserving Additional Bandwidth**", min_value=0, max_value=100, value=0, format='%d%%')
+        rollup_bandwidth_rate = st.slider("**Percentage of Rollups Reserving Additional Bandwidth**", min_value=0, max_value=100, value=0, format='%d%%')
+
+        rollup_bandwidth_rate_var = rollup_bandwidth_rate_calc(rollup_bandwidth_rate)
+        st.session_state.rollup_bandwidth_rate_var = rollup_bandwidth_rate_var
         
+
         rollup_blob_rate = st.slider("**Rollup Blob Dispatching Accuracy Rate**", min_value=0, max_value=100, value=0, format='%d%%')
 
         rollup_blob_rate_var = rollup_blob_rate_calc(rollup_blob_rate)
@@ -1087,20 +1144,12 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        evm_client_reputation = st.selectbox("**EVM Client Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="87667w6", help="**Docs: 'The execution layer is implemented by standard Ethereum execution clients, like  `geth`, `erigon`, etc, to provide the Omni EVM.'**")
-        
-        st.write("  \n")
-
         disperser_performance_acc_rate = st.slider("**EVM Validators' Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
 
         disperser_performance_acc_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
         st.session_state.disperser_performance_acc_rate_var = disperser_performance_acc_rate_var
-
-        col87, col88 = st.columns(2, gap="medium")
-        with col87:
-            evm_validator_reputation = st.selectbox("**EVM Validators' Reputation**", ["Unknown", "Established", "Renowned"], index=1, key="97h6")        
-        with col88:           
-            disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
+        
+        disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
 
         st.write("-------")
         
@@ -1138,30 +1187,13 @@ The summation or multiplication of variables revolves around their independence 
                             """)
 
 
-        if st.session_state.evm_client_reputation != evm_client_reputation:
-            st.session_state.evm_client_reputation = evm_client_reputation
-            st.session_state.evm_client_reputation_score = evm_client_reputation_risk.get(evm_client_reputation, 0)
-
-        if st.session_state.evm_validator_reputation != evm_validator_reputation:
-            st.session_state.evm_validator_reputation = evm_validator_reputation
-            st.session_state.evm_validator_reputation_score = evm_validator_reputation_risk.get(evm_validator_reputation, 0)
-
-        if st.session_state.evm_validator_centralization != evm_validator_centralization:
-            st.session_state.evm_validator_centralization = evm_validator_centralization
-            st.session_state.evm_validator_centralization_score = evm_validator_centralization_risk.get(evm_validator_centralization, 0)
-
-        if st.session_state.evm_equivalence != evm_equivalence:
-            st.session_state.evm_equivalence = evm_equivalence
-            st.session_state.evm_equivalence_score = evm_equivalence_risk.get(evm_equivalence, 0)
-
-        if st.session_state.evm_client_div != evm_client_div:
-            st.session_state.evm_client_div = evm_client_div
-            st.session_state.evm_client_div_score = evm_client_div_risk.get(evm_client_div, 0)
+        if st.session_state.disperser_centralization != disperser_centralization:
+            st.session_state.disperser_centralization = disperser_centralization
+            st.session_state.disperser_centralization_score = disperser_centralization_risk.get(disperser_centralization, 0)
 
 
-        result7 = ((st.session_state.evm_client_reputation_score + st.session_state.evm_val_performance_acc_rate_var * 
-                   st.session_state.evm_validator_reputation_score * st.session_state.evm_validator_centralization_score + 
-                   (st.session_state.evm_equivalence_score * st.session_state.evm_client_div_score)) * evm_metrics_likelihood2 * evm_metrics_impact2)
+
+        result7 = ((st.session_state.disperser_performance_acc_rate_var + st.session_state.disperser_performance_acc_rate)) * disperser_likelihood_formatted * disperser_impact_formatted)
         
 
         result7_formatted = format_result(float(result7))
@@ -1186,9 +1218,9 @@ The summation or multiplication of variables revolves around their independence 
                     <span style="font-size: 22px; font-weight: bold;">)</span>
                     <span style="font-size: 22px; font-weight: bold;">)</span>
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_likelihood_formatted}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{disperser_likelihood_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{evm_impact_formatted}</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{disperser_impact_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result7_formatted}</span>
             </div>"""
@@ -1269,10 +1301,6 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.bls_alt = bls_alt
             st.session_state.bls_alt_score = bls_alt_risk.get(bls_alt, 0)
 
-        if st.session_state.validator_abci_usage != validator_abci_usage:
-            st.session_state.validator_abci_usage = validator_abci_usage
-            st.session_state.validator_abci_usage_score = validator_abci_usage_risk.get(validator_abci_usage, 0)
-
         if st.session_state.tee_mec != tee_mec:
             st.session_state.tee_mec = tee_mec
             st.session_state.tee_mec_score = tee_mec_risk.get(tee_mec, 0)
@@ -1280,22 +1308,6 @@ The summation or multiplication of variables revolves around their independence 
         if st.session_state.dvt_mec != dvt_mec:
             st.session_state.dvt_mec = dvt_mec
             st.session_state.dvt_mec_score = dvt_mec_risk.get(dvt_mec, 0)
-
-        if st.session_state.oracle_bridge_mec != oracle_bridge_mec:
-            st.session_state.oracle_bridge_mec = oracle_bridge_mec
-            st.session_state.oracle_bridge_mec_score = oracle_bridge_mec_risk.get(oracle_bridge_mec, 0)
-
-        if st.session_state.lockup_mec != lockup_mec:
-            st.session_state.lockup_mec = lockup_mec
-            st.session_state.lockup_mec_score = lockup_mec_risk.get(lockup_mec, 0)
-
-        if st.session_state.da_sol_mec != da_sol_mec:
-            st.session_state.da_sol_mec = da_sol_mec
-            st.session_state.da_sol_mec_score = da_sol_mec_risk.get(da_sol_mec, 0)
-
-        if st.session_state.fast_fin_ss_mec != fast_fin_ss_mec:
-            st.session_state.fast_fin_ss_mec = fast_fin_ss_mec
-            st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk.get(fast_fin_ss_mec, 0)
 
         result4 = (st.session_state.bls_alt_score * st.session_state.validator_abci_usage_score +
                         st.session_state.tee_mec_score + st.session_state.dvt_mec_score + st.session_state.oracle_bridge_mec_score +
@@ -1426,9 +1438,9 @@ The summation or multiplication of variables revolves around their independence 
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">)</span>
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_likelihood_formatted}</span>         
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{bft_likelihood_formatted}</span>         
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{val_impact_formatted}</span>         
+                    <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{bft_impact_formatted}</span>         
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5_formatted}</span>
                 </div>
@@ -1490,20 +1502,21 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
 
 
-    risk_score = eigenda_risk(security_audits, business_model, relayer_reputation, relayer_da_solution, relayer_merkle, evm_client_div, 
-                        evm_equivalence, sybil_mec, encrypted_mempool_mec, code_complexity,
-                        tee_mec, operator_reputation, operator_centralization, operator_entrenchment_level, bls_alt, validator_abci_usage, dvt_mec, 
-                        oracle_bridge_mec, lockup_mec, fast_fin_ss_mec, validator_reputation, 
-                        da_sol_mec, validator_centralization, relayer_centralization, halo_reputation, evm_validator_reputation,
-                        evm_client_reputation, evm_validator_centralization)
+    risk_score = eigenda_risk(security_audits, business_model, code_complexity,
+                            tee_mec, operator_reputation, operator_centralization,
+                            operator_entrenchment_level, bls_alt, validator_reputation,
+                            validator_centralization, rollup_fast_proof,
+                            disperser_centralization, kzg_erasure_encoding,
+                            kzg_multi_proofs)
 
-    (st.session_state.security_audits_score, st.session_state.business_model_score, st.session_state.relayer_reputation_score, st.session_state.relayer_da_solution_score,
-    st.session_state.relayer_merkle_score, st.session_state.evm_client_div_score, st.session_state.evm_equivalence_score, st.session_state.sybil_mec_score, st.session_state.encrypted_mempool_mec_score,
-    st.session_state.code_complexity_score, st.session_state.tee_mec_score, st.session_state.operator_reputation_score, st.session_state.operator_centralization_score,
-    st.session_state.operator_entrenchment_level_score, st.session_state.bls_alt_score, st.session_state.validator_abci_usage_score, st.session_state.dvt_mec_score,
-    st.session_state.oracle_bridge_mec_score, st.session_state.lockup_mec_score, st.session_state.fast_fin_ss_mec_score, st.session_state.validator_reputation_score,
-    st.session_state.da_sol_mec_score, st.session_state.validator_centralization_score, st.session_state.relayer_centralization_score, st.session_state.halo_reputation_score,
-    st.session_state.evm_validator_reputation_score, st.session_state.evm_client_reputation_score, st.session_state.evm_validator_centralization_score) = risk_score
+    (st.session_state.security_audits_score, st.session_state.business_model_score,
+    st.session_state.code_complexity_score, st.session_state.tee_mec_score,
+    st.session_state.operator_reputation_score, st.session_state.operator_centralization_score,
+    st.session_state.operator_entrenchment_level_score, st.session_state.bls_alt_score,
+    st.session_state.validator_reputation_score, st.session_state.validator_centralization_score,
+    st.session_state.rollup_fast_proof_score, st.session_state.disperser_centralization_score,
+    st.session_state.kzg_erasure_encoding_score, st.session_state.kzg_multi_proofs_score) = risk_score
+
 
 
     col56,col57 = st.columns(2, gap="large")
