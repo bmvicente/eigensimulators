@@ -1145,10 +1145,13 @@ The summation or multiplication of variables revolves around their independence 
         
         col65,col66 = st.columns(2, gap="medium")
         with col65:
-            kzg_erasure_coding = st.checkbox("**KZG Erasure Coding Rate**", value=True,
+            kzg_erasure_coding = st.checkbox("**KZG Erasure Coding**", value=True,
                                 help="**ddd**")
         with col66:
-            kzg_multi_proofs = st.checkbox("**KZG Multi-Reveal Proofs**", value=True,
+            kzg_poly_comm = st.checkbox("**KZG Polynomial Commitment**", value=True,
+                                help="**ddd**")
+            
+        kzg_multi_proofs = st.checkbox("**KZG Multi-Reveal Proofs**", value=True,
                                            help="**ddd**")
 
         st.write("  \n")
