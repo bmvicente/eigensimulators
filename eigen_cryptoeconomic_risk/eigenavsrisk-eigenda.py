@@ -1507,7 +1507,7 @@ The summation or multiplication of variables revolves around their independence 
     st.write("  \n")
     st.write("  \n")
 
-    col1, col2, col3 = st.columns([5, 12, 1])
+    col1, col2, col3 = st.columns([2, 12, 1])
 
     # Placing the image in the middle column effectively centers it
     with col2:
