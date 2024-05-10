@@ -1348,9 +1348,11 @@ The summation or multiplication of variables revolves around their independence 
                                      value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with Halo Consensus Client that implements CometBFT consensus.**")
 
 
-        proof_custody = st.checkbox('**Proof of Custody**', value = True)
+        proof_custody = st.checkbox('**Proof of Custody**', value = True,
+                                    help="**rrr**")
 
-        direct_unicast = st.checkbox('**Operator Direct Blob Unicast vs P2P**', value = True)
+        direct_unicast = st.checkbox('**Operator Direct Blob Unicast vs P2P**', value = True,
+                                     help="**rrd**")
 
 
         col42,col43 = st.columns(2, gap="medium")
