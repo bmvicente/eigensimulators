@@ -1511,7 +1511,7 @@ The summation or multiplication of variables revolves around their independence 
 
     # Placing the image in the middle column effectively centers it
     with col2:
-        st.image("images/eigenda-diagram.jpeg", width=1500)
+        st.image("images/eigenda-diagram.jpeg", width=1200)
     
     st.markdown("""
         <div style="text-align: center">
