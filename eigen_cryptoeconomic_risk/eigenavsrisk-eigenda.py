@@ -1156,7 +1156,8 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("  \n")
 
-        kzg_encoding_rate = st.slider("**KZG Erasure Encoding Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="6212782")
+        kzg_encoding_rate = st.slider("**KZG Erasure Encoding Rate**", min_value=0, max_value=100, value=50, format='%d%%', 
+                                      key="6212782", help="**ddd**")
 
         kzg_encoding_rate_var = kzg_encoding_rate_calc(kzg_encoding_rate)
         st.session_state.kzg_encoding_rate_var = kzg_encoding_rate_var
