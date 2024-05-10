@@ -1208,7 +1208,7 @@ The summation or multiplication of variables revolves around their independence 
         col20,col21 = st.columns(2)
         with col20:
             disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816",
-                                                    help="**Depending whether it's used as a centralized service or decentralized node network.**")
+                                                    help="**Depending whether it's used as a centralized service or permissionless, decentralized node network.**")
         
         with col21:
             disperser_operator = st.selectbox("**Disperser Operator**", ["Disperser Run by Rollup", "Disperser Run by Third-Party (like EigenLabs)"], index=0, key="285816",
