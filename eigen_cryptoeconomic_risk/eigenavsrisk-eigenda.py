@@ -73,6 +73,8 @@ def main():
             The Simulator takes 9 AVS-generic parameters and 21 parameters that specifically compose an Interoperability Network protocol with a CometBFT consensus architecture to calculate EigenDA's Risk Score as an EigenLayer AVS. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
             
             Most of the research to build this Simulator was derived from [EigenDA's Docs](https://docs.omni.network/) and [CometBFT's Docs](https://docs.cometbft.com/v0.37/), as well as the images in the "Logic" dropdowns.
+                    
+            The capital cost of staking. To stake capital in order to secure a DA layer, stakers may want to receive a certain percentage yield in order to offset their opportunity cost. EigenDA reduces the capital cost of staking by using EigenLayer, which employs a shared security model that allows the same stake to be utilized across a variety of applications, creating an economy of scale.
                             """)
 
         
@@ -984,11 +986,13 @@ def main():
         
         st.write("  \n")
 
-        rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=False, help="ee")
+        rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=False, 
+                                        help="**Proof frequency is limited by cost. EigenDA nodes can verify and underwrite proofs at very low latency; this enables EigenDA to act as a high-speed ZK bridge.**")
 
-        rollup_backup_disperser = st.checkbox('**Backup Disperser**', value=False, help="ee")
+        rollup_backup_disperser = st.checkbox('**Rollup Internal Disperser as Backstop**', value=False, 
+                                              help="**It is possible for a rollup to use a dispersal service optimistically, such that in the case the service is non-responsive or censoring, the rollup can use its own disperser as a backstop, thus getting amortization benefits in the optimistic mode without sacrificing censorship resistance.**")
 
-        rollup_censorship_res = st.checkbox('**Effective Censorship Resistance through Single Leader/Block Proposer Decentralization**', value=True, help="ee")
+        rollup_censorship_res = st.checkbox('**Effective Censorship Resistance through Single Leader/Block Proposer Decentralization**', value=True, help="**Censorship Resistance. EigenDA offers higher instantaneous censorship resistance than coupled DA layers. This is because coupled DA architectures usually rely on a single leader or block proposer to linearly order the data blobs, thus creating an instantaneous censorship chokepoint. In contrast, in EigenDA, rollup nodes can directly disperse and receive signatures from a majority of EigenDA nodes, thus improving the censorship resistance to a majority of EigenDA nodes rather than being constricted by a single leader.**")
 
 
         if st.session_state.rollup_backup_disperser != rollup_backup_disperser:
@@ -1120,6 +1124,9 @@ The summation or multiplication of variables revolves around their independence 
 
 
 
+
+
+
         # DISPERSER Metrics
 
         st.markdown("""
@@ -1146,10 +1153,10 @@ The summation or multiplication of variables revolves around their independence 
         col65,col66 = st.columns(2, gap="medium")
         with col65:
             kzg_erasure_coding = st.checkbox("**KZG Erasure Coding**", value=True,
-                                help="**ddd**")
+                                help="**Erasure coding. EigenDA enables rollups to take the data they want to post to EigenDA, decompose it into smaller chunks, and perform erasure coding on those chunks before storing the data as fragments. Using KZG polynomial commitments (a mathematical scheme at the heart of ZK proofs), EigenDA requires nodes to only download small amounts of data [O(1/n)] rather than download entire blobs. Unlike systems that use fraud proofs to detect malicious incorrect coding of data, EigenDA employs validity proofs in the form of KZG commitments, which enables nodes to verify correct coding of the data.**")
         with col66:
             kzg_poly_comm = st.checkbox("**KZG Polynomial Commitment**", value=True,
-                                help="**ddd**")
+                                help="**Cryptographic method used to securely and efficiently commit to and verify pieces of data without revealing the data itself, essential in ensuring the integrity and availability**")
             
         kzg_multi_proofs = st.checkbox("**KZG Multi-Reveal Proofs**", value=True,
                                            help="**ddd**")
@@ -1157,7 +1164,7 @@ The summation or multiplication of variables revolves around their independence 
         st.write("  \n")
 
         kzg_encoding_rate = st.slider("**KZG Erasure Encoding Rate**", min_value=0, max_value=100, value=50, format='%d%%', 
-                                      key="6212782", help="**ddd**")
+                                      key="6212782", help="**Usually set between 10% and 50%, depending on the desired level of data redundancy and the storage capacity available across the node network. A higher rate increases redundancy, enhancing data protection and making it more challenging and costly for an attacker to compromise the data integrity, thus reducing their potential profit.**")
 
         kzg_encoding_rate_var = kzg_encoding_rate_calc(kzg_encoding_rate)
         st.session_state.kzg_encoding_rate_var = kzg_encoding_rate_var
@@ -1200,10 +1207,12 @@ The summation or multiplication of variables revolves around their independence 
         
         col20,col21 = st.columns(2)
         with col20:
-            disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816")
+            disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816",
+                                                    help="**Depending whether it's used as a centralized service or decentralized node network.**")
         
         with col21:
-            disperser_operator = st.selectbox("**Disperser Operator**", ["Disperser Run by Rollup", "Disperser Run by Third-Party (like EigenLabs)"], index=0, key="285816")
+            disperser_operator = st.selectbox("**Disperser Operator**", ["Disperser Run by Rollup", "Disperser Run by Third-Party (like EigenLabs)"], index=0, key="285816",
+                                              help="Rollups will be able to run their own disperser, or use a dispersal service that a third party (for example, EigenLabs) operates for convenience and amortization of signature verification costs.")
 
 
         st.write("-------")
@@ -1436,22 +1445,7 @@ The summation or multiplication of variables revolves around their independence 
                 st.image("images/omni-comet-diagram.jpg", width=750)
 
                 st.markdown("""
-Consensus-level Validators package `XMsgs` into `XBlocks` and attest to those `XBlock` hashes during CometBFT consensus. For a more detailed overview check the visualization at the bottom of this Simulator.
-            
-**Engine API** is a critical component of the Omni protocol, connecting Ethereum execution clients with a consensus client (Halo) for the CometBFT system. It allows clients to be substituted or upgraded without perturbing the system. It offers:
-
-- Scalability and Efficiency: By offloading the transaction mempool and facilitating efficient state translation, the Engine API contributes to Omni's scalability and sub-second transaction finality.
-- Flexibility: Supports the interchangeability and upgradability of execution clients without system disruption, ensuring compatibility with various Ethereum execution clients.
-                            
-                            
-**ABCI++** is an adapter that wraps around the CometBFT engine, that enables seamless state translation and efficient conversion of Omni EVM blocks into CometBFT transactions. This feature:
-
-- Streamlines transaction requests by moving the transaction mempool to the execution layer, alleviating network congestion and latency at the CometBFT consensus level;
-- Facilitates state translations by wrapping around CometBFT ensuring Omni EVM blocks are efficiently converted into CometBFT transactions.
-                            
-As per the above checkboxes, we suggest a few features/mechanism that could contribute to the overall efficiency and security of Omni as a protocol and as an AVS. Consideration for `Halo`'s reputation can be added on a later version.
-                            
-The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
+Operational cost. Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
                             """)
 
 
