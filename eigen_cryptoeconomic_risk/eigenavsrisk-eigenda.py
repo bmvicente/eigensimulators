@@ -2029,9 +2029,15 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.image("images/objint.jpeg", width=1000)
 
             st.write("")
-            st.write("")
 
             st.image("images/SVaR-formula.jpeg", width=600)
+
+            st.latex(r'''
+            \text{Confidence Level: Very Low}
+            ''')
+            st.latex(r'''
+            \text{Confidence Interval: [10\%, 50\%]}
+            ''')
 
 
 
