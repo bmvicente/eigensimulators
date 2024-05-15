@@ -2024,7 +2024,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
         with col57:
 
-            st.image("images/objint.jpeg", width=950)
+            st.image("images/objint.jpeg", width=1000)
 
 
 
