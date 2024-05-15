@@ -2025,9 +2025,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         with col57:
             st.write("")
             st.write("")
-            st.write("")
-            st.write("")
-            
+
             st.image("images/objint.jpeg", width=1000)
 
 
