@@ -1690,9 +1690,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    st.write("  \n")    
     st.write("  \n")
-
 
 
 #########################################
