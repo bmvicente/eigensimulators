@@ -2023,7 +2023,11 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Liveness Violation</div>", unsafe_allow_html=True)
 
         with col57:
-
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            
             st.image("images/objint.jpeg", width=1000)
 
 
