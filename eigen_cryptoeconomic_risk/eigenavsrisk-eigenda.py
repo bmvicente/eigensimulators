@@ -1646,7 +1646,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     st.write("  \n")
     st.write("  \n")
 
-    col81, col82, col83 = st.columns([3, 12, 1])
+    col81, col82, col83 = st.columns([4, 7, 1])
 
     
     with col81:
@@ -1861,6 +1861,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     st.write("")
     st.write("")
+    st.write("")
 
 
 
@@ -2006,7 +2007,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
         with col57:
 
-            st.image("images/objint.jpeg", width=70)
+            st.image("images/objint.jpeg", width=700)
 
 
 
