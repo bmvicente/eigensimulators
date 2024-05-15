@@ -2004,7 +2004,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     st.write("")
 
 
-    col111, col121, col131 = st.columns([10,2,12])
+    col111, col121, col131 = st.columns([10,2,8])
 
     with col111:
             st.image("images/heatmap1.jpg", width=800)
