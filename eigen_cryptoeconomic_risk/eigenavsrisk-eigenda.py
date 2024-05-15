@@ -2030,14 +2030,13 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
             st.write("")
 
-            st.image("images/SVaR-formula.jpeg", width=600)
+            st.latex(r'''
+                        \text{Total Slashing-Value-At-Risk} = \beta_o + \beta_i + \alpha
+                        ''')
+            st.latex(r'''
+                        \text{Confidence Level: Very Low [10\%, 50\%]}
+                        ''')
 
-            st.latex(r'''
-            \text{Confidence Level: Very Low}
-            ''')
-            st.latex(r'''
-            \text{Confidence Interval: [10\%, 50\%]}
-            ''')
 
 
 
