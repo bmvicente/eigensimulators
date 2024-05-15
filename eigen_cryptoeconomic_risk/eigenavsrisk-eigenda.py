@@ -1646,11 +1646,11 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     st.write("  \n")
     st.write("  \n")
 
-    col81, col82, col83 = st.columns([4, 7, 1])
+    col81, col82, col83 = st.columns([4, 6, 1])
 
     
     with col81:
-        st.image("images/eigenda-matrix.jpg", width=800)
+        st.image("images/eigenda-matrix.jpg", width=700)
 
     with col82:
         st.image("images/eigenda-diagram.jpeg", width=1100)
