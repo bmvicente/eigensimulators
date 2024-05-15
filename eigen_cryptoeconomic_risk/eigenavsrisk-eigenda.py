@@ -2004,7 +2004,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
             st.write("")
 
-            st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Safety Violation</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='font-size: 22px; font-weight: bold;'>Safety Violation</div>", unsafe_allow_html=True)
 
             st.write("")
             st.write("")
@@ -2020,7 +2020,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
             st.write("")
 
-            st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Liveness Violation</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='font-size: 22px; font-weight: bold;'>Liveness Violation</div>", unsafe_allow_html=True)
 
         with col57:
             st.write("")
