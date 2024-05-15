@@ -1882,10 +1882,10 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-    col56,col57 = st.columns(2, gap="medium")
+    col56,col57 = st.columns(2, gap="small")
     with col56:
 
-        col111, col121, col131, col132 = st.columns([0.1,1.2,0.5,1.1])
+        col111, col121, col131, col132 = st.columns([0.2,2,0.5,1])
 
         with col111:
             st.write("")
@@ -2004,7 +2004,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
             st.write("")
 
-            st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Safety Violation</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='font-size: 22px; font-weight: bold;'>Safety Violation</div>", unsafe_allow_html=True)
 
             st.write("")
             st.write("")
@@ -2020,13 +2020,13 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
             st.write("")
 
-            st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Liveness Violation</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='font-size: 22px; font-weight: bold;'>Liveness Violation</div>", unsafe_allow_html=True)
 
         with col57:
             st.write("")
             st.write("")
 
-            st.image("images/objint.jpeg", width=1050)
+            st.image("images/objint.jpeg", width=1000)
 
             st.write("")
 
