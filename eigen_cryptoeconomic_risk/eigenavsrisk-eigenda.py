@@ -1977,7 +1977,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
             st.write("")
 
-            st.image("images/curlyb.jpeg", width=50)
+            st.image("images/curlyb.jpeg", width=40)
 
             st.write("")
             st.write("")
@@ -1985,7 +1985,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
             st.write("")
 
-            st.image("images/curlyb.jpeg", width=80)
+            st.image("images/curlyb.jpeg", width=60)
 
 
 
