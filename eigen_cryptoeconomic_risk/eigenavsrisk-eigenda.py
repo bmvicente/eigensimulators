@@ -2047,7 +2047,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     col111, col121, col131 = st.columns([10,3,8])
 
     with col111:
-            st.markdown(f"<div style='font-size: 23px; text-align: center; font-weight: bold;'>At Early Stage of EigenDA</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='font-size: 23px; font-weight: bold;'>At Early Stage of EigenDA</div>", unsafe_allow_html=True)
 
             st.image("images/heatmap1.jpg", width=810)
 
@@ -2055,7 +2055,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.image("images/centscale.jpg", width=150)
 
     with col131:
-            st.markdown(f"<div style='font-size: 23px; text-align: center; font-weight: bold;'>At Maturity Stage of EigenDA</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='font-size: 23px; font-weight: bold;'>At Maturity Stage of EigenDA</div>", unsafe_allow_html=True)
 
             st.image("images/heatmap2.jpg", width=800)
 
