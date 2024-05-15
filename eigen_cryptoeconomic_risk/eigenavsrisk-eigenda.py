@@ -1870,7 +1870,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
 
         with col121:
-            st.image("images/eigenda-matrix.jpg", width=600)
+            st.image("images/eigenda-matrix.jpg", width=800)
             st.write("")
 
         with col131:
@@ -1886,7 +1886,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         with col121:
             st.write("")
 
-            st.markdown(f"<div style='font-size: 22px; font-weight: bold;'>Risk Attack Vectors Toward EigenDA</div>", unsafe_allow_html=True)
+            st.markdown(f"<div style='font-size: 24px; font-weight: bold;'>Risk Attack Vectors Toward EigenDA</div>", unsafe_allow_html=True)
             st.write("")
 
 
