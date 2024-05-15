@@ -2035,7 +2035,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
                         ''')
             
             st.latex(r'''
-                        \Large{\underline{\text{Confidence Level}}: \text{Very Low [10\%, 50\%]}}
+                        \Large{\underline{\text{Confidence Interval}}: \text{Very Low [5\%, 20\%]}}
                         ''')
 
 
