@@ -98,7 +98,7 @@ def main():
     st.write("  \n")
 
 
-    st.subheader("**UNDERLYING RISK**")
+    st.subheader("**INFRASTRUCTURE RISK**")
 
     st.write("  \n")
 
@@ -1852,7 +1852,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-    st.subheader("**SLASHING RISK**")
+    st.subheader("**POTENTIAL RISK VECTORS**")
 
 
 
@@ -1996,6 +1996,24 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+
+
+    col111, col121, col131 = st.columns([3,4,1])
+
+    with col111:
+            st.image("images/heatmap1.jpg", width=600)
+
+    with col121:
+            st.image("images/centscale.jpg", width=600)
+
+    with col131:
+            st.image("images/heatmap2.jpg", width=600)
 
 
 
