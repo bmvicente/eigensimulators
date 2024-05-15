@@ -2031,10 +2031,11 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
 
             st.latex(r'''
-                        \text{Total Slashing-Value-At-Risk} = \beta_o + \beta_i + \alpha
+                            \textbf{\Huge{Total Slashing-Value-At-Risk}} = \beta_o + \beta_i + \alpha
                         ''')
+            
             st.latex(r'''
-                        \text{Confidence Level: Very Low [10\%, 50\%]}
+                            \Huge{\text{Confidence Level: Very Low [10\%, 50\%]}}
                         ''')
 
 
