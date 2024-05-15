@@ -1646,10 +1646,13 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     st.write("  \n")
     st.write("  \n")
 
-    col1, col2, col3 = st.columns([3, 12, 1])
+    col81, col82, col83 = st.columns([3, 12, 1])
 
-    # Placing the image in the middle column effectively centers it
-    with col2:
+    
+    with col81:
+        st.image("images/eigenda-matrix.jpg", width=800)
+
+    with col82:
         st.image("images/eigenda-diagram.jpeg", width=1100)
         st.write("  \n")
 
@@ -1864,26 +1867,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     col56,col57 = st.columns(2, gap="large")
     with col56:
 
-        col111, col121, col131 = st.columns([1,2,4])
-
-        with col111:
-            st.write("")
-
-        with col121:
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-            st.write("")
-
-            st.image("images/eigenda-matrix.jpg", width=800)
-            st.write("")
-
-        with col131:
-            st.write("")
-
-    with col57:
-
         col111, col121, col131, col132 = st.columns([1,3,1,2])
 
         with col111:
@@ -2020,6 +2003,11 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
 
             st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Liveness Violation</div>", unsafe_allow_html=True)
+
+        with col57:
+
+            st.image("images/objint.jpeg", width=70)
+
 
 
 
