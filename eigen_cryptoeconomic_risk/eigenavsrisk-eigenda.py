@@ -2031,7 +2031,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
             st.write("")
 
-            st.image("images/SVaR-formula.jpeg", width=100)
+            st.image("images/SVaR-formula.jpeg", width=1000)
 
 
 
