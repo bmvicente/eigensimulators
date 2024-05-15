@@ -2010,7 +2010,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.image("images/heatmap1.jpg", width=600)
 
     with col121:
-            st.image("images/centscale.jpg", width=600)
+            st.image("images/centscale.jpg", width=60)
 
     with col131:
             st.image("images/heatmap2.jpg", width=600)
