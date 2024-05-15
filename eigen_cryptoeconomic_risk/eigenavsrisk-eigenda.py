@@ -1658,10 +1658,23 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         st.write("  \n")
         st.write("  \n")
         st.write("  \n")
+        st.write("  \n")
+        st.write("  \n")
 
-        st.image("images/eigenda-matrix.jpg", width=650)
+        st.markdown(
+            """
+            <div style='text-align: center;'>
+                <img src='images/eigenda-matrix.jpg' width='650'>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
+        
     with col82:
+        st.write("  \n")
+        st.write("  \n")
+
         st.image("images/eigenda-diagram.jpeg", width=1100)
         st.write("  \n")
 
@@ -1672,8 +1685,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             </div>
             """, unsafe_allow_html=True)
 
-    st.write("  \n")
-    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
