@@ -2037,7 +2037,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     st.write("")
 
     
-    st.markdown(f"<div style='font-size: 25px; font-weight: bold;'>GAME-THEORETIC DYNAMICS AROUND SETTING THE KZG ERASURE ENCODING RATE BY THE ROLLUP</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='font-size: 25px; font-weight: bold;'>Game-Theoretic Dynamics Around Setting the KZG Erasure Encoding Rate by Rollup</div>", unsafe_allow_html=True)
 
 
     st.write("")
