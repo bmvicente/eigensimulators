@@ -98,7 +98,6 @@ avss = []
 
 # Loop to create AVSs with attributes based on input metrics
 for i in range(num_avss):
-
     # Assign an operator to each AVS, cycling through the list of operators
     operator = operators[i % len(operators)]
 
@@ -111,37 +110,18 @@ for i in range(num_avss):
     # Generate a random entrenchment level for the AVS
     entrenchment = np.random.randint(0, 100)
 
-    # Append a dictionary with AVS details to the avss list
+    # Append a dictionary with AVS details to the avss list, include a default entrenchment value
     avss.append({
         'name': f"AVS {i+1}",
         'category': category,
         'risk_score': int(risk_score),
         'operator': operator,
-        'entrenchment_level': entrenchment
+        'entrenchment_level': entrenchment,
+        'operator_entrenchment': 0  # Default value
     })
-
-
-# Loop to ensure each operator has at least one AVS and fill the rest
-for i in range(st.session_state.num_operators):
-
-    # Generate a risk score for the AVS
-    risk_score = np.clip(np.random.normal(loc=avg_risk_score, scale=10), 1, 100)
-
-    # Append an AVS for each operator to the avss list
-    avss.append({
-        'name': f"AVS {i+1}",
-        'risk_score': int(risk_score),
-        'operator': operators[i],
-        'category': np.random.randint(0, 3)
-    })
-
-
-
-### WTF is this
 
 # Adjust operator entrenchment level if it's greater than 0
 if entrenchment_level > 0:
-
     # Create a dictionary mapping operators to their entrenchment level
     operator_entrenchment = {op: entrenchment_level / 100.0 for op in operators}
 
@@ -152,6 +132,7 @@ if entrenchment_level > 0:
     # Assign normalized entrenchment levels to AVSs
     for avs in avss:
         avs['operator_entrenchment'] = normalized_entrenchment[avs['operator']]
+
 
 
 

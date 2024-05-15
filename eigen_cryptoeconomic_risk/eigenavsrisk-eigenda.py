@@ -21,14 +21,21 @@ rollup_fast_proof_risk = {True: 1, False: 10}
 kzg_erasure_coding_risk = {True: 1, False: 10}
 kzg_multi_proofs_risk = {True: 1, False: 10}
 disperser_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-rollup_backup_disperser_risk = {True: 1, False: 10}
 disperser_operator_risk = {"Disperser Run by Rollup": 8, "Disperser Run by Third-Party (like EigenLabs)": 2}
+proof_custody_risk = {True: 1, False: 10}
+direct_unicast_risk = {True: 1, False: 10}
+kzg_poly_comm_risk = {True: 1, False: 10}
+rollup_censorship_res_risk = {True: 1, False: 10}
+fhe_disperser_risk = {"None": 7, "Partial": 5, "Full": 3}
+fhe_operator_risk = {"None": 7, "Partial": 5, "Full": 3}
+dual_quorum_risk = {True: 1, False: 10}
 
 
 def eigenda_risk(security_audits, business_model, code_complexity, operator_reputation, operator_centralization, 
                  operator_entrenchment_level, tee_mec, dvt_mec, validator_reputation, validator_centralization,
                  bls_alt, rollup_fast_proof, disperser_centralization, kzg_erasure_coding, 
-                 kzg_multi_proofs, rollup_backup_disperser, disperser_operator):
+                 kzg_multi_proofs, disperser_operator, proof_custody, direct_unicast,
+                 kzg_poly_comm, rollup_censorship_res, fhe_disperser, fhe_operator, dual_quorum):
 
     security_audits_score = security_audits_risk[security_audits]
     business_model_score = business_model_risk[business_model]
@@ -46,14 +53,21 @@ def eigenda_risk(security_audits, business_model, code_complexity, operator_repu
     disperser_centralization_score = disperser_centralization_risk[disperser_centralization]
     kzg_erasure_coding_score = kzg_erasure_coding_risk[kzg_erasure_coding]
     kzg_multi_proofs_score = kzg_multi_proofs_risk[kzg_multi_proofs]
-    rollup_backup_disperser_score = rollup_backup_disperser_risk[rollup_backup_disperser]
     disperser_operator_score = disperser_operator_risk[disperser_operator]
+    proof_custody_score = proof_custody_risk[proof_custody]
+    direct_unicast_score = direct_unicast_risk[direct_unicast]
+    kzg_poly_comm_score = kzg_poly_comm_risk[kzg_poly_comm]
+    rollup_censorship_res_score = rollup_censorship_res_risk[rollup_censorship_res]
+    fhe_disperser_score = fhe_disperser_risk[fhe_disperser]
+    fhe_operator_score = fhe_operator_risk[fhe_operator]
+    dual_quorum_score = dual_quorum_risk[dual_quorum]
 
 
     return (security_audits_score, business_model_score, code_complexity_score, operator_reputation_score, operator_centralization_score,
             operator_entrenchment_level_score, tee_mec_score, dvt_mec_score, validator_reputation_score, validator_centralization_score, 
             bls_alt_score, rollup_fast_proof_score, disperser_centralization_score, kzg_erasure_coding_score, kzg_multi_proofs_score, 
-            rollup_backup_disperser_score, disperser_operator_score)
+            disperser_operator_score, proof_custody_score, direct_unicast_score, kzg_poly_comm_score,
+            rollup_censorship_res_score, fhe_disperser_score, fhe_operator_score, dual_quorum_score)
 
 
 
@@ -70,20 +84,23 @@ def main():
 
     with st.expander("How this Simulator Works & Basic Assumptions"):
         st.markdown(f"""
-            The Simulator takes 9 AVS-generic parameters and 21 parameters that specifically compose an Interoperability Network protocol with a CometBFT consensus architecture to calculate EigenDA's Risk Score as an EigenLayer AVS. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
+            The Simulator takes 9 AVS-generic parameters and 23 parameters that specifically compose an Data Availability AVS, with a BFT consensus architecture, to calculate EigenDA's Risk Score as an EigenLayer AVS. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
             
             Most of the research to build this Simulator was derived from [EigenDA's Docs](https://docs.omni.network/) and [CometBFT's Docs](https://docs.cometbft.com/v0.37/), as well as the images in the "Logic" dropdowns.
-                    
-            The capital cost of staking. To stake capital in order to secure a DA layer, stakers may want to receive a certain percentage yield in order to offset their opportunity cost. EigenDA reduces the capital cost of staking by using EigenLayer, which employs a shared security model that allows the same stake to be utilized across a variety of applications, creating an economy of scale.
-                            """)
+                                                """)
 
         
-    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate Risk Profile for EigenDA as a Interoperability Network AVS. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
+    st.write("**Note**: The dropdown input values and the Likelihood and Impact sliders are set as such by default to represent the exact or most approximate Risk Profile for EigenDA as a Data Availability AVS. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
 
+    st.write("  \n")
+    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
 
 
+    st.subheader("**UNDERLYING RISK**")
+
+    st.write("  \n")
 
     def dual_staking_balance_calc(avs_token_percentage, xeth_percentage):
         ratio = avs_token_percentage / xeth_percentage
@@ -205,17 +222,33 @@ def main():
 
     def rollup_bandwidth_rate_calc(rollup_bandwidth_rate):
         if 0 <= rollup_bandwidth_rate <= 10:
-            return 2
-        elif 11 <= rollup_bandwidth_rate <= 33:
-            return 3
-        elif 34 <= rollup_bandwidth_rate <= 50:
-            return 4
-        elif 51 <= rollup_bandwidth_rate <= 66:
-            return 6
-        elif 67 <= rollup_bandwidth_rate <= 90:
-            return 7.5
-        elif 91 <= rollup_bandwidth_rate <= 100:
             return 9
+        elif 11 <= rollup_bandwidth_rate <= 33:
+            return 7.5
+        elif 34 <= rollup_bandwidth_rate <= 50:
+            return 6
+        elif 51 <= rollup_bandwidth_rate <= 66:
+            return 4
+        elif 67 <= rollup_bandwidth_rate <= 90:
+            return 3
+        elif 91 <= rollup_bandwidth_rate <= 100:
+            return 2
+        else:
+            return None 
+
+    def rollup_backup_disperser_calc(rollup_backup_disperser):
+        if 0 <= rollup_backup_disperser <= 10:
+            return 9
+        elif 11 <= rollup_backup_disperser <= 33:
+            return 7.5
+        elif 34 <= rollup_backup_disperser <= 50:
+            return 6
+        elif 51 <= rollup_backup_disperser <= 66:
+            return 4
+        elif 67 <= rollup_backup_disperser <= 90:
+            return 3
+        elif 91 <= rollup_backup_disperser <= 100:
+            return 2
         else:
             return None
         
@@ -343,14 +376,6 @@ def main():
         else:
             st.session_state.kzg_multi_proofs_score = 0
 
-    if 'rollup_backup_disperser' not in st.session_state:
-        st.session_state.rollup_backup_disperser = "True"
-    if 'rollup_backup_disperser_score' not in st.session_state:
-        if st.session_state.rollup_backup_disperser in rollup_backup_disperser_risk:
-            st.session_state.rollup_backup_disperser_score = rollup_backup_disperser_risk[st.session_state.rollup_backup_disperser]
-        else:
-            st.session_state.rollup_backup_disperser_score = 0
-
     if 'disperser_operator' not in st.session_state:
         st.session_state.disperser_operator = "True"
     if 'disperser_operator_score' not in st.session_state:
@@ -359,7 +384,65 @@ def main():
         else:
             st.session_state.disperser_operator_score = 0
 
-    
+    if 'proof_custody' not in st.session_state:
+        st.session_state.proof_custody = "True"
+    if 'proof_custody_score' not in st.session_state:
+        if st.session_state.proof_custody in proof_custody_risk:
+            st.session_state.proof_custody_score = proof_custody_risk[st.session_state.proof_custody]
+        else:
+            st.session_state.proof_custody_score = 0
+
+
+    if 'direct_unicast' not in st.session_state:
+        st.session_state.direct_unicast = "True"
+    if 'direct_unicast_score' not in st.session_state:
+        if st.session_state.direct_unicast in direct_unicast_risk:
+            st.session_state.direct_unicast_score = direct_unicast_risk[st.session_state.direct_unicast]
+        else:
+            st.session_state.disperser_operator_score = 0
+
+
+    if 'kzg_poly_comm' not in st.session_state:
+        st.session_state.kzg_poly_comm = "True"
+    if 'kzg_poly_comm_score' not in st.session_state:
+        if st.session_state.kzg_poly_comm in kzg_poly_comm_risk:
+            st.session_state.kzg_poly_comm_score = kzg_poly_comm_risk[st.session_state.kzg_poly_comm]
+        else:
+            st.session_state.kzg_poly_comm_score = 0
+
+
+    if 'rollup_censorship_res' not in st.session_state:
+        st.session_state.rollup_censorship_res = "True"
+    if 'rollup_censorship_res_score' not in st.session_state:
+        if st.session_state.rollup_censorship_res in rollup_censorship_res_risk:
+            st.session_state.rollup_censorship_res_score = rollup_censorship_res_risk[st.session_state.rollup_censorship_res]
+        else:
+            st.session_state.rollup_censorship_res_score = 0
+
+    if 'fhe_disperser' not in st.session_state:
+        st.session_state.fhe_disperser = "True"
+    if 'fhe_disperser_score' not in st.session_state:
+        if st.session_state.fhe_disperser in fhe_disperser_risk:
+            st.session_state.fhe_disperser_score = fhe_disperser_risk[st.session_state.fhe_disperser]
+        else:
+            st.session_state.fhe_disperser_score = 0
+
+    if 'fhe_operator' not in st.session_state:
+        st.session_state.fhe_operator = "True"
+    if 'fhe_operator_score' not in st.session_state:
+        if st.session_state.fhe_operator in fhe_operator_risk:
+            st.session_state.fhe_operator_score = fhe_operator_risk[st.session_state.fhe_operator]
+        else:
+            st.session_state.fhe_operator_score = 0
+
+    if 'dual_quorum' not in st.session_state:
+        st.session_state.dual_quorum = "True"
+    if 'dual_quorum_score' not in st.session_state:
+        if st.session_state.dual_quorum in dual_quorum_risk:
+            st.session_state.dual_quorum_score = dual_quorum_risk[st.session_state.dual_quorum]
+        else:
+            st.session_state.dual_quorum_score = 0    
+
     if 'risk_score' not in st.session_state:
         st.session_state.risk_score = 0
 
@@ -373,12 +456,9 @@ def main():
                 return f"{num:.1f}"
             
     def format_result(num):
-            # Check if the number is an integer
             if num.is_integer():
-                # Format integer with comma for thousands
                 return f"{int(num):,}"
             else:
-                # Format float with comma for thousands and period for decimals
                 return f"{num:,.2f}"
 
 
@@ -515,7 +595,12 @@ def main():
 
         st.write("\n")
 
-        dual_quorum = st.checkbox("**Dual Quorum**: ETH Quorum & ROLLUP Quorum", value=True, help="ff")
+        dual_quorum = st.checkbox("**Dual Quorum**: ETH Quorum & ROLLUP Quorum", value=True, 
+                                  help="**EigenDA has a feature called Dual Quorum, where two separate quorums can be required to attest to the availability of data. As an example, one quorum would be composed of ETH restakers (the ETH quorum), and the second quorum could be composed of stakers of the rollup’s native token. Both quorums are treated as an independent and redundant source of DA, so both quorums have to be compromised before EigenDA can fail.**")
+        
+        if st.session_state.dual_quorum != dual_quorum:
+            st.session_state.dual_quorum = dual_quorum
+            st.session_state.dual_quorum_score = dual_quorum_risk.get(dual_quorum, 0)
 
         st.write("-------")
 
@@ -586,7 +671,7 @@ def main():
                             
                     Following and based on the restaking modality (**LST Restaking**), business model (**Dual Staking Utility**), and dual staking method (**Veto Dual Staking**) assumptions made for our Simulator, we found it useful to set an $ROLLUP/xETH balance scale to assess AVS risks and potential reward emissions, as well as providing an improved insight into what their token configuration should be.
 
-                    **\$OMNI** is the AVS native token. **xETH** is any ETH-backed LST, such as stETH, rETH or cbETH.
+                    **\$ROLLUP** is the AVS native token. **xETH** is any ETH-backed LST, such as stETH, rETH or cbETH.
 
                     **Dual Staking**, by allowing the staking of a more stable and widely-used token like an ETH-LST alongside the AVS's native token, simplifies the bootstrapping process and provides baseline economic security, thereby mitigating these challenges.
 
@@ -594,16 +679,20 @@ def main():
                         """)
     
         
-        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * business_dual_likelihood2 * business_dual_impact2
+        result1 = st.session_state.business_model_score * st.session_state.dual_staking_balance * st.session_state.dual_quorum_score * business_dual_likelihood2 * business_dual_impact2
         
         result1_formatted = format_result(float(result1))
 
         business_dual_calc = f"""
             <div style="text-align: center;">
                 <div>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.business_model_score}</span> 
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span> 
+                    <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_staking_balance}</span>
+                    <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 21px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dual_quorum_score}</span>                    
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
                     <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{business_dual_likelihood_formatted}</span> 
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
@@ -681,7 +770,7 @@ def main():
             security_audits = st.number_input("**AVS Number of Security Audits**", min_value=0, max_value=5, step=1, value=2, key="0890")
 
 
-        coverage_perc = st.slider("**GitHub Code Coverage Percentage**", min_value=0, max_value=100, value=56, format='%d%%', help="**Coverage percentage refers to the proportion of code that is tested by automated tests, typically measured by the number of lines or branches of code executed during testing compared to the total number of lines or branches in the codebase. It indicates how thoroughly the codebase is tested, with higher coverage percentages indicating greater test coverage and potentially lower risk of undetected bugs or issues.**")
+        coverage_perc = st.slider("**GitHub Code Coverage %**", min_value=0, max_value=100, value=56, format='%d%%', help="**Coverage percentage refers to the proportion of code that is tested by automated tests, typically measured by the number of lines or branches of code executed during testing compared to the total number of lines or branches in the codebase. It indicates how thoroughly the codebase is tested, with higher coverage percentages indicating greater test coverage and potentially lower risk of undetected bugs or issues.**")
 
         coverage_perc_var = coverage_perc_calc(coverage_perc)
         st.session_state.coverage_perc_var = coverage_perc_var
@@ -728,16 +817,20 @@ def main():
                 st.session_state.security_audits = security_audits
                 st.session_state.security_audits_score = security_audits_risk.get(security_audits, 0)
 
-        result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * security_likelihood2 * security_impact2
+        result2 = st.session_state.code_complexity_score * st.session_state.security_audits_score * st.session_state.coverage_perc_var * security_likelihood2 * security_impact2
         
         result2_formatted = format_result(float(result2))
 
         security_calc = f"""
                     <div style="text-align: center;">
                         <div>
+                            <span style="font-size: 22px; font-weight: bold;">(</span>
                             <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.code_complexity_score}</span> 
                             <span style="font-size: 23px; font-weight: bold;">&times;</span>
-                            <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audits_score}</span> 
+                            <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.security_audits_score}</span>
+                            <span style="font-size: 23px; font-weight: bold;">&times;</span>
+                            <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.coverage_perc_var}</span>
+                            <span style="font-size: 22px; font-weight: bold;">)</span>
                             <span style="font-size: 23px; font-weight: bold;">&times;</span>
                             <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{security_likelihood_formatted}</span> 
                             <span style="font-size: 23px; font-weight: bold;">&times;</span>
@@ -838,9 +931,11 @@ def main():
         if st.session_state.operator_reputation != operator_reputation:
                 st.session_state.operator_reputation = operator_reputation
                 st.session_state.operator_reputation_score = operator_reputation_risk.get(operator_reputation, 0)
+
         if st.session_state.operator_centralization != operator_centralization:
                 st.session_state.operator_centralization = operator_centralization
                 st.session_state.operator_centralization_score = operator_centralization_risk.get(operator_centralization, 0)
+
         if st.session_state.operator_entrenchment_level != operator_entrenchment_level:
                 st.session_state.operator_entrenchment_level = operator_entrenchment_level
                 st.session_state.operator_entrenchment_level_score = operator_entrenchment_level_risk.get(operator_entrenchment_level, 0)
@@ -853,11 +948,13 @@ def main():
 
         operator_calc = f"""
                 <div style="text-align: center;">
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_reputation_score}</span> 
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
                     <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_centralization_score}</span> 
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_entrenchment_level_score}</span> 
+                    <span style="font-size: 21px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.operator_entrenchment_level_score}</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
                     <span style="font-size: 21px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{operator_likelihood_formatted}</span> 
                     <span style="font-size: 23px; font-weight: bold;">&times;</span>
@@ -986,31 +1083,21 @@ def main():
         
         st.write("  \n")
 
-        rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=False, 
-                                        help="**Proof frequency is limited by cost. EigenDA nodes can verify and underwrite proofs at very low latency; this enables EigenDA to act as a high-speed ZK bridge.**")
+        rollup_censorship_res = st.checkbox('**Censorship Resistance through Decentralization of Single Leader/Block Proposer**', value=True, help="**EigenDA offers higher instantaneous censorship resistance than coupled DA layers. This is because coupled DA architectures usually rely on a single leader or block proposer to linearly order the data blobs, thus creating an instantaneous censorship chokepoint. In contrast, in EigenDA, rollup nodes can directly disperse and receive signatures from a majority of EigenDA nodes, thus improving the censorship resistance to a majority of EigenDA nodes rather than being constricted by a single leader.**")
+        # ASK GPT TO SAY THIS IN OTHER WORDS
 
-        rollup_backup_disperser = st.checkbox('**Rollup Internal Disperser as Backstop**', value=False, 
-                                              help="**It is possible for a rollup to use a dispersal service optimistically, such that in the case the service is non-responsive or censoring, the rollup can use its own disperser as a backstop, thus getting amortization benefits in the optimistic mode without sacrificing censorship resistance.**")
+        if st.session_state.rollup_censorship_res != rollup_censorship_res:
+            st.session_state.rollup_censorship_res = rollup_censorship_res
+            st.session_state.rollup_censorship_res_score = rollup_censorship_res_risk.get(rollup_censorship_res, 0)
 
-        rollup_censorship_res = st.checkbox('**Effective Censorship Resistance through Single Leader/Block Proposer Decentralization**', value=True, help="**Censorship Resistance. EigenDA offers higher instantaneous censorship resistance than coupled DA layers. This is because coupled DA architectures usually rely on a single leader or block proposer to linearly order the data blobs, thus creating an instantaneous censorship chokepoint. In contrast, in EigenDA, rollup nodes can directly disperse and receive signatures from a majority of EigenDA nodes, thus improving the censorship resistance to a majority of EigenDA nodes rather than being constricted by a single leader.**")
+        result4 = st.session_state.rollup_censorship_res_score
 
-
-        if st.session_state.rollup_backup_disperser != rollup_backup_disperser:
-            st.session_state.rollup_backup_disperser = rollup_backup_disperser
-            st.session_state.rollup_backup_disperser_score = rollup_backup_disperser_risk.get(rollup_backup_disperser, 0)
-
-        if st.session_state.rollup_fast_proof != rollup_fast_proof:
-            st.session_state.rollup_fast_proof = rollup_fast_proof
-            st.session_state.rollup_fast_proof_score = rollup_fast_proof_risk.get(rollup_fast_proof, 0)
-
-        result8 = (st.session_state.rollup_fast_proof_score + st.session_state.rollup_backup_disperser_score)
-        
         st.write("  \n")
 
         rollup_calc1 = f"""
             <div style="text-align: center;">
                 <div>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result8):,}</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{result4}</span>
             </div>"""
 
         st.markdown(rollup_calc1, unsafe_allow_html=True)
@@ -1022,18 +1109,28 @@ def main():
         st.write("-------")
 
 
-        rollup_blob_rate = st.slider("**Rollup Blob Dispatching Accuracy Rate**", min_value=0, max_value=100, value=100, format='%d%%')
+        rollup_blob_rate = st.slider("**Rollup Sequencers Blob Dispatching Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
+                                     help="****")
 
         rollup_blob_rate_var = rollup_blob_rate_calc(rollup_blob_rate)
         st.session_state.rollup_blob_rate_var = rollup_blob_rate_var
 
 
+        col90, col91 = st.columns(2)
+        with col90:
+            rollup_bandwidth_rate = st.slider("**% of Rollups Reserving Additional Bandwidth**", min_value=0, max_value=100, value=0, format='%d%%',
+                                              help="****")
 
-        rollup_bandwidth_rate = st.slider("**Percentage of Rollups Reserving Additional Bandwidth**", min_value=0, max_value=100, value=0, format='%d%%')
+            rollup_bandwidth_rate_var = rollup_bandwidth_rate_calc(rollup_bandwidth_rate)
+            st.session_state.rollup_bandwidth_rate_var = rollup_bandwidth_rate_var
 
-        rollup_bandwidth_rate_var = rollup_bandwidth_rate_calc(rollup_bandwidth_rate)
-        st.session_state.rollup_bandwidth_rate_var = rollup_bandwidth_rate_var
-        
+        with col91:
+            rollup_backup_disperser = st.slider("**% of Rollups With Backup Disperser**", min_value=0, max_value=100, value=0, format='%d%%',
+                                                help="*****")
+
+            rollup_backup_disperser_var = rollup_backup_disperser_calc(rollup_backup_disperser)
+            st.session_state.rollup_backup_disperser_var = rollup_backup_disperser_var
+
 
 
         st.write("-------")
@@ -1058,36 +1155,33 @@ def main():
 
 
         with st.expander("Logic"):
-                st.image("images/omni-relayer-diagram.jpg", width=750)
+                st.write("  \n")
 
                 st.markdown("""                        
-The **Relayer** in the Omni network acts as a critical intermediary, handling the transfer of attested cross-network messages (`XMsgs`) between the Omni network and the various destination rollup VMs.Things to consider: 
-
-- **Decision Making for Message Submission**: Post collecting `XBlocks` and `XMsgs`, Relayers determine the number of `XMsg`s to include in their submissions, balancing the costs associated with transaction size, computational requirements, and gas limits.
-- **Relayer Performance**: Relayers create and submit transactions with Merkle multi-proofs to destination chains based on attested `XBlock` data, ensuring secure and efficient message delivery.
-- **Security and Scalability**: As a permissionless service, Relayers reduce central points of failure and uphold the network's decentralized ethos, while managing security risks and computational intensiveness, especially as the network scales.
-                            
-The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
                             """)
 
 
-        result9 = (st.session_state.rollup_bandwidth_rate_var * st.session_state.rollup_blob_rate_var * rollup_metrics_likelihood2 * rollup_metrics_impact2)
+        result5 = ((st.session_state.rollup_bandwidth_rate_var + st.session_state.rollup_blob_rate_var + st.session_state.rollup_backup_disperser_var) * rollup_metrics_likelihood2 * rollup_metrics_impact2)
         
-        result9_formatted = format_result(float(result9))
+        result5_formatted = format_result(float(result5))
 
 
         rollup_calc2 = f"""
             <div style="text-align: center;">
                 <div>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.rollup_blob_rate_var}</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span> 
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.rollup_bandwidth_rate_var}</span>
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span> 
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.rollup_blob_rate_var}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span> 
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.rollup_backup_disperser_var}</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{rollup_likelihood_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{rollup_impact_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9_formatted}</span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5_formatted}</span>
             </div>"""
 
         st.markdown(rollup_calc2, unsafe_allow_html=True)
@@ -1153,13 +1247,14 @@ The summation or multiplication of variables revolves around their independence 
         col65,col66 = st.columns(2, gap="medium")
         with col65:
             kzg_erasure_coding = st.checkbox("**KZG Erasure Coding**", value=True,
-                                help="**Erasure coding. EigenDA enables rollups to take the data they want to post to EigenDA, decompose it into smaller chunks, and perform erasure coding on those chunks before storing the data as fragments. Using KZG polynomial commitments (a mathematical scheme at the heart of ZK proofs), EigenDA requires nodes to only download small amounts of data [O(1/n)] rather than download entire blobs. Unlike systems that use fraud proofs to detect malicious incorrect coding of data, EigenDA employs validity proofs in the form of KZG commitments, which enables nodes to verify correct coding of the data.**")
+                                help="**Efficiently manages data by breaking it into smaller chunks using erasure coding, combined with KZG polynomial commitments. This allows nodes to download only necessary data segments, enhancing storage efficiency and data integrity through validity proofs.**")
         with col66:
             kzg_poly_comm = st.checkbox("**KZG Polynomial Commitment**", value=True,
-                                help="**Cryptographic method used to securely and efficiently commit to and verify pieces of data without revealing the data itself, essential in ensuring the integrity and availability**")
+                                help="**A cryptographic technique for securely committing to data without disclosure. Essential for the integrity and verification of data in distributed systems, serving as the foundation for both KZG Erasure Coding and Multi-Reveal Proofs.**")
             
         kzg_multi_proofs = st.checkbox("**KZG Multi-Reveal Proofs**", value=True,
-                                           help="**ddd**")
+                                           help="**Enables verification of multiple data segments simultaneously, ensuring data integrity across the network using KZG polynomial commitments. Key for confirming data correctness and security in distributed environments.**")
+        # ASK GPT TO SAY THIS IN OTHER WORDS
 
         st.write("  \n")
 
@@ -1178,7 +1273,11 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.kzg_multi_proofs = kzg_multi_proofs
             st.session_state.kzg_multi_proofs_score = kzg_multi_proofs_risk.get(kzg_multi_proofs, 0)
 
-        result6 = (st.session_state.kzg_erasure_coding_score + st.session_state.kzg_multi_proofs_score)
+        if st.session_state.kzg_poly_comm != kzg_poly_comm:
+            st.session_state.kzg_poly_comm = kzg_poly_comm
+            st.session_state.kzg_poly_comm_score = kzg_poly_comm_risk.get(kzg_poly_comm, 0)
+
+        result6 = (st.session_state.kzg_erasure_coding_score * st.session_state.kzg_multi_proofs_score * st.session_state.kzg_poly_comm_score * st.session_state.kzg_encoding_rate_var)
         
         st.write("  \n")
 
@@ -1186,8 +1285,12 @@ The summation or multiplication of variables revolves around their independence 
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.kzg_erasure_coding_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.kzg_poly_comm_score}</span>
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.kzg_multi_proofs_score}</span>
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.kzg_encoding_rate_var}</span>
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
                     <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result6):,}</span>
             </div>"""
@@ -1200,20 +1303,25 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        disperser_performance_acc_rate = st.slider("**Disperser Blob-to-Chunk & Dispatching Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782")
+        disperser_performance_acc_rate = st.slider("**Disperser Blob-to-Chunk, Dispatching & Signature Posting On-Chain Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782",
+                                                   help="**The EigenDA disperser sidecar erasure encodes the blob into chunks, generates a KZG commitment and multi-reveal proofs for each chunk, and disperses chunks to EigenDA Operators, receiving signatures certifying storage in return. After aggregating the received signatures, the disperser registers the blob onchain by sending a transaction to the EigenDA Manager contract with the aggregated signature and blob metadata.**")
 
         disperser_performance_acc_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
         st.session_state.disperser_performance_acc_rate_var = disperser_performance_acc_rate_var
         
+        
+        fhe_disperser = st.selectbox("**Homomorphic Encryption of Data**", ["None", "Partial", "Full"], index=0, key="2328816",
+                                                    help="**FHE allows performing operations upon data without ever needing to access the original, unencrypted data, enhancing security and privacy. Although still being an inefficient and highly theoretical concept, it is promising in a DA context. The values assigned to it in this Simulation reflect this uncertainty.**")
+        
         col20,col21 = st.columns(2)
         with col20:
-            disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=1, key="28816",
-                                                    help="**Depending whether it's used as a centralized service or permissionless, decentralized node network.**")
+            disperser_operator = st.selectbox("**Disperser Operator**", ["Disperser Run by Rollup", "Disperser Run by Third-Party (like EigenLabs)"], index=1, key="285816",
+                                              help="**Rollups will be able to run their own disperser, or use a dispersal service that a third party (for example, EigenLabs) operates for convenience and amortization of signature verification costs.**")
         
         with col21:
-            disperser_operator = st.selectbox("**Disperser Operator**", ["Disperser Run by Rollup", "Disperser Run by Third-Party (like EigenLabs)"], index=0, key="285816",
-                                              help="Rollups will be able to run their own disperser, or use a dispersal service that a third party (for example, EigenLabs) operates for convenience and amortization of signature verification costs.")
-
+            disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=0, key="28816",
+                                                    help="**Depending whether it's used as a centralized service or permissionless, decentralized node network.**")
+        # ASK GPT TO SAY THIS IN OTHER WORDS
 
         st.write("-------")
         
@@ -1238,16 +1346,7 @@ The summation or multiplication of variables revolves around their independence 
 
         with st.expander("Logic"):
                st.markdown("""
-The several steps at the Omni EVM level include block proposal preparation, payload generation, and consensus-reaching at the Consensus Layer. Upon reaching consensus, the block is finalized and state transitions are applied to the blockchain.
-To attest to the EVM's security and versatility, it employs an Anti-Sybil mechanism and EVM equivalence for developer accessibility and compatibility.
-                           
-- **Seamless Migration**: Developers can effortlessly migrate existing DApps to the Omni EVM without need for changes, enabling easy access to Omni's ecosystem;
-- **Developer Tooling Compatibility**: The Omni EVM maintains full compatibility with Ethereum's development tools, ensuring that existing Ethereum developer tooling works without issues;
-- **Future-Proof**: By adhering to Ethereum's standards and upgrade paths, the Omni EVM ensures that it remains up-to-date, allowing developers to utilize the latest features as they become available.
 
-We do suggest considering an encrypted mempool for increased privacy and security in transactions processing. Consideration for the different Execution Clients' reputations, nodes' level of centralization, and performance accuracy rates can be added on a later version.                         
-                        
-The summation or multiplication of variables revolves around their independence or dependence toward one another, pragmatically speaking.
                             """)
 
 
@@ -1259,11 +1358,14 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.disperser_operator = disperser_operator
             st.session_state.disperser_operator_score = disperser_operator_risk.get(disperser_operator, 0)
 
+        if st.session_state.fhe_disperser != fhe_disperser:
+            st.session_state.fhe_disperser = fhe_disperser
+            st.session_state.fhe_disperser_score = fhe_disperser_risk.get(fhe_disperser, 0)
 
-        result7 = (st.session_state.disperser_performance_acc_rate_var * st.session_state.disperser_centralization_score * 
-                   st.session_state.disperser_operator_score * disperser_likelihood2 * disperser_impact2)
-        
-
+            
+        result7 = ((st.session_state.disperser_performance_acc_rate_var * st.session_state.disperser_centralization_score * st.session_state.disperser_operator_score *
+                   st.session_state.fhe_disperser_score) * disperser_likelihood2 * disperser_impact2)
+    
         result7_formatted = format_result(float(result7))
 
 
@@ -1272,10 +1374,13 @@ The summation or multiplication of variables revolves around their independence 
                 <div>
                     <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.disperser_performance_acc_rate_var}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.disperser_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fhe_disperser_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.disperser_operator_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.disperser_centralization_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{disperser_likelihood_formatted}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
@@ -1343,30 +1448,49 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("  \n")
 
+        col92, col93 = st.columns(2)
+        with col92:
+            bls_alt = st.checkbox('**BLS-Like Alternative** for Cost-Effective Operator Signature Dispatching to the Disperser', 
+                                     value=True, help="**BLS aggregate signatures are expensive and therefore poses a limitation on the operator set.**")
 
-        bls_alt = st.checkbox('**BLS-Like Alternative** for Operator Signature Batching at Scale', 
-                                     value=True, help="**The Ethereum Engine API pairs an existing Ethereum Execution Client with Halo Consensus Client that implements CometBFT consensus.**")
+        with col93:
+            proof_custody = st.checkbox('**Proof of Custody**', value = True,
+                                        help="**A key mode of operator failure in EigenDA is that nodes sign off on data items without actually storing them for the required period of time. To solve this problem EigenDA uses a mechanism called proof-of-custody, which was originally proposed by Justin Drake and Dankrad Feist of the Ethereum Foundation. With proof-of-custody each operator must routinely compute and commit to the value of a function which can only be computed if they have stored all the blob chunks allocated to them over a designated storage period. If they attest to blobs without computing this function, the ETH held by the node can be slashed by anyone who has access to their data item.**")
 
+        col96,col97 = st.columns(2)
+        with col96:
+            rollup_fast_proof = st.checkbox('**Fast-Proof Certification**', value=False, 
+                                            help="**Methodology to enable EigenDA nodes to verify and underwrite proofs at very low latency.**")
+        with col97:
+            direct_unicast = st.checkbox('**Operator Direct Blob Unicast vs P2P**', value = True,
+                                     help="**Existing DA solutions use a peer-to-peer (P2P) network for transmitting blobs, in which operators receive blobs from their peers, then re-broadcast the same blob to others. This significantly constrains the achievable DA rate. In EigenDA, a Disperser sends blobs directly to EigenDA’s operators. By relying on unicast (direct communication) for dispersing data, EigenDA can confirm DA at native network latency rather than via an expensive gossip protocol. This eliminates the significant gossiping penalties that come with P2P, and results in faster data commitment times.**")
 
-        proof_custody = st.checkbox('**Proof of Custody**', value = True,
-                                    help="**rrr**")
-
-        direct_unicast = st.checkbox('**Operator Direct Blob Unicast vs P2P**', value = True,
-                                     help="**rrd**")
-
-
-        col42,col43 = st.columns(2, gap="medium")
-        with col42:
-            tee_mec = st.checkbox('**TEE** Implementation for Secure Management of Validator Keys', value=False,
-                                  help="**TEEs consist of secure portions of hardware that generate and securely store validator keys and databases of previously signed data. By design, they enhance security without comprimising scalability, and through increased trust, encourage stake delegation.**")
-        with col43:
+        col94, col95 = st.columns(2)
+        with col94:
             dvt_mec = st.checkbox('**DVT** Implementation to Reduce Risks of Single Points of Failure from a Subset of Validators', value=False,
                                   help="**DVT is a technology that incentivizes client diversity through the distribution of the validation process across multiple operators. It reduces the risk of single points of failure or malicious actions.**")
+
+        with col95:
+            tee_mec = st.checkbox('**TEE** Implementation for Secure Management of Validator Keys', value=False,
+                                  help="**TEEs consist of secure portions of hardware that generate and securely store validator keys and databases of previously signed data. By design, they enhance security without comprimising scalability, and through increased trust, encourage stake delegation.**")
+        # ASK GPT TO SAY THIS IN OTHER WORDS
 
 
         if st.session_state.bls_alt != bls_alt:
             st.session_state.bls_alt = bls_alt
             st.session_state.bls_alt_score = bls_alt_risk.get(bls_alt, 0)
+
+        if st.session_state.proof_custody != proof_custody:
+            st.session_state.proof_custody = proof_custody
+            st.session_state.proof_custody_score = proof_custody_risk.get(proof_custody, 0)
+
+        if st.session_state.rollup_fast_proof != rollup_fast_proof:
+            st.session_state.rollup_fast_proof = rollup_fast_proof
+            st.session_state.rollup_fast_proof_score = rollup_fast_proof_risk.get(rollup_fast_proof, 0)
+
+        if st.session_state.direct_unicast != direct_unicast:
+            st.session_state.direct_unicast = direct_unicast
+            st.session_state.direct_unicast_score = direct_unicast_risk.get(direct_unicast, 0)
 
         if st.session_state.tee_mec != tee_mec:
             st.session_state.tee_mec = tee_mec
@@ -1376,8 +1500,10 @@ The summation or multiplication of variables revolves around their independence 
             st.session_state.dvt_mec = dvt_mec
             st.session_state.dvt_mec_score = dvt_mec_risk.get(dvt_mec, 0)
 
-        result4 = (st.session_state.bls_alt_score +
-                        st.session_state.tee_mec_score + st.session_state.dvt_mec_score)
+
+
+        result8 = (st.session_state.bls_alt_score + st.session_state.proof_custody_score + st.session_state.rollup_fast_proof_score +
+                        st.session_state.direct_unicast_score + st.session_state.tee_mec_score + st.session_state.dvt_mec_score)
 
         st.write("  \n")
 
@@ -1385,12 +1511,18 @@ The summation or multiplication of variables revolves around their independence 
             <div style="text-align: center;">
                 <div>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.bls_alt_score}</span> 
-                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
-                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.proof_custody_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.rollup_fast_proof_score}</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.direct_unicast_score}</span>
                     <span style="font-size: 22px; font-weight: bold;">&plus;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.dvt_mec_score}</span>
+                    <span style="font-size: 22px; font-weight: bold;">&plus;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #FF9999; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.tee_mec_score}</span>
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result4):,}</span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{int(result8):,}</span>
             </div>"""
 
         st.markdown(bft_calc1, unsafe_allow_html=True)
@@ -1401,24 +1533,26 @@ The summation or multiplication of variables revolves around their independence 
 
         st.write("-------")
 
-        validator_performance_acc_rate = st.slider("**Validator Performance Accuracy Rate in sending signatures back to Disperser**", min_value=0, max_value=100, value=50, format='%d%%',
+        validator_performance_acc_rate = st.slider("**Validators' Data Storage & Signatures Dispatching Back to Disperser Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
                                                    help="**The EigenDA nodes verify the chunks they receive against the KZG commitment using the multireveal proofs, persist the data, then generate and return a signature back to the Disperser for aggregation.**")
         validator_performance_acc_rate_var = validator_performance_acc_rate_calc(validator_performance_acc_rate)
         st.session_state.validator_performance_acc_rate_var = validator_performance_acc_rate_var
 
 
-        perc_light_nodes = st.slider("**% of Light Client Nodes**", min_value=0, max_value=100, value=50, format='%d%%',
+        perc_light_nodes = st.slider("**% of Light Nodes**", min_value=0, max_value=100, value=20, format='%d%%',
                                                    help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
         perc_light_nodes_var = perc_light_nodes_calc(perc_light_nodes)
         st.session_state.perc_light_nodes_var = perc_light_nodes_var
 
-
+        fhe_operator = st.selectbox("**Homomorphic Encryption of Data**", ["None", "Partial", "Full"], index=0, key="265816",
+                                                    help="**FHE allows performing operations upon data without ever needing to access the original, unencrypted data, enhancing security and privacy. Although still being an inefficient and highly theoretical concept, it is promising in a DA context. The values assigned to it in this Simulation reflect this uncertainty.**")
+        
         col100, col101 = st.columns(2, gap="medium")
         with col100:
-            validator_reputation = st.selectbox("**CometBFT Validators' Reputation**", ["Unknown", "Established", "Renowned"], key="0977790", index=1,
-                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating CometBFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
+            validator_reputation = st.selectbox("**BFT Validators' Reputation**", ["Unknown", "Established", "Renowned"], key="0977790", index=1,
+                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating BFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
         with col101:           
-            validator_centralization = st.selectbox("**CometBFT Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="30'232", index=1,
+            validator_centralization = st.selectbox("**BFT Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="30'232", index=1,
                                                     help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
         
         st.write("-------")
@@ -1444,11 +1578,10 @@ The summation or multiplication of variables revolves around their independence 
 
 
         with st.expander("Logic"):
-                st.image("images/omni-comet-diagram.jpg", width=750)
-
                 st.markdown("""
-Operational cost. Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
+Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
                             """)
+        # ASK GPT TO SAY THIS IN OTHER WORDS, ALL ABOVES
 
 
         if st.session_state.validator_reputation != validator_reputation:
@@ -1458,12 +1591,16 @@ Operational cost. Instead of requiring each node to download and store all data,
         if st.session_state.validator_centralization != validator_centralization:
             st.session_state.validator_centralization = validator_centralization
             st.session_state.validator_centralization_score = validator_centralization_risk.get(validator_centralization, 0)
-    
 
-        result5 = ((st.session_state.validator_performance_acc_rate_var * st.session_state.perc_light_nodes_var * st.session_state.validator_reputation_score *
+        if st.session_state.fhe_operator != fhe_operator:
+            st.session_state.fhe_operator = fhe_operator
+            st.session_state.fhe_operator_score = fhe_operator_risk.get(fhe_operator, 0)
+
+
+        result9 = ((st.session_state.validator_performance_acc_rate_var * st.session_state.perc_light_nodes_var * st.session_state.fhe_operator_score * st.session_state.validator_reputation_score *
                    st.session_state.validator_centralization_score) * bft_metrics_likelihood2 * bft_metrics_impact2)
         
-        result5_formatted = format_result(float(result5))
+        result9_formatted = format_result(float(result9))
 
         
         bft_calc2 = f"""
@@ -1474,6 +1611,8 @@ Operational cost. Instead of requiring each node to download and store all data,
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.perc_light_nodes_var}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
+                    <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.fhe_operator_score}</span> 
+                    <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_reputation_score}</span> 
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #87CEEB; border-radius: 10px; padding: 5px; margin: 2px;">{st.session_state.validator_centralization_score}</span> 
@@ -1483,7 +1622,7 @@ Operational cost. Instead of requiring each node to download and store all data,
                     <span style="font-size: 22px; font-weight: bold;">&times;</span>
                     <span style="font-size: 20px; font-weight: bold; background-color: #E0E0E0; border-radius: 10px; padding: 5px; margin: 2px;">{bft_impact_formatted}</span>         
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result5_formatted}</span>
+                    <span style="font-size: 20px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{result9_formatted}</span>
                 </div>
             </div>"""
 
@@ -1512,10 +1651,12 @@ Operational cost. Instead of requiring each node to download and store all data,
     # Placing the image in the middle column effectively centers it
     with col2:
         st.image("images/eigenda-diagram.jpeg", width=1100)
-    
+        st.write("  \n")
+
+
     st.markdown("""
         <div style="text-align: center">
-            Image from <a href="https://docs.omni.network/protocol/evmengine/dual" target="_blank">Omni Docs</a>
+            Image from <a href="https://docs.eigenlayer.xyz/eigenda/overview" target="_blank">EigenDA Docs</a>
         </div>
         """, unsafe_allow_html=True)
 
@@ -1548,7 +1689,8 @@ Operational cost. Instead of requiring each node to download and store all data,
                             operator_reputation, operator_centralization, operator_entrenchment_level,
                             tee_mec, dvt_mec, validator_reputation, validator_centralization, bls_alt, rollup_fast_proof,
                             disperser_centralization, kzg_erasure_coding, 
-                            kzg_multi_proofs, rollup_backup_disperser, disperser_operator)
+                            kzg_multi_proofs, disperser_operator,
+                            proof_custody, direct_unicast, kzg_poly_comm, rollup_censorship_res, fhe_disperser, fhe_operator, dual_quorum)
 
     (st.session_state.security_audits_score, st.session_state.business_model_score,
     st.session_state.code_complexity_score, 
@@ -1556,123 +1698,89 @@ Operational cost. Instead of requiring each node to download and store all data,
     st.session_state.operator_entrenchment_level_score, st.session_state.tee_mec_score, st.session_state.dvt_mec,
     st.session_state.validator_reputation_score, st.session_state.validator_centralization_score,
     st.session_state.bls_alt_score, st.session_state.rollup_fast_proof_score, st.session_state.disperser_centralization_score,
-    st.session_state.kzg_erasure_coding_score, st.session_state.kzg_multi_proofs_score, st.session_state.rollup_backup_disperser_score,
-    st.session_state.disperser_operator_score) = risk_score
-
-
-
-    col56,col57 = st.columns(2, gap="large")
-    with col56:
-
-        col111, col121, col131 = st.columns([3,4,1])
-
-        with col111:
-            st.write("")
-
-        with col121:
-            st.image("images/omni-matrix.jpg", width=600)
-
-        with col131:
-            st.write("")
-
-    with col57:
-
-        col111, col121, col131 = st.columns([1,4,3])
-
-        with col111:
-            st.write("")
-
-        with col121:
-            st.write("")
-
-            st.markdown("""
-                    <style>
-                    ul.big-font {
-                        font-size: 35px; /* Adjust font size for bullet points */
-                    }
-                    ul.big-font li {
-                        font-size: 20px; /* Adjust font size for bullet points */
-                        font-weight: normal; /* Reset font weight for bullet points */
-                    }
-                    </style>
-                    <div class="big-font">
-                    Most Pressing Risk Attack Vectors Toward EigenDA:
-                    <ul class="big-font">
-                        <li><strong>Cross-Message Tampering or Stalling</strong></li>
-                        <li><strong>Cross-Chain MEV Extraction Risk</strong></li>
-                        <li><strong>Cross-Chain Double-Spend Attack Risk</strong></li>
-                        <li><strong>Double-Signing Attack Risk</strong></li>
-                        <li><strong>State Liveness Degradation Risk</strong></li>
-                        <li><strong>Validator Collusion Risk</strong></li>
-                    </ul>
-                    </div>
-                    """, unsafe_allow_html=True)
-
-        with col131:
-            st.write("")
+    st.session_state.kzg_erasure_coding_score, st.session_state.kzg_multi_proofs_score,
+    st.session_state.disperser_operator_score, st.session_state.proof_custody_score, st.session_state.direct_unicast_score, 
+    st.session_state.kzg_poly_comm_score, st.session_state.rollup_censorship_res_score,
+    st.session_state.fhe_disperser_score, st.session_state.fhe_operator_score, st.session_state.dual_quorum) = risk_score
 
 
 
 
 
 
-
-
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-
-
-
-
-    def normalize_score(original_score, min_original=15.25, max_original=100450):
+    def normalize_score(original_score, min_original=16, max_original=12499539195000000):
             normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
             return normalized_score
 
-    final_result = result1 + result2 + result3 + result4 + result5 + result6 + result7 + result8 + result9
+    xeth_percentage_dec = xeth_percentage * 0.01
+    avs_token_percentage_dec = avs_token_percentage * 0.01
+
+    final_result = (xeth_percentage_dec * (1/3*(result1) * 1/3*(result2) * 1/3*(result3))) + (avs_token_percentage_dec * (0.2*(result4 * result5) * 0.4*(result6 * result7) * 0.4*(result8 * result9)))
     normalized_risk_score = normalize_score(final_result)
 
     st.session_state.risk_score = normalized_risk_score
 
+# 12499539195000000
+# 126796743360
+
+# ASK GPT: HOW TO REPRESENT RISK SCORE WHEN DOING SUCH MULTIPLICATIONS, INSTEAD OF SUM? THE SCORE COMES OUT MESSED UP
+# I KNOW RISK SCORE NORMALIZATION IS NORMALLY DONE BY ADDITION? BUT THAT'S IN THE CASE OF INDEPENDENT VARIABLES, CORRECT? WHAT IF I HAVE DEPENDENT VARIABLES, THAT WOULD THEREFORE NEED MULTIPLICATION TO MAKE SENSE?
+# ALSO DO THE GLOBAL WEIGHTING FOR DUAL STAKING IN ANOTHER WAY? BUT IT DOES MAKE SENSE NOW
+
+#585913703765625012224
+#3962173320000
+
+   # with st.expander("Logic"):
+    #
+     #           st.markdown("""
+      #      Operational cost. Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
+       #                     """)
+
+
     st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>EigenDA</i> Risk Score</div>", unsafe_allow_html=True)
     final_result_html = f"""
                 <div style="text-align: center;">
+                    <span style="font-size: 27px; font-weight: bold;">(</span>
+                    <span style="font-size: 25px; font-weight: bold; background-color: yellow; padding: 5px; margin: 2px;">{xeth_percentage_dec}</span> 
+                    <span style="font-size: 22px; font-weight: bold;"> x </span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1_formatted}</span> 
-                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;"> x </span>
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2_formatted}</span>
-                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;"> x </span>
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result3_formatted}</span>
+                    <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 27px; font-weight: bold;">)</span>
                     <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 27px; font-weight: bold;">(</span>
+                    <span style="font-size: 25px; font-weight: bold; background-color: yellow; padding: 5px; margin: 2px;">{avs_token_percentage_dec}</span>
+                    <span style="font-size: 22px; font-weight: bold;"> x </span>
+                    <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result4):,}</span>
-                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;"> x </span>
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5_formatted}</span>
                     <span style="font-size: 22px; font-weight: bold;">)</span>
-                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;"> x </span>
                     <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result6):,}</span>
-                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;"> x </span>
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result7_formatted}</span>
                     <span style="font-size: 22px; font-weight: bold;">)</span>
-                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;"> x </span>
                     <span style="font-size: 22px; font-weight: bold;">(</span>
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{int(result8):,}</span>
-                    <span style="font-size: 22px; font-weight: bold;"> + </span>
+                    <span style="font-size: 22px; font-weight: bold;"> x </span>
                     <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9_formatted}</span>
                     <span style="font-size: 22px; font-weight: bold;">)</span>
+                    <span style="font-size: 27px; font-weight: bold;">)</span>
                     <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 24px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result:,.2f}</span>
+                    <span style="font-size: 25px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result:,.2f}</span>
                 </div>
             """
 
-
     st.markdown(final_result_html, unsafe_allow_html=True)
+
 
     if st.session_state.risk_score >= 75:
             color = "#d32f2f"  # Red color for high risk
@@ -1728,18 +1836,163 @@ Operational cost. Instead of requiring each node to download and store all data,
 
 
 
-    st.write("**ALGORITHMIC GAME-THEORY**")
-    st.write("**HOW TO VISUALIZE GAME-THEORY**")
-    st.write("**HOW TO COLOURIZE SLASHING CONDITIOS PER FAULT**")
-    st.write("**HOW TO VISUALIZE OPERATOR ENTRENCHMENT**")
-    st.write("**SEND OPERATOR NETWORK GRAPH TO GEORGE**")
+
+
+
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
 
 
 
 
+    st.subheader("**SLASHING RISK**")
 
 
 
+    st.write("")
+    st.write("")
+
+
+
+    col56,col57 = st.columns(2, gap="large")
+    with col56:
+
+        col111, col121, col131 = st.columns([3,4,1])
+
+        with col111:
+            st.write("")
+
+        with col121:
+            st.image("images/eigenda-matrix.jpg", width=600)
+            st.write("")
+
+        with col131:
+            st.write("")
+
+    with col57:
+
+        col111, col121, col131, col132 = st.columns([1,5,3,3])
+
+        with col111:
+            st.write("")
+
+        with col121:
+            st.write("")
+
+            st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Risk Attack Vectors Toward EigenDA</div>", unsafe_allow_html=True)
+            st.write("")
+
+
+            # Define HTML content with embedded CSS for styling for the first group
+            bullet_points_html = """
+            <style>
+            .big-font-yellow {
+                font-size: 35px; /* Adjust font size for headings */
+                color: black; /* Ensure text is clearly visible */
+            }
+            .big-font-yellow li {
+                font-size: 20px; /* Adjust font size for bullet points */
+                background-color: yellow; /* Apply yellow background to bullet points */
+                padding: 5px 10px; /* Padding around text within bullet points */
+                margin: 5px 0; /* Space between bullet points */
+                border-radius: 5px; /* Optional: rounded corners for each bullet point */
+                display: inline-block; /* Ensure the background covers only the text width */
+            }
+            </style>
+            <div class="big-font-yellow">
+                <span style="font-size: 0.5em;">Objectively-Attributable Faults:</span>
+            </div>
+            <ul class="big-font-yellow" style="font-size: 0.7em;">
+                <li><strong>Data Attestation Corruption Risk</strong></li>
+                <li><strong>Data Attestation Double-Signing Risk</strong></li>
+            </ul>
+            </div>
+            """
+            st.markdown(bullet_points_html, unsafe_allow_html=True)
+
+            # Second group
+            bullet_points_html1 = """
+            <style>
+            .big-font-orange {
+                font-size: 35px;
+            }
+            .big-font-orange li {
+                font-size: 20px;
+                background-color: orange;
+                padding: 5px 10px;
+                margin: 5px 0;
+                border-radius: 5px;
+                display: inline-block;
+            }
+            </style>
+            <div class="big-font-orange">
+                <span style="font-size: 0.5em;">Intersubjectively-Attributable Faults:</span>
+            </div>
+            <ul class="big-font-orange" style="font-size: 0.7em;">
+                <li><strong>Data Relaying Censorship Risk</strong></li>
+                <li><strong>Data Relaying Stalling Risk</strong></li>
+            </ul>
+            </div>
+            """
+            st.markdown(bullet_points_html1, unsafe_allow_html=True)
+
+            # Third group
+            bullet_points_html2 = """
+            <style>
+            .big-font-red {
+                font-size: 35px;
+            }
+            .big-font-red li {
+                font-size: 20px;
+                background-color: red;
+                padding: 5px 10px;
+                margin: 5px 0;
+                border-radius: 5px;
+                display: inline-block;
+            }
+            </style>
+            <div class="big-font-red">
+                <span style="font-size: 0.5em;">Non-Attributable Faults:</span>
+            </div>
+            <ul class="big-font-red" style="font-size: 0.7em;">
+                <li><strong>Validator Collusion Risk</strong></li>
+            </ul>
+            </div>
+            """
+            st.markdown(bullet_points_html2, unsafe_allow_html=True)
+
+
+
+        with col131:
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+
+            #curly brackets
+
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+
+            #curly brackets
+
+
+
+        with col132:
+            st.write("**Liveness Violation**")
+
+            st.write("**Safety Violation**")
 
 
 
@@ -1773,6 +2026,7 @@ Operational cost. Instead of requiring each node to download and store all data,
 
     with col12:
         st.image("images/tokensight.png", width=250)
+        st.write("")
 
     with col13:
         st.write("")
