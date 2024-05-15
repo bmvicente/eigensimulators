@@ -1986,6 +1986,16 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
         with col132:
+            
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+            st.write("")
+
             st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Liveness Violation</div>", unsafe_allow_html=True)
 
             st.write("")
@@ -1996,7 +2006,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
             st.write("")
             st.write("")
-            
+
             st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Safety Violation</div>", unsafe_allow_html=True)
 
 
