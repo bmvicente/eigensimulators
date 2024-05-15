@@ -2011,7 +2011,8 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
             st.write("")
             st.write("")
-            
+            st.write("")
+
             st.markdown(f"<div style='font-size: 21px; font-weight: bold;'>Safety Violation</div>", unsafe_allow_html=True)
 
 
