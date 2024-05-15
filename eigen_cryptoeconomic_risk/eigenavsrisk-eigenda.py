@@ -1878,7 +1878,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     with col57:
 
-        col111, col121, col131, col132 = st.columns([3,7,3,3])
+        col111, col121, col131, col132 = st.columns([1,7,3,3])
 
         with col111:
             st.write("")
