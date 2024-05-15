@@ -2059,7 +2059,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     st.write("")
 
-    st.write("**How to Interpret**: *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
+    st.write("**How to Interpret**: Understanding these game-theoretic dynamics is important to prevent network congestion. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
 
     st.write("")
     st.write("")
