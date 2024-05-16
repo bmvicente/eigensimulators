@@ -1791,13 +1791,13 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
     # Define min and max values for the final normalization based on the possible range of the final result
-    min_final = 0  # Example value, adjust based on expected range
-    max_final = 193678547478 
+    #min_final = 0  # Example value, adjust based on expected range
+    #max_final = 193678547478 
 
     # Normalize the final result
-    normalized_risk_score = normalize_score(final_result, min_final, max_final)
+    #normalized_risk_score = normalize_score(final_result, min_final, max_final)
 
-    st.session_state.risk_score = normalized_risk_score
+    st.session_state.risk_score = final_result
 
     st.write(f"Normalized Result 1: {result1_norm}")
     st.write(f"Normalized Result 2: {result2_norm}")
@@ -1811,7 +1811,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     # Display the final result and normalized risk score
     st.write(f"Final Result: {final_result}")
-    st.write(f"Normalized Risk Score: {normalized_risk_score}")
 
     # Display the formula
     st.latex(r'''
