@@ -1774,7 +1774,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         avs_token_percentage_dec * (0.2*(result4_norm * result5_norm) * 0.4*(result6_norm * result7_norm) * 0.4*(result8_norm * result9_norm))
     )
 
-    print(final_result)
 
     # Define min and max values for the final normalization based on the possible range of the final result
     min_final = 0  # Example value, adjust based on expected range
@@ -1785,6 +1784,15 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     st.session_state.risk_score = normalized_risk_score
 
+
+    # Display the final result and normalized risk score
+    st.write(f"Final Result: {final_result}")
+    st.write(f"Normalized Risk Score: {normalized_risk_score}")
+
+    # Display the formula
+    st.latex(r'''
+    \text{Normalized Final Score} = \frac{ \left( w_1 \sum_{i=1}^{n} \frac{x_i - \min(x)}{\max(x) - \min(x)} + w_2 \sum_{i=1}^{n} \frac{y_i - \min(y)}{\max(y) - \min(y)} \right) - \min(F) }{\max(F) - \min(F)} \times 100
+    ''')
 
 # 12499539195000000
 # 126796743360
