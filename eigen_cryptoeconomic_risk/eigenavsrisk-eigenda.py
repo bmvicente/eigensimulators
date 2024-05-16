@@ -1769,14 +1769,28 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     result8_norm = normalize_score(result8, min_y, max_y)
     result9_norm = normalize_score(result9, min_y, max_y)
 
-    final_result = (
-        xeth_percentage_dec * (result1_norm + result2_norm + result3_norm) +
-        avs_token_percentage_dec * (result4_norm + result5_norm + result6_norm + result7_norm + result8_norm + result9_norm)
-    )
+    #final_result = (
+    #    xeth_percentage_dec * (result1_norm + result2_norm + result3_norm) +
+    #    avs_token_percentage_dec * (result4_norm + result5_norm + result6_norm + result7_norm + result8_norm + result9_norm)
+    #)
 
     # Assign the final result directly
-    st.session_state.risk_score = final_result
+    #st.session_state.risk_score = final_result
 
+
+    final_result = (
+        xeth_percentage_dec * (1/3 * result1_norm + 1/3 * result2_norm + 1/3 * result3_norm) +
+        avs_token_percentage_dec * (0.2 * result4_norm + 0.2 * result5_norm + 0.4 * result6_norm + 0.1 * result7_norm + 0.05 * result8_norm + 0.05 * result9_norm)
+    )
+
+    # Define min and max values for the final normalization based on the possible range of the final result
+    min_final = 0  # Example value, adjust based on expected range
+    max_final = 100  # Example value, adjust based on expected range
+
+    # Normalize the final result
+    normalized_risk_score = normalize_score(final_result, min_final, max_final)
+
+    st.session_state.risk_score = normalized_risk_score
 
 
 # 12499539195000000
