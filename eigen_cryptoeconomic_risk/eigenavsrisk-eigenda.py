@@ -1797,7 +1797,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Normalize the final result
     normalized_risk_score = normalize_score(final_result, min_final, max_final)
 
-    st.session_state.risk_score = final_result
+    st.session_state.risk_score = normalized_risk_score
 
     st.write(f"Normalized Result 1: {result1_norm}")
     st.write(f"Normalized Result 2: {result2_norm}")
