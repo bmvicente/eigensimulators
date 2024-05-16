@@ -1805,7 +1805,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
     # Display the final result and normalized risk score
-    st.write(f"Final Result: {normalized_risk_score}")
+    st.write(f"Final Result: {final_result}")
 
     # Display the formula
     st.latex(r'''
