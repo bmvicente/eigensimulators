@@ -1725,17 +1725,54 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-    def normalize_score(original_score, min_original=16, max_original=12499539195000000):
-            normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
-            return normalized_score
+#    def normalize_score(original_score, min_original=16, max_original=12499539195000000):
+#            normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
+#            return normalized_score
 
+#    xeth_percentage_dec = xeth_percentage * 0.01
+#    avs_token_percentage_dec = avs_token_percentage * 0.01
+
+#    final_result = (xeth_percentage_dec * (1/3*(result1) * 1/3*(result2) * 1/3*(result3))) + (avs_token_percentage_dec * (0.2*(result4 * result5) * 0.4*(result6 * result7) * 0.4*(result8 * result9)))
+#    normalized_risk_score = normalize_score(final_result)
+
+#    st.session_state.risk_score = normalized_risk_score
+
+
+############################################################################################################
+############################################################################################################
+############################################################################################################
+
+
+    def normalize_score(original_score, min_original=16, max_original=12499539195000000):
+        normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
+        return normalized_score
+
+    # Assuming xeth_percentage and avs_token_percentage are provided
     xeth_percentage_dec = xeth_percentage * 0.01
     avs_token_percentage_dec = avs_token_percentage * 0.01
 
-    final_result = (xeth_percentage_dec * (1/3*(result1) * 1/3*(result2) * 1/3*(result3))) + (avs_token_percentage_dec * (0.2*(result4 * result5) * 0.4*(result6 * result7) * 0.4*(result8 * result9)))
+    # Normalize intermediate results
+    result1_norm = normalize_score(result1)
+    result2_norm = normalize_score(result2)
+    result3_norm = normalize_score(result3)
+    result4_norm = normalize_score(result4)
+    result5_norm = normalize_score(result5)
+    result6_norm = normalize_score(result6)
+    result7_norm = normalize_score(result7)
+    result8_norm = normalize_score(result8)
+    result9_norm = normalize_score(result9)
+
+    # Adjust the final calculation by using the normalized intermediate results
+    final_result = (
+        xeth_percentage_dec * (1/3 * result1_norm * 1/3 * result2_norm * 1/3 * result3_norm) +
+        avs_token_percentage_dec * (0.2 * result4_norm * result5_norm * 0.4 * result6_norm * result7_norm * 0.4 * result8_norm * result9_norm)
+    )
+
+    # Normalize the final result
     normalized_risk_score = normalize_score(final_result)
 
     st.session_state.risk_score = normalized_risk_score
+
 
 # 12499539195000000
 # 126796743360
