@@ -1784,6 +1784,15 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     st.session_state.risk_score = normalized_risk_score
 
+    st.write(f"Normalized Result 1: {result1_norm}")
+    st.write(f"Normalized Result 2: {result2_norm}")
+    st.write(f"Normalized Result 3: {result3_norm}")
+    st.write(f"Normalized Result 4: {result4_norm}")
+    st.write(f"Normalized Result 5: {result5_norm}")
+    st.write(f"Normalized Result 6: {result6_norm}")
+    st.write(f"Normalized Result 7: {result7_norm}")
+    st.write(f"Normalized Result 8: {result8_norm}")
+    st.write(f"Normalized Result 9: {result9_norm}")
 
     # Display the final result and normalized risk score
     st.write(f"Final Result: {final_result}")
@@ -1793,6 +1802,8 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     st.latex(r'''
     \text{Normalized Final Score} = \frac{ \left( w_1 \sum_{i=1}^{n} \frac{x_i - \min(x)}{\max(x) - \min(x)} + w_2 \sum_{i=1}^{n} \frac{y_i - \min(y)}{\max(y) - \min(y)} \right) - \min(F) }{\max(F) - \min(F)} \times 100
     ''')
+
+
 
 # 12499539195000000
 # 126796743360
@@ -1811,7 +1822,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
        #                     """)
 
 
-    st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>EigenDA</i> Risk Score</div>", unsafe_allow_html=True)
 
 
     if st.session_state.risk_score >= 75:
