@@ -1791,11 +1791,11 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
     # Define min and max values for the final normalization based on the possible range of the final result
-    #min_final = 0  # Example value, adjust based on expected range
-    #max_final = 193678547478 
+    min_final = 0  # Example value, adjust based on expected range
+    max_final = 25913585756 
 
     # Normalize the final result
-    #normalized_risk_score = normalize_score(final_result, min_final, max_final)
+    normalized_risk_score = normalize_score(final_result, min_final, max_final)
 
     st.session_state.risk_score = final_result
 
