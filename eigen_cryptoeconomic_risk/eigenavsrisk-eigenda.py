@@ -1780,7 +1780,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     final_result = (
         xeth_percentage_dec * (1/3 * result1_norm + 1/3 * result2_norm + 1/3 * result3_norm) +
-        avs_token_percentage_dec * (0.2 * result4_norm + 0.2 * result5_norm + 0.4 * result6_norm + 0.1 * result7_norm + 0.05 * result8_norm + 0.05 * result9_norm)
+        avs_token_percentage_dec * (0.2*(result4 * result5) * 0.4*(result6 * result7) * 0.4*(result8 * result9))
     )
 
     # Define min and max values for the final normalization based on the possible range of the final result
@@ -1811,48 +1811,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
     st.markdown(f"<div style='text-align: center; font-size: 21px; font-weight: bold;'>Non-Normalized <i>EigenDA</i> Risk Score</div>", unsafe_allow_html=True)
-    final_result_html = f"""
-                <div style="text-align: center;">
-                    <span style="font-size: 27px; font-weight: bold;">(</span>
-                    <span style="font-size: 25px; font-weight: bold; background-color: yellow; padding: 5px; margin: 2px;">{xeth_percentage_dec}</span> 
-                    <span style="font-size: 22px; font-weight: bold;"> x </span>
-                    <span style="font-size: 22px; font-weight: bold;">(</span>
-                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result1_norm}</span> 
-                    <span style="font-size: 22px; font-weight: bold;"> x </span>
-                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result2_norm}</span>
-                    <span style="font-size: 22px; font-weight: bold;"> x </span>
-                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result3_norm}</span>
-                    <span style="font-size: 22px; font-weight: bold;">)</span>
-                    <span style="font-size: 27px; font-weight: bold;">)</span>
-                    <span style="font-size: 22px; font-weight: bold;"> + </span>
-                    <span style="font-size: 27px; font-weight: bold;">(</span>
-                    <span style="font-size: 25px; font-weight: bold; background-color: yellow; padding: 5px; margin: 2px;">{avs_token_percentage_dec}</span>
-                    <span style="font-size: 22px; font-weight: bold;"> x </span>
-                    <span style="font-size: 22px; font-weight: bold;">(</span>
-                    <span style="font-size: 22px; font-weight: bold;">(</span>
-                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result4_norm}</span>
-                    <span style="font-size: 22px; font-weight: bold;"> x </span>
-                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result5_norm}</span>
-                    <span style="font-size: 22px; font-weight: bold;">)</span>
-                    <span style="font-size: 22px; font-weight: bold;"> x </span>
-                    <span style="font-size: 22px; font-weight: bold;">(</span>
-                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result6_norm}</span>
-                    <span style="font-size: 22px; font-weight: bold;"> x </span>
-                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result7_norm}</span>
-                    <span style="font-size: 22px; font-weight: bold;">)</span>
-                    <span style="font-size: 22px; font-weight: bold;"> x </span>
-                    <span style="font-size: 22px; font-weight: bold;">(</span>
-                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result8_norm}</span>
-                    <span style="font-size: 22px; font-weight: bold;"> x </span>
-                    <span style="font-size: 22px; font-weight: bold; padding: 5px; margin: 2px;">{result9_norm}</span>
-                    <span style="font-size: 22px; font-weight: bold;">)</span>
-                    <span style="font-size: 27px; font-weight: bold;">)</span>
-                    <span style="font-size: 22px; font-weight: bold;"> = </span>
-                    <span style="font-size: 25px; font-weight: bold; border-radius: 10px; padding: 5px; margin: 2px;">{final_result:,.2f}</span>
-                </div>
-            """
-
-    st.markdown(final_result_html, unsafe_allow_html=True)
 
 
     if st.session_state.risk_score >= 75:
