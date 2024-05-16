@@ -1752,26 +1752,25 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     xeth_percentage_dec = xeth_percentage * 0.01
     avs_token_percentage_dec = avs_token_percentage * 0.01
 
-    # Define min and max values based on your specific data
-    min_x1 = min(0.5)
-    max_x1 = max(22500)
-    min_x2 = min(1)
-    max_x2 = max(22500)             
-    min_x3 = min(0.25)
-    max_x3 = max(25000)
+    min_x1 = 0.5
+    max_x1 = 22500
+    min_x2 = 1
+    max_x2 = 22500             
+    min_x3 = 0.25
+    max_x3 = 25000
 
-    min_y4 = min(1)
-    max_y4 = max(10)
-    min_y5 = min(1.5)
-    max_y5 = max(675)
-    min_y6 = min(2)
-    max_v6 = max(9000)
-    min_v7 = min(3)
-    max_v7 = max(126000)
-    min_v8 = min(6)
-    max_v8 = max(60)
-    min_v9 = min(3)
-    max_v9 = max(1417500)
+    min_y4 = 1
+    max_y4 = 10
+    min_y5 = 1.5
+    max_y5 = 675
+    min_y6 = 2
+    max_y6 = 9000
+    min_y7 = 3
+    max_y7 = 126000
+    min_y8 = 6
+    max_y8 = 60
+    min_y9 = 3
+    max_y9 = 1417500
 
 
     result1_norm = normalize_score(result1, min_x1, max_x1)
@@ -1779,10 +1778,10 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     result3_norm = normalize_score(result3, min_x3, max_x3)
     result4_norm = normalize_score(result4, min_y4, max_y4)
     result5_norm = normalize_score(result5, min_y5, max_y5)
-    result6_norm = normalize_score(result6, min_y6, max_v6)
-    result7_norm = normalize_score(result7, min_v7, max_v7)
-    result8_norm = normalize_score(result8, min_v8, max_v8)
-    result9_norm = normalize_score(result9, min_v9, max_v9)
+    result6_norm = normalize_score(result6, min_y6, max_y6)
+    result7_norm = normalize_score(result7, min_y7, max_y7)
+    result8_norm = normalize_score(result8, min_y8, max_y8)
+    result9_norm = normalize_score(result9, min_y9, max_y9)
 
 
     final_result = (
