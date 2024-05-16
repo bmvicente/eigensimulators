@@ -1,6 +1,7 @@
 
 
 import streamlit as st
+import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
@@ -1745,8 +1746,11 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
     def normalize_score(original_score, min_original, max_original):
-        normalized_score = ((original_score - min_original) / (max_original - min_original)) * 5
+        normalized_score = ((original_score - min_original) / (max_original - min_original)) * 10
         return normalized_score
+    
+    def sqrt_transform(score):
+        return np.sqrt(score)
 
     # Assuming xeth_percentage and avs_token_percentage are provided
     xeth_percentage_dec = xeth_percentage * 0.01
@@ -1773,20 +1777,20 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     max_y9 = 1417500
 
 
-    result1_norm = normalize_score(result1, min_x1, max_x1)
-    result2_norm = normalize_score(result2, min_x2, max_x2)
-    result3_norm = normalize_score(result3, min_x3, max_x3)
-    result4_norm = normalize_score(result4, min_y4, max_y4)
-    result5_norm = normalize_score(result5, min_y5, max_y5)
-    result6_norm = normalize_score(result6, min_y6, max_y6)
-    result7_norm = normalize_score(result7, min_y7, max_y7)
-    result8_norm = normalize_score(result8, min_y8, max_y8)
-    result9_norm = normalize_score(result9, min_y9, max_y9)
+    result1_sqrt_norm = normalize_score(sqrt_transform(result1), sqrt_transform(min_x1), sqrt_transform(max_x1))
+    result2_sqrt_norm = normalize_score(sqrt_transform(result2), sqrt_transform(min_x2), sqrt_transform(max_x2))
+    result3_sqrt_norm = normalize_score(sqrt_transform(result3), sqrt_transform(min_x3), sqrt_transform(max_x3))
+    result4_sqrt_norm = normalize_score(sqrt_transform(result4), sqrt_transform(min_y4), sqrt_transform(max_y4))
+    result5_sqrt_norm = normalize_score(sqrt_transform(result5), sqrt_transform(min_y5), sqrt_transform(max_y5))
+    result6_sqrt_norm = normalize_score(sqrt_transform(result6), sqrt_transform(min_y6), sqrt_transform(max_y6))
+    result7_sqrt_norm = normalize_score(sqrt_transform(result7), sqrt_transform(min_y7), sqrt_transform(max_y7))
+    result8_sqrt_norm = normalize_score(sqrt_transform(result8), sqrt_transform(min_y8), sqrt_transform(max_y8))
+    result9_sqrt_norm = normalize_score(sqrt_transform(result9), sqrt_transform(min_y9), sqrt_transform(max_y9))
 
 
     final_result = (
-        xeth_percentage_dec * (1/3 * result1_norm + 1/3 * result2_norm + 1/3 * result3_norm) +
-        avs_token_percentage_dec * (0.2*(result4_norm * result5_norm) * 0.4*(result6_norm * result7_norm) * 0.4*(result8_norm * result9_norm))
+        xeth_percentage_dec * (1/3 * result1_sqrt_norm + 1/3 * result2_sqrt_norm + 1/3 * result3_sqrt_norm) +
+        avs_token_percentage_dec * (0.2 * (result4_sqrt_norm * result5_sqrt_norm) * 0.4 * (result6_sqrt_norm * result7_sqrt_norm) * 0.4 * (result8_sqrt_norm * result9_sqrt_norm))
     )
 
 
@@ -1799,18 +1803,9 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     st.session_state.risk_score = normalized_risk_score
 
-    st.write(f"Normalized Result 1: {result1_norm}")
-    st.write(f"Normalized Result 2: {result2_norm}")
-    st.write(f"Normalized Result 3: {result3_norm}")
-    st.write(f"Normalized Result 4: {result4_norm}")
-    st.write(f"Normalized Result 5: {result5_norm}")
-    st.write(f"Normalized Result 6: {result6_norm}")
-    st.write(f"Normalized Result 7: {result7_norm}")
-    st.write(f"Normalized Result 8: {result8_norm}")
-    st.write(f"Normalized Result 9: {result9_norm}")
 
     # Display the final result and normalized risk score
-    st.write(f"Final Result: {final_result}")
+    st.write(f"Final Result: {normalized_risk_score}")
 
     # Display the formula
     st.latex(r'''
