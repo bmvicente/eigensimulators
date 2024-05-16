@@ -1752,9 +1752,17 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     def sqrt_transform(score):
         return np.sqrt(score)
 
-    # Assuming xeth_percentage and avs_token_percentage are provided
-    xeth_percentage_dec = xeth_percentage * 0.01
-    avs_token_percentage_dec = avs_token_percentage * 0.01
+    # Calculate the deviation from 50%
+    deviation_xeth = (xeth_percentage - 50) / 2
+    deviation_avs = (avs_token_percentage - 50) / 2
+
+    # Adjust the percentages based on the deviation
+    xeth_percentage_form = 50 - deviation_xeth
+    avs_token_percentage_form = 50 + deviation_avs
+
+    # Convert to decimal
+    xeth_percentage_dec = xeth_percentage_form * 0.01
+    avs_token_percentage_dec = avs_token_percentage_form * 0.01
 
     min_x1 = 0.5
     max_x1 = 22500
@@ -1796,7 +1804,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     # Define min and max values for the final normalization based on the possible range of the final result
     min_final = 0  # Example value, adjust based on expected range
-    max_final = 25913585756 
+    max_final = 1600 
 
     # Normalize the final result
     normalized_risk_score = normalize_score(final_result, min_final, max_final)
