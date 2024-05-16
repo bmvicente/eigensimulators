@@ -1749,8 +1749,9 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         normalized_score = ((original_score - min_original) / (max_original - min_original)) * 10
         return normalized_score
     
-    def sqrt_transform(score):
-        return np.sqrt(score)
+    def log_transform(score):
+        # Ensure the score is positive before applying log
+        return np.log(score + 1)
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1785,26 +1786,26 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     max_y9 = 1417500
 
 
-    result1_sqrt_norm = normalize_score(sqrt_transform(result1), sqrt_transform(min_x1), sqrt_transform(max_x1))
-    result2_sqrt_norm = normalize_score(sqrt_transform(result2), sqrt_transform(min_x2), sqrt_transform(max_x2))
-    result3_sqrt_norm = normalize_score(sqrt_transform(result3), sqrt_transform(min_x3), sqrt_transform(max_x3))
-    result4_sqrt_norm = normalize_score(sqrt_transform(result4), sqrt_transform(min_y4), sqrt_transform(max_y4))
-    result5_sqrt_norm = normalize_score(sqrt_transform(result5), sqrt_transform(min_y5), sqrt_transform(max_y5))
-    result6_sqrt_norm = normalize_score(sqrt_transform(result6), sqrt_transform(min_y6), sqrt_transform(max_y6))
-    result7_sqrt_norm = normalize_score(sqrt_transform(result7), sqrt_transform(min_y7), sqrt_transform(max_y7))
-    result8_sqrt_norm = normalize_score(sqrt_transform(result8), sqrt_transform(min_y8), sqrt_transform(max_y8))
-    result9_sqrt_norm = normalize_score(sqrt_transform(result9), sqrt_transform(min_y9), sqrt_transform(max_y9))
+    result1_log_norm = normalize_score(log_transform(result1), log_transform(min_x1), log_transform(max_x1))
+    result2_log_norm = normalize_score(log_transform(result2), log_transform(min_x2), log_transform(max_x2))
+    result3_log_norm = normalize_score(log_transform(result3), log_transform(min_x3), log_transform(max_x3))
+    result4_log_norm = normalize_score(log_transform(result4), log_transform(min_y4), log_transform(max_y4))
+    result5_log_norm = normalize_score(log_transform(result5), log_transform(min_y5), log_transform(max_y5))
+    result6_log_norm = normalize_score(log_transform(result6), log_transform(min_y6), log_transform(max_y6))
+    result7_log_norm = normalize_score(log_transform(result7), log_transform(min_y7), log_transform(max_y7))
+    result8_log_norm = normalize_score(log_transform(result8), log_transform(min_y8), log_transform(max_y8))
+    result9_log_norm = normalize_score(log_transform(result9), log_transform(min_y9), log_transform(max_y9))
 
 
     final_result = (
-        xeth_percentage_dec * (1/3 * result1_sqrt_norm + 1/3 * result2_sqrt_norm + 1/3 * result3_sqrt_norm) +
-        avs_token_percentage_dec * (0.2 * (result4_sqrt_norm * result5_sqrt_norm) * 0.4 * (result6_sqrt_norm * result7_sqrt_norm) * 0.4 * (result8_sqrt_norm * result9_sqrt_norm))
+        xeth_percentage_dec * (1/3 * result1_log_norm + 1/3 * result2_log_norm + 1/3 * result3_log_norm) +
+        avs_token_percentage_dec * (0.2 * (result4_log_norm * result5_log_norm) * 0.4 * (result6_log_norm * result7_log_norm) * 0.4 * (result8_log_norm * result9_log_norm))
     )
 
 
     # Define min and max values for the final normalization based on the possible range of the final result
     min_final = 0  # Example value, adjust based on expected range
-    max_final = 11153 
+    max_final = 100
 
     # Normalize the final result
     normalized_risk_score = normalize_score(final_result, min_final, max_final)
