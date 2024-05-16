@@ -1745,7 +1745,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
     def normalize_score(original_score, min_original, max_original):
-        normalized_score = ((original_score - min_original) / (max_original - min_original)) * 100
+        normalized_score = ((original_score - min_original) / (max_original - min_original)) * 5
         return normalized_score
 
     # Assuming xeth_percentage and avs_token_percentage are provided
