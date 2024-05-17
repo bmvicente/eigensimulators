@@ -1869,8 +1869,8 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     print(f"Final Result: {final_result}")
 
     # Define min and max values for the final normalization based on the possible range of the final result
-    min_final = -1  # Adjust based on expected range of tanh-transformed combined scores
-    max_final = 1   # Adjust based on expected range of tanh-transformed combined scores
+    min_final = -0.125  # Adjust based on expected range of tanh-transformed combined scores
+    max_final = 0.2   # Adjust based on expected range of tanh-transformed combined scores
 
     # Normalize the final result to the range [0, 100]
     normalized_risk_score = (final_result - min_final) / (max_final - min_final) * 100
