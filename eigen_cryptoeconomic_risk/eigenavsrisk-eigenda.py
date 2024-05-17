@@ -1745,13 +1745,23 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
+
     def normalize_score(original_score, min_original, max_original):
-        normalized_score = ((original_score - min_original) / (max_original - min_original)) * 10
+        normalized_score = (original_score - min_original) / (max_original - min_original)
         return normalized_score
-    
-    def log_transform(score):
-        # Ensure the score is positive before applying log
-        return np.log(score + 1)
+
+    def root_transform(score, root_degree=2):
+        return np.power(score, 1/root_degree)
+
+    def z_score_transform(score, mean, std):
+        return (score - mean) / std
+
+    def sigmoid_transform(score):
+        return 1 / (1 + np.exp(-score))
+
+    # Example input values for deviation (you should replace these with your actual input values)
+    xeth_percentage = 60
+    avs_token_percentage = 40
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1765,56 +1775,103 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     xeth_percentage_dec = xeth_percentage_form * 0.01
     avs_token_percentage_dec = avs_token_percentage_form * 0.01
 
-    min_x1 = 0.5
-    max_x1 = 22500
-    min_x2 = 1
-    max_x2 = 22500             
-    min_x3 = 0.25
-    max_x3 = 25000
+    # Define your min and max values
+    min_x1, max_x1 = 0.5, 22500
+    min_x2, max_x2 = 1, 22500             
+    min_x3, max_x3 = 0.25, 25000
 
-    min_y4 = 1
-    max_y4 = 10
-    min_y5 = 1.5
-    max_y5 = 675
-    min_y6 = 2
-    max_y6 = 9000
-    min_y7 = 3
-    max_y7 = 126000
-    min_y8 = 6
-    max_y8 = 60
-    min_y9 = 3
-    max_y9 = 1417500
+    min_y4, max_y4 = 1, 10
+    min_y5, max_y5 = 1.5, 675
+    min_y6, max_y6 = 2, 9000
+    min_y7, max_y7 = 3, 126000
+    min_y8, max_y8 = 6, 60
+    min_y9, max_y9 = 3, 1417500
 
+    # Example results (you should replace these with your actual results)
+    result1 = 15000
+    result2 = 20000
+    result3 = 5000
+    result4 = 8
+    result5 = 500
+    result6 = 7000
+    result7 = 100000
+    result8 = 50
+    result9 = 1000000
 
-    result1_log_norm = normalize_score(log_transform(result1), log_transform(min_x1), log_transform(max_x1))
-    result2_log_norm = normalize_score(log_transform(result2), log_transform(min_x2), log_transform(max_x2))
-    result3_log_norm = normalize_score(log_transform(result3), log_transform(min_x3), log_transform(max_x3))
-    result4_log_norm = normalize_score(log_transform(result4), log_transform(min_y4), log_transform(max_y4))
-    result5_log_norm = normalize_score(log_transform(result5), log_transform(min_y5), log_transform(max_y5))
-    result6_log_norm = normalize_score(log_transform(result6), log_transform(min_y6), log_transform(max_y6))
-    result7_log_norm = normalize_score(log_transform(result7), log_transform(min_y7), log_transform(max_y7))
-    result8_log_norm = normalize_score(log_transform(result8), log_transform(min_y8), log_transform(max_y8))
-    result9_log_norm = normalize_score(log_transform(result9), log_transform(min_y9), log_transform(max_y9))
+    # Initial normalization using min and max values
+    result1_norm = normalize_score(result1, min_x1, max_x1)
+    result2_norm = normalize_score(result2, min_x2, max_x2)
+    result3_norm = normalize_score(result3, min_x3, max_x3)
+    result4_norm = normalize_score(result4, min_y4, max_y4)
+    result5_norm = normalize_score(result5, min_y5, max_y5)
+    result6_norm = normalize_score(result6, min_y6, max_y6)
+    result7_norm = normalize_score(result7, min_y7, max_y7)
+    result8_norm = normalize_score(result8, min_y8, max_y8)
+    result9_norm = normalize_score(result9, min_y9, max_y9)
 
+    # Root transformation
+    result1_root = root_transform(result1_norm)
+    result2_root = root_transform(result2_norm)
+    result3_root = root_transform(result3_norm)
+    result4_root = root_transform(result4_norm)
+    result5_root = root_transform(result5_norm)
+    result6_root = root_transform(result6_norm)
+    result7_root = root_transform(result7_norm)
+    result8_root = root_transform(result8_norm)
+    result9_root = root_transform(result9_norm)
 
+    # Calculate mean and std for Z-score
+    results_root = [result1_root, result2_root, result3_root, result4_root, result5_root, result6_root, result7_root, result8_root, result9_root]
+    mean_root = np.mean(results_root)
+    std_root = np.std(results_root)
+
+    # Z-score transformation
+    result1_z = z_score_transform(result1_root, mean_root, std_root)
+    result2_z = z_score_transform(result2_root, mean_root, std_root)
+    result3_z = z_score_transform(result3_root, mean_root, std_root)
+    result4_z = z_score_transform(result4_root, mean_root, std_root)
+    result5_z = z_score_transform(result5_root, mean_root, std_root)
+    result6_z = z_score_transform(result6_root, mean_root, std_root)
+    result7_z = z_score_transform(result7_root, mean_root, std_root)
+    result8_z = z_score_transform(result8_root, mean_root, std_root)
+    result9_z = z_score_transform(result9_root, mean_root, std_root)
+
+    # Sigmoid transformation
+    result1_sigmoid = sigmoid_transform(result1_z)
+    result2_sigmoid = sigmoid_transform(result2_z)
+    result3_sigmoid = sigmoid_transform(result3_z)
+    result4_sigmoid = sigmoid_transform(result4_z)
+    result5_sigmoid = sigmoid_transform(result5_z)
+    result6_sigmoid = sigmoid_transform(result6_z)
+    result7_sigmoid = sigmoid_transform(result7_z)
+    result8_sigmoid = sigmoid_transform(result8_z)
+    result9_sigmoid = sigmoid_transform(result9_z)
+
+    # Combine and weight normalized scores
     final_result = (
-        xeth_percentage_dec * (1/3 * result1_log_norm + 1/3 * result2_log_norm + 1/3 * result3_log_norm) +
-        avs_token_percentage_dec * (0.2 * (result4_log_norm * result5_log_norm) * 0.4 * (result6_log_norm * result7_log_norm) * 0.4 * (result8_log_norm * result9_log_norm))
+        xeth_percentage_dec * (1/3 * result1_sigmoid + 1/3 * result2_sigmoid + 1/3 * result3_sigmoid) +
+        avs_token_percentage_dec * (
+            0.2 * (result4_sigmoid * result5_sigmoid) + 
+            0.4 * (result6_sigmoid * result7_sigmoid) + 
+            0.4 * (result8_sigmoid * result9_sigmoid)
+        )
     )
-
 
     # Define min and max values for the final normalization based on the possible range of the final result
     min_final = 0  # Example value, adjust based on expected range
-    max_final = 100
+    max_final = 1  # Because the sigmoid outputs are between 0 and 1
 
     # Normalize the final result
     normalized_risk_score = normalize_score(final_result, min_final, max_final)
 
     st.session_state.risk_score = normalized_risk_score
 
-
     # Display the final result and normalized risk score
     st.write(f"Final Result: {final_result}")
+    st.write(f"Normalized Risk Score: {normalized_risk_score}")
+
+
+
 
     # Display the formula
     st.latex(r'''
