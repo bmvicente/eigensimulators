@@ -1787,17 +1787,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     min_y8, max_y8 = 6, 60
     min_y9, max_y9 = 3, 1417500
 
-    # Example results (you should replace these with your actual results)
-    result1 = 15000
-    result2 = 20000
-    result3 = 5000
-    result4 = 8
-    result5 = 500
-    result6 = 7000
-    result7 = 100000
-    result8 = 50
-    result9 = 1000000
-
     # Initial normalization using min and max values
     result1_norm = normalize_score(result1, min_x1, max_x1)
     result2_norm = normalize_score(result2, min_x2, max_x2)
