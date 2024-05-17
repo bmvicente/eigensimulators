@@ -1883,7 +1883,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         """, 
         unsafe_allow_html=True
         )
-    with st.expander("Logic"):
+    with st.expander("Formula"):
         st.markdown("""
 
                             """)
