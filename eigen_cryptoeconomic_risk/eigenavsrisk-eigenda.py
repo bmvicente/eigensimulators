@@ -1746,6 +1746,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
+
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
@@ -1754,11 +1755,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     def root_transform(score, root_degree=2):
         return np.power(score, 1/root_degree)
-
-    def z_score_transform(score, mean, std):
-        if std == 0:
-            return 0  # Avoid division by zero in Z-score transformation
-        return (score - mean) / std
 
     def custom_final_scaling(value, min_value, max_value, target_min=0, target_max=100):
         if max_value == min_value:
@@ -1822,49 +1818,26 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Print root-transformed scores for debugging
     print(f"Root-transformed scores: {result1_root}, {result2_root}, {result3_root}, {result4_root}, {result5_root}, {result6_root}, {result7_root}, {result8_root}, {result9_root}")
 
-    # Calculate mean and std for Z-score
-    results_root = [result1_root, result2_root, result3_root, result4_root, result5_root, result6_root, result7_root, result8_root, result9_root]
-    mean_root = np.mean(results_root)
-    std_root = np.std(results_root)
-
-    # Print mean and std for debugging
-    print(f"Mean of root-transformed scores: {mean_root}")
-    print(f"Standard deviation of root-transformed scores: {std_root}")
-
-    # Z-score transformation
-    result1_z = z_score_transform(result1_root, mean_root, std_root)
-    result2_z = z_score_transform(result2_root, mean_root, std_root)
-    result3_z = z_score_transform(result3_root, mean_root, std_root)
-    result4_z = z_score_transform(result4_root, mean_root, std_root)
-    result5_z = z_score_transform(result5_root, mean_root, std_root)
-    result6_z = z_score_transform(result6_root, mean_root, std_root)
-    result7_z = z_score_transform(result7_root, mean_root, std_root)
-    result8_z = z_score_transform(result8_root, mean_root, std_root)
-    result9_z = z_score_transform(result9_root, mean_root, std_root)
-
-    # Print Z-score-transformed scores for debugging
-    print(f"Z-score-transformed scores: {result1_z}, {result2_z}, {result3_z}, {result4_z}, {result5_z}, {result6_z}, {result7_z}, {result8_z}, {result9_z}")
-
     # Custom combination of scores
     combined_result = (
-        xeth_percentage_dec * (result1_z + result2_z + result3_z) / 3 +
-        avs_token_percentage_dec * (result4_z * result5_z * result6_z * result7_z * result8_z * result9_z) ** (1/6)
+        xeth_percentage_dec * (result1_root + result2_root + result3_root) / 3 +
+        avs_token_percentage_dec * (result4_root * result5_root * result6_root * result7_root * result8_root * result9_root) ** (1/6)
     )
 
     # Check for NaN in combined_result
     if np.isnan(combined_result):
         print("combined_result contains NaN. Debugging intermediate values:")
         print(f"xeth_percentage_dec: {xeth_percentage_dec}, avs_token_percentage_dec: {avs_token_percentage_dec}")
-        print(f"result1_z: {result1_z}, result2_z: {result2_z}, result3_z: {result3_z}")
-        print(f"result4_z: {result4_z}, result5_z: {result5_z}, result6_z: {result6_z}")
-        print(f"result7_z: {result7_z}, result8_z: {result8_z}, result9_z: {result9_z}")
+        print(f"result1_root: {result1_root}, result2_root: {result2_root}, result3_root: {result3_root}")
+        print(f"result4_root: {result4_root}, result5_root: {result5_root}, result6_root: {result6_root}")
+        print(f"result7_root: {result7_root}, result8_root: {result8_root}, result9_root: {result9_root}")
 
     # Print combined result for debugging
     print(f"Combined Result: {combined_result}")
 
     # Custom scaling to the range [0, 100]
-    min_combined = np.min(results_root)  # Minimum of the transformed results
-    max_combined = np.max(results_root)  # Maximum of the transformed results
+    min_combined = np.min([result1_root, result2_root, result3_root, result4_root, result5_root, result6_root, result7_root, result8_root, result9_root])  # Minimum of the transformed results
+    max_combined = np.max([result1_root, result2_root, result3_root, result4_root, result5_root, result6_root, result7_root, result8_root, result9_root])  # Maximum of the transformed results
     normalized_risk_score = custom_final_scaling(combined_result, min_combined, max_combined, target_min=0, target_max=100)
 
     # Ensure the score is within [0, 100]
@@ -1875,6 +1848,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Display the final result and normalized risk score
     st.write(f"Combined Result: {combined_result}")
     st.write(f"Normalized Risk Score: {normalized_risk_score}")
+
 
 
     # Display the formula
