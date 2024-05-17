@@ -1746,7 +1746,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
@@ -1762,6 +1761,8 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         return (score - mean) / std
 
     def custom_final_scaling(value, min_value, max_value, target_min=0, target_max=100):
+        if max_value == min_value:
+            return target_min  # Avoid division by zero
         # Scale the value to the [0, 1] range
         scaled_value = (value - min_value) / (max_value - min_value)
         # Apply the scaling to the [target_min, target_max] range
@@ -1850,6 +1851,14 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         avs_token_percentage_dec * (result4_z * result5_z * result6_z * result7_z * result8_z * result9_z) ** (1/6)
     )
 
+    # Check for NaN in combined_result
+    if np.isnan(combined_result):
+        print("combined_result contains NaN. Debugging intermediate values:")
+        print(f"xeth_percentage_dec: {xeth_percentage_dec}, avs_token_percentage_dec: {avs_token_percentage_dec}")
+        print(f"result1_z: {result1_z}, result2_z: {result2_z}, result3_z: {result3_z}")
+        print(f"result4_z: {result4_z}, result5_z: {result5_z}, result6_z: {result6_z}")
+        print(f"result7_z: {result7_z}, result8_z: {result8_z}, result9_z: {result9_z}")
+
     # Print combined result for debugging
     print(f"Combined Result: {combined_result}")
 
@@ -1866,7 +1875,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Display the final result and normalized risk score
     st.write(f"Combined Result: {combined_result}")
     st.write(f"Normalized Risk Score: {normalized_risk_score}")
-
 
 
     # Display the formula
