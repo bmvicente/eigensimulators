@@ -1747,7 +1747,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
@@ -1765,7 +1764,9 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     def tanh_transform(score):
         return np.tanh(score)
 
-
+    # Example input values for deviation (you should replace these with your actual input values)
+    xeth_percentage = 60
+    avs_token_percentage = 40
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1791,6 +1792,16 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     min_y8, max_y8 = 6, 60
     min_y9, max_y9 = 3, 1417500
 
+    # Example results (you should replace these with your actual results)
+    result1 = 15000
+    result2 = 20000
+    result3 = 5000
+    result4 = 8
+    result5 = 500
+    result6 = 7000
+    result7 = 100000
+    result8 = 50
+    result9 = 1000000
 
     # Initial normalization using min and max values
     result1_norm = normalize_score(result1, min_x1, max_x1)
@@ -1867,19 +1878,21 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         )
     )
 
-    # Define min and max values for the final normalization based on the possible range of the final result
-    min_final = -5  # Example value, adjust based on expected range
-    max_final = 5  # Because the tanh outputs are between -1 and 1
+    # Print final result for debugging
+    print(f"Final Result: {final_result}")
 
-    # Normalize the final result
-    normalized_risk_score = normalize_score(final_result, min_final, max_final)
+    # Define min and max values for the final normalization based on the possible range of the final result
+    min_final = -1  # Example value, adjust based on expected range
+    max_final = 1  # Because the tanh outputs are between -1 and 1
+
+    # Normalize the final result to the range [0, 100]
+    normalized_risk_score = (final_result - min_final) / (max_final - min_final) * 100
 
     st.session_state.risk_score = normalized_risk_score
 
     # Display the final result and normalized risk score
     st.write(f"Final Result: {final_result}")
     st.write(f"Normalized Risk Score: {normalized_risk_score}")
-
 
 
 
