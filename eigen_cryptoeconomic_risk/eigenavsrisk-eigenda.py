@@ -1750,7 +1750,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
-        normalized_score = (original_score - min_original) / (max_original - min_original)
+        normalized_score = (original_score - min_original) / (max_original - min_original) * 100
         return normalized_score
 
     def root_transform(score, root_degree=2):
@@ -1869,7 +1869,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     print(f"Final Result: {final_result}")
 
     # Define min and max values for the final normalization based on the possible range of the final result
-    min_final = -0.022  # Example value, adjust based on expected range
+    min_final = 0  # Example value, adjust based on expected range
     max_final = 1  # Because the tanh outputs are between -1 and 1
 
     # Normalize the final result to the range [0, 100]
