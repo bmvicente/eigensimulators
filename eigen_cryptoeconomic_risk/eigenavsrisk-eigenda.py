@@ -1759,10 +1759,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     def sigmoid_transform(score):
         return 1 / (1 + np.exp(-score))
 
-    # Example input values for deviation (you should replace these with your actual input values)
-    xeth_percentage = 60
-    avs_token_percentage = 40
-
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
     deviation_avs = (avs_token_percentage - 50) / 2
@@ -1838,17 +1834,17 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     # Combine and weight normalized scores
     final_result = (
-        xeth_percentage_dec * (1/3 * result1_sigmoid + 1/3 * result2_sigmoid + 1/3 * result3_sigmoid) +
-        avs_token_percentage_dec * (
+        (xeth_percentage_dec * (1/3 * result1_sigmoid) + (1/3 * result2_sigmoid) + (1/3 * result3_sigmoid)) +
+        (avs_token_percentage_dec * (
             0.2 * (result4_sigmoid * result5_sigmoid) + 
             0.4 * (result6_sigmoid * result7_sigmoid) + 
             0.4 * (result8_sigmoid * result9_sigmoid)
-        )
+        ))
     )
 
     # Define min and max values for the final normalization based on the possible range of the final result
     min_final = 0  # Example value, adjust based on expected range
-    max_final = 100000000  # Because the sigmoid outputs are between 0 and 1
+    max_final = 1  # Because the sigmoid outputs are between 0 and 1
 
     # Normalize the final result
     normalized_risk_score = normalize_score(final_result, min_final, max_final)
