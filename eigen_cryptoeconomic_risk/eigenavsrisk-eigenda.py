@@ -1746,7 +1746,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
@@ -1764,6 +1763,9 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         # Apply the scaling to the [target_min, target_max] range
         return scaled_value * (target_max - target_min) + target_min
 
+    # Example input values for deviation (you should replace these with your actual input values)
+    xeth_percentage = 60
+    avs_token_percentage = 40
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1835,10 +1837,12 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Print combined result for debugging
     print(f"Combined Result: {combined_result}")
 
-    # Custom scaling to the range [0, 100]
-    min_combined = np.min([result1_root, result2_root, result3_root, result4_root, result5_root, result6_root, result7_root, result8_root, result9_root])  # Minimum of the transformed results
-    max_combined = np.max([result1_root, result2_root, result3_root, result4_root, result5_root, result6_root, result7_root, result8_root, result9_root])  # Maximum of the transformed results
-    normalized_risk_score = custom_final_scaling(combined_result, min_combined, max_combined, target_min=0, target_max=100)
+    # Define min and max values for the final normalization based on the possible range of the final result
+    min_final = 0.114  # Adjust based on expected range of combined scores
+    max_final = 1.4   # Adjust based on expected range of combined scores
+
+    # Normalize the final result to the range [0, 100]
+    normalized_risk_score = (combined_result - min_final) / (max_final - min_final) * 100
 
     # Ensure the score is within [0, 100]
     normalized_risk_score = max(0, min(normalized_risk_score, 100))
@@ -1848,6 +1852,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Display the final result and normalized risk score
     st.write(f"Combined Result: {combined_result}")
     st.write(f"Normalized Risk Score: {normalized_risk_score}")
+
 
 
 
