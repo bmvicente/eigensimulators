@@ -1871,7 +1871,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     # Define min and max values for the final normalization based on the possible range of the final result
     min_final = 0  # Example value, adjust based on expected range
-    max_final = 100  # Because the sigmoid outputs are between 0 and 1
+    max_final = 0.3375  # Because the sigmoid outputs are between 0 and 1
 
     # Normalize the final result
     normalized_risk_score = normalize_score(final_result, min_final, max_final)
