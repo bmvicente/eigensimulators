@@ -1747,7 +1747,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
@@ -1762,14 +1761,12 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             return 0  # Avoid division by zero in Z-score transformation
         return (score - mean) / std
 
-    def tanh_transform(score):
-        return np.tanh(score)
-
     def custom_final_scaling(value, min_value, max_value, target_min=0, target_max=100):
         # Scale the value to the [0, 1] range
         scaled_value = (value - min_value) / (max_value - min_value)
         # Apply the scaling to the [target_min, target_max] range
         return scaled_value * (target_max - target_min) + target_min
+
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1847,42 +1844,27 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Print Z-score-transformed scores for debugging
     print(f"Z-score-transformed scores: {result1_z}, {result2_z}, {result3_z}, {result4_z}, {result5_z}, {result6_z}, {result7_z}, {result8_z}, {result9_z}")
 
-    # Tanh transformation (alternative to sigmoid)
-    result1_tanh = tanh_transform(result1_z)
-    result2_tanh = tanh_transform(result2_z)
-    result3_tanh = tanh_transform(result3_z)
-    result4_tanh = tanh_transform(result4_z)
-    result5_tanh = tanh_transform(result5_z)
-    result6_tanh = tanh_transform(result6_z)
-    result7_tanh = tanh_transform(result7_z)
-    result8_tanh = tanh_transform(result8_z)
-    result9_tanh = tanh_transform(result9_z)
-
-    # Print tanh-transformed scores for debugging
-    print(f"Tanh-transformed scores: {result1_tanh}, {result2_tanh}, {result3_tanh}, {result4_tanh}, {result5_tanh}, {result6_tanh}, {result7_tanh}, {result8_tanh}, {result9_tanh}")
-
-    # Combine and weight normalized scores
-    final_result = (
-        xeth_percentage_dec * (1/3 * result1_tanh + 1/3 * result2_tanh + 1/3 * result3_tanh) +
-        avs_token_percentage_dec * (
-            0.2 * (result4_tanh * result5_tanh) + 
-            0.4 * (result6_tanh * result7_tanh) + 
-            0.4 * (result8_tanh * result9_tanh)
-        )
+    # Custom combination of scores
+    combined_result = (
+        xeth_percentage_dec * (result1_z + result2_z + result3_z) / 3 +
+        avs_token_percentage_dec * (result4_z * result5_z * result6_z * result7_z * result8_z * result9_z) ** (1/6)
     )
 
-    # Print final result for debugging
-    print(f"Final Result: {final_result}")
+    # Print combined result for debugging
+    print(f"Combined Result: {combined_result}")
 
     # Custom scaling to the range [0, 100]
-    min_final = -1  # Tanh output range minimum
-    max_final = 1   # Tanh output range maximum
-    normalized_risk_score = custom_final_scaling(final_result, min_final, max_final, target_min=0, target_max=100)
+    min_combined = np.min(results_root)  # Minimum of the transformed results
+    max_combined = np.max(results_root)  # Maximum of the transformed results
+    normalized_risk_score = custom_final_scaling(combined_result, min_combined, max_combined, target_min=0, target_max=100)
+
+    # Ensure the score is within [0, 100]
+    normalized_risk_score = max(0, min(normalized_risk_score, 100))
 
     st.session_state.risk_score = normalized_risk_score
 
     # Display the final result and normalized risk score
-    st.write(f"Final Result: {final_result}")
+    st.write(f"Combined Result: {combined_result}")
     st.write(f"Normalized Risk Score: {normalized_risk_score}")
 
 
