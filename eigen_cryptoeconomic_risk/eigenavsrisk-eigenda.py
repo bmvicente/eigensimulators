@@ -1747,6 +1747,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
+
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
@@ -1764,6 +1765,11 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     def tanh_transform(score):
         return np.tanh(score)
 
+    def custom_final_scaling(value, min_value, max_value, target_min=0, target_max=100):
+        # Scale the value to the [0, 1] range
+        scaled_value = (value - min_value) / (max_value - min_value)
+        # Apply the scaling to the [target_min, target_max] range
+        return scaled_value * (target_max - target_min) + target_min
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1868,21 +1874,17 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Print final result for debugging
     print(f"Final Result: {final_result}")
 
-    # Define min and max values for the final normalization based on the possible range of the final result
-    min_final = -0.125  # Adjust based on expected range of tanh-transformed combined scores
-    max_final = 0.192   # Adjust based on expected range of tanh-transformed combined scores
-
-    # Normalize the final result to the range [0, 100]
-    normalized_risk_score = (final_result - min_final) / (max_final - min_final) * 100
-
-    # Ensure the score is within [0, 100]
-    normalized_risk_score = max(0, min(normalized_risk_score, 100))
+    # Custom scaling to the range [0, 100]
+    min_final = -1  # Tanh output range minimum
+    max_final = 1   # Tanh output range maximum
+    normalized_risk_score = custom_final_scaling(final_result, min_final, max_final, target_min=0, target_max=100)
 
     st.session_state.risk_score = normalized_risk_score
 
     # Display the final result and normalized risk score
     st.write(f"Final Result: {final_result}")
     st.write(f"Normalized Risk Score: {normalized_risk_score}")
+
 
 
     # Display the formula
