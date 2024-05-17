@@ -1845,10 +1845,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-    # Display the formula
-    st.latex(r'''
-    \text{Normalized Final Score} = \frac{ \left( w_1 \sum_{i=1}^{n} \frac{x_i - \min(x)}{\max(x) - \min(x)} + w_2 \sum_{i=1}^{n} \frac{y_i - \min(y)}{\max(y) - \min(y)} \right) - \min(F) }{\max(F) - \min(F)} \times 100
-    ''')
+
 
 
       #      Operational cost. Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. 
