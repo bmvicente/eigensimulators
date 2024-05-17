@@ -597,7 +597,7 @@ def main():
         st.write("\n")
 
         dual_quorum = st.checkbox("**Dual Quorum**: ETH Quorum & ROLLUP Quorum", value=True, 
-                                  help="**EigenDA has a feature called Dual Quorum, where two separate quorums can be required to attest to the availability of data. As an example, one quorum would be composed of ETH restakers (the ETH quorum), and the second quorum could be composed of stakers of the rollup’s native token. Both quorums are treated as an independent and redundant source of DA, so both quorums have to be compromised before EigenDA can fail.**")
+                                  help="**EigenDA features a Dual Quorum system requiring two distinct Quorums for attesting data availability, if needed, - one of ETH restakers and another of native $ROLLUP stakers. Each quorum acts independently, ensuring that both must be compromised for a failure in EigenDA.**")
         
         if st.session_state.dual_quorum != dual_quorum:
             st.session_state.dual_quorum = dual_quorum
@@ -771,7 +771,8 @@ def main():
             security_audits = st.number_input("**AVS Number of Security Audits**", min_value=0, max_value=5, step=1, value=2, key="0890")
 
 
-        coverage_perc = st.slider("**GitHub Code Coverage %**", min_value=0, max_value=100, value=56, format='%d%%', help="**Coverage percentage refers to the proportion of code that is tested by automated tests, typically measured by the number of lines or branches of code executed during testing compared to the total number of lines or branches in the codebase. It indicates how thoroughly the codebase is tested, with higher coverage percentages indicating greater test coverage and potentially lower risk of undetected bugs or issues.**")
+        coverage_perc = st.slider("**GitHub Code Coverage %**", min_value=0, max_value=100, value=56, format='%d%%', 
+                                  help="**Coverage percentage measures the extent of code tested by automated tests, calculated as the ratio of tested lines or branches to the total in the codebase. Higher percentages suggest more comprehensive testing and a reduced likelihood of latent bugs.**")
 
         coverage_perc_var = coverage_perc_calc(coverage_perc)
         st.session_state.coverage_perc_var = coverage_perc_var
@@ -1084,8 +1085,8 @@ def main():
         
         st.write("  \n")
 
-        rollup_censorship_res = st.checkbox('**Censorship Resistance through Decentralization of Single Leader/Block Proposer**', value=True, help="**EigenDA offers higher instantaneous censorship resistance than coupled DA layers. This is because coupled DA architectures usually rely on a single leader or block proposer to linearly order the data blobs, thus creating an instantaneous censorship chokepoint. In contrast, in EigenDA, rollup nodes can directly disperse and receive signatures from a majority of EigenDA nodes, thus improving the censorship resistance to a majority of EigenDA nodes rather than being constricted by a single leader.**")
-        # ASK GPT TO SAY THIS IN OTHER WORDS
+        rollup_censorship_res = st.checkbox('**Censorship Resistance through Decentralization of Single Leader/Block Proposer**', value=True, 
+                                            help="**EigenDA provides greater instantaneous censorship resistance compared to coupled DA layers that depend on a single leader for data ordering, creating a potential censorship point. In EigenDA, rollup nodes interact directly with a majority of EigenDA nodes, enhancing resistance by distributing dependency across many nodes instead of just one leader.**")
 
         if st.session_state.rollup_censorship_res != rollup_censorship_res:
             st.session_state.rollup_censorship_res = rollup_censorship_res
@@ -1110,8 +1111,7 @@ def main():
         st.write("-------")
 
 
-        rollup_blob_rate = st.slider("**Rollup Sequencers Blob Dispatching Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%',
-                                     help="****")
+        rollup_blob_rate = st.slider("**Rollup Sequencers Blob Dispatching Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%')
 
         rollup_blob_rate_var = rollup_blob_rate_calc(rollup_blob_rate)
         st.session_state.rollup_blob_rate_var = rollup_blob_rate_var
@@ -1120,7 +1120,7 @@ def main():
         col90, col91 = st.columns(2)
         with col90:
             rollup_bandwidth_rate = st.slider("**% of Rollups Reserving Additional Bandwidth**", min_value=0, max_value=100, value=0, format='%d%%',
-                                              help="****")
+                                              help="**This EigenDA component allows rollups to reserve bandwidth (1MB/s, e.g) to safeguard themselves against surge pricing and fluctuating gas fees that may result from increased or volatile blockspace congestion demands.**")
 
             rollup_bandwidth_rate_var = rollup_bandwidth_rate_calc(rollup_bandwidth_rate)
             st.session_state.rollup_bandwidth_rate_var = rollup_bandwidth_rate_var
@@ -1248,14 +1248,13 @@ def main():
         col65,col66 = st.columns(2, gap="medium")
         with col65:
             kzg_erasure_coding = st.checkbox("**KZG Erasure Coding**", value=True,
-                                help="**Efficiently manages data by breaking it into smaller chunks using erasure coding, combined with KZG polynomial commitments. This allows nodes to download only necessary data segments, enhancing storage efficiency and data integrity through validity proofs.**")
+                                help="**Efficiently manages data by breaking it into smaller chunks using KZG Erasure Coding, combined with KZG Polynomial Commitments, which allows nodes to download only necessary data segments, enhancing storage efficiency and data integrity through validity proofs.**")
         with col66:
             kzg_poly_comm = st.checkbox("**KZG Polynomial Commitment**", value=True,
                                 help="**A cryptographic technique for securely committing to data without disclosure. Essential for the integrity and verification of data in distributed systems, serving as the foundation for both KZG Erasure Coding and Multi-Reveal Proofs.**")
             
         kzg_multi_proofs = st.checkbox("**KZG Multi-Reveal Proofs**", value=True,
                                            help="**Enables verification of multiple data segments simultaneously, ensuring data integrity across the network using KZG polynomial commitments. Key for confirming data correctness and security in distributed environments.**")
-        # ASK GPT TO SAY THIS IN OTHER WORDS
 
         st.write("  \n")
 
@@ -1305,7 +1304,7 @@ def main():
         st.write("-------")
 
         disperser_performance_acc_rate = st.slider("**Disperser Blob-to-Chunk, Dispatching & Signature Posting On-Chain Performance Accuracy Rate**", min_value=0, max_value=100, value=50, format='%d%%', key="612782",
-                                                   help="**The EigenDA disperser sidecar erasure encodes the blob into chunks, generates a KZG commitment and multi-reveal proofs for each chunk, and disperses chunks to EigenDA Operators, receiving signatures certifying storage in return. After aggregating the received signatures, the disperser registers the blob onchain by sending a transaction to the EigenDA Manager contract with the aggregated signature and blob metadata.**")
+                                                   help="**The EigenDA disperser sidecar erasure encodes the blob into chunks, generates a KZG commitment and multi-reveal proofs for each chunk, and disperses chunks to EigenDA Operators, receiving signatures certifying storage in return. After aggregating the received signatures, the disperser registers the blob onchain by sending a transaction to the EigenDA Manager contract with the aggregated signature and blob metadata. How accurate is the Disperser at doing the whole process?**")
 
         disperser_performance_acc_rate_var = disperser_performance_acc_rate_calc(disperser_performance_acc_rate)
         st.session_state.disperser_performance_acc_rate_var = disperser_performance_acc_rate_var
@@ -1322,7 +1321,6 @@ def main():
         with col21:
             disperser_centralization = st.selectbox("**Disperser Centralization Level**", ["Centralized", "Semi-Decentralized", "Decentralized"], index=0, key="28816",
                                                     help="**Depending whether it's used as a centralized service or permissionless, decentralized node network.**")
-        # ASK GPT TO SAY THIS IN OTHER WORDS
 
         st.write("-------")
         
@@ -1341,7 +1339,7 @@ def main():
                                                       1 == Unimpactful | 10 == Very Impactful""")
             disperser_impact2 = disperser_impact / 2
 
-        # Directly use the calculated variables
+
         disperser_likelihood_formatted = format_number(disperser_likelihood2)
         disperser_impact_formatted = format_number(disperser_impact2)
 
@@ -1452,11 +1450,11 @@ def main():
         col92, col93 = st.columns(2)
         with col92:
             bls_alt = st.checkbox('**BLS-Like Alternative** for Cost-Effective Operator Signature Dispatching to the Disperser', 
-                                     value=True, help="**BLS aggregate signatures are expensive and therefore poses a limitation on the operator set.**")
+                                     value=True, help="**BLS aggregate signatures combine multiple signatures into one using BLS cryptography, enhancing verification efficiency. However, their computational expense can limit the size of the operator set.**")
 
         with col93:
             proof_custody = st.checkbox('**Proof of Custody**', value = True,
-                                        help="**A key mode of operator failure in EigenDA is that nodes sign off on data items without actually storing them for the required period of time. To solve this problem EigenDA uses a mechanism called proof-of-custody, which was originally proposed by Justin Drake and Dankrad Feist of the Ethereum Foundation. With proof-of-custody each operator must routinely compute and commit to the value of a function which can only be computed if they have stored all the blob chunks allocated to them over a designated storage period. If they attest to blobs without computing this function, the ETH held by the node can be slashed by anyone who has access to their data item.**")
+                                        help="**EigenDA mitigates operator failures by using Proof of Custody. Operators must periodically prove they've stored assigned data by computing a specific function. Incorrect attestations can lead to ETH slashing for failing to maintain data integrity.**")
 
         col96,col97 = st.columns(2)
         with col96:
@@ -1464,7 +1462,7 @@ def main():
                                             help="**Methodology to enable EigenDA nodes to verify and underwrite proofs at very low latency.**")
         with col97:
             direct_unicast = st.checkbox('**Operator Direct Blob Unicast vs P2P**', value = True,
-                                     help="**Existing DA solutions use a peer-to-peer (P2P) network for transmitting blobs, in which operators receive blobs from their peers, then re-broadcast the same blob to others. This significantly constrains the achievable DA rate. In EigenDA, a Disperser sends blobs directly to EigenDA’s operators. By relying on unicast (direct communication) for dispersing data, EigenDA can confirm DA at native network latency rather than via an expensive gossip protocol. This eliminates the significant gossiping penalties that come with P2P, and results in faster data commitment times.**")
+                                     help="**EigenDA enhances data availability (DA) rates by using a Disperser that sends blobs directly to operators, bypassing the slower peer-to-peer (P2P) network used in traditional DA solutions. This unicast approach allows EigenDA to confirm DA at native network speeds, avoiding the delays of P2P gossip protocols and achieving faster data commitment times.**")
 
         col94, col95 = st.columns(2)
         with col94:
@@ -1582,7 +1580,6 @@ def main():
                 st.markdown("""
 Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
                             """)
-        # ASK GPT TO SAY THIS IN OTHER WORDS, ALL ABOVES
 
 
         if st.session_state.validator_reputation != validator_reputation:
@@ -1819,8 +1816,8 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     # Custom combination of scores
     combined_result = (
-        xeth_percentage_dec * (result1_root + result2_root + result3_root) / 3 +
-        avs_token_percentage_dec * (result4_root * result5_root * result6_root * result7_root * result8_root * result9_root) ** (1/6)
+        xeth_percentage_dec * 1/3 * (result1_root + result2_root + result3_root) +
+        avs_token_percentage_dec * (0.2*(result4_root * result5_root) * 0.4*(result6_root * result7_root) * 0.4*(result8_root * result9_root))
     )
 
     # Check for NaN in combined_result
@@ -1845,7 +1842,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     normalized_risk_score = max(0, min(normalized_risk_score, 100))
 
     st.session_state.risk_score = normalized_risk_score
-    
+
 
 
     # Display the formula
@@ -1855,20 +1852,13 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-# 12499539195000000
-# 126796743360
 
-# ASK GPT: HOW TO REPRESENT RISK SCORE WHEN DOING SUCH MULTIPLICATIONS, INSTEAD OF SUM? THE SCORE COMES OUT MESSED UP
-# I KNOW RISK SCORE NORMALIZATION IS NORMALLY DONE BY ADDITION? BUT THAT'S IN THE CASE OF INDEPENDENT VARIABLES, CORRECT? WHAT IF I HAVE DEPENDENT VARIABLES, THAT WOULD THEREFORE NEED MULTIPLICATION TO MAKE SENSE?
-# ALSO DO THE GLOBAL WEIGHTING FOR DUAL STAKING IN ANOTHER WAY? BUT IT DOES MAKE SENSE NOW
-
-#585913703765625012224
-#3962173320000
 
    # with st.expander("Logic"):
     #
      #           st.markdown("""
-      #      Operational cost. Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
+      #      Operational cost. Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. 
+      # This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
        #                     """)
 
 
