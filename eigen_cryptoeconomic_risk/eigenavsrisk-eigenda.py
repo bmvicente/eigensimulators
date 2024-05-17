@@ -1763,9 +1763,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         # Apply the scaling to the [target_min, target_max] range
         return scaled_value * (target_max - target_min) + target_min
 
-    # Example input values for deviation (you should replace these with your actual input values)
-    xeth_percentage = 60
-    avs_token_percentage = 40
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1857,9 +1854,9 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
     # Display the formula
-    #st.latex(r'''
-    #\text{Normalized Final Score} = \frac{ \left( w_1 \sum_{i=1}^{n} \frac{x_i - \min(x)}{\max(x) - \min(x)} + w_2 \sum_{i=1}^{n} \frac{y_i - \min(y)}{\max(y) - \min(y)} \right) - \min(F) }{\max(F) - \min(F)} \times 100
-    #''')
+    st.latex(r'''
+    \text{Normalized Final Score} = \frac{ \left( w_1 \sum_{i=1}^{n} \frac{x_i - \min(x)}{\max(x) - \min(x)} + w_2 \sum_{i=1}^{n} \frac{y_i - \min(y)}{\max(y) - \min(y)} \right) - \min(F) }{\max(F) - \min(F)} \times 100
+    ''')
 
 
 
