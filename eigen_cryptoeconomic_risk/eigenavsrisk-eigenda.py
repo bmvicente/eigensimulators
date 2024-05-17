@@ -1873,7 +1873,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     max_final = -0.92  # Because the tanh outputs are between -1 and 1
 
     # Normalize the final result to the range [0, 100]
-    normalized_risk_score = (final_result - min_final) / (max_final - min_final) * 100
+    normalized_risk_score = (final_result - min_final) / (max_final - min_final) * 10000
 
     st.session_state.risk_score = normalized_risk_score
 
