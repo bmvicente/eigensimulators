@@ -1838,7 +1838,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     print(f"Combined Result: {combined_result}")
 
     # Define min and max values for the final normalization based on the possible range of the final result
-    min_final = 0.114  # Adjust based on expected range of combined scores
+    min_final = 0  # Adjust based on expected range of combined scores
     max_final = 0.9   # Adjust based on expected range of combined scores
 
     # Normalize the final result to the range [0, 100]
