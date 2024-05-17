@@ -1851,17 +1851,13 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     ''')
 
 
+    with st.expander("Logic"):
+        st.markdown("""
 
+                            """)
 
-
-   # with st.expander("Logic"):
-    #
-     #           st.markdown("""
       #      Operational cost. Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. 
       # This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
-       #                     """)
-
-
 
 
     if st.session_state.risk_score >= 75:
