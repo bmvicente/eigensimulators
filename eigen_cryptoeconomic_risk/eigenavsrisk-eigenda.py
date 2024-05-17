@@ -1747,7 +1747,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
-
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
@@ -1764,6 +1763,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     def tanh_transform(score):
         return np.tanh(score)
+
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1883,7 +1883,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Display the final result and normalized risk score
     st.write(f"Final Result: {final_result}")
     st.write(f"Normalized Risk Score: {normalized_risk_score}")
-
 
 
     # Display the formula
