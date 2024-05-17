@@ -1750,7 +1750,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
-        normalized_score = (original_score - min_original) / (max_original - min_original) * 100
+        normalized_score = (original_score - min_original) / (max_original - min_original)
         return normalized_score
 
     def root_transform(score, root_degree=2):
