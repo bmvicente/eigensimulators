@@ -1838,7 +1838,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Custom scaling to the range [0, 100]
     min_combined = np.min([result1_root, result2_root, result3_root, result4_root, result5_root, result6_root, result7_root, result8_root, result9_root])  # Minimum of the transformed results
     max_combined = np.max([result1_root, result2_root, result3_root, result4_root, result5_root, result6_root, result7_root, result8_root, result9_root])  # Maximum of the transformed results
-    normalized_risk_score = custom_final_scaling(combined_result, min_combined, max_combined, target_min=0, target_max=1.4)
+    normalized_risk_score = custom_final_scaling(combined_result, min_combined, max_combined, target_min=0, target_max=100)
 
     # Ensure the score is within [0, 100]
     normalized_risk_score = max(0, min(normalized_risk_score, 100))
