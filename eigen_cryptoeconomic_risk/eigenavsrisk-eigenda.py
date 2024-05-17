@@ -1746,18 +1746,27 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
+
     def normalize_score(original_score, min_original, max_original):
-        normalized_score = (original_score - min_original) / (max_original - min_original) * 10
+        if max_original == min_original:
+            return 0  # Avoid division by zero
+        normalized_score = (original_score - min_original) / (max_original - min_original)
         return normalized_score
 
     def root_transform(score, root_degree=2):
         return np.power(score, 1/root_degree)
 
     def z_score_transform(score, mean, std):
+        if std == 0:
+            return 0  # Avoid division by zero in Z-score transformation
         return (score - mean) / std
 
     def sigmoid_transform(score):
         return 1 / (1 + np.exp(-score))
+
+    # Example input values for deviation (you should replace these with your actual input values)
+    xeth_percentage = 60
+    avs_token_percentage = 40
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1783,6 +1792,8 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     min_y8, max_y8 = 6, 60
     min_y9, max_y9 = 3, 1417500
 
+
+
     # Initial normalization using min and max values
     result1_norm = normalize_score(result1, min_x1, max_x1)
     result2_norm = normalize_score(result2, min_x2, max_x2)
@@ -1793,6 +1804,9 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     result7_norm = normalize_score(result7, min_y7, max_y7)
     result8_norm = normalize_score(result8, min_y8, max_y8)
     result9_norm = normalize_score(result9, min_y9, max_y9)
+
+    # Print normalized scores for debugging
+    print(f"Normalized scores: {result1_norm}, {result2_norm}, {result3_norm}, {result4_norm}, {result5_norm}, {result6_norm}, {result7_norm}, {result8_norm}, {result9_norm}")
 
     # Root transformation
     result1_root = root_transform(result1_norm)
@@ -1805,10 +1819,17 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     result8_root = root_transform(result8_norm)
     result9_root = root_transform(result9_norm)
 
+    # Print root-transformed scores for debugging
+    print(f"Root-transformed scores: {result1_root}, {result2_root}, {result3_root}, {result4_root}, {result5_root}, {result6_root}, {result7_root}, {result8_root}, {result9_root}")
+
     # Calculate mean and std for Z-score
     results_root = [result1_root, result2_root, result3_root, result4_root, result5_root, result6_root, result7_root, result8_root, result9_root]
     mean_root = np.mean(results_root)
     std_root = np.std(results_root)
+
+    # Print mean and std for debugging
+    print(f"Mean of root-transformed scores: {mean_root}")
+    print(f"Standard deviation of root-transformed scores: {std_root}")
 
     # Z-score transformation
     result1_z = z_score_transform(result1_root, mean_root, std_root)
@@ -1821,6 +1842,9 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     result8_z = z_score_transform(result8_root, mean_root, std_root)
     result9_z = z_score_transform(result9_root, mean_root, std_root)
 
+    # Print Z-score-transformed scores for debugging
+    print(f"Z-score-transformed scores: {result1_z}, {result2_z}, {result3_z}, {result4_z}, {result5_z}, {result6_z}, {result7_z}, {result8_z}, {result9_z}")
+
     # Sigmoid transformation
     result1_sigmoid = sigmoid_transform(result1_z)
     result2_sigmoid = sigmoid_transform(result2_z)
@@ -1832,14 +1856,17 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     result8_sigmoid = sigmoid_transform(result8_z)
     result9_sigmoid = sigmoid_transform(result9_z)
 
+    # Print sigmoid-transformed scores for debugging
+    print(f"Sigmoid-transformed scores: {result1_sigmoid}, {result2_sigmoid}, {result3_sigmoid}, {result4_sigmoid}, {result5_sigmoid}, {result6_sigmoid}, {result7_sigmoid}, {result8_sigmoid}, {result9_sigmoid}")
+
     # Combine and weight normalized scores
     final_result = (
-        (xeth_percentage_dec * (1/3 * result1_sigmoid) + (1/3 * result2_sigmoid) + (1/3 * result3_sigmoid)) +
-        (avs_token_percentage_dec * (
+        xeth_percentage_dec * (1/3 * result1_sigmoid + 1/3 * result2_sigmoid + 1/3 * result3_sigmoid) +
+        avs_token_percentage_dec * (
             0.2 * (result4_sigmoid * result5_sigmoid) + 
             0.4 * (result6_sigmoid * result7_sigmoid) + 
             0.4 * (result8_sigmoid * result9_sigmoid)
-        ))
+        )
     )
 
     # Define min and max values for the final normalization based on the possible range of the final result
@@ -1854,7 +1881,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Display the final result and normalized risk score
     st.write(f"Final Result: {final_result}")
     st.write(f"Normalized Risk Score: {normalized_risk_score}")
-
 
 
 
