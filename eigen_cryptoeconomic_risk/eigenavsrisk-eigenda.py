@@ -2097,8 +2097,10 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
                         \Large{\underline{\text{Confidence Level}}: \text{Extremely Low [5\%, 20\%]}}
                         ''')
 
+    st.write("")
+    st.write("")
 
-    st.write("jjoinmoinmklm")
+    st.write("**ADD INFO HERE**")
 
 
     st.write("")
@@ -2143,7 +2145,10 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
             st.image("images/heatmap2.jpg", width=800)
 
+    st.write("")
+    st.write("")
 
+    st.write("**ADD INFO HERE**")
 
     st.write("  \n")
     st.write("  \n")
