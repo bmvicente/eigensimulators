@@ -1747,10 +1747,11 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
+
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
             return 0  # Avoid division by zero
-        normalized_score = (original_score - min_original) / (max_original - min_original) * 100
+        normalized_score = (original_score - min_original) / (max_original - min_original)
         return normalized_score
 
     def root_transform(score, root_degree=2):
@@ -1761,12 +1762,10 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             return 0  # Avoid division by zero in Z-score transformation
         return (score - mean) / std
 
-    def sigmoid_transform(score):
-        return 1 / (1 + np.exp(-score))
+    def tanh_transform(score):
+        return np.tanh(score)
 
-    # Example input values for deviation (you should replace these with your actual input values)
-    xeth_percentage = 60
-    avs_token_percentage = 40
+
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
@@ -1791,7 +1790,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     min_y7, max_y7 = 3, 126000
     min_y8, max_y8 = 6, 60
     min_y9, max_y9 = 3, 1417500
-
 
 
     # Initial normalization using min and max values
@@ -1845,33 +1843,33 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Print Z-score-transformed scores for debugging
     print(f"Z-score-transformed scores: {result1_z}, {result2_z}, {result3_z}, {result4_z}, {result5_z}, {result6_z}, {result7_z}, {result8_z}, {result9_z}")
 
-    # Sigmoid transformation
-    result1_sigmoid = sigmoid_transform(result1_z)
-    result2_sigmoid = sigmoid_transform(result2_z)
-    result3_sigmoid = sigmoid_transform(result3_z)
-    result4_sigmoid = sigmoid_transform(result4_z)
-    result5_sigmoid = sigmoid_transform(result5_z)
-    result6_sigmoid = sigmoid_transform(result6_z)
-    result7_sigmoid = sigmoid_transform(result7_z)
-    result8_sigmoid = sigmoid_transform(result8_z)
-    result9_sigmoid = sigmoid_transform(result9_z)
+    # Tanh transformation (alternative to sigmoid)
+    result1_tanh = tanh_transform(result1_z)
+    result2_tanh = tanh_transform(result2_z)
+    result3_tanh = tanh_transform(result3_z)
+    result4_tanh = tanh_transform(result4_z)
+    result5_tanh = tanh_transform(result5_z)
+    result6_tanh = tanh_transform(result6_z)
+    result7_tanh = tanh_transform(result7_z)
+    result8_tanh = tanh_transform(result8_z)
+    result9_tanh = tanh_transform(result9_z)
 
-    # Print sigmoid-transformed scores for debugging
-    print(f"Sigmoid-transformed scores: {result1_sigmoid}, {result2_sigmoid}, {result3_sigmoid}, {result4_sigmoid}, {result5_sigmoid}, {result6_sigmoid}, {result7_sigmoid}, {result8_sigmoid}, {result9_sigmoid}")
+    # Print tanh-transformed scores for debugging
+    print(f"Tanh-transformed scores: {result1_tanh}, {result2_tanh}, {result3_tanh}, {result4_tanh}, {result5_tanh}, {result6_tanh}, {result7_tanh}, {result8_tanh}, {result9_tanh}")
 
     # Combine and weight normalized scores
     final_result = (
-        xeth_percentage_dec * (1/3 * result1_sigmoid + 1/3 * result2_sigmoid + 1/3 * result3_sigmoid) +
+        xeth_percentage_dec * (1/3 * result1_tanh + 1/3 * result2_tanh + 1/3 * result3_tanh) +
         avs_token_percentage_dec * (
-            0.2 * (result4_sigmoid * result5_sigmoid) + 
-            0.4 * (result6_sigmoid * result7_sigmoid) + 
-            0.4 * (result8_sigmoid * result9_sigmoid)
+            0.2 * (result4_tanh * result5_tanh) + 
+            0.4 * (result6_tanh * result7_tanh) + 
+            0.4 * (result8_tanh * result9_tanh)
         )
     )
 
     # Define min and max values for the final normalization based on the possible range of the final result
-    min_final = 0  # Example value, adjust based on expected range
-    max_final = 0.3375  # Because the sigmoid outputs are between 0 and 1
+    min_final = -1  # Example value, adjust based on expected range
+    max_final = 1  # Because the tanh outputs are between -1 and 1
 
     # Normalize the final result
     normalized_risk_score = normalize_score(final_result, min_final, max_final)
@@ -1881,6 +1879,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     # Display the final result and normalized risk score
     st.write(f"Final Result: {final_result}")
     st.write(f"Normalized Risk Score: {normalized_risk_score}")
+
 
 
 
