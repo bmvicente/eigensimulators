@@ -1764,9 +1764,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     def tanh_transform(score):
         return np.tanh(score)
 
-    # Example input values for deviation (you should replace these with your actual input values)
-    xeth_percentage = 60
-    avs_token_percentage = 40
 
     # Calculate the deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
