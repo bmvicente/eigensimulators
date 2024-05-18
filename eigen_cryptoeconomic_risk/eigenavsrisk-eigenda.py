@@ -289,58 +289,58 @@ def main():
 
 
     if 'operator_centralization' not in st.session_state:
-        st.session_state.operator_centralization = "Centralized"  # Set default value
+        st.session_state.operator_centralization = "Centralized"
     if 'operator_centralization_score' not in st.session_state:
-        if st.session_state.operator_centralization in operator_centralization_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.operator_centralization in operator_centralization_risk:
             st.session_state.operator_centralization_score = operator_centralization_risk[st.session_state.operator_centralization]
         else:
             st.session_state.operator_centralization_score = 0
 
     if 'validator_centralization' not in st.session_state:
-        st.session_state.validator_centralization = "Centralized"  # Set default value
+        st.session_state.validator_centralization = "Centralized"
     if 'validator_centralization_score' not in st.session_state:
-        if st.session_state.validator_centralization in validator_centralization_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.validator_centralization in validator_centralization_risk:
             st.session_state.validator_centralization_score = validator_centralization_risk[st.session_state.validator_centralization]
         else:
             st.session_state.validator_centralization_score = 0
 
 
     if 'validator_reputation' not in st.session_state:
-        st.session_state.validator_reputation = "Unknown"  # Set default value
+        st.session_state.validator_reputation = "Unknown"
     if 'validator_reputation_score' not in st.session_state:
-        if st.session_state.validator_reputation in validator_reputation_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.validator_reputation in validator_reputation_risk:
             st.session_state.validator_reputation_score = validator_reputation_risk[st.session_state.validator_reputation]
         else:
             st.session_state.validator_reputation_score = 0
 
     if 'dvt_mec' not in st.session_state:
-        st.session_state.dvt_mec = "False"  # Set default value
+        st.session_state.dvt_mec = "False"
     if 'dvt_mec_score' not in st.session_state:
-        if st.session_state.dvt_mec in dvt_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.dvt_mec in dvt_mec_risk:
             st.session_state.dvt_mec_score = dvt_mec_risk[st.session_state.dvt_mec]
         else:
             st.session_state.dvt_mec_score = 0
 
     if 'operator_entrenchment_level' not in st.session_state:
-        st.session_state.operator_entrenchment_level = "High Entrenchment"  # Set default value
+        st.session_state.operator_entrenchment_level = "High Entrenchment"
     if 'operator_entrenchment_level_score' not in st.session_state:
-        if st.session_state.operator_entrenchment_level in operator_entrenchment_level_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.operator_entrenchment_level in operator_entrenchment_level_risk:
             st.session_state.operator_entrenchment_level_score = operator_entrenchment_level_risk[st.session_state.operator_entrenchment_level]
         else:
             st.session_state.operator_entrenchment_level_score = 0
 
     if 'bls_alt_score' not in st.session_state:
-        st.session_state.bls_alt = "True"  # Set default value
+        st.session_state.bls_alt = "True"
     if 'bls_alt_score' not in st.session_state:
-        if st.session_state.bls_alt in bls_alt_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.bls_alt in bls_alt_risk:
             st.session_state.bls_alt_score = bls_alt_risk[st.session_state.bls_alt]
         else:
             st.session_state.bls_alt_score = 0
 
     if 'tee_mec_score' not in st.session_state:
-        st.session_state.tee_mec = "False"  # Set default value
+        st.session_state.tee_mec = "False" 
     if 'tee_mec_score' not in st.session_state:
-        if st.session_state.tee_mec in tee_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.tee_mec in tee_mec_risk:
             st.session_state.tee_mec_score = tee_mec_risk[st.session_state.tee_mec]
         else:
             st.session_state.tee_mec_score = 0
@@ -562,6 +562,7 @@ def main():
 
         col47,col48 = st.columns(2, gap="medium")
         with col47:
+
             # AVS Business Model
             st.markdown("""
                 <style>
@@ -642,30 +643,7 @@ def main():
 
                     Thus, the risk of each model is influenced by its reliance on the AVS's native token and the complexities of its fee and security structures.
                     
-                    ```python
-                    business_model_risk = {"Pay in the Native Token of the AVS": 10, "Dual Staking Utility": 7, "Tokenize the Fee": 4, "Pure Wallet": 1}
-                            
-                    def dual_staking_balance_calc(avs_token_percentage, xeth_percentage):
-                        ratio = avs_token_percentage / xeth_percentage
-
-                        if ratio > 4:  # Very high AVS compared to ETH e.g., 80% AVS:20% ETH
-                            return 9
-                        elif ratio > 7/3:  # High AVS, e.g., 70% AVS:30% ETH
-                            return 8
-                        elif ratio > 1.5:  # Moderately high AVS, e.g., 60% AVS:40% ETH
-                            return 7
-                        elif ratio > 1:  # Moderately high AVS, e.g., 60% AVS:40% ETH
-                            return 6
-                        elif ratio == 1:  # Perfect balance, e.g., 50% AVS:50% ETH
-                            return 5 # Neutral adjustment for balanced scenario
-                        elif ratio > 2/3:  # More ETH, e.g., 40% AVS:60% ETH
-                            return 4
-                        elif ratio > 0.25:  # Low AVS, e.g., 20% AVS:80% ETH
-                            return 3
-                        else:  # Very low AVS compared to ETH
-                            return 2
-                    ```
-                            
+                    ------
 
                     The Native Dual Staking model was chosen as the default one because it guarantees the highest Cost to Violate Liveness.
                     Particularly in the beginning, too much weight on the $ROLLUP native token increases the likelihood of the tokens of the dual staking model being toxic. And thus negatively impact liveness, an essential condition for a Shared Sequencer.
@@ -753,6 +731,7 @@ def main():
             code_complexity = st.selectbox("**AVS Protocol Architecture & Code Complexity**", ["High", "Medium", "Low"], index=1, key="er7tr")
             
         with col28:
+
             # Number of Security Audits
             st.markdown("""
                 <style>
@@ -805,10 +784,6 @@ def main():
                             Accounting for the **number of Security Audits** performed onto an AVS and its underlying **Protocol and Code complexities** provides a good insight into its reliability and robustness.
                             
                             While these input is purely qualitative and quantitative, respectively, a strong correlation exists with its underlying smart contract risks and the risk of honest nodes getting potentially slashed. 
-                            
-                            ```python
-                            security_audits_risk = {0: 10, 1: 8, 2: 6, 3: 4, 4: 2, 5: 1} # 0 security audits poses the greatest risk, 5 the lowest
-                            ```
                                     """)
 
         if st.session_state.code_complexity != code_complexity:
@@ -919,16 +894,8 @@ def main():
 
         with st.expander("Logic"):
             st.markdown("""
-                    Although being purely qualitative metrics, the **Reputation Level of the Operator** and the **Geographical Centralization Level of the Operator**  that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's historical slashing record and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions. [Rated Network](https://www.rated.network/) constitutes a good tool to assess this.                     
-                    
-                    ```python
-                    avs_operator_reputation_risk = {"Unknown": 10, "Established": 5, "Renowned": 1}
-                    ```
-                                            
-                    ```python
-                    avs_operator_centralization_risk = {"Centralized": 10, "Semi-Decentralized": 5, "Decentralized": 1}
-                    ```
-                                """)
+                    Although being purely qualitative metrics, the **Reputation Level of the Operator** and the **Geographical Centralization Level of the Operator**  that the AVS chose to be opted in to validate its modules offers a useful glimpse into the AVS’s security profile. The user should consider the Operator's entrenchment on AVSs, their historical slashing record, and the overall validation and uptime performance, which are crucial in assessing overall operator-related risk for an AVS, including potential malicious collusions. [Rated Network](https://www.rated.network/) constitutes a good tool to assess this.
+                        """)
 
         if st.session_state.operator_reputation != operator_reputation:
                 st.session_state.operator_reputation = operator_reputation
@@ -1030,10 +997,8 @@ def main():
                     </style>
                     """, unsafe_allow_html=True)
 
-                # Displaying the custom styled header
         st.markdown('<p class="header-style">Total $ROLLUP Staked</p>', unsafe_allow_html=True)
 
-                # Dropdown menu
         staked_eigenda = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
         st.write(f"&#8226; Total \$ROLLUP Staked: **{staked_eigenda:,.0f} ETH**")
 
@@ -1138,7 +1103,7 @@ def main():
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            rollup_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="ruih0", help=f"""
+            rollup_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=6, key="ruih0", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
@@ -1156,8 +1121,6 @@ def main():
 
 
         with st.expander("Logic"):
-                st.write("  \n")
-
                 st.markdown("""                        
                             """)
 
@@ -1326,14 +1289,14 @@ def main():
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            disperser_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=4, key="e09u890", help=f"""
+            disperser_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="e09u890", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             disperser_likelihood2 = disperser_likelihood / 2
 
         with col34:
-            disperser_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="ejin1", help=f"""
+            disperser_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="ejin1", help=f"""
                                                       **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
@@ -1472,7 +1435,6 @@ def main():
         with col95:
             tee_mec = st.checkbox('**TEE** Implementation for Secure Management of Validator Keys', value=False,
                                   help="**TEEs consist of secure portions of hardware that generate and securely store validator keys and databases of previously signed data. By design, they enhance security without comprimising scalability, and through increased trust, encourage stake delegation.**")
-        # ASK GPT TO SAY THIS IN OTHER WORDS
 
 
         if st.session_state.bls_alt != bls_alt:
@@ -1539,7 +1501,7 @@ def main():
 
 
         perc_light_nodes = st.slider("**% of Light Nodes**", min_value=0, max_value=100, value=20, format='%d%%',
-                                                   help="**The Performance Accuracy Rate of Validators attesting for `XBlock`s consists of the timely submission of cross-chain messages, `XBlock` cache management, and the overall decision-making in including `XMsg`s in an `XBlock`.**")
+                                                   help="****")
         perc_light_nodes_var = perc_light_nodes_calc(perc_light_nodes)
         st.session_state.perc_light_nodes_var = perc_light_nodes_var
 
@@ -1549,7 +1511,7 @@ def main():
         col100, col101 = st.columns(2, gap="medium")
         with col100:
             validator_reputation = st.selectbox("**BFT Validators' Reputation**", ["Unknown", "Established", "Renowned"], key="0977790", index=1,
-                                                help="**Attests for a set of validators' trustworthiness in their role of confirming and validating BFT blocks and attesting to `XBlock`s before being submitted on-chain.**")
+                                                help="**Attests for a set of validators' trustworthiness in their role of validating and attesting to the storage of the data received.**")
         with col101:           
             validator_centralization = st.selectbox("**BFT Validators' Nodes Geographical Centralization**", ["Centralized", "Semi-Decentralized", "Decentralized"], key="30'232", index=1,
                                                     help="**Attests for a set of validators' robustness and stability in dealing with local regulations or targeted international attacks.**")
@@ -1558,14 +1520,14 @@ def main():
         
         col33, col34 = st.columns(2, gap="medium")
         with col33:
-            bft_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=5, key="v660", help=f"""
+            bft_metrics_likelihood = st.slider("*Likelihood*  ", min_value=1, max_value=10, value=7, key="v660", help=f"""
                                                           **Accounts for the likelihood of the parameter imposing a risk to the security of the AVS.**
 
                                                           1 == Unlikely | 10 == Very Likely""")
             bft_metrics_likelihood2 = bft_metrics_likelihood / 2
 
         with col34:
-            bft_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=8, key="v90901", help=f"""
+            bft_metrics_impact = st.slider("*Impact*  ", min_value=1, max_value=10, value=9, key="v90901", help=f"""
                                                      **Assesses the impact that risk would have on the security of the AVS.**
 
                                                       1 == Unimpactful | 10 == Very Impactful""")
@@ -1578,8 +1540,11 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
+    Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. 
+    This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. 
+    This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
                             """)
+
 
 
         if st.session_state.validator_reputation != validator_reputation:
@@ -1707,15 +1672,12 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
                             kzg_multi_proofs, disperser_operator,
                             proof_custody, direct_unicast, kzg_poly_comm, rollup_censorship_res, fhe_disperser, fhe_operator, dual_quorum)
 
-    (st.session_state.security_audits_score, st.session_state.business_model_score,
-    st.session_state.code_complexity_score, 
-    st.session_state.operator_reputation_score, st.session_state.operator_centralization_score,
-    st.session_state.operator_entrenchment_level_score, st.session_state.tee_mec_score, st.session_state.dvt_mec,
-    st.session_state.validator_reputation_score, st.session_state.validator_centralization_score,
-    st.session_state.bls_alt_score, st.session_state.rollup_fast_proof_score, st.session_state.disperser_centralization_score,
-    st.session_state.kzg_erasure_coding_score, st.session_state.kzg_multi_proofs_score,
-    st.session_state.disperser_operator_score, st.session_state.proof_custody_score, st.session_state.direct_unicast_score, 
-    st.session_state.kzg_poly_comm_score, st.session_state.rollup_censorship_res_score,
+    (st.session_state.security_audits_score, st.session_state.business_model_score, st.session_state.code_complexity_score, 
+    st.session_state.operator_reputation_score, st.session_state.operator_centralization_score, st.session_state.operator_entrenchment_level_score, 
+    st.session_state.tee_mec_score, st.session_state.dvt_mec, st.session_state.validator_reputation_score, st.session_state.validator_centralization_score,
+    st.session_state.bls_alt_score, st.session_state.rollup_fast_proof_score, st.session_state.disperser_centralization_score, st.session_state.kzg_erasure_coding_score, 
+    st.session_state.kzg_multi_proofs_score, st.session_state.disperser_operator_score, st.session_state.proof_custody_score, 
+    st.session_state.direct_unicast_score, st.session_state.kzg_poly_comm_score, st.session_state.rollup_censorship_res_score,
     st.session_state.fhe_disperser_score, st.session_state.fhe_operator_score, st.session_state.dual_quorum) = risk_score
 
 
@@ -1745,7 +1707,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     def normalize_score(original_score, min_original, max_original):
         if max_original == min_original:
-            return 0  # Avoid division by zero
+            return 0
         normalized_score = (original_score - min_original) / (max_original - min_original)
         return normalized_score
 
@@ -1754,26 +1716,21 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     def custom_final_scaling(value, min_value, max_value, target_min=0, target_max=100):
         if max_value == min_value:
-            return target_min  # Avoid division by zero
-        # Scale the value to the [0, 1] range
+            return target_min 
         scaled_value = (value - min_value) / (max_value - min_value)
-        # Apply the scaling to the [target_min, target_max] range
         return scaled_value * (target_max - target_min) + target_min
 
 
-    # Calculate the deviation from 50%
+    # calculate deviation from 50%
     deviation_xeth = (xeth_percentage - 50) / 2
     deviation_avs = (avs_token_percentage - 50) / 2
 
-    # Adjust the percentages based on the deviation
     xeth_percentage_form = 50 - deviation_xeth
     avs_token_percentage_form = 50 + deviation_avs
 
-    # Convert to decimal
     xeth_percentage_dec = xeth_percentage_form * 0.01
     avs_token_percentage_dec = avs_token_percentage_form * 0.01
 
-    # Define your min and max values
     min_x1, max_x1 = 0.5, 22500
     min_x2, max_x2 = 1, 22500             
     min_x3, max_x3 = 0.25, 25000
@@ -1785,8 +1742,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     min_y8, max_y8 = 6, 60
     min_y9, max_y9 = 3, 1417500
 
-
-    # Initial normalization using min and max values
     result1_norm = normalize_score(result1, min_x1, max_x1)
     result2_norm = normalize_score(result2, min_x2, max_x2)
     result3_norm = normalize_score(result3, min_x3, max_x3)
@@ -1797,10 +1752,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     result8_norm = normalize_score(result8, min_y8, max_y8)
     result9_norm = normalize_score(result9, min_y9, max_y9)
 
-    # Print normalized scores for debugging
-    print(f"Normalized scores: {result1_norm}, {result2_norm}, {result3_norm}, {result4_norm}, {result5_norm}, {result6_norm}, {result7_norm}, {result8_norm}, {result9_norm}")
-
-    # Root transformation
     result1_root = root_transform(result1_norm)
     result2_root = root_transform(result2_norm)
     result3_root = root_transform(result3_norm)
@@ -1811,16 +1762,13 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
     result8_root = root_transform(result8_norm)
     result9_root = root_transform(result9_norm)
 
-    # Print root-transformed scores for debugging
     print(f"Root-transformed scores: {result1_root}, {result2_root}, {result3_root}, {result4_root}, {result5_root}, {result6_root}, {result7_root}, {result8_root}, {result9_root}")
 
-    # Custom combination of scores
     combined_result = (
         xeth_percentage_dec * 1/3 * (result1_root + result2_root + result3_root) +
         avs_token_percentage_dec * (0.2*(result4_root * result5_root) * 0.4*(result6_root * result7_root) * 0.4*(result8_root * result9_root))
     )
 
-    # Check for NaN in combined_result
     if np.isnan(combined_result):
         print("combined_result contains NaN. Debugging intermediate values:")
         print(f"xeth_percentage_dec: {xeth_percentage_dec}, avs_token_percentage_dec: {avs_token_percentage_dec}")
@@ -1828,17 +1776,13 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
         print(f"result4_root: {result4_root}, result5_root: {result5_root}, result6_root: {result6_root}")
         print(f"result7_root: {result7_root}, result8_root: {result8_root}, result9_root: {result9_root}")
 
-    # Print combined result for debugging
     print(f"Combined Result: {combined_result}")
 
-    # Define min and max values for the final normalization based on the possible range of the final result
-    min_final = 0  # Adjust based on expected range of combined scores
-    max_final = 0.9   # Adjust based on expected range of combined scores
+    min_final = 0
+    max_final = 0.9
 
-    # Normalize the final result to the range [0, 100]
     normalized_risk_score = (combined_result - min_final) / (max_final - min_final) * 100
 
-    # Ensure the score is within [0, 100]
     normalized_risk_score = max(0, min(normalized_risk_score, 100))
 
     st.session_state.risk_score = normalized_risk_score
@@ -1846,10 +1790,11 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
 
 
+############################################################################################################
+############################################################################################################
+############################################################################################################
 
 
-      #      Operational cost. Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. 
-      # This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
 
 
     if st.session_state.risk_score >= 75:
@@ -1953,7 +1898,6 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             st.write("")
 
 
-            # Define HTML content with embedded CSS for styling for the first group
             bullet_points_html = """
             <style>
             .big-font-yellow {
@@ -1980,7 +1924,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             """
             st.markdown(bullet_points_html, unsafe_allow_html=True)
 
-            # Second group
+
             bullet_points_html1 = """
             <style>
             .big-font-orange {
@@ -2006,7 +1950,7 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
             """
             st.markdown(bullet_points_html1, unsafe_allow_html=True)
 
-            # Third group
+
             bullet_points_html2 = """
             <style>
             .big-font-red {
@@ -2120,7 +2064,18 @@ Instead of requiring each node to download and store all data, EigenDA uses eras
 
     st.write("")
 
-    st.write("**How to Interpret**: Understanding these game-theoretic dynamics is important to prevent network congestion. *It is important to bear in mind that since we are at the very early stages of AVS development and little-to-no information is available, the value judgements below are prone to being faulty.*")
+    st.markdown("""
+                    <style>
+                    .big-font {
+                        font-size: 18px;  /* Adjust font size as needed */
+                    }
+                    </style>
+                    <div class="big-font">
+                    <strong>How to Interpret</strong>: Understanding these game-theoretic dynamics is important to prevent network congestion. 
+                    </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
 
     st.write("")
     st.write("")
