@@ -1309,8 +1309,9 @@ The rollup Sequencer creates a block with transactions, and sends a request to d
 
         with st.expander("Logic"):
                st.markdown("""
-The Disperser is responsible for erasure encoding data blobs into chunks, generating a KZG commitment and KZG multi-reveal proofs, and sending the commitment, chunks, and proofs to the operator nodes of the EigenDA network.
-After the EigenDA nodes verify the chunks they receive against the KZG commitment using the multireveal proofs, persist the data, then generate and return a signature back to the Disperser for aggregation.
+The Disperser, managed by EigenLabs, encodes data blobs into smaller chunks, generates KZG commitments and multi-reveal proofs, and sends these to the EigenDA network's operator nodes. The operators verify the chunks against the KZG commitment using the proofs, store the data, and return signatures to the Disperser, which then aggregates these signatures.
+
+EigenDA's disperser is an untrusted service that interfaces between clients, operators, and Ethereum contracts. When clients request dispersal, the disperser uses Reed-Solomon encoding, calculates a KZG commitment, and generates proofs for each chunk. These are sent to operator nodes, who validate and store the data before returning signatures. The disperser aggregates these signatures and submits them to Ethereum as calldata, ensuring operator accountability and enabling slashing for misbehavior.
                             """)
 
 
@@ -1542,9 +1543,9 @@ After the EigenDA nodes verify the chunks they receive against the KZG commitmen
 
         with st.expander("Logic"):
                 st.markdown("""
-    Instead of requiring each node to download and store all data, EigenDA uses erasure coding to split data into smaller chunks, and requires operators to download and store only a single chunk, which is a fraction of the full data blob size. 
-    This imposes a lower cost on each operator as compared to storing the full blob, making EigenDA “lightweight” to operate by many nodes. As more nodes join the EigenDA network, the resource costs incurred by every node on the network decreases. 
-    This enables EigenDA to be secured by a large set of operators at low and marginally decreasing cost, enabling a philosophy of abundance rather than scarcity.
+EigenDA operators are third parties running EigenDA node software and are registered on EigenLayer with delegated stakes. They are responsible for storing blobs associated with valid storage requests, which are requests where fees are paid and the provided blob chunk is verified against the KZG commitment and proof. Upon successful verification, operators store the blob and sign a message with the KZG commitment and chunk index, then send it back to the Disperser. Clients can choose the exact stake threshold for their blob storage, relying on the collective trust of the operators.
+
+Instead of requiring each node to store all data, EigenDA uses erasure coding to divide data into smaller chunks, requiring operators to store only one chunk, a fraction of the full data blob. This reduces the storage cost for each operator, making it easier for many nodes to participate. As more nodes join the network, the resource costs for each node decrease. This approach secures EigenDA with a large set of operators at a low and marginally decreasing cost, promoting a philosophy of abundance over scarcity.
                             """)
 
 
