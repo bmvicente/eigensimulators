@@ -184,223 +184,223 @@ def main():
     if 'business_model' not in st.session_state:
         st.session_state.business_model = "Dual Staking Utility"
     if 'business_model_score' not in st.session_state:
-        if st.session_state.business_model in business_model_risk:  # Check if business model exists in the dictionary
+        if st.session_state.business_model in business_model_risk:
             st.session_state.business_model_score = business_model_risk[st.session_state.business_model]
         else:
-            st.session_state.business_model_score = 0  # Set a default score if business model is not found
+            st.session_state.business_model_score = 0
 
     if 'code_complexity' not in st.session_state:
-        st.session_state.code_complexity = "High"  # Set default value
+        st.session_state.code_complexity = "High"
     if 'code_complexity_score' not in st.session_state:
-        if st.session_state.code_complexity in code_complexity_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.code_complexity in code_complexity_risk:
             st.session_state.code_complexity_score = code_complexity_risk[st.session_state.code_complexity]
         else:
             st.session_state.code_complexity_score = 0
 
     if 'security_audits' not in st.session_state:
-        st.session_state.security_audits = "2"  # Set default value
+        st.session_state.security_audits = "2"
     if 'security_audits_score' not in st.session_state:
-        if st.session_state.security_audits in security_audits_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.security_audits in security_audits_risk:
             st.session_state.security_audits_score = security_audits_risk[st.session_state.security_audits]
         else:
             st.session_state.security_audits_score = 0
 
     if 'relayer_reputation' not in st.session_state:
-        st.session_state.relayer_reputation = "Unknown"  # Set default value
+        st.session_state.relayer_reputation = "Unknown"
     if 'relayer_reputation_score' not in st.session_state:
-        if st.session_state.relayer_reputation in relayer_reputation_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.relayer_reputation in relayer_reputation_risk:
             st.session_state.relayer_reputation_score = relayer_reputation_risk[st.session_state.relayer_reputation]
         else:
             st.session_state.relayer_reputation_score = 0
 
     if 'operator_reputation' not in st.session_state:
-        st.session_state.operator_reputation = "Unknown"  # Set default value
+        st.session_state.operator_reputation = "Unknown"
     if 'operator_reputation_score' not in st.session_state:
-        if st.session_state.operator_reputation in operator_reputation_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.operator_reputation in operator_reputation_risk:
             st.session_state.operator_reputation_score = operator_reputation_risk[st.session_state.operator_reputation]
         else:
             st.session_state.operator_reputation_score = 0
 
     if 'evm_equivalence' not in st.session_state:
-        st.session_state.evm_equivalence = "Equivalent"  # Set default value
+        st.session_state.evm_equivalence = "Equivalent"
     if 'evm_equivalence_score' not in st.session_state:
-        if st.session_state.evm_equivalence in evm_equivalence_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.evm_equivalence in evm_equivalence_risk:
             st.session_state.evm_equivalence_score = evm_equivalence_risk[st.session_state.evm_equivalence]
         else:
             st.session_state.evm_equivalence_score = 0
 
     if 'operator_centralization' not in st.session_state:
-        st.session_state.operator_centralization = "Centralized"  # Set default value
+        st.session_state.operator_centralization = "Centralized"
     if 'operator_centralization_score' not in st.session_state:
-        if st.session_state.operator_centralization in operator_centralization_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.operator_centralization in operator_centralization_risk:
             st.session_state.operator_centralization_score = operator_centralization_risk[st.session_state.operator_centralization]
         else:
             st.session_state.operator_centralization_score = 0
 
     if 'validator_centralization' not in st.session_state:
-        st.session_state.validator_centralization = "Centralized"  # Set default value
+        st.session_state.validator_centralization = "Centralized"
     if 'validator_centralization_score' not in st.session_state:
-        if st.session_state.validator_centralization in validator_centralization_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.validator_centralization in validator_centralization_risk:
             st.session_state.validator_centralization_score = validator_centralization_risk[st.session_state.validator_centralization]
         else:
             st.session_state.validator_centralization_score = 0
 
     if 'relayer_centralization' not in st.session_state:
-        st.session_state.relayer_centralization = "Decentralized"  # Set default value
+        st.session_state.relayer_centralization = "Decentralized"
     if 'relayer_centralization_score' not in st.session_state:
-        if st.session_state.relayer_centralization in relayer_centralization_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.relayer_centralization in relayer_centralization_risk:
             st.session_state.relayer_centralization_score = relayer_centralization_risk[st.session_state.relayer_centralization]
         else:
             st.session_state.relayer_centralization_score = 0
 
     if 'validator_reputation' not in st.session_state:
-        st.session_state.validator_reputation = "Unknown"  # Set default value
+        st.session_state.validator_reputation = "Unknown"
     if 'validator_reputation_score' not in st.session_state:
-        if st.session_state.validator_reputation in validator_reputation_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.validator_reputation in validator_reputation_risk:
             st.session_state.validator_reputation_score = validator_reputation_risk[st.session_state.validator_reputation]
         else:
             st.session_state.validator_reputation_score = 0
 
     if 'halo_reputation' not in st.session_state:
-        st.session_state.halo_reputation = "Unknown"  # Set default value
+        st.session_state.halo_reputation = "Unknown"
     if 'halo_reputation_score' not in st.session_state:
-        if st.session_state.halo_reputation in halo_reputation_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.halo_reputation in halo_reputation_risk:
             st.session_state.halo_reputation_score = halo_reputation_risk[st.session_state.halo_reputation]
         else:
             st.session_state.halo_reputation_score = 0
 
     if 'evm_client_reputation' not in st.session_state:
-        st.session_state.evm_client_reputation = "Unknown"  # Set default value
+        st.session_state.evm_client_reputation = "Unknown"
     if 'evm_client_reputation_score' not in st.session_state:
-        if st.session_state.evm_client_reputation in evm_client_reputation_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.evm_client_reputation in evm_client_reputation_risk:
             st.session_state.evm_client_reputation_score = evm_client_reputation_risk[st.session_state.evm_client_reputation]
         else:
             st.session_state.evm_client_reputation_score = 0
 
     if 'evm_validator_reputation' not in st.session_state:
-        st.session_state.evm_validator_reputation = "Unknown"  # Set default value
+        st.session_state.evm_validator_reputation = "Unknown"
     if 'evm_validator_reputation_score' not in st.session_state:
-        if st.session_state.evm_validator_reputation in evm_validator_reputation_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.evm_validator_reputation in evm_validator_reputation_risk:
             st.session_state.evm_validator_reputation_score = evm_validator_reputation_risk[st.session_state.evm_validator_reputation]
         else:
             st.session_state.evm_validator_reputation_score = 0
 
     if 'evm_validator_centralization' not in st.session_state:
-        st.session_state.evm_validator_centralization = "Centralized"  # Set default value
+        st.session_state.evm_validator_centralization = "Centralized"
     if 'evm_validator_centralization_score' not in st.session_state:
-        if st.session_state.evm_validator_centralization in evm_validator_centralization_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.evm_validator_centralization in evm_validator_centralization_risk:
             st.session_state.evm_validator_centralization_score = evm_validator_centralization_risk[st.session_state.evm_validator_centralization]
         else:
             st.session_state.evm_validator_centralization_score = 0
 
     if 'dvt_mec' not in st.session_state:
-        st.session_state.dvt_mec = "False"  # Set default value
+        st.session_state.dvt_mec = "False"
     if 'dvt_mec_score' not in st.session_state:
-        if st.session_state.dvt_mec in dvt_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.dvt_mec in dvt_mec_risk:
             st.session_state.dvt_mec_score = dvt_mec_risk[st.session_state.dvt_mec]
         else:
             st.session_state.dvt_mec_score = 0
 
     if 'evm_client_div' not in st.session_state:
-        st.session_state.evm_client_div = "Moderately Diverse"  # Set default value
+        st.session_state.evm_client_div = "Moderately Diverse"
     if 'evm_client_div_score' not in st.session_state:
-        if st.session_state.evm_client_div in evm_client_div_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.evm_client_div in evm_client_div_risk:
             st.session_state.evm_client_div_score = evm_client_div_risk[st.session_state.evm_client_div]
         else:
             st.session_state.evm_client_div_score = 0
 
     if 'operator_entrenchment_level' not in st.session_state:
-        st.session_state.operator_entrenchment_level = "High Entrenchment"  # Set default value
+        st.session_state.operator_entrenchment_level = "High Entrenchment"
     if 'operator_entrenchment_level_score' not in st.session_state:
-        if st.session_state.operator_entrenchment_level in operator_entrenchment_level_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.operator_entrenchment_level in operator_entrenchment_level_risk:
             st.session_state.operator_entrenchment_level_score = operator_entrenchment_level_risk[st.session_state.operator_entrenchment_level]
         else:
             st.session_state.operator_entrenchment_level_score = 0
 
     if 'da_sol_mec' not in st.session_state:
-        st.session_state.da_sol_mec = "False"  # Set default value
+        st.session_state.da_sol_mec = "False"
     if 'da_sol_mec_score' not in st.session_state:
-        if st.session_state.da_sol_mec in da_sol_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.da_sol_mec in da_sol_mec_risk:
             st.session_state.da_sol_mec_score = da_sol_mec_risk[st.session_state.da_sol_mec]
         else:
             st.session_state.da_sol_mec_score = 0
 
     if 'sybil_mec_score' not in st.session_state:
-        st.session_state.sybil_mec = "False"  # Set default value
+        st.session_state.sybil_mec = "False"
     if 'sybil_mec_score' not in st.session_state:
-        if st.session_state.sybil_mec in sybil_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.sybil_mec in sybil_mec_risk: 
             st.session_state.sybil_mec_score = sybil_mec_risk[st.session_state.sybil_mec]
         else:
             st.session_state.sybil_mec_score = 0
 
     if 'relayer_da_solution_score' not in st.session_state:
-        st.session_state.relayer_da_solution = "False"  # Set default value
+        st.session_state.relayer_da_solution = "False"  
     if 'relayer_da_solution_score' not in st.session_state:
-        if st.session_state.relayer_da_solution in relayer_da_solution_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.relayer_da_solution in relayer_da_solution_risk: 
             st.session_state.relayer_da_solution_score = relayer_da_solution_risk[st.session_state.relayer_da_solution]
         else:
             st.session_state.relayer_da_solution_score = 0
 
     if 'validator_abci_usage_score' not in st.session_state:
-        st.session_state.validator_abci_usage = "True"  # Set default value
+        st.session_state.validator_abci_usage = "True"  
     if 'validator_abci_usage_score' not in st.session_state:
-        if st.session_state.validator_abci_usage in validator_abci_usage_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.validator_abci_usage in validator_abci_usage_risk: 
             st.session_state.validator_abci_usage_score = validator_abci_usage_risk[st.session_state.validator_abci_usage]
         else:
             st.session_state.validator_abci_usage_score = 0
 
     if 'engine_api_score' not in st.session_state:
-        st.session_state.engine_api = "True"  # Set default value
+        st.session_state.engine_api = "True" 
     if 'engine_api_score' not in st.session_state:
-        if st.session_state.engine_api in engine_api_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.engine_api in engine_api_risk:
             st.session_state.engine_api_score = engine_api_risk[st.session_state.engine_api]
         else:
             st.session_state.engine_api_score = 0
 
     if 'lockup_mec_score' not in st.session_state:
-        st.session_state.lockup_mec = "False"  # Set default value
+        st.session_state.lockup_mec = "False"
     if 'lockup_mec_score' not in st.session_state:
-        if st.session_state.lockup_mec in lockup_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.lockup_mec in lockup_mec_risk:
             st.session_state.lockup_mec_score = lockup_mec_risk[st.session_state.lockup_mec]
         else:
             st.session_state.lockup_mec_score = 0
 
     if 'fast_fin_ss_mec_score' not in st.session_state:
-        st.session_state.fast_fin_ss_mec = "False"  # Set default value
+        st.session_state.fast_fin_ss_mec = "False" 
     if 'fast_fin_ss_mec_score' not in st.session_state:
-        if st.session_state.fast_fin_ss_mec in fast_fin_ss_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.fast_fin_ss_mec in fast_fin_ss_mec_risk: 
             st.session_state.fast_fin_ss_mec_score = fast_fin_ss_mec_risk[st.session_state.fast_fin_ss_mec]
         else:
             st.session_state.fast_fin_ss_mec_score = 0
 
     if 'tee_mec_score' not in st.session_state:
-        st.session_state.tee_mec = "False"  # Set default value
+        st.session_state.tee_mec = "False" 
     if 'tee_mec_score' not in st.session_state:
-        if st.session_state.tee_mec in tee_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.tee_mec in tee_mec_risk: 
             st.session_state.tee_mec_score = tee_mec_risk[st.session_state.tee_mec]
         else:
             st.session_state.tee_mec_score = 0
 
     if 'encrypted_mempool_mec_score' not in st.session_state:
-        st.session_state.encrypted_mempool_mec = "False"  # Set default value
+        st.session_state.encrypted_mempool_mec = "False" 
     if 'encrypted_mempool_mec_score' not in st.session_state:
-        if st.session_state.encrypted_mempool_mec in encrypted_mempool_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.encrypted_mempool_mec in encrypted_mempool_mec_risk:
             st.session_state.encrypted_mempool_mec_score = encrypted_mempool_mec_risk[st.session_state.encrypted_mempool_mec]
         else:
             st.session_state.encrypted_mempool_mec_score = 0
 
     if 'relayer_merkle_score' not in st.session_state:
-        st.session_state.relayer_merkle = "True"  # Set default value
+        st.session_state.relayer_merkle = "True" 
     if 'relayer_merkle_score' not in st.session_state:
-        if st.session_state.relayer_merkle in relayer_merkle_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.relayer_merkle in relayer_merkle_risk: 
             st.session_state.relayer_merkle_score = relayer_merkle_risk[st.session_state.relayer_merkle]
         else:
             st.session_state.relayer_merkle_score = 0
 
     if 'oracle_bridge_mec_score' not in st.session_state:
-        st.session_state.oracle_bridge_mec = "False"  # Set default value
+        st.session_state.oracle_bridge_mec = "False"
     if 'oracle_bridge_mec_score' not in st.session_state:
-        if st.session_state.oracle_bridge_mec in oracle_bridge_mec_risk:  # Check if code complexity exists in the dictionary
+        if st.session_state.oracle_bridge_mec in oracle_bridge_mec_risk:
             st.session_state.oracle_bridge_mec_score = oracle_bridge_mec_risk[st.session_state.oracle_bridge_mec]
         else:
             st.session_state.oracle_bridge_mec_score = 0
@@ -416,12 +416,9 @@ def main():
                 return f"{num:.1f}"
             
     def format_result(num):
-            # Check if the number is an integer
             if num.is_integer():
-                # Format integer with comma for thousands
                 return f"{int(num):,}"
             else:
-                # Format float with comma for thousands and period for decimals
                 return f"{num:,.2f}"
 
 
@@ -480,10 +477,8 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            # Displaying the custom styled header
         st.markdown('<p class="header-style">Total ETH Restaked on Omni</p>', unsafe_allow_html=True)
 
-            # Dropdown menu
         restaked_eth_del = st.number_input("", min_value=0, max_value=100000000000, step=100000000, value=1200000)
         st.write(f"&#8226; Total Restaked ETH to Omni: **{restaked_eth_del:,.0f} ETH**")
 
@@ -503,6 +498,7 @@ def main():
 
         col47,col48 = st.columns(2, gap="medium")
         with col47:
+
             # AVS Business Model
             st.markdown("""
                 <style>
@@ -518,13 +514,11 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            # Dropdown menu
             business_model = st.selectbox("**AVS Business Model Type**", ["Pay in the Native Token of the AVS", "Dual Staking Utility", "Tokenize the Fee", "Pure Wallet"], index=1)
 
         with col48:
             st.write("  \n")
 
-            # Displaying the custom styled header
             st.markdown('<p class="header-style" style="font-size: 14px;">AVS Dual Staking Model: Native Dual Staking</p>', unsafe_allow_html=True)
 
             st.write("  \n")
@@ -696,6 +690,7 @@ def main():
             code_complexity = st.selectbox("**AVS Protocol Architecture & Code Complexity**", ["High", "Medium", "Low"], index=1, key="er7tr")
             
         with col28:
+
             # Number of Security Audits
             st.markdown("""
                 <style>
@@ -962,10 +957,8 @@ def main():
                 </style>
                 """, unsafe_allow_html=True)
 
-            # Displaying the custom styled header
         st.markdown('<p class="header-style">Total Staked $OMNI</p>', unsafe_allow_html=True)
 
-            # Dropdown menu
         staked_omni = st.number_input("", min_value=0, max_value=10000000000, step=10000000, key="212234")
         st.write(f"&#8226; Total Staked \$OMNI: **{staked_omni:,.0f} ETH**")
 
@@ -1151,8 +1144,6 @@ def main():
             validator_metrics_impact2 = validator_metrics_impact / 2
 
 
-
-        # Directly use the calculated variables
         val_likelihood_formatted = format_number(validator_metrics_likelihood2)
         val_impact_formatted = format_number(validator_metrics_impact2)
 
@@ -1350,7 +1341,8 @@ The summation or multiplication of variables revolves around their independence 
                                                       1 == Unimpactful | 10 == Very Impactful""")
             evm_metrics_impact2 = evm_metrics_impact / 2
 
-        # Directly use the calculated variables
+
+
         evm_likelihood_formatted = format_number(evm_metrics_likelihood2)
         evm_impact_formatted = format_number(evm_metrics_impact2)
 
@@ -1614,7 +1606,6 @@ The summation or multiplication of variables revolves around their independence 
 
     col1, col2, col3 = st.columns([1, 12, 1])
 
-    # Placing the image in the middle column effectively centers it
     with col2:
         st.image("images/omni-main-diagram.jpg", width=1500)
     

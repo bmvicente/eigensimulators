@@ -52,8 +52,6 @@ def eigenda_risk(security_audits, business_model, code_complexity, operator_repu
     validator_reputation_score = validator_reputation_risk[validator_reputation]
     validator_centralization_score = validator_centralization_risk[validator_centralization]
 
-    bls_alt_score = bls_alt_risk[bls_alt]
-    rollup_fast_proof_score = rollup_fast_proof_risk[rollup_fast_proof]
     disperser_centralization_score = disperser_centralization_risk[disperser_centralization]
     kzg_erasure_coding_score = kzg_erasure_coding_risk[kzg_erasure_coding]
     kzg_multi_proofs_score = kzg_multi_proofs_risk[kzg_multi_proofs]

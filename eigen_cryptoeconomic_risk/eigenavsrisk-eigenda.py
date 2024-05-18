@@ -1092,7 +1092,7 @@ def main():
 
         with col91:
             rollup_backup_disperser = st.slider("**% of Rollups With Backup Disperser**", min_value=0, max_value=100, value=0, format='%d%%',
-                                                help="*****")
+                                                help="**The rollup can use a dispersal service optimistically, such that in the case the service is non-responsive or censoring, the rollup can use its own disperser as a backstop, thus getting amortization benefits in the optimistic mode without sacrificing censorship resistance.**")
 
             rollup_backup_disperser_var = rollup_backup_disperser_calc(rollup_backup_disperser)
             st.session_state.rollup_backup_disperser_var = rollup_backup_disperser_var
@@ -1121,7 +1121,8 @@ def main():
 
 
         with st.expander("Logic"):
-                st.markdown("""                        
+                st.markdown("""
+The rollup Sequencer creates a block with transactions, and sends a request to disperse the data blob. A rollup sequencer initiates the process by creating a block of transactions and requesting the dispersion of the associated data blob.               
                             """)
 
 
@@ -1308,7 +1309,8 @@ def main():
 
         with st.expander("Logic"):
                st.markdown("""
-
+The Disperser is responsible for erasure encoding data blobs into chunks, generating a KZG commitment and KZG multi-reveal proofs, and sending the commitment, chunks, and proofs to the operator nodes of the EigenDA network.
+After the EigenDA nodes verify the chunks they receive against the KZG commitment using the multireveal proofs, persist the data, then generate and return a signature back to the Disperser for aggregation.
                             """)
 
 
@@ -1829,6 +1831,19 @@ def main():
         st.markdown("""
 
                             """)
+
+
+    from IPython.display import display, Math
+
+    # LaTeX string
+    latex_string = r"""
+    \text{normalized\_risk\_score} = \left( \frac{\left( w_1 \left( \sum_{i=1}^{3} w_n \sqrt{\left( \frac{\text{result}_i - \text{min}_i}{\text{max}_i - \text{min}_i} \right)} \right) \right) + w_2 \left( \left( \sum_{j=4}^{9} \sqrt{\left( \frac{\text{result}_j - \text{min}_j}{\text{max}_j - \text{min}_j} \right)} w_n \right) \right) - \min(R) \right)}{\max(R) - \min(R)} \right) \times 100
+    """
+
+    # Display the formula
+    display(Math(latex_string))
+
+    
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
