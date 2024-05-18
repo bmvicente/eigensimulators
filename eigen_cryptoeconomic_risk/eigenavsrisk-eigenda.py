@@ -1834,12 +1834,6 @@ After the EigenDA nodes verify the chunks they receive against the KZG commitmen
 
 
 
-    equation = r"\text{normalized\_risk\_score} = \left( \frac{\left( w_1 \left( \sum_{i=1}^{3} w_n \sqrt{\left( \frac{\text{result}_i - \text{min}_i}{\text{max}_i - \text{min}_i} \right)} \right) \right) + w_2 \left( \left( \sum_{j=4}^{9} \sqrt{\left( \frac{\text{result}_j - \text{min}_j}{\text{max}_j - \text{min}_j} \right)} w_n \right) \right) - \min(R) \right)}{\max(R) - \min(R)} \right) \times 100"
-
-    st.write(equation)
-
-
-
 
     st.write("  \n")
     st.write("  \n")
