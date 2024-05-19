@@ -2099,7 +2099,9 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
                     }
                     </style>
                     <div class="big-font">
-                    <strong>How to Interpret</strong>: Understanding these game-theoretic dynamics is important to prevent network congestion. 
+                    <strong>How to Interpret</strong>: The heatmaps below aim to illustrate the game theoretic dynamics of rollups strategyzing how to set their KZG erasure coding rate given the potential resource constraints Operators will face in storing too much data redundancy and the impact this could have in node decentralization. 
+                    <br>
+                    Understanding these game-theoretic dynamics is important to prevent network congestion. 
                     </div>
                     </div>
                     """, unsafe_allow_html=True)
@@ -2128,7 +2130,29 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     st.write("")
     st.write("")
 
-    st.write("**ADD INFO HERE**")
+
+
+    st.markdown("""
+    <style>
+    .big-font {
+        font-size: 20px;  /* Adjust font size as needed */
+    }
+    </style>
+    <div class="big-font">
+        <ul>
+            <li><strong>Objectively Attributable Faults</strong> are straightforward to attribute since they are clearly verifiable onchain, making them suitable for direct slashing and redistribution of restaked ETH.</li>
+            <li><strong>Intersubjectively Attributable Faults</strong> require broad-based agreement among observers, and bEIGEN1-to-bEIGEN2 forking and bEIGEN1 burning to resolve disputes.</li>
+            <li><strong>Non-Attributable Faults</strong> cannot be attributed outside the victim of the fault. The inability to attribute these faults objectively or intersubjectively means that the funds involved are considered lost.</li>
+        </ul>
+        <br>
+        The Yellow-to-Red colouring on each category of Faults represent the increasing degree of risk.
+        <br>
+        <strong>- Safety Violations</strong> normally require a 2/3 Stake Attack-type of malicious scenario, are objectively attributable, and are overall unlikely to occur to robust guardrails that are in place.
+        <br>
+        <strong>- Liveness Violations</strong> normally require a 1/3 Stake Attack-type of malicious scenario, are most pressing in DA due to the overt importance in reducing latency and throught in data storage attestation and signature registering. On top of that, since each risk vector can only be potentially solved through intersubjective faults, there is some leeway for malicious actors to try and corrupt the system, particularly through Collusion - which is non-attributable as a fault.
+    </div>
+    """, unsafe_allow_html=True)
+
 
     st.write("  \n")
     st.write("  \n")
