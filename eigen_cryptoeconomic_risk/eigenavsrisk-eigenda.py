@@ -2053,7 +2053,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     st.markdown("""
     <style>
     .big-font {
-        font-size: 19px;  /* Adjust font size as needed */
+        font-size: 20px;  /* Adjust font size as needed */
     }
     </style>
     <div class="big-font">
