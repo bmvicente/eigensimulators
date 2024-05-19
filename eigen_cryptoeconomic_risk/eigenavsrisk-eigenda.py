@@ -2144,9 +2144,9 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     }
     </style>
     <div class="big-font">
-    In both heatmaps, the X-axis represents the participation rate of validator nodes, and the Y-axis represents the KZG erasure encoding rate. The colors indicate the level of decentralization.
+    In both heatmaps, the X-axis represents the participation rate of validator nodes, and the Y-axis represents the KZG erasure encoding rate. The color gradients indicate the level of decentralization.
     <br><br>
-    At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation at this stage. At a more <strong>maturing stage of EigenDA</strong>, the black box shows how the strategies shift, with robust rollups potentially handling higher participation rates more efficiently.
+    At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation. At a more <strong>maturing stage of EigenDA</strong>, the black box shows how the strategies shift - with DA more battle-tested and a greater expansion of the node network-, with robust rollups potentially handling higher participation rates more efficiently.
     <br><br>
     <strong>Key Insights</strong>:
     <ul>
