@@ -2150,7 +2150,9 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation. At a more <strong>maturing stage of EigenDA</strong>, the black box shows how the strategies shift - with DA more battle-tested and a greater expansion of the node network-, with robust rollups potentially handling higher KZG erasure coding rates more efficiently.
     <br><br>
     <strong>Key Insight</strong>:
+    <br>
     <strong>- Nascent Rollups</strong>: Higher KZG erasure encoding rates and lower validator participation rates might be necessary to ensure data redundancy and security during the early stages.</li>
+    <br>
     <strong>- Robust Rollups</strong>: As the network matures, lower erasure encoding rates with higher validator participation rates can achieve decentralization more cost-effectively.</li>
     <br>
     By understanding these dynamics, rollups can better set their KZG erasure encoding rates to balance decentralization and storage costs, ensuring a more efficient as well as anti-congestionary network.
