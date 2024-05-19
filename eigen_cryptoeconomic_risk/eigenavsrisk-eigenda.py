@@ -2092,6 +2092,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     st.markdown(f"<div style='font-size: 26px; font-weight: bold;'>Game-Theoretic Dynamics Around Setting the KZG Erasure Encoding Rate by Rollup</div>", unsafe_allow_html=True)
 
     st.write("")
+    st.write("  \n")
 
 
 
@@ -2133,6 +2134,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
             st.image("images/heatmap2.jpg", width=800)
 
 
+    st.write("  \n")
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
