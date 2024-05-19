@@ -2146,9 +2146,9 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     <div class="big-font">
     In both heatmaps, the X-axis represents the participation rate of validator nodes, and the Y-axis represents the KZG erasure encoding rate. The color gradients indicate the level of decentralization.
     <br><br>
-    At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation. At a more <strong>maturing stage of EigenDA</strong>, the black box shows how the strategies shift - with DA more battle-tested and a greater expansion of the node network-, with robust rollups potentially handling higher participation rates more efficiently.
+    At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation. At a more <strong>maturing stage of EigenDA</strong>, the black box shows how the strategies shift - with DA more battle-tested and a greater expansion of the node network-, with robust rollups potentially handling higher KZG erasure coding rates more efficiently.
     <br><br>
-    <strong>Key Insights</strong>:
+    <strong>Key Insight</strong>:
     <ul>
         <li><strong>Nascent Rollups</strong>: Higher KZG erasure encoding rates and lower validator participation rates might be necessary to ensure data redundancy and security during the early stages.</li>
         <li><strong>Robust Rollups</strong>: As the network matures, lower erasure encoding rates with higher validator participation rates can achieve decentralization more cost-effectively.</li>
@@ -2177,7 +2177,11 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    
 
     col11, col12, col13 = st.columns([6,3,5])
 
