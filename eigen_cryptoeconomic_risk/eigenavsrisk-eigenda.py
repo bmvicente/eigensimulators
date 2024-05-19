@@ -1122,7 +1122,7 @@ def main():
 
         with st.expander("Logic"):
                 st.markdown("""
-The rollup Sequencer creates a block with transactions, and sends a request to disperse the data blob. A rollup sequencer initiates the process by creating a block of transactions and requesting the dispersion of the associated data blob.               
+    The rollup Sequencer creates a block with transactions, and sends a request to disperse the data blob. A rollup sequencer initiates the process by creating a block of transactions and requesting the dispersion of the associated data blob.               
                             """)
 
 
@@ -2048,8 +2048,19 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     st.write("")
     st.write("")
 
-    st.write("**ADD INFO HERE**")
-
+    st.markdown("""
+                    <style>
+                    .big-font {
+                        font-size: 18px;  /* Adjust font size as needed */
+                    }
+                    </style>
+                    <div class="big-font">
+                    - <strong>Objectively Attributable Faults</strong> are straightforward to attribute since they are clearly verifiable onchain, making them suitable for direct slashing and redistribution of restaked ETH.
+                    - <strong>Intersubjectively Attributable Faults</strong> require broad-based agreement among observers, and bEIGEN1-to-bEIGEN2 forking and bEIGEN1 burning to resolve disputes.
+                    - <strong>Non-Attributable Faults</strong> cannot be attributed outside the victim of the fault. The inability to attribute these faults objectively or intersubjectively means that the funds involved are considered lost.            
+                    </div>
+                    </div>
+                    """, unsafe_allow_html=True)
 
     st.write("")
     st.write("")
