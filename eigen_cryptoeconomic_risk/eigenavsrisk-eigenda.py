@@ -2155,6 +2155,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     <br>
     <strong>- Robust Rollups</strong>: As the network matures, lower erasure encoding rates with higher validator participation rates can achieve decentralization more cost-effectively.</li>
     <br>
+    <br>
     By understanding these dynamics, rollups can better set their KZG erasure encoding rates to balance decentralization and storage costs, ensuring a more efficient as well as anti-congestionary network.
     </div>
     """, unsafe_allow_html=True)
