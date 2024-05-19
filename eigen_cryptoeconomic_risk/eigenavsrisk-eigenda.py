@@ -2093,18 +2093,43 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     st.write("")
 
     st.markdown("""
-                    <style>
-                    .big-font {
-                        font-size: 20px;  /* Adjust font size as needed */
-                    }
-                    </style>
-                    <div class="big-font">
-                    <strong>How to Interpret</strong>: The heatmaps below aim to illustrate the game theoretic dynamics of rollups strategyzing how to set their KZG erasure coding rate given the potential resource constraints Operators will face in storing too much data redundancy and the impact this could have in node decentralization. 
-                    <br>
-                    Understanding these game-theoretic dynamics is important to prevent network congestion. 
-                    </div>
-                    </div>
-                    """, unsafe_allow_html=True)
+    <style>
+    .big-font {
+        font-size: 20px;  /* Adjust font size as needed */
+    }
+    </style>
+    <div class="big-font">
+    <strong>How to Interpret</strong>: The heatmaps below aim to illustrate the game-theoretic dynamics of rollups strategizing on how to set their KZG erasure coding rate given the potential resource constraints operators will face in storing too much data redundancy and the impact this could have on node decentralization. 
+    <br>
+    Understanding these game-theoretic dynamics is important to prevent network congestion. 
+    <br><br>
+    The heatmaps show the relationship between the KZG erasure encoding rate (Y-axis) and the participation rate of validator nodes (X-axis) at different stages of EigenDA.
+    <br><br>
+    At Early Stage of EigenDA: 
+    <ul>
+        <li>The X-axis represents the participation rate of validator nodes as a percentage.</li>
+        <li>The Y-axis represents the KZG erasure encoding rate as a percentage.</li>
+        <li>Colors indicate the level of decentralization, with blue representing more decentralized and red representing more centralized configurations.</li>
+        <li>The black box distinguishes nascent rollups (upper region) from robust rollups (lower region), indicating different strategies for managing data storage and network participation.</li>
+    </ul>
+    <br>
+    At Maturity Stage of EigenDA:
+    <ul>
+        <li>Similar axes and color schemes are used.</li>
+        <li>The participation rate of validator nodes and the KZG erasure encoding rate are again compared.</li>
+        <li>The black box shows how the strategies shift as EigenDA matures, with robust rollups potentially handling higher participation rates more efficiently.</li>
+    </ul>
+    <br>
+    <strong>Key Insights</strong>:
+    <ul>
+        <li><strong>Nascent Rollups</strong>: Higher KZG erasure encoding rates and lower validator participation rates might be necessary to ensure data redundancy and security during the early stages.</li>
+        <li><strong>Robust Rollups</strong>: As the network matures, lower erasure encoding rates with higher validator participation rates can achieve decentralization more cost-effectively.</li>
+    </ul>
+    <br>
+    By understanding these dynamics, rollup developers can better set their KZG erasure encoding rates to balance decentralization and storage costs, ensuring a more efficient and resilient network.
+    </div>
+    """, unsafe_allow_html=True)
+
 
 
     st.write("")
@@ -2127,31 +2152,6 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
 
             st.image("images/heatmap2.jpg", width=800)
 
-    st.write("")
-    st.write("")
-
-
-
-    st.markdown("""
-    <style>
-    .big-font {
-        font-size: 20px;  /* Adjust font size as needed */
-    }
-    </style>
-    <div class="big-font">
-        <ul>
-            <li><strong>Objectively Attributable Faults</strong> are straightforward to attribute since they are clearly verifiable onchain, making them suitable for direct slashing and redistribution of restaked ETH.</li>
-            <li><strong>Intersubjectively Attributable Faults</strong> require broad-based agreement among observers, and bEIGEN1-to-bEIGEN2 forking and bEIGEN1 burning to resolve disputes.</li>
-            <li><strong>Non-Attributable Faults</strong> cannot be attributed outside the victim of the fault. The inability to attribute these faults objectively or intersubjectively means that the funds involved are considered lost.</li>
-        </ul>
-        <br>
-        The Yellow-to-Red colouring on each category of Faults represent the increasing degree of risk.
-        <br>
-        <strong>- Safety Violations</strong> normally require a 2/3 Stake Attack-type of malicious scenario, are objectively attributable, and are overall unlikely to occur to robust guardrails that are in place.
-        <br>
-        <strong>- Liveness Violations</strong> normally require a 1/3 Stake Attack-type of malicious scenario, are most pressing in DA due to the overt importance in reducing latency and throught in data storage attestation and signature registering. On top of that, since each risk vector can only be potentially solved through intersubjective faults, there is some leeway for malicious actors to try and corrupt the system, particularly through Collusion - which is non-attributable as a fault.
-    </div>
-    """, unsafe_allow_html=True)
 
 
     st.write("  \n")
