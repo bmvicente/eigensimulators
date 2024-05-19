@@ -2094,6 +2094,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
 
 
 
+
     st.markdown("""
     <style>
     .big-font {
@@ -2101,22 +2102,11 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     }
     </style>
     <div class="big-font">
-    <strong>How to Interpret</strong>: The heatmaps below aim to illustrate the game-theoretic dynamics of rollups strategizing on how to set their KZG erasure coding rate given the potential resource constraints operators will face in storing too much data redundancy and the impact this could have on node decentralization. 
-    <br><br>
-    In both heatmaps, the X-axis represents the participation rate of validator nodes, and the Y-axis represents the KZG erasure encoding rate. The colors indicate the level of decentralization.
-    <br><br>
-    At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation at this stage. At a more <strong>maturing stage of EigenDA</strong>, the black box shows how the strategies shift, with robust rollups potentially handling higher participation rates more efficiently.
-    <br><br>
-    <strong>Key Insights</strong>:
-    <ul>
-        <li><strong>Nascent Rollups</strong>: Higher KZG erasure encoding rates and lower validator participation rates might be necessary to ensure data redundancy and security during the early stages.</li>
-        <li><strong>Robust Rollups</strong>: As the network matures, lower erasure encoding rates with higher validator participation rates can achieve decentralization more cost-effectively.</li>
-    </ul>
+    <strong>How to Interpret</strong>: The heatmaps below aim to illustrate the game-theoretic dynamics of rollups strategizing on how to set their KZG erasure coding rate given the potential resource constraints operators will face in storing too much data redundancy and the impact this could have on node decentralization.
     <br>
-    By understanding these dynamics, rollups can better set their KZG erasure encoding rates to balance decentralization and storage costs, ensuring a more efficient as well as anti-congestionary network.
+    Understanding these game-theoretic dynamics is important to prevent network congestion.
     </div>
     """, unsafe_allow_html=True)
-
 
 
 
@@ -2143,6 +2133,32 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
 
             st.image("images/heatmap2.jpg", width=800)
 
+
+    st.write("  \n")
+    st.write("  \n")
+    st.write("  \n")
+    
+
+    st.markdown("""
+    <style>
+    .big-font {
+        font-size: 18px;  /* Adjust font size as needed */
+    }
+    </style>
+    <div class="big-font">
+    In both heatmaps, the X-axis represents the participation rate of validator nodes, and the Y-axis represents the KZG erasure encoding rate. The colors indicate the level of decentralization.
+    <br><br>
+    At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation at this stage. At a more <strong>maturing stage of EigenDA</strong>, the black box shows how the strategies shift, with robust rollups potentially handling higher participation rates more efficiently.
+    <br><br>
+    <strong>Key Insights</strong>:
+    <ul>
+        <li><strong>Nascent Rollups</strong>: Higher KZG erasure encoding rates and lower validator participation rates might be necessary to ensure data redundancy and security during the early stages.</li>
+        <li><strong>Robust Rollups</strong>: As the network matures, lower erasure encoding rates with higher validator participation rates can achieve decentralization more cost-effectively.</li>
+    </ul>
+    <br>
+    By understanding these dynamics, rollups can better set their KZG erasure encoding rates to balance decentralization and storage costs, ensuring a more efficient as well as anti-congestionary network.
+    </div>
+    """, unsafe_allow_html=True)
 
 
     st.write("  \n")
