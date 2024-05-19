@@ -2179,9 +2179,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
-    st.write("  \n")
-    st.write("  \n")
-    
+
 
     col11, col12, col13 = st.columns([6,3,5])
 
