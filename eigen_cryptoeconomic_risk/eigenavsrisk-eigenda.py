@@ -2062,6 +2062,10 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
             <li><strong>Intersubjectively Attributable Faults</strong> require broad-based agreement among observers, and bEIGEN1-to-bEIGEN2 forking and bEIGEN1 burning to resolve disputes.</li>
             <li><strong>Non-Attributable Faults</strong> cannot be attributed outside the victim of the fault. The inability to attribute these faults objectively or intersubjectively means that the funds involved are considered lost.</li>
         </ul>
+        <br>
+        The Yellow-to-Red colouring on each category of faults represent the increasing risk in that order.
+        <strong>Safety Violations</strong> normally require a 2/3 Stake Attack-type of malicious scenario, are objectively attributable and are overall unlikely to occur to robust guardrails that are in place.
+        <strong>Liveness Violations</strong> are most pressing in DA due to the overt importance in reducing latency and throught in data storage attestation and signature registering. On top of that, since each risk vector can only be potentially solved through intersubjective faults, there is some leeway for malicious actors to try and corrupt the system, particularly through Collusion.
     </div>
     """, unsafe_allow_html=True)
 
