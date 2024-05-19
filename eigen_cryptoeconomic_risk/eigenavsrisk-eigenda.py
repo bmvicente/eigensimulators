@@ -1823,11 +1823,11 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
         <div style="
             border: 2px solid {color};
             border-radius: 5px;
-            padding: 15px;
+            padding: 17px;
             text-align: center;
             margin: 10px 0;
             background-color: {background_color};">
-            <h2 style="color: black; margin:0; font-size: 1.6em;">Normalized <i>EigenDA</i> Risk Score: <span style="font-size: 1.7em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
+            <h2 style="color: black; margin:0; font-size: 1.7em;">Normalized <i>EigenDA</i> Risk Score: <span style="font-size: 1.8em; color: {color};">{st.session_state.risk_score:.0f}</span></h2>
         </div>
         """, 
         unsafe_allow_html=True
