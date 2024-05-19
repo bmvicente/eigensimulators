@@ -2105,23 +2105,10 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     <br>
     Understanding these game-theoretic dynamics is important to prevent network congestion. 
     <br><br>
-    Both heatmaps use the same axes and color schemes:
-    <ul>
-        <li>The X-axis represents the participation rate of validator nodes as a percentage.</li>
-        <li>The Y-axis represents the KZG erasure encoding rate as a percentage.</li>
-        <li>Colors indicate the level of decentralization, with blue representing more decentralized and red representing more centralized configurations.</li>
-    </ul>
-    <br>
-    <strong>At Early Stage of EigenDA</strong>:
-    <ul>
-        <li>The black box distinguishes nascent rollups (upper region) from robust rollups (lower region), indicating different strategies for managing data storage and network participation at this stage.</li>
-    </ul>
-    <br>
-    <strong>At Maturity Stage of EigenDA</strong>:
-    <ul>
-        <li>The black box shows how the strategies shift as EigenDA matures, with robust rollups potentially handling higher participation rates more efficiently.</li>
-    </ul>
-    <br>
+    Both heatmaps use the same axes and color schemes. The X-axis represents the participation rate of validator nodes as a percentage, while the Y-axis represents the KZG erasure encoding rate as a percentage. The colors indicate the level of decentralization, with blue representing more decentralized and red representing more centralized configurations.
+    <br><br>
+    At the early stage of EigenDA, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation at this stage. As EigenDA matures, the black box shows how the strategies shift, with robust rollups potentially handling higher participation rates more efficiently.
+    <br><br>
     <strong>Key Insights</strong>:
     <ul>
         <li><strong>Nascent Rollups</strong>: Higher KZG erasure encoding rates and lower validator participation rates might be necessary to ensure data redundancy and security during the early stages.</li>
@@ -2131,6 +2118,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     By understanding these dynamics, rollup developers can better set their KZG erasure encoding rates to balance decentralization and storage costs, ensuring a more efficient and resilient network.
     </div>
     """, unsafe_allow_html=True)
+
 
 
 
