@@ -2067,7 +2067,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
         <br>
         <strong>- Safety Violations</strong> normally require a 2/3 Stake Attack-type of malicious scenario, are objectively attributable and are overall unlikely to occur to robust guardrails that are in place.
         <br>
-        <strong>- Liveness Violations</strong> are most pressing in DA due to the overt importance in reducing latency and throught in data storage attestation and signature registering. On top of that, since each risk vector can only be potentially solved through intersubjective faults, there is some leeway for malicious actors to try and corrupt the system, particularly through Collusion.
+        <strong>- Liveness Violations</strong> normally require a 1/3 Stake Attacl-type of malicious scenario, are most pressing in DA due to the overt importance in reducing latency and throught in data storage attestation and signature registering. On top of that, since each risk vector can only be potentially solved through intersubjective faults, there is some leeway for malicious actors to try and corrupt the system, particularly through Collusion.
     </div>
     """, unsafe_allow_html=True)
 
