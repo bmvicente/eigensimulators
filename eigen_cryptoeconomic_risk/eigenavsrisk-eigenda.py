@@ -2063,7 +2063,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
             <li><strong>Non-Attributable Faults</strong> cannot be attributed outside the victim of the fault. The inability to attribute these faults objectively or intersubjectively means that the funds involved are considered lost.</li>
         </ul>
         <br>
-        The Yellow-to-Red colouring on each category of faults represent the increasing risk in that order.
+        The Yellow-to-Red colouring on each category of Faults represent the increasing degree of risk.
         <br>
         <strong>- Safety Violations</strong> normally require a 2/3 Stake Attack-type of malicious scenario, are objectively attributable and are overall unlikely to occur to robust guardrails that are in place.
         <br>
