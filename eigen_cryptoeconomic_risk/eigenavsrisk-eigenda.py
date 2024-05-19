@@ -2136,6 +2136,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     st.write("  \n")
     st.write("  \n")
     st.write("  \n")
+    st.write("  \n")
 
 
     st.markdown("""
