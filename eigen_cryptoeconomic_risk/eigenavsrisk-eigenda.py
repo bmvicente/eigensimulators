@@ -2058,8 +2058,11 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     </style>
     <div class="big-font">
         <strong>- Objectively Attributable Faults</strong> are straightforward to attribute since they are clearly verifiable onchain, making them suitable for direct slashing and redistribution of restaked ETH.</li>
+        <br>
         <strong>- Intersubjectively Attributable Faults</strong> require broad-based agreement among observers, and bEIGEN1-to-bEIGEN2 forking and bEIGEN1 burning to resolve disputes.</li>
+        <br>
         <strong>- Non-Attributable Faults</strong> cannot be attributed outside the victim of the fault. The inability to attribute these faults objectively or intersubjectively means that the funds involved are considered lost.</li>
+        <br>
         <br>
         The Yellow-to-Red colouring on each category of Faults represent the increasing degree of risk.
         <br>
