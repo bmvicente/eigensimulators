@@ -2095,6 +2095,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     <div class="big-font">
         The Yellow-to-Red colouring on each category of Faults represents the increasing degree of risk.
         <br>
+        <br>
         <strong>- Safety Violations</strong> normally require a 2/3 Stake Attack-type of malicious scenario, are objectively attributable, and are overall unlikely to occur due to robust guardrails that are in place.
         <br>
         <strong>- Liveness Violations</strong> normally require a 1/3 Stake Attack-type of malicious scenario, are most pressing in DA due to the overt importance in reducing latency and throughput in data storage attestation and signature registration. On top of that, since each potential risk vector can only be potentially solved through intersubjective faults, there is some leeway for malicious actors to try and corrupt the system, particularly through Collusion - which is non-attributable as a fault -, posing the greatest risk.
