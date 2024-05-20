@@ -1729,8 +1729,8 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
 
 
     # calculate deviation from 50%
-    deviation_xeth = (xeth_percentage - 50) / 3
-    deviation_avs = (avs_token_percentage - 50) / 3
+    deviation_xeth = (xeth_percentage - 50) / 2
+    deviation_avs = (avs_token_percentage - 50) / 2
 
     xeth_percentage_form = 50 - deviation_xeth
     avs_token_percentage_form = 50 + deviation_avs
@@ -1786,7 +1786,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     print(f"Combined Result: {combined_result:.2f}")
 
     min_final = 0
-    max_final = 0.65
+    max_final = 0.9
 
     normalized_risk_score = (combined_result - min_final) / (max_final - min_final) * 100
 
