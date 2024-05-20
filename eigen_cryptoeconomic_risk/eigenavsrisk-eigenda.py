@@ -100,7 +100,7 @@ def main():
     st.write("  \n")
 
 
-    st.subheader("**INFRASTRUCTURE RISK**")
+    st.subheader("**ARCHITECTURE RISK**")
 
     st.write("  \n")
 
