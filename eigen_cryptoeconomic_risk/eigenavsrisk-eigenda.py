@@ -1786,7 +1786,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     print(f"Combined Result: {combined_result:.2f}")
 
     min_final = 0
-    max_final = 1.2
+    max_final = 0.75
 
     normalized_risk_score = (combined_result - min_final) / (max_final - min_final) * 100
 
