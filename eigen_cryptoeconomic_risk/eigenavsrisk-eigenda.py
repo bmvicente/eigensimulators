@@ -2135,7 +2135,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     }
     </style>
     <div class="big-font">
-    <strong>How to Interpret</strong>: The heatmaps below aim to illustrate the game-theoretic dynamics of rollups strategizing on how to set their KZG erasure coding rate given the potential resource constraints operators will face in storing too much data redundancy and the impact this could have on node centralization.
+    <strong>How to Interpret</strong>: The heatmaps below aim to illustrate the game-theoretic dynamics of a <strong>Signaling Game</strong> where rollups strategize on how to set their KZG erasure coding rate given the potential resource constraints operators may face in storing too much data redundancy and the impact this could have on node centralization, without prior knowledge on which rate the Rollups will choose.
     </div>
     """, unsafe_allow_html=True)
 
