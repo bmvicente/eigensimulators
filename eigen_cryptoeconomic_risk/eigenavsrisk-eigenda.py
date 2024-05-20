@@ -1783,7 +1783,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
         print(f"result4_root: {result4_root}, result5_root: {result5_root}, result6_root: {result6_root}")
         print(f"result7_root: {result7_root}, result8_root: {result8_root}, result9_root: {result9_root}")
 
-    print(f"Combined Result: {combined_result}")
+    print(f"Combined Result: {combined_result:.2f}")
 
     min_final = 0
     max_final = 0.9
