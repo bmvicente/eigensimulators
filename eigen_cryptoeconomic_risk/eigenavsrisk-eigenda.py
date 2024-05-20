@@ -1844,9 +1844,9 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
             <div class="big-font">
             <ul>
                 <li><strong>Weightings for ROLLUP native token (wROLLUP) and restaked ETH (wETH)</strong> are set based on the Dual Staking balance composition chosen by the rollup.</li>
-                <li><strong>Weightings for AVS parameters (wi) and EigenDA specific parameters (wj)</strong> are set by default. wi is being applied an equal weight for the 3 AVS Categories, whereas wj is placing less weight on the rollup layer, and greater on the Disperser and Consensus Layer.</li>
-                <li><strong>R</strong> represents the aggregate Risk Score of EigenDA.</li>
+                <li><strong>Weightings for AVS parameters (wi) and EigenDA specific parameters (wj)</strong> are set by default. wi is being applied an equal weight for the 3 AVS Categories, whereas wj is placing less weight on the Rollup layer, and greater on the Disperser and Consensus Layers (the 3 EigenDA Categories).</li>
                 <li><strong>Results <i>result</i>i and <i>result</i>j</strong> represents the sums that are calculated based on user inputs.</li>
+                <li><strong>R</strong> represents the aggregate Risk Score of EigenDA.</li>
             </ul>
             </div>
             """, unsafe_allow_html=True)
