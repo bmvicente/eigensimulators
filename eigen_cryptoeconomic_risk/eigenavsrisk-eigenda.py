@@ -2185,7 +2185,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     <br><br>
     At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation. At a more <strong>maturing stage of EigenDA</strong>, the black box illustrates how these strategies shift, with the network becoming more robust and battle-tested, and the node network expanding.
     <br><br>
-    <strong>Main Insight</strong>:
+    <strong><i>Main Insight</i></strong>:
     <br>
     Rollups should adopt a more conservative approach in setting their KZG rates during the early stage of EigenDA to prevent high overhead costs for operators and avoid centralization. As the network matures, with more nodes joining the operator network and robust anti-congestion models being implemented, rollups can set higher KZG rates to enhance data redundancy and protection against faults.
     <br>
