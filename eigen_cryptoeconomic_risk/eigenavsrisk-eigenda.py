@@ -1833,9 +1833,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
         unsafe_allow_html=True
         )
     with st.expander("Formula"):
-        st.markdown("""
-
-                            """)
+            st.image("images/daformula.jpeg")
 
 
 
