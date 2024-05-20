@@ -1729,8 +1729,8 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
 
 
     # calculate deviation from 50%
-    deviation_xeth = (xeth_percentage - 50) / 2
-    deviation_avs = (avs_token_percentage - 50) / 2
+    deviation_xeth = (xeth_percentage - 50) / 3
+    deviation_avs = (avs_token_percentage - 50) / 3
 
     xeth_percentage_form = 50 - deviation_xeth
     avs_token_percentage_form = 50 + deviation_avs
