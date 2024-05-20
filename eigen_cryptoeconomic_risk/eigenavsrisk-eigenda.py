@@ -2187,7 +2187,7 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     <br><br>
     <strong>Main Insight</strong>:
     <br>
-    <strong>Rollups should be more conservative in setting their KZG rates at an early stage of EigenDA to prevent against high overhead costs toward Operators and centralization, therefore. As the process matures, more nodes join in the Operator Network, and robust anti-congestionary models are implemented, Rollups should feel more comfortable in setting higher KZG rates to increase data redundancy and be more protected against faults.
+    Rollups should be more conservative in setting their KZG rates at an early stage of EigenDA to prevent against high overhead costs toward Operators and centralization, therefore. As the process matures, more nodes join in the Operator Network, and robust anti-congestionary models are implemented, Rollups should feel more comfortable in setting higher KZG rates to increase data redundancy and be more protected against faults.
     <br>
     <br>
     By understanding these dynamics, rollups can better set their KZG erasure encoding rates to balance decentralization and storage costs, ensuring a more efficient as well as anti-congestionary network.
