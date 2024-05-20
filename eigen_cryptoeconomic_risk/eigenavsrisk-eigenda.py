@@ -1832,8 +1832,20 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
         """, 
         unsafe_allow_html=True
         )
-    with st.expander("Formula"):
-            st.image("images/daformula.jpg")
+    with st.expander(""):
+        st.markdown("""
+                <style>
+                .center {
+                    display: flex;
+                    justify-content: center;
+                }
+                </style>
+                <div class="center">
+                    <img src="images/daformula.jpg" alt="Formula Image">
+                </div>
+                """, unsafe_allow_html=True)
+
+            #st.image("images/daformula.jpg")
 
 
 
