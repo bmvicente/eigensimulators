@@ -1842,12 +1842,11 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
             }
             </style>
             <div class="big-font">
-            <strong>Key Points:</strong>
             <ul>
-                <li>This formula illustrates the normalization process of data points with specific weights.</li>
-                <li>The summation indices and weights are applied to individual data points for accurate representation.</li>
-                <li>The result is scaled to a common range, ensuring consistent comparison across different datasets.</li>
-                <li>Understanding and correctly applying this formula can enhance data analysis and interpretation.</li>
+                <li><strong>Weightings for ROLLUP native token (wROLLUP) and restaked ETH (wETH)</strong> are set based on Dual Staking balance composition</li>
+                <li><strong>Weightings for AVS parameters (wi) and EigenDA specific parameters (wj)</strong></li>
+                <li><strong>R</strong> represents the aggregate Risk Score of EigenDA</li>
+                <li><strong>Results <i>result</i>i and <i>result</i>j</strong> represents the sums that are calculated based on user inputs</li>
             </ul>
             </div>
             """, unsafe_allow_html=True)
