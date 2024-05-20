@@ -1897,7 +1897,24 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
 
 
     st.subheader("**POTENTIAL RISK VECTORS**")
+    
+    st.write("")
+    st.write("")
 
+    st.markdown("""
+    <style>
+    .big-font {
+        font-size: 15px;  /* Adjust font size as needed */
+    }
+    </style>
+    <div class="big-font">
+        <strong>Objectively Attributable Faults</strong> are straightforward to attribute since they are clearly verifiable onchain, therefore suitable for direct slashing and redistribution of restaked ETH.
+        <br>
+        <strong>Intersubjectively Attributable Faults</strong> require broad-based agreement among observers, bEIGEN1-to-bEIGEN2 forking, and bEIGEN1 burning to resolve disputes.
+        <br>
+        <strong>Non-Attributable Faults</strong> cannot be attributed outside the victim of the fault. The inability to attribute these faults objectively or intersubjectively means that the funds are considered lost.
+    </div>
+    """, unsafe_allow_html=True)
 
 
     st.write("")
@@ -2067,24 +2084,6 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     st.write("")
     st.write("")
 
-
-    st.markdown("""
-    <style>
-    .big-font {
-        font-size: 15px;  /* Adjust font size as needed */
-    }
-    </style>
-    <div class="big-font">
-        <strong>- Objectively Attributable Faults</strong> are straightforward to attribute since they are clearly verifiable onchain, therefore suitable for direct slashing and redistribution of restaked ETH.
-        <br>
-        <strong>- Intersubjectively Attributable Faults</strong> require broad-based agreement among observers, bEIGEN1-to-bEIGEN2 forking, and bEIGEN1 burning to resolve disputes.
-        <br>
-        <strong>- Non-Attributable Faults</strong> cannot be attributed outside the victim of the fault. The inability to attribute these faults objectively or intersubjectively means that the funds are considered lost.
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.write("")
-    st.write("")
 
     st.markdown("""
     <style>
