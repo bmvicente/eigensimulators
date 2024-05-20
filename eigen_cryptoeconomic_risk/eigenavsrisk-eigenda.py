@@ -2183,14 +2183,14 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     <div class="big-font">
     In both heatmaps, the X-axis represents the participation rate of validator nodes, and the Y-axis represents the KZG erasure encoding rate. The color gradients indicate the level of decentralization.
     <br><br>
-    At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation. At a more <strong>maturing stage of EigenDA</strong>, the black box shows how the strategies shift - with DA more battle-tested and a greater expansion of the node network-, with robust rollups potentially handling higher KZG erasure coding rates more efficiently.
+    At the <strong>early stage of EigenDA</strong>, the black box distinguishes nascent rollups in the upper region from robust rollups in the lower region, indicating different strategies for managing data storage and network participation. At a more <strong>maturing stage of EigenDA</strong>, the black box illustrates how these strategies shift, with the network becoming more robust and battle-tested, and the node network expanding.
     <br><br>
     <strong>Main Insight</strong>:
     <br>
-    Rollups should be more conservative in setting their KZG rates at an early stage of EigenDA to prevent against high overhead costs toward Operators and centralization, therefore. As the process matures, more nodes join in the Operator Network, and robust anti-congestionary models are implemented, Rollups should feel more comfortable in setting higher KZG rates to increase data redundancy and be more protected against faults.
+    Rollups should adopt a more conservative approach in setting their KZG rates during the early stage of EigenDA to prevent high overhead costs for operators and avoid centralization. As the network matures, with more nodes joining the operator network and robust anti-congestion models being implemented, rollups can set higher KZG rates to enhance data redundancy and protection against faults.
     <br>
     <br>
-    By understanding these dynamics, rollups can better set their KZG erasure encoding rates to balance decentralization and storage costs, ensuring a more efficient as well as anti-congestionary network.
+    By understanding these dynamics, rollups can better set their KZG erasure encoding rates to balance decentralization and Operator storage costs, ensuring a more efficient and anti-congestionary network.
     </div>
     """, unsafe_allow_html=True)
 
