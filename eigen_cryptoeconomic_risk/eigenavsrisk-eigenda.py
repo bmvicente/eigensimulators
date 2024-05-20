@@ -1835,6 +1835,22 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
     with st.expander("Formula"):
             st.image("images/daformula.jpg")
 
+            st.markdown("""
+            <style>
+            .big-font {
+                font-size: 20px;  /* Adjust font size as needed */
+            }
+            </style>
+            <div class="big-font">
+            <strong>Key Points:</strong>
+            <ul>
+                <li>This formula illustrates the normalization process of data points with specific weights.</li>
+                <li>The summation indices and weights are applied to individual data points for accurate representation.</li>
+                <li>The result is scaled to a common range, ensuring consistent comparison across different datasets.</li>
+                <li>Understanding and correctly applying this formula can enhance data analysis and interpretation.</li>
+            </ul>
+            </div>
+            """, unsafe_allow_html=True)
 
 
 
