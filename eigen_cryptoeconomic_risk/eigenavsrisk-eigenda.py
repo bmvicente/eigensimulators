@@ -1834,6 +1834,8 @@ Instead of requiring each node to store all data, EigenDA uses erasure coding to
         )
     with st.expander("Formula"):
             st.image("images/daformula.jpg")
+            
+            st.write("  \n")
 
             st.markdown("""
             <style>
