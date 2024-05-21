@@ -1417,7 +1417,7 @@ The Disperser, managed by EigenLabs, encodes data blobs into smaller chunks, gen
         col92, col93 = st.columns(2)
         with col92:
             bls_alt = st.checkbox('**BLS-Like Alternative** for Cost-Effective Operator Signature Dispatching to the Disperser', 
-                                     value=True, help="**BLS aggregate signatures combine multiple signatures into one using BLS cryptography, enhancing verification efficiency. However, their computational expense can limit the size of the operator set.**")
+                                     value=False, help="**BLS aggregate signatures combine multiple signatures into one using BLS cryptography, enhancing verification efficiency. However, their computational expense can limit the size of the operator set.**")
 
         with col93:
             proof_custody = st.checkbox('**Proof of Custody**', value = True,
