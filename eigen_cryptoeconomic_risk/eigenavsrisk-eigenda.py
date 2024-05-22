@@ -87,7 +87,7 @@ def main():
         st.markdown(f"""
             The Simulator takes 9 AVS-generic parameters and 23 parameters that specifically compose an Data Availability AVS, with a BFT consensus architecture, to calculate EigenDA's Risk Score as an EigenLayer AVS. The underlying calculations and theory behind each input can be found in the Logic dropdowns below each Parameter.
             
-            Most of the research to build this Simulator was derived from [EigenDA's Docs](https://docs.omni.network/) and [CometBFT's Docs](https://docs.cometbft.com/v0.37/), as well as the images in the "Logic" dropdowns.
+            Most of the research to build this Simulator was derived from [EigenDA's Docs](https://docs.eigenlayer.xyz/eigenda/overview), as well as the images in the "Logic" dropdowns.
                                                 """)
 
         
