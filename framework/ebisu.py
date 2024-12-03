@@ -155,7 +155,7 @@ if lrt_balances_data:
         )
         etherfi_lir = 0
         etherfi_lir_data = []
-        
+
         for avs in etherfi_avs_registrations:
             avs_address = avs.get("address", "N/A")
             avs_name = avs.get("name", "N/A")
@@ -192,9 +192,6 @@ if lrt_balances_data:
 
         # Convert percentage column to numeric for sorting or calculations
         etherfi_lir_df["eETH % of Total"] = etherfi_lir_df["eETH % of Total"].str.rstrip('%').astype(float)
-
-        # Display DataFrame in Streamlit
-        st.dataframe(etherfi_lir_df)
 
 
         # Highlight rows where IR == 25
