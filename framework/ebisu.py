@@ -364,7 +364,7 @@ if lrt_balances_data:
         styled_renzo_lir_df = renzo_lir_df.style.apply(highlight_ir, axis=1)
 
         # Display LIR Table
-        st.markdown('<span style="color: blue; font-size: 25px;"><b>Renzo</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.markdown('<span style="color: green; font-size: 25px;"><b>Renzo</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
         st.dataframe(styled_renzo_lir_df)
 
         # --- Calculate LPR ---
@@ -522,7 +522,7 @@ if lrt_balances_data:
         styled_puffer_lir_df = puffer_lir_df.style.apply(highlight_ir, axis=1)
 
         # Display LIR Table
-        st.markdown('<span style="color: blue; font-size: 25px;"><b>Puffer</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.markdown('<span style="color: purple; font-size: 25px;"><b>Puffer</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
         st.dataframe(styled_puffer_lir_df)
 
         # --- Calculate LPR ---
@@ -679,7 +679,7 @@ if lrt_balances_data:
         styled_kelp_lir_df = kelp_lir_df.style.apply(highlight_ir, axis=1)
 
         # Display LIR Table
-        st.markdown('<span style="color: blue; font-size: 25px;"><b>Kelp</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.markdown('<span style="color: darkgreen; font-size: 25px;"><b>Kelp</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
         st.dataframe(styled_kelp_lir_df)
 
         # --- Calculate LPR ---
