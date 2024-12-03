@@ -789,3 +789,15 @@ insights.append("- On top of the above insights, carefully considering financial
 for insight in insights:
     st.write(insight)
 
+
+
+st.write("\n")
+st.write("\n")
+st.write("\n")
+st.write("\n")
+st.write("\n")
+st.write("\n")
+st.write("\n")
+
+
+st.image("framework/images/tokennoback.png", width=150)
