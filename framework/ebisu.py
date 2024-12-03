@@ -165,8 +165,7 @@ if lrt_balances_data:
             # Fetch AVS total USD value balances
             avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Updated to use corrected mapping
 
-            weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
-            weighted_risk = weight * avs_ir
+            weighted_risk = eeth_percentage_of_total * avs_ir
             etherfi_lir += weighted_risk
 
             # Calculate eETH % of Total
