@@ -73,7 +73,9 @@ st.header("EigenLayer: Current AVS Table")
 
 eigen_avs_data = fetch_ee_avs_data()
 avs_balances_data = fetch_u1_avs_balances()
-avs_balances_mapping = {avs["address"]: avs["totalUsdValue"] for avs in avs_balances_data["avs"]} if avs_balances_data else {}
+avs_balances_mapping = {
+    avs.get("address", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
+} if avs_balances_data else {}
 
 avs_category_mapping = {}
 if eigen_avs_data and "data" in eigen_avs_data:
@@ -134,14 +136,6 @@ if not avs_category_mapping:
 avs_balances_data = fetch_u1_avs_balances()
 # Debugging: Inspect API response structure
 st.write("AVS Balances Data Response:", avs_balances_data)
-
-# Safely map AVS balances
-avs_balances_mapping = {
-    avs.get("address", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
-} if avs_balances_data else {}
-
-if not avs_balances_mapping:
-    st.warning("No AVS balances data available to process.")
 
 
 lrt_balances_data = fetch_u1_lrt_balances()
