@@ -250,10 +250,10 @@ if lrt_balances_data:
 
         # Display LIR, LPR, DC, and CR in a table
         etherfi_summary_data = [
-            {"Metric": "LIR", "Value": round(etherfi_lir, 2)},
-            {"Metric": "LPR", "Value": round(etherfi_lpr, 2)},
-            {"Metric": "Deposit Cap (DC)", "Value": f"${etherfi_dc:,.2f}"},
-            {"Metric": "Collateralization Ratio (CR)", "Value": f"{etherfi_cr * 100:.2f}%"}
+            {"Metric": "LIR: LRT Portfolio Risk based on Individual AVS Risk Scores", "Value": round(etherfi_lir, 2)},
+            {"Metric": "LPR: LRT Portfolio Risk based on Pooled AVS Risk Scores", "Value": round(etherfi_lpr, 2)},
+            {"Metric": "DC: Deposit Cap", "Value": f"${etherfi_dc:,.2f}"},
+            {"Metric": "CR: Collateralization Ratio", "Value": f"{etherfi_cr * 100:.2f}%"}
         ]
         etherfi_summary_df = pd.DataFrame(etherfi_summary_data)
 
@@ -407,8 +407,8 @@ if lrt_balances_data:
 
         # Display LIR, LPR, DC, and CR in a table
         renzo_summary_data = [
-            {"Metric": "LIR", "Value": round(renzo_lir, 2)},
-            {"Metric": "LPR", "Value": round(renzo_lpr, 2)},
+            {"Metric": "LIR: LRT Portfolio Risk based on Individual AVS Risk Scores", "Value": round(renzo_lir, 2)},
+            {"Metric": "LPR: LRT Portfolio Risk based on Pooled AVS Risk Scores", "Value": round(renzo_lpr, 2)},
             {"Metric": "Deposit Cap (DC)", "Value": f"${renzo_dc:,.2f}"},
             {"Metric": "Collateralization Ratio (CR)", "Value": f"{renzo_cr * 100:.2f}%"}
         ]
@@ -565,8 +565,8 @@ if lrt_balances_data:
 
         # Display LIR, LPR, DC, and CR in a table
         puffer_summary_data = [
-            {"Metric": "LIR", "Value": round(puffer_lir, 2)},
-            {"Metric": "LPR", "Value": round(puffer_lpr, 2)},
+            {"Metric": "LIR: LRT Portfolio Risk based on Individual AVS Risk Scores", "Value": round(puffer_lir, 2)},
+            {"Metric": "LPR: LRT Portfolio Risk based on Pooled AVS Risk Scores", "Value": round(puffer_lpr, 2)},
             {"Metric": "Deposit Cap (DC)", "Value": f"${puffer_dc:,.2f}"},
             {"Metric": "Collateralization Ratio (CR)", "Value": f"{puffer_cr * 100:.2f}%"}
         ]
@@ -722,8 +722,8 @@ if lrt_balances_data:
 
         # Display LIR, LPR, DC, and CR in a table
         kelp_summary_data = [
-            {"Metric": "LIR", "Value": round(kelp_lir, 2)},
-            {"Metric": "LPR", "Value": round(kelp_lpr, 2)},
+            {"Metric": "LIR: LRT Portfolio Risk based on Individual AVS Risk Scores", "Value": round(kelp_lir, 2)},
+            {"Metric": "LPR: LRT Portfolio Risk based on Pooled AVS Risk Scores", "Value": round(kelp_lpr, 2)},
             {"Metric": "Deposit Cap (DC)", "Value": f"${kelp_dc:,.2f}"},
             {"Metric": "Collateralization Ratio (CR)", "Value": f"{kelp_cr * 100:.2f}%"}
         ]
