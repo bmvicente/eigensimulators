@@ -53,7 +53,7 @@ ir_mapping = {
 }
 
 # Set up the Streamlit page
-st.image("eigensimulators/images/ebisu.jpg")
+st.image("images/ebisu.jpg")
 
 st.set_page_config(page_title="Ebisu Dashboard", layout="wide")
 st.title("Ebisu Dashboard")
