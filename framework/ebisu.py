@@ -183,7 +183,7 @@ if lrt_balances_data:
                 "AVS Total USD Value Restaked": f"${avs_total_usd_balances:,.2f}",  # New column
                 "eETH % of Total": f"{eeth_percentage_of_total:.2f}%",  # New column for percentage
                 "IR": round(avs_ir, 2),
-                "AIR": round(weighted_risk, 4)
+                "LIR": round(weighted_risk, 4)
             })
 
         # Display LIR Table
