@@ -98,7 +98,7 @@ if eigen_avs_data and "data" in eigen_avs_data:
 
     # Apply styling to highlight rows where IR == 25
     def highlight_rows(row):
-        return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
+        return ['background-color: #F5DEB3'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
     styled_avs_df = avs_df.style.apply(highlight_rows, axis=1)
 
@@ -196,7 +196,7 @@ if lrt_balances_data:
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
+            return ['background-color: #F5DEB3'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_etherfi_lir_df = etherfi_lir_df.style.apply(highlight_ir, axis=1)
 
@@ -331,7 +331,7 @@ if lrt_balances_data:
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
+            return ['background-color: #F5DEB3'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_renzo_lir_df = renzo_lir_df.style.apply(highlight_ir, axis=1)
 
@@ -456,7 +456,7 @@ if lrt_balances_data:
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
+            return ['background-color: #F5DEB3'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_puffer_lir_df = puffer_lir_df.style.apply(highlight_ir, axis=1)
 
@@ -580,7 +580,7 @@ if lrt_balances_data:
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
+            return ['background-color: #F5DEB3'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_kelp_lir_df = kelp_lir_df.style.apply(highlight_ir, axis=1)
 
