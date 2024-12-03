@@ -257,6 +257,7 @@ if lrt_balances_data:
             {"Metric": "CR: Min Collateralization Ratio", "Value": f"{etherfi_cr * 100:.2f}%"}
         ]
         etherfi_summary_df = pd.DataFrame(etherfi_summary_data)
+        st.markdown("<p style='text-align: center; font-size: 14px; color: grey;'>Data from u--1</p>", unsafe_allow_html=True)
 
         st.write("\n")
         st.markdown("**Ether.fi Summary Metrics**")
@@ -414,6 +415,7 @@ if lrt_balances_data:
             {"Metric": "CR: Min Collateralization Ratio", "Value": f"{renzo_cr * 100:.2f}%"}
         ]
         renzo_summary_df = pd.DataFrame(renzo_summary_data)
+        st.markdown("<p style='text-align: center; font-size: 14px; color: grey;'>Data from u--1</p>", unsafe_allow_html=True)
 
         st.write("\n")
         st.markdown("**Renzo Summary Metrics**")
@@ -572,6 +574,7 @@ if lrt_balances_data:
             {"Metric": "CR: Min Collateralization Ratio", "Value": f"{puffer_cr * 100:.2f}%"}
         ]
         puffer_summary_df = pd.DataFrame(puffer_summary_data)
+        st.markdown("<p style='text-align: center; font-size: 14px; color: grey;'>Data from u--1</p>", unsafe_allow_html=True)
 
         st.write("\n")
         st.markdown("**Puffer Summary Metrics**")
@@ -729,6 +732,7 @@ if lrt_balances_data:
             {"Metric": "CR: Min Collateralization Ratio", "Value": f"{kelp_cr * 100:.2f}%"}
         ]
         kelp_summary_df = pd.DataFrame(kelp_summary_data)
+        st.markdown("<p style='text-align: center; font-size: 14px; color: grey;'>Data from u--1</p>", unsafe_allow_html=True)
 
         st.write("\n")
         st.markdown("**Kelp Summary Metrics**")
