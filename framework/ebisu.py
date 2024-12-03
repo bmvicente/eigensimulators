@@ -201,82 +201,80 @@ if lrt_balances_data:
         styled_etherfi_lir_df = etherfi_lir_df.style.apply(highlight_ir, axis=1)
 
         # Display LIR Table
-# Display LIR Table
-st.markdown('<span style="color: blue; font-size: 25px;"><b>Ether.fi</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
-st.dataframe(styled_etherfi_lir_df)
+        st.markdown('<span style="color: blue; font-size: 25px;"><b>Ether.fi</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.dataframe(styled_etherfi_lir_df)
 
-# --- Calculate LPR ---
-n_avs = len(etherfi_avs_registrations)
-n_t = 0.12 if n_avs >= 15 else 0.075 if n_avs >= 10 else 0.05 if n_avs >= 5 else 0
+        # --- Calculate LPR ---
+        n_avs = len(etherfi_avs_registrations)
+        n_t = 0.12 if n_avs >= 15 else 0.075 if n_avs >= 10 else 0.05 if n_avs >= 5 else 0
 
-category_counts = {}
-for avs in etherfi_avs_registrations:
-    address = avs.get("address", "N/A")
-    category = avs_category_mapping.get(address, "Unknown")
-    category_counts[category] = category_counts.get(category, 0) + 1
+        category_counts = {}
+        for avs in etherfi_avs_registrations:
+            address = avs.get("address", "N/A")
+            category = avs_category_mapping.get(address, "Unknown")
+            category_counts[category] = category_counts.get(category, 0) + 1
 
-most_common_category_percentage = max(category_counts.values()) / n_avs if n_avs > 0 else 0
-c_t = 0.10 if most_common_category_percentage > 0.5 else 0.05 if most_common_category_percentage >= 0.2 else 0
+        most_common_category_percentage = max(category_counts.values()) / n_avs if n_avs > 0 else 0
+        c_t = 0.10 if most_common_category_percentage > 0.5 else 0.05 if most_common_category_percentage >= 0.2 else 0
 
-ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in etherfi_avs_registrations]
-low_ir_percentage = sum(1 for ir in ir_scores if ir < 10) / n_avs
-medium_ir_percentage = sum(1 for ir in ir_scores if 10 <= ir <= 20) / n_avs
-high_ir_percentage = sum(1 for ir in ir_scores if ir > 20) / n_avs
+        ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in etherfi_avs_registrations]
+        low_ir_percentage = sum(1 for ir in ir_scores if ir < 10) / n_avs
+        medium_ir_percentage = sum(1 for ir in ir_scores if 10 <= ir <= 20) / n_avs
+        high_ir_percentage = sum(1 for ir in ir_scores if ir > 20) / n_avs
 
-if low_ir_percentage > 0.5:
-    a_t = 0.05
-elif medium_ir_percentage > 0.5:
-    a_t = 0.10
-elif high_ir_percentage > 0.5:
-    a_t = 0.20
-else:
-    a_t = 0
+        if low_ir_percentage > 0.5:
+            a_t = 0.05
+        elif medium_ir_percentage > 0.5:
+            a_t = 0.10
+        elif high_ir_percentage > 0.5:
+            a_t = 0.20
+        else:
+            a_t = 0
 
-etherfi_lpr = etherfi_lir * (1 + n_t + c_t + a_t)
+        etherfi_lpr = etherfi_lir * (1 + n_t + c_t + a_t)
 
-# --- Calculate DC and CR ---
-total_ta = 100_000_000  # Example Total Allowable Amount (TA)
-lrt_lpr_values = [etherfi_lpr, 18.05, 10.0, 30.0]  # Replace with all available LPRs
-inv_lpr_sum = sum(1 / lpr for lpr in lrt_lpr_values if lpr > 0)
+        # --- Calculate DC and CR ---
+        total_ta = 100_000_000  # Example Total Allowable Amount (TA)
+        lrt_lpr_values = [etherfi_lpr, 18.05, 10.0, 30.0]  # Replace with all available LPRs
+        inv_lpr_sum = sum(1 / lpr for lpr in lrt_lpr_values if lpr > 0)
 
-etherfi_dc = total_ta * ((1 / etherfi_lpr) / inv_lpr_sum) if etherfi_lpr > 0 else 0
-etherfi_cr = 1 + (etherfi_lpr / sum(lrt_lpr_values)) if etherfi_lpr > 0 else 0
+        etherfi_dc = total_ta * ((1 / etherfi_lpr) / inv_lpr_sum) if etherfi_lpr > 0 else 0
+        etherfi_cr = 1 + (etherfi_lpr / sum(lrt_lpr_values)) if etherfi_lpr > 0 else 0
 
-# Display LIR, LPR, DC, and CR in a table
-etherfi_summary_data = [
-    {"Metric": "LIR", "Value": round(etherfi_lir, 2)},
-    {"Metric": "LPR", "Value": round(etherfi_lpr, 2)},
-    {"Metric": "Deposit Cap (DC)", "Value": f"${etherfi_dc:,.2f}"},
-    {"Metric": "Collateralization Ratio (CR)", "Value": f"{etherfi_cr * 100:.2f}%"}
-]
-etherfi_summary_df = pd.DataFrame(etherfi_summary_data)
+        # Display LIR, LPR, DC, and CR in a table
+        etherfi_summary_data = [
+            {"Metric": "LIR", "Value": round(etherfi_lir, 2)},
+            {"Metric": "LPR", "Value": round(etherfi_lpr, 2)},
+            {"Metric": "Deposit Cap (DC)", "Value": f"${etherfi_dc:,.2f}"},
+            {"Metric": "Collateralization Ratio (CR)", "Value": f"{etherfi_cr * 100:.2f}%"}
+        ]
+        etherfi_summary_df = pd.DataFrame(etherfi_summary_data)
 
-st.write("\n")
-st.markdown("**Ether.fi Summary Metrics**")
-st.dataframe(etherfi_summary_df)
+        st.write("\n")
+        st.markdown("**Ether.fi Summary Metrics**")
+        st.dataframe(etherfi_summary_df)
 
-# Include expanded breakdown
-with st.expander("Metrics Calc Method"):
-    st.markdown(f"""
-    ### LPR Calculation Breakdown
-    - **n_t (Number of AVSs):** {n_t:.2%}
-    - **c_t (Category Risk):** {c_t:.2%}
-    - **a_t (Individual Risk Contribution):** {a_t:.2%}
-    - **LPR Formula:** LIR * (1 + n_t + c_t + a_t)
-    - **Ether.fi LPR:** {etherfi_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {etherfi_lpr:.2f}
+        # Include expanded breakdown
+        with st.expander("Metrics Calc Method"):
+            st.markdown(f"""
+            ### LPR Calculation Breakdown
+            - **n_t (Number of AVSs):** {n_t:.2%}
+            - **c_t (Category Risk):** {c_t:.2%}
+            - **a_t (Individual Risk Contribution):** {a_t:.2%}
+            - **LPR Formula:** LIR * (1 + n_t + c_t + a_t)
+            - **Ether.fi LPR:** {etherfi_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {etherfi_lpr:.2f}
 
-    ### DC Calculation Breakdown
-    - **TA (Total Allowable Amount):** ${total_ta:,.2f}
-    - **Sum of 1/LPR:** {inv_lpr_sum:.4f}
-    - **DC Formula:** TA * (1 / Ether.fi LPR) / Sum(1/LPR)
-    - **Ether.fi DC:** {total_ta:,.2f} * (1 / {etherfi_lpr:.2f}) / {inv_lpr_sum:.4f} = ${etherfi_dc:,.2f}
+            ### DC Calculation Breakdown
+            - **TA (Total Allowable Amount):** ${total_ta:,.2f}
+            - **Sum of 1/LPR:** {inv_lpr_sum:.4f}
+            - **DC Formula:** TA * (1 / Ether.fi LPR) / Sum(1/LPR)
+            - **Ether.fi DC:** {total_ta:,.2f} * (1 / {etherfi_lpr:.2f}) / {inv_lpr_sum:.4f} = ${etherfi_dc:,.2f}
 
-    ### CR Calculation Breakdown
-    - **Sum of LPRs:** {sum(lrt_lpr_values):.2f}
-    - **CR Formula:** 1 + (Ether.fi LPR / Sum(LPRs))
-    - **Ether.fi CR:** 1 + ({etherfi_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {etherfi_cr * 100:.2f}%
-    """)
-
+            ### CR Calculation Breakdown
+            - **Sum of LPRs:** {sum(lrt_lpr_values):.2f}
+            - **CR Formula:** 1 + (Ether.fi LPR / Sum(LPRs))
+            - **Ether.fi CR:** 1 + ({etherfi_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {etherfi_cr * 100:.2f}%
+            """)
 
 
 
