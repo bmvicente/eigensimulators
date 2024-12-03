@@ -113,6 +113,7 @@ st.markdown("**<u>Note</u>:** AVSs without assigned risk scores are highlighted 
 
 
 
+
 st.write("\n")
 st.write("\n")
 st.write("\n")
@@ -134,7 +135,7 @@ avs_balances_data = fetch_u1_avs_balances()
 
 # Safely map AVS balances
 avs_balances_mapping = {
-    avs.get("address", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
+    avs.get("avsAddress", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
 } if avs_balances_data and "data" in avs_balances_data else {}
 
 lrt_balances_data = fetch_u1_lrt_balances()
