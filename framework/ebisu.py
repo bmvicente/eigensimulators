@@ -71,7 +71,7 @@ if eigen_avs_data and "data" in eigen_avs_data:
         tags = curated_metadata.get("tags", [])
         tags_str = ", ".join(tags) if tags else "None"
         avs_category_mapping[address] = tags_str
-        ir = ir_mapping.get(address, 25)  # Default to 20 if no IR value is found
+        ir = ir_mapping.get(address, 25)  # Default to 25 if no IR value is found
         processed_data.append({
             "Address": address,
             "Name": metadata_name,
@@ -82,7 +82,7 @@ if eigen_avs_data and "data" in eigen_avs_data:
     # Convert processed data into a DataFrame
     avs_df = pd.DataFrame(processed_data)
 
-    # Apply styling to highlight rows where IR == 20
+    # Apply styling to highlight rows where IR == 25
     def highlight_rows(row):
         return ['background-color: yellow'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
@@ -137,7 +137,7 @@ if lrt_balances_data:
             avs_address = avs.get("address", "N/A")
             avs_name = avs.get("name", "N/A")
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
-            avs_ir = ir_mapping.get(avs_address, 20)  # Default IR is 20
+            avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
 
             weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
@@ -157,9 +157,9 @@ if lrt_balances_data:
         # Display LIR Table
         etherfi_lir_df = pd.DataFrame(etherfi_lir_data)
 
-        # Highlight rows where IR == 20
+        # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: yellow'] * len(row) if row["IR"] == 20 else [''] * len(row)
+            return ['background-color: yellow'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_etherfi_lir_df = etherfi_lir_df.style.apply(highlight_ir, axis=1)
 
@@ -262,7 +262,7 @@ if lrt_balances_data:
             avs_address = avs.get("address", "N/A")
             avs_name = avs.get("name", "N/A")
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
-            avs_ir = ir_mapping.get(avs_address, 20)  # Default IR is 20
+            avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
 
             weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
@@ -282,9 +282,9 @@ if lrt_balances_data:
         # Display LIR Table
         renzo_lir_df = pd.DataFrame(renzo_lir_data)
 
-        # Highlight rows where IR == 20
+        # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: yellow'] * len(row) if row["IR"] == 20 else [''] * len(row)
+            return ['background-color: yellow'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_renzo_lir_df = renzo_lir_df.style.apply(highlight_ir, axis=1)
 
@@ -388,7 +388,7 @@ if lrt_balances_data:
             avs_address = avs.get("address", "N/A")
             avs_name = avs.get("name", "N/A")
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
-            avs_ir = ir_mapping.get(avs_address, 20)  # Default IR is 20
+            avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
 
             weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
@@ -408,9 +408,9 @@ if lrt_balances_data:
         # Display LIR Table
         puffer_lir_df = pd.DataFrame(puffer_lir_data)
 
-        # Highlight rows where IR == 20
+        # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: yellow'] * len(row) if row["IR"] == 20 else [''] * len(row)
+            return ['background-color: yellow'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_puffer_lir_df = puffer_lir_df.style.apply(highlight_ir, axis=1)
 
@@ -513,7 +513,7 @@ if lrt_balances_data:
             avs_address = avs.get("address", "N/A")
             avs_name = avs.get("name", "N/A")
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
-            avs_ir = ir_mapping.get(avs_address, 20)  # Default IR is 20
+            avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
 
             weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
@@ -533,9 +533,9 @@ if lrt_balances_data:
         # Display LIR Table
         kelp_lir_df = pd.DataFrame(kelp_lir_data)
 
-        # Highlight rows where IR == 20
+        # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: yellow'] * len(row) if row["IR"] == 20 else [''] * len(row)
+            return ['background-color: yellow'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_kelp_lir_df = kelp_lir_df.style.apply(highlight_ir, axis=1)
 
