@@ -801,11 +801,26 @@ st.write("\n")
 
 
 
+# Add custom CSS for centering the image
 st.markdown(
     """
-    <div style="text-align: center;">
+    <style>
+    .centered-image {
+        display: flex;
+        justify-content: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Add the image inside a div with the class for centering
+st.markdown(
+    """
+    <div class="centered-image">
         <img src="framework/images/tokensightlogonoback.png" alt="Tokensight Logo" width="100">
     </div>
     """,
     unsafe_allow_html=True
 )
+
