@@ -114,6 +114,7 @@ st.markdown("**<u>Note</u>:** AVSs without assigned risk scores are highlighted 
 
 
 
+
 st.write("\n")
 st.write("\n")
 st.write("\n")
@@ -145,6 +146,9 @@ avs_balances_mapping = {
 lrt_balances_data = fetch_u1_lrt_balances()
 
 if lrt_balances_data:
+
+
+    ### ETHERFI
 
     if "ether.fi" in lrt_balances_data:
         # Get Ether.fi data
@@ -301,9 +305,10 @@ if lrt_balances_data:
 
 
 
+    ### RENZO
 
     if "renzo" in lrt_balances_data:
-        # Get Renzo data
+        # Get Ether.fi data
         renzo_data = lrt_balances_data["renzo"]["latest"]
         renzo_avs_registrations = renzo_data.get("avsRegistrations", [])
 
@@ -320,39 +325,54 @@ if lrt_balances_data:
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
             avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
+            # Fetch AVS total USD value balances
+            avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Updated to use corrected mapping
 
-            weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
-            weighted_risk = weight * avs_ir
-            renzo_lir += weighted_risk
+            # Calculate eETH % of Total
+            eeth_percentage_of_total = (
+                (avs_total_usd / avs_total_usd_balances * 100) 
+                if avs_total_usd_balances > 0 else 0
+            )
 
-            renzo_lir_data.append({
+            # Calculate weighted risk
+            weighted_risk = (eeth_percentage_of_total / 100) * avs_ir  # Adjusting percentage to a decimal
+            etherfi_lir += weighted_risk
+
+            etherfi_lir_data.append({
                 "Address": avs_address,
                 "AVS Name": avs_name,
                 "Category": avs_category,  # Add the Category column
-                "Total USD Value Restaked": f"${avs_total_usd:,.2f}",
+                "Etherfi Total USD Value Restaked on AVS": f"${avs_total_usd:,.2f}",
+                "AVS Total USD Value Restaked": f"${avs_total_usd_balances:,.2f}",  # New column
+                "eETH % of Total": f"{eeth_percentage_of_total:.2f}%",  # New column for percentage
                 "IR": round(avs_ir, 2),
-                "AIR": round(weighted_risk, 4)
+                "LIR": round(weighted_risk, 4)
             })
 
+
         # Display LIR Table
-        renzo_lir_df = pd.DataFrame(renzo_lir_data)
+        etherfi_lir_df = pd.DataFrame(etherfi_lir_data)
+
+        # Convert percentage column to numeric for sorting or calculations
+        etherfi_lir_df["eETH % of Total"] = etherfi_lir_df["eETH % of Total"].str.rstrip('%').astype(float)
+
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
             return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
-        styled_renzo_lir_df = renzo_lir_df.style.apply(highlight_ir, axis=1)
+        styled_etherfi_lir_df = etherfi_lir_df.style.apply(highlight_ir, axis=1)
 
         # Display LIR Table
-        st.markdown('<span style="color: green; font-size: 25px;"><b>Renzo</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
-        st.dataframe(styled_renzo_lir_df)
+        st.markdown('<span style="color: blue; font-size: 25px;"><b>Ether.fi</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.dataframe(styled_etherfi_lir_df)
 
         # --- Calculate LPR ---
-        n_avs = len(renzo_avs_registrations)
+        n_avs = len(etherfi_avs_registrations)
         n_t = 0.12 if n_avs >= 15 else 0.075 if n_avs >= 10 else 0.05 if n_avs >= 5 else 0
 
         category_counts = {}
-        for avs in renzo_avs_registrations:
+        for avs in etherfi_avs_registrations:
             address = avs.get("address", "N/A")
             category = avs_category_mapping.get(address, "Unknown")
             category_counts[category] = category_counts.get(category, 0) + 1
@@ -360,52 +380,69 @@ if lrt_balances_data:
         most_common_category_percentage = max(category_counts.values()) / n_avs if n_avs > 0 else 0
         c_t = 0.10 if most_common_category_percentage > 0.5 else 0.05 if most_common_category_percentage >= 0.2 else 0
 
-        ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in renzo_avs_registrations]
+        ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in etherfi_avs_registrations]
         low_ir_percentage = sum(1 for ir in ir_scores if ir < 10) / n_avs
         medium_ir_percentage = sum(1 for ir in ir_scores if 10 <= ir <= 20) / n_avs
         high_ir_percentage = sum(1 for ir in ir_scores if ir > 20) / n_avs
 
+        # Updated logic with default value
         if low_ir_percentage > 0.5:
-            a_t = 0.05
+            a_t = 0.05  # +5%
         elif medium_ir_percentage > 0.5:
-            a_t = 0.10
+            a_t = 0.10  # +10%
         elif high_ir_percentage > 0.5:
-            a_t = 0.20
+            a_t = 0.20  # +20%
         else:
-            a_t = 0
+            a_t = 0.075  # Default to +7.5%
 
-        renzo_lpr = renzo_lir * (1 + n_t + c_t + a_t)
+        etherfi_lpr = etherfi_lir * (1 + n_t + c_t + a_t)
 
         # --- Calculate DC and CR ---
         total_ta = 100_000_000  # Example Total Allowable Amount (TA)
-        lrt_lpr_values = [renzo_lpr, 18.05, 10.0, 30.0]  # Replace with all available LPRs
+        lrt_lpr_values = [etherfi_lpr, 18.05, 10.0, 30.0]  # Replace with all available LPRs
         inv_lpr_sum = sum(1 / lpr for lpr in lrt_lpr_values if lpr > 0)
 
-        renzo_dc = total_ta * ((1 / renzo_lpr) / inv_lpr_sum) if renzo_lpr > 0 else 0
-        renzo_cr = 1 + (renzo_lpr / sum(lrt_lpr_values)) if renzo_lpr > 0 else 0
+        etherfi_dc = total_ta * ((1 / etherfi_lpr) / inv_lpr_sum) if etherfi_lpr > 0 else 0
+        etherfi_cr = 1 + (etherfi_lpr / sum(lrt_lpr_values)) if etherfi_lpr > 0 else 0
 
         # Display LIR, LPR, DC, and CR in a table
-        renzo_summary_data = [
-            {"Metric": "LIR", "Value": round(renzo_lir, 2)},
-            {"Metric": "LPR", "Value": round(renzo_lpr, 2)},
-            {"Metric": "Deposit Cap (DC)", "Value": f"${renzo_dc:,.2f}"},
-            {"Metric": "Collateralization Ratio (CR)", "Value": f"{renzo_cr * 100:.2f}%"}
+        etherfi_summary_data = [
+            {"Metric": "LIR", "Value": round(etherfi_lir, 2)},
+            {"Metric": "LPR", "Value": round(etherfi_lpr, 2)},
+            {"Metric": "Deposit Cap (DC)", "Value": f"${etherfi_dc:,.2f}"},
+            {"Metric": "Collateralization Ratio (CR)", "Value": f"{etherfi_cr * 100:.2f}%"}
         ]
-        renzo_summary_df = pd.DataFrame(renzo_summary_data)
+        etherfi_summary_df = pd.DataFrame(etherfi_summary_data)
 
         st.write("\n")
-        st.markdown("**Renzo Summary Metrics**")
-        st.dataframe(renzo_summary_df)
+        st.markdown("**Ether.fi Summary Metrics**")
+        st.dataframe(etherfi_summary_df)
 
+        # Include expanded breakdown
         with st.expander("Metrics Calc Method"):
-            st.markdown("""
-            **LIR** represents the aggregate risk score for the LRT (*t*), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
+            st.markdown(f"""
+            ***LIR*** represents the aggregate risk score for the LRT (***t***), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
+                        
+            
+            ##### LPR Calculation Breakdown = LIR * (1 + N + C + A)
+            ***LPR*** provides a comprehensive underwriting of the interdependent risk exposure of the pooled ecosystem of AVSs selected by the LRT.
 
-            **LPR** provides a comprehensive underwriting of the interdependent risk exposure of the pooled ecosystem of AVSs selected by the LRT.
+            - **N (Number of AVSs):** {n_t:.2%} | **C (Category Risk):** {c_t:.2%} | **A (Individual Risk Contribution):** {a_t:.2%}
+            - **Ether.fi LPR:** {etherfi_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {etherfi_lpr:.2f}
 
-            **DC** calculates the deposit cap by taking the total allowable amount for LRT deposits (*TA*), as determined by Ebisu, and adjusts it based on the relative risk of each LRT (*LPR*), in the context of Ebisu’s basket of LRTs (\(Σ LPR\)).
+            
+            ##### DC Calculation Breakdown = TA * (1 / Ether.fi LPR) / Sum(1/LPR)
+            ***DC*** calculates the deposit cap by taking the total allowable amount for LRT deposits (TA), as determined by Ebisu, and adjusts it based on the relative risk of each LRT (LPR), in the context of Ebisu’s basket of LRTs (Σ LPR).
 
-            **CR** relativizes the pooled risk of the LRT portfolio at hand (*LPR*), against the aggregate pooled risk of ALL the LRT portfolios (Ebisu’s LRT basket \(Σ LPR\)) to arrive at a considerate, minimum collateralization ratio for the LRT being considered.
+            - **TA (Total Allowable Amount):** ${total_ta:,.2f} | **Sum of 1/LPR:** {inv_lpr_sum:.4f}
+            - **Ether.fi DC:** {total_ta:,.2f} * (1 / {etherfi_lpr:.2f}) / {inv_lpr_sum:.4f} = ${etherfi_dc:,.2f}
+
+            
+            ##### CR Calculation Breakdown = 1 + (Ether.fi LPR / Sum(LPRs))
+            ***CR*** relativizes the pooled risk of the LRT portfolio at hand (***LPR***), against the aggregate pooled risk of ALL the LRT portfolios (Ebisu’s LRT basket (**Σ *LPR***)) to arrive at a considerate, minimum collateralisation ratio for the LRT being considered.
+
+            - **Sum of LPRs:** {sum(lrt_lpr_values):.2f}
+            - **Ether.fi CR:** 1 + ({etherfi_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {etherfi_cr * 100:.2f}%
             """)
 
 
@@ -426,58 +463,74 @@ if lrt_balances_data:
 
 
 
+    ### PUFFER
 
-    if "puffer" in lrt_balances_data:
-        # Get Renzo data
-        puffer_data = lrt_balances_data["puffer"]["latest"]
-        puffer_avs_registrations = puffer_data.get("avsRegistrations", [])
+    if "ether.fi" in lrt_balances_data:
+        # Get Ether.fi data
+        etherfi_data = lrt_balances_data["ether.fi"]["latest"]
+        etherfi_avs_registrations = etherfi_data.get("avsRegistrations", [])
 
         # Calculate the LIR
         total_usd_restaked = sum(
-            avs.get("totalUsdValueRestaked", 0) for avs in puffer_avs_registrations
+            avs.get("totalUsdValueRestaked", 0) for avs in etherfi_avs_registrations
         )
-        puffer_lir = 0
-        puffer_lir_data = []
+        etherfi_lir = 0
+        etherfi_lir_data = []
 
-        for avs in puffer_avs_registrations:
+        for avs in etherfi_avs_registrations:
             avs_address = avs.get("address", "N/A")
             avs_name = avs.get("name", "N/A")
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
             avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
+            # Fetch AVS total USD value balances
+            avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Updated to use corrected mapping
 
-            weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
-            weighted_risk = weight * avs_ir
-            puffer_lir += weighted_risk
+            # Calculate eETH % of Total
+            eeth_percentage_of_total = (
+                (avs_total_usd / avs_total_usd_balances * 100) 
+                if avs_total_usd_balances > 0 else 0
+            )
 
-            puffer_lir_data.append({
+            # Calculate weighted risk
+            weighted_risk = (eeth_percentage_of_total / 100) * avs_ir  # Adjusting percentage to a decimal
+            etherfi_lir += weighted_risk
+
+            etherfi_lir_data.append({
                 "Address": avs_address,
                 "AVS Name": avs_name,
                 "Category": avs_category,  # Add the Category column
-                "Total USD Value Restaked": f"${avs_total_usd:,.2f}",
+                "Etherfi Total USD Value Restaked on AVS": f"${avs_total_usd:,.2f}",
+                "AVS Total USD Value Restaked": f"${avs_total_usd_balances:,.2f}",  # New column
+                "eETH % of Total": f"{eeth_percentage_of_total:.2f}%",  # New column for percentage
                 "IR": round(avs_ir, 2),
-                "AIR": round(weighted_risk, 4)
+                "LIR": round(weighted_risk, 4)
             })
 
+
         # Display LIR Table
-        puffer_lir_df = pd.DataFrame(puffer_lir_data)
+        etherfi_lir_df = pd.DataFrame(etherfi_lir_data)
+
+        # Convert percentage column to numeric for sorting or calculations
+        etherfi_lir_df["eETH % of Total"] = etherfi_lir_df["eETH % of Total"].str.rstrip('%').astype(float)
+
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
             return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
-        styled_puffer_lir_df = puffer_lir_df.style.apply(highlight_ir, axis=1)
+        styled_etherfi_lir_df = etherfi_lir_df.style.apply(highlight_ir, axis=1)
 
         # Display LIR Table
-        st.markdown('<span style="color: purple; font-size: 25px;"><b>Puffer</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
-        st.dataframe(styled_puffer_lir_df)
+        st.markdown('<span style="color: blue; font-size: 25px;"><b>Ether.fi</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.dataframe(styled_etherfi_lir_df)
 
         # --- Calculate LPR ---
-        n_avs = len(puffer_avs_registrations)
+        n_avs = len(etherfi_avs_registrations)
         n_t = 0.12 if n_avs >= 15 else 0.075 if n_avs >= 10 else 0.05 if n_avs >= 5 else 0
 
         category_counts = {}
-        for avs in puffer_avs_registrations:
+        for avs in etherfi_avs_registrations:
             address = avs.get("address", "N/A")
             category = avs_category_mapping.get(address, "Unknown")
             category_counts[category] = category_counts.get(category, 0) + 1
@@ -485,52 +538,69 @@ if lrt_balances_data:
         most_common_category_percentage = max(category_counts.values()) / n_avs if n_avs > 0 else 0
         c_t = 0.10 if most_common_category_percentage > 0.5 else 0.05 if most_common_category_percentage >= 0.2 else 0
 
-        ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in puffer_avs_registrations]
+        ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in etherfi_avs_registrations]
         low_ir_percentage = sum(1 for ir in ir_scores if ir < 10) / n_avs
         medium_ir_percentage = sum(1 for ir in ir_scores if 10 <= ir <= 20) / n_avs
         high_ir_percentage = sum(1 for ir in ir_scores if ir > 20) / n_avs
 
+        # Updated logic with default value
         if low_ir_percentage > 0.5:
-            a_t = 0.05
+            a_t = 0.05  # +5%
         elif medium_ir_percentage > 0.5:
-            a_t = 0.10
+            a_t = 0.10  # +10%
         elif high_ir_percentage > 0.5:
-            a_t = 0.20
+            a_t = 0.20  # +20%
         else:
-            a_t = 0
+            a_t = 0.075  # Default to +7.5%
 
-        puffer_lpr = puffer_lir * (1 + n_t + c_t + a_t)
+        etherfi_lpr = etherfi_lir * (1 + n_t + c_t + a_t)
 
         # --- Calculate DC and CR ---
         total_ta = 100_000_000  # Example Total Allowable Amount (TA)
-        lrt_lpr_values = [puffer_lpr, 18.05, 10.0, 30.0]  # Replace with all available LPRs
+        lrt_lpr_values = [etherfi_lpr, 18.05, 10.0, 30.0]  # Replace with all available LPRs
         inv_lpr_sum = sum(1 / lpr for lpr in lrt_lpr_values if lpr > 0)
 
-        puffer_dc = total_ta * ((1 / puffer_lpr) / inv_lpr_sum) if puffer_lpr > 0 else 0
-        puffer_cr = 1 + (puffer_lpr / sum(lrt_lpr_values)) if puffer_lpr > 0 else 0
+        etherfi_dc = total_ta * ((1 / etherfi_lpr) / inv_lpr_sum) if etherfi_lpr > 0 else 0
+        etherfi_cr = 1 + (etherfi_lpr / sum(lrt_lpr_values)) if etherfi_lpr > 0 else 0
 
         # Display LIR, LPR, DC, and CR in a table
-        puffer_summary_data = [
-            {"Metric": "LIR", "Value": round(puffer_lir, 2)},
-            {"Metric": "LPR", "Value": round(puffer_lpr, 2)},
-            {"Metric": "Deposit Cap (DC)", "Value": f"${puffer_dc:,.2f}"},
-            {"Metric": "Collateralization Ratio (CR)", "Value": f"{puffer_cr * 100:.2f}%"}
+        etherfi_summary_data = [
+            {"Metric": "LIR", "Value": round(etherfi_lir, 2)},
+            {"Metric": "LPR", "Value": round(etherfi_lpr, 2)},
+            {"Metric": "Deposit Cap (DC)", "Value": f"${etherfi_dc:,.2f}"},
+            {"Metric": "Collateralization Ratio (CR)", "Value": f"{etherfi_cr * 100:.2f}%"}
         ]
-        puffer_summary_df = pd.DataFrame(puffer_summary_data)
+        etherfi_summary_df = pd.DataFrame(etherfi_summary_data)
 
         st.write("\n")
-        st.markdown("**Puffer Summary Metrics**")
-        st.dataframe(puffer_summary_df)
+        st.markdown("**Ether.fi Summary Metrics**")
+        st.dataframe(etherfi_summary_df)
 
+        # Include expanded breakdown
         with st.expander("Metrics Calc Method"):
-            st.markdown("""
-            **LIR** represents the aggregate risk score for the LRT (*t*), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
+            st.markdown(f"""
+            ***LIR*** represents the aggregate risk score for the LRT (***t***), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
+                        
+            
+            ##### LPR Calculation Breakdown = LIR * (1 + N + C + A)
+            ***LPR*** provides a comprehensive underwriting of the interdependent risk exposure of the pooled ecosystem of AVSs selected by the LRT.
 
-            **LPR** provides a comprehensive underwriting of the interdependent risk exposure of the pooled ecosystem of AVSs selected by the LRT.
+            - **N (Number of AVSs):** {n_t:.2%} | **C (Category Risk):** {c_t:.2%} | **A (Individual Risk Contribution):** {a_t:.2%}
+            - **Ether.fi LPR:** {etherfi_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {etherfi_lpr:.2f}
 
-            **DC** calculates the deposit cap by taking the total allowable amount for LRT deposits (*TA*), as determined by Ebisu, and adjusts it based on the relative risk of each LRT (*LPR*), in the context of Ebisu’s basket of LRTs (\(Σ LPR\)).
+            
+            ##### DC Calculation Breakdown = TA * (1 / Ether.fi LPR) / Sum(1/LPR)
+            ***DC*** calculates the deposit cap by taking the total allowable amount for LRT deposits (TA), as determined by Ebisu, and adjusts it based on the relative risk of each LRT (LPR), in the context of Ebisu’s basket of LRTs (Σ LPR).
 
-            **CR** relativizes the pooled risk of the LRT portfolio at hand (*LPR*), against the aggregate pooled risk of ALL the LRT portfolios (Ebisu’s LRT basket \(Σ LPR\)) to arrive at a considerate, minimum collateralization ratio for the LRT being considered.
+            - **TA (Total Allowable Amount):** ${total_ta:,.2f} | **Sum of 1/LPR:** {inv_lpr_sum:.4f}
+            - **Ether.fi DC:** {total_ta:,.2f} * (1 / {etherfi_lpr:.2f}) / {inv_lpr_sum:.4f} = ${etherfi_dc:,.2f}
+
+            
+            ##### CR Calculation Breakdown = 1 + (Ether.fi LPR / Sum(LPRs))
+            ***CR*** relativizes the pooled risk of the LRT portfolio at hand (***LPR***), against the aggregate pooled risk of ALL the LRT portfolios (Ebisu’s LRT basket (**Σ *LPR***)) to arrive at a considerate, minimum collateralisation ratio for the LRT being considered.
+
+            - **Sum of LPRs:** {sum(lrt_lpr_values):.2f}
+            - **Ether.fi CR:** 1 + ({etherfi_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {etherfi_cr * 100:.2f}%
             """)
 
 
@@ -550,58 +620,74 @@ if lrt_balances_data:
 
 
 
+    ### KELP
 
-    if "kelp" in lrt_balances_data:
-        # Get Renzo data
-        kelp_data = lrt_balances_data["kelp"]["latest"]
-        kelp_avs_registrations = kelp_data.get("avsRegistrations", [])
+    if "ether.fi" in lrt_balances_data:
+        # Get Ether.fi data
+        etherfi_data = lrt_balances_data["ether.fi"]["latest"]
+        etherfi_avs_registrations = etherfi_data.get("avsRegistrations", [])
 
         # Calculate the LIR
         total_usd_restaked = sum(
-            avs.get("totalUsdValueRestaked", 0) for avs in kelp_avs_registrations
+            avs.get("totalUsdValueRestaked", 0) for avs in etherfi_avs_registrations
         )
-        kelp_lir = 0
-        kelp_lir_data = []
+        etherfi_lir = 0
+        etherfi_lir_data = []
 
-        for avs in kelp_avs_registrations:
+        for avs in etherfi_avs_registrations:
             avs_address = avs.get("address", "N/A")
             avs_name = avs.get("name", "N/A")
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
             avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
+            # Fetch AVS total USD value balances
+            avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Updated to use corrected mapping
 
-            weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
-            weighted_risk = weight * avs_ir
-            kelp_lir += weighted_risk
+            # Calculate eETH % of Total
+            eeth_percentage_of_total = (
+                (avs_total_usd / avs_total_usd_balances * 100) 
+                if avs_total_usd_balances > 0 else 0
+            )
 
-            kelp_lir_data.append({
+            # Calculate weighted risk
+            weighted_risk = (eeth_percentage_of_total / 100) * avs_ir  # Adjusting percentage to a decimal
+            etherfi_lir += weighted_risk
+
+            etherfi_lir_data.append({
                 "Address": avs_address,
                 "AVS Name": avs_name,
                 "Category": avs_category,  # Add the Category column
-                "Kelp Total USD Value Restaked": f"${avs_total_usd:,.2f}",
+                "Etherfi Total USD Value Restaked on AVS": f"${avs_total_usd:,.2f}",
+                "AVS Total USD Value Restaked": f"${avs_total_usd_balances:,.2f}",  # New column
+                "eETH % of Total": f"{eeth_percentage_of_total:.2f}%",  # New column for percentage
                 "IR": round(avs_ir, 2),
-                "AIR": round(weighted_risk, 4)
+                "LIR": round(weighted_risk, 4)
             })
 
+
         # Display LIR Table
-        kelp_lir_df = pd.DataFrame(kelp_lir_data)
+        etherfi_lir_df = pd.DataFrame(etherfi_lir_data)
+
+        # Convert percentage column to numeric for sorting or calculations
+        etherfi_lir_df["eETH % of Total"] = etherfi_lir_df["eETH % of Total"].str.rstrip('%').astype(float)
+
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
             return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
-        styled_kelp_lir_df = kelp_lir_df.style.apply(highlight_ir, axis=1)
+        styled_etherfi_lir_df = etherfi_lir_df.style.apply(highlight_ir, axis=1)
 
         # Display LIR Table
-        st.markdown('<span style="color: #006400; font-size: 25px;"><b>Kelp</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
-        st.dataframe(styled_kelp_lir_df)
+        st.markdown('<span style="color: blue; font-size: 25px;"><b>Ether.fi</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.dataframe(styled_etherfi_lir_df)
 
         # --- Calculate LPR ---
-        n_avs = len(kelp_avs_registrations)
+        n_avs = len(etherfi_avs_registrations)
         n_t = 0.12 if n_avs >= 15 else 0.075 if n_avs >= 10 else 0.05 if n_avs >= 5 else 0
 
         category_counts = {}
-        for avs in kelp_avs_registrations:
+        for avs in etherfi_avs_registrations:
             address = avs.get("address", "N/A")
             category = avs_category_mapping.get(address, "Unknown")
             category_counts[category] = category_counts.get(category, 0) + 1
@@ -609,52 +695,69 @@ if lrt_balances_data:
         most_common_category_percentage = max(category_counts.values()) / n_avs if n_avs > 0 else 0
         c_t = 0.10 if most_common_category_percentage > 0.5 else 0.05 if most_common_category_percentage >= 0.2 else 0
 
-        ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in kelp_avs_registrations]
+        ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in etherfi_avs_registrations]
         low_ir_percentage = sum(1 for ir in ir_scores if ir < 10) / n_avs
         medium_ir_percentage = sum(1 for ir in ir_scores if 10 <= ir <= 20) / n_avs
         high_ir_percentage = sum(1 for ir in ir_scores if ir > 20) / n_avs
 
+        # Updated logic with default value
         if low_ir_percentage > 0.5:
-            a_t = 0.05
+            a_t = 0.05  # +5%
         elif medium_ir_percentage > 0.5:
-            a_t = 0.10
+            a_t = 0.10  # +10%
         elif high_ir_percentage > 0.5:
-            a_t = 0.20
+            a_t = 0.20  # +20%
         else:
-            a_t = 0
+            a_t = 0.075  # Default to +7.5%
 
-        kelp_lpr = kelp_lir * (1 + n_t + c_t + a_t)
+        etherfi_lpr = etherfi_lir * (1 + n_t + c_t + a_t)
 
         # --- Calculate DC and CR ---
         total_ta = 100_000_000  # Example Total Allowable Amount (TA)
-        lrt_lpr_values = [kelp_lpr, 18.05, 10.0, 30.0]  # Replace with all available LPRs
+        lrt_lpr_values = [etherfi_lpr, 18.05, 10.0, 30.0]  # Replace with all available LPRs
         inv_lpr_sum = sum(1 / lpr for lpr in lrt_lpr_values if lpr > 0)
 
-        kelp_dc = total_ta * ((1 / kelp_lpr) / inv_lpr_sum) if kelp_lpr > 0 else 0
-        kelp_cr = 1 + (kelp_lpr / sum(lrt_lpr_values)) if kelp_lpr > 0 else 0
+        etherfi_dc = total_ta * ((1 / etherfi_lpr) / inv_lpr_sum) if etherfi_lpr > 0 else 0
+        etherfi_cr = 1 + (etherfi_lpr / sum(lrt_lpr_values)) if etherfi_lpr > 0 else 0
 
         # Display LIR, LPR, DC, and CR in a table
-        kelp_summary_data = [
-            {"Metric": "LIR", "Value": round(kelp_lir, 2)},
-            {"Metric": "LPR", "Value": round(kelp_lpr, 2)},
-            {"Metric": "Deposit Cap (DC)", "Value": f"${kelp_dc:,.2f}"},
-            {"Metric": "Collateralization Ratio (CR)", "Value": f"{kelp_cr * 100:.2f}%"}
+        etherfi_summary_data = [
+            {"Metric": "LIR", "Value": round(etherfi_lir, 2)},
+            {"Metric": "LPR", "Value": round(etherfi_lpr, 2)},
+            {"Metric": "Deposit Cap (DC)", "Value": f"${etherfi_dc:,.2f}"},
+            {"Metric": "Collateralization Ratio (CR)", "Value": f"{etherfi_cr * 100:.2f}%"}
         ]
-        kelp_summary_df = pd.DataFrame(kelp_summary_data)
+        etherfi_summary_df = pd.DataFrame(etherfi_summary_data)
 
         st.write("\n")
-        st.markdown("**Kelp Summary Metrics**")
-        st.dataframe(kelp_summary_df)
+        st.markdown("**Ether.fi Summary Metrics**")
+        st.dataframe(etherfi_summary_df)
 
+        # Include expanded breakdown
         with st.expander("Metrics Calc Method"):
-            st.markdown("""
-            **LIR** represents the aggregate risk score for the LRT (*t*), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
+            st.markdown(f"""
+            ***LIR*** represents the aggregate risk score for the LRT (***t***), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
+                        
+            
+            ##### LPR Calculation Breakdown = LIR * (1 + N + C + A)
+            ***LPR*** provides a comprehensive underwriting of the interdependent risk exposure of the pooled ecosystem of AVSs selected by the LRT.
 
-            **LPR** provides a comprehensive underwriting of the interdependent risk exposure of the pooled ecosystem of AVSs selected by the LRT.
+            - **N (Number of AVSs):** {n_t:.2%} | **C (Category Risk):** {c_t:.2%} | **A (Individual Risk Contribution):** {a_t:.2%}
+            - **Ether.fi LPR:** {etherfi_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {etherfi_lpr:.2f}
 
-            **DC** calculates the deposit cap by taking the total allowable amount for LRT deposits (*TA*), as determined by Ebisu, and adjusts it based on the relative risk of each LRT (*LPR*), in the context of Ebisu’s basket of LRTs (\(Σ LPR\)).
+            
+            ##### DC Calculation Breakdown = TA * (1 / Ether.fi LPR) / Sum(1/LPR)
+            ***DC*** calculates the deposit cap by taking the total allowable amount for LRT deposits (TA), as determined by Ebisu, and adjusts it based on the relative risk of each LRT (LPR), in the context of Ebisu’s basket of LRTs (Σ LPR).
 
-            **CR** relativizes the pooled risk of the LRT portfolio at hand (*LPR*), against the aggregate pooled risk of ALL the LRT portfolios (Ebisu’s LRT basket \(Σ LPR\)) to arrive at a considerate, minimum collateralization ratio for the LRT being considered.
+            - **TA (Total Allowable Amount):** ${total_ta:,.2f} | **Sum of 1/LPR:** {inv_lpr_sum:.4f}
+            - **Ether.fi DC:** {total_ta:,.2f} * (1 / {etherfi_lpr:.2f}) / {inv_lpr_sum:.4f} = ${etherfi_dc:,.2f}
+
+            
+            ##### CR Calculation Breakdown = 1 + (Ether.fi LPR / Sum(LPRs))
+            ***CR*** relativizes the pooled risk of the LRT portfolio at hand (***LPR***), against the aggregate pooled risk of ALL the LRT portfolios (Ebisu’s LRT basket (**Σ *LPR***)) to arrive at a considerate, minimum collateralisation ratio for the LRT being considered.
+
+            - **Sum of LPRs:** {sum(lrt_lpr_values):.2f}
+            - **Ether.fi CR:** 1 + ({etherfi_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {etherfi_cr * 100:.2f}%
             """)
 
 
