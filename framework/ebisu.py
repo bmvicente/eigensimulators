@@ -90,7 +90,7 @@ if eigen_avs_data and "data" in eigen_avs_data:
             "Address": address,
             "Name": metadata_name,
             "Category": tags_str,
-            "IR: AVS Individual Risk": round(float(ir), 2)  # Ensure IR is a float before rounding
+            "IR - AVS Individual Risk": round(float(ir), 2)  # Ensure IR is a float before rounding
         })
 
     # Convert processed data into a DataFrame
