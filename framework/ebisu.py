@@ -134,9 +134,11 @@ if not avs_category_mapping:
 avs_balances_data = fetch_u1_avs_balances()
 
 # Safely map AVS balances
+# Safely map AVS balances based on correct API structure
 avs_balances_mapping = {
-    avs.get("avsAddress", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
-} if avs_balances_data and "data" in avs_balances_data else {}
+    avs_address: details.get("totalUsdValue", 0) 
+    for avs_address, details in avs_balances_data.items()
+} if avs_balances_data else {}
 
 lrt_balances_data = fetch_u1_lrt_balances()
 
@@ -160,7 +162,8 @@ if lrt_balances_data:
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
             avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
-            avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Fetch total USD value from balances
+            # Fetch AVS total USD value balances
+            avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Updated to use corrected mapping
 
             weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
             weighted_risk = weight * avs_ir
