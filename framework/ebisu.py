@@ -800,4 +800,5 @@ st.write("\n")
 st.write("\n")
 
 
-st.image("framework/images/tokennoback.png", width=150)
+
+st.image("framework/images/1tokennoback.png", width=150)
