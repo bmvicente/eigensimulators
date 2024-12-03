@@ -722,7 +722,7 @@ if lrt_balances_data:
 
         # Display LIR, LPR, DC, and CR in a table
         kelp_summary_data = [
-            {"Metric": "LIR: LRT Portfolio Risk based on Individual AVS Risk Scores", "Value": round(kelp_lir, 2)},
+            {"Metric": "***LIR***: LRT Portfolio Risk based on Individual AVS Risk Scores", "Value": round(kelp_lir, 2)},
             {"Metric": "LPR: LRT Portfolio Risk based on Pooled AVS Risk Scores", "Value": round(kelp_lpr, 2)},
             {"Metric": "Deposit Cap (DC)", "Value": f"${kelp_dc:,.2f}"},
             {"Metric": "Collateralization Ratio (CR)", "Value": f"{kelp_cr * 100:.2f}%"}
