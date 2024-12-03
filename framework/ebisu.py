@@ -260,23 +260,25 @@ if lrt_balances_data:
         # Include expanded breakdown
         with st.expander("Metrics Calc Method"):
             st.markdown(f"""
-            ##### LPR Calculation Breakdown
+            ##### LPR Calculation Breakdown = LIR * (1 + N + C + A)
             - **N (Number of AVSs):** {n_t:.2%}
             - **C (Category Risk):** {c_t:.2%}
             - **A (Individual Risk Contribution):** {a_t:.2%}
-            - **LPR Formula:** LIR * (1 + N + C + A)
             - **Ether.fi LPR:** {etherfi_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {etherfi_lpr:.2f}
 
-            ##### DC Calculation Breakdown
+            ##### DC Calculation Breakdown = TA * (1 / Ether.fi LPR) / Sum(1/LPR)
             - **TA (Total Allowable Amount):** ${total_ta:,.2f}
             - **Sum of 1/LPR:** {inv_lpr_sum:.4f}
-            - **DC Formula:** TA * (1 / Ether.fi LPR) / Sum(1/LPR)
             - **Ether.fi DC:** {total_ta:,.2f} * (1 / {etherfi_lpr:.2f}) / {inv_lpr_sum:.4f} = ${etherfi_dc:,.2f}
 
-            ##### CR Calculation Breakdown
+            ##### CR Calculation Breakdown = 1 + (Ether.fi LPR / Sum(LPRs))
             - **Sum of LPRs:** {sum(lrt_lpr_values):.2f}
-            - **CR Formula:** 1 + (Ether.fi LPR / Sum(LPRs))
             - **Ether.fi CR:** 1 + ({etherfi_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {etherfi_cr * 100:.2f}%
+            
+            - ***LIR*** represents the aggregate risk score for the LRT (***t***), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
+            - ***LPR*** provides a comprehensive underwriting of the interdependent risk exposure of the pooled ecosystem of AVSs selected by the LRT.
+            - ***DC*** calculates the deposit cap by taking the total allowable amount for LRT deposits (***TA***), as determined by Ebisu, and adjusts it based on the relative risk of each LRT (***LPR***), in the context of Ebisu’s basket of LRTs (**Σ *LPR***).
+            - ***CR*** relativizes the pooled risk of the LRT portfolio at hand (***LPR***), against the aggregate pooled risk of ALL the LRT portfolios (Ebisu’s LRT basket (**Σ *LPR***)) to arrive at a considerate, minimum collateralisation ratio for the LRT being considered.
             """)
 
 
