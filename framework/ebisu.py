@@ -4,6 +4,8 @@ import pandas as pd
 
 st.set_page_config(page_title="Ebisu Dashboard", layout="wide")
 
+st.title("Ebisu Dashboard")
+
 # Function to fetch AVS data from the EigenExplorer API
 @st.cache_data(ttl=60)
 def fetch_eigen_avs_data():
