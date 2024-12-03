@@ -63,11 +63,11 @@ ir_mapping = {
     "0x71a77037870169d47aad6c2c9360861a4c0df2bf": 9.46,
     "0x6026b61bdd2252160691cb3f6005b6b72e0ec044": 9.46,
     "0xd25c2c5802198cb8541987b73a8db4c9bcae5cc7": 17.57,
-    "0xe544583c475a2980e6a88054ff1514230b83aeb": 12.74,
-    "0x7f7cff55d5fdaf2c3bbeb140be5e62a2c7d26db3": 15.41,
+    "0xe5445838c475a2980e6a88054ff1514230b83aeb": 12.74,
     "0x1de75eaab2df55d467494a172652579e6fa4540e": 11.82,
     "0x1f2c296448f692af840843d993ffc0546619dcdb": 14.00,
     "0xe8e59c6c8b56f2c178f63bcfc4ce5e5e2359c8fc": 12.75,
+    "0xf7fcff55d5fdaf2c3bbeb140be5e62a2c7d26db3": 15.41
 }
 
 # Fetch AVS data
@@ -814,7 +814,7 @@ lrt_df["CR"] = lrt_df["CR"].apply(lambda x: f"{x:.2%}")
 
 
 # --- Final Summary Table ---
-st.header("Full LRT Deposit Cap & Minimum Collateral Ratio Breakdown")
+st.header("Full LRT Deposit Cap & Minimum Collateralization Ratio Breakdown")
 
 # Collect data for the summary table
 lrt_summary_data = [
