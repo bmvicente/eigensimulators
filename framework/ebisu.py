@@ -104,6 +104,7 @@ if eigen_avs_data and "data" in eigen_avs_data:
 
     # Display the styled DataFrame
     st.dataframe(styled_avs_df)
+    st.markdown("<p style='text-align: center; font-size: 14px; color: grey;'>Data from EigenExplorer</p>", unsafe_allow_html=True)
 
 else:
     st.write("No AVS data available to display.")
