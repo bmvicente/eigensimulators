@@ -155,7 +155,7 @@ if lrt_balances_data:
         )
         etherfi_lir = 0
         etherfi_lir_data = []
-
+        
         for avs in etherfi_avs_registrations:
             avs_address = avs.get("address", "N/A")
             avs_name = avs.get("name", "N/A")
@@ -165,14 +165,15 @@ if lrt_balances_data:
             # Fetch AVS total USD value balances
             avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Updated to use corrected mapping
 
-            weighted_risk = eeth_percentage_of_total * avs_ir
-            etherfi_lir += weighted_risk
-
             # Calculate eETH % of Total
             eeth_percentage_of_total = (
                 (avs_total_usd / avs_total_usd_balances * 100) 
                 if avs_total_usd_balances > 0 else 0
             )
+
+            # Calculate weighted risk
+            weighted_risk = (eeth_percentage_of_total / 100) * avs_ir  # Adjusting percentage to a decimal
+            etherfi_lir += weighted_risk
 
             etherfi_lir_data.append({
                 "Address": avs_address,
@@ -184,6 +185,7 @@ if lrt_balances_data:
                 "IR": round(avs_ir, 2),
                 "LIR": round(weighted_risk, 4)
             })
+
 
         # Display LIR Table
         etherfi_lir_df = pd.DataFrame(etherfi_lir_data)
