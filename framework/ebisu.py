@@ -651,6 +651,8 @@ lrt_df = pd.DataFrame(lrt_data)
 lrt_df["DC"] = lrt_df["DC"].apply(lambda x: f"${x:,.2f}")
 lrt_df["CR"] = lrt_df["CR"].apply(lambda x: f"{x:.2%}")
 
+
+
 # --- Final Summary Table ---
 st.header("Full LRT Deposit Cap & Minimum Collateral Ratio Breakdown")
 
@@ -693,13 +695,26 @@ lrt_summary_data = [
 # Convert to DataFrame for rendering
 lrt_summary_df = pd.DataFrame(lrt_summary_data)
 
-# Display the summary table
-st.dataframe(lrt_summary_df, use_container_width=True)
-
-# Generate Insights Dynamically
+# Identify the highest and lowest risk
 highest_risk = max(lrt_summary_data, key=lambda x: x["LPR"])
 lowest_risk = min(lrt_summary_data, key=lambda x: x["LPR"])
 
+# Function to apply styles
+def highlight_risk(row):
+    if row["Protocol"] == highest_risk["Protocol"]:
+        return ['background-color: orange'] * len(row)  # Riskiest
+    elif row["Protocol"] == lowest_risk["Protocol"]:
+        return ['background-color: lightgreen'] * len(row)  # Safest
+    else:
+        return [''] * len(row)
+
+# Apply the style to the DataFrame
+styled_lrt_summary_df = lrt_summary_df.style.apply(highlight_risk, axis=1)
+
+# Display the styled DataFrame
+st.dataframe(styled_lrt_summary_df, use_container_width=True)
+
+# Generate Insights Dynamically
 insights = []
 
 insights.append(f"- **{highest_risk['Protocol']} ({highest_risk['LRT']})** is the riskiest LRT. "
@@ -719,3 +734,4 @@ insights.append("- On top of the above insights, carefully considering financial
 
 for insight in insights:
     st.write(insight)
+
