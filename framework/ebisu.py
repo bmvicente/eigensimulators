@@ -127,17 +127,22 @@ st.write("\n")
 st.header("LRTs Full Analysis: Ether.fi, Renzo, Puffer, Kelp")
 
 if not avs_category_mapping:
-        avs_category_mapping = {}
+    avs_category_mapping = {}
 
+# Fetch AVS balances data
 avs_balances_data = fetch_u1_avs_balances()
+
+# Safely map AVS balances
+avs_balances_mapping = {
+    avs.get("address", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
+} if avs_balances_data and "data" in avs_balances_data else {}
+
 lrt_balances_data = fetch_u1_lrt_balances()
+
 if lrt_balances_data:
 
-
-
-
     if "ether.fi" in lrt_balances_data:
-        # Get Etherfi data
+        # Get Ether.fi data
         etherfi_data = lrt_balances_data["ether.fi"]["latest"]
         etherfi_avs_registrations = etherfi_data.get("avsRegistrations", [])
 
@@ -154,6 +159,7 @@ if lrt_balances_data:
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
             avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
+            avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Fetch total USD value from balances
 
             weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
             weighted_risk = weight * avs_ir
@@ -164,7 +170,7 @@ if lrt_balances_data:
                 "AVS Name": avs_name,
                 "Category": avs_category,  # Add the Category column
                 "Etherfi Total USD Value Restaked": f"${avs_total_usd:,.2f}",
-                "AVS Total USD Value Restaked": f"${avs_balances_data:,.2f}",
+                "AVS Total USD Value Restaked": f"${avs_total_usd_balances:,.2f}",  # New column
                 "IR": round(avs_ir, 2),
                 "AIR": round(weighted_risk, 4)
             })
