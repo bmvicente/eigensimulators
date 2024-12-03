@@ -224,14 +224,15 @@ if lrt_balances_data:
         medium_ir_percentage = sum(1 for ir in ir_scores if 10 <= ir <= 20) / n_avs
         high_ir_percentage = sum(1 for ir in ir_scores if ir > 20) / n_avs
 
+        # Updated logic with default value
         if low_ir_percentage > 0.5:
-            a_t = 0.05
+            a_t = 0.05  # +5%
         elif medium_ir_percentage > 0.5:
-            a_t = 0.10
+            a_t = 0.10  # +10%
         elif high_ir_percentage > 0.5:
-            a_t = 0.20
+            a_t = 0.20  # +20%
         else:
-            a_t = 0
+            a_t = 0.075  # Default to +7.5%
 
         etherfi_lpr = etherfi_lir * (1 + n_t + c_t + a_t)
 
