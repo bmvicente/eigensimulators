@@ -887,7 +887,7 @@ insights.append(f"- **{lowest_risk['Protocol']} ({lowest_risk['LRT']})** is the 
 moderate_risk_lrt = [lrt for lrt in lrt_summary_data if lrt != highest_risk and lrt != lowest_risk]
 if moderate_risk_lrt:
     moderate_protocols = ", ".join([f"**{lrt['Protocol']} ({lrt['LRT']})**" for lrt in moderate_risk_lrt])
-    insights.append(f"- {moderate_protocols} are moderately risky, in a relative sense, with a very similar risk profile.")
+    insights.append(f"- {moderate_protocols} are moderately risky, in a relative sense, with a similar risk profile.")
 
 insights.append("- On top of the above insights, carefully considering financial market risks of each asset "
                 "is important to gauge a full picture of what the final deposit caps and collateralization ratios should be.")
