@@ -95,10 +95,11 @@ else:
     st.write("No AVS data available to display.")
 
 
-st.write("AVSs without risk scores performed are signaled in yellow and automatically assigned a risk score equal to 25 to ease calculations.")
+st.write("Note: AVSs without risk scores performed are signaled in yellow and automatically assigned a risk score equal to 25 to ease calculations.")
 
 
 
+st.write("\n")
 st.write("\n")
 st.write("\n")
 st.write("\n")
