@@ -140,6 +140,10 @@ avs_balances_mapping = {
     avs.get("address", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
 } if avs_balances_data else {}
 
+if not avs_balances_mapping:
+    st.warning("No AVS balances data available to process.")
+
+
 lrt_balances_data = fetch_u1_lrt_balances()
 if lrt_balances_data:
     if "ether.fi" in lrt_balances_data:
