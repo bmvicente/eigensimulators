@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 
-st.set_page_config(page_title="Ebisu Dashboard", layout="wide")
+st.set_page_config(page_title="Ebisu LRT Risk Dashboard", layout="wide")
 st.image("framework/images/ebisunoback.png", width=150)
 st.title("Ebisu Dashboard")
 
