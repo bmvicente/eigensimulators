@@ -308,7 +308,7 @@ if lrt_balances_data:
     ### RENZO
 
     if "renzo" in lrt_balances_data:
-        # Get Ether.fi data
+        # Get Renzo data
         renzo_data = lrt_balances_data["renzo"]["latest"]
         renzo_avs_registrations = renzo_data.get("avsRegistrations", [])
 
@@ -477,7 +477,7 @@ if lrt_balances_data:
         puffer_lir = 0
         puffer_lir_data = []
 
-        for avs in etherfi_avs_registrations:
+        for avs in puffer_avs_registrations:
             avs_address = avs.get("address", "N/A")
             avs_name = avs.get("name", "N/A")
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
@@ -593,7 +593,7 @@ if lrt_balances_data:
             ***DC*** calculates the deposit cap by taking the total allowable amount for LRT deposits (TA), as determined by Ebisu, and adjusts it based on the relative risk of each LRT (LPR), in the context of Ebisu’s basket of LRTs (Σ LPR).
 
             - **TA (Total Allowable Amount):** ${total_ta:,.2f} | **Sum of 1/LPR:** {inv_lpr_sum:.4f}
-            - **Ether.fi DC:** {total_ta:,.2f} * (1 / {puffer_lpr:.2f}) / {inv_lpr_sum:.4f} = ${puffer_dc:,.2f}
+            - **Puffer DC:** {total_ta:,.2f} * (1 / {puffer_lpr:.2f}) / {inv_lpr_sum:.4f} = ${puffer_dc:,.2f}
 
             
             ##### CR Calculation Breakdown = 1 + (Puffer LPR / Sum(LPRs))
@@ -757,7 +757,7 @@ if lrt_balances_data:
             ***CR*** relativizes the pooled risk of the LRT portfolio at hand (***LPR***), against the aggregate pooled risk of ALL the LRT portfolios (Ebisu’s LRT basket (**Σ *LPR***)) to arrive at a considerate, minimum collateralisation ratio for the LRT being considered.
 
             - **Sum of LPRs:** {sum(lrt_lpr_values):.2f}
-            - **Ether.fi CR:** 1 + ({kelp_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {kelp_cr * 100:.2f}%
+            - **Kelp CR:** 1 + ({kelp_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {kelp_cr * 100:.2f}%
             """)
 
 
