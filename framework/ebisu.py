@@ -894,7 +894,7 @@ if moderate_risk_lrt:
     moderate_protocols = ", ".join([f"**{lrt['Protocol']} ({lrt['LRT']})**" for lrt in moderate_risk_lrt])
     insights.append(f"- {moderate_protocols} are moderately risky, in a relative sense, with a similar risk profile.")
 
-insights.append("- On top of the above insights, carefully considering financial market risks of each asset "
+insights.append("On top of the above insights, carefully considering financial market risks of each asset "
                 "is important to gauge a full picture of what the final deposit caps and collateralization ratios should be.")
 
 for insight in insights:
