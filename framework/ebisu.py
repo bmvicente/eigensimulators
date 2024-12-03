@@ -266,7 +266,7 @@ if lrt_balances_data:
             ##### LPR Calculation Breakdown = LIR * (1 + N + C + A)
             ***LPR*** provides a comprehensive underwriting of the interdependent risk exposure of the pooled ecosystem of AVSs selected by the LRT.
 
-            **N (Number of AVSs):** {n_t:.2%} | **C (Category Risk):** {c_t:.2%} | **A (Individual Risk Contribution):** {a_t:.2%}
+            - **N (Number of AVSs):** {n_t:.2%} | **C (Category Risk):** {c_t:.2%} | **A (Individual Risk Contribution):** {a_t:.2%}
             - **Ether.fi LPR:** {etherfi_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {etherfi_lpr:.2f}
 
             
