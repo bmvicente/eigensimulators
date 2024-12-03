@@ -131,6 +131,7 @@ if not avs_category_mapping:
 
 # Fetch AVS balances data
 avs_balances_data = fetch_u1_avs_balances()
+st.write("AVS Balances Data Response:", avs_balances_data)
 
 # Safely map AVS balances
 avs_balances_mapping = {
