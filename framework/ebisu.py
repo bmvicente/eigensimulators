@@ -8,7 +8,7 @@ st.title("Ebisu Dashboard")
 
 # Function to fetch AVS data from the EigenExplorer API
 @st.cache_data(ttl=60)
-def fetch_eigen_avs_data():
+def fetch_ee_avs_data():
     url = "https://api.eigenexplorer.com/avs"
     params = {
         "withTVL": "true",
@@ -25,9 +25,21 @@ def fetch_eigen_avs_data():
         st.error(f"Failed to fetch EigenExplorer AVS data: {response.status_code}")
         return None
 
+# Function to fetch AVS balances from the u--1 API
+@st.cache_data(ttl=60)
+def fetch_u1_avs_balances():
+    url = "https://api.u--1.com/v2/latest-avs-balances"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        return response.json()
+    else:
+        st.error(f"Failed to fetch AVS balances data: {response.status_code}")
+        return None
+
 # Function to fetch LRT balances from the u--1 API
 @st.cache_data(ttl=60)
-def fetch_lrt_balances():
+def fetch_u1_lrt_balances():
     url = "https://api.u--1.com/v2/latest-lrt-balances"
     params = {"api_key": "9e325ecaa2cb49e895595e0e446e1d64"}
     response = requests.get(url, params=params)
@@ -59,7 +71,10 @@ ir_mapping = {
 # Fetch AVS data
 st.header("EigenLayer: Current AVS Table")
 
-eigen_avs_data = fetch_eigen_avs_data()
+eigen_avs_data = fetch_ee_avs_data()
+avs_balances_data = fetch_u1_avs_balances()
+avs_balances_mapping = {avs["address"]: avs["totalUsdValue"] for avs in avs_balances_data["avs"]} if avs_balances_data else {}
+
 avs_category_mapping = {}
 if eigen_avs_data and "data" in eigen_avs_data:
     avs_records = eigen_avs_data["data"]
@@ -71,11 +86,13 @@ if eigen_avs_data and "data" in eigen_avs_data:
         tags = curated_metadata.get("tags", [])
         tags_str = ", ".join(tags) if tags else "None"
         avs_category_mapping[address] = tags_str
+        total_usd_value = avs_balances_mapping.get(address, "N/A")  # Add the total USD value
         ir = ir_mapping.get(address, 25)  # Default to 25 if no IR value is found
         processed_data.append({
             "Address": address,
             "Name": metadata_name,
             "Category": tags_str,
+            "Total USD Value": f"${total_usd_value:,.2f}" if total_usd_value != "N/A" else "N/A",
             "IR": round(float(ir), 2)  # Ensure IR is a float before rounding
         })
 
@@ -94,17 +111,16 @@ if eigen_avs_data and "data" in eigen_avs_data:
 else:
     st.write("No AVS data available to display.")
 
-
 st.markdown("**<u>Note</u>:** AVSs without assigned risk scores are highlighted in yellow and defaulted to a risk score of 25 for calculation purposes.", unsafe_allow_html=True)
 
 
 
-st.write("\n")
-st.write("\n")
-st.write("\n")
-st.write("\n")
-st.write("\n")
 
+st.write("\n")
+st.write("\n")
+st.write("\n")
+st.write("\n")
+st.write("\n")
 
 
 
@@ -113,16 +129,15 @@ st.write("\n")
 st.header("LRTs Full Analysis: Ether.fi, Renzo, Puffer, Kelp")
 
 if not avs_category_mapping:
-        avs_category_mapping = {}
+    avs_category_mapping = {}
 
-lrt_balances_data = fetch_lrt_balances()
+avs_balances_data = fetch_u1_avs_balances()
+avs_balances_mapping = {avs["address"]: avs["totalUsdValue"] for avs in avs_balances_data["avs"]} if avs_balances_data else {}
+
+lrt_balances_data = fetch_u1_lrt_balances()
 if lrt_balances_data:
-
-
-
-
     if "ether.fi" in lrt_balances_data:
-        # Get Renzo data
+        # Get Ether.fi data
         etherfi_data = lrt_balances_data["ether.fi"]["latest"]
         etherfi_avs_registrations = etherfi_data.get("avsRegistrations", [])
 
@@ -139,6 +154,7 @@ if lrt_balances_data:
             avs_total_usd = avs.get("totalUsdValueRestaked", 0)
             avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
+            avs_total_usd_balanced = avs_balances_mapping.get(avs_address, "N/A")
 
             weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
             weighted_risk = weight * avs_ir
@@ -148,8 +164,8 @@ if lrt_balances_data:
                 "Address": avs_address,
                 "AVS Name": avs_name,
                 "Category": avs_category,  # Add the Category column
-                "Total USD Value Restaked": f"${avs_total_usd:,.2f}",
-                "% Restaked vs Total": round(weight, 4),
+                "Etherfi Total USD Value Restaked": f"${avs_total_usd:,.2f}",
+                "AVS Total USD Value": f"${avs_total_usd_balanced:,.2f}" if avs_total_usd_balanced != "N/A" else "N/A",
                 "IR": round(avs_ir, 2),
                 "AIR": round(weighted_risk, 4)
             })
@@ -169,8 +185,10 @@ if lrt_balances_data:
 
         # --- Calculate LPR ---
         n_avs = len(etherfi_avs_registrations)
+        # Threshold for number of AVSs
         n_t = 0.12 if n_avs >= 15 else 0.075 if n_avs >= 10 else 0.05 if n_avs >= 5 else 0
 
+        # Calculate category thresholds
         category_counts = {}
         for avs in etherfi_avs_registrations:
             address = avs.get("address", "N/A")
@@ -180,6 +198,7 @@ if lrt_balances_data:
         most_common_category_percentage = max(category_counts.values()) / n_avs if n_avs > 0 else 0
         c_t = 0.10 if most_common_category_percentage > 0.5 else 0.05 if most_common_category_percentage >= 0.2 else 0
 
+        # Calculate IR thresholds
         ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in etherfi_avs_registrations]
         low_ir_percentage = sum(1 for ir in ir_scores if ir < 10) / n_avs
         medium_ir_percentage = sum(1 for ir in ir_scores if 10 <= ir <= 20) / n_avs
@@ -229,9 +248,6 @@ if lrt_balances_data:
             """)
 
 
-
-
-
     st.write("\n")
     st.write("\n")
     st.write("\n")
@@ -274,7 +290,6 @@ if lrt_balances_data:
                 "AVS Name": avs_name,
                 "Category": avs_category,  # Add the Category column
                 "Total USD Value Restaked": f"${avs_total_usd:,.2f}",
-                "% Restaked vs Total": round(weight, 4),
                 "IR": round(avs_ir, 2),
                 "AIR": round(weighted_risk, 4)
             })
@@ -400,7 +415,6 @@ if lrt_balances_data:
                 "AVS Name": avs_name,
                 "Category": avs_category,  # Add the Category column
                 "Total USD Value Restaked": f"${avs_total_usd:,.2f}",
-                "% Restaked vs Total": round(weight, 4),
                 "IR": round(avs_ir, 2),
                 "AIR": round(weighted_risk, 4)
             })
@@ -524,8 +538,7 @@ if lrt_balances_data:
                 "Address": avs_address,
                 "AVS Name": avs_name,
                 "Category": avs_category,  # Add the Category column
-                "Total USD Value Restaked": f"${avs_total_usd:,.2f}",
-                "% Restaked vs Total": round(weight, 4),
+                "Kelp Total USD Value Restaked": f"${avs_total_usd:,.2f}",
                 "IR": round(avs_ir, 2),
                 "AIR": round(weighted_risk, 4)
             })
