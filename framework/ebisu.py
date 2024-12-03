@@ -261,7 +261,7 @@ if lrt_balances_data:
             - **n_t (Number of AVSs):** {n_t:.2%}
             - **c_t (Category Risk):** {c_t:.2%}
             - **a_t (Individual Risk Contribution):** {a_t:.2%}
-            - **LPR Formula:** LIR * (1 + n_t + c_t + a_t)
+            - **LPR Formula:** LIR * (1 + N + C + A)
             - **Ether.fi LPR:** {etherfi_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {etherfi_lpr:.2f}
 
             ##### DC Calculation Breakdown
