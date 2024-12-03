@@ -3,7 +3,7 @@ import requests
 import pandas as pd
 
 st.set_page_config(page_title="Ebisu Dashboard", layout="wide")
-
+st.image("framework/images/ebisu.jpg")
 st.title("Ebisu Dashboard")
 
 # Function to fetch AVS data from the EigenExplorer API
@@ -55,12 +55,6 @@ ir_mapping = {
     "0x1f2c296448f692af840843d993ffc0546619dcdb": 14.00,
     "0xe8e59c6c8b56f2c178f63bcfc4ce5e5e2359c8fc": 12.75,
 }
-
-# Set up the Streamlit page
-st.image("framework/images/ebisu.jpg")
-
-st.set_page_config(page_title="Ebisu Dashboard", layout="wide")
-st.title("Ebisu Dashboard")
 
 # Fetch AVS data
 st.header("EigenLayer: Current AVS Table")
