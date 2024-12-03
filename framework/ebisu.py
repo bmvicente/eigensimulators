@@ -110,7 +110,7 @@ else:
     st.write("No AVS data available to display.")
 
 
-st.markdown("**<u>Note</u>:** AVSs without assigned risk scores are highlighted in yellow and defaulted to a risk score of 25 for calculation purposes.", unsafe_allow_html=True)
+st.markdown("**<u>Note</u>:** AVSs without assigned risk scores (IR: AVS Individual Risk) are highlighted in yellow and defaulted to a risk score of 25 for calculation purposes.", unsafe_allow_html=True)
 
 
 
