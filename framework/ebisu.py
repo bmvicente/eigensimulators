@@ -132,7 +132,13 @@ if not avs_category_mapping:
     avs_category_mapping = {}
 
 avs_balances_data = fetch_u1_avs_balances()
-avs_balances_mapping = {avs["address"]: avs["totalUsdValue"] for avs in avs_balances_data["avs"]} if avs_balances_data else {}
+# Debugging: Inspect API response structure
+st.write("AVS Balances Data Response:", avs_balances_data)
+
+# Safely map AVS balances
+avs_balances_mapping = {
+    avs.get("address", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
+} if avs_balances_data else {}
 
 lrt_balances_data = fetch_u1_lrt_balances()
 if lrt_balances_data:
