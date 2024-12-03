@@ -73,9 +73,14 @@ st.header("EigenLayer: Current AVS Table")
 
 eigen_avs_data = fetch_ee_avs_data()
 avs_balances_data = fetch_u1_avs_balances()
+st.write("Debug: AVS Balances Data Response", avs_balances_data)  # Debugging
+
 avs_balances_mapping = {
     avs.get("address", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
-} if avs_balances_data else {}
+} if avs_balances_data and "data" in avs_balances_data else {}
+
+if not avs_balances_mapping:
+    st.warning("No valid AVS balances data found.")
 
 avs_category_mapping = {}
 if eigen_avs_data and "data" in eigen_avs_data:
