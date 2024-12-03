@@ -131,21 +131,31 @@ if not avs_category_mapping:
 
 # Fetch AVS balances data
 avs_balances_data = fetch_u1_avs_balances()
+
+# Debugging: Inspect AVS balances data response
 st.write("AVS Balances Data Response:", avs_balances_data)
+
+# Debugging: Check if addresses are correctly mapped
+if avs_balances_data and "data" in avs_balances_data:
+    for avs in avs_balances_data["data"]:
+        st.write(f"Address: {avs.get('address', 'N/A')} -> Total USD Value: {avs.get('totalUsdValue', 0)}")
 
 # Safely map AVS balances
 avs_balances_mapping = {
     avs.get("address", "N/A"): avs.get("totalUsdValue", 0) for avs in avs_balances_data.get("data", [])
 } if avs_balances_data and "data" in avs_balances_data else {}
 
-lrt_balances_data = fetch_u1_lrt_balances()
+# Debugging: Inspect the mapping
+st.write("AVS Balances Mapping:", avs_balances_mapping)
 
 if lrt_balances_data:
-
     if "ether.fi" in lrt_balances_data:
         # Get Ether.fi data
         etherfi_data = lrt_balances_data["ether.fi"]["latest"]
         etherfi_avs_registrations = etherfi_data.get("avsRegistrations", [])
+
+        # Debugging: Inspect Ether.fi AVS registrations
+        st.write("Ether.fi AVS Registrations:", etherfi_avs_registrations)
 
         # Calculate the LIR
         total_usd_restaked = sum(
@@ -162,6 +172,9 @@ if lrt_balances_data:
             avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
             avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Fetch total USD value from balances
 
+            # Debugging: Log mapping results
+            st.write(f"Mapping: Address: {avs_address}, Total USD: {avs_total_usd_balances}")
+
             weight = avs_total_usd / total_usd_restaked if total_usd_restaked > 0 else 0
             weighted_risk = weight * avs_ir
             etherfi_lir += weighted_risk
@@ -176,8 +189,12 @@ if lrt_balances_data:
                 "AIR": round(weighted_risk, 4)
             })
 
+        # Debugging: Check final LIR data
+        st.write("Final Ether.fi LIR Data:", etherfi_lir_data)
+
         # Display LIR Table
         etherfi_lir_df = pd.DataFrame(etherfi_lir_data)
+
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
