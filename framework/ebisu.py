@@ -257,20 +257,20 @@ if lrt_balances_data:
         # Include expanded breakdown
         with st.expander("Metrics Calc Method"):
             st.markdown(f"""
-            ##### LPR Calculation Breakdown
-            - **n_t (Number of AVSs):** {n_t:.2%}
-            - **c_t (Category Risk):** {c_t:.2%}
-            - **a_t (Individual Risk Contribution):** {a_t:.2%}
+            ###### LPR Calculation Breakdown
+            - **N (Number of AVSs):** {n_t:.2%}
+            - **C (Category Risk):** {c_t:.2%}
+            - **A (Individual Risk Contribution):** {a_t:.2%}
             - **LPR Formula:** LIR * (1 + N + C + A)
             - **Ether.fi LPR:** {etherfi_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {etherfi_lpr:.2f}
 
-            ##### DC Calculation Breakdown
+            ###### DC Calculation Breakdown
             - **TA (Total Allowable Amount):** ${total_ta:,.2f}
             - **Sum of 1/LPR:** {inv_lpr_sum:.4f}
             - **DC Formula:** TA * (1 / Ether.fi LPR) / Sum(1/LPR)
             - **Ether.fi DC:** {total_ta:,.2f} * (1 / {etherfi_lpr:.2f}) / {inv_lpr_sum:.4f} = ${etherfi_dc:,.2f}
 
-            ##### CR Calculation Breakdown
+            ###### CR Calculation Breakdown
             - **Sum of LPRs:** {sum(lrt_lpr_values):.2f}
             - **CR Formula:** 1 + (Ether.fi LPR / Sum(LPRs))
             - **Ether.fi CR:** 1 + ({etherfi_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {etherfi_cr * 100:.2f}%
