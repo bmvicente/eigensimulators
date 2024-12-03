@@ -801,4 +801,11 @@ st.write("\n")
 
 
 
-st.image("framework/images/tokensightlogonoback.png", width=100)
+st.markdown(
+    """
+    <div style="text-align: center;">
+        <img src="framework/images/tokensightlogonoback.png" alt="Tokensight Logo" width="100">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
