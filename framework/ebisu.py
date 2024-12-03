@@ -71,7 +71,7 @@ if eigen_avs_data and "data" in eigen_avs_data:
         tags = curated_metadata.get("tags", [])
         tags_str = ", ".join(tags) if tags else "None"
         avs_category_mapping[address] = tags_str
-        ir = ir_mapping.get(address, 20)  # Default to 20 if no IR value is found
+        ir = ir_mapping.get(address, 25)  # Default to 20 if no IR value is found
         processed_data.append({
             "Address": address,
             "Name": metadata_name,
@@ -84,7 +84,7 @@ if eigen_avs_data and "data" in eigen_avs_data:
 
     # Apply styling to highlight rows where IR == 20
     def highlight_rows(row):
-        return ['background-color: yellow'] * len(row) if row["IR"] == 20 else [''] * len(row)
+        return ['background-color: yellow'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
     styled_avs_df = avs_df.style.apply(highlight_rows, axis=1)
 
