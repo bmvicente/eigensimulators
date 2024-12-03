@@ -801,4 +801,4 @@ st.write("\n")
 
 
 
-st.image("framework/images/tokensightlogonoback.png", width=150)
+st.image("framework/images/tokensightlogonoback.png", width=100)
