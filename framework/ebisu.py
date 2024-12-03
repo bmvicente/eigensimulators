@@ -169,18 +169,32 @@ if lrt_balances_data:
             weighted_risk = weight * avs_ir
             etherfi_lir += weighted_risk
 
+            # Calculate eETH % of Total
+            eeth_percentage_of_total = (
+                (avs_total_usd / avs_total_usd_balances * 100) 
+                if avs_total_usd_balances > 0 else 0
+            )
+
             etherfi_lir_data.append({
                 "Address": avs_address,
                 "AVS Name": avs_name,
                 "Category": avs_category,  # Add the Category column
-                "Etherfi Total USD Value Restaked": f"${avs_total_usd:,.2f}",
+                "Etherfi Total USD Value Restaked on AVS": f"${avs_total_usd:,.2f}",
                 "AVS Total USD Value Restaked": f"${avs_total_usd_balances:,.2f}",  # New column
+                "eETH % of Total": f"{eeth_percentage_of_total:.2f}%",  # New column for percentage
                 "IR": round(avs_ir, 2),
                 "AIR": round(weighted_risk, 4)
             })
 
         # Display LIR Table
         etherfi_lir_df = pd.DataFrame(etherfi_lir_data)
+
+        # Convert percentage column to numeric for sorting or calculations
+        etherfi_lir_df["eETH % of Total"] = etherfi_lir_df["eETH % of Total"].str.rstrip('%').astype(float)
+
+        # Display DataFrame in Streamlit
+        st.dataframe(etherfi_lir_df)
+
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
