@@ -6,7 +6,7 @@ st.set_page_config(page_title="Ebisu LRT Risk Dashboard", layout="wide")
 st.image("framework/images/ebisunoback.png", width=150)
 st.title("Ebisu Finance: LRT Risk Dashboard")
 
-# Function to fetch AVS data from the EigenExplorer API
+# fetch AVS data from the EigenExplorer API
 @st.cache_data(ttl=60)
 def fetch_ee_avs_data():
     url = "https://api.eigenexplorer.com/avs"
@@ -25,7 +25,7 @@ def fetch_ee_avs_data():
         st.error(f"Failed to fetch EigenExplorer AVS data: {response.status_code}")
         return None
 
-# Function to fetch LRT balances from the u--1 API
+# fetch LRT balances from the u--1 API
 @st.cache_data(ttl=60)
 def fetch_u1_avs_balances():
     url = "https://api.u--1.com/v2/latest-avs-balances"
@@ -37,7 +37,7 @@ def fetch_u1_avs_balances():
         st.error(f"Failed to fetch LRT balances data: {response.status_code}")
         return None
 
-# Function to fetch LRT balances from the u--1 API
+# fetch LRT balances from the u--1 API
 @st.cache_data(ttl=60)
 def fetch_u1_lrt_balances():
     url = "https://api.u--1.com/v2/latest-lrt-balances"
@@ -52,7 +52,7 @@ def fetch_u1_lrt_balances():
 
 
 
-# IR values mapped to AVS addresses
+# tokensight IR values mapped to AVS addresses
 ir_mapping = {
     "0x23221c5bb90c7c57ecc1e75513e2e4257673f0ef": 5.99,
     "0x870679e138bcdf293b7ff14dd44b70fc97e12fc0": 7.08,
@@ -93,7 +93,6 @@ if eigen_avs_data and "data" in eigen_avs_data:
             "IR": round(float(ir), 2)  # Ensure IR is a float before rounding
         })
 
-    # Convert processed data into a DataFrame
     avs_df = pd.DataFrame(processed_data)
 
     # Apply styling to highlight rows where IR == 25
@@ -102,7 +101,6 @@ if eigen_avs_data and "data" in eigen_avs_data:
 
     styled_avs_df = avs_df.style.apply(highlight_rows, axis=1)
 
-    # Display the styled DataFrame
     st.dataframe(styled_avs_df)
     st.markdown("<p style='text-align: center; font-size: 14px; color: grey;'>Data from EigenExplorer (except IR)</p>", unsafe_allow_html=True)
 
@@ -137,7 +135,6 @@ if not avs_category_mapping:
 # Fetch AVS balances data
 avs_balances_data = fetch_u1_avs_balances()
 
-# Safely map AVS balances
 # Safely map AVS balances based on correct API structure
 avs_balances_mapping = {
     avs_address: details.get("totalUsdValue", 0) 
@@ -330,7 +327,7 @@ if lrt_balances_data:
             # Fetch AVS total USD value balances
             avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Updated to use corrected mapping
 
-            # Calculate eETH % of Total
+            # Calculate ezETH % of Total
             ezeth_percentage_of_total = (
                 (avs_total_usd / avs_total_usd_balances * 100) 
                 if avs_total_usd_balances > 0 else 0
@@ -421,7 +418,6 @@ if lrt_balances_data:
         st.markdown("**Renzo Summary Metrics**")
         st.dataframe(renzo_summary_df)
 
-        # Include expanded breakdown
         with st.expander("Metrics Calc Method"):
             st.markdown(f"""
             ***LIR*** represents the aggregate risk score for the LRT (***t***), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
@@ -469,7 +465,7 @@ if lrt_balances_data:
     ### PUFFER
 
     if "puffer" in lrt_balances_data:
-        # Get Ether.fi data
+        # Get Puffer data
         puffer_data = lrt_balances_data["puffer"]["latest"]
         puffer_avs_registrations = puffer_data.get("avsRegistrations", [])
 
@@ -580,7 +576,6 @@ if lrt_balances_data:
         st.markdown("**Puffer Summary Metrics**")
         st.dataframe(puffer_summary_df)
 
-        # Include expanded breakdown
         with st.expander("Metrics Calc Method"):
             st.markdown(f"""
             ***LIR*** represents the aggregate risk score for the LRT (***t***), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
@@ -647,7 +642,7 @@ if lrt_balances_data:
             # Fetch AVS total USD value balances
             avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Updated to use corrected mapping
 
-            # Calculate eETH % of Total
+            # Calculate rsETH % of Total
             rseth_percentage_of_total = (
                 (avs_total_usd / avs_total_usd_balances * 100) 
                 if avs_total_usd_balances > 0 else 0
@@ -738,7 +733,6 @@ if lrt_balances_data:
         st.markdown("**Kelp Summary Metrics**")
         st.dataframe(kelp_summary_df)
 
-        # Include expanded breakdown
         with st.expander("Metrics Calc Method"):
             st.markdown(f"""
             ***LIR*** represents the aggregate risk score for the LRT (***t***), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
@@ -809,10 +803,8 @@ for data in lrt_data:
     data["DC"] = total_ta * ((1 / lpr) / inv_lpr_sum) if lpr > 0 else 0
     data["CR"] = 1 + (lpr / sum(lrt_lpr_values)) if lpr > 0 else 0
 
-# Convert to DataFrame
 lrt_df = pd.DataFrame(lrt_data)
 
-# Format Columns
 lrt_df["DC"] = lrt_df["DC"].apply(lambda x: f"${x:,.2f}")
 lrt_df["CR"] = lrt_df["CR"].apply(lambda x: f"{x:.2%}")
 
@@ -857,14 +849,12 @@ lrt_summary_data = [
     }
 ]
 
-# Convert to DataFrame for rendering
 lrt_summary_df = pd.DataFrame(lrt_summary_data)
 
 # Identify the highest and lowest risk
 highest_risk = max(lrt_summary_data, key=lambda x: x["LPR"])
 lowest_risk = min(lrt_summary_data, key=lambda x: x["LPR"])
 
-# Function to apply styles
 def highlight_risk(row):
     if row["Protocol"] == highest_risk["Protocol"]:
         return ['background-color: orange'] * len(row)  # Riskiest
@@ -873,13 +863,10 @@ def highlight_risk(row):
     else:
         return [''] * len(row)
 
-# Apply the style to the DataFrame
 styled_lrt_summary_df = lrt_summary_df.style.apply(highlight_risk, axis=1)
 
-# Display the styled DataFrame
 st.dataframe(styled_lrt_summary_df, use_container_width=True)
 
-# Generate Insights Dynamically
 insights = []
 
 insights.append(f"- **{highest_risk['Protocol']} ({highest_risk['LRT']})** is the riskiest LRT. "
