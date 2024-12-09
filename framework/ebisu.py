@@ -12,7 +12,7 @@ if st.button("Jump to LRT Deposit Cap Breakdown"):
 query_params = st.experimental_get_query_params()
 if "section" in query_params and query_params["section"][0] == "lrt_breakdown":
     st.write("<div id='lrt_breakdown'></div>", unsafe_allow_html=True)
-    
+
 st.image("framework/images/ebisunoback.png", width=150)
 st.title("Ebisu Finance: LRT Risk Dashboard")
 
@@ -822,6 +822,7 @@ lrt_df["CR"] = lrt_df["CR"].apply(lambda x: f"{x:.2%}")
 
 # --- Final Summary Table ---
 st.header("Full LRT Deposit Cap & Minimum Collateralization Ratio Breakdown")
+st.write('<div id="lrt_breakdown"></div>', unsafe_allow_html=True)
 
 # Collect data for the summary table
 lrt_summary_data = [
