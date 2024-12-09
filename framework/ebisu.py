@@ -4,6 +4,9 @@ import pandas as pd
 
 st.set_page_config(page_title="Ebisu LRT Risk Dashboard", layout="wide")
 
+st.image("framework/images/ebisunoback.png", width=150)
+st.title("Ebisu Finance: LRT Risk Dashboard")
+
 # fetch AVS data from the EigenExplorer API
 @st.cache_data(ttl=60)
 def fetch_ee_avs_data():
