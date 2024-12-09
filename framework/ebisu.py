@@ -4,31 +4,6 @@ import pandas as pd
 
 st.set_page_config(page_title="Ebisu LRT Risk Dashboard", layout="wide")
 
-# Add a button for navigation at the top
-st.markdown("""
-    <style>
-    .scroll-to-top {
-        position: sticky;
-        top: 0;
-        background-color: white;
-        padding: 10px;
-        border: 1px solid lightgrey;
-        border-radius: 5px;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-# Add a jump button
-if st.button("Jump to LRT Breakdown"):
-    st.markdown("""
-        <script>
-            var element = document.getElementById("lrt_breakdown");
-            if (element) {
-                element.scrollIntoView({behavior: "smooth", block: "start"});
-            }
-        </script>
-    """, unsafe_allow_html=True)
-
 st.image("framework/images/ebisunoback.png", width=150)
 st.title("Ebisu Finance: LRT Risk Dashboard")
 
@@ -837,7 +812,6 @@ lrt_df["CR"] = lrt_df["CR"].apply(lambda x: f"{x:.2%}")
 
 
 # --- Final Summary Table ---
-st.markdown('<div id="lrt_breakdown"></div>', unsafe_allow_html=True)
 st.header("Full LRT Deposit Cap & Minimum Collateralization Ratio Breakdown")
 
 # Collect data for the summary table
