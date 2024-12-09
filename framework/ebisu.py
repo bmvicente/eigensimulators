@@ -3,6 +3,16 @@ import requests
 import pandas as pd
 
 st.set_page_config(page_title="Ebisu LRT Risk Dashboard", layout="wide")
+
+# Add a button for navigation at the top
+if st.button("Jump to LRT Deposit Cap Breakdown"):
+    st.experimental_set_query_params(section="lrt_breakdown")
+
+# Check for query parameters and navigate
+query_params = st.experimental_get_query_params()
+if "section" in query_params and query_params["section"][0] == "lrt_breakdown":
+    st.write("<div id='lrt_breakdown'></div>", unsafe_allow_html=True)
+    
 st.image("framework/images/ebisunoback.png", width=150)
 st.title("Ebisu Finance: LRT Risk Dashboard")
 
