@@ -4,6 +4,10 @@ import pandas as pd
 
 st.set_page_config(page_title="Ebisu LRT Risk Dashboard", layout="wide")
 
+st.markdown("""
+    <button onclick="document.getElementById('bottom').scrollIntoView();">Jump to Bottom</button>
+""", unsafe_allow_html=True)
+
 st.image("framework/images/ebisunoback.png", width=150)
 st.title("Ebisu Finance: LRT Risk Dashboard")
 
@@ -888,6 +892,8 @@ insights.append("On top of the above insights, carefully considering financial m
 for insight in insights:
     st.write(insight)
 
+
+st.markdown("<div id='bottom'></div>", unsafe_allow_html=True)
 
 
 st.write("\n")
