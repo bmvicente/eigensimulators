@@ -5,7 +5,7 @@ import pandas as pd
 st.set_page_config(page_title="Ebisu LRT Risk Dashboard", layout="wide")
 
 st.markdown("""
-    <button onclick="document.getElementById('bottom').scrollIntoView();">Jump to Bottom</button>
+    <button onclick="window.scrollTo(0, document.body.scrollHeight);">Jump to Bottom</button>
 """, unsafe_allow_html=True)
 
 st.image("framework/images/ebisunoback.png", width=150)
