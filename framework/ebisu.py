@@ -128,7 +128,7 @@ st.write("\n")
 
 
 # Fetch LRT balances data
-st.header("LRTs Full Analysis: Ether.fi, Renzo, Puffer, Kelp")
+st.header("LRTs Full Analysis: Ether.fi, Renzo, Puffer, Kelp, Swell")
 
 if not avs_category_mapping:
     avs_category_mapping = {}
@@ -763,6 +763,163 @@ if lrt_balances_data:
 
 
 
+
+
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("------------")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+
+
+
+
+
+    ### SWELL
+
+    if "swell" in lrt_balances_data:
+        # Get Swell data
+        swell_data = lrt_balances_data["swell"]["latest"]
+        swell_avs_registrations = swell_data.get("avsRegistrations", [])
+
+        # Calculate the LIR
+        total_usd_restaked = sum(
+            avs.get("totalUsdValueRestaked", 0) for avs in swell_avs_registrations
+        )
+        swell_lir = 0
+        swell_lir_data = []
+
+        for avs in swell_avs_registrations:
+            avs_address = avs.get("address", "N/A")
+            avs_name = avs.get("name", "N/A")
+            avs_total_usd = avs.get("totalUsdValueRestaked", 0)
+            avs_ir = ir_mapping.get(avs_address, 25)  # Default IR is 25
+            avs_category = avs_category_mapping.get(avs_address, "Unknown")  # Map Category
+            # Fetch AVS total USD value balances
+            avs_total_usd_balances = avs_balances_mapping.get(avs_address, 0)  # Updated to use corrected mapping
+
+            # Calculate rsETH % of Total
+            rsweth_percentage_of_total = (
+                (avs_total_usd / avs_total_usd_balances * 100) 
+                if avs_total_usd_balances > 0 else 0
+            )
+
+            # Calculate weighted risk
+            weighted_risk = (rsweth_percentage_of_total / 100) * avs_ir  # Adjusting percentage to a decimal
+            swell_lir += weighted_risk
+
+            swell_lir_data.append({
+                "Address": avs_address,
+                "AVS Name": avs_name,
+                "Category": avs_category,  # Add the Category column
+                "Swell Total USD Value Restaked on AVS": f"${avs_total_usd:,.2f}",
+                "AVS Total USD Value Restaked": f"${avs_total_usd_balances:,.2f}",  # New column
+                "rswETH % of Total": f"{rsweth_percentage_of_total:.2f}%",  # New column for percentage
+                "IR": round(avs_ir, 2),
+                "LIR": round(weighted_risk, 4)
+            })
+
+
+        # Display LIR Table
+        swell_lir_df = pd.DataFrame(swell_lir_data)
+
+        # Convert percentage column to numeric for sorting or calculations
+        swell_lir_df["rswETH % of Total"] = swell_lir_df["rswETH % of Total"].str.rstrip('%').astype(float)
+
+
+        # Highlight rows where IR == 25
+        def highlight_ir(row):
+            return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
+
+        styled_swell_lir_df = swell_lir_df.style.apply(highlight_ir, axis=1)
+
+        # Display LIR Table
+        st.markdown('<span style="color: darkgreen; font-size: 25px;"><b>Swell</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.dataframe(styled_swell_lir_df)
+
+        # --- Calculate LPR ---
+        n_avs = len(swell_avs_registrations)
+        n_t = 0.12 if n_avs >= 15 else 0.075 if n_avs >= 10 else 0.05 if n_avs >= 5 else 0
+
+        category_counts = {}
+        for avs in swell_avs_registrations:
+            address = avs.get("address", "N/A")
+            category = avs_category_mapping.get(address, "Unknown")
+            category_counts[category] = category_counts.get(category, 0) + 1
+
+        most_common_category_percentage = max(category_counts.values()) / n_avs if n_avs > 0 else 0
+        c_t = 0.10 if most_common_category_percentage > 0.5 else 0.05 if most_common_category_percentage >= 0.2 else 0
+
+        ir_scores = [ir_mapping.get(avs.get("address", "N/A"), 20) for avs in swell_avs_registrations]
+        low_ir_percentage = sum(1 for ir in ir_scores if ir < 10) / n_avs
+        medium_ir_percentage = sum(1 for ir in ir_scores if 10 <= ir <= 20) / n_avs
+        high_ir_percentage = sum(1 for ir in ir_scores if ir > 20) / n_avs
+
+        # Updated logic with default value
+        if low_ir_percentage > 0.5:
+            a_t = 0.05  # +5%
+        elif medium_ir_percentage > 0.5:
+            a_t = 0.10  # +10%
+        elif high_ir_percentage > 0.5:
+            a_t = 0.20  # +20%
+        else:
+            a_t = 0.075  # Default to +7.5%
+
+        swell_lpr = swell_lir * (1 + n_t + c_t + a_t)
+
+        # --- Calculate DC and CR ---
+        total_ta = 100_000_000  # Example Total Allowable Amount (TA)
+        lrt_lpr_values = [swell_lpr, 18.05, 10.0, 30.0]  # Replace with all available LPRs
+        inv_lpr_sum = sum(1 / lpr for lpr in lrt_lpr_values if lpr > 0)
+
+        swell_dc = total_ta * ((1 / swell_lpr) / inv_lpr_sum) if swell_lpr > 0 else 0
+        swell_cr = 1 + (swell_lpr / sum(lrt_lpr_values)) if swell_lpr > 0 else 0
+
+        # Display LIR, LPR, DC, and CR in a table
+        swell_summary_data = [
+            {"Metric": "LIR: LRT Portfolio Risk based on Individual AVS Risk Scores", "Value": round(swell_lir, 2)},
+            {"Metric": "LPR: LRT Portfolio Risk based on Pooled AVS Risk Scores", "Value": round(swell_lpr, 2)},
+            {"Metric": "DC: Deposit Cap", "Value": f"${swell_dc:,.2f}"},
+            {"Metric": "CR: Min Collateralization Ratio", "Value": f"{swell_cr * 100:.2f}%"}
+        ]
+        swell_summary_df = pd.DataFrame(swell_summary_data)
+        st.markdown("<p style='text-align: center; font-size: 14px; color: grey;'>Data from u--1 (except IR & LIR)</p>", unsafe_allow_html=True)
+
+        st.write("\n")
+        st.markdown("**Swell Summary Metrics**")
+        st.dataframe(swell_summary_df)
+
+        with st.expander("Metrics Calc Method"):
+            st.markdown(f"""
+            ***LIR*** represents the aggregate risk score for the LRT (***t***), accounting only for individual, isolated AVS risks on its portfolio selection, weighted according to relative delegation by the LRT.
+                        
+            
+            ##### LPR Calculation Breakdown = LIR * (1 + N + C + A)
+            ***LPR*** provides a comprehensive underwriting of the interdependent risk exposure of the pooled ecosystem of AVSs selected by the LRT.
+
+            - **N (Number of AVSs):** {n_t:.2%} | **C (Category Risk):** {c_t:.2%} | **A (Individual Risk Contribution):** {a_t:.2%}
+            - **Swell LPR:** {swell_lir:.2f} * (1 + {n_t:.2f} + {c_t:.2f} + {a_t:.2f}) = {swell_lpr:.2f}
+
+            
+            ##### DC Calculation Breakdown = TA * (1 / Swell LPR) / Sum(1/LPR)
+            ***DC*** calculates the deposit cap by taking the total allowable amount for LRT deposits (TA), as determined by Ebisu, and adjusts it based on the relative risk of each LRT (LPR), in the context of Ebisu’s basket of LRTs (Σ LPR).
+
+            - **TA (Total Allowable Amount):** ${total_ta:,.2f} | **Sum of 1/LPR:** {inv_lpr_sum:.4f}
+            - **Swell DC:** {total_ta:,.2f} * (1 / {swell_lpr:.2f}) / {inv_lpr_sum:.4f} = ${swell_dc:,.2f}
+
+            
+            ##### CR Calculation Breakdown = 1 + (Swell LPR / Sum(LPRs))
+            ***CR*** relativizes the pooled risk of the LRT portfolio at hand (***LPR***), against the aggregate pooled risk of ALL the LRT portfolios (Ebisu’s LRT basket (**Σ *LPR***)) to arrive at a considerate, minimum collateralisation ratio for the LRT being considered.
+
+            - **Sum of LPRs:** {sum(lrt_lpr_values):.2f}
+            - **Swell CR:** 1 + ({swell_lpr:.2f} / {sum(lrt_lpr_values):.2f}) = {swell_cr * 100:.2f}%
+            """)
+
+
+
 else:
     st.write("No LRT balances data available to display.")
 
@@ -790,6 +947,7 @@ lrt_data = [
     {"Protocol": "Renzo", "LRT": "ezETH", "LIR": renzo_lir, "LPR": renzo_lpr},
     {"Protocol": "Puffer", "LRT": "pufETH", "LIR": puffer_lir, "LPR": puffer_lir},
     {"Protocol": "Kelp", "LRT": "rsETH", "LIR": kelp_lir, "LPR": kelp_lir},
+    {"Protocol": "Swell", "LRT": "rswETH", "LIR": swell_lir, "LPR": swell_lir}
 ]
 
 # Total Allowable Amount (TA)
@@ -847,6 +1005,14 @@ lrt_summary_data = [
         "LPR": round(kelp_lpr, 4),  # Use dynamically calculated LPR
         "Deposit Cap (DC)": f"${kelp_dc:,.2f}",  # Use dynamically calculated DC
         "Min Collateralization Ratio (CR)": f"{kelp_cr * 100:.2f}%"  # Use dynamically calculated CR
+    },
+    {
+        "Protocol": "Swell",
+        "LRT": "rswETH",
+        "LIR": round(swell_lir, 4),  # Use dynamically calculated LIR
+        "LPR": round(swell_lpr, 4),  # Use dynamically calculated LPR
+        "Deposit Cap (DC)": f"${swell_dc:,.2f}",  # Use dynamically calculated DC
+        "Min Collateralization Ratio (CR)": f"{swell_cr * 100:.2f}%"  # Use dynamically calculated CR
     }
 ]
 
