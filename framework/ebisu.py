@@ -832,7 +832,7 @@ if lrt_balances_data:
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
+            return ['background-color: #ADD8E6'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_swell_lir_df = swell_lir_df.style.apply(highlight_ir, axis=1)
 
