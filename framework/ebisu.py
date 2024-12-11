@@ -837,7 +837,7 @@ if lrt_balances_data:
         styled_swell_lir_df = swell_lir_df.style.apply(highlight_ir, axis=1)
 
         # Display LIR Table
-        st.markdown('<span style="color: #ADD8E6; font-size: 25px;"><b>Swell</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.markdown('<span style="color: #6495ED; font-size: 25px;"><b>Swell</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
         st.dataframe(styled_swell_lir_df)
 
         # --- Calculate LPR ---
