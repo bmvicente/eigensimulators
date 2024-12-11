@@ -832,12 +832,12 @@ if lrt_balances_data:
 
         # Highlight rows where IR == 25
         def highlight_ir(row):
-            return ['background-color: #ADD8E6'] * len(row) if row["IR"] == 25 else [''] * len(row)
+            return ['background-color: #FFFFE0'] * len(row) if row["IR"] == 25 else [''] * len(row)
 
         styled_swell_lir_df = swell_lir_df.style.apply(highlight_ir, axis=1)
 
         # Display LIR Table
-        st.markdown('<span style="color: darkgreen; font-size: 25px;"><b>Swell</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
+        st.markdown('<span style="color: lightblue; font-size: 25px;"><b>Swell</b></span><span style="font-size: 22px;">: AVS Registrations</span>', unsafe_allow_html=True)
         st.dataframe(styled_swell_lir_df)
 
         # --- Calculate LPR ---
