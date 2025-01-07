@@ -14,7 +14,7 @@ BASE_URL = 'https://api.eigenexplorer.com'
 
 # Fetch AVS data from the EigenExplorer API
 @st.cache_data(ttl=60)
-def fetch_avs_data(with_tvl=True, with_metadata=True, sort_by="TVL", limit=100):
+def fetch_ee_avs_data(with_tvl=True, with_metadata=True, sort_by="TVL", limit=100):
     headers = {
         'x-api-token': API_KEY,
         'Content-Type': 'application/json'
