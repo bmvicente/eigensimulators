@@ -7,24 +7,36 @@ st.set_page_config(page_title="Ebisu LRT Risk Dashboard", layout="wide")
 st.image("framework/images/ebisunoback.png", width=150)
 st.title("Ebisu Finance: LRT Risk Dashboard")
 
-# fetch AVS data from the EigenExplorer API
-@st.cache_data(ttl=60)
-def fetch_ee_avs_data():
-    url = "https://api.eigenexplorer.com/avs"
-    params = {
-        "withTVL": "true",
-        "withCuratedMetadata": "true",
-        "sortByTVL": "desc",
-        "take": 100
-    }
-    headers = {"x-api-key": "your_api_key_here"}  # Replace with your actual API key
-    response = requests.get(url, headers=headers, params=params)
 
-    if response.status_code == 200:
+
+API_KEY = '47206cba218f96203c017e5a47cb328166802275f774dd8fe1188777c39ec675'
+BASE_URL = 'https://api.eigenexplorer.com'
+
+# Fetch AVS data from the EigenExplorer API
+@st.cache_data(ttl=60)
+def fetch_avs_data(with_tvl=True, with_metadata=True, sort_by="TVL", limit=100):
+    headers = {
+        'x-api-token': API_KEY,
+        'Content-Type': 'application/json'
+    }
+
+    params = {
+        "withTVL": str(with_tvl).lower(),
+        "withCuratedMetadata": str(with_metadata).lower(),
+        "sortByTVL": sort_by,
+        "take": limit
+    }
+
+    try:
+        response = requests.get(f"{BASE_URL}/avs", headers=headers, params=params)
+        response.raise_for_status()
         return response.json()
-    else:
-        st.error(f"Failed to fetch EigenExplorer AVS data: {response.status_code}")
+    except requests.exceptions.RequestException as e:
+        st.error(f"Error fetching AVS data: {e}")
         return None
+
+
+
 
 # fetch LRT balances from the u--1 API
 @st.cache_data(ttl=60)
