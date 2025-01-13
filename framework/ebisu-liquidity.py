@@ -74,8 +74,6 @@ def simulate_leverage_loops(collateral_after_price_var, mcr_dec, iterations, tok
 def calculate_liquidation_threshold(collateral_after_price_var, mcr_dec):
     return collateral_after_price_var * mcr_dec
 
-#er
-
 def simulate_unwind(total_debt_after_leverage, mcr_dec, liquidation_threshold, liquidation_rate):
     """
     Calculate the amount of debt or collateral to be liquidated, adjusted by liquidation rate.
