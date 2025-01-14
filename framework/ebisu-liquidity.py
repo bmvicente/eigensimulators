@@ -251,7 +251,11 @@ default_values = {
 
 
 
+st.image("framework/images/ebisunoback.png", width=150)
+
+
 def main():
+
     st.title("Ebisu Tokenomics: Parameterization & Simulation")
     st.write("\n")
     st.write("\n")
@@ -1323,3 +1327,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+st.image("framework/images/tokensightlogonoback.png", width=100)
