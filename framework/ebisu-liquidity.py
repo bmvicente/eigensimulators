@@ -300,6 +300,9 @@ def main():
 
 
 
+
+
+
             token_data[token] = {
                 "deposits": deposits,
                 "mcr": mcr,
@@ -724,24 +727,6 @@ def main():
 
 
 
-            st.write(f"""
-                    weETH is a liquid staking derivative (LSD) representing staked Ether (ETH) within the EtherFi protocol. 
-                    Its architecture combines Ethereum’s proof-of-stake rewards mechanism with a non-custodial staking model, 
-                    ensuring that users retain full ownership of their staked assets while delegating validation rights. 
-                    This design mitigates centralization risks and enables the distribution of staking rewards via rebasing, 
-                    where the token’s value increases to reflect accrued rewards. Additionally, EtherFi’s decentralized node operator 
-                    framework enhances trust by reducing reliance on centralized intermediaries. The token’s value is inherently tied to 
-                    Ethereum’s price and staking yield, making it highly desirable for capital-efficient DeFi strategies.
-
-                    For stakers, weETH offers liquidity for otherwise locked ETH while capturing staking rewards, including MEV 
-                    (Maximal Extractable Value). For lenders and borrowers, it provides an income-generating, high-quality collateral 
-                    asset with dual utility: liquidity and yield generation. However, the volatility of ETH’s price, coupled with potential 
-                    slashing risks, necessitates cautious collateralization settings. A Minimum Collateralization Ratio (MCR) of 150% 
-                    is advised to protect against sharp price swings, while interest rates for loans secured by weETH should be set between 
-                    5-7%, adequately compensating lenders for the associated risks.
-                         """)
-
-
             st.write("\n")
 
 
@@ -807,9 +792,61 @@ def main():
 
 
 
-            with st.expander(f"**Insights for {token}**"):  # Create an expander for each token
-                st.subheader(f"**Insights for {token}**")  # Token-specific subheader
+            
+            # Create a single expander for insights related to the current token
+            with st.expander(f"**Insights for {token}**"):
+                st.subheader(f"**Insights for {token}**")
 
+                # Token-specific insights
+                if token == "weETH":
+                    token_description = """
+                    weETH is a liquid staking derivative (LSD) representing staked Ether (ETH) within the EtherFi protocol. 
+                    Its architecture combines Ethereum’s proof-of-stake rewards mechanism with a non-custodial staking model, 
+                    ensuring that users retain full ownership of their staked assets while delegating validation rights. 
+                    This design mitigates centralization risks and enables the distribution of staking rewards via rebasing, 
+                    where the token’s value increases to reflect accrued rewards. Additionally, EtherFi’s decentralized node operator 
+                    framework enhances trust by reducing reliance on centralized intermediaries. The token’s value is inherently tied to 
+                    Ethereum’s price and staking yield, making it highly desirable for capital-efficient DeFi strategies.
+
+                    For stakers, weETH offers liquidity for otherwise locked ETH while capturing staking rewards, including MEV 
+                    (Maximal Extractable Value). For lenders and borrowers, it provides an income-generating, high-quality collateral 
+                    asset with dual utility: liquidity and yield generation. However, the volatility of ETH’s price, coupled with potential 
+                    slashing risks, necessitates cautious collateralization settings. A Minimum Collateralization Ratio (MCR) of 150% 
+                    is advised to protect against sharp price swings, while interest rates for loans secured by weETH should be set between 
+                    5-7%, adequately compensating lenders for the associated risks.
+                    """
+                elif token == "sUSDe":
+                    token_description = """
+                    sUSDe is a synthetic stablecoin pegged to the US dollar and supported by over-collateralized reserves 
+                    or algorithmic stability mechanisms. Its architecture uses a combination of collateral ratios, arbitrage opportunities, 
+                    and market-driven incentives to maintain peg stability. The token’s design allows users to mint or redeem sUSDe based on 
+                    collateral fluctuations, encouraging arbitrageurs to restore the peg during deviations. Unlike traditional stablecoins, 
+                    sUSDe can also offer staking rewards, incentivizing users to lock the token within the protocol while preserving its liquidity 
+                    for borrowing and trading activities.
+
+                    For stakers, sUSDe provides low-risk, stable returns with minimal exposure to price volatility, appealing to risk-averse participants. 
+                    For lenders and borrowers, its predictability simplifies debt management and reduces liquidation risks, making it a reliable collateral 
+                    option for leveraged DeFi positions. Due to its low volatility, an MCR of 110% balances safety with capital efficiency, while interest 
+                    rates for loans can be set between 2-3%, reflecting its reduced risk profile and stable value proposition.
+                    """
+                elif token == "LBTC":
+                    token_description = """
+                    LBTC is a tokenized version of Bitcoin (BTC) on the Ethereum blockchain, enabling Bitcoin liquidity to interact with Ethereum’s 
+                    DeFi ecosystem. Each LBTC token is backed 1:1 by BTC held either in custody or through decentralized BTC bridges. This architecture 
+                    merges Bitcoin’s store-of-value utility with Ethereum’s smart contract capabilities, allowing LBTC holders to participate in lending, 
+                    staking, and liquidity provisioning without relinquishing their Bitcoin exposure. Its interoperability and underlying trust in Bitcoin’s 
+                    value proposition make it a high-demand collateral asset in DeFi.
+
+                    LBTC’s utility extends to stakers seeking to monetize their Bitcoin holdings in DeFi protocols and lenders/borrowers who require a liquid, 
+                    widely recognized asset for collateralized positions. However, Bitcoin’s moderate price volatility requires a careful approach to leverage. 
+                    An MCR of 130% provides an adequate buffer against price swings, while interest rates for loans against LBTC should range between 4-5%, 
+                    balancing accessibility for borrowers with fair compensation for lenders.
+                    """
+                else:
+                    token_description = "Token-specific details are unavailable."
+
+                # Write token description and dynamic metrics
+                st.write(token_description)
                 st.write(f"""
                 #### **Collateralization and Stability**
                 The **Minimum Collateralization Ratio (MCR)**, set at **{token_results['MCR (%)']:.2f}%**, serves as a benchmark to mitigate liquidation risks by ensuring adequate collateral backing. 
