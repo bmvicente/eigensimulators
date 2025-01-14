@@ -1334,5 +1334,7 @@ st.write("\n")
 st.write("\n")
 st.write("\n")
 st.write("\n")
+st.write("\n")
+st.write("\n")
 
-st.image("framework/images/tokensightlogonoback.png", width=100)
+st.image("framework/images/tokensightlogonoback.png", width=110)
