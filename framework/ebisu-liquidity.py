@@ -840,11 +840,11 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
 
                 #### **Risk Assessment**
                 - **Debt-to-Collateral Ratio (DCR)**: The DCR, currently at **{token_results['Debt-to-Collateral Ratio']:.2f}**, measures total debt relative to collateral. Ratios above 1.5 can signal heightened risks, as collateral might not suffice to cover debt obligations during adverse market movements. Interest rates can be dynamically adjusted upwards as the DCR nears this threshold to discourage over-leveraging.
-                - **Collateral Coverage Ratio (CCR)**: At **{token_results['Collateral Coverage Ratio']:.2f}**, the CCR reflects the system’s ability to remain sufficiently collateralized. A CCR below 1 indicates under-collateralization, which could precipitate forced liquidations or insolvency.
+                - **Collateral Coverage Ratio (CCR)**: At **{token_results['Collateral Coverage Ratio']:.2f}**, the CCR reflects the system’s ability to remain sufficiently collateralized. A CCR below 1 indicates under-collateralization, which could kickstart forced liquidations or insolvency.
                 - **Utilization Rate**: The system’s utilization rate is **{token_results['token_utilization'] * 100:.2f}%**, suggesting moderate liquidity availability. However, utilization above 80% may indicate stress, as high rates can strain liquidity during redemption or liquidation events.
 
                 #### **Liquidation**
-                The **Liquidation Threshold** for the system is **\${token_results['Liquidation Threshold (USD)']:,.2f}**, which serves as a critical point for collateral adequacy. Debt flagged for repayment currently totals **\${debt_to_unwind["debt_to_repay"]:,.2f}**, highlighting the importance of proactive rebalancing to prevent forced liquidations.
+                The **Liquidation Threshold** for {token} is **\${token_results['Liquidation Threshold (USD)']:,.2f}**, which serves as a critical point for collateral adequacy. Debt flagged for repayment currently totals **\${debt_to_unwind["debt_to_repay"]:,.2f}**, highlighting the importance of proactive rebalancing to prevent bad debt and forced liquidations.
                 
                 #### Advanced Insights on Tokenomics
                 - **Interest Rate Adjustments**: The base interest rate of 10%, modified by utilization and risk multipliers, provides a flexible framework. However, incorporating additional factors like collateral liquidity, token volatility, and macroeconomic indicators could enhance precision. Synthetic stablecoins such as sUSDe may justify lower rates due to perceived stability, while assets like weETH could require higher rates to account for staking-related risks;
