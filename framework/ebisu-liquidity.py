@@ -845,8 +845,9 @@ def main():
                 else:
                     token_description = "Token-specific details are unavailable."
 
-                st.write(f"**About {token}")
 
+                st.write(f"""#### **About {token}**""")
+                         
                 st.write(token_description)
                 st.write(f"""
                 #### **Collateralization and Stability**
