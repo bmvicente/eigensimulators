@@ -820,7 +820,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
                     token_description = "Token-specific details are unavailable."
 
 
-                st.write(f"""#### **About {token}**""")
+                st.write(f"""#### **About {token} as a Collateral Asset**""")
                          
                 st.write(token_description)
                 st.write(f"""
