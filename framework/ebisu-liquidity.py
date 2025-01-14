@@ -798,7 +798,7 @@ def main():
                 st.write(f"""
                 #### **Collateralization and Stability**
                 - The Minimum Collateralization Ratio (MCR) for {token} is **{token_results['MCR (%)']:.2f}%**, acting as a critical safeguard against liquidation risks.
-                - Total deposits: **{token_results['Deposits (USD)']:,.2f} USD**, with collateral value after price variation at **{token_results['Collateral Price Variation Dec']:.2f} USD**.
+                - Total deposits: **{token_results['Deposits (USD)']:,.2f} USD**, with collateral value after price variation at **{token_results['Collateral Value After Price Variation (USD)']:.2f} USD**.
                 - System remains robust, but excessively high MCR values can reduce capital efficiency.
 
                 #### **Leverage and Minting Dynamics**
