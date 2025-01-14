@@ -282,7 +282,7 @@ def main():
                                                     step=0.5, key=f"{token}_token_interest_rate", help="Base interest rate for borrowing.")
             with col9:
                 token_risk_multiplier = st.number_input(f"{token} IR Risk Multiplier", min_value=0.0, max_value=10.0, value=defaults["token_risk_multiplier"], 
-                                                    step=0.5, key=f"{token}_risk_multiplier", help="Adjusts the interest rate for this token based on its specific risk factors, such as infra and architecture specs, price volatility, and utilization.")
+                                                    step=0.25, key=f"{token}_risk_multiplier", help="Adjusts the interest rate for this token based on its specific risk factors, such as infra and architecture specs, price volatility, and utilization.")
             price_var = st.slider(f"Collateral Price Variation (%)", min_value=-50, max_value=50, 
                 format="%d%%", value=defaults["price_var"], key=f"{token}_price_var", help="The adjusted value of collateral after applying a simulated price variation. Useful for stress-testing the system against collateral price volatility.")
             
@@ -357,7 +357,7 @@ def main():
                     min_value=0.0, 
                     max_value=10.0, 
                     value=1.0,  # Change to float
-                    step=0.5, 
+                    step=0.25, 
                     key=f"system_risk_multiplier", 
                     help="Affects the ebUSD interest rate to account for aggregate risk, including collateral health, overall liquidity, and utilization."
                 )
@@ -797,23 +797,23 @@ def main():
 
                 st.write(f"""
                 #### **Collateralization and Stability**
-                - The Minimum Collateralization Ratio (MCR) for {token} is **{mcr:.2f}%**, acting as a critical safeguard against liquidation risks.
-                - Total deposits: **{deposits:,.2f} USD**, with collateral value after price variation at **{collateral_after_price_var:,.2f} USD**.
+                - The Minimum Collateralization Ratio (MCR) for {token} is **{token_results['MCR (%)']:.2f}%**, acting as a critical safeguard against liquidation risks.
+                - Total deposits: **{token_results['Deposits (USD)']:,.2f} USD**, with collateral value after price variation at **{token_results['Collateral Price Variation Dec']:.2f} USD**.
                 - System remains robust, but excessively high MCR values can reduce capital efficiency.
 
                 #### **Leverage and Minting Dynamics**
-                - Max Leverage Loop: **{max_leverage_loop:.2f}x**, balancing efficiency with risk.
-                - Total ebUSD Minted: **{ebusd_minted:,.2f} USD**.
-                - Total Debt After Leverage: **{total_debt_after_leverage:,.2f} USD** highlights exposure requiring monitoring.
+                - Max Leverage Loop: **{token_results['Max Leverage Loops (x)']:.2f}x**, balancing efficiency with risk.
+                - Total ebUSD Minted: **{token_results['ebUSD Minted (USD)']:,.2f} USD**.
+                - Total Debt After Leverage: **{token_results['Total Debt After Leverage (USD)']:,.2f} USD** highlights exposure requiring monitoring.
 
                 #### **Risk Assessment**
-                - **Debt-to-Collateral Ratio:** {debt_to_collateral_ratio:.2f}. Values above 1.5 signal elevated liquidation risks.
-                - **Collateral Coverage Ratio:** {collateral_coverage_ratio:.2f}. Values below 1 indicate under-collateralization.
-                - **Utilization:** {token_utilization * 100:.2f}%. Levels above 80% pose liquidity strain.
+                - **Debt-to-Collateral Ratio:** {token_results['Debt-to-Collateral Ratio']:.2f}. Values above 1.5 signal elevated liquidation risks.
+                - **Collateral Coverage Ratio:** {token_results['Collateral Coverage Ratio']:.2f}. Values below 1 indicate under-collateralization.
+                - **Utilization:** {token_results['token_utilization'] * 100:.2f}%. Levels above 80% pose liquidity strain.
 
                 #### **Liquidation**
                 - Debt to Unwind: **{debt_to_unwind["debt_to_repay"]:,.2f} USD**.
-                - Liquidation Threshold: **{liquidation_threshold:,.2f} USD**, signaling collateral adequacy to avoid forced liquidations.
+                - Liquidation Threshold: **{token_results['Liquidation Threshold (USD)']:,.2f} USD**, signaling collateral adequacy to avoid forced liquidations.
 
                 #### **Recommendations for {token}**
                 - Maintain collateral above the MCR to buffer against price fluctuations.
