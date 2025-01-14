@@ -847,7 +847,7 @@ def main():
                     st.write(token_description)
 
                     # Add other dynamic token-specific details here (e.g., MCR, Leverage, etc.)
-                    st.write(f"""
+                st.write(f"""
                 #### **Collateralization and Stability**
                 The **Minimum Collateralization Ratio (MCR)**, set at **{token_results['MCR (%)']:.2f}%**, serves as a benchmark to mitigate liquidation risks by ensuring adequate collateral backing. 
                 While higher MCR values reduce the likelihood of system instability, they can also constrain capital efficiency, requiring users to lock up more collateral than might be operationally optimal.
