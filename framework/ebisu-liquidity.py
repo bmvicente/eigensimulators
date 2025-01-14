@@ -838,9 +838,9 @@ def main():
                 balancing accessibility for borrowers with fair compensation for lenders.
                 """
             }
-
-            with st.expander("**Token-Specific Insights**"):
-                for token in tokens:  # Iterate over the tokens
+            
+            for token in tokens:  # Iterate over the tokens
+                with st.expander("**Token-Specific Insights**"):
                     st.subheader(f"**Insights for {token}**")  # Dynamic subheader for each token
                     st.write(token_insights[token])  # Write token-specific insights dynamically
 
