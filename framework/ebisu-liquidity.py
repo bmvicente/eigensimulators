@@ -800,20 +800,9 @@ def main():
                 # Token-specific insights
                 if token == "weETH":
                     token_description = """
-                    weETH is a liquid staking derivative (LSD) representing staked Ether (ETH) within the EtherFi protocol. 
-                    Its architecture combines Ethereum’s proof-of-stake rewards mechanism with a non-custodial staking model, 
-                    ensuring that users retain full ownership of their staked assets while delegating validation rights. 
-                    This design mitigates centralization risks and enables the distribution of staking rewards via rebasing, 
-                    where the token’s value increases to reflect accrued rewards. Additionally, EtherFi’s decentralized node operator 
-                    framework enhances trust by reducing reliance on centralized intermediaries. The token’s value is inherently tied to 
-                    Ethereum’s price and staking yield, making it highly desirable for capital-efficient DeFi strategies.
+weETH is a Liquid Restaking Token (LRT) that represents wrapped eETH within the EtherFi protocol, combining Ethereum’s proof-of-stake rewards with EtherFi’s non-custodial staking model. This architecture ensures users retain full ownership of staked assets while delegating validation rights, reducing centralization risks. Unlike traditional liquid staking tokens, EtherFi’s decentralized validator framework adds transparency and trust by diversifying node operations. The token’s value is tied to Ethereum’s price and staking rewards, including MEV (Maximal Extractable Value), enhancing its appeal for capital-efficient DeFi strategies.
 
-                    For stakers, weETH offers liquidity for otherwise locked ETH while capturing staking rewards, including MEV 
-                    (Maximal Extractable Value). For lenders and borrowers, it provides an income-generating, high-quality collateral 
-                    asset with dual utility: liquidity and yield generation. However, the volatility of ETH’s price, coupled with potential 
-                    slashing risks, necessitates cautious collateralization settings. A Minimum Collateralization Ratio (MCR) of 150% 
-                    is advised to protect against sharp price swings, while interest rates for loans secured by weETH should be set between 
-                    5-7%, adequately compensating lenders for the associated risks.
+For stakers, weETH provides liquidity for otherwise locked ETH, enabling DeFi participation without sacrificing staking rewards. For lenders and borrowers, it serves as a yield-generating, high-quality collateral asset. However, due to Ethereum’s price volatility and potential staking risks, a Minimum Collateralization Ratio (MCR) of 150% is advisable. Interest rates for loans backed by weETH should range between 5-7% to compensate for these risks while supporting accessibility.
                     """
                 elif token == "sUSDe":
                     token_description = """
