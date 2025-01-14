@@ -800,7 +800,7 @@ def main():
                 The **Minimum Collateralization Ratio (MCR)**, set at **{token_results['MCR (%)']:.2f}%**, serves as a benchmark to mitigate liquidation risks by ensuring adequate collateral backing. 
                 While higher MCR values reduce the likelihood of system instability, they can also constrain capital efficiency, requiring users to lock up more collateral than might be operationally optimal.
                 
-                **Total Deposits** in the system amount to **\${token_results['Deposits (USD)']:,.2f}**, with collateral value post-price variation calculated at **\${token_results['Collateral Value After Price Variation (USD)']:.2f}**. 
+                **Total Deposits** in the system amount to **\${token_results['Deposits (USD)']:,.2f}**, with collateral value post-price variation calculated at **\${token_results['Collateral Value After Price Variation (USD)']:,.2f}**. 
                 These figures reflect the current level of collateral robustness, but their adequacy depends on market conditions and collateral performance. For synthetic stablecoins like sUSDe, maintaining a stable peg is crucial as de-pegging risks could undermine the entire system. 
                 Collateral types such as weETH, which represent staked assets, bring additional complexities like slashing risks or withdrawal delays, necessitating more dynamic MCR adjustments to address these token-specific challenges.
 
