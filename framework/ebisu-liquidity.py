@@ -797,30 +797,39 @@ def main():
 
                 st.write(f"""
                 #### **Collateralization and Stability**
-                - The Minimum Collateralization Ratio (MCR) for {token} is **{token_results['MCR (%)']:.2f}%**, acting as a critical safeguard against liquidation risks.
-                - Total deposits: **{token_results['Deposits (USD)']:,.2f} USD**, with collateral value after price variation at **{token_results['Collateral Value After Price Variation (USD)']:.2f} USD**.
-                - System remains robust, but excessively high MCR values can reduce capital efficiency.
+                The Minimum Collateralization Ratio (MCR), set at {token_results['MCR (%)']:.2f}%, serves as a benchmark to mitigate liquidation risks by ensuring adequate collateral backing. 
+                While higher MCR values reduce the likelihood of system instability, they can also constrain capital efficiency, requiring users to lock up more collateral than might be operationally optimal.
+                
+                Total deposits in the system amount to {token_results['Deposits (USD)']:,.2f} USD, with collateral value post-price variation calculated at {token_results['Collateral Value After Price Variation (USD)']:.2f} USD. 
+                These figures reflect the current level of collateral robustness, but their adequacy depends on market conditions and collateral performance. For synthetic stablecoins like sUSDe, maintaining a stable peg is crucial as de-pegging risks could undermine the entire system. 
+                Collateral types such as weETH, which represent staked assets, bring additional complexities like slashing risks or withdrawal delays, necessitating more dynamic MCR adjustments to address these token-specific challenges.
 
                 #### **Leverage and Minting Dynamics**
-                - Max Leverage Loop: **{token_results['Max Leverage Loops (x)']:.2f}x**, balancing efficiency with risk.
-                - Total ebUSD Minted: **{token_results['ebUSD Minted (USD)']:,.2f} USD**.
-                - Total Debt After Leverage: **{token_results['Total Debt After Leverage (USD)']:,.2f} USD** highlights exposure requiring monitoring.
+                The system’s leverage dynamics are calibrated to strike a balance between efficiency and risk. A maximum leverage loop of {token_results['Max Leverage Loops (x)']:.2f}x indicates the potential extent of collateral re-use while maintaining adequate risk controls.
+                
+                With a total of {token_results['ebUSD Minted (USD)']:,.2f} USD in minted ebUSD and an overall debt after leveraging of {token_results['Total Debt After Leverage (USD)']:,.2f} USD, the system exhibits significant exposure that warrants careful monitoring. 
+                High utilization rates, while indicative of demand, can also amplify liquidity constraints and systemic fragility, particularly for assets like weETH where staking yield and liquidity delays introduce additional risks.
 
                 #### **Risk Assessment**
-                - **Debt-to-Collateral Ratio:** {token_results['Debt-to-Collateral Ratio']:.2f}. Values above 1.5 signal elevated liquidation risks.
-                - **Collateral Coverage Ratio:** {token_results['Collateral Coverage Ratio']:.2f}. Values below 1 indicate under-collateralization.
-                - **Utilization:** {token_results['token_utilization'] * 100:.2f}%. Levels above 80% pose liquidity strain.
+                - Debt-to-Collateral Ratio (DCR): The DCR, currently at {token_results['Debt-to-Collateral Ratio']:.2f}, measures total debt relative to collateral. Ratios above 1.5 can signal heightened risks, as collateral might not suffice to cover debt obligations during adverse market movements. Interest rates can be dynamically adjusted upwards as the DCR nears this threshold to discourage over-leveraging.
+                - Collateral Coverage Ratio (CCR): At {token_results['Collateral Coverage Ratio']:.2f}, the CCR reflects the system’s ability to remain sufficiently collateralized. A CCR below 1 indicates under-collateralization, which could precipitate forced liquidations or insolvency.
+                - Utilization Rate: The system’s utilization rate is {token_results['token_utilization'] * 100:.2f}%, suggesting moderate liquidity availability. However, utilization above 80% may indicate stress, as high rates can strain liquidity during redemption or liquidation events.
 
                 #### **Liquidation**
-                - Debt to Unwind: **{debt_to_unwind["debt_to_repay"]:,.2f} USD**.
-                - Liquidation Threshold: **{token_results['Liquidation Threshold (USD)']:,.2f} USD**, signaling collateral adequacy to avoid forced liquidations.
+                The liquidation threshold for the system is {token_results['Liquidation Threshold (USD)']:,.2f} USD, which serves as a critical point for collateral adequacy. Debt flagged for repayment currently totals {debt_to_unwind["debt_to_repay"]:,.2f} USD, highlighting the importance of proactive rebalancing to prevent forced liquidations.
+                
+                #### Advanced Insights on Tokenomics
+                - Interest Rate Adjustments: The base interest rate of 10%, modified by utilization and risk multipliers, provides a flexible framework. However, incorporating additional factors like collateral liquidity, token volatility, and macroeconomic indicators could enhance precision. Synthetic stablecoins such as sUSDe may justify lower rates due to perceived stability, while assets like weETH could require higher rates to account for staking-related risks;
+                - Correlation Risks: Collateral assets with high correlation to each other or the broader market, such as weETH to ETH, pose systemic risks during downturns. Introducing a correlation-adjusted multiplier could mitigate the compounding effects of correlated price declines;
+                - Yield-Incentivized Debt Cycles: For LRTs like weETH, staking yields can incentivize over-leveraging. Incorporating yield compression mechanisms into interest rate models could counterbalance this tendency and maintain systemic stability;
+                - Dynamic Leverage Caps: Setting leverage limits based on historical price volatility and liquidity depth can prevent excessive risk accumulation during market booms, reducing the likelihood of cascading liquidations during corrections.
 
                 #### **Recommendations for {token}**
-                - Maintain collateral above the MCR to buffer against price fluctuations.
-                - Monitor leverage and reduce exposure in volatile markets.
-                - Keep Debt-to-Collateral Ratio below 1.5 and Coverage Ratio above 1.0.
-                - Limit utilization below 80% to preserve liquidity.
-                - Regularly rebalance positions to align with market dynamics.
+                - Maintain Robust Collateralization: Ensure collateral remains above the MCR at all times to buffer against price fluctuations and market volatility. Synthetic stablecoins should be closely monitored for peg stability, while LRTs require additional safeguards for staking-related risks.
+                - Refine Interest Rate Models: Adjust interest rates dynamically to incorporate market conditions, such as token-specific volatility, liquidity, and yield dynamics. Implement correlation-based risk adjustments to better reflect systemic exposures.
+                - Leverage and Utilization Management: Set utilization thresholds below 80% to preserve liquidity and reduce stress during high-demand periods. Introduce dynamic leverage caps based on market conditions to curb excessive risk-taking.
+                - Regular Monitoring and Stress Testing: Continuously stress-test the system under adverse scenarios, such as rapid price drops, peg devaluations, or mass liquidations. Use these tests to recalibrate risk multipliers and interest rate adjustments.
+                - Introduce Early Warning Mechanisms: Implement on-chain or off-chain alerts to notify users when metrics like DCR, CCR, or utilization rates approach critical thresholds, enabling preemptive actions.
                 """)
 
 
@@ -1282,44 +1291,51 @@ def main():
 
             st.write(f"""
             #### **Collateralization and Stability**
-            - The system's Safe Minimum Collateralization Ratio (MCR) is **{system_mcr:.2f}%**, reflecting the average collateral safety across all tokens.
-            - Total collateral of **{system_total_collateral:,.2f} USD** underpins the system's stability, ensuring robust support for ebUSD minting and trading.
-            - However, increasing leverage, utilization, or slippage may erode this safety margin, necessitating proactive interventions.
+            The system-wide Safe Minimum Collateralization Ratio (MCR), currently averaging {system_mcr:.2f}%, provides an indication of the collateral safety net across supported tokens. 
+            This ratio is designed to mitigate liquidation risks under normal conditions, but its adequacy can vary based on market volatility and token-specific risks.
+            The total collateral in the system amounts to {system_total_collateral:,.2f} USD, serving as the basis for ebUSD minting and trading. 
+            While this figure suggests the current capacity of the system to support its operations, external factors such as sharp price fluctuations, over-minting, or high utilization could test its robustness. 
+            A high total collateral base does not inherently guarantee system stability unless paired with effective risk management strategies.
 
             #### **Leverage, Liquidity, and Elasticity**
-            - System leverage is **{system_leverage:.2f}x**, indicating the ratio of ebUSD minted to total collateral. This efficiency must be balanced against potential systemic risks during market volatility.
-            - The Liquidity-to-Debt Ratio is **{system_liquidity_to_debt_ratio:.2f}**, signaling adequate liquidity to handle redemptions and liquidations.
-            - A Liquidity Buffer of **{liquidity_buffer:,.2f} USD** provides a critical safeguard against sudden liquidity shocks.
+            The current leverage ratio of {system_leverage:.2f}x reflects the system's efficiency in converting collateral into liquidity via ebUSD minting. 
+            This measure balances capital efficiency with exposure to potential risks. However, higher leverage levels increase sensitivity to market downturns, where even minor adverse price movements can trigger cascading liquidation events.
+            The Liquidity-to-Debt Ratio (LDR), standing at {system_liquidity_to_debt_ratio:.2f}, indicates the system's current capacity to handle redemptions and liquidations. 
+            While this ratio suggests a degree of liquidity adequacy, sustained periods of high redemption activity or constrained liquidity could lead to stress in maintaining the peg.
+            The Liquidity Buffer, valued at {liquidity_buffer:,.2f} USD, is an important risk mitigation tool, absorbing volatility during periods of market stress. 
+            However, the sufficiency of this buffer is conditional on external factors such as token utilization rates, price variability, and system-wide leverage.
 
             Elasticity metrics further underscore the system's adaptability:
-            - **Borrower Demand Elasticity**: Higher interest rates reduce borrowing, mitigating systemic risk but potentially impacting liquidity.
-            - **Stability Pool Elasticity**: Influences the system's resilience in handling liquidations under changing risk and yield conditions.
+            - Borrower Demand Elasticity: Interest rate adjustments play a role in balancing borrowing demand. Higher rates can curb excessive borrowing but may also discourage liquidity creation.
+            - Stability Pool Elasticity: This reflects the system's ability to handle liquidations under fluctuating conditions of risk and demand, which can impact overall system resilience.
 
             #### **Risk Metrics and Depegging Risks**
-            Current system-wide risk indicators:
-            - **Slippage**: At **{slippage:.2f}%**, slippage poses a potential peg stability risk during high demand or constrained liquidity periods.
-            - **Average Token Utilization**: At **{average_utilization * 100:.2f}%**, utilization indicates moderate liquidity constraints, requiring intervention if utilization exceeds **80%**.
-            - **Total System Debt**: **{system_total_debt:,.2f} USD**, emphasizing the need for careful debt and leverage management.
-            - **Debt-to-Collateral Ratio**: Currently at **{system_debt_to_collateral_ratio:.2f}**, signaling controlled leverage. Ratios exceeding **3x** may elevate systemic risks.
+            Key metrics highlight areas requiring attention:
+            - Slippage: At {slippage:.2f}%, this metric reveals the sensitivity of the system to trading volumes and liquidity stress. Excessive slippage could destabilize ebUSD’s peg, especially under high-demand scenarios or constrained liquidity.
+            - Utilization Rates: With average utilization at {average_utilization * 100:.2f}%, the system is operating at moderate capacity. However, utilization rates exceeding 80% typically indicate liquidity stress, requiring careful monitoring and potential interventions.
+            - Debt-to-Collateral Ratio (DCR): A DCR of {system_debt_to_collateral_ratio:.2f} suggests a controlled leverage environment at present. However, ratios exceeding 3x have historically been associated with heightened risks of systemic instability in similar systems.
+            - Total System Debt: The system's total debt of {system_total_debt:,.2f} USD highlights the scale of liabilities supported by collateral. While this is manageable under normal conditions, significant changes in collateral value or utilization could strain the system.
 
-            The Depegging Probability is currently **{depegging_probability}**, highlighting a composite analysis of slippage, liquidity, and utilization metrics. Proactive measures, such as dynamic interest rates or redemption fees, can mitigate risks.
+            The Depegging Probability, currently categorized as {depegging_probability}, integrates these metrics into an overall risk signal. This assessment underscores the importance of monitoring slippage, utilization, and liquidity in tandem to preempt instability.
 
             #### **Redemption Fee Dynamics**
-            Dynamic redemption fees can stabilize the system during stress:
-            - A fee based on high Debt-to-Collateral Ratios (e.g., >0.9) or utilization levels (e.g., >85%) can discourage destabilizing redemptions.
-            - Proposed formula:
-            \[
-            \text{{Redemption Fee (\%)}} = 3 \cdot \max(0, (\text{{Debt-to-Collateral Ratio}} - 0.9)) + 5 \cdot \max(0, (\text{{Utilization}} - 0.85)).
-            \]
+
+            Dynamic redemption fees offer a mechanism to stabilize the system under stress conditions. Linking fees to metrics such as Debt-to-Collateral Ratio (DCR) and utilization can discourage destabilizing redemptions. The proposed formula for dynamic redemption fees is:
+            """)
+            st.latex(r"""
+            \text{Redemption Fee (\%)} = 3 \cdot \max(0, (\text{Debt-to-Collateral Ratio} - 0.9)) + 5 \cdot \max(0, (\text{Utilization} - 0.85))
+            """)
+            ("""
+            This formula ensures that higher DCR or utilization levels result in proportionally increased redemption fees, effectively discouraging excessive redemptions during periods of stress.
 
             #### **Conclusions and Recommendations**
-            - **Maintain Robust Collateralization**: Ensure collateral remains above the Safe MCR to cushion against volatility.
-            - **Monitor Risk Metrics**: Track slippage, utilization, and leverage; intervene if leverage exceeds **3x** or slippage surpasses **5%**.
-            - **Adjust System Elasticity**: Dynamically modify interest rates and stability incentives to optimize liquidity and borrowing demand.
-            - **Implement Dynamic Redemption Fees**: Prevent destabilizing behaviors under high stress by adjusting fees based on system-wide risk indicators.
-            - **Strengthen Liquidity Buffers**: Maintain a Liquidity-to-Debt Ratio above **1.0** to support system resilience.
-
-            Overall, the ebUSD system demonstrates robustness, with manageable risks under current conditions. Proactive monitoring and adjustments can ensure long-term stability.
+            To ensure the system remains resilient and adaptable:
+            - Maintain Collateralization Levels: Monitor and manage collateral-to-debt ratios closely, adjusting MCR dynamically based on market conditions to cushion against price volatility.
+            - Strengthen Liquidity Buffers: Expand the liquidity buffer during periods of low utilization to prepare for potential surges in redemption or liquidation demands.
+            - Monitor and React to Risk Indicators: Utilize automated systems to track DCR, slippage, and utilization. Trigger proactive adjustments in interest rates or collateral requirements when metrics exceed thresholds.
+            - Implement Adaptive Redemption Fees: Introduce fees that scale with system stress to mitigate destabilizing behaviors and maintain peg stability.
+            - Regular Stress Testing: Conduct periodic stress tests to simulate adverse scenarios, ensuring preparedness for extreme market conditions and refining risk management strategies.
+            - Enhance System Elasticity: Adjust interest rates and stability incentives to align with changing liquidity and risk dynamics, ensuring the system can respond flexibly to shifts in demand or collateral quality.
             """)
 
 
