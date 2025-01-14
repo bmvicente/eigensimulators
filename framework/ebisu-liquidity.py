@@ -843,13 +843,11 @@ def main():
                     else:
                         token_description = "Token-specific details are unavailable."
 
-                st.subheader(f"**Insights for {token}**")
+                    st.subheader(f"**Insights for {token}**")
+                    st.write(token_description)
 
-                st.write(f"""
-                weETH is a liquid staking derivative (LSD) representing staked Ether (ETH) within the EtherFi protocol. Its architecture combines Ethereum’s proof-of-stake rewards mechanism with a non-custodial staking model, ensuring that users retain full ownership of their staked assets while delegating validation rights. This design mitigates centralization risks and enables the distribution of staking rewards via rebasing, where the token’s value increases to reflect accrued rewards. Additionally, EtherFi’s decentralized node operator framework enhances trust by reducing reliance on centralized intermediaries. The token’s value is inherently tied to Ethereum’s price and staking yield, making it highly desirable for capital-efficient DeFi strategies.
-
-For stakers, weETH offers liquidity for otherwise locked ETH while capturing staking rewards, including MEV (Maximal Extractable Value). For lenders and borrowers, it provides an income-generating, high-quality collateral asset with dual utility: liquidity and yield generation. However, the volatility of ETH’s price, coupled with potential slashing risks, necessitates cautious collateralization settings. A Minimum Collateralization Ratio (MCR) of 150% is advised to protect against sharp price swings, while interest rates for loans secured by weETH should be set between 5-7%, adequately compensating lenders for the associated risks.
-
+                    # Add other dynamic token-specific details here (e.g., MCR, Leverage, etc.)
+                    st.write(f"""
                 #### **Collateralization and Stability**
                 The **Minimum Collateralization Ratio (MCR)**, set at **{token_results['MCR (%)']:.2f}%**, serves as a benchmark to mitigate liquidation risks by ensuring adequate collateral backing. 
                 While higher MCR values reduce the likelihood of system instability, they can also constrain capital efficiency, requiring users to lock up more collateral than might be operationally optimal.
