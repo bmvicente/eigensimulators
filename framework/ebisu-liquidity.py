@@ -986,14 +986,14 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             help="The remaining liquidity in the DEX after accounting for current utilization. Provides a measure of how much liquidity is available to absorb shocks.")
 
         cols[2].metric(
-                "Liquidity Stress Indicator",
-                "High" if system_utilization > 0.9 else "Medium" if system_utilization > 0.7 else "Low",
-                help="Categorizes liquidity stress based on system utilization. High stress (utilization > 80%) suggests immediate intervention is needed, while low stress (< 50%) indicates sufficient liquidity.")
+            "Liquidity Stress Indicator",
+            "High" if system_utilization > 0.9 else "Medium" if system_utilization > 0.7 else "Low",
+            help="Categorizes liquidity stress based on system utilization. High stress (utilization > 80%) suggests immediate intervention is needed, while low stress (< 50%) indicates sufficient liquidity.")
 
         cols[3].metric(
-                "ebUSD Interest Rate (%)",
-                f"{system_interest_rate:,.2f}%",
-                help="The effective borrowing interest rate adjusted for system-wide utilization. Reflects the cost of borrowing across the system.")
+            "ebUSD Interest Rate (%)",
+            f"{system_interest_rate:,.2f}%",
+            help="The effective borrowing interest rate adjusted for system-wide utilization. Reflects the cost of borrowing across the system.")
 
 
         cols = st.columns(4)
@@ -1004,12 +1004,12 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             help="The percentage price impact caused by ebUSD trading or minting relative to DEX liquidity. High slippage indicates liquidity stress.")
         
         cols[1].metric(
-                "Total Debt-to-Collateral Ratio",
-                f"{system_debt_to_collateral_ratio:,.2f}",
-                help="The total debt across all tokens in the system that must be unwound to restore positions above liquidation thresholds. Includes ebUSD and token-specific debt, providing an aggregate view of the system's debt at risk of liquidation.")
+            "Total Debt-to-Collateral Ratio",
+            f"{system_debt_to_collateral_ratio:,.2f}",
+            help="The total debt across all tokens in the system that must be unwound to restore positions above liquidation thresholds. Includes ebUSD and token-specific debt, providing an aggregate view of the system's debt at risk of liquidation.")
 
         cols[2].metric(
-            "System-Wide Collateral Coverage Ratio",
+            "Total Collateral Coverage Ratio",
             f"{system_collateral_coverage_ratio:.2f}",
             help="The ratio of total collateral after price variation to total system debt. Values below 1 signal under-collateralization risks, while values above 1 indicate sufficient collateral coverage.")
 
@@ -1210,7 +1210,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             st.write(f"Result: Sum of all ebUSD minted across tokens = ${system_total_ebusd_minted:,.2f}")
             
             # Safe MCR System-Wide Formula
-            st.write(f"**Safe MCR System-Wide Formula:**")
+            st.write(f"**Average System-Wide MCR Formula:**")
             st.latex(r"""
             \text{Safe MCR (\%)} = \frac{\Sigma (\text{Token MCR} \times \text{Token Collateral})}{\Sigma (\text{Token Collateral})}
             """)
@@ -1257,21 +1257,21 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             st.write(f"Result: ({system_total_ebusd_minted:,.2f} - {dex_liquidity:,.2f}) / {dex_liquidity:,.2f} = {slippage:.2f}%")
 
             # Debt-to-Collateral Ratio Formula
-            st.write(f"**Debt-to-Collateral Ratio Formula:**")
+            st.write(f"**Total Debt-to-Collateral Ratio Formula:**")
             st.latex(r"""
             \text{Debt-to-Collateral Ratio} = \frac{\text{Total System Debt}}{\text{Total Collateral}}
             """)
             st.write(f"Result: {system_total_debt:,.2f} / {total_collateral_after_price_variation:,.2f} = {system_debt_to_collateral_ratio:.2f}")
 
             # Collateral Coverage Ratio Formula
-            st.write(f"**Collateral Coverage Ratio Formula:**")
+            st.write(f"**Total Collateral Coverage Ratio Formula:**")
             st.latex(r"""
             \text{Collateral Coverage Ratio} = \frac{\text{Total Collateral}}{\text{Total System Debt}}
             """)
             st.write(f"Result: {total_collateral_after_price_variation:,.2f} / {system_total_debt:,.2f} = {system_collateral_coverage_ratio:.2f}")
 
             # Liquidity-to-Debt Ratio Formula
-            st.write(f"**Liquidity-to-Debt Ratio Formula:**")
+            st.write(f"**Total Liquidity-to-Debt Ratio Formula:**")
             st.latex(r"""
             \text{Liquidity-to-Debt Ratio} = \frac{\text{DEX Liquidity}}{\text{Total ebUSD Minted}}
             """)
@@ -1292,7 +1292,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             st.write(f"Result: ${system_total_debt_to_unwind:,.2f}")
 
             # System Bad Debt Formula
-            st.write(f"**System Bad Debt Formula:**")
+            st.write(f"**System-Wide System Bad Debt Formula:**")
             st.latex(r"""
             \text{Collateral Value After Liquidation (USD)} = 
             \text{System Total Collateral (USD)} \cdot (1 - \text{Liquidation Rate})
