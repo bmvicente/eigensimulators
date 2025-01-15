@@ -39,6 +39,8 @@ def calculate_interest_rate(base_rate, utilization):
     return base_rate * utilization
 
 def calculate_max_leverage_loop(mcr):
+    if mcr == 100:
+        return mcr / 1  # Avoid division by zero by setting the denominator to 1
     return mcr / (mcr - 100)
 
 def calculate_ebusd_minted(deposits, mcr_dec, ebusd_minting_rate_vs_mcr_dec):
