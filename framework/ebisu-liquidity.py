@@ -804,7 +804,7 @@ weETH is a wrapped, non-rebasing token representing staked eETH within the Ether
 
 In the context of tokenomics, weETH’s dual yield from staking and EigenLayer introduces unique dynamics for collateralization, leverage, and interest rate modeling. While its value is directly tied to ETH’s price and staking yield, this dependency also introduces price volatility and slashing risks. A Minimum Collateralization Ratio (MCR) of 150% is advisable to buffer against potential market downturns. Additionally, loans secured by weETH should carry interest rates between 5-7% to reflect its risk profile, factoring in staking yields and restaking rewards. The model dynamically adjusts debt-to-collateral ratios and utilization thresholds, accommodating weETH’s liquidity while mitigating risks associated with its staking and price exposure. These adjustments ensure the token remains a capital-efficient and secure collateral option for both lenders and borrowers in Ebisu's ecosystem.
                     
-More weETH details on [tokensight's LRT risk model](https://ebisu-lrt-risk-dashboard.streamlit.app/), exclusively provided to Ebisu, and [Gauntlet's weETH dashboard](https://dashboards.gauntlet.xyz/applied-research/eigenlayer/assets/0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee).
+More weETH details on [tokensight's LRT risk model](https://ebisu-lrt-risk-dashboard.streamlit.app/) (exclusively provided to Ebisu), and [Gauntlet's weETH dashboard](https://dashboards.gauntlet.xyz/applied-research/eigenlayer/assets/0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee).
                     """
                 elif token == "sUSDe":
                     token_description = """
