@@ -412,6 +412,8 @@ def main():
         )
 
         debt_to_repay = debt_to_unwind["debt_to_repay"]
+        system_total_debt_to_unwind += debt_to_repay
+
         collateral_to_liquidate = debt_to_unwind["collateral_to_liquidate"]
 
         debt_to_collateral_ratio = total_debt_after_leverage / collateral_after_price_var if collateral_after_price_var > 0 else float('inf')
@@ -479,7 +481,7 @@ def main():
             "token_interest_rates": token_interest_rates[token],  # Include calculated interest rates here
             "token_risk_multiplier": token_data[token]["token_risk_multiplier"],
             "Debt to Repay (USD)": debt_to_repay,
-            "Collateral to Liquidate (USD)": collateral_to_liquidate
+            "Collateral to Liquidate (USD)": debt_to_unwind["collateral_to_liquidate"]
         }
 
     results[token]["Liquidation Rate (%)"] = liquidation_rate * 100
@@ -487,7 +489,6 @@ def main():
     #results[token]["Debt to Unwind (USD)"] = debt_to_unwind
     #results[token]["Debt to Repay (USD)"] = debt_to_repay
 
-    system_total_debt_to_unwind += debt_to_repay
 
     # Corrected Implementation of Total Debt After Leverage Calculation
     total_debt_after_leverage_list = [
@@ -495,8 +496,7 @@ def main():
             results[token]["Collateral Value After Price Variation (USD)"],
             results[token]["MCR Dec"],
             results[token]["Leverage (x)"],
-            results[token]["token_utilization"]
-        )
+            results[token]["token_utilization"]        )
         for token in results
     ]
 
