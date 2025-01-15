@@ -804,7 +804,7 @@ weETH is a wrapped, non-rebasing token representing staked eETH within the Ether
 
 In the context of tokenomics, weETH’s dual yield from staking and EigenLayer introduces unique dynamics for collateralization, leverage, and interest rate modeling. While its value is directly tied to ETH’s price and staking yield, this dependency also introduces price volatility and slashing risks. A Minimum Collateralization Ratio (MCR) of 120% is advisable to buffer against potential market downturns. Additionally, loans secured by weETH should carry interest rates between 5-7% to reflect its risk profile, factoring in staking yields and restaking rewards. The model dynamically adjusts debt-to-collateral ratios and utilization thresholds, accommodating weETH’s liquidity while mitigating risks associated with its staking and price exposure. These adjustments ensure the token remains a capital-efficient and secure collateral option for both lenders and borrowers in Ebisu's ecosystem.
                     
-More weETH details on [tokensight's LRT risk model](https://ebisu-lrt-risk-dashboard.streamlit.app/) (exclusively provided to Ebisu), [u--1's Ether.fi section](https://u--1.com/lrt/etherfi/), and [Gauntlet's weETH dashboard](https://dashboards.gauntlet.xyz/applied-research/eigenlayer/assets/0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee).
+*More weETH details on [tokensight's LRT risk model](https://ebisu-lrt-risk-dashboard.streamlit.app/) (exclusively provided to Ebisu), [u--1's Ether.fi section](https://u--1.com/lrt/etherfi/), and [Gauntlet's weETH dashboard](https://dashboards.gauntlet.xyz/applied-research/eigenlayer/assets/0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee).*
                     """
                 elif token == "sUSDe":
                     token_description = """
@@ -812,7 +812,7 @@ sUSDe, the reward-bearing token within the Ethena protocol, represents staked US
 
 In the context of tokenomics, sUSDe introduces a stable, low-volatility collateral option for lending and leverage in DeFi protocols. Its delta-neutral nature minimizes exposure to price fluctuations, reducing liquidation risks compared to more volatile assets like weETH. A Minimum Collateralization Ratio (MCR) of 110% is sufficient to balance capital efficiency with safety, reflecting its predictable value trajectory. Interest rates for loans secured by sUSDe can be set between 2-3%, compensating lenders for low risk while maintaining borrowing accessibility. Models should dynamically account for sUSDe’s yield accrual to adjust utilization thresholds and debt-to-collateral ratios, ensuring that its stable nature is leveraged effectively without overburdening the system. By incorporating these parameters, sUSDe remains a reliable, capital-efficient collateral option tailored for both risk-averse lenders and borrowers in Ebisu's ecosystem.
                     
-More sUSDe details on [Ethena's official dashboard](https://app.ethena.fi/dashboards/transparency) and [DefiLlama's USDe section](https://defillama.com/protocol/ethena-usde).
+*More sUSDe details on [Ethena's official dashboard](https://app.ethena.fi/dashboards/transparency) and [DefiLlama's USDe section](https://defillama.com/protocol/ethena-usde).*
                     """
                 elif token == "LBTC":
                     token_description = """
@@ -820,7 +820,7 @@ LBTC is a liquid staked Bitcoin (LST) token developed by Lombard, designed to in
 
 In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for collateralization, leverage, and interest rate modeling. While its value is directly tied to Bitcoin's price, this dependency also introduces price volatility risks. A Minimum Collateralization Ratio (MCR) of 130% is advisable to buffer against potential market downturns. Additionally, loans secured by LBTC should carry interest rates between 4-5% to reflect its risk profile, factoring in staking yields and market volatility. Models should dynamically adjust debt-to-collateral ratios and utilization thresholds, accommodating LBTC's liquidity while mitigating risks associated with its staking and price exposure. These adjustments ensure the token remains a capital-efficient and secure collateral option for both lenders and borrowers in Ebisu's ecosystem.
 
-More LBTC details on [LBTC's Dune dashboard](https://dune.com/lombard_protocol/reserves).
+*More LBTC details on [LBTC's Dune dashboard](https://dune.com/lombard_protocol/reserves).*
                     """
                 else:
                     token_description = "Token-specific details are unavailable."
