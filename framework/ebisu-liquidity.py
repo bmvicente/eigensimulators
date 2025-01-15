@@ -1305,7 +1305,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
 
             # Depegging Probability Formula (Insight-Based)
             st.write(f"**Depegging Probability Formula:**")
-            st.write(f"Derived from system-wide slippage, utilization, and liquidity metrics. Indicator: **{depegging_probability}**")
+            st.write(f"Derived from system-wide slippage, utilization, and liquidity metrics. INDICATOR: **{depegging_probability}**")
 
             st.code(f"""
                 def calculate_depegging_risk(slippage, system_utilization, dex_liquidity, system_total_ebusd_minted):
