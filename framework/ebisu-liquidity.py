@@ -286,7 +286,7 @@ def main():
             price_var = st.slider(f"Collateral Price Variation (%)", min_value=-50, max_value=50, 
                 format="%d%%", value=defaults["price_var"], key=f"{token}_price_var", help="The adjusted value of collateral after applying a simulated price variation. Useful for stress-testing the system against collateral price volatility.")
             
-            ebusd_minting_rate_vs_mcr = st.slider(f"ebUSD Minting Rate Against MCR (%)", min_value=-100, max_value=100, format="%d%%", value=20, 
+            ebusd_minting_rate_vs_mcr = st.slider(f"ebUSD Minting Rate Against MCR (+%)", min_value=-100, max_value=100, format="%d%%", value=20, 
                                                   key=f"{token}_ebusd_minting_rate_vs_mcr", help="The percentage of ebUSD minted relative to the collateral. Reflects the efficiency of converting collateral into stablecoin liquidity.")
 
             token_util_ratio = st.slider(
