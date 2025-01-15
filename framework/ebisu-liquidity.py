@@ -333,7 +333,7 @@ def main():
 
         # System-wide parameters
         st.subheader("System-Wide Parameters")
-        dex_liquidity = st.number_input("DEX Liquidity (USD)", min_value=0.0, value=200_000_000.0, step=25_000_000.0, help="Total liquidity available for all ebUSD pairs. This is a critical measure of the system's ability to handle ebUSD trading and support minting without excessive slippage.")
+        dex_liquidity = st.number_input("DEX Liquidity (USD)", min_value=0.0, value=200_000_000.0, step=25_000_000.0, help="Total liquidity available for all ebUSD pairs. Critical measure of the system's ability to handle ebUSD trading and support minting without excessive slippage.")
 
         liquidation_rate = st.slider(
                 "ebUSD Liquidation Rate (%)",
@@ -341,7 +341,7 @@ def main():
                 max_value=100,
                 value=50,  # Default to 50%
                 step=5,
-                help="Percentage of debt or collateral liquidated when liquidation thresholds are breached for ebUSD. Factored into Bad Debt calculations."
+                help="Hypothetical percentage of debt or collateral liquidated when liquidation thresholds are breached versus total outstanding debt for ebUSD. Factored into Bad Debt calculations."
             ) / 100  # Convert to decimal
         
         col10,col11 = st.columns(2)
@@ -988,7 +988,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
         cols[2].metric(
             "Liquidity Stress Indicator",
             "High" if system_utilization > 0.9 else "Medium" if system_utilization > 0.7 else "Low",
-            help="Categorizes liquidity stress based on system utilization. High stress (utilization > 80%) suggests immediate intervention is needed, while low stress (< 50%) indicates sufficient liquidity.")
+            help="Categorizes liquidity stress based on system utilization. High stress (utilization > 80%) suggests immediate intervention is needed, while low stress (< 50%) indicates slowed borrowing demand yet sufficient liquidity too.")
 
         cols[3].metric(
             "ebUSD Interest Rate (%)",
@@ -1043,7 +1043,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
         cols[2].metric(
             "System-Wide Bad Debt (USD)",
             f"{system_bad_debt:,.2f}",
-            help="The aggregate unrecoverable debt across all tokens in the system. Reflects systemic collateral insufficiency.")
+            help="The aggregate unrecoverable debt across all tokens in the system. Reflects systemic collateral insufficiency or an overly aggressive liquidation rate.")
         
         cols[3].metric(
                 "ebUSD Depegging Probability",
@@ -1280,7 +1280,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             # Total System Debt Formula
             st.write(f"**Total System Debt After Leverage Formula:**")
             st.latex(r"""
-            \text{Total System Debt (USD)} = \Sigma (\text{Token Debt After Leverage})
+            \text{Total System Debt After Leverage (USD)} = \Sigma (\text{Token Debt After Leverage})
             """)
             st.write(f"Result: ${system_total_debt:,.2f}")
 
