@@ -468,7 +468,7 @@ def main():
             "Liquidation Threshold (USD)": liquidation_threshold,
             "Debt to Unwind (USD)": debt_to_unwind,
             "Total Debt After Leverage (USD)": total_debt_after_leverage,
-            "Leverage (x))": iterations,
+            "Leverage (x)": iterations,
             "Debt-to-Collateral Ratio": debt_to_collateral_ratio,
             "Collateral Coverage Ratio": collateral_coverage_ratio,
             "Liquidity Buffer (USD)": liquidity_buffer,
@@ -491,7 +491,7 @@ def main():
         simulate_leverage_loops(
             results[token]["Collateral Value After Price Variation (USD)"],
             results[token]["MCR Dec"],
-            results[token]["Leverage (x))"],
+            results[token]["Leverage (x)"],
             results[token]["token_utilization"]
         )
         for token in results
