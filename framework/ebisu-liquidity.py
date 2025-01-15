@@ -736,19 +736,19 @@ def main():
                 st.latex(r"""
                 \text{Max Leverage Loops (x)} = \frac{\text{MCR (\%)}}{\text{MCR (\%)} - 100}
                 """)
-                st.write(f"Result: {token_results['MCR (%)']:.2f} / ({token_results['MCR (%)']:.2f} - 100) = {token_results['Max Leverage Loops (x)']:.2f}")
+                st.write(f"Result: {token_results['MCR (%)']:.2f} / ({token_results['MCR (%)']:.2f} - 100) = {token_results['Max Leverage Loops (x)']:.2f}x")
 
                 st.write(f"**Collateral Value After Price Variation Formula:**")
                 st.latex(r"""
                 \text{Collateral Value After Price Variation (USD)} = \text{Deposits (USD)} \cdot \left(1 + \frac{\text{Price Variation (\%)}}{100}\right)
                 """)
-                st.write(f"Result: {token_results['Deposits (USD)']:,.2f} * (1 + {token_results['Collateral Price Variation Dec']:.2f}) = {token_results['Collateral Value After Price Variation (USD)']:,.2f}")
+                st.write(f"Result: {token_results['Deposits (USD)']:,.2f} * (1 + {token_results['Collateral Price Variation Dec']:.2f}) = ${token_results['Collateral Value After Price Variation (USD)']:,.2f}")
 
                 st.write(f"**ebUSD Minted Formula:**")
                 st.latex(r"""
                 \text{ebUSD Minted (USD)} = \text{Deposits (USD)} \cdot \left(\frac{\text{MCR} + \text{ebUSD Minting Rate}}{100}\right)
                 """)
-                st.write(f"Result: {token_results['Deposits (USD)']:,.2f} * ({token_results['MCR Dec']:.2f} + {token_results['ebUSD Minting Rate Against MCR (%)'] / 100:.2f}) = {token_results['ebUSD Minted (USD)']:,.2f}")
+                st.write(f"Result: {token_results['Deposits (USD)']:,.2f} * ({token_results['MCR Dec']:.2f} + {token_results['ebUSD Minting Rate Against MCR (%)'] / 100:.2f}) = ${token_results['ebUSD Minted (USD)']:,.2f}")
 
                 st.write(f"**Interest Rate Formula:**")
                 st.latex(r"""
@@ -760,13 +760,13 @@ def main():
                 st.latex(r"""
                 \text{Liquidation Threshold (USD)} = \text{Total Debt After Leverage (USD)} \cdot \text{MCR}
                 """)
-                st.write(f"Result: {token_results['Total Debt After Leverage (USD)']:,.2f} * {token_results['MCR Dec']:.2f} = {token_results['Liquidation Threshold (USD)']:,.2f}")
+                st.write(f"Result: {token_results['Total Debt After Leverage (USD)']:,.2f} * {token_results['MCR Dec']:.2f} = ${token_results['Liquidation Threshold (USD)']:,.2f}")
 
                 st.write(f"**Total Debt After Leverage Formula:**")
                 st.latex(r"""
                 \text{Total Debt After Leverage (USD)} = \sum_{i=1}^{n} \left(\frac{\text{Collateral Value After Price Variation (USD)}}{\text{MCR}}\right)
                 """)
-                st.write(f"Result: Simulated over {token_results['Leverage (x)']:.1f} leverage loops, resulting in total debt of {token_results['Total Debt After Leverage (USD)']:,.2f}")
+                st.write(f"Result: Simulated over {token_results['Leverage (x)']:.1f} leverage loops, resulting in total debt of ${token_results['Total Debt After Leverage (USD)']:,.2f}")
 
                 st.write(f"**Debt to Unwind Formula:**")
                 st.latex(r"""
@@ -776,7 +776,7 @@ def main():
                 0, & \text{otherwise}
                 \end{cases}
                 """)
-                st.write(f"Result: max(0, {token_results['Total Debt After Leverage (USD)']:,.2f} - {token_results['Liquidation Threshold (USD)']:,.2f}) = {token_results['Debt to Unwind (USD)'].get('debt_to_repay', 0):,.2f}")
+                st.write(f"Result: max(0, {token_results['Total Debt After Leverage (USD)']:,.2f} - {token_results['Liquidation Threshold (USD)']:,.2f}) = ${token_results['Debt to Unwind (USD)'].get('debt_to_repay', 0):,.2f}")
 
                 st.write(f"**Debt-to-Collateral Ratio Formula:**")
                 st.latex(r"""
@@ -1200,14 +1200,14 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             st.latex(r"""
             \text{Total Collateral (USD)} = \Sigma (\text{Token Deposits})
             """)
-            st.write(f"Result: Sum of all token deposits = {system_total_collateral:,.2f}")
+            st.write(f"Result: Sum of all token deposits = ${system_total_collateral:,.2f}")
 
             # Total ebUSD Minted Formula
             st.write(f"**Total ebUSD Minted Formula:**")
             st.latex(r"""
             \text{Total ebUSD Minted (USD)} = \Sigma (\text{ebUSD Minted per Token})
             """)
-            st.write(f"Result: Sum of all ebUSD minted across tokens = {system_total_ebusd_minted:,.2f}")
+            st.write(f"Result: Sum of all ebUSD minted across tokens = ${system_total_ebusd_minted:,.2f}")
             
             # Safe MCR System-Wide Formula
             st.write(f"**Safe MCR System-Wide Formula:**")
@@ -1228,14 +1228,14 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             st.latex(r"""
             \text{ebUSD Leverage (x)} = \frac{\text{Total ebUSD Minted}}{\text{Total Collateral}}
             """)
-            st.write(f"Result: {system_total_ebusd_minted:,.2f} / {system_total_collateral:,.2f} = {system_leverage:.2f}")
+            st.write(f"Result: {system_total_ebusd_minted:,.2f} / {system_total_collateral:,.2f} = {system_leverage:.2f}x")
 
             # Liquidity Buffer Formula
             st.write(f"**Liquidity Buffer Formula:**")
             st.latex(r"""
             \text{Liquidity Buffer (USD)} = \text{DEX Liquidity} \times (1 - \text{System Utilization})
             """)
-            st.write(f"Result: {dex_liquidity:,.2f} × (1 - {system_utilization:.2f}) = {liquidity_buffer:,.2f}")
+            st.write(f"Result: {dex_liquidity:,.2f} × (1 - {system_utilization:.2f}) = ${liquidity_buffer:,.2f}")
 
             # Liquidity Stress Indicator Formula
             st.write(f"**Liquidity Stress Indicator Formula:**")
@@ -1282,14 +1282,14 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             st.latex(r"""
             \text{Total System Debt (USD)} = \Sigma (\text{Token Debt After Leverage})
             """)
-            st.write(f"Result: {system_total_debt:,.2f}")
+            st.write(f"Result: ${system_total_debt:,.2f}")
 
             # Total System Debt to Unwind Formula
             st.write(f"**Total System Debt to Unwind Formula:**")
             st.latex(r"""
             \text{System Total Debt to Unwind (USD)} = \Sigma (\text{Debt to Repay for Each Token})
             """)
-            st.write(f"Result: {system_total_debt_to_unwind:,.2f}")
+            st.write(f"Result: ${system_total_debt_to_unwind:,.2f}")
 
             # System Bad Debt Formula
             st.write(f"**System Bad Debt Formula:**")
@@ -1301,7 +1301,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             \text{System Bad Debt (USD)} = 
             \max(0, \text{System Total Debt to Unwind (USD)} - \text{Collateral Value After Liquidation (USD)})
             """)
-            st.write(f"Result: {system_bad_debt:,.2f}")
+            st.write(f"Result: ${system_bad_debt:,.2f}")
 
             # Depegging Probability Formula (Insight-Based)
             st.write(f"**Depegging Probability Formula:**")
