@@ -487,6 +487,7 @@ def main():
     #results[token]["Debt to Unwind (USD)"] = debt_to_unwind
     #results[token]["Debt to Repay (USD)"] = debt_to_repay
 
+    system_total_debt_to_unwind += debt_to_repay
 
     # Corrected Implementation of Total Debt After Leverage Calculation
     total_debt_after_leverage_list = [
@@ -516,7 +517,7 @@ def main():
     system_leverage = system_total_ebusd_minted / system_total_collateral
     system_liquidity_to_debt_ratio = dex_liquidity / system_total_debt
     system_interest_rate = calculate_interest_rate(system_base_interest_rate, system_utilization, system_risk_multiplier)
-    system_total_debt_to_unwind += debt_to_unwind["debt_to_repay"]
+    #system_total_debt_to_unwind += debt_to_unwind["debt_to_repay"]
     system_bad_debt = max(0, system_total_debt_to_unwind - system_collateral_value_after_liquidation)
 
     average_utilization = sum(data["token_utilization"] for data in token_data.values()) / len(token_data)
@@ -768,7 +769,7 @@ def main():
                 st.latex(r"""
                 \text{Total Debt After Leverage (USD)} = \sum_{i=1}^{n} \left(\frac{\text{Collateral Value After Price Variation (USD)}}{\text{MCR}}\right)
                 """)
-                st.write(f"Result: Simulated over {token_results['Leverage (x)']:.1f} leverage loops, resulting in total debt of ${token_results['Total Debt After Leverage (USD)']:,.2f}")
+                st.write(f"Result: Simulated over {token_results['Leverage (x)']:.2f} leverage loops, resulting in total debt of ${token_results['Total Debt After Leverage (USD)']:,.2f}")
 
                 st.write(f"**Debt to Unwind Formula:**")
                 st.latex(r"""
