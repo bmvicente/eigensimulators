@@ -1307,29 +1307,29 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             st.write(f"**Depegging Probability Formula:**")
             st.write(f"Derived from system-wide slippage, utilization, and liquidity metrics. Indicator: **{depegging_probability}**")
 
-            st.code("""
-            def calculate_depegging_risk(slippage, system_utilization, dex_liquidity, system_total_ebusd_minted):
+            st.code(f"""
+                def calculate_depegging_risk(slippage, system_utilization, dex_liquidity, system_total_ebusd_minted):
 
-                if slippage > 2 or system_utilization > 90:
-                    return "High", (
-                        f"Slippage is significant ({slippage:.2f}%) and/or system utilization is very high "
-                        f"({system_utilization * 100:.2f}%), indicating a strong risk of ebUSD depegging."
-                    )
-                elif slippage > 1 or system_utilization > 70:
-                    return "Medium", (
-                        f"Moderate slippage ({slippage:.2f}%) and/or system utilization ({system_utilization * 100:.2f}%) "
-                        "indicates a potential for ebUSD depegging under stress conditions."
-                    )
-                elif dex_liquidity < system_total_ebusd_minted * 0.5:
-                    return "Medium", (
-                        f"DEX liquidity ({dex_liquidity:,.2f}) is less than 50% of the total ebUSD minted "
-                        f"({system_total_ebusd_minted:,.2f}), indicating potential stress on the peg."
-                    )
-                else:
-                    return "Low", (
-                        f"Slippage is low ({slippage:.2f}%), system utilization is within safe bounds "
-                        f"({system_utilization * 100:.2f}%), and DEX liquidity is sufficient to cover ebUSD trades."
-                    )
+                    if slippage > 2 or system_utilization > 90:
+                        return "High", (
+                            f"Slippage is significant ({slippage:.2f}%) and/or system utilization is very high "
+                            f"({system_utilization * 100:.2f}%), indicating a strong risk of ebUSD depegging."
+                        )
+                    elif slippage > 1 or system_utilization > 70:
+                        return "Medium", (
+                            f"Moderate slippage ({slippage:.2f}%) and/or system utilization ({system_utilization * 100:.2f}%) "
+                            "indicates a potential for ebUSD depegging under stress conditions."
+                        )
+                    elif dex_liquidity < system_total_ebusd_minted * 0.5:
+                        return "Medium", (
+                            f"DEX liquidity ({dex_liquidity:,.2f}) is less than 50% of the total ebUSD minted "
+                            f"({system_total_ebusd_minted:,.2f}), indicating potential stress on the peg."
+                        )
+                    else:
+                        return "Low", (
+                            f"Slippage is low ({slippage:.2f}%), system utilization is within safe bounds "
+                            f"({system_utilization * 100:.2f}%), and DEX liquidity is sufficient to cover ebUSD trades."
+                        )
                 """, language="python")
 
 
