@@ -985,7 +985,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
 
         cols[1].metric(
             "Liquidity Buffer (USD)",
-            f"${liquidity_buffer:,.2f}",
+            f"{liquidity_buffer:,.2f}",
             help="The remaining liquidity in the DEX after accounting for current utilization. Provides a measure of how much liquidity is available to absorb shocks.")
 
         cols[2].metric(
