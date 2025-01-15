@@ -275,7 +275,7 @@ def main():
             mcr = st.number_input(f"MCR (%)", min_value=50.0, max_value=250.0, value=defaults["mcr"], step=10.0, key=f"{token}_mcr",
                                   help="The minimum ratio of collateral to debt required to avoid liquidation for a given token. A higher MCR ensures greater safety at the cost of lower capital efficiency.")
             leverage_iterations = st.number_input(f"Leverage (x)", min_value=0.0, value=defaults["iterations"], 
-                                                  step=0.25, key=f"{token}_iterations", help="The maximum number of leverage loops achievable with the current MCR. Indicates the theoretical upper limit for leveraging.")
+                                                  step=0.25, key=f"{token}_iterations", help="The maximum number of leverage loops recommended with the current MCR. Indicates the theoretical upper limit for leveraging.")
             col8, col9 = st.columns(2)
             with col8:
                 token_base_interest_rate = st.slider(f"{token} Base Interest Rate (%)", min_value=0.0, max_value = 20.0, value=10.0, format="%d%%",
@@ -587,7 +587,7 @@ def main():
             cols[3].metric(
                 "Liquidation Threshold (USD)",
                 f"{token_results['Liquidation Threshold (USD)']:,.2f}",
-                help="The total debt value below which liquidation is triggered. Higher thresholds indicate stricter collateral requirements.")
+                help="The total debt value below which liquidation is triggered. This formula calculates the minimum collateral value required to avoid liquidation by multiplying the total leveraged debt by the Minimum Collateralization Ratio (MCR). The multiplication ensures the collateral is sufficient to cover the debt based on the safety margin set by the MCR.")
 
             
 
@@ -1344,15 +1344,15 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
 
             st.write(f"""
             #### **Collateralization and Stability**
-            The system-wide **Safe Minimum Collateralization Ratio (MCR)**, currently averaging **{system_mcr:.2f}%**, provides an indication of the collateral safety net across supported tokens. 
+            The system-wide **Minimum Collateralization Ratio (MCR)**, currently averaging **{system_mcr:.2f}%**, provides an indication of the collateral safety net across supported tokens. 
             This ratio is designed to mitigate liquidation risks under normal conditions, but its adequacy can vary based on market volatility and token-specific risks.
             The **Total Collateral** in the system amounts to **\${system_total_collateral:,.2f}**, serving as the basis for ebUSD minting and trading. 
             While this figure suggests the current capacity of the system to support its operations, external factors such as sharp price fluctuations, over-minting, or high utilization could test its robustness. 
             A high total collateral base does not inherently guarantee system stability unless paired with effective risk management strategies.
 
             #### **Leverage, Liquidity, and Elasticity**
-            The current **Leverage ratio** of **{system_leverage:.2f}x** reflects the system's efficiency in converting collateral into liquidity via ebUSD minting. 
-            This measure balances capital efficiency with exposure to potential risks. However, higher leverage levels increase sensitivity to market downturns, where even minor adverse price movements can trigger cascading liquidation events.
+            The current **Leverage ratio** of **{system_leverage:.2f}x** reflects the system's efficiency in converting collateral into liquidity via ebUSD minting, balancing capital efficiency with exposure to potential risks. 
+            However, higher leverage levels increase sensitivity to market downturns, where even minor adverse price movements can trigger cascading liquidation events.
             The **Liquidity-to-Debt Ratio**, standing at **{system_liquidity_to_debt_ratio:.2f}**, indicates the system's current capacity to handle redemptions and liquidations. 
             While this ratio suggests a degree of liquidity adequacy, sustained periods of high redemption activity or constrained liquidity could lead to stress in maintaining the peg.
             The **Liquidity Buffer**, valued at **\${liquidity_buffer:,.2f}**, is an important risk mitigation tool, absorbing volatility during periods of market stress. 
@@ -1369,7 +1369,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             - **Debt-to-Collateral Ratio (DCR)**: A DCR of **{system_debt_to_collateral_ratio:.2f}** suggests a controlled leverage environment at present. However, ratios exceeding 3x have historically been associated with heightened risks of systemic instability in similar systems.
             - **Total System Debt**: The system's total debt of **\${system_total_debt:,.2f}** highlights the scale of liabilities supported by collateral. While this is manageable under normal conditions, significant changes in collateral value or utilization could strain the system.
 
-            The **Depegging Probability**, currently valued at **{depegging_probability}**, integrates these metrics into an overall risk signal. This assessment underscores the importance of monitoring slippage, utilization, and liquidity in tandem to preempt instability.
+            The **Depegging Probability**, currently valued at a **{depegging_probability}** level, integrates these metrics into an overall risk signal. This assessment underscores the importance of monitoring slippage, utilization, and liquidity in tandem to preempt instability.
 
             #### **Redemption Fee Dynamics**
 
