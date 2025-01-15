@@ -884,7 +884,7 @@ More LBTC details on [LBTC's Dune dashboard](https://dune.com/lombard_protocol/r
 
 
             if token == "weETH":
-                num_spaces = 15
+                num_spaces = 16
             elif token == "sUSDe":
                 num_spaces = 15
             elif token == "LBTC":
