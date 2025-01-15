@@ -874,7 +874,7 @@ More LBTC details on [LBTC's Dune dashboard](https://dune.com/lombard_protocol/r
 
             if token == "weETH":
                 st.write("---")
-                st.write("**Additional Ether.fi LRT (weETH) Metrics, based on Current AVS Portfolio Risk Assessment** ([model](https://ebisu-lrt-risk-dashboard.streamlit.app/)): ***Riskiest LRT***")
+                st.write("**Additional Ether.fi LRT (weETH) Metrics, based on Current AVS Portfolio Risk Assessment** ([model](https://ebisu-lrt-risk-dashboard.streamlit.app/)): ***Riskiest LRT*** 🚨")
                 
                 # Add custom metrics for "weETH"
                 cols = st.columns(2)
