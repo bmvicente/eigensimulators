@@ -856,9 +856,9 @@ More LBTC details on [LBTC's Dune dashboard](https://dune.com/lombard_protocol/r
                 #### Advanced Insights on Tokenomics
                 **Interest Rate Adjustments**:
                 The base interest rate of 10%, modified by utilization and risk multipliers, provides a flexible framework. Incorporating additional factors like collateral liquidity, token volatility, and macroeconomic indicators can improve precision.
-                - **sUSDe**: May justify lower rates (2-3%) due to its stable value and low volatility, appealing to risk-averse lenders.
-                - **weETH**: Requires higher rates (5-7%) to account for staking yield dynamics, restaking risks, and ETH price volatility.
-                - **LBTC**: Needs moderate rates (4-5%) that balance Bitcoin’s volatility and operational risks associated with decentralized BTC bridges.
+                - **sUSDe**: May justify lower rates (6-7%) due to its stable value and low volatility, appealing to risk-averse lenders.
+                - **weETH**: Requires higher rates (10-12%) to account for staking yield dynamics, restaking risks, and ETH price volatility.
+                - **LBTC**: Needs moderate rates (8-9%) that balance Bitcoin’s volatility and operational risks associated with decentralized BTC bridges.
                 
                 **Correlation Risks**:
                 Highly correlated collateral assets increase systemic risks during market downturns. A correlation-adjusted multiplier can help reduce these risks:
