@@ -835,9 +835,9 @@ More LBTC details on [LBTC's Dune dashboard](https://dune.com/lombard_protocol/r
                 While higher MCR values reduce the likelihood of system instability, they can also constrain capital efficiency, requiring users to lock up more collateral than might be operationally optimal.
                 
                 **Total Deposits** in the system amount to **\${token_results['Deposits (USD)']:,.2f}**, with collateral value post-price variation calculated at **\${token_results['Collateral Value After Price Variation (USD)']:,.2f}**. 
-                These figures reflect the current level of collateral robustness, but their adequacy depends on market conditions and collateral performance. For synthetic stablecoins like sUSDe, maintaining a stable peg is crucial as de-pegging risks could undermine the entire system. 
-                Collateral types such as weETH, which represent staked assets, bring additional complexities like slashing risks or withdrawal delays, necessitating more dynamic MCR adjustments to address these token-specific challenges. 
-                Similarly, LBTC, as a tokenized representation of Bitcoin, introduces unique risks stemming from Bitcoin’s price volatility and its dependency on bridge mechanisms. 
+                These figures reflect the current level of collateral robustness, but their adequacy depends on market conditions and collateral performance. For synthetic stablecoins like **sUSDe**, maintaining a stable peg is crucial as de-pegging risks could undermine the entire system. 
+                Collateral types such as **weETH**, which represent staked assets, bring additional complexities like slashing risks or withdrawal delays, necessitating more dynamic MCR adjustments to address these token-specific challenges. 
+                Similarly, **LBTC**, as a tokenized representation of Bitcoin, introduces unique risks stemming from Bitcoin’s price volatility and its dependency on bridge mechanisms. 
                 To mitigate these, the system must ensure robust liquidity management and establish higher MCR levels compared to synthetic stablecoins to buffer against Bitcoin's inherent price swings.
 
                 #### **Leverage and Minting Dynamics**
