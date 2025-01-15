@@ -841,10 +841,9 @@ More LBTC details on [LBTC's Dune dashboard](https://dune.com/lombard_protocol/r
                 To mitigate these, the system must ensure robust liquidity management and establish higher MCR levels compared to synthetic stablecoins to buffer against Bitcoin's inherent price swings.
 
                 #### **Leverage and Minting Dynamics**
-                The system’s leverage dynamics are calibrated to strike a balance between efficiency and risk. A **Maximum Leverage Loop** of **{token_results['Max Leverage Loops (x)']:.2f}x** indicates the potential extent of collateral re-use while maintaining adequate risk controls.
-                
-                With a total of **\${token_results['ebUSD Minted (USD)']:,.2f}** in **minted ebUSD** and an overall **Debt After Leveraging** of **\${token_results['Total Debt After Leverage (USD)']:,.2f}**, the system exhibits significant exposure that warrants careful monitoring. 
-                High utilization rates, while indicative of demand, can also amplify liquidity constraints and systemic fragility, particularly for assets like weETH where staking yield and liquidity delays introduce additional risks.
+The system’s leverage dynamics are designed to balance efficiency and risk. A Maximum Leverage Loop of {token_results['Max Leverage Loops (x)']:.2f}x reflects the potential extent of collateral re-use within risk-controlled parameters.
+
+A total of ${token_results['ebUSD Minted (USD)']:,.2f} in minted ebUSD and an overall Debt After Leveraging of ${token_results['Total Debt After Leverage (USD)']:,.2f} indicate the scale of collateral utilization for liquidity generation. While this promotes capital efficiency, higher levels of debt warrant monitoring to ensure that the system remains within safe operational thresholds. High utilization rates, indicative of strong demand, may also increase liquidity constraints, particularly for assets like weETH and LBTC, where price variability and restaking or bridge-related risks could amplify systemic fragility.
 
                 #### **Risk Assessment**
                 - **Debt-to-Collateral Ratio (DCR)**: The DCR, currently at **{token_results['Debt-to-Collateral Ratio']:.2f}**, measures total debt relative to collateral. Ratios above 1.5 can signal heightened risks, as collateral might not suffice to cover debt obligations during adverse market movements. Interest rates can be dynamically adjusted upwards as the DCR nears this threshold to discourage over-leveraging.
@@ -852,18 +851,42 @@ More LBTC details on [LBTC's Dune dashboard](https://dune.com/lombard_protocol/r
                 - **Utilization Rate**: The system’s utilization rate is **{token_results['token_utilization'] * 100:.2f}%**, suggesting moderate liquidity availability. However, utilization above 80% may indicate stress, as high rates can strain liquidity during redemption or liquidation events.
 
                 #### **Liquidation**
-                The **Liquidation Threshold** for {token} is **\${token_results['Liquidation Threshold (USD)']:,.2f}**, which serves as a critical point for collateral adequacy. Debt flagged for repayment currently totals **\${debt_to_unwind["debt_to_repay"]:,.2f}**, highlighting the importance of proactive rebalancing to prevent bad debt and forced liquidations.
+The Liquidation Threshold for {token}, currently set at ${token_results['Liquidation Threshold (USD)']:,.2f}, provides a key benchmark for assessing collateral adequacy. Debt flagged for repayment stands at ${debt_to_unwind["debt_to_repay"]:,.2f}, ensuring that liquidations remain consistent with the system's design to maintain stability. Regular monitoring and proactive rebalancing help align collateral and debt levels, minimizing the risk of forced liquidations.                
                 
                 #### Advanced Insights on Tokenomics
                 - **Interest Rate Adjustments**: The base interest rate of 10%, modified by **utilization and risk multipliers**, provides a flexible framework. However, incorporating additional factors like collateral liquidity, token volatility, and macroeconomic indicators could enhance precision in a future model version. 
-                Synthetic stablecoins such as sUSDe may justify lower rates due to perceived stablecoin stability, while assets like weETH could require higher rates to account for staking-related risks. Additionally, LBTC, despite its utility as a widely recognized collateral asset, demands interest rates that balance its moderate volatility and liquidity constraints. 
+                Synthetic stablecoins such as sUSDe may justify lower rates due to perceived stablecoin stability, while assets like weETH could require higher rates to account for restaking-related risks. Additionally, LBTC, despite its utility as a widely recognized collateral asset, demands interest rates that balance its moderate volatility and liquidity constraints. 
                 These rates should reflect Bitcoin’s historical price behavior and the operational risks associated with decentralized BTC bridges, ensuring lenders are adequately compensated while maintaining borrowing feasibility;
                 - **Correlation Risks**: Collateral assets with high correlation to each other or the broader market, such as weETH to ETH, pose systemic risks during downturns. Introducing a correlation-adjusted multiplier could mitigate the compounding effects of correlated price declines;
                 - **Yield-Incentivized Debt Cycles**: For LRTs like weETH, staking yields can incentivize over-leveraging. Incorporating yield compression mechanisms into interest rate models could counterbalance this tendency and maintain systemic stability;
                 - **Dynamic Leverage Caps**: Setting leverage limits based on historical price volatility and liquidity depth can prevent excessive risk accumulation during market booms, reducing the likelihood of cascading liquidations during corrections.
 
+                **Interest Rate Adjustments**:
+                The base interest rate of 10%, modified by utilization and risk multipliers, provides a flexible framework. Incorporating additional factors like collateral liquidity, token volatility, and macroeconomic indicators can improve precision.
+                    - **sUSDe**: May justify lower rates (2-3%) due to its stable value and low volatility, appealing to risk-averse lenders.
+                    - **weETH**: Requires higher rates (5-7%) to account for staking yield dynamics, restaking risks, and ETH price volatility.
+                    - **LBTC**: Needs moderate rates (4-5%) that balance Bitcoin’s volatility and operational risks associated with decentralized BTC bridges.
+                
+                **Correlation Risks**:
+                Highly correlated collateral assets increase systemic risks during market downturns. A correlation-adjusted multiplier can help reduce these risks:
+                    - **weETH**: Correlates strongly with ETH. Sharp ETH price drops could trigger cascading liquidations. Adding diversification within collateral pools or implementing a risk premium for correlated assets can mitigate such risks.
+                    - **sUSDe**: Exhibits minimal correlation, thanks to its peg to the USD. However, stress in collateral backing or external markets could still disrupt its stability. Maintaining robust over-collateralization is essential.
+                    - **LBTC**: Correlation to Bitcoin’s volatility introduces unique risks. Market downturns for BTC can significantly impact LBTC’s collateral value, necessitating conservative risk parameters and broader diversification across uncorrelated assets.
+
+                **Yield-Incentivized Debt Cycles**:
+                Collateral types offering yields may drive over-leveraging as users seek to maximize returns. Incorporating yield compression mechanisms can help balance these incentives:
+                    - **weETH**: Staking rewards and EigenLayer yields create strong incentives for high leverage. Introducing higher risk multipliers at specific thresholds can discourage excessive leveraging while maintaining system stability.
+                    - **sUSDe**: Stable and non-yielding, sUSDe is less prone to over-leveraging. Ensuring a competitive MCR and low rates sustains its appeal without introducing significant systemic risk.
+                    - **LBTC**: Bitcoin’s store-of-value utility attracts leveraged positions, especially during bullish markets. Dynamic adjustments to leverage thresholds based on BTC market conditions can curtail speculative behavior and safeguard the system.
+
+                **Dynamic Leverage Caps**:
+                Leverage caps based on historical volatility and liquidity depth can prevent excessive risk during market booms:
+                    - **weETH**: Requires stricter leverage caps to offset staking delays and ETH price volatility. Lower caps during high-stress periods can reduce systemic strain.
+                    - **sUSDe**: Its stability supports higher leverage caps, but safeguards against collateral devaluation during extreme market shocks must be in place.
+                    - **LBTC**: Moderate leverage caps align with Bitcoin’s inherent price volatility and decentralized bridge risks. Adjusting caps dynamically during high BTC price volatility can maintain liquidity and mitigate liquidation cascades.
+
                 #### **Recommendations for {token}**
-                - **Maintain Robust Collateralization**: Ensure collateral remains above the MCR at all times to buffer against price fluctuations and market volatility. Synthetic stablecoins should be closely monitored for peg stability, while LRTs require additional safeguards for staking-related risks.
+                - **Maintain Robust Collateralization**: Ensure collateral remains above the MCR at all times to buffer against price fluctuations and market volatility. Synthetic stablecoins should be closely monitored for peg stability, while LRTs require additional safeguards for restaking-related risks.
                 - **Refine Interest Rate Models**: Adjust interest rates dynamically to incorporate market conditions, such as token-specific volatility, liquidity, and yield dynamics. Implement correlation-based risk adjustments to better reflect systemic exposures.
                 - **Leverage and Utilization Management**: Set utilization thresholds below 80% to preserve liquidity and reduce stress during high-demand periods. Introduce dynamic leverage caps based on market conditions to curb excessive risk-taking.
                 - **Regular Monitoring and Stress Testing**: Continuously stress-test the system under adverse scenarios, such as rapid price drops, peg devaluations, or mass liquidations. Use these tests to recalibrate risk multipliers and interest rate adjustments.
