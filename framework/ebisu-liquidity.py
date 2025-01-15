@@ -764,9 +764,9 @@ def main():
 
                 st.write(f"**Total Debt After Leverage Formula:**")
                 st.latex(r"""
-                \text{Total Debt After Leverage (USD)} = \text{Iterative Summation} \left(\frac{\text{Collateral Value After Price Variation (USD)}}{\text{MCR Dec}}\right)
+                \text{Total Debt After Leverage (USD)} = \sum_{i=1}^{n} \left(\frac{\text{Collateral Value After Price Variation (USD)}}{\text{MCR}}\right)
                 """)
-                st.write(f"Result: Simulated over {token_results['Leverage (x))']:.1f} leverage loops, resulting in total debt of {token_results['Total Debt After Leverage (USD)']:,.2f}")
+                st.write(f"Result: Simulated over {token_results['Leverage (x)']:.1f} leverage loops, resulting in total debt of {token_results['Total Debt After Leverage (USD)']:,.2f}")
 
                 st.write(f"**Debt to Unwind Formula:**")
                 st.latex(r"""
