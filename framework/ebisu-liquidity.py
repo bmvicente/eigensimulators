@@ -911,7 +911,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             elif token == "sUSDe":
                 num_spaces = 15
             elif token == "LBTC":
-                num_spaces = 14
+                num_spaces = 13
             else:
                 num_spaces = 10  # Default number of spaces
 
