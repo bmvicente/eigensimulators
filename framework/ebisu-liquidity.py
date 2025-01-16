@@ -699,11 +699,11 @@ def main():
             cols_warnings = st.columns(2)
 
             # Debt-to-Collateral Ratio
-            if token_results["Debt-to-Collateral Ratio"] > 2:
+            if token_results["Debt-to-Collateral Ratio"] > 1.25:
                 cols_warnings[0].error(
                     f"🚨 **Critical Debt-to-Collateral Level**: Debt exceeds collateral by {token_results['Debt-to-Collateral Ratio']:.2f}x, significantly increasing liquidation risk and systemic instability."
                 )
-            elif 2 >= token_results["Debt-to-Collateral Ratio"] > 1:
+            elif 1.25 >= token_results["Debt-to-Collateral Ratio"] > 1:
                 cols_warnings[0].warning(
                     f"⚠️ **Moderate Debt-to-Collateral Level**: Debt exceeds collateral by {token_results['Debt-to-Collateral Ratio']:.2f}x, posing a moderate liquidation risk that requires monitoring."
                 )
@@ -714,11 +714,11 @@ def main():
 
 
             # Collateral Coverage Ratio
-            if token_results['Collateral Coverage Ratio'] < 1:
+            if token_results['Collateral Coverage Ratio'] < 0.75:
                 cols_warnings[1].error(
                     f"🚨 **Insufficient Collateral Coverage for {token}**: Coverage ratio is {token_results['Collateral Coverage Ratio']:.2f}, indicating under-collateralization and elevated liquidation risks."
                 )
-            elif 1 <= token_results['Collateral Coverage Ratio'] <= 1.25:
+            elif 0.75 <= token_results['Collateral Coverage Ratio'] <= 1.25:
                 cols_warnings[1].warning(
                     f"⚠️ **Moderate Collateral Coverage for {token}**: Coverage ratio is {token_results['Collateral Coverage Ratio']:.2f}, providing limited protection against price volatility and liquidation risks."
                 )
