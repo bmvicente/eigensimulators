@@ -907,9 +907,9 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
 
 
             if token == "weETH":
-                num_spaces = 13
+                num_spaces = 14
             elif token == "sUSDe":
-                num_spaces = 16
+                num_spaces = 15
             elif token == "LBTC":
                 num_spaces = 14
             else:
