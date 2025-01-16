@@ -714,13 +714,13 @@ def main():
 
 
             # Collateral Coverage Ratio
-            if token_results['Collateral Coverage Ratio'] < 0.5:
+            if token_results['Collateral Coverage Ratio'] < 1:
                 cols_warnings[1].error(
                     f"🚨 **Insufficient Collateral Coverage for {token}**: Coverage ratio is {token_results['Collateral Coverage Ratio']:.2f}, indicating under-collateralization and elevated liquidation risks."
                 )
-            elif 0.5 <= token_results['Collateral Coverage Ratio'] <= 1.5:
+            elif 1 <= token_results['Collateral Coverage Ratio'] <= 1.25:
                 cols_warnings[1].warning(
-                    f"⚠️ **Low Collateral Coverage for {token}**: Coverage ratio is {token_results['Collateral Coverage Ratio']:.2f}, providing limited protection against price volatility and liquidation risks."
+                    f"⚠️ **Moderate Collateral Coverage for {token}**: Coverage ratio is {token_results['Collateral Coverage Ratio']:.2f}, providing limited protection against price volatility and liquidation risks."
                 )
             else:
                 cols_warnings[1].success(
@@ -1144,7 +1144,7 @@ In terms of tokenomics, LBTC's integration into DeFi introduces new dynamics for
             )
         elif 1 <= system_collateral_coverage_ratio <= 1.5:
             cols_warnings[1].warning(
-                f"⚠️ **Low Collateral Coverage**: Collateral covers {system_collateral_coverage_ratio:.2f}x of debt, providing limited room for price volatility."
+                f"⚠️ **Moderate Collateral Coverage**: Collateral covers {system_collateral_coverage_ratio:.2f}x of debt, providing limited room for price volatility."
             )
         else:
             cols_warnings[1].success(
